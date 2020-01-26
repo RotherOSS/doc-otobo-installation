@@ -1,4 +1,4 @@
-Installation
+CommunityInstallation
 ============
 
 This chapter describes the installation and basic configuration of the central OTOBO framework.
@@ -75,7 +75,7 @@ Use the following script to get an overview of all installed and required CPAN m
 
 .. code-block:: none
 
-   root> perl /opt/otobo/bin/otobo.CheckEnvironment.pl
+   root> perl /opt/otobo/bin/otobo.CheckModules.pl
    Checking for Perl Modules:
      o Archive::Tar.....................ok (v1.90)
      o Archive::Zip.....................ok (v1.37)
@@ -92,9 +92,7 @@ Execute this command to get an install command to install the missing dependenci
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.CheckEnvironment.pl --list
-
-OTOBO requires a supported stable version of Node.js to be installed. Please refer to the `Node.js installation instructions <https://nodejs.org/en/download/package-manager/>`__.
+   root> /opt/otobo/bin/otobo.CheckModules.pl --list
 
 
 Step 3: Create the OTOBO User
@@ -105,6 +103,13 @@ Create a dedicated user for OTOBO within its own group:
 .. code-block:: bash
 
    root> useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
+
+Add user to webserver group (if the webserver is not running as the OTRS user):
+
+.. code-block:: bash
+
+   shell> usermod -G www otrs
+   (SUSE=www, Red Hat/CentOS/Fedora=apache, Debian/Ubuntu=www-data)
 
 
 Step 4: Activate the Default Configuration File
@@ -119,6 +124,20 @@ There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.d
 
 Step 5: Configure the Apache Web Server
 ---------------------------------------
+
+First of all, you should install the Apache2 web server and mod_perl; you'd typically do this from your systems package manager.
+Below you'll find the commands needed to set up Apache on the most popular Linux distributions.
+
+.. code-block:: bash
+
+   # RHEL / CentOS:
+   shell> yum install httpd mod_perl
+
+   # SuSE:
+   shell> zypper install apache2-mod_perl
+
+   # Debian/Ubuntu:
+   shell> apt-get install apache2 libapache2-mod-perl2
 
 OTOBO requires a few Apache modules to be active for optimal operation. On most platforms you can make sure they are active via the tool a2enmod.
 
@@ -158,6 +177,22 @@ Please execute the following command to set the file and directory permissions f
 
 Step 7: Setup the Database
 --------------------------
+
+First of all, you should install the database package. The OTOBO community recommend to use the MySQL or MariaDB package, which will delivered with your Linux system ,but it´s possible to use PostgreSQL or Oracle as well.
+
+You'd typically do this from your systems package manager.
+Below you'll find the commands needed to set up MySQL on the most popular Linux distributions.
+
+.. code-block:: bash
+
+   # RHEL / CentOS:
+   shell> yum install mysql-server
+
+   # SuSE:
+   shell> zypper install mysql-community-server
+
+   # Debian/Ubuntu:
+   shell> apt-get install mysql-server
 
 The following steps need to be taken to setup the database for OTOBO properly:
 
