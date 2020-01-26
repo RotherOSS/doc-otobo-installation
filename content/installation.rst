@@ -1,5 +1,5 @@
-CommunityInstallation
-============
+OTOBO Installation
+==================
 
 This chapter describes the installation and basic configuration of the central OTOBO framework.
 
@@ -104,11 +104,11 @@ Create a dedicated user for OTOBO within its own group:
 
    root> useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
 
-Add user to webserver group (if the webserver is not running as the OTRS user):
+Add user to webserver group (if the webserver is not running as the otobo user):
 
 .. code-block:: bash
 
-   shell> usermod -G www otrs
+   shell> usermod -G www otobo
    (SUSE=www, Red Hat/CentOS/Fedora=apache, Debian/Ubuntu=www-data)
 
 
@@ -178,7 +178,8 @@ Please execute the following command to set the file and directory permissions f
 Step 7: Setup the Database
 --------------------------
 
-First of all, you should install the database package. The OTOBO community recommend to use the MySQL or MariaDB package, which will delivered with your Linux system ,but it´s possible to use PostgreSQL or Oracle as well.
+First of all, you should install the database package. The OTOBO community recommend to use the MySQL or MariaDB package, which will delivered with your Linux system,
+but it's possible to use PostgreSQL or Oracle as well.
 
 You'd typically do this from your systems package manager.
 Below you'll find the commands needed to set up MySQL on the most popular Linux distributions.
@@ -194,73 +195,21 @@ Below you'll find the commands needed to set up MySQL on the most popular Linux 
    # Debian/Ubuntu:
    shell> apt-get install mysql-server
 
-The following steps need to be taken to setup the database for OTOBO properly:
+After install the MySQL server you need configure it.
 
-- Create a dedicated database user and database.
-- Create the database structure.
-- Insert the initial data.
-- Configure the database connection in ``Kernel/Config.pm``.
+In MySQL higher or equal version 5.7 is a new authentication module active and it's not possible to use the OTOBO web installer for database creation.
+In this case please login to the mysql console and set a different authentication module and password for the user ``root``:
+
+.. code-block:: bash
+
+   root> mysql -u root
+   root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
+
+After OTOBO installation it's possible to change the authentication module again, if needed.
 
 .. note::
 
-   Please note that OTOBO requires ``utf8`` as database storage encoding.
-
-MySQL or MariaDB
-~~~~~~~~~~~~~~~~
-
-Log in to MySQL console as database admin user:
-
-.. code-block:: bash
-
-   root> mysql -uroot -p
-
-Create a database:
-
-.. code-block:: bash
-
-   mysql> CREATE DATABASE otobo CHARACTER SET utf8;
-
-Special database user handling is needed for MySQL 8, as the default ``caching_sha2_password`` can only be used over secure connections. Create a database user in MySQL 8:
-
-.. code-block:: bash
-
-   mysql> CREATE USER 'otobo'@'localhost' IDENTIFIED WITH mysql_native_password BY 'choose-your-password';
-
-Create a database user in older MySQL versions:
-
-.. code-block:: bash
-
-   mysql> CREATE USER 'otobo'@'localhost' IDENTIFIED BY 'choose-your-password';
-
-Assign user privileges to the new database:
-
-.. code-block:: bash
-
-   mysql> GRANT ALL PRIVILEGES ON otobo.* TO 'otobo'@'localhost';
-   mysql> FLUSH PRIVILEGES;
-   mysql> quit
-
-Run the following commands on the shell to create schema and insert data:
-
-.. code-block:: bash
-
-   root> mysql -uroot -p otobo < /opt/otobo/scripts/database/otobo-schema.mysql.sql
-   root> mysql -uroot -p otobo < /opt/otobo/scripts/database/otobo-initial_insert.mysql.sql
-   root> mysql -uroot -p otobo < /opt/otobo/scripts/database/otobo-schema-post.mysql.sql
-
-Configure database settings in ``Kernel/Config.pm``:
-
-.. code-block:: perl
-
-   $Self->{DatabaseHost} = '127.0.0.1';
-   $Self->{Database}     = 'otobo';
-   $Self->{DatabaseUser} = 'otobo';
-   $Self->{DatabasePw}   = 'choose-your-password';
-   $Self->{DatabaseDSN}  = "DBI:mysql:database=$Self->{Database};host=$Self->{DatabaseHost};";
-
-.. note::
-
-   The following configuration settings are recommended for MySQL setups. Please add the following lines to ``/etc/my.cnf`` under the ``[mysqld]`` section:
+   The following configuration settings are minimum for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf`` or ``/etc/mysql/my.cnf`` under the ``[mysqld]`` section:
 
    .. code-block:: ini
 
@@ -268,92 +217,23 @@ Configure database settings in ``Kernel/Config.pm``:
       query_cache_size     = 32M
       innodb_log_file_size = 256M
 
-
-PostgreSQL
-~~~~~~~~~~
-
-.. note::
-
-   We assume, that OTOBO and PostgreSQL server run on the same machine and PostgreSQL uses *Peer* authentication method. For more information see the `Client Authentication <https://www.postgresql.org/docs/current/client-authentication.html>`__ section in the PostgreSQL manual.
-
-Switch to ``postgres`` user:
+For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
+or install it on Debian or Ubuntu systems via package manager:
 
 .. code-block:: bash
 
-   root> su - postgres
+   root> apt-get install mysqltuner
 
-Create a database user:
-
-.. code-block:: bash
-
-   postgres> createuser otobo
-
-Create a database:
+After install execute the script:
 
 .. code-block:: bash
 
-   postgres> createdb --encoding=UTF8 --owner=otobo otobo
-
-Run the following commands on the shell to create schema and insert data:
-
-.. code-block:: bash
-
-   otobo> psql < /opt/otobo/scripts/database/otobo-schema.postgresql.sql
-   otobo> psql < /opt/otobo/scripts/database/otobo-initial_insert.postgresql.sql
-   otobo> psql < /opt/otobo/scripts/database/otobo-schema-post.postgresql.sql
-
-Configure database settings in ``Kernel/Config.pm``:
-
-.. code-block:: perl
-
-   $Self->{DatabaseHost} = '127.0.0.1';
-   $Self->{Database}     = 'otobo';
-   $Self->{DatabaseUser} = 'otobo';
-   $Self->{DatabasePw}   = 'choose-your-password';
-   $Self->{DatabaseDSN}  = "DBI:Pg:dbname=$Self->{Database};host=$Self->{DatabaseHost};";
-
-
-Finishing the Database Setup
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To verify your database setup, run the following command:
-
-.. code-block:: none
-
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Database::Check
-   Trying to connect to database 'DBI:Pg:dbname=otobo;host=localhost' with user 'otobo'...
-   Connection successful.
-
-Once the database is configured correctly, please initialize the system configuration with the following command:
-
-.. code-block:: none
-
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
-   Rebuilding the system configuration...
-   Done.
-
-.. note::
-
-   For security reasons, please change the default password of the admin user ``root@localhost`` by generating a random password:
-
-   .. code-block:: none
-
-      otobo> /opt/otobo/bin/otobo.Console.pl Admin::User::SetPassword root@localhost
-      Generated password 'rtB98S55kuc9'.
-      Successfully set password for user 'root@localhost'.
-
-   You can also choose to set your own password:
-
-   .. code-block:: none
-
-      otobo> /opt/otobo/bin/otobo.Console.pl Admin::User::SetPassword root@localhost your-own-password
-      Successfully set password for user 'root@localhost'
-
+   root> mysqltuner --user root --pass NewRootPassword
 
 Step 8: Setup Elasticsearch Cluster
 -----------------------------------
 
-OTOBO requires an active cluster of Elasticsearch 6.x (higher versions are not supported). The easiest way is to `setup Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html>`__ on the same host as OTOBO and binding it to its default port. With that, no further configuration in OTOBO is needed.
+OTOBO recommend an active cluster of Elasticsearch. The easiest way is to `setup Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html>`__ on the same host as OTOBO and binding it to its default port. With that, no further configuration in OTOBO is needed.
 
 Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
@@ -375,15 +255,10 @@ To verify the Elasticsearch installation, you can use the following command:
      Connection successful.
 
 
-Step 9: Start the OTOBO Daemon and Web Server
---------------------------------------------
+Step 9: Basic System Configuration
+--------------------------
 
-The new OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The built-in OTOBO web server process handles the web requests handed over from Apache. Both processes must be started from the ``otobo`` user.
-
-.. code-block:: bash
-
-   otobo> /opt/otobo/bin/otobo.Daemon.pl start
-   otobo> /opt/otobo/bin/otobo.WebServer.pl
+Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to setup your database and basic system settings such as email accounts.
 
 
 Step 10: First Login
@@ -391,23 +266,29 @@ Step 10: First Login
 
 Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above).
 
-Use http://localhost to access the external interface.
 
+Step 11: Start the OTOBO Daemon
+--------------------------------------------
 
-Step 11: Setup Systemd Files
-----------------------------
-
-OTOBO comes with example systemd configuration files that can be used to make sure that the OTOBO daemon and web server are started automatically after the system starts.
+The new OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is now required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the otobo user.
 
 .. code-block:: bash
 
-   root> cd /opt/otobo/scripts/systemd
-   root> for UNIT in *.service; do cp -vf $UNIT /usr/lib/systemd/system/; systemctl enable $UNIT; done
+   otobo> /opt/otobo/bin/otobo.Daemon.pl start
+
+Step 12: Cron jobs for the OTOBO user
+----------------------------
+
+There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
+
+.. code-block:: bash
+
+   root> cd /opt/otobo/var/cron/
+   root> for foo in *.dist; do cp $foo `basename $foo .dist`; done
 
 With this step, the basic system setup is finished.
 
-
-Step 12: Setup Bash Auto-Completion (optional)
+Step 13: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
 
 All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto completion for the bash shell which makes finding the right command and options much easier.
@@ -431,7 +312,7 @@ If you type a few characters of the command name, TAB will show all matching com
       source /opt/otobo/.bash_completion
 
 
-Step 13: Further Information
+Step 14: Further Information
 ----------------------------
 
 We advise you to read the OTOBO :doc:`performance-tuning` chapter.
