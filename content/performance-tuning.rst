@@ -219,6 +219,43 @@ The web server configuration file is located in ``Kernel/WebApp.conf``, and all 
 Caching
 -------
 
+A fast cache module help a lot for performance purposes. OTOBO recommend to use a Redis Cache server or to create a ramdisk.
+
+Install a Redis Cache Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Install Redis Server
+
+First of all you need to install the newest Redis Server.
+The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as OTOBO and binding it to its default port.
+
+
+2. Install Perl module Redis or Redis::Fast
+
+You can choose what Redis module being used: `Redis` or `Redis::Fast` (it's compatible with `Redis`, but **~2x faster**).
+Please use our ``otobo.CheckModules.pl``, to choose the right package for you:
+
+.. code-block:: bash
+
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl
+
+3. Configure OTOBO for Redis
+
+Please use the OTOBO `SysConfig` (Admin -> System Configuration) to configure OTOBO proper:
+
+.. code-block:: none
+
+    | Setting                       | Description                | Default value  |
+    | ----------------------------- | -------------------------- | -------------- |
+    | Cache::Redis###Server         | Redis server URL           | 127.0.0.1:6379 |
+    | Cache::Redis###DatabaseNumber | Number of logical database | 0              |
+    | Cache::Redis###RedisFast      | Use or not Redis::Fast     | 0              |
+    | Cache::Module                 | Activate Redis Cache Module| DB (use Redis) |
+
+
+RamDisk Caching
+~~~~~~~~~~~~~~~
+
 OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make sure that this uses a high performance file system and storage. If you have enough RAM, you can also try to put this directory on a ramdisk like this:
 
 .. code-block:: bash
@@ -234,11 +271,6 @@ OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make sure
 .. warning::
 
    This will be a non-permanent storage that will be lost on server reboot. All your sessions (if you store them in the file system) and your cache data will be lost.
-
-.. seealso::
-
-   There is also a centralized `memcached based cache back end available that we integrate in one of the next OTOBO versions. If you need it before, please contact sales@otobo.de, we found a solution.
-
 
 Clustering
 ----------

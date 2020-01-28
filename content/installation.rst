@@ -215,7 +215,8 @@ After OTOBO installation it's possible to change the authentication module again
 
       max_allowed_packet   = 64M
       query_cache_size     = 32M
-      innodb_log_file_size = 256M
+      innodb_log_file_size = 256M 
+      character-set-server = utf8
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
 or install it on Debian or Ubuntu systems via package manager:
