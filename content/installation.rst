@@ -215,7 +215,7 @@ After OTOBO installation it's possible to change the authentication module again
 
       max_allowed_packet   = 64M
       query_cache_size     = 32M
-      innodb_log_file_size = 256M 
+      innodb_log_file_size = 256M
       character-set-server = utf8
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
@@ -286,6 +286,9 @@ There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their
 
    root> cd /opt/otobo/var/cron/
    root> for foo in *.dist; do cp $foo `basename $foo .dist`; done
+
+   root> cd /opt/otobo/
+   root> bin/Cron.sh start
 
 With this step, the basic system setup is finished.
 

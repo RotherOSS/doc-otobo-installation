@@ -1,6 +1,10 @@
 Migration from OTRS 6 to OTOBO 10
 ========
 
+.. warning::
+    We ask for your patience here. As soon as OTOBO 10 stable is released, we will provide a migration script.
+    We strongly advise against migration during the beta phase.
+
 At the moment a update to OTOBO 10 require as base the ((OTOBO)) Community Edition 6.
 
 .. note::
@@ -102,4 +106,3 @@ With OTOBO 10 a new default password policy for agent and customer users is in e
 +---------------------------------------+--------------+
 | ``PasswordChangeAfterFirstLogin``     | Yes          |
 +---------------------------------------+--------------+
-
