@@ -231,44 +231,20 @@ After install execute the script:
 
    root> mysqltuner --user root --pass NewRootPassword
 
-Step 8: Setup Elasticsearch Cluster
------------------------------------
 
-OTOBO recommend an active cluster of Elasticsearch. The easiest way is to `setup Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html>`__ on the same host as OTOBO and binding it to its default port. With that, no further configuration in OTOBO is needed.
-
-Additionally, OTOBO requires plugins to be installed into Elasticsearch:
-
-.. code-block:: bash
-
-   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
-   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
-
-.. note::
-
-   Restart Elasticsearch afterwards, or indexes will not be built.
-
-To verify the Elasticsearch installation, you can use the following command:
-
-.. code-block:: none
-
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::DocumentSearch::Check
-   Trying to connect to cluster...
-     Connection successful.
-
-
-Step 9: Basic System Configuration
+Step 8: Basic System Configuration
 --------------------------
 
 Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to setup your database and basic system settings such as email accounts.
 
 
-Step 10: First Login
+Step 9: First Login
 --------------------
 
 Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above).
 
 
-Step 11: Start the OTOBO Daemon
+Step 10: Start the OTOBO Daemon
 --------------------------------------------
 
 The new OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is now required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the otobo user.
@@ -277,7 +253,7 @@ The new OTOBO daemon is responsible for handling any asynchronous and recurring 
 
    otobo> /opt/otobo/bin/otobo.Daemon.pl start
 
-Step 12: Cron jobs for the OTOBO user
+Step 11: Cron jobs for the OTOBO user
 ----------------------------
 
 There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
@@ -291,6 +267,63 @@ There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their
    root> bin/Cron.sh start
 
 With this step, the basic system setup is finished.
+
+
+Step 12: Setup Elasticsearch Cluster
+-----------------------------------
+
+OTOBO recommend an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
+
+Elasticsearch installation example based on Ubuntu 18 LTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+JDK-Installation:
+
+.. code-block:: bash
+   root> apt install openjdk-8-jdk
+
+ElasticSearch-Installation:
+
+.. code-block:: bash
+   root> wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+   root> echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+   root> apt update
+   root> apt -y install elasticsearch
+
+Elasticsearch installation on another Linux distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please follow the install tutorial https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
+
+Elasticsearch module installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Additionally, OTOBO requires plugins to be installed into Elasticsearch:
+
+.. code-block:: bash
+
+   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
+   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
+
+.. note::
+
+   Restart Elasticsearch afterwards.
+
+To create indexes and migrate existing data to Elasticsearch, please use the following command as user ``otobo``:
+
+.. code-block:: bash
+
+   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Elasticsearch::Migration
+   Trying to connect to create indexes...
+     Connection successful.
+
+Elasticsearch activation in OTOBO
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please login to OTOBO Admin Area  ``Admin -> System Configuration`` and activate the following settings:
+
+- Elasticsearch::Active
+- Frontend::ToolBarModule###250-Ticket::ElasticsearchFulltext
+
 
 Step 13: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
