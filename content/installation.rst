@@ -38,7 +38,7 @@ Here's how to disable SELinux for RHEL/CentOS/Fedora.
       Disabled
 
 
-Step 1: Unpack and Install the Application
+Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
 You can obtain either ``otobo-x.y.z.tar.gz`` or ``otobo-x.y.z.tar.bz2``. Unpack the source archive (for example, using ``tar``) into the directory ``/opt``, and create a symbolic link ``/opt/otobo`` that points to ``/opt/otobo-x.y.z``. **Do not forget** to replace the version numbers!
