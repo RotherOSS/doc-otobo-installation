@@ -6,12 +6,14 @@ This chapter describes the installation and basic configuration of the central O
 Follow the detailed steps in this chapter to install OTOBO on your server. You can then use its web interface to login and administer the system.
 
 
-Preparation: Disable SELinux
-----------------------------
+Preparation: Disable SELinux when it is installed and enabled
+-------------------------------------------------------------
 
 .. note::
 
    If your system uses SELinux, you should disable it, otherwise OTOBO will not work correctly.
+
+Try the command ``getenforce`` when you are not sure whether SELinux is installed and enabled on your system.
 
 Here's how to disable SELinux for RHEL/CentOS/Fedora.
 
