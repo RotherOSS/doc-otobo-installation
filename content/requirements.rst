@@ -7,7 +7,7 @@ To run OTOBO, you'll also need to use a web server as reverse proxy and a databa
 
 Perl must be installed on the same machine as OTOBO. The database back end and the web server may be installed locally or on another host.
 
-For Perl, you will need some additional modules which can be installed either with the Perl shell and CPAN, or via the package manager of your operating system (rpm, yast, apt-get).
+For Perl, you will need some additional modules which can be installed either with Perl from CPAN, or via the package manager of your operating system (rpm, yast, apt-get).
 
 OTOBO has a console command to check the environment and the missing modules.
 
