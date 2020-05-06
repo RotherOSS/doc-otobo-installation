@@ -94,7 +94,7 @@ Software requirements
 
 Perl
    - Perl 5.16.0 or higher
-   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckEnvironment.pl`` console command
+   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl`` console command
 
 Web Servers
    - Apache2
