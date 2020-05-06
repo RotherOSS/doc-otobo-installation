@@ -144,7 +144,6 @@ OTOBO requires a few Apache modules to be active for optimal operation. On most 
 .. code-block:: bash
 
    root> a2enmod perl
-   root> a2enmod version
    root> a2enmod deflate
    root> a2enmod filter
    root> a2enmod headers
