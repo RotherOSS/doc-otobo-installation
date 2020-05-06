@@ -21,7 +21,10 @@ If some packages are missing, you can get an install command for your operating 
 
    otobo> /opt/otobo/bin/otobo.CheckModules.pl --list
 
-If all needed packages are installed, the output of the environment check script shows the installed packages and the version numbers.
+The listed commands should then be executed with root privileges.
+
+The output of the module check script shows the installed packages and the version numbers. Missing modules
+are marked with a comment.
 
 .. code-block:: none
 
