@@ -13,13 +13,13 @@ OTOBO has a console command to for missing modules.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckEnvironment.pl
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl
 
 If some packages are missing, you can get an install command for your operating system, if you run the script with ``--list`` option.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckEnvironment.pl --list
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list
 
 If all needed packages are installed, the output of the environment check script shows the installed packages and the version numbers.
 
