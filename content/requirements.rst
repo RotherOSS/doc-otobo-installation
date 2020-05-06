@@ -1,7 +1,7 @@
 Hardware and Software Requirements
 ==================================
 
-OTOBO can be installed on Linux and on other Unix derivates (e.g. OpenBSD or FreeBSD). To run OTOBO on Microsoft Windows is not possible.
+OTOBO can be installed on Linux and on other Unix derivates (e.g. OpenBSD or FreeBSD). Running OTOBO on Microsoft Windows is not supported.
 
 To run OTOBO, you'll also need to use a web server as reverse proxy and a database server. Apart from that, you should install Perl and/or install some additional Perl modules on the OTOBO machine.
 
