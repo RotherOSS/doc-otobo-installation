@@ -6,19 +6,19 @@ This chapter describes the installation and basic configuration of the central O
 Follow the detailed steps in this chapter to install OTOBO on your server. You can then use its web interface to login and administer the system.
 
 
-Preparation: Disable SELinux
-----------------------------
+Preparation: Disable SELinux when it is installed and enabled
+-------------------------------------------------------------
 
 .. note::
 
    If your system uses SELinux, you should disable it, otherwise OTOBO will not work correctly.
 
-.. note::
-    
-   If you need to check if SELinux is enabled on your system, the ``sestatus`` command returns the SELinux status and the SELinux policy being used.
-   SELinux status: enabled is returned when SELinux is enabled.
-   Current mode: enforcing is returned when SELinux is running in enforcing mode.
-   Policy from config file: targeted is returned when the SELinux targeted policy is used.
+Try the command ``sestatus`` and ``getenforce`` when you are not sure whether SELinux is installed and enabled on your system.
+
+The ``sestatus`` command returns the SELinux status and the SELinux policy being used.
+SELinux status: enabled is returned when SELinux is enabled.
+Current mode: enforcing is returned when SELinux is running in enforcing mode.
+Policy from config file: targeted is returned when the SELinux targeted policy is used.
 
 Here's how to disable SELinux for RHEL/CentOS/Fedora.
 
@@ -45,7 +45,7 @@ Here's how to disable SELinux for RHEL/CentOS/Fedora.
       Disabled
 
 
-Step 1: Unpack and Install the Application
+Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
 You can obtain either ``otobo-x.y.z.tar.gz`` or ``otobo-x.y.z.tar.bz2``. Unpack the source archive (for example, using ``tar``) into the directory ``/opt``, and create a symbolic link ``/opt/otobo`` that points to ``/opt/otobo-x.y.z``. **Do not forget** to replace the version numbers!
@@ -151,7 +151,6 @@ OTOBO requires a few Apache modules to be active for optimal operation. On most 
 .. code-block:: bash
 
    root> a2enmod perl
-   root> a2enmod version
    root> a2enmod deflate
    root> a2enmod filter
    root> a2enmod headers

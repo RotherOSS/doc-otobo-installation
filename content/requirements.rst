@@ -1,27 +1,30 @@
 Hardware and Software Requirements
 ==================================
 
-OTOBO can be installed on Linux and on other Unix derivates (e.g. OpenBSD or FreeBSD). To run OTOBO on Microsoft Windows is not possible.
+OTOBO can be installed on Linux and on other Unix derivates (e.g. OpenBSD or FreeBSD). Running OTOBO on Microsoft Windows is not supported.
 
 To run OTOBO, you'll also need to use a web server as reverse proxy and a database server. Apart from that, you should install Perl and/or install some additional Perl modules on the OTOBO machine.
 
 Perl must be installed on the same machine as OTOBO. The database back end and the web server may be installed locally or on another host.
 
-For Perl, you will need some additional modules which can be installed either with the Perl shell and CPAN, or via the package manager of your operating system (rpm, yast, apt-get).
+For Perl, you will need some additional modules which can be installed either with Perl from CPAN, or via the package manager of your operating system (rpm, yast, apt-get).
 
-OTOBO has a console command to check the environment and the missing modules.
+OTOBO has a console command to for missing modules.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckEnvironment.pl
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl
 
 If some packages are missing, you can get an install command for your operating system, if you run the script with ``--list`` option.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckEnvironment.pl --list
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list
 
-If all needed packages are installed, the output of the environment check script shows the installed packages and the version numbers.
+The listed commands should then be executed with root privileges.
+
+The output of the module check script shows the installed packages and the version numbers. Missing modules
+are marked with a comment.
 
 .. code-block:: none
 
@@ -91,7 +94,7 @@ Software requirements
 
 Perl
    - Perl 5.16.0 or higher
-   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckEnvironment.pl`` console command
+   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl`` console command
 
 Web Servers
    - Apache2
