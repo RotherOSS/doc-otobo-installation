@@ -78,6 +78,24 @@ Please refer to the section :ref:`Step 2: Install Additional Programs and Perl M
 
 In addition to that, OTOBO 10 also requires an active cluster of Elasticsearch. Please refer to the :ref:`Step 8: Setup Elasticsearch Cluster` section in the installation guide.
 
+
+Install sshpass if you like to copy OTRS from another server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: Install sshpass
+
+.. code-block:: Install sshpass under Debian / Ubuntu Linux
+$ sudo apt-get install sshpass
+
+.. code-block:: Install sshpass under RHEL/CentOS Linux
+$ sudo yum install sshpass
+
+.. code-block:: Install sshpass under Fedora
+$ sudo dnf install sshpass
+
+.. code-block:: Install sshpass under OpenSUSE Linux
+$ sudo zypper install sshpass
+
 Step 8: Manual Migration Tasks and Changes
 ------------------------------------------
 

@@ -13,6 +13,13 @@ Preparation: Disable SELinux
 
    If your system uses SELinux, you should disable it, otherwise OTOBO will not work correctly.
 
+.. note::
+    
+   If you need to check if SELinux is enabled on your system, the ``sestatus`` command returns the SELinux status and the SELinux policy being used.
+   SELinux status: enabled is returned when SELinux is enabled.
+   Current mode: enforcing is returned when SELinux is running in enforcing mode.
+   Policy from config file: targeted is returned when the SELinux targeted policy is used.
+
 Here's how to disable SELinux for RHEL/CentOS/Fedora.
 
 1. Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:
@@ -108,7 +115,7 @@ Add user to webserver group (if the webserver is not running as the otobo user):
 
 .. code-block:: bash
 
-   shell> usermod -G www otobo
+   shell> usermod -G www-data otobo
    (SUSE=www, Red Hat/CentOS/Fedora=apache, Debian/Ubuntu=www-data)
 
 
