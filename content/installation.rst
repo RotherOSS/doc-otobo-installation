@@ -155,6 +155,11 @@ OTOBO requires a few Apache modules to be active for optimal operation. On most 
    root> a2enmod filter
    root> a2enmod headers
 
+.. note::
+
+	On some platforms not all Apache modules exists and a error is displayed when installing. 
+    Do not worry and finish the installation, the module is than not needed mostly.
+
 Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``. Log in as root, change to the ``conf.d`` directory and
 link the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
 ``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations).
@@ -168,7 +173,7 @@ Now you can restart your web server to load the new configuration settings. On m
 
 .. code-block:: bash
 
-   root> systemctl restart apache2.service
+   root> systemctl restart apache2
 
 
 Step 6: Set File Permissions
@@ -193,13 +198,13 @@ Below you'll find the commands needed to set up MySQL on the most popular Linux 
 .. code-block:: bash
 
    # RHEL / CentOS:
-   shell> yum install mysql-server
+   root> yum install mysql-server
 
    # SuSE:
-   shell> zypper install mysql-community-server
+   root> zypper install mysql-community-server
 
    # Debian/Ubuntu:
-   shell> apt-get install mysql-server
+   root> apt-get install mysql-server
 
 After install the MySQL server you need configure it.
 
@@ -222,7 +227,6 @@ After OTOBO installation it's possible to change the authentication module again
       max_allowed_packet   = 64M
       query_cache_size     = 32M
       innodb_log_file_size = 256M
-      character-set-server = utf8
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
 or install it on Debian or Ubuntu systems via package manager:

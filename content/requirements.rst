@@ -65,7 +65,7 @@ are marked with a comment.
      o XML::LibXSLT.....................ok (v1.96)
      o XML::Parser......................ok (v2.44)
      o YAML::XS.........................ok (v0.74)
-   
+
    Checking for External Programs:
      o GnuPG............................ok (v2.2.8)
      o npm..............................ok (v5.8.0)
@@ -78,11 +78,17 @@ Hardware Requirements
 
 Hardware requirements highly depend on the usage of OTOBO. OTOBO can be used to process a few tickets per month or to process hundreds of tickets per day. The storage requirement also depends on the number of tickets and size of attachments.
 
-We recommend using a machine with **at least**:
+We recommend using a machine for testing purpose with **at least**:
+
+- small CPU
+- 4 GB RAM
+- 10 GB storage
+
+We recommend using a machine for production purpose with **at least**:
 
 - 3 GHz Xeon or comparable CPU
-- 8 GB RAM
-- 256 GB storage
+- 8 GB RAM (16 GB recommend)
+- 40 GB storage
 
 .. note::
 
@@ -93,7 +99,7 @@ Software requirements
 ---------------------
 
 Perl
-   - Perl 5.16.0 or higher
+   - Perl 5.24.0 or higher
    - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl`` console command
 
 Web Servers
@@ -102,19 +108,19 @@ Web Servers
    - Any other web server that can be used as a reverse proxy
 
 Databases
-   - MySQL 5.0 or higher
+   - MySQL 5.6 or higher
    - MariaDB
    - PostgreSQL 9.2 or higher
    - Oracle 10g or higher
 
 Other dependencies
-   - Elasticsearch 6.x (higher versions are not supported)
+   - Elasticsearch 7.x
    - Node.js 8.9 or higher
 
 Web browsers
-   - Apple Safari version 7 or higher
+   - Apple Safari
    - Google Chrome
    - Microsoft Internet Explorer 11
    - Microsoft Edge
-   - Mozilla Firefox version 32 or higher
+   - Mozilla Firefox
    - Any other modern web browser with JavaScript support

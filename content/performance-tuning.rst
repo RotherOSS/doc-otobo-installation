@@ -208,14 +208,6 @@ To search for archived tickets:
 3. Perform the search.
 
 
-Tuning the Web Server
----------------------
-
-The built-in web server of OTOBO can handle small and medium setups out of the box. When OTOBO serves many users simultaneously, it may be necessary to tweak the web server configuration to increase the number of worker processes, for example.
-
-The web server configuration file is located in ``Kernel/WebApp.conf``, and all settings there are documented. The ``worker`` setting can be increased to deploy more processes for serving HTTP requests on capable servers.
-
-
 Caching
 -------
 
@@ -233,7 +225,7 @@ The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on th
 2. Install Perl module Redis or Redis::Fast
 
 You can choose what Redis module being used: `Redis` or `Redis::Fast` (it's compatible with `Redis`, but **~2x faster**).
-Please use our ``otobo.CheckModules.pl``, to choose the right package for you:
+Please use our ``otobo.CheckModules.pl --list``, to choose the right package for you:
 
 .. code-block:: bash
 

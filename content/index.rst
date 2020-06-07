@@ -39,7 +39,6 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de).
    requirements
    installation
    migration-from-otrs-6
-   updating
    backup-restore
    performance-tuning
    history
