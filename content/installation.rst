@@ -157,7 +157,7 @@ OTOBO requires a few Apache modules to be active for optimal operation. On most 
 
 .. note::
 
-	On some platforms not all Apache modules exists and a error is displayed when installing. 
+	On some platforms not all Apache modules exists and a error is displayed when installing.
     Do not worry and finish the installation, the module is than not needed mostly.
 
 Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``. Log in as root, change to the ``conf.d`` directory and
@@ -284,13 +284,14 @@ Step 12: Setup Elasticsearch Cluster
 
 OTOBO recommend an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
-Elasticsearch installation example based on Ubuntu 18 LTS
+Elasticsearch installation example based on Ubuntu 18.04 LTS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 JDK-Installation:
 
 .. code-block:: bash
-   root> apt install openjdk-8-jdk
+    root> apt update
+    root> apt install openjdk-8-jdk
 
 ElasticSearch-Installation:
 
@@ -318,6 +319,27 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
    Restart Elasticsearch afterwards.
 
+Configure Elasticsearch
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Elasticsearch has a multitude of configuration options and possibilities.
+
+In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``.
+You should always set the min and max JVM heap size to the same value. For example, to set the heap to 4 GB, set:
+
+.. code-block:: bash
+
+    -Xms4g
+    -Xmx4g
+
+In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best.
+
+See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html for more information.
+
+
+Elasticsearch activation in OTOBO
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 To create indexes and migrate existing data to Elasticsearch, please use the following command as user ``otobo``:
 
 .. code-block:: bash
@@ -326,8 +348,10 @@ To create indexes and migrate existing data to Elasticsearch, please use the fol
    Trying to connect to create indexes...
      Connection successful.
 
-Elasticsearch activation in OTOBO
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
+
+    Sometimes the first time the script is called, errors are displayed that the index cannot be created or deleted. This is not a problem, but to be on the safe side, you can simply abort the script and run it again.
+
 
 Please login to OTOBO Admin Area  ``Admin -> System Configuration`` and activate the following settings:
 
