@@ -26,8 +26,8 @@ The output of the script:
    Options:
     -d                     - Directory where the backup files should place to.
     [-c]                   - Select the compression method (gzip|bzip2). Default: gzip.
-    [-r DAYS]              - Remove backups which are more than DAYS days old.
-    [-t]                   - Specify which data will be saved (fullbackup|nofullbackup|dbonly). Default: fullbackup.
+    [-r DAYS]              - Remove backups which are more than x DAYS days old.
+    [-t]                   - Specify which data will be saved (fullbackup|nofullbackup|dbonly). Default: full backup.
     [-h]                   - Display help for this command.
 
    Help:
