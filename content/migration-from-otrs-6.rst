@@ -1,69 +1,69 @@
-Migration from OTRS 6 to OTOBO 10
+Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO 10
 =================================
 
-Welcome and thank you for choosing OTOBO!
+Welcome and thank you for chosing OTOBO!
 
-OTRS and OTOBO are very comprehensive and flexible in their application, so a migration always requires
-preparations and possibly also rework to ensure that the migration is successful.
+OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, a migration always requires
+preparations and possibly also rework to ensure that it will be carried out successfully.
 
-Therefore please take your time for the migration and follow these instructions step by step.
+Please take your time for the migration and follow these instructions step by step.
 
-If you have problems or questions, please do not give up. :) Call our support line, write a mail or write
-an article in our forum https://forum.otobo.org/.
+If you have any problems or questions, please do not give up :) Call our support line, write an email or post your query
+in the OTOBO Community forum at https://forum.otobo.org/.
 
-We have special offers to help you.
+We will find a way to help you.
 
 .. note::
-    After the migration all data available in OTRS 6 will be available in OTOBO again.
-    And we do not touch any OTRS data during the migration.
+    After the migration all data previously available in OTRS 6 will be available in OTOBO again.
+    We do not touch any OTRS data during the migration.
 
-Migration possibilities
+Migration Possibilities
 ----------------------
 
 With the OTOBO Migration Interface it is possible to perform the following migrations:
 
 1. A 1:1 migration on the same server with the same database
 
-2. A migration and a simultaneous move to a new server and operating system.
+2. A migration and simultaneous move to a new server and operating system.
 
-3. It is irrelevant whether OTRS was previously installed on two separate servers (application and database servers), or whether this was the case on the new OTOBO servers.
+3. It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database servers), or whether you want to change OTOBO to such a configuration.
 
-4. It is possible to migrate from any supported database to any supported database during the migration.
+4. It is possible to migrate from any one of the supported databases to any other one.
 
-5. It is possible to switch from any supported operating system to any supported operating system during the migration.
+5. It is possible to switch from any supported operating system to any other supported operating system during the migration.
 
 
 Migration Requirements
 ----------------------
 
-1. Basic requirement is that you already have an ((OTRS)) Community Edition or OTRS Business Edition 6.0.\*, which makes migration necessary. Please consider carefully whether you really need the data and configuration. In many customer conversations in the past it has already become clear, that actually a new start is the better way, since the existing installation and configuration was rather suboptimal anyway. It might also make sense to transfer only the ticket data and to change the basic configuration to OTOBO Best Practice. In this case we will be happy to advise you, please contact You can do this at sales@otobo.de or ask your question in our forum at https://forum.otobo.org/.
+1. Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running, and that you want to transfer configuration and data to OTOBO. Please consider carefully whether you really need the data and configuration. Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway. It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice. We are happy to advise you, please get in touch at sales@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
-2. You need an runnable OTOBO installation for the migration, from which the migration is started!
+2. You need a running OTOBO installation to start the migration from there!
 
-3. The OTOBO installation must contain all OPM packages that are also installed in OTRS and that you want to use later.
+3. This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too.
 
-4. If you are planning a migration to other OTOBO servers, it must be possible for the OTRS and OTOBO application servers to reach each other via SSH. Furthermore, the database servers must be able to reach each other via the set database port and the database must allow external access.
+4. If you are planning to migrate from one to another server, it must be possible for the OTRS and OTOBO application servers to reach each other via SSH. Furthermore, the database servers must be able to communicate via the set database port and the database must allow external access.
 
 .. note::
 
-    If SSH and database access between the server is not possible, please migrate OTRS to OTOBO on the same server and then move this installation.
+    If SSH and database access between the servers is not possible, please migrate OTRS to OTOBO on the same server and only then move the new installation.
 
 
 
 Step 1: Install the new OTOBO System
 ------------------------------------
 
-Please first install the new OTOBO system to which the OTRS instance will later be migrated.
-We advise you to read the OTOBO :doc:`installation` chapter.
+Please start with installing the new OTOBO system to which your OTRS / ((OTRS)) Community Edition instance will then be migrated.
+We strongly recommend to read the OTOBO :doc:`installation` chapter.
 
 .. warning::
 
-    If you install OTOBO on the same server as OTRS and under Apache, configure the OTOBO (or OTRS) web server without Mod_perl while both systems are running,
-    or deactivate OTRS in the web server before the migration. Apache has difficulties to run two systems under Mod_perl on the same server.
-    To disable Mod_perl, just comment the mod_perl part in the file ``/opt/otobo/scripts/apache2-httpd.include.conf``.
+    If you install OTOBO on the same server as you OTRS / ((OTRS)) Community Edition and under Apache, configure the OTOBO (or OTRS) web server without Mod_perl as long as both systems are running,
+    or deactivate OTRS in the web server before the migration. Apache has difficulties with running two systems under Mod_perl on the same server.
+    To disable Mod_perl, just comment out the mod_perl part in the file ``/opt/otobo/scripts/apache2-httpd.include.conf``.
 
 
-After finished the installation tutorial, please login to the OTOBO Admin Area ``Admin -> Packages``
+After finishing the installation tutorial, please login to the OTOBO Admin Area ``Admin -> Packages``
 to install all required OTOBO OPM packages.
 
 The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be installed, as these features are already available in the OTOBO standard:
@@ -100,15 +100,15 @@ Now log in on the server as user ``root`` and execute one of the following comma
 
 .. note::
 
-   It is recommended to backup now the hole OTOBO system. If something goes wrong during the migration, not the entire installation process
-   need to repeated, only the backup for a new test migration need to imported.
+   It is recommended to run a backup of the whole OTOBO system at this point. If something goes wrong during migration, you will then not have to
+   repeat the entire installation process, but can instead import the backup for a new migration.
 
    .. seealso::
 
       We advise you to read the OTOBO :doc:`backup-restore` chapter.
 
 
-Install sshpass if you like to migrate OTRS from another server
+Install sshpass if you want to migrate OTRS from another server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The tool *sshpass* is needed so we can copy files via ssh. Please log in on the server as user ``root``
@@ -129,16 +129,16 @@ and execute one of the following commands:
     $ sudo zypper install sshpass
 
 
-Step 3: Preparing the OTRS system
+Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
 ---------------------------------
 
 .. note::
-    Be sure that you have a valid OTRS backup too. Yes, we do not touch any OTRS data during the migration, but sometimes
-    a wrong entry already causes trouble.
+    Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too. Yes, we do not touch any OTRS data during the migration, but at times
+    a wrong entry is enough to cause trouble.
 
 
-Now we are ready for the migration. First we have to make sure that no more tickets are processed and
-no more users are logged on to OTRS:
+Now we are ready for the migration. First of all we need to make sure that no more tickets are processed and
+no users log on to OTRS:
 
 Please login to the OTOBO Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours.
 After that, delete all agent and user sessions (``Admin ->  Sessions``) and logout yourself.
@@ -166,8 +166,8 @@ Step 4: Start the Migration!
 Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname)
 and follow the process.
 
-When the migration is complete, please take your time and test the entire system. Once you have decided,
-that the migration was successful and you want to use OTOBO from now on, start the OTOBO Daemon:
+When the migration is complete, please take your time and test the entire system. Once you have decided
+that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
 
 .. code-block:: bash
 
@@ -184,19 +184,19 @@ Step 5: After Successful Migration!
 2. Have fun with OTOBO!
 
 
-Step 6: Known migration problems
+Step 6: Known Migration Problems
 -------------------------------
 
 1. Login after migration not possible
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-During my migration tests, the browser used for the migration sometimes had problems.
-After restarting the browser the problem was usually solved. With Safari it was sometimes necessary to manually delete the old OTRS session.
+During our migration tests, the browser used for the migration sometimes had problems.
+After restarting the browser, this problem usually was solved. With Safari it was sometimes necessary to manually delete the old OTRS session.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
 
-With OTOBO 10 a new default password policy for agent and customer users is in effect, if local authentification is used. The password policy rules can be changed in the system configuration (``PreferencesGroups###Password`` and ``CustomerPersonalPreference###Password``).
+With OTOBO 10 a new default password policy for agent and customer users is in effect, if local authentication is used. The password policy rules can be changed in the system configuration (``PreferencesGroups###Password`` and ``CustomerPersonalPreference###Password``).
 
 +---------------------------------------+--------------+
 | Password Policy Rule                  | Default      |

@@ -7,7 +7,7 @@ Updating
 
    .. seealso::
 
-      See the admin manual of the previous versions of OTOBO for the update instructions.
+      See the admin manual of the previous versions of OTOBO for update instructions.
 
 
 Step 1: Stop All Relevant Services and the OTOBO Daemon
@@ -50,7 +50,7 @@ You can obtain either ``otobo-x.y.z.tar.gz`` or ``otobo-x.y.z.tar.bz2``. Unpack 
 
 .. note::
 
-   Package ``bzip2`` is not installed in some systems by default. Make sure, that ``bzip2`` is installed before unpacking ``otobo-x.y.z.tar.bz2``.
+   Package ``bzip2`` is not installed in some systems by default. Make sure that ``bzip2`` is installed before unpacking ``otobo-x.y.z.tar.bz2``.
 
 Unpack command for ``otobo-x.y.z.tar.gz``:
 
@@ -64,7 +64,7 @@ Unpack command for ``otobo-x.y.z.tar.bz2``:
 
    root> tar -xjf otobo-x.y.z.tar.bz2 -C /opt
 
-It is recommended to create a symbolic link named ``/opt/otobo`` that always points to the latest OTOBO version. Using symbolic link makes easy to manage the OTOBO updates, because you can leave untouched the directory of the previous version, only the symbolic link needs to change. If you need to revert the update, you can change the target of the symbolic link back.
+It is recommended to create a symbolic link named ``/opt/otobo`` that always points to the latest OTOBO version. Using a symbolic link makes managing OTOBO updates easy: You can leave the directory of the previous version untouched, only the symbolic link needs to change. Should you need to revert the update, you can change the target of the symbolic link back.
 
 Execute this command to create a symbolic link:
 
@@ -165,4 +165,3 @@ Now the services can be started. This will depend on your service configuration,
    The OTOBO daemon is required for correct operation of OTOBO such as sending emails. Please activate it as described in the next step.
 
 Now you can log into your system.
-
