@@ -1,7 +1,7 @@
 Hardware and Software Requirements
 ==================================
 
-OTOBO can be installed on Linux and on other Unix derivates (e.g. OpenBSD or FreeBSD). Running OTOBO on Microsoft Windows is not supported.
+OTOBO can be installed on Linux and other Unix derivates (e.g. OpenBSD or FreeBSD). Running OTOBO on Microsoft Windows is not supported.
 
 To run OTOBO, you'll also need to use a web server as reverse proxy and a database server. Apart from that, you should install Perl and/or install some additional Perl modules on the OTOBO machine.
 
@@ -15,7 +15,7 @@ OTOBO has a console command to for missing modules.
 
    otobo> /opt/otobo/bin/otobo.CheckModules.pl
 
-If some packages are missing, you can get an install command for your operating system, if you run the script with ``--list`` option.
+If some packages are missing, you can get an install command for your operating system if you run the script with ``--list`` option.
 
 .. code-block:: bash
 
@@ -78,7 +78,7 @@ Hardware Requirements
 
 Hardware requirements highly depend on the usage of OTOBO. OTOBO can be used to process a few tickets per month or to process hundreds of tickets per day. The storage requirement also depends on the number of tickets and size of attachments.
 
-We recommend using a machine for testing purpose with **at least**:
+We recommend using a machine for testing purposes with **at least**:
 
 - small CPU
 - 4 GB RAM
@@ -92,7 +92,7 @@ We recommend using a machine for production purpose with **at least**:
 
 .. note::
 
-   Hardware requirements depend on the usage of OTOBO. Please contact your OTOBO consultant before deploying a hardware.
+   Hardware requirements depend on the usage of OTOBO. Please contact your OTOBO consultant before deploying any hardware.
 
 
 Software requirements

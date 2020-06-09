@@ -7,10 +7,10 @@ There is a list of performance enhancing techniques for your OTOBO installation,
 Ticket Index Module
 -------------------
 
-Ticket index module can be set in system configuration setting ``Ticket::IndexModule``. There are two back end modules for the index for the ticket queue view:
+Ticket index module can be set via system configuration setting ``Ticket::IndexModule``. There are two back end modules building the index for the ticket queue view:
 
 ``Kernel::System::Ticket::IndexAccelerator::RuntimeDB``
-   This is the default option, and will generate each queue view on the fly from the ticket table. You will not have performance trouble until you have about 60,000 open tickets in your system.
+   This is the default option, which will generate each queue view on the fly from the ticket table. You will not have performance trouble until you have about 60,000 open tickets in your system.
 
 ``Kernel::System::Ticket::IndexAccelerator::StaticDB``
    The most powerful module, should be used when you have above 80,000 open tickets. It uses an extra ``ticket_index`` table, which will be populated with keywords based on ticket data. Use the following command for generating an initial index after switching back ends:
@@ -33,12 +33,12 @@ To create an initial index, use this command:
 
 .. note::
 
-   Actual article indexing happens via an OTOBO daemon job in the background. While articles which were just added in the system are marked for indexing immediately, it could happen their index is available within a few minutes.
+   Actual article indexing happens via an OTOBO daemon job in the background. While articles which were just added in the system are marked for indexing immediately, it could happen their index is available only after a few minutes.
 
-There are some options available for fine tuning the search index:
+There are some options available for fine-tuning the search index:
 
 ``Ticket::SearchIndex::IndexArchivedTickets``
-   Defines if archived tickets will be included in the search index (not enabled by default). This is advisable to keep the index small on large systems with archived tickets. If this is enabled, archived tickets will be found by full-text searches.
+   Defines if archived tickets will be included in the search index (disabled by default). This is advisable to keep the index small on large systems with archived tickets. If this is enabled, archived tickets will be found by full-text searches.
 
 ``Ticket::SearchIndex::Attribute``
    Basic full-text index settings.
@@ -73,8 +73,8 @@ There are some options available for fine tuning the search index:
    There are three default filters defined:
 
    - The first filter strips out special chars like: , & < > ? " ! * | ; [ ] ( ) + $ ^ =
-   - The second filter strips out words which begin or ends with one of following chars: ' : .
-   - The third filter strips out words which do not contain a word-character: a-z, A-Z, 0-9, _
+   - The second filter strips out words which begin or end with one of following chars: ' : .
+   - The third filter strips out words which do not contain a word character: a-z, A-Z, 0-9, _
 
 ``Ticket::SearchIndex::StopWords``
    English stop words for full-text index. These words will be removed from the search index.
@@ -135,7 +135,7 @@ During the run-time of the service, Elasticsearch inspects the available disk sp
 
 .. note::
 
-   If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch. If the related disks contains enough free space again, due to manual actions, it is needed change the configuration back to normal mode manually.
+   If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch. If the related disks contain enough free space again due to manual actions, it is needed to change the configuration back to normal mode manually.
 
 For more information about disk watermarks and disk-based shard allocation, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__.
 
@@ -177,7 +177,7 @@ If you want to keep old attachments in the database, you can activate the system
 Archiving Tickets
 -----------------
 
-As OTOBO can be used as an audit-proof system, deleting closed tickets may not be a good idea. Therefore we implemented a feature that allows you to archive tickets.
+As OTOBO can be used as an audit-proof system, deleting closed tickets may not be a good idea. Therefore there is a feature that allows you to archive tickets.
 
 Tickets that match certain criteria can be marked as archived. These tickets are not accessed if you do a regular ticket search or run a generic agent job. The system itself does not have to deal with a huge amount of tickets any longer as only the latest tickets are taken into consideration when using OTOBO. This can result in a huge performance gain on large systems.
 
@@ -211,7 +211,7 @@ To search for archived tickets:
 Caching
 -------
 
-A fast cache module help a lot for performance purposes. OTOBO recommend to use a Redis Cache server or to create a ramdisk.
+A fast cache module is a great help in terms of performance. We recommend to use a Redis Cache server or to create a ramdisk.
 
 Install a Redis Cache Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -224,8 +224,8 @@ The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on th
 
 2. Install Perl module Redis or Redis::Fast
 
-You can choose what Redis module being used: `Redis` or `Redis::Fast` (it's compatible with `Redis`, but **~2x faster**).
-Please use our ``otobo.CheckModules.pl --list``, to choose the right package for you:
+You can choose which Redis module to use: `Redis` or `Redis::Fast` (which is compatible with `Redis` but **~2x faster**).
+Please use our ``otobo.CheckModules.pl --list`` to choose the right package for you:
 
 .. code-block:: bash
 
@@ -233,7 +233,7 @@ Please use our ``otobo.CheckModules.pl --list``, to choose the right package for
 
 3. Configure OTOBO for Redis
 
-Please use the OTOBO `SysConfig` (Admin -> System Configuration) to configure OTOBO proper:
+Please use the OTOBO `SysConfig` (Admin -> System Configuration) to configure OTOBO properly:
 
 .. code-block:: none
 

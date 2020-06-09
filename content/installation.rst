@@ -66,7 +66,7 @@ Unpack command for ``otobo-x.y.z.tar.bz2``:
 
    root> tar -xjf otobo-x.y.z.tar.bz2 -C /opt
 
-It is recommended to create a symbolic link named ``/opt/otobo`` that always points to the latest OTOBO version. Using symbolic link makes easy to manage the OTOBO updates, because you can leave untouched the directory of the previous version, only the symbolic link needs to change. If you need to revert the update, you can change the target of the symbolic link back.
+It is recommended to create a symbolic link named ``/opt/otobo`` that always points to the latest OTOBO version. Using a symbolic link makes managing OTOBO updates easy: You can leave the directory of the previous version untouched, only the symbolic link needs to change. Should you need to revert the update, you can change the target of the symbolic link back.
 
 Execute this command to create a symbolic link:
 
@@ -111,7 +111,7 @@ Create a dedicated user for OTOBO within its own group:
 
    root> useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
 
-Add user to webserver group (if the webserver is not running as the otobo user):
+Add the user to web server group (if the web server is not running as otobo user):
 
 .. code-block:: bash
 
@@ -122,7 +122,7 @@ Add user to webserver group (if the webserver is not running as the otobo user):
 Step 4: Activate the Default Configuration File
 -----------------------------------------------
 
-There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.dist``. You must activate it by copying it without the ``.dist`` filename extension.
+There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.dist``. You must activate it by copying it without the ``.dist`` file name extension.
 
 .. code-block:: bash
 
@@ -132,7 +132,7 @@ There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.d
 Step 5: Configure the Apache Web Server
 ---------------------------------------
 
-First of all, you should install the Apache2 web server and mod_perl; you'd typically do this from your systems package manager.
+First of all, you should install the Apache2 web server and mod_perl; you'd typically do this from your system's package manager.
 Below you'll find the commands needed to set up Apache on the most popular Linux distributions.
 
 .. code-block:: bash
@@ -157,8 +157,8 @@ OTOBO requires a few Apache modules to be active for optimal operation. On most 
 
 .. note::
 
-	On some platforms not all Apache modules exists and a error is displayed when installing.
-    Do not worry and finish the installation, the module is than not needed mostly.
+	On some platforms not all Apache modules exist and an error is displayed when installing.
+    Do not worry and finish the installation, in most cases the module will not be needed.
 
 Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``. Log in as root, change to the ``conf.d`` directory and
 link the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
@@ -169,7 +169,7 @@ link the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf
    # Debian/Ubuntu:
    root> ln -s /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otobo.conf
 
-Now you can restart your web server to load the new configuration settings. On most systems you can do that with the command:
+Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:
 
 .. code-block:: bash
 
@@ -189,8 +189,8 @@ Please execute the following command to set the file and directory permissions f
 Step 7: Setup the Database
 --------------------------
 
-First of all, you should install the database package. The OTOBO community recommend to use the MySQL or MariaDB package, which will delivered with your Linux system,
-but it's possible to use PostgreSQL or Oracle as well.
+First of all, you should install the database package. It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system,
+but it is possible to use PostgreSQL or Oracle as well.
 
 You'd typically do this from your systems package manager.
 Below you'll find the commands needed to set up MySQL on the most popular Linux distributions.
@@ -206,21 +206,21 @@ Below you'll find the commands needed to set up MySQL on the most popular Linux 
    # Debian/Ubuntu:
    root> apt-get install mysql-server
 
-After install the MySQL server you need configure it.
+After installing the MySQL server you need configure it.
 
-In MySQL higher or equal version 5.7 is a new authentication module active and it's not possible to use the OTOBO web installer for database creation.
-In this case please login to the mysql console and set a different authentication module and password for the user ``root``:
+In MySQL higher or equal version 5.7  a new authentication module is active, and it is not possible to use the OTOBO web installer for database creation.
+Please login to the mysql console and set a different authentication module and password for the user ``root`` if this is the case:
 
 .. code-block:: bash
 
    root> mysql -u root
    root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
 
-After OTOBO installation it's possible to change the authentication module again, if needed.
+After OTOBO installation it is possible to change the authentication module again, if needed.
 
 .. note::
 
-   The following configuration settings are minimum for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf`` or ``/etc/mysql/my.cnf`` under the ``[mysqld]`` section:
+   The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf`` or ``/etc/mysql/my.cnf`` under the ``[mysqld]`` section:
 
    .. code-block:: ini
 
@@ -235,7 +235,7 @@ or install it on Debian or Ubuntu systems via package manager:
 
    root> apt-get install mysqltuner
 
-After install execute the script:
+After installing execute the script:
 
 .. code-block:: bash
 
@@ -245,7 +245,7 @@ After install execute the script:
 Step 8: Basic System Configuration
 --------------------------
 
-Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to setup your database and basic system settings such as email accounts.
+Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
 
 
 Step 9: First Login
@@ -257,7 +257,7 @@ Now you are ready to login to your system at http://localhost/otobo/index.pl as 
 Step 10: Start the OTOBO Daemon
 --------------------------------------------
 
-The new OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is now required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the otobo user.
+OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
 
 .. code-block:: bash
 
@@ -282,7 +282,7 @@ With this step, the basic system setup is finished.
 Step 12: Setup Elasticsearch Cluster
 -----------------------------------
 
-OTOBO recommend an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
+OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
 Elasticsearch installation example based on Ubuntu 18.04 LTS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -301,12 +301,12 @@ ElasticSearch-Installation:
    root> apt update
    root> apt -y install elasticsearch
 
-Elasticsearch installation on another Linux distribution
+Elasticsearch Installation on another Linux distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please follow the install tutorial https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
+Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
 
-Elasticsearch module installation
+Elasticsearch Module Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
@@ -319,7 +319,7 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
    Restart Elasticsearch afterwards.
 
-Configure Elasticsearch
+Elasticsearch Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Elasticsearch has a multitude of configuration options and possibilities.
@@ -337,7 +337,7 @@ In our tests, a value between 4 and 10 GB for medium-sized installations has pro
 See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html for more information.
 
 
-Elasticsearch activation in OTOBO
+Elasticsearch Activation in OTOBO
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To create indexes and migrate existing data to Elasticsearch, please use the following command as user ``otobo``:
@@ -350,7 +350,7 @@ To create indexes and migrate existing data to Elasticsearch, please use the fol
 
 .. note::
 
-    Sometimes the first time the script is called, errors are displayed that the index cannot be created or deleted. This is not a problem, but to be on the safe side, you can simply abort the script and run it again.
+    Sometimes the first time the script is called, errors are displayed, indicating that the index cannot be created or deleted. This is not a problem, but to be on the safe side, you can simply abort the script and run it again.
 
 
 Please login to OTOBO Admin Area  ``Admin -> System Configuration`` and activate the following settings:
@@ -362,7 +362,7 @@ Please login to OTOBO Admin Area  ``Admin -> System Configuration`` and activate
 Step 13: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
 
-All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto completion for the bash shell which makes finding the right command and options much easier.
+All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier.
 
 You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user.
 
