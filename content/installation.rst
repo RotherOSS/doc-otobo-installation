@@ -248,44 +248,7 @@ After installing execute the script:
    root> mysqltuner --user root --pass NewRootPassword
 
 
-Step 8: Basic System Configuration
---------------------------
-
-Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
-
-
-Step 9: First Login
---------------------
-
-Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above).
-
-
-Step 10: Start the OTOBO Daemon
---------------------------------------------
-
-OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
-
-.. code-block:: bash
-
-   otobo> /opt/otobo/bin/otobo.Daemon.pl start
-
-Step 11: Cron jobs for the OTOBO user
-----------------------------
-
-There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
-
-.. code-block:: bash
-
-   root> cd /opt/otobo/var/cron/
-   root> for foo in *.dist; do cp $foo `basename $foo .dist`; done
-
-   root> cd /opt/otobo/
-   root> bin/Cron.sh start
-
-With this step, the basic system setup is finished.
-
-
-Step 12: Setup Elasticsearch Cluster
+Step 8: Setup Elasticsearch Cluster
 -----------------------------------
 
 OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
@@ -293,19 +256,21 @@ OTOBO recommends an active installation of Elasticsearch for quick search. The e
 Elasticsearch installation example based on Ubuntu 18.04 LTS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-JDK-Installation:
+JDK-Installation
 
 .. code-block:: bash
-    root> apt update
-    root> apt install openjdk-8-jdk
 
-ElasticSearch-Installation:
-
-.. code-block:: bash
-   root> wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-   root> echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
    root> apt update
-   root> apt -y install elasticsearch
+   root> apt install openjdk-8-jdk
+
+ElasticSearch-Installation
+
+.. code-block:: bash
+
+  root> wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+  root> echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+  root> apt update
+  root> apt -y install elasticsearch
 
 Elasticsearch Installation on another Linux distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -318,12 +283,12 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
 .. code-block:: bash
 
-   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
-   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
+  root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
+  root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
 
 .. note::
 
-   Restart Elasticsearch afterwards.
+  Restart Elasticsearch afterwards.
 
 Elasticsearch Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -335,8 +300,8 @@ You should always set the min and max JVM heap size to the same value. For examp
 
 .. code-block:: bash
 
-    -Xms4g
-    -Xmx4g
+   -Xms4g
+   -Xmx4g
 
 In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best.
 
@@ -350,19 +315,56 @@ To create indexes and migrate existing data to Elasticsearch, please use the fol
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Elasticsearch::Migration
-   Trying to connect to create indexes...
-     Connection successful.
+  otobo> /opt/otobo/bin/otobo.Console.pl Maint::Elasticsearch::Migration
+  Trying to connect to create indexes...
+    Connection successful.
 
 .. note::
 
-    Sometimes the first time the script is called, errors are displayed, indicating that the index cannot be created or deleted. This is not a problem, but to be on the safe side, you can simply abort the script and run it again.
+   Sometimes the first time the script is called, errors are displayed, indicating that the index cannot be created or deleted. This is not a problem, but to be on the safe side, you can simply abort the script and run it again.
 
 
 Please login to OTOBO Admin Area  ``Admin -> System Configuration`` and activate the following settings:
 
 - Elasticsearch::Active
 - Frontend::ToolBarModule###250-Ticket::ElasticsearchFulltext
+
+
+Step 9: Basic System Configuration
+--------------------------
+
+Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
+
+
+Step 10: First Login
+--------------------
+
+Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above).
+
+
+Step 11: Start the OTOBO Daemon
+--------------------------------------------
+
+OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
+
+.. code-block:: bash
+
+   otobo> /opt/otobo/bin/otobo.Daemon.pl start
+
+Step 12: Cron jobs for the OTOBO user
+----------------------------
+
+There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
+
+.. code-block:: bash
+
+   root> cd /opt/otobo/var/cron/
+   root> for foo in *.dist; do cp $foo `basename $foo .dist`; done
+
+   root> cd /opt/otobo/
+   root> bin/Cron.sh start
+
+With this step, the basic system setup is finished.
 
 
 Step 13: Setup Bash Auto-Completion (optional)
@@ -382,7 +384,7 @@ If you type a few characters of the command name, TAB will show all matching com
 
 .. note::
 
-   If you have problems, you can add the following line to your ``~/.bashrc`` to execute the commands from the file.
+   If you have problems, you can execute the following line as user otrs and add it to your ``~/.bashrc`` to execute the commands from the file.
 
    .. code-block:: bash
 

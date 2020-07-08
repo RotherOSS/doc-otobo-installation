@@ -1,7 +1,7 @@
 Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO 10
 =================================
 
-Welcome and thank you for chosing OTOBO!
+Welcome and thank you for choosing OTOBO!
 
 OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, a migration always requires
 preparations and possibly also rework to ensure that it will be carried out successfully.
