@@ -40,6 +40,7 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de).
    installation
    installation-docker
    migration-from-otrs-6
+   updating
    backup-restore
    performance-tuning
    history
