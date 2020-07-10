@@ -177,20 +177,20 @@ Set in case the HTTPS port should deviate from the standard port 443.
 SSL cert for the nginx webproxy.
 Example: OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt
 
-*OTOBO_NGINX_SSL_CERTIFICATE_KEY*
+``OTOBO_NGINX_SSL_CERTIFICATE_KEY``
 SSL key for the nginx webproxy.
 Example: OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key
 
 **OTOBO docker-compose settings**
 
-*COMPOSE_PROJECT_NAME*
+``COMPOSE_PROJECT_NAME``
 The project name is used as a prefix for the generated volumes and containers.
 Must be set because the compose file is located in scripts/docker-compose and thus docker-compose
 would be used per default.
 
-*COMPOSE_PATH_SEPARATOR*
+``COMPOSE_PATH_SEPARATOR``
 Seperator for the value of COMPOSE_FILE
 
-*COMPOSE_FILE*
+``COMPOSE_FILE``
 Use docker-compose/otobo-base.yml as the base and add the wanted extension files.
 E.g docker-compose/otobo-override-http.yml or docker-compose/otobo-override-https.yml.
