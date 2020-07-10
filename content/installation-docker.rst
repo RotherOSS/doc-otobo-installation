@@ -14,6 +14,7 @@ Please check the Docker documentation for instructions.
 Example for docker and docker-compose installation on Ubuntu 20.04
 
 .. code-block:: bash
+
    root> apt-get install docker docker-compose
    root> systemctl enable docker
 
@@ -22,6 +23,7 @@ Example for docker and docker-compose installation on Ubuntu 20.04
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
+
    root> cd /opt
    root> git clone https://github.com/RotherOSS/otobo-docker.git
    root> cd otobo-docker
@@ -49,6 +51,7 @@ Choose one of the files that fit to your needs and rename it to ``.env``
     In this case, please rename the ``.docker_compose_env_https`` file to ``.env``.
 
 .. code-block:: bash
+
     root> cp -p .docker_compose_env_https .env
 
 
