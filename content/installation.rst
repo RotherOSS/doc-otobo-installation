@@ -189,8 +189,8 @@ Please edit the files and add the required information like SSL certificate stor
 
 .. code-block:: bash
 
-   # root> a2ensite zzz_otobo-80.conf
-   # root> a2ensite zzz_otobo-443.conf
+   root> a2ensite zzz_otobo-80.conf
+   root> a2ensite zzz_otobo-443.conf
 
 Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:
 
@@ -309,9 +309,6 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
   root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
 
-.. note::
-
-  Restart Elasticsearch afterwards.
 
 Elasticsearch Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~
