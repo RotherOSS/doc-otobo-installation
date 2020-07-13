@@ -8,7 +8,7 @@ All of OTOBO´s dependencies are already included.
 - Elasticsearch is set up for the OTOBO power search.
 - Redis is enabled for fast caching.
 - Gazelle is used as fast Perl webserver.
-- Nginx is used as webproxy.
+- Nginx is used as webproxy for https support.
 
 We think it is the perfect environment for an OTOBO installation.
 
@@ -23,6 +23,7 @@ The minimal versions that have been tested are listed here.
 
 - Docker 19.03.08
 - Docker compose 1.25.0
+- Git
 
 
 Installation
@@ -55,10 +56,10 @@ Example for docker and docker-compose installation on Ubuntu 20.04
 Two different template files are available in the newly created folder otobo-docker.
 
 ``.docker_compose_env_http``
-Run HTTP on port 80 or on the port specified in $OTOBO_WEB_HTTP_PORT.
+Run HTTP on port 80.
 
 ``.docker_compose_env_https``
-Run HTTPS on port 443 or on the port specified in $OTOBO_WEB_HTTPS_PORT.
+Run HTTPS on port 443.
 
 Choose one of the files that fit to your needs and rename it to ``.env``
 
@@ -90,7 +91,7 @@ SSL key for the nginx webproxy. We configure this value in the next chapter.
 4. Set up SSL for the Nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Nginx need for SSL encryption a certificate and a private key.
+Nginx needs for SSL encryption a certificate and a private key.
 
 .. note::
     For testing and development a self-signed certificate can be used. In the general case

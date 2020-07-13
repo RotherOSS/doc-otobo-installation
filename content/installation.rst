@@ -157,17 +157,40 @@ OTOBO requires a few Apache modules to be active for optimal operation. On most 
 
 .. note::
 
-	On some platforms not all Apache modules exist and an error is displayed when installing.
-    Do not worry and finish the installation, in most cases the module will not be needed.
+    On some platforms not all Apache modules exist and an error is displayed when installing. Do not worry and finish the installation, in most cases the module will not be needed.
 
-Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``. Log in as root, change to the ``conf.d`` directory and
-link the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
+Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``. 
+
+Configure Apache without SSL support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Log in as root and copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
 ``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations).
 
 .. code-block:: bash
 
    # Debian/Ubuntu:
-   root> ln -s /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otobo.conf
+   root> cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otobo.conf
+
+
+Configure Apache **with** SSL support 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Log in as root and copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
+the apache ``sites-availible`` directory`.
+
+.. code-block:: bash
+
+   # Debian/Ubuntu:
+   root> cp /opt/otobo/scripts/apache2-httpd-vhost-80.include.conf /etc/apache2/sites-availible/zzz_otobo-80.conf
+   root> cp /opt/otobo/scripts/apache2-httpd-vhost-443.include.conf /etc/apache2/sites-availible/zzz_otobo-443.conf
+
+Please edit the files and add the required information like SSL certificate storage path. After that, enable the OTOBO Apache configuration:
+
+.. code-block:: bash
+
+   # root> a2ensite zzz_otobo-80.conf
+   # root> a2ensite zzz_otobo-443.conf
 
 Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:
 
@@ -303,46 +326,31 @@ You should always set the min and max JVM heap size to the same value. For examp
    -Xms4g
    -Xmx4g
 
-In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best.
+.. code-block:: info
 
-See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html for more information.
+    In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best.
+    See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html for more information.
 
-
-Elasticsearch Activation in OTOBO
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To create indexes and migrate existing data to Elasticsearch, please use the following command as user ``otobo``:
+Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:
 
 .. code-block:: bash
 
-  otobo> /opt/otobo/bin/otobo.Console.pl Maint::Elasticsearch::Migration
-  Trying to connect to create indexes...
-    Connection successful.
-
-.. note::
-
-   Sometimes the first time the script is called, errors are displayed, indicating that the index cannot be created or deleted. This is not a problem, but to be on the safe side, you can simply abort the script and run it again.
+   root> systemctl restart elasticsearch
 
 
-Please login to OTOBO Admin Area  ``Admin -> System Configuration`` and activate the following settings:
-
-- Elasticsearch::Active
-- Frontend::ToolBarModule###250-Ticket::ElasticsearchFulltext
-
-
-Step 9: Basic System Configuration
+Step 8: Basic System Configuration
 --------------------------
 
 Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
 
 
-Step 10: First Login
+Step 9: First Login
 --------------------
 
 Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above).
 
 
-Step 11: Start the OTOBO Daemon
+Step 10: Start the OTOBO Daemon
 --------------------------------------------
 
 OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
@@ -351,7 +359,7 @@ OTOBO daemon is responsible for handling any asynchronous and recurring tasks in
 
    otobo> /opt/otobo/bin/otobo.Daemon.pl start
 
-Step 12: Cron jobs for the OTOBO user
+Step 11: Cron jobs for the OTOBO user
 ----------------------------
 
 There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
@@ -367,7 +375,7 @@ There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their
 With this step, the basic system setup is finished.
 
 
-Step 13: Setup Bash Auto-Completion (optional)
+Step 12: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
 
 All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier.
@@ -391,7 +399,7 @@ If you type a few characters of the command name, TAB will show all matching com
       source /opt/otobo/.bash_completion
 
 
-Step 14: Further Information
+Step 13: Further Information
 ----------------------------
 
 We advise you to read the OTOBO :doc:`performance-tuning` chapter.
