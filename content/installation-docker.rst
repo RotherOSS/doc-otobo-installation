@@ -61,7 +61,7 @@ Run HTTP on port 80.
 ``.docker_compose_env_https``
 Run HTTPS on port 443.
 
-Choose one of the files that fit to your needs and rename it to ``.env``
+Choose one of the files that fit to your needs and rename it to ``.env``. In case of http you can skip step 4.
 
 .. note::
     For productive environments we recommend the use of a web proxy.

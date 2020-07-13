@@ -48,31 +48,16 @@ Here's how to disable SELinux for RHEL/CentOS/Fedora.
 Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
-You can obtain either ``otobo-x.y.z.tar.gz`` or ``otobo-x.y.z.tar.bz2``. Unpack the source archive (for example, using ``tar``) into the directory ``/opt``, and create a symbolic link ``/opt/otobo`` that points to ``/opt/otobo-x.y.z``. **Do not forget** to replace the version numbers!
-
-.. note::
-
-   Package ``bzip2`` is not installed in some systems by default. Make sure, that ``bzip2`` is installed before unpacking ``otobo-x.y.z.tar.bz2``.
-
-Unpack command for ``otobo-x.y.z.tar.gz``:
+Download the latest otobo release from https://ftp.otobo.org/pub/otobo/.
+and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
 
 .. code-block:: bash
 
-   root> tar -xzf otobo-x.y.z.tar.gz -C /opt
-
-Unpack command for ``otobo-x.y.z.tar.bz2``:
-
-.. code-block:: bash
-
-   root> tar -xjf otobo-x.y.z.tar.bz2 -C /opt
-
-It is recommended to create a symbolic link named ``/opt/otobo`` that always points to the latest OTOBO version. Using a symbolic link makes managing OTOBO updates easy: You can leave the directory of the previous version untouched, only the symbolic link needs to change. Should you need to revert the update, you can change the target of the symbolic link back.
-
-Execute this command to create a symbolic link:
-
-.. code-block:: bash
-
-   root> ln -fns /opt/otobo-x.y.z /opt/otobo
+    root> mkdir /root/otobo-install                                         # Create a install directory
+    root> cd /root/otobo-install                                            # Change into the update directory
+    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
+    root> tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
+    root> cp -r otobo-10.x.x /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -82,7 +67,7 @@ Use the following script to get an overview of all installed and required CPAN m
 
 .. code-block:: none
 
-   root> perl /opt/otobo/bin/otobo.CheckModules.pl
+   root> perl /opt/otobo/bin/otobo.CheckModules.pl -list
    Checking for Perl Modules:
      o Archive::Tar.....................ok (v1.90)
      o Archive::Zip.....................ok (v1.37)
@@ -99,7 +84,7 @@ Execute this command to get an install command to install the missing dependenci
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.CheckModules.pl --list
+   root> /opt/otobo/bin/otobo.CheckModules.pl -inst
 
 
 Step 3: Create the OTOBO User
@@ -271,7 +256,7 @@ After installing execute the script:
    root> mysqltuner --user root --pass NewRootPassword
 
 
-Step 8: Setup Elasticsearch Cluster
+Step 8: Setup Elasticsearch
 -----------------------------------
 
 OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
