@@ -164,7 +164,7 @@ Most Apache installations have a ``conf.d`` directory included. On Linux systems
 Configure Apache without SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-Log in as root and copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
+Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
 ``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations).
 
 .. code-block:: bash
@@ -176,7 +176,7 @@ Log in as root and copy the appropriate template in ``/opt/otobo/scripts/apache2
 Configure Apache **with** SSL support 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-Log in as root and copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
+Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
 the apache ``sites-availible`` directory`.
 
 .. code-block:: bash
@@ -323,10 +323,11 @@ You should always set the min and max JVM heap size to the same value. For examp
    -Xms4g
    -Xmx4g
 
+In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best.
+
 .. code-block:: info
 
-    In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best.
-    See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html for more information.
+    See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information.
 
 Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:
 
