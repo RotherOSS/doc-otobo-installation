@@ -224,6 +224,13 @@ Please login to the mysql console and set a different authentication module and 
    root> mysql -u root
    root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
 
+For  MariaDB 10.1 use instead the following command:
+
+.. code-block:: bash
+
+   root> mysql -u root
+   root> update mysql.user set authentication_string=password('NewRootPassword') plugin='mysql_native_password' where user='root';
+
 After OTOBO installation it is possible to change the authentication module again, if needed.
 
 .. note::
