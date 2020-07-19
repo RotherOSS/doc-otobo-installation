@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-06-21 11:49+0200\n"
-"PO-Revision-Date: 2020-07-17 13:04+0000\n"
+"PO-Revision-Date: 2020-07-19 23:09+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.otobo.org/projects/"
 "otobo10/installation-manual/pt_BR/>\n"
@@ -636,6 +636,12 @@ msgstr ""
 #: ../../content/introduction.rst:24
 msgid "All console commands look like ``username> command-to-execute``. Username indicates the user account of the operating system, which need to use to execute the command. If a command starts with ``root>``, you have to execute the command as a user with root permissions. If a command starts with ``otobo>``, you have to execute the command as the user created for OTOBO."
 msgstr ""
+"Todos os comandos do console se parecem com ``username> command-to-execute``"
+". Nome de usuário indica a conta de usuário do sistema operacional, que "
+"precisa ser usada para executar o comando. Se um comando iniciar com "
+"``root>``, você deverá executar o comando como um usuário com permissões de "
+"root. Se um comando iniciar com ``otobo>``, você deverá executar o comando "
+"como o usuário criado para o OTOBO."
 
 #: ../../content/introduction.rst:28
 msgid "Do not select ``username>`` when you copy the command and paste it to the shell. Otherwise you will get an error."
@@ -926,6 +932,10 @@ msgstr ""
 #: ../../content/migration-from-otrs-6.rst:153
 msgid "Please login to the OTOBO Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours. After that, delete all agent and user sessions (``Admin ->  Sessions``) and logout yourself."
 msgstr ""
+"Faça login na Área de administração do OTOBO ``Admin ->  System Maintenance``"
+" e adicione um novo registro de manutenção do sistema por algumas horas. "
+"Depois disso, exclua todas as sessões de agente e usuário (``Admin ->  "
+"Sessions``) e efetue logout."
 
 #: ../../content/migration-from-otrs-6.rst:157
 msgid "Stop All Relevant Services and the OTRS Daemon"
@@ -1091,6 +1101,10 @@ msgstr "``Kernel::System::Ticket::IndexAccelerator::StaticDB``"
 #: ../../content/performance-tuning.rst:26
 msgid "The most powerful module, should be used when you have above 80,000 open tickets. It uses an extra ``ticket_index`` table, which will be populated with keywords based on ticket data. Use the following command for generating an initial index after switching back ends:"
 msgstr ""
+"O módulo mais poderoso, deve ser usado quando você tiver acima de 80.000 "
+"tickets abertos. Ele usa uma tabela ``ticket_index`` extra, que será "
+"preenchida com palavras-chave com base nos dados do ticket. Use o seguinte "
+"comando para gerar um índice inicial após a alterar de back-ends:"
 
 #: ../../content/performance-tuning.rst:34
 msgid "Ticket Search Index"
@@ -1221,6 +1235,8 @@ msgstr "Configuração ``Ticket::SearchIndex::StopWords###en``"
 #: ../../content/performance-tuning.rst:97
 msgid "There are so-called stop-words defined for some languages. These stop-words will be skipped while creating the search index."
 msgstr ""
+"Existem chamadas stop-words definidas para alguns idiomas. Essas stop-words "
+"serão ignoradas ao criar o índice de pesquisa."
 
 #: ../../content/performance-tuning.rst:100
 msgid "If your language is not in the system configuration settings or you want to add more words, you can add them to this setting:"
@@ -1240,6 +1256,10 @@ msgstr "Pesquisa de documentos"
 #: ../../content/performance-tuning.rst:108
 msgid "OTOBO uses Elasticsearch for its document search functionality. For a good introduction into the concepts, installation and usage of Elasticsearch, please follow the `Getting Started guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html>`__."
 msgstr ""
+"O OTOBO usa o Elasticsearch para sua funcionalidade de pesquisa de "
+"documentos. Para uma boa introdução aos conceitos, instalação e uso do "
+"Elasticsearch, siga as instruções em `Getting Started guide <https://www."
+"elastic.co/guide/en/elasticsearch/reference/current/getting-started.html>`__."
 
 #: ../../content/performance-tuning.rst:112
 msgid "Heap Size"
@@ -1248,10 +1268,16 @@ msgstr "Tamanho Heap"
 #: ../../content/performance-tuning.rst:114
 msgid "Elasticsearch is written in Java and therefore runs in a Java Virtual Machine (JVM) on any cluster node. Such a JVM uses a part of the memory, called *heap*, which size can be configured in configuration file ``jvm.options``."
 msgstr ""
+"O Elasticsearch é escrito em Java e, portanto, é executado em uma Java "
+"Virtual Machine (JVM) em qualquer nó do cluster. Essa JVM usa uma parte da "
+"memória, chamada *heap*, cujo tamanho pode ser configurado no arquivo de "
+"configuração ``jvm.options``."
 
 #: ../../content/performance-tuning.rst:116
 msgid "The heap minimum and maximum configurations are by default set to a value of 1 GB and can be modified with the following options:"
 msgstr ""
+"As configurações mínima e máxima do heap são definidas por padrão para um "
+"valor de 1 GB e podem ser modificadas com as seguintes opções:"
 
 #: ../../content/performance-tuning.rst:118
 msgid "``Xms1g``: minimum heap size."
@@ -1264,6 +1290,12 @@ msgstr "Tamanho máximo de heap ``Xms1g``."
 #: ../../content/performance-tuning.rst:121
 msgid "If the ``Xms`` has a lower value than ``Xmx``, the JVM will resize the used heap anytime the current limit is exceeded, until the value of ``Xmx`` is reached. Such a resizing causes the service to pause until it is finished, which may decrease the speed and reactivity of the search or indexing actions. Therefore it is highly recommended to set those configurations to an equal value."
 msgstr ""
+"Se o ``Xms`` tiver um valor menor que o ``Xmx``, a JVM redimensionará o heap "
+"usado sempre que o limite atual for excedido, até que o valor de ``Xmx`` "
+"seja atingido. Esse redimensionamento faz com que o serviço seja pausado até "
+"ser concluído, o que pode diminuir a velocidade e a reatividade das ações de "
+"pesquisa ou indexação. Portanto, é altamente recomendável definir essas "
+"configurações para um valor igual."
 
 #: ../../content/performance-tuning.rst:125
 msgid "If the maximum heap size is exceeded, the related cluster node stops working and might even shutdown the service."
@@ -1274,10 +1306,17 @@ msgstr ""
 #: ../../content/performance-tuning.rst:127
 msgid "The higher the heap maximum value is set, the more memory can be used by Elasticsearch, which also increases the possible pauses for garbage collection, done by the JVM. Therefore it is recommended to set a value for ``Xmx``, that is not higher than 50% of the physical memory."
 msgstr ""
+"Quanto maior o valor máximo do heap for definido, mais memória poderá ser "
+"usada pelo Elasticsearch, o que também aumentará as possíveis pausas para "
+"coleta de lixo, realizadas pela JVM. Portanto, é recomendável definir um "
+"valor para ``Xmx``, que não exceda 50% da memória física."
 
 #: ../../content/performance-tuning.rst:129
 msgid "For more information and good rules of thumb about the heap size, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html>`__."
 msgstr ""
+"Para obter mais informações e boas regras práticas sobre o tamanho da pilha, "
+"acesse`the official documentation <https://www.elastic.co/guide/en/"
+"elasticsearch/reference/current/heap-size.html>`__."
 
 #: ../../content/performance-tuning.rst:133
 msgid "Disk Allocation"
@@ -1286,6 +1325,13 @@ msgstr "Alocação de disco"
 #: ../../content/performance-tuning.rst:135
 msgid "During the run-time of the service, Elasticsearch inspects the available disk space and therefore decides whether to allocate new shards to the related cluster node or even relocate shards away from that particular node. Such behavior will be controlled by the current disk capacity and can be configured in configuration file ``elasticsearch.yml``. Enclosed are some important configurations, that come with good default values, but might be important:"
 msgstr ""
+"Durante o tempo de execução do serviço, o Elasticsearch inspeciona o espaço "
+"em disco disponível e, portanto, decide se deve alocar novos shards para o "
+"nó do cluster relacionado ou até realocar os shards para longe desse nó "
+"específico. Esse comportamento será controlado pela capacidade atual do "
+"disco e pode ser configurado no arquivo de configuração ``elasticsearch.yml``"
+". Incluídas estão algumas configurações importantes, que vêm com bons "
+"valores padrão, mas podem ser importantes:"
 
 #: ../../content/performance-tuning.rst:138
 msgid "``cluster.routing.allocation.disk.watermark.low``"
@@ -1294,6 +1340,9 @@ msgstr "``cluster.routing.allocation.disk.watermark.low``"
 #: ../../content/performance-tuning.rst:138
 msgid "Default value of 85%. If this limit is exceeded, Elasticsearch will not allocate more shards to the related cluster node. The operation of that node is not influenced and data can still be indexed and searched."
 msgstr ""
+"Valor padrão de 85%. Se esse limite for excedido, o Elasticsearch não "
+"alocará mais shards para o nó do cluster relacionado. A operação desse nó "
+"não é influenciada e os dados ainda podem ser indexados e pesquisados."
 
 #: ../../content/performance-tuning.rst:141
 msgid "``cluster.routing.allocation.disk.watermark.high``"
@@ -1313,14 +1362,28 @@ msgstr "``cluster.routing.allocation.disk.watermark.flood_stage``"
 #: ../../content/performance-tuning.rst:144
 msgid "Default value of 95%. If this limit is exceeded, Elasticsearch will update the configuration of all indices to read-only index blocks ``index.blocks.read_only_allow_delete``, that have at least one shard allocated to the related cluster node. Since then, it is not possible to index new data to such indices and restricted to searches and delete actions."
 msgstr ""
+"Valor padrão de 95%. Se esse limite for excedido, o Elasticsearch atualizará "
+"a configuração de todos os índices para blocos de índice somente leitura "
+"``index.blocks.read_only_allow_delete``, que tenham pelo menos um shard "
+"alocado para o nó do cluster relacionado. Desde então, não é possível "
+"indexar novos dados para esses índices e restringir a pesquisas e excluir "
+"ações."
 
 #: ../../content/performance-tuning.rst:148
 msgid "If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch. If the related disks contain enough free space again due to manual actions, it is needed to change the configuration back to normal mode manually."
 msgstr ""
+"Se o flood stage for excedido e determinados índices estiverem configurados "
+"no modo somente leitura, essa configuração *não* será alterada "
+"automaticamente pelo Elasticsearch. Se os discos relacionados contiverem "
+"espaço livre suficiente novamente devido a ações manuais, será necessário "
+"alterar a configuração novamente para o modo normal manualmente."
 
 #: ../../content/performance-tuning.rst:150
 msgid "For more information about disk watermarks and disk-based shard allocation, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__."
 msgstr ""
+"Para obter mais informações sobre marcas d'água de disco e alocação de shard "
+"com base em disco, acesse `the official documentation <https://www.elastic."
+"co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__."
 
 #: ../../content/performance-tuning.rst:154
 msgid "Article Storage"
@@ -1409,6 +1472,12 @@ msgstr ""
 #: ../../content/performance-tuning.rst:192
 msgid "Tickets that match certain criteria can be marked as archived. These tickets are not accessed if you do a regular ticket search or run a generic agent job. The system itself does not have to deal with a huge amount of tickets any longer as only the latest tickets are taken into consideration when using OTOBO. This can result in a huge performance gain on large systems."
 msgstr ""
+"Os tickets que correspondem a determinados critérios podem ser marcados como "
+"arquivados. Esses tickets não serão acessados se você fizer uma pesquisa "
+"regular de tickets ou executar um trabalho de agente genérico. O sistema em "
+"si não precisa mais lidar com uma quantidade enorme de tickets, pois apenas "
+"os tickets mais recentes são levados em consideração ao usar o OTOBO. Isso "
+"pode resultar em um enorme ganho de desempenho em sistemas grandes."
 
 #: ../../content/performance-tuning.rst:194
 msgid "To use the archive feature:"
@@ -1417,294 +1486,359 @@ msgstr "Para usar o recurso de arquivamento:"
 #: ../../content/performance-tuning.rst:196
 msgid "Activate the ``Ticket::ArchiveSystem`` setting in the system configuration."
 msgstr ""
+"Ative a configuração ``Ticket::ArchiveSystem``nas Configurações de Sistema."
 
 #: ../../content/performance-tuning.rst:197
 msgid "Define a generic agent job:"
-msgstr ""
+msgstr "Defina uma tarefa do agente genérico:"
 
 #: ../../content/performance-tuning.rst:199
 msgid "Click on the *Add Job* button in the *Generic Agent* screen."
-msgstr ""
+msgstr "Clique no botão *Adicionar Tarega* na tela *Atendente genérico*."
 
 #: ../../content/performance-tuning.rst:200
 msgid "*Job Settings*: provide a name for the archiving job."
 msgstr ""
+"*Configurações da tarefa* forneça um nome para o trabalho de arquivamento."
 
 #: ../../content/performance-tuning.rst:201
 msgid "*Automatic Execution*: select proper options to schedule this job."
 msgstr ""
+"*Execução automática*: selecione as opções apropriadas para agendar essa "
+"tarefa."
 
 #: ../../content/performance-tuning.rst:202
 msgid "*Select Tickets*: it might be a good idea to only archive those tickets in a closed state that have been closed a few months before."
 msgstr ""
+"*Selecionar chamados*: Pode ser uma boa ideia arquivar apenas os tickets em "
+"um estado fechado que foram fechados há alguns meses antes."
 
 #: ../../content/performance-tuning.rst:203
 msgid "*Update/Add Ticket Attributes*: set the field *Archive selected tickets* to *archive tickets*."
 msgstr ""
+"*Alterar/Adicionar Atributos do Chamado*: defina o campo*Arquivar chamados "
+"selecionados* to *Arquivar os chamados*."
 
 #: ../../content/performance-tuning.rst:204
 msgid "Save the job at the end of the page."
-msgstr ""
+msgstr "Salve a tarefa no final da página."
 
 #: ../../content/performance-tuning.rst:205
 msgid "Click on the *Run this task* link in the overview table to see the affected tickets."
 msgstr ""
+"Clique no link * Executar esta Tarefa * na tabela de visão geral para ver os "
+"tickets afetados."
 
 #: ../../content/performance-tuning.rst:206
 msgid "Click on the *Run Job* button."
-msgstr ""
+msgstr "Clique no botão *Executar Tarefa*."
 
 #: ../../content/performance-tuning.rst:210
 msgid "Up to 5000 tickets can be modified by running this job manually."
 msgstr ""
+"Até 5000 tickets podem ser modificados executando esta tarefa manualmente."
 
 #: ../../content/performance-tuning.rst:212
 msgid "When you search for tickets, the system default is to search tickets which are not archived."
 msgstr ""
+"Ao procurar tickets, o padrão do sistema é procurar tickets que não estão "
+"arquivados."
 
 #: ../../content/performance-tuning.rst:214
 msgid "To search for archived tickets:"
-msgstr ""
+msgstr "Para procurar tickets arquivados:"
 
 #: ../../content/performance-tuning.rst:216
 msgid "Open the ticket search screen."
-msgstr ""
+msgstr "Abra a tela de pesquisa de tickets."
 
 #: ../../content/performance-tuning.rst:217
 msgid "Set *Archive search* to *Unarchived tickets* or *All tickets*."
 msgstr ""
+"Defina *Procurar Arquivo* como *Tickets não arquivados* ou * Todos os "
+"tickets *."
 
 #: ../../content/performance-tuning.rst:218
 msgid "Perform the search."
-msgstr ""
+msgstr "Realize a pesquisa."
 
 #: ../../content/performance-tuning.rst:222
 msgid "Caching"
-msgstr ""
+msgstr "Armazenamento em cache"
 
 #: ../../content/performance-tuning.rst:224
 msgid "A fast cache module is a great help in terms of performance. We recommend to use a Redis Cache server or to create a ramdisk."
 msgstr ""
+"Um módulo de cache rápido é uma grande ajuda em termos de desempenho. "
+"Recomendamos usar um servidor Redis Cache ou criar um ramdisk."
 
 #: ../../content/performance-tuning.rst:227
 msgid "Install a Redis Cache Server"
-msgstr ""
+msgstr "Instale um servidor de cache Redis"
 
 #: ../../content/performance-tuning.rst:229
 msgid "Install Redis Server"
-msgstr ""
+msgstr "Instale servidor Redis"
 
 #: ../../content/performance-tuning.rst:231
 msgid "First of all you need to install the newest Redis Server. The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as OTOBO and binding it to its default port."
 msgstr ""
+"Antes de tudo, você precisa instalar o mais novo servidor Redis. A maneira "
+"mais fácil é `setup Redis <https://redis.io/topics/quickstart>`__ no mesmo "
+"host que OTOBO esta instalado à sua porta padrão."
 
 #: ../../content/performance-tuning.rst:235
 msgid "Install Perl module Redis or Redis::Fast"
-msgstr ""
+msgstr "Instale o módulo Perl Redis ou Redis::Fast"
 
 #: ../../content/performance-tuning.rst:237
 msgid "You can choose which Redis module to use: `Redis` or `Redis::Fast` (which is compatible with `Redis` but **~2x faster**). Please use our ``otobo.CheckModules.pl --list`` to choose the right package for you:"
 msgstr ""
+"Você pode escolher qual módulo Redis usar: `Redis` ou`Redis::Fast` (que é "
+"compatível com `Redis` mas 2 vezes mais rápido**). Por favor use nosso ``"
+"otobo.CheckModules.pl --list``escolher o pacote certo para você:"
 
 #: ../../content/performance-tuning.rst:244
 msgid "Configure OTOBO for Redis"
-msgstr ""
+msgstr "Configurar OTOBO para Redis"
 
 #: ../../content/performance-tuning.rst:246
 msgid "Please use the OTOBO `SysConfig` (Admin -> System Configuration) to configure OTOBO properly:"
 msgstr ""
+"Por favor, use o OTOBO `SysConfig` (Administração-> Configuração do sistema) "
+"para configurar o OTOBO corretamente:"
 
 #: ../../content/performance-tuning.rst:259
 msgid "RamDisk Caching"
-msgstr ""
+msgstr "Cache do RamDisk"
 
 #: ../../content/performance-tuning.rst:261
 msgid "OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make sure that this uses a high performance file system and storage. If you have enough RAM, you can also try to put this directory on a ramdisk like this:"
 msgstr ""
+"O OTOBO armazena muitos dados de cache temporários no ``/opt/otobo/var/tmp``"
+". Verifique se ele usa um sistema de arquivos e armazenamento de alto "
+"desempenho. Se você possui RAM suficiente, também pode tentar colocar este "
+"diretório em um ramdisk como este:"
 
 #: ../../content/performance-tuning.rst:271
 msgid "Add persistent mount point in ``/etc/fstab``."
-msgstr ""
+msgstr "Adicione ponto de montagem persistente no ``/etc/fstab``."
 
 #: ../../content/performance-tuning.rst:275
 msgid "This will be a non-permanent storage that will be lost on server reboot. All your sessions (if you store them in the file system) and your cache data will be lost."
 msgstr ""
+"Este será um armazenamento não permanente que será perdido na "
+"reinicialização do servidor. Todas as suas sessões (se você as armazenar no "
+"sistema de arquivos) e os dados do cache serão perdidos."
 
 #: ../../content/performance-tuning.rst:278
 msgid "Clustering"
-msgstr ""
+msgstr "Clustering"
 
 #: ../../content/performance-tuning.rst:280
 msgid "For very high loads, it can be required to operate OTOBO on a cluster of multiple front end servers. This is a complex task with many pitfalls. Therefore, Rother OSS provides support for clusters in its `managed OTOBO <https://otobo.de/>`__ environment exclusively."
 msgstr ""
+"Para cargas muito altas, pode ser necessário operar o OTOBO em um cluster de "
+"vários servidores front-end. Esta é uma tarefa complexa, com muitas "
+"armadilhas. Portanto, o Rother OSS fornece suporte para clusters em seu "
+"ambiente `managed OTOBO <https://otobo.de/>`."
 
 #: ../../content/requirements.rst:12
 msgid "Hardware and Software Requirements"
-msgstr ""
+msgstr "Requisitos de Hardware e Software"
 
 #: ../../content/requirements.rst:14
 msgid "OTOBO can be installed on Linux and other Unix derivates (e.g. OpenBSD or FreeBSD). Running OTOBO on Microsoft Windows is not supported."
 msgstr ""
+"O OTOBO pode ser instalado no Linux e outros derivados do Unix (por exemplo, "
+"OpenBSD ou FreeBSD). A execução do OTOBO no Microsoft Windows não é "
+"suportada."
 
 #: ../../content/requirements.rst:16
 msgid "To run OTOBO, you'll also need to use a web server as reverse proxy and a database server. Apart from that, you should install Perl and/or install some additional Perl modules on the OTOBO machine."
 msgstr ""
+"Para executar o OTOBO, você também precisará usar um servidor da Web como "
+"proxy reverso e um servidor de banco de dados. Além disso, você deve "
+"instalar o Perl e/ou instalar alguns módulos adicionais do Perl na máquina "
+"OTOBO."
 
 #: ../../content/requirements.rst:18
 msgid "Perl must be installed on the same machine as OTOBO. The database back end and the web server may be installed locally or on another host."
 msgstr ""
+"O Perl deve estar instalado na mesma máquina que o OTOBO. O back-end do "
+"banco de dados e o servidor da web podem ser instalados localmente ou em "
+"outro host."
 
 #: ../../content/requirements.rst:20
 msgid "For Perl, you will need some additional modules which can be installed either with Perl from CPAN, or via the package manager of your operating system (rpm, yast, apt-get)."
 msgstr ""
+"Para o Perl, você precisará de alguns módulos adicionais que podem ser "
+"instalados com o Perl do CPAN ou através do gerenciador de pacotes do seu "
+"sistema operacional (rpm, yast, apt-get)."
 
 #: ../../content/requirements.rst:22
 msgid "OTOBO has a console command to for missing modules."
 msgstr ""
+"O OTOBO possui um comando do console para módulos que faltam na instalação."
 
 #: ../../content/requirements.rst:28
 msgid "If some packages are missing, you can get an install command for your operating system if you run the script with ``--list`` option."
 msgstr ""
+"Se alguns pacotes estiverem ausentes, você poderá obter um comando de "
+"instalação para o seu sistema operacional se executar o script com a opção "
+"``--list``."
 
 #: ../../content/requirements.rst:34
 msgid "The listed commands should then be executed with root privileges."
-msgstr ""
+msgstr "Os comandos listados devem ser executados com privilégios de root."
 
 #: ../../content/requirements.rst:36
 msgid "The output of the module check script shows the installed packages and the version numbers. Missing modules are marked with a comment."
 msgstr ""
+"A saída do script de verificação do módulo mostra os pacotes instalados e os "
+"números da versão. Os módulos ausentes estão marcados com um comentário."
 
 #: ../../content/requirements.rst:87
 msgid "Hardware Requirements"
-msgstr ""
+msgstr "Requisitos de Hardware"
 
 #: ../../content/requirements.rst:89
 msgid "Hardware requirements highly depend on the usage of OTOBO. OTOBO can be used to process a few tickets per month or to process hundreds of tickets per day. The storage requirement also depends on the number of tickets and size of attachments."
 msgstr ""
+"Os requisitos de hardware dependem muito do uso do OTOBO. O OTOBO pode ser "
+"usado para processar alguns tickets por mês ou para processar centenas de "
+"tickets por dia. O requisito de armazenamento também depende do número de "
+"tickets e do tamanho dos anexos."
 
 #: ../../content/requirements.rst:91
 msgid "We recommend using a machine for testing purposes with **at least**:"
 msgstr ""
+"Recomendamos o uso de uma máquina para fins de teste com **pelo menos**:"
 
 #: ../../content/requirements.rst:93
 msgid "small CPU"
-msgstr ""
+msgstr "small CPU"
 
 #: ../../content/requirements.rst:94
 msgid "4 GB RAM"
-msgstr ""
+msgstr "4 GB RAM"
 
 #: ../../content/requirements.rst:95
 msgid "10 GB storage"
-msgstr ""
+msgstr "10 GB storage"
 
 #: ../../content/requirements.rst:97
 msgid "We recommend using a machine for production purpose with **at least**:"
 msgstr ""
+"Recomendamos o uso de uma máquina para fins de produção com **pelo menos**:"
 
 #: ../../content/requirements.rst:99
 msgid "3 GHz Xeon or comparable CPU"
-msgstr ""
+msgstr "CPU 3 GHz Xeon ou comparável"
 
 #: ../../content/requirements.rst:100
 msgid "8 GB RAM (16 GB recommend)"
-msgstr ""
+msgstr "8 GB RAM (16 GB recomendado)"
 
 #: ../../content/requirements.rst:101
 msgid "40 GB storage"
-msgstr ""
+msgstr "40 GB armazenamento"
 
 #: ../../content/requirements.rst:105
 msgid "Hardware requirements depend on the usage of OTOBO. Please contact your OTOBO consultant before deploying any hardware."
 msgstr ""
+"Os requisitos de hardware dependem do uso do OTOBO. Entre em contato com seu "
+"consultor OTOBO antes de implantar qualquer hardware."
 
 #: ../../content/requirements.rst:109
 msgid "Software requirements"
-msgstr ""
+msgstr "Requisitos de software"
 
 #: ../../content/requirements.rst:113
 msgid "Perl"
-msgstr ""
+msgstr "Perl"
 
 #: ../../content/requirements.rst:112
 msgid "Perl 5.24.0 or higher"
-msgstr ""
+msgstr "Perl 5.24.0 ou superior"
 
 #: ../../content/requirements.rst:113
 msgid "Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl`` console command"
 msgstr ""
+"Pacotes Perl listados pela linha de comando ``/opt/otobo/bin/otobo."
+"CheckModules.pl``"
 
 #: ../../content/requirements.rst:118
 msgid "Web Servers"
-msgstr ""
+msgstr "Servidores Web"
 
 #: ../../content/requirements.rst:116
 msgid "Apache2"
-msgstr ""
+msgstr "Apache2"
 
 #: ../../content/requirements.rst:117
 msgid "nginx"
-msgstr ""
+msgstr "nginx"
 
 #: ../../content/requirements.rst:118
 msgid "Any other web server that can be used as a reverse proxy"
-msgstr ""
+msgstr "Qualquer outro servidor da web que possa ser usado como proxy reverso"
 
 #: ../../content/requirements.rst:124
 msgid "Databases"
-msgstr ""
+msgstr "Bases de dados"
 
 #: ../../content/requirements.rst:121
 msgid "MySQL 5.6 or higher"
-msgstr ""
+msgstr "MySQL 5.6 ou superior"
 
 #: ../../content/requirements.rst:122
 msgid "MariaDB"
-msgstr ""
+msgstr "MariaDB"
 
 #: ../../content/requirements.rst:123
 msgid "PostgreSQL 9.2 or higher"
-msgstr ""
+msgstr "PostgreSQL 9.2 ou superior"
 
 #: ../../content/requirements.rst:124
 msgid "Oracle 10g or higher"
-msgstr ""
+msgstr "Oracle 10g ou superior"
 
 #: ../../content/requirements.rst:128
 msgid "Other dependencies"
-msgstr ""
+msgstr "Outras dependências"
 
 #: ../../content/requirements.rst:127
 msgid "Elasticsearch 7.x"
-msgstr ""
+msgstr "Elasticsearch 7.x"
 
 #: ../../content/requirements.rst:128
 msgid "Node.js 8.9 or higher"
-msgstr ""
+msgstr "Node.js 8.9 ou superior"
 
 #: ../../content/requirements.rst:135
 msgid "Web browsers"
-msgstr ""
+msgstr "Navegadores"
 
 #: ../../content/requirements.rst:131
 msgid "Apple Safari"
-msgstr ""
+msgstr "Apple Safari"
 
 #: ../../content/requirements.rst:132
 msgid "Google Chrome"
-msgstr ""
+msgstr "Google Chrome"
 
 #: ../../content/requirements.rst:133
 msgid "Microsoft Internet Explorer 11"
-msgstr ""
+msgstr "Microsoft Internet Explorer 11"
 
 #: ../../content/requirements.rst:134
 msgid "Microsoft Edge"
-msgstr ""
+msgstr "Microsoft Edge"
 
 #: ../../content/requirements.rst:135
 msgid "Mozilla Firefox"
-msgstr ""
+msgstr "Mozilla Firefox"
 
 #: ../../content/requirements.rst:136
 msgid "Any other modern web browser with JavaScript support"
