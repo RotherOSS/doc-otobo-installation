@@ -60,7 +60,7 @@ and unpack the source archive (for example, using ``tar``) into the directory ``
     root> cd /root/otobo-update                                             # Change into the update directory
     root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
     root> tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-10.x.x /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
+    root> cp -r otobo-10.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Restore Old Configuration Files
@@ -92,8 +92,7 @@ If you have additional packages with default statistics you have to restore the 
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update
-    root> cd var/stats
+    root> cd /root/otobo-update/otobo-prod-old/var/stats
     root> cp *.installed /opt/otobo/var/stats
 
 
@@ -119,7 +118,7 @@ You can use the command below to update all installed packages. This works for a
     otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
 
 
-Step 6: Start your Services
+Step 5: Start your Services
 ---------------------------
 
 Now the services can be started. This will depend on your service configuration, here is an example:
