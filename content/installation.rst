@@ -171,8 +171,8 @@ the apache ``sites-availible`` directory`.
 .. code-block:: bash
 
    # Debian/Ubuntu:
-   root> cp /opt/otobo/scripts/apache2-httpd-vhost-80.include.conf /etc/apache2/sites-availible/zzz_otobo-80.conf
-   root> cp /opt/otobo/scripts/apache2-httpd-vhost-443.include.conf /etc/apache2/sites-availible/zzz_otobo-443.conf
+   root> cp /opt/otobo/scripts/apache2-httpd-vhost-80.include.conf /etc/apache2/sites-available/zzz_otobo-80.conf
+   root> cp /opt/otobo/scripts/apache2-httpd-vhost-443.include.conf /etc/apache2/sites-available/zzz_otobo-443.conf
 
 Please edit the files and add the required information like SSL certificate storage path. After that, enable the OTOBO Apache configuration:
 
