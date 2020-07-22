@@ -85,6 +85,10 @@ Execute this command to get an install command to install the missing dependenci
 .. code-block:: bash
 
    root> /opt/otobo/bin/otobo.CheckModules.pl -inst
+   
+.. note::
+
+   There are a number of optional or alternative modules which can be installed, mostly for more customized versions of OTOBO. Calling CheckModules.pl without any argument will list its full functionality.
 
 
 Step 3: Create the OTOBO User
