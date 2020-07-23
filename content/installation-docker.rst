@@ -13,7 +13,7 @@ All of OTOBO´s dependencies are already included.
 We think it is the perfect environment for an OTOBO installation.
 
 .. warning::
-    At the moment the docker-compose environment is not deep testet for production use.
+    At the moment the docker-compose environment is not tested in depth for production use.
     Please use the standard installation process for production use, unless you know what you do.
 
 Requirements
