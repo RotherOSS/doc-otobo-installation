@@ -85,7 +85,7 @@ Execute this command to get an install command to install the missing dependenci
 .. code-block:: bash
 
    root> /opt/otobo/bin/otobo.CheckModules.pl -inst
-   
+
 .. note::
 
    There are a number of optional or alternative modules which can be installed, mostly for more customized versions of OTOBO. Calling CheckModules.pl without any argument will list its full functionality.
@@ -148,10 +148,10 @@ OTOBO requires a few Apache modules to be active for optimal operation. On most 
 
     On some platforms not all Apache modules exist and an error is displayed when installing. Do not worry and finish the installation, in most cases the module will not be needed.
 
-Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``. 
+Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``.
 
 Configure Apache without SSL support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
 ``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations).
@@ -163,8 +163,8 @@ Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf
    root> systemctl restart apache2
 
 
-Configure Apache **with** SSL support 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+Configure Apache **with** SSL support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
 the apache ``sites-availible`` directory`.
@@ -229,12 +229,21 @@ Please login to the mysql console and set a different authentication module and 
    root> mysql -u root
    root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
 
-For  MariaDB 10.1 use instead the following command:
+For MariaDB > 10.1 use instead the following command:
 
 .. code-block:: bash
 
    root> mysql -u root
    root> update mysql.user set authentication_string=password('NewRootPassword') plugin='mysql_native_password' where user='root';
+
+ If this command not work, please try the following commands:
+
+.. code-block:: bash
+
+   root> mysql -u root
+   root> UPDATE mysql.user SET password = PASSWORD('NewRootPassword') WHERE user = 'root';
+   root> UPDATE mysql.user SET authentication_string = '' WHERE user = 'root';
+   root> UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root';
 
 After OTOBO installation it is possible to change the authentication module again, if needed.
 
