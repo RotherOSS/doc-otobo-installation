@@ -113,9 +113,9 @@ Databases
    - PostgreSQL 9.2 or higher
    - Oracle 10g or higher
 
-Other dependencies
-   - Elasticsearch 7.x
-   - Node.js 8.9 or higher
+Optional
+   - Elasticsearch 7.x (fast search function for live previews)
+   - Node.js 8.9 or higher (only for development)
 
 Web browsers
    - Apple Safari
