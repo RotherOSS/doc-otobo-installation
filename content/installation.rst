@@ -160,6 +160,7 @@ Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf
 
    # Debian/Ubuntu:
    root> cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otobo.conf
+   root> systemctl restart apache2
 
 
 Configure Apache **with** SSL support 
@@ -239,7 +240,7 @@ After OTOBO installation it is possible to change the authentication module agai
 
 .. note::
 
-   The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf`` or ``/etc/mysql/my.cnf`` under the ``[mysqld]`` section:
+   The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqld.cnf`` under the ``[mysqld]`` section:
 
    .. code-block:: ini
 
