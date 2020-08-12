@@ -168,10 +168,10 @@ Please adjust this value for production env to a value up to 4g.
 
 **Nginx webproxy settings**
 
-``OTOBO_WEB_ROOT_HTTP_PORT``
+``OTOBO_WEB_HTTP_PORT``
 Set in case the HTTP port should deviate from the standard port 80.
 
-``OTOBO_WEB_ROOT_HTTPS_PORT``
+``OTOBO_WEB_HTTPS_PORT``
 Set in case the HTTPS port should deviate from the standard port 443.
 
 ``OTOBO_NGINX_SSL_CERTIFICATE``
