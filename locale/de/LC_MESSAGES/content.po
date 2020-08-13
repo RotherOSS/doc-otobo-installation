@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-01-31 08:02+0100\n"
-"PO-Revision-Date: 2020-08-13 12:30+0000\n"
+"PO-Revision-Date: 2020-08-13 16:29+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <http://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -281,96 +281,148 @@ msgstr ""
 #: ../../content/installation.rst:162
 msgid "Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``. Log in as root, change to the ``conf.d`` directory and link the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called ``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations)."
 msgstr ""
+"Die meisten Apache-Installationen verfügen über ein ``conf.d``-Verzeichnis. "
+"Auf Linux-Systemen findet sich dieses Verzeichnis normalerweise unter ``/etc/"
+"apache`` oder ``/etc/apache2``. Melden Sie sich als Root-Benutzer an, rufen "
+"Sie das ``conf.d``-Verzeichnis auf und verlinken Sie die passende Vorlage "
+"aus ``/opt/otobo/scripts/apache2-httpd.include.conf`` auf die Datei "
+"``zzz_otobo.conf`` im Apache Konfigurationsverzeichnis (so ist "
+"sichergestellt, dass diese Datei nach den anderen Konfigurationen geladen "
+"wird)."
 
 #: ../../content/installation.rst:171
 msgid "Now you can restart your web server to load the new configuration settings. On most systems you can do that with the command:"
 msgstr ""
+"Jetzt können Sie Ihren Webserver neu starten und die neuen "
+"Konfigurationseinstellungen laden. Auf den meisten Systemen gelingt dies mit "
+"folgendem Befehl:"
 
 #: ../../content/installation.rst:179
 msgid "Step 6: Set File Permissions"
-msgstr ""
+msgstr "Schritt 6: Dateiberechtigungen anpassen"
 
 #: ../../content/installation.rst:181
 #: ../../content/migration-from-otrs-6.rst:77
 #: ../../content/updating.rst:114
 msgid "Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup."
 msgstr ""
+"Bitte führen Sie folgenden Befehl aus, um die Datei- und Verzeichnis-"
+"Berechtigungen für OTOBO zu definieren. Der Befehl versucht die passenden "
+"Benutzer- und Gruppeneinstellungen für Ihr Setup zu ermitteln."
 
 #: ../../content/installation.rst:189
 msgid "Step 7: Setup the Database"
-msgstr ""
+msgstr "Schritt 7: Datenbank anlegen"
 
 #: ../../content/installation.rst:191
 msgid "First of all, you should install the database package. The OTOBO community recommend to use the MySQL or MariaDB package, which will delivered with your Linux system, but it's possible to use PostgreSQL or Oracle as well."
 msgstr ""
+"Installieren Sie zuallererst das Datenbank-Paket. Die OTOBO Community "
+"empfiehlt, das mit Ihrem Linuxsystem zur Verfügung gestellte MySQL oder "
+"MariaDB-Paket zu verwenden. Auch PostgreSQL oder Oracle können genutzt "
+"werden."
 
 #: ../../content/installation.rst:194
 msgid "You'd typically do this from your systems package manager. Below you'll find the commands needed to set up MySQL on the most popular Linux distributions."
 msgstr ""
+"In aller Regel erfolgt die Installation wieder über die Paketverwaltung "
+"Ihres Systems. Nachstehend finden Sie die zum Aufsetzen von MySQL in den "
+"gängigsten Linux-Distributionen benötigten Befehle."
 
 #: ../../content/installation.rst:208
 msgid "After install the MySQL server you need configure it."
-msgstr ""
+msgstr "Nach erfolgter Installation muss der MySQL-Server konfiguriert werden."
 
 #: ../../content/installation.rst:210
 msgid "In MySQL higher or equal version 5.7 is a new authentication module active and it's not possible to use the OTOBO web installer for database creation. In this case please login to the mysql console and set a different authentication module and password for the user ``root``:"
 msgstr ""
+"In MySQL ab Version 5.7 ist ein neues Authentifizierungsmodul aktiv, das ein "
+"Anlegen der Datenbank durch den OTOBO Web Installer verhindert. Bitte loggen "
+"Sie sich in diesem Fall in die MySQL Konsole ein und definieren Sie ein "
+"anderes Authentifizierungsmodul und ein Passwort für den ``root``-Benutzer:"
 
 #: ../../content/installation.rst:218
 msgid "After OTOBO installation it's possible to change the authentication module again, if needed."
 msgstr ""
+"Sofern nötig, können Sie das Authentifizierungsmodul nach der OTOBO-"
+"Installation erneut ändern."
 
 #: ../../content/installation.rst:222
 msgid "The following configuration settings are minimum for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf`` or ``/etc/mysql/my.cnf`` under the ``[mysqld]`` section:"
 msgstr ""
+"Folgende Konfigurationseinstellungen beschreiben die Minimalanforderungen "
+"für MySQL. Bitte fügen Sie die folgenden Zeilen in die MySQL Server "
+"Konfigurationsdatei unter``/etc/my.cnf`` oder ``/etc/mysql/my.cnf`` im "
+"Abschnitt ``[mysqld]`` ein:"
 
 #: ../../content/installation.rst:231
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr ""
+"Für den Produktivbetrieb empfehlen wir die Nutzung des Tools ``mysqltuner``, "
+"mit dem Sie die bestmöglichen Einstellungen für Ihr System ermitteln können. "
+"Sie können das Skript unter ``https://github.com/major/MySQLTuner-perl`` aus "
+"GitHub herunterladen oder finden es in Debian- und Ubuntu-Systemen über die "
+"Paketverwaltung:"
 
 #: ../../content/installation.rst:238
 msgid "After install execute the script:"
-msgstr ""
+msgstr "Führen Sie nach der Installation folgendes Skript aus:"
 
 #: ../../content/installation.rst:245
 msgid "Step 8: Setup Elasticsearch Cluster"
-msgstr ""
+msgstr "Schritt 8: Elasticsearch-Cluster aufsetzen"
 
 #: ../../content/installation.rst:247
+#, fuzzy
 msgid "OTOBO recommend an active cluster of Elasticsearch. The easiest way is to `setup Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html>`__ on the same host as OTOBO and binding it to its default port. With that, no further configuration in OTOBO is needed."
 msgstr ""
+"OTOBO empfiehlt ein aktives Elasticsearch-Cluster. Am einfachsten`setzen Sie "
+"Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/"
+"current/setup.html>`__ auf dem gleichen Host wie OTOBO auf und verbinden es "
+"mit dem Standardport. In diesem Fall ist keine weitere Konfiguration in "
+"OTOBO erforderlich."
 
 #: ../../content/installation.rst:249
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
-msgstr ""
+msgstr "Außerdem erfordert OTOBO die Installation von Plugins in Elasticsearch:"
 
 #: ../../content/installation.rst:258
 msgid "Restart Elasticsearch afterwards, or indexes will not be built."
 msgstr ""
+"Starten Sie Elasticsearch anschließend neu, sonst werden keine Indexe "
+"erstellt."
 
 #: ../../content/installation.rst:260
 msgid "To verify the Elasticsearch installation, you can use the following command:"
 msgstr ""
+"Um die Elasticsearch-Installation zu überprüfen, können Sie folgenden Befehl "
+"verwenden:"
 
 #: ../../content/installation.rst:270
 msgid "Step 9: Basic System Configuration"
-msgstr ""
+msgstr "Schritt 9: Grundlegende Systemkonfiguration"
 
 #: ../../content/installation.rst:272
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to setup your database and basic system settings such as email accounts."
 msgstr ""
+"Bitte verwenden Sie den Web Installer unter http://localhost/otobo/"
+"installer.pl (ersetzen Sie \"localhost\" durch Ihren OTOBO Host), um die "
+"Konfiguration der Datenbank sowie grundlegender Systemeinstellungen wie der E"
+"-Mail-Konten vorzunehmen."
 
 #: ../../content/installation.rst:276
 msgid "Step 10: First Login"
-msgstr ""
+msgstr "Schritt 10: Erste Anmeldung"
 
 #: ../../content/installation.rst:278
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr ""
+"Geschafft! Jetzt können Sie sich mit dem generierten Passwort (s. o.) über "
+"http://localhost/otobo/index.pl als Benutzer ``root@localhost`` anmelden."
 
 #: ../../content/installation.rst:282
 msgid "Step 11: Start the OTOBO Daemon"
-msgstr ""
+msgstr "Schritt 11: OTOBO Daemon starten"
 
 #: ../../content/installation.rst:284
 msgid "The new OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is now required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the otobo user."
