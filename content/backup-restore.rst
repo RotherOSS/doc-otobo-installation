@@ -8,7 +8,7 @@ Backup
 
 .. note::
 
-   To create a backup, write permission is needed for ``otobo`` user for the destination directory.
+   To create a new backup, write permission is needed for ``otobo`` user for the destination directory.
 
 .. code-block:: bash
 
