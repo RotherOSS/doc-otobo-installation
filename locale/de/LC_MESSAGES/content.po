@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-08-18 00:30+0200\n"
-"PO-Revision-Date: 2020-08-18 09:03+0000\n"
+"PO-Revision-Date: 2020-08-18 16:45+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <http://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -1011,41 +1011,51 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:133
 msgid "5. Start the docker-compose image"
-msgstr ""
+msgstr "5. Starten des docker-compose Image"
 
 #: ../../content/installation-docker.rst:135
 msgid "Now we start the docker-compose image with a simple"
-msgstr ""
+msgstr "Jetzt starten wir das docker-compose Image mit einem einfachen"
 
 #: ../../content/installation-docker.rst:142
 msgid "6. Start OTOBO"
-msgstr ""
+msgstr "6. OTOBO starten"
 
 #: ../../content/installation-docker.rst:144
 msgid "Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl"
 msgstr ""
+"Führen Sie den OTOBO Installer unter http://yourIPorFQDN/otobo/installer.pl "
+"aus"
 
 #: ../../content/installation-docker.rst:147
+#, fuzzy
 msgid ""
 "Please configure OTOBO inside the Installer with a new MySQL database. As "
 "MySQL database root password please use the password you add in the .env "
 "file in the variable ``OTOBO_DB_ROOT_PASSWORD``. Please leave the hostname: "
 "db untouched."
 msgstr ""
+"Konfigurieren Sie OTOBO im Installer mit einer neuen MySQL Datenbank. Geben "
+"Sie als Root-Passwort für die MySQL-Datenbank das Passwort ein, dass Sie für "
+"die Variable ``OTOBO_DB_ROOT_PASSWORD`` in die ``.env`` -Datei eingegeben "
+"haben. Bitte lassen Sie die Variable ``hostname: db`` unverändert."
 
 #: ../../content/installation-docker.rst:151
 msgid "**Habe fun with OTOBO!**"
-msgstr ""
+msgstr "**Viel Vergnügen mit OTOBO!**"
 
 #: ../../content/installation-docker.rst:154
 msgid ""
 "To change to the OTOBO directory to work on command line as usual, you can "
 "use the following Docker command: ``docker exec -it otobo_web_1 bash``"
 msgstr ""
+"Um in das OTOBO Verzeichnis zu wechselnn und wie gewohnt in der "
+"Kommandozeile zu arbeiten, können Sie folgenden Docker-Befehl nutzen: ``"
+"docker exec -it otobo_web_1 bash``"
 
 #: ../../content/installation-docker.rst:158
 msgid "7. Adjust server settings for production use"
-msgstr ""
+msgstr "7. Anpassen der Server-Einstellungen für den Produktivbetrieb"
 
 #: ../../content/installation-docker.rst:160
 msgid ""
@@ -1053,20 +1063,26 @@ msgid ""
 "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker."
 "html#docker-prod-prerequisites for detailed information."
 msgstr ""
+"Elasticsearch erfordert einige Einstellungen für den Produktivbetrieb. "
+"Detaillierte Informationen entnehmen Sie bitte der Elasticsearch-"
+"Dokumentation unter https://www.elastic.co/guide/en/elasticsearch/reference/7"
+".8/docker.html#docker-prod-prerequisites."
 
 #: ../../content/installation-docker.rst:165
 msgid "Docker environment variables"
-msgstr ""
+msgstr "Docker-Umgebungsvariablen"
 
 #: ../../content/installation-docker.rst:167
 msgid "**MariaDB settings**"
-msgstr ""
+msgstr "**MariaDB Einstellungen**"
 
 #: ../../content/installation-docker.rst:169
 msgid ""
 "``OTOBO_DB_ROOT_PASSWORD`` The root password for MySQL. Must be set for "
 "running otobo db."
 msgstr ""
+"``OTOBO_DB_ROOT_PASSWORD`` Das Root-Passwort für MySQL. Muss angegeben "
+"werden, damit die OTOBO DB betrieben werden kann."
 
 #: ../../content/installation-docker.rst:172
 #, fuzzy
@@ -1074,66 +1090,89 @@ msgid "**Elasticsearch settings**"
 msgstr "Schritt 9: Grundlegende Systemkonfiguration"
 
 #: ../../content/installation-docker.rst:174
+#, fuzzy
 msgid ""
 "``OTOBO_Elasticsearch_ES_JAVA_OPTS`` Example setting: "
 "OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m Please adjust this value "
 "for production env to a value up to 4g."
 msgstr ""
+"``OTOBO_Elasticsearch_ES_JAVA_OPTS`` Beispieleinstellung: "
+"*OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* Bitte setzen Sie diesen "
+"Wert in Produktivumgebungen auf einen Wert bis 4g."
 
 #: ../../content/installation-docker.rst:179
 msgid "**Nginx webproxy settings**"
-msgstr ""
+msgstr "**Nginx Webproxy Einstellungen**"
 
 #: ../../content/installation-docker.rst:181
 msgid ""
 "``OTOBO_WEB_HTTP_PORT`` Set in case the HTTP port should deviate from the "
 "standard port 80."
 msgstr ""
+"``OTOBO_WEB_HTTP_PORT`` Hier sind Angaben nötig, falls der HTTP-Port vom "
+"Standardport 80 abweicht."
 
 #: ../../content/installation-docker.rst:184
 msgid ""
 "``OTOBO_WEB_HTTPS_PORT`` Set in case the HTTPS port should deviate from the "
 "standard port 443."
 msgstr ""
+"``OTOBO_WEB_HTTPS_PORT`` Bitte anpassen, wenn der HTTPS-Port vom "
+"Standardport 443 abweicht."
 
 #: ../../content/installation-docker.rst:187
+#, fuzzy
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE`` SSL cert for the nginx webproxy. Example: "
 "OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt"
 msgstr ""
+"``OTOBO_NGINX_SSL_CERTIFICATE`` SSL-Zertifikat für den Nginx-Webproxy. "
+"Beispiel: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
 #: ../../content/installation-docker.rst:191
+#, fuzzy
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY`` SSL key for the nginx webproxy. Example: "
 "OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key"
 msgstr ""
+"``OTOBO_NGINX_SSL_CERTIFICATE_KEY`` SSL-Schlüssel für den Nginx-Webproxy. "
+"Beispiel: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
 #: ../../content/installation-docker.rst:195
 msgid "**OTOBO docker-compose settings**"
-msgstr ""
+msgstr "**OTOBO docker-compose Einstellungen**"
 
 #: ../../content/installation-docker.rst:197
+#, fuzzy
 msgid ""
 "``COMPOSE_PROJECT_NAME`` The project name is used as a prefix for the "
 "generated volumes and containers. Must be set because the compose file is "
 "located in scripts/docker-compose and thus docker-compose would be used per "
 "default."
 msgstr ""
+"``COMPOSE_PROJECT_NAME`` Der Projektname wird als Präfix für die angelegten "
+"Volumes und Container verwendet. Hier ist eine Angabe erforderlich, weil das "
+"compose-File in ``scripts/docker-compose``abgelegt wird und sonst "
+"standardmäßig *docker-compose* verwendet würde."
 
 #: ../../content/installation-docker.rst:202
 msgid "``COMPOSE_PATH_SEPARATOR`` Seperator for the value of COMPOSE_FILE"
-msgstr ""
+msgstr "``COMPOSE_PATH_SEPARATOR`` Separator für die Werte im COMPOSE_FILE"
 
 #: ../../content/installation-docker.rst:205
+#, fuzzy
 msgid ""
 "``COMPOSE_FILE`` Use docker-compose/otobo-base.yml as the base and add the "
 "wanted extension files. E.g docker-compose/otobo-override-http.yml or docker-"
 "compose/otobo-override-https.yml."
 msgstr ""
+"``COMPOSE_FILE`` Verwenden Sie *docker-compose/otobo-base.yml* als Grundlage "
+"und ergänzen Sie erforderlichen Files, z. B. *docker-compose/otobo-override-"
+"http.yml* oder *docker-compose/otobo-override-https.yml*."
 
 #: ../../content/introduction.rst:12
 msgid "Introduction"
-msgstr ""
+msgstr "Einleitung"
 
 #: ../../content/introduction.rst:14
 msgid ""
@@ -1142,22 +1181,32 @@ msgid ""
 "Public License (GPL) and tested on various Linux platforms. Do you receive "
 "many e-mails and want to answer them with a team of agents?"
 msgstr ""
+"OTOBO ist ein freies Open-Source-Ticketsystem mit umfassenden "
+"Funktionalitäten zur Verwaltung von Kundenanrufen und -E-Mails. Es wird "
+"unter der GNU General Public License (GPL) vertrieben und wurde auf "
+"verschiedenen Linux-Plattformen getestet. Sie bekommen viele E-Mails und "
+"möchten diese im Team bearbeiten?"
 
 #: ../../content/introduction.rst:18
 msgid "About This Manual"
-msgstr ""
+msgstr "Über dieses Handbuch"
 
 #: ../../content/introduction.rst:20
 msgid ""
 "This manual is intended for use by system administrators. The chapters "
 "describe the installation and updating of the OTOBO software."
 msgstr ""
+"Dieses Handbuch wendet sich an Systemadministratoren und beschreibt das "
+"Vorgehen beim Installieren und Aktualisieren der OTOBO Software."
 
 #: ../../content/introduction.rst:22
 msgid ""
 "There is no graphical user interface for installation and updating. System "
 "administrators have to follow the steps described in the following chapters."
 msgstr ""
+"Für Installation und Updates steht keine grafische Benutzeroberfläche zur "
+"Verfügung. Die folgenden Kapitel führen Sie als Systemadministrator Schritt "
+"für Schritt durch die erforderlichen Abläufe."
 
 #: ../../content/introduction.rst:24
 msgid ""
@@ -1167,12 +1216,21 @@ msgid ""
 "the command as a user with root permissions. If a command starts with "
 "``otobo>``, you have to execute the command as the user created for OTOBO."
 msgstr ""
+"Alle Befehle für die Kommandozeile entsprechen folgendem Aufbau: ``"
+"benutzername > auszuführender-befehl``. Der Benutzername gibt an, mit "
+"welchem Benutzerkonto auf dem Betriebssystem der Befehl ausgeführt werden "
+"soll. Beginnt ein Befehl mit ``root>``, muss dieser von einem Benutzer mit "
+"Root-Berechtigungen ausgeführt werden. Beginnt ein Befehl mit ``otobo>``, "
+"muss dieser von dem für OTOBO angelegten Nutzer durchgeführt werden."
 
 #: ../../content/introduction.rst:28
 msgid ""
 "Do not select ``username>`` when you copy the command and paste it to the "
 "shell. Otherwise you will get an error."
 msgstr ""
+"Achten Sie darauf, ``username>`` nicht mitzumarkieren, wenn Sie den Befehl "
+"kopieren und in die Kommandozeile einfügen. Dies würde einen Fehler "
+"verursachen."
 
 #: ../../content/introduction.rst:30
 msgid ""
@@ -1180,14 +1238,19 @@ msgid ""
 "install OTOBO to a different directory, you have to change the path in the "
 "commands or create a symbolic link to this directory."
 msgstr ""
+"Wir gehen in diesem Handbuch davon aus, dass OTOBO im Verzeichnis ``/opt/"
+"otobo`` installiert wird. Möchten Sie OTOBO in einem anderen Vereichnis "
+"installieren, denken Sie daran, den Pfad in den Befehlen entsprechend "
+"anzupassen oder erstellen Sie einen symbolischen Link auf Ihr "
+"Zielverzeichnis."
 
 #: ../../content/migration-from-otrs-6.rst:12
 msgid "Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO 10"
-msgstr ""
+msgstr "Migration von OTRS / ((OTRS)) Community Edition Version 6 auf OTOBO 10"
 
 #: ../../content/migration-from-otrs-6.rst:14
 msgid "Welcome and thank you for choosing OTOBO!"
-msgstr ""
+msgstr "Willkommen und vielen Dank, dass Sie sich für OTOBO entschieden haben!"
 
 #: ../../content/migration-from-otrs-6.rst:16
 msgid ""
@@ -1196,12 +1259,17 @@ msgid ""
 "preparations and possibly also rework to ensure that it will be carried out "
 "successfully."
 msgstr ""
+"OTRS, ((OTRS)) Community Edition und OTOBO sind sehr umfassende Systeme, die "
+"große Flexibilität bieten. Deshalb erfordert jede Migration sorgfältige "
+"Vorbereitung und möglicherweise auch Nacharbeiten, um zum Erfolg zu führen."
 
 #: ../../content/migration-from-otrs-6.rst:19
 msgid ""
 "Please take your time for the migration and follow these instructions step "
 "by step."
 msgstr ""
+"Bitte nehmen Sie sich etwas Zeit für die Migration und halten Sie sich genau "
+"an die Anleitung."
 
 #: ../../content/migration-from-otrs-6.rst:21
 msgid ""
@@ -1209,34 +1277,44 @@ msgid ""
 "support line, write an email or post your query in the OTOBO Community forum "
 "at https://forum.otobo.org/."
 msgstr ""
+"Sollten Sie Probleme oder Fragen haben, ist das kein Grund zu Verzweifeln :) "
+"Rufen Sie unsere Support-Hotline an, schreiben Sie uns eine E-Mail oder "
+"bitten Sie im OTOBO Community Forum unter https://forum.otobo.org/ um "
+"Unterstützung."
 
 #: ../../content/migration-from-otrs-6.rst:24
 msgid "We will find a way to help you."
-msgstr ""
+msgstr "Wir finden sicherlich eine Möglichkeit, Ihnen zu helfen."
 
 #: ../../content/migration-from-otrs-6.rst:27
 msgid ""
 "After the migration all data previously available in OTRS 6 will be "
 "available in OTOBO again. We do not touch any OTRS data during the migration."
 msgstr ""
+"Nach der Migration werden alle bisher in OTRS 6 verfügbaren Daten in OTOBO "
+"verfügbar sein. Die Daten in Ihrem OTRS-Ursprungssystem werden während der "
+"Migration nicht berührt."
 
 #: ../../content/migration-from-otrs-6.rst:31
 msgid "Migration Possibilities"
-msgstr ""
+msgstr "Migrationsszenarien"
 
 #: ../../content/migration-from-otrs-6.rst:33
 msgid ""
 "With the OTOBO Migration Interface it is possible to perform the following "
 "migrations:"
 msgstr ""
+"Mit dem OTOBO Migrationstool können folgende Migrationen durchgeführt werden:"
 
 #: ../../content/migration-from-otrs-6.rst:35
 msgid "A 1:1 migration on the same server with the same database"
-msgstr ""
+msgstr "Eine 1:1-Migration, bei der Server und Datenbank gleich bleiben."
 
 #: ../../content/migration-from-otrs-6.rst:37
 msgid "A migration and simultaneous move to a new server and operating system."
 msgstr ""
+"Eine Migration mit gleichzeitigem Wechsel zu einem neuen Server und "
+"Betriebssystem."
 
 #: ../../content/migration-from-otrs-6.rst:39
 msgid ""
@@ -1244,22 +1322,29 @@ msgid ""
 "previously installed on two separate servers (application and database "
 "servers), or whether you want to change OTOBO to such a configuration."
 msgstr ""
+"Es ist unerheblich, ob Ihr OTRS/ ((OTRS)) Community Edition System bisher "
+"auf zwei verschiedenen Servern (Applikations- und Datenbankserver) betrieben "
+"wurde oder ob Sie nun mit OTOBO auf eine derartige Konfiguration umstellen "
+"möchten."
 
 #: ../../content/migration-from-otrs-6.rst:41
 msgid ""
 "It is possible to migrate from any one of the supported databases to any "
 "other one."
 msgstr ""
+"Sie können von jeder der unterstützten Datenbanken zu jeder anderen wechseln."
 
 #: ../../content/migration-from-otrs-6.rst:43
 msgid ""
 "It is possible to switch from any supported operating system to any other "
 "supported operating system during the migration."
 msgstr ""
+"Sie können im Rahmen der Migration von jedem unterstützten Betriebssystem zu "
+"jedem anderen unterstützten BS wechseln."
 
 #: ../../content/migration-from-otrs-6.rst:47
 msgid "Migration Requirements"
-msgstr ""
+msgstr "Migrationsvoraussetzungen"
 
 #: ../../content/migration-from-otrs-6.rst:49
 msgid ""
@@ -1274,17 +1359,31 @@ msgid ""
 "or ask your question in the OTOBO Community forum at https://forum.otobo."
 "org/."
 msgstr ""
+"Grundvoraussetzung für eine Migration ist, dass Sie bereits eine ((OTRS)) "
+"Community Edition oder OTRS 6.0.\\* betreiben und Konfiguration sowie Daten "
+"dieses Systems auf OTOBO übertragen möchten. Die Erfahrung zeigt, dass in "
+"vielen Fällen ein sauberer Neustart die bessere Option ist, weil die bisher "
+"genutzte Installation und Konfiguration in viele Fällen eher suboptimal war. "
+"Auch kann es sinnvoll sein, nur die Ticketdaten zu übertragen und die "
+"Grundkonfiguration gemäß OTOBO Best Practice vorzunehmen. Wir beraten Sie "
+"gerne, wenden Sie sich einfach per Mail an hallo@otobo.de an uns oder "
+"stellen Sie Ihre Fragen im OTOBO Community Forum unter https://forum.otobo."
+"org/."
 
 #: ../../content/migration-from-otrs-6.rst:51
 msgid ""
 "You need a running OTOBO installation to start the migration from there!"
 msgstr ""
+"Sie benötigen eine betriebsbereite OTOBO-Installation als Ausgangpunkt für "
+"die Migration!"
 
 #: ../../content/migration-from-otrs-6.rst:53
 msgid ""
 "This OTOBO installation must contain all OPM packages installed in your OTRS "
 "that you want to use in OTOBO, too."
 msgstr ""
+"Auf dieser OTOBO-Instanz müssen alle OPM-Pakete installiert sein, die Sie "
+"bisher in Ihrem OTRS nutzen und künftig in OTOBO nutzen möchten."
 
 #: ../../content/migration-from-otrs-6.rst:55
 msgid ""
@@ -1293,6 +1392,10 @@ msgid ""
 "SSH. Furthermore, the database servers must be able to communicate via the "
 "set database port and the database must allow external access."
 msgstr ""
+"Möchten Sie OTOBO auf einem anderen Server betreiben als das bisherige OTRS, "
+"müssen die Applikationsserver der beiden Systeme via SSH miteinander "
+"kommunizieren können. Auch die Datenbankserver müssen über den Datenbankport "
+"miteinander kommunizieren können und die Datenbank externen Zugriff zulassen."
 
 #: ../../content/migration-from-otrs-6.rst:59
 msgid ""
@@ -1300,6 +1403,9 @@ msgid ""
 "migrate OTRS to OTOBO on the same server and only then move the new "
 "installation."
 msgstr ""
+"Sind SSH-Kommunikation und Datenbankzugriff nicht möglich, migrieren Sie "
+"bitte zunächst von OTRS auf OTOBO auf demselben Server und ziehen die neue "
+"Instanz erst nachträglich um."
 
 #: ../../content/migration-from-otrs-6.rst:64
 #, fuzzy
@@ -1307,11 +1413,15 @@ msgid "Step 1: Install the new OTOBO System"
 msgstr "Schritt 11: OTOBO Daemon starten"
 
 #: ../../content/migration-from-otrs-6.rst:66
+#, fuzzy
 msgid ""
 "Please start with installing the new OTOBO system to which your OTRS / "
 "((OTRS)) Community Edition instance will then be migrated. We strongly "
 "recommend to read the OTOBO :doc:`installation` chapter."
 msgstr ""
+"Bitte beginnen Sie mit der Installation des neuen OTOBO-Systems, zu dem Ihre "
+"OTRS / ((OTRS)) Community Edition anschließend migriert wird. Wir empfehlen "
+"hierzu dringend das Kapitel :doc:`installation` zu lesen."
 
 #: ../../content/migration-from-otrs-6.rst:71
 msgid ""
@@ -1323,12 +1433,23 @@ msgid ""
 "out the mod_perl part in the file ``/opt/otobo/scripts/apache2-httpd.include."
 "conf``."
 msgstr ""
+"Installieren Sie OTOBO auf demselben Server wie OTRS / ((OTRS)) Community "
+"Edition und unter Apache, konfigurieren Sie den OTOBO (oder OTRS) Webserver "
+"ohne Mod_perl solange beide Systeme parallel laufen oder deaktivieren sie "
+"OTRS vor der Migration im Webserver. Apache hat Probleme damit, wenn zwei "
+"Systeme unter Mod_perl auf demselben Server laufen sollen. Um Mod_perl zu "
+"deaktivieren, kommentieren Sie einfach den mod_perl-Teil in der Datei ``/opt/"
+"otobo/scripts/apache2-httpd.include.conf`` aus."
 
 #: ../../content/migration-from-otrs-6.rst:76
 msgid ""
 "After finishing the installation tutorial, please login to the OTOBO Admin "
 "Area ``Admin -> Packages`` to install all required OTOBO OPM packages."
 msgstr ""
+"Sobald Sie das Installations-Tutorial durchlaufen haben, melden Sie sich "
+"bitte in OTOBO an und öffnen im Admin-Bereich die Paketverwaltung (``"
+"Administration -> Paketverwaltung``), um alle benötigten OTOBO OPM-Pakete zu "
+"installieren."
 
 #: ../../content/migration-from-otrs-6.rst:96
 msgid ""
@@ -1336,66 +1457,69 @@ msgid ""
 "NOT be installed, as these features are already available in the OTOBO "
 "standard:"
 msgstr ""
+"Folgende OPM-Pakete und OTRS-\"Feature Addons\" müssen und sollten NICHT "
+"installiert werden, da deren Funktionalität bereits im OTOBO Standard "
+"enthalten ist:"
 
 #: ../../content/migration-from-otrs-6.rst:80
 msgid "OTRSHideShowDynamicField"
-msgstr ""
+msgstr "OTRSHideShowDynamicField"
 
 #: ../../content/migration-from-otrs-6.rst:81
 msgid "RotherOSSHideShowDynamicField"
-msgstr ""
+msgstr "RotherOSSHideShowDynamicField"
 
 #: ../../content/migration-from-otrs-6.rst:82
 msgid "TicketForms"
-msgstr ""
+msgstr "TicketForms"
 
 #: ../../content/migration-from-otrs-6.rst:83
 msgid "RotherOSS-LongEscalationPerformanceBoost"
-msgstr ""
+msgstr "RotherOSS-LongEscalationPerformanceBoost"
 
 #: ../../content/migration-from-otrs-6.rst:84
 msgid "Znuny4OTRS-AdvancedDynamicFields"
-msgstr ""
+msgstr "Znuny4OTRS-AdvancedDynamicFields"
 
 #: ../../content/migration-from-otrs-6.rst:85
 msgid "Znuny4OTRS-AutoSelect"
-msgstr ""
+msgstr "Znuny4OTRS-AutoSelect"
 
 #: ../../content/migration-from-otrs-6.rst:86
 msgid "Znuny4OTRS-EscalationSuspend"
-msgstr ""
+msgstr "Znuny4OTRS-EscalationSuspend"
 
 #: ../../content/migration-from-otrs-6.rst:87
 msgid "OTRSEscalationSuspend"
-msgstr ""
+msgstr "OTRSEscalationSuspend"
 
 #: ../../content/migration-from-otrs-6.rst:88
 msgid "OTRSDynamicFieldAttachment"
-msgstr ""
+msgstr "OTRSDynamicFieldAttachment"
 
 #: ../../content/migration-from-otrs-6.rst:89
 msgid "OTRSDynamicFieldDatabase"
-msgstr ""
+msgstr "OTRSDynamicFieldDatabase"
 
 #: ../../content/migration-from-otrs-6.rst:90
 msgid "OTRSDynamicFieldWebService"
-msgstr ""
+msgstr "OTRSDynamicFieldWebService"
 
 #: ../../content/migration-from-otrs-6.rst:91
 msgid "OTRSBruteForceAttackProtection"
-msgstr ""
+msgstr "OTRSBruteForceAttackProtection"
 
 #: ../../content/migration-from-otrs-6.rst:92
 msgid "Znuny4OTRS-ExternalURLJump"
-msgstr ""
+msgstr "Znuny4OTRS-ExternalURLJump"
 
 #: ../../content/migration-from-otrs-6.rst:93
 msgid "Znuny4OTRS-QuickClose"
-msgstr ""
+msgstr "Znuny4OTRS-QuickClose"
 
 #: ../../content/migration-from-otrs-6.rst:94
 msgid "Znuny4OTRS-AutoCheckbox"
-msgstr ""
+msgstr "Znuny4OTRS-AutoCheckbox"
 
 #: ../../content/migration-from-otrs-6.rst:95
 #, fuzzy
@@ -1414,6 +1538,10 @@ msgid ""
 "``SecureMode``. Now log in on the server as user ``root`` and execute one of "
 "the following commands:"
 msgstr ""
+"Bitte rufen Sie nach der OTOBO-Installation erneut den OTOBO Admin-Bereich "
+"auf, navigieren Sie zum Punkt ``Administration -> Systemkonfiguration`` und "
+"deaktivieren Sie die Config-Option ``SecureMode``. Melden Sie sich nun als "
+"``root``-Benutzer am Server an und führen Sie folgende Befehle aus:"
 
 #: ../../content/migration-from-otrs-6.rst:113
 msgid ""
@@ -1422,37 +1550,54 @@ msgid ""
 "the entire installation process, but can instead import the backup for a new "
 "migration."
 msgstr ""
+"Wir empfehlen, an dieser Stelle ein Backup des gesamten OTOBO-Systems zu "
+"erstellen. Treten während der Migration Probleme auf, müssen Sie dann nicht "
+"den gesamten Installationsprozess wiederholen, sondern können stattdessen "
+"einfach das Backup importieren und eine neue Migration anstoßen."
 
 #: ../../content/migration-from-otrs-6.rst:118
 msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
 msgstr ""
+"Hierzu empfehlen wir die Lektüre des Kapitels OTOBO :doc:`backup-restore`."
 
 #: ../../content/migration-from-otrs-6.rst:122
 msgid "Install sshpass if you want to migrate OTRS from another server"
-msgstr ""
+msgstr "Installieren von sshpass, um OTRS von einem anderen Server zu migrieren"
 
 #: ../../content/migration-from-otrs-6.rst:124
 msgid ""
 "The tool *sshpass* is needed so we can copy files via ssh. Please log in on "
 "the server as user ``root`` and execute one of the following commands:"
 msgstr ""
+"Das Tool *sshpass* wird benötigt, um Dateien über eine SSH-Verbindung zu "
+"kopieren. Bitte melden Sie sich als ``root``-Benutzer am Server an und "
+"führen Sie einen der folgenden Befehle aus:"
 
 #: ../../content/migration-from-otrs-6.rst:143
 msgid "Step 3: Preparing the OTRS / ((OTRS)) Community Edition system"
 msgstr ""
+"Schritt 3: Vorbereiten des OTRS/ ((OTRS)) Community Edition Quellsystems"
 
 #: ../../content/migration-from-otrs-6.rst:146
+#, fuzzy
 msgid ""
 "Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition "
 "system, too. Yes, we do not touch any OTRS data during the migration, but at "
 "times a wrong entry is enough to cause trouble."
 msgstr ""
+"Stellen Sie sicher, dass auch für Ihr OTRS / ((OTRS)) Community Edition ein "
+"aktuelles und vollständiges Backup vorliegt. Selbst wenn die Daten im "
+"Quellsystem während der Migration nicht angetastet werden, kann schon ein "
+"falscher Zugang unter Umständen Probleme bereiten."
 
 #: ../../content/migration-from-otrs-6.rst:150
 msgid ""
 "Now we are ready for the migration. First of all we need to make sure that "
 "no more tickets are processed and no users log on to OTRS:"
 msgstr ""
+"Damit sind die grundlegenden Voraussetzungen für die Migration geschaffen. "
+"Stellen Sie nun sicher, dass keine Tickets mehr bearbeitet werden und sich "
+"Benutzer nicht mehr in OTRS anmelden können:"
 
 #: ../../content/migration-from-otrs-6.rst:153
 msgid ""
@@ -1460,30 +1605,33 @@ msgid ""
 "add a new system maintenance slot for a few hours. After that, delete all "
 "agent and user sessions (``Admin ->  Sessions``) and logout yourself."
 msgstr ""
+"Rufen Sie im OTRS Admin-Bereich den Punkt ``Administration ->  "
+"Systemwartung`` auf und fügen Sie ein neues Systemwartungs-Zeitfenster über "
+"einige Stunden hinzu. Löschen Sie anschließend alle Agenten- und User-"
+"Sitzungen (``Administration ->  Sitzungsverwaltung``) und melden Sie sich ab."
 
 #: ../../content/migration-from-otrs-6.rst:157
 msgid "Stop All Relevant Services and the OTRS Daemon"
-msgstr ""
+msgstr "Stoppen aller relevanten Services und des OTRS Daemon"
 
 #: ../../content/migration-from-otrs-6.rst:159
 msgid "Please make sure there are no more running services or cron jobs."
 msgstr ""
+"Stellen Sie sicher, dass keine Dienste oder Crons Jobs mehr ausgeführt "
+"werden."
 
 #: ../../content/migration-from-otrs-6.rst:174
-#, fuzzy
 msgid "Step 4: Start the Migration!"
-msgstr "Schritt 11: OTOBO Daemon starten"
+msgstr "Schritt 4: Starten der Migration!"
 
 #: ../../content/migration-from-otrs-6.rst:176
-#, fuzzy
 msgid ""
 "Please use the web migration tool at http://localhost/otobo/migration.pl "
 "(replace \"localhost\" with your OTOBO hostname) and follow the process."
 msgstr ""
-"Bitte verwenden Sie den Web Installer unter http://localhost/otobo/installer."
-"pl (ersetzen Sie \"localhost\" durch Ihren OTOBO Host), um die Konfiguration "
-"der Datenbank sowie grundlegender Systemeinstellungen wie der E-Mail-Konten "
-"vorzunehmen."
+"Bitte verwenden Sie das OTOBO Migrationstool, das Sie unter http://localhost/"
+"otobo/installer.pl finden (ersetzen Sie \"localhost\" durch Ihren OTOBO Host)"
+". Es führt Sie Schritt für Schritt durch den Prozess."
 
 #: ../../content/migration-from-otrs-6.rst:179
 msgid ""
@@ -1491,26 +1639,30 @@ msgid ""
 "system. Once you have decided that the migration was successful and that you "
 "want to use OTOBO from now on, start the OTOBO Daemon:"
 msgstr ""
+"Ist die Migration abgeschlossen, nehmen Sie sich etwas Zeit und testen Sie "
+"das System ausgiebig. Sobald Sie sicher sind, dass die Migration erfolgreich "
+"durhcgeführt wurde und dass Sie von nun an mit OTOBO arbeiten möchten, "
+"starten Sie den OTOBO Daemon:"
 
 #: ../../content/migration-from-otrs-6.rst:191
 msgid "Step 5: After Successful Migration!"
-msgstr ""
+msgstr "Schritt 5: Nach der Migration!"
 
 #: ../../content/migration-from-otrs-6.rst:193
 msgid "Uninstall *sshpass* if you don´t needed anymore."
-msgstr ""
+msgstr "Deinstallieren Sie *sshpass*, wenn Sie es nicht mehr benötigen."
 
 #: ../../content/migration-from-otrs-6.rst:194
 msgid "Have fun with OTOBO!"
-msgstr ""
+msgstr "Viel Vergnügen mit OTOBO!"
 
 #: ../../content/migration-from-otrs-6.rst:198
 msgid "Step 6: Known Migration Problems"
-msgstr ""
+msgstr "Schritt 6: Bekannte Probleme bei der Migration"
 
 #: ../../content/migration-from-otrs-6.rst:201
 msgid "1. Login after migration not possible"
-msgstr ""
+msgstr "1. Anmeldung nach der Migration nicht möglich"
 
 #: ../../content/migration-from-otrs-6.rst:203
 msgid ""
@@ -1519,10 +1671,14 @@ msgid ""
 "With Safari it was sometimes necessary to manually delete the old OTRS "
 "session."
 msgstr ""
+"Während unserer Migrationstests kam es gelegentlich vor, dass der für die "
+"Migration verwendete Browser Probleme verursachte. Nach einem Browser-"
+"Neustart waren diese in aller Regel gelöst. In Safari war es manchmal "
+"erforderlich, die alte OTRS-Sitzung manuell zu löschen."
 
 #: ../../content/migration-from-otrs-6.rst:207
 msgid "Step 7: Manual Migration Tasks and Changes"
-msgstr ""
+msgstr "Schritt 7: Manuelle Aufgaben und Anpassungen"
 
 #: ../../content/migration-from-otrs-6.rst:209
 msgid ""
@@ -1531,10 +1687,15 @@ msgid ""
 "changed in the system configuration (``PreferencesGroups###Password`` and "
 "``CustomerPersonalPreference###Password``)."
 msgstr ""
+"Mit OTOBO 10 wurde standardmäßig eine neue Passwortrichtlinie für Agenten "
+"und Kundenbenutzer eingeführt, wenn diese sich lokal authentifizieren. Die "
+"Regeln der Passwortrichtlinie können in der Systemkonfiguration angepasst "
+"werden (``PreferencesGroups###Password`` und "
+"``CustomerPersonalPreference###Password``)."
 
 #: ../../content/migration-from-otrs-6.rst:212
 msgid "Password Policy Rule"
-msgstr ""
+msgstr "Regel Passwortrichtlinie"
 
 #: ../../content/migration-from-otrs-6.rst:212
 msgid "Default"
@@ -1542,15 +1703,15 @@ msgstr "Standard"
 
 #: ../../content/migration-from-otrs-6.rst:214
 msgid "``PasswordMinSize``"
-msgstr ""
+msgstr "``PasswordMinSize``"
 
 #: ../../content/migration-from-otrs-6.rst:214
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: ../../content/migration-from-otrs-6.rst:216
 msgid "``PasswordMin2Lower2UpperCharacters``"
-msgstr ""
+msgstr "``PasswordMin2Lower2UpperCharacters``"
 
 #: ../../content/migration-from-otrs-6.rst:216
 #: ../../content/migration-from-otrs-6.rst:218
@@ -1559,28 +1720,29 @@ msgid "Yes"
 msgstr "Ja"
 
 #: ../../content/migration-from-otrs-6.rst:218
+#, fuzzy
 msgid "``PasswordNeedDigit``"
-msgstr ""
+msgstr "``PasswordNeedDigit``"
 
 #: ../../content/migration-from-otrs-6.rst:220
 msgid "``PasswordHistory``"
-msgstr ""
+msgstr "``PasswordHistory``"
 
 #: ../../content/migration-from-otrs-6.rst:220
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: ../../content/migration-from-otrs-6.rst:222
 msgid "``PasswordTTL``"
-msgstr ""
+msgstr "``PasswordTTL``"
 
 #: ../../content/migration-from-otrs-6.rst:222
 msgid "30 days"
-msgstr ""
+msgstr "30 Tage"
 
 #: ../../content/migration-from-otrs-6.rst:224
 msgid "``PasswordWarnBeforeExpiry``"
-msgstr ""
+msgstr "``PasswordWarnBeforeExpiry``"
 
 #: ../../content/migration-from-otrs-6.rst:224
 msgid "5 days"
@@ -1588,17 +1750,19 @@ msgstr "5 Tage"
 
 #: ../../content/migration-from-otrs-6.rst:226
 msgid "``PasswordChangeAfterFirstLogin``"
-msgstr ""
+msgstr "``PasswordChangeAfterFirstLogin``"
 
 #: ../../content/performance-tuning.rst:12
 msgid "Performance Tuning"
-msgstr ""
+msgstr "Performance Tuning"
 
 #: ../../content/performance-tuning.rst:14
 msgid ""
 "There is a list of performance enhancing techniques for your OTOBO "
 "installation, including configuration, coding, memory use, and more."
 msgstr ""
+"Es gibt eine Reihe von Möglichkeiten, die Leistung Ihrer OTOBO Installation "
+"zu verbessern, u. a. durch Konfiguration, Entwicklung, Speichernutzung, etc."
 
 #: ../../content/performance-tuning.rst:18
 msgid "Ticket Index Module"
@@ -1610,10 +1774,13 @@ msgid ""
 "IndexModule``. There are two back end modules building the index for the "
 "ticket queue view:"
 msgstr ""
+"Das Ticket-Indexmodul kann in der Systemkonfiguration über die Einstellung "
+"``Ticket::IndexModule``definiert werden. Zwei Backend-Module bilden den "
+"Index für die Ticket-Ansicht nach Queues:"
 
 #: ../../content/performance-tuning.rst:23
 msgid "``Kernel::System::Ticket::IndexAccelerator::RuntimeDB``"
-msgstr ""
+msgstr "``Kernel::System::Ticket::IndexAccelerator::RuntimeDB``"
 
 #: ../../content/performance-tuning.rst:23
 msgid ""
@@ -1621,10 +1788,13 @@ msgid ""
 "from the ticket table. You will not have performance trouble until you have "
 "about 60,000 open tickets in your system."
 msgstr ""
+"Die Standardoption, in der jede Queue-Ansicht zur Laufzeit aus der "
+"Tickettabelle generiert wird. Keine Performance-Beeinträchtigungen bis Sie "
+"etwa 60.000 offene Tickets im System haben."
 
 #: ../../content/performance-tuning.rst:31
 msgid "``Kernel::System::Ticket::IndexAccelerator::StaticDB``"
-msgstr ""
+msgstr "``Kernel::System::Ticket::IndexAccelerator::StaticDB``"
 
 #: ../../content/performance-tuning.rst:26
 msgid ""
@@ -1633,20 +1803,27 @@ msgid ""
 "with keywords based on ticket data. Use the following command for generating "
 "an initial index after switching back ends:"
 msgstr ""
+"Das leistungsstärkste Modul. Empfohlen bei über 80.000 offenen Tickets im "
+"System. Das Modul verwendet eine spezielle ``ticket_index``-Tabelle, die auf "
+"Basis der Ticketdaten mit Kexwords bestückt wird. Verwenden Sie folgenden "
+"Befehl, um nach der Umstellung einen neuen Index zu generieren:"
 
 #: ../../content/performance-tuning.rst:34
 msgid "Ticket Search Index"
-msgstr ""
+msgstr "Ticket-Suchindex"
 
 #: ../../content/performance-tuning.rst:36
 msgid ""
 "OTOBO uses a special search index to perform full-text searches across "
 "fields in articles from different communication channels."
 msgstr ""
+"OTOBO nutzt einen speziellen Suchindex, um felderübergreifende "
+"Volltextsuchen in Artikeln aus unterschiedlichen Kommunikationskanälen "
+"durchzuführen."
 
 #: ../../content/performance-tuning.rst:38
 msgid "To create an initial index, use this command:"
-msgstr ""
+msgstr "Verwenden Sie folgenden Befehl, um einen initialen Index zu erstellen:"
 
 #: ../../content/performance-tuning.rst:46
 msgid ""
@@ -1655,14 +1832,18 @@ msgid ""
 "immediately, it could happen their index is available only after a few "
 "minutes."
 msgstr ""
+"Die eigentliche Artikelindexierung erfolgt über einen OTOBO Daemon-Job im "
+"Hintergrund. Auch wenn gerade im System hinzugefügte Artikel sofort zur "
+"Indexierung markiert werden, kann es sein, dass der Index erst nach einigen "
+"Minuten zur Verfügung steht."
 
 #: ../../content/performance-tuning.rst:48
 msgid "There are some options available for fine-tuning the search index:"
-msgstr ""
+msgstr "Es gibt einige Möglichkeiten zum Finetuning des Suchindex:"
 
 #: ../../content/performance-tuning.rst:51
 msgid "``Ticket::SearchIndex::IndexArchivedTickets``"
-msgstr ""
+msgstr "``Ticket::SearchIndex::IndexArchivedTickets``"
 
 #: ../../content/performance-tuning.rst:51
 msgid ""
@@ -1671,26 +1852,30 @@ msgid ""
 "archived tickets. If this is enabled, archived tickets will be found by full-"
 "text searches."
 msgstr ""
+"Definiert, ob archivierte Tickets in den Suchindex aufgenommen werden ("
+"standardmäßig deaktiviert). In großen Systemen mit archivierten Tickets ist "
+"dies empfehlenswert, um den Suchindex klein zu halten. Ist die Option "
+"aktiviert, werden auch archivierte Tickets über die Volltextsuche gefunden."
 
 #: ../../content/performance-tuning.rst:73
 msgid "``Ticket::SearchIndex::Attribute``"
-msgstr ""
+msgstr "``Ticket::SearchIndex::Attribute``"
 
 #: ../../content/performance-tuning.rst:54
 msgid "Basic full-text index settings."
-msgstr ""
+msgstr "Grundlegende Einstellungen für die Volltextsuche."
 
 #: ../../content/performance-tuning.rst:59
 msgid "``Ticket::SearchIndex::Attribute`` Setting"
-msgstr ""
+msgstr "Einstellungen ``Ticket::SearchIndex::Attribute``"
 
 #: ../../content/performance-tuning.rst:63
 msgid "Run the following command in order to generate a new index:"
-msgstr ""
+msgstr "Führen Sie folgenden Befehl aus, um einen neuen Index zu generieren:"
 
 #: ../../content/performance-tuning.rst:70
 msgid "``WordCountMax``"
-msgstr ""
+msgstr "``WordCountMax``"
 
 #: ../../content/performance-tuning.rst:70
 msgid ""
@@ -1698,84 +1883,101 @@ msgid ""
 "index. For example only the first 1000 words of an article body are stored "
 "in the article search index."
 msgstr ""
+"Definiert die Maximalzahl der beim Aufbau des Index verarbeiteten Worte. "
+"Beispiel: Im Artikel-Suchindex werden nur die ersten 1.000 Wörter des "
+"Artikel-Body gespeichert."
 
 #: ../../content/performance-tuning.rst:73
 msgid "``WordLengthMin`` and ``WordLengthMax``"
-msgstr ""
+msgstr "``WordLengthMin`` und ``WordLengthMax``"
 
 #: ../../content/performance-tuning.rst:73
 msgid ""
 "Used as word length boundaries. Only words with a length between these two "
 "values are stored in the article search index."
 msgstr ""
+"Werden zur Begrenzung der Wortlänge verwendet. Im Artikel-Sucheindex werden "
+"nur Wörter mit einer Länge zwischen den beiden Werten gespeichert."
 
 #: ../../content/performance-tuning.rst:87
 msgid "``Ticket::SearchIndex::Filters``"
-msgstr ""
+msgstr "``Ticket::SearchIndex::Filters``"
 
 #: ../../content/performance-tuning.rst:76
 msgid "Full-text index regular expression filters to remove parts of the text."
-msgstr ""
+msgstr "Filter zum Entfernen regulärer Ausdrücke aus dem Volltextindex."
 
 #: ../../content/performance-tuning.rst:81
 msgid "``Ticket::SearchIndex::Filters`` Setting"
-msgstr ""
+msgstr "Einstellungen ``Ticket::SearchIndex::Filters``"
 
 #: ../../content/performance-tuning.rst:83
 msgid "There are three default filters defined:"
-msgstr ""
+msgstr "Standardmäßig sind drei Filter definiert:"
 
 #: ../../content/performance-tuning.rst:85
 msgid ""
 "The first filter strips out special chars like: , & < > ? \" ! * | ; [ ] ( ) "
 "+ $ ^ ="
 msgstr ""
+"Der erste Filter sortiert Sonderzeichen wie die Folgenden aus: , & < > ? \" "
+"! * | ; [ ] ( ) + $ ^ ="
 
 #: ../../content/performance-tuning.rst:86
 msgid ""
 "The second filter strips out words which begin or end with one of following "
 "chars: ' : ."
 msgstr ""
+"Der zweite Filter sortiert Wörter aus, die mit einem der folgenden Zeichen "
+"beginnen oder enden: ' : ."
 
 #: ../../content/performance-tuning.rst:87
 msgid ""
 "The third filter strips out words which do not contain a word character: a-"
 "z, A-Z, 0-9, _"
 msgstr ""
+"Der dritte Filter sortiert Wörter aus, die keines der folgenden Zeichen "
+"enthalten: a-z, A-Z, 0-9, _"
 
 #: ../../content/performance-tuning.rst:103
 msgid "``Ticket::SearchIndex::StopWords``"
-msgstr ""
+msgstr "``Ticket::SearchIndex::StopWords``"
 
 #: ../../content/performance-tuning.rst:90
 msgid ""
 "English stop words for full-text index. These words will be removed from the "
 "search index."
 msgstr ""
+"Englische Stopwörter für den Volltext-Index. Diese Wörter werden aus dem "
+"Suchindex entfernt."
 
 #: ../../content/performance-tuning.rst:95
 msgid "``Ticket::SearchIndex::StopWords###en`` Setting"
-msgstr ""
+msgstr "Einstellungen ``Ticket::SearchIndex::StopWords###en``"
 
 #: ../../content/performance-tuning.rst:97
 msgid ""
 "There are so-called stop-words defined for some languages. These stop-words "
 "will be skipped while creating the search index."
 msgstr ""
+"Für einige Sprachen sind sogenannte Stopwort-Listen definiert. Diese Worte "
+"werden beim Anlegen des Suchindex ausgelassen."
 
 #: ../../content/performance-tuning.rst:100
 msgid ""
 "If your language is not in the system configuration settings or you want to "
 "add more words, you can add them to this setting:"
 msgstr ""
+"Möchten Sie zusätzliche Wörter ergänzen, können Sie diese unter der "
+"folgenden Einstellung hinzufügen:"
 
 #: ../../content/performance-tuning.rst:102
 msgid "``Ticket::SearchIndex::StopWords###Custom``"
-msgstr ""
+msgstr "``Ticket::SearchIndex::StopWords###Custom``"
 
 #: ../../content/performance-tuning.rst:106
 msgid "Document Search"
-msgstr ""
+msgstr "Dokumentensuche"
 
 #: ../../content/performance-tuning.rst:108
 msgid ""
@@ -1784,10 +1986,14 @@ msgid ""
 "please follow the `Getting Started guide <https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/getting-started.html>`__."
 msgstr ""
+"OTOBO nutzt Elasticsearch für die Dokumentensuche. Eine gute Einführung in "
+"die Konzeption, Installation und Nutzung von Elasticsearch bietet der `"
+"Elasticsearch Getting Started Guide <https://www.elastic.co/guide/en/"
+"elasticsearch/reference/current/getting-started.html>`__."
 
 #: ../../content/performance-tuning.rst:112
 msgid "Heap Size"
-msgstr ""
+msgstr "Heap-Größe"
 
 #: ../../content/performance-tuning.rst:114
 msgid ""
@@ -1796,20 +2002,26 @@ msgid ""
 "called *heap*, which size can be configured in configuration file ``jvm."
 "options``."
 msgstr ""
+"Elasticsearch ist in Java geschrieben und läuft folglich in einer Java "
+"Virtual Machine (JVM) auf jedem Clusterknoten. Eine solche JVM nutzt einen "
+"Tel des Speichers, den sogenannten Heap, dessen Größe in der "
+"Konfigurationsdatei ``jvm.options`` definiert werden kann."
 
 #: ../../content/performance-tuning.rst:116
 msgid ""
 "The heap minimum and maximum configurations are by default set to a value of "
 "1 GB and can be modified with the following options:"
 msgstr ""
+"Mindest- und Maximalkonfiguration für den Heap sind standardmäßig auf einen "
+"Wert von 1 GB fesgelegt und können mit folgenden Optionen angepasst werden:"
 
 #: ../../content/performance-tuning.rst:118
 msgid "``Xms1g``: minimum heap size."
-msgstr ""
+msgstr "``Xms1g``: Heap-Mindestgröße."
 
 #: ../../content/performance-tuning.rst:119
 msgid "``Xmx1g``: maximum heap size."
-msgstr ""
+msgstr "``Xmx1g``: Heap-Maximalgröße."
 
 #: ../../content/performance-tuning.rst:121
 msgid ""
@@ -1820,12 +2032,20 @@ msgid ""
 "actions. Therefore it is highly recommended to set those configurations to "
 "an equal value."
 msgstr ""
+"Liegt der ``Xms``-Wert unter dem für ``Xmx``, passt die JVM den verwendeten "
+"Heap bei jeder Überschreitung des aktuellen Limits automatisch an, bis der "
+"``Xmx``-Wert erreicht ist. Bei jeder Anpassung wird der Dienst bis zum Ende "
+"pausiert, so dass Schnelligkeit und Reaktivität der Suche und Indexierung "
+"beeinträchtig werden können. Wir empfehlen deshalb dringend, beide Parameter "
+"auf den gleichen Wert zu setzen."
 
 #: ../../content/performance-tuning.rst:125
 msgid ""
 "If the maximum heap size is exceeded, the related cluster node stops working "
 "and might even shutdown the service."
 msgstr ""
+"Wird die maximale Heap-Größe überschritten, stoppt der zugehörige "
+"Clusterknoten die Arbeit und kann den Dienst sogar herunterfahren."
 
 #: ../../content/performance-tuning.rst:127
 msgid ""
@@ -1834,6 +2054,10 @@ msgid ""
 "collection, done by the JVM. Therefore it is recommended to set a value for "
 "``Xmx``, that is not higher than 50% of the physical memory."
 msgstr ""
+"Je höher die maximale Heap-Größe, desto mehr Speicher kann Elasticsearch "
+"nutzen. Damit steigt auch die Anzahl möglicher Pausen durch die Garbage "
+"Collection der JVM. Es wird deshalb empfohlen, den Wert für ``Xmx``auf "
+"maximal 50 % des physischen Speichers zu setzen."
 
 #: ../../content/performance-tuning.rst:129
 msgid ""
@@ -1841,10 +2065,13 @@ msgid ""
 "follow `the official documentation <https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/heap-size.html>`__."
 msgstr ""
+"Weitere Informationen und gute Richwerte für die Heap-Größe entnehmen Sie "
+"bitte `der offiziellen Dokumentation <https://www.elastic.co/guide/en/"
+"elasticsearch/reference/current/heap-size.html>`__."
 
 #: ../../content/performance-tuning.rst:133
 msgid "Disk Allocation"
-msgstr ""
+msgstr "Festplattennutzung"
 
 #: ../../content/performance-tuning.rst:135
 msgid ""
@@ -1856,10 +2083,17 @@ msgid ""
 "important configurations, that come with good default values, but might be "
 "important:"
 msgstr ""
+"Elasticsearch prüft während der Laufzeit den verfügbaren Festplattenplatz "
+"und entscheidet darüber, ob dem jeweiligen Clusterknoten weitere Shards "
+"zugewiesen oder diese sogar abgezogen werden. Dieses Verhalten wird durch "
+"die verfügbare Festplattenkapazität gesteuert und kann in der "
+"Konfigurationsdatei ``elasticsearch.yml`` konfiguriert werden. Hier finden "
+"Sie einige wichtige Konfigurationen, die standardmäßig mit guten Werten "
+"versehen sind, aber von Bedeutung sein können:"
 
 #: ../../content/performance-tuning.rst:138
 msgid "``cluster.routing.allocation.disk.watermark.low``"
-msgstr ""
+msgstr "``cluster.routing.allocation.disk.watermark.low``"
 
 #: ../../content/performance-tuning.rst:138
 msgid ""
@@ -1867,10 +2101,14 @@ msgid ""
 "allocate more shards to the related cluster node. The operation of that node "
 "is not influenced and data can still be indexed and searched."
 msgstr ""
+"Standardwert 85 %. Wird diese Grenze überschritten, weist Elasticsearch dem "
+"jeweiligen Clusterknoten keine weiteren Shards zu. Der Betrieb des "
+"jeweiligen Knotens wird nicht beeinträchtigt, Daten können weiterhin "
+"indexiert und durchsucht werden."
 
 #: ../../content/performance-tuning.rst:141
 msgid "``cluster.routing.allocation.disk.watermark.high``"
-msgstr ""
+msgstr "``cluster.routing.allocation.disk.watermark.high``"
 
 #: ../../content/performance-tuning.rst:141
 msgid ""
@@ -1878,12 +2116,16 @@ msgid ""
 "relocate existing shards to other nodes (if possible), that have enough "
 "space available."
 msgstr ""
+"Standardwert 90 % . Wird dieser Grenzwert überschritten, versucht "
+"Elasticsearch (sofern möglich) vorhandene Shards auf andere Knoten zu "
+"verschieben, die genügend Platz verfügbar haben."
 
 #: ../../content/performance-tuning.rst:144
 msgid "``cluster.routing.allocation.disk.watermark.flood_stage``"
-msgstr ""
+msgstr "``cluster.routing.allocation.disk.watermark.flood_stage``"
 
 #: ../../content/performance-tuning.rst:144
+#, fuzzy
 msgid ""
 "Default value of 95%. If this limit is exceeded, Elasticsearch will update "
 "the configuration of all indices to read-only index blocks ``index.blocks."
@@ -1891,6 +2133,12 @@ msgid ""
 "related cluster node. Since then, it is not possible to index new data to "
 "such indices and restricted to searches and delete actions."
 msgstr ""
+"Standardwert 95 %. Wird dieser Grenzwert überschritten, aktualisiert "
+"Elasticsearch die Konfiguration aller Indizes auf schreibgeschützte "
+"Indexblöcke ``index.blocks.read_only_allow_delete``, von denen mindestens "
+"ein Shard dem jeweiligen Clusterknoten zugeordnet ist. Ab diesem Zeitpunkt "
+"ist es nicht mehr möglich, neue Daten zu diesen Indizes hinzuzufügen. Es "
+"können nur noch Such- und Löschvorgänge durchgeführt werden."
 
 #: ../../content/performance-tuning.rst:148
 msgid ""
@@ -1900,17 +2148,27 @@ msgid ""
 "manual actions, it is needed to change the configuration back to normal mode "
 "manually."
 msgstr ""
+"Wurde der Grenzwert überschritten und sind bestimmte Indizes auf Readonly "
+"gesetzt, wird Elasticsearch diese Konfiguration *nicht automatisch* wieder "
+"zurücksetzen. Haben Sie also von Hand dafür gesorgt, dass wiedergnügend "
+"Festplattenspeicher verfügbar ist, ist es erforderlich, die Konfiguration "
+"von Hand wieder auf den Normalmodus zurückzusetzen."
 
 #: ../../content/performance-tuning.rst:150
+#, fuzzy
 msgid ""
 "For more information about disk watermarks and disk-based shard allocation, "
 "please follow `the official documentation <https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/disk-allocator.html>`__."
 msgstr ""
+"Weitere Infomationen zu Disk Watermarks und der festplattenbasierten Shard-"
+"Zuweisung finden Sie in der `offiziellen Elasticsearch-Dokumentation "
+"<https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-"
+"allocator.html>`__."
 
 #: ../../content/performance-tuning.rst:154
 msgid "Article Storage"
-msgstr ""
+msgstr "Artikelspeicher"
 
 #: ../../content/performance-tuning.rst:156
 msgid ""
@@ -1918,11 +2176,16 @@ msgid ""
 "email and internal articles. The used article storage can be configured in "
 "the setting ``Ticket::Article::Backend::MIMEBase::ArticleStorage``."
 msgstr ""
+"Es gibt zwei verschiedene Backendmodule für die Speicherung von Telefon-, "
+"E-Mail- und internen Artikeln. Der verwendete Artikelspeicher kann in der "
+"Systemkonfiguration unter "
+"``Ticket::Article::Backend::MIMEBase::ArticleStorage`` definiert werden."
 
 #: ../../content/performance-tuning.rst:163
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB``"
 msgstr ""
+"``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB``"
 
 #: ../../content/performance-tuning.rst:159
 msgid ""
@@ -1930,15 +2193,19 @@ msgid ""
 "with multiple front end servers, but requires much storage space in the "
 "database."
 msgstr ""
+"Dieses Standardmodul speichert Anhänge in der Datenbank. Es unterstützt auch "
+"mehrere Frontend-Server, benötigt jedoch erheblichen Speicherplatz in der "
+"Datenbank."
 
 #: ../../content/performance-tuning.rst:163
 msgid "Don't use this with large setups."
-msgstr ""
+msgstr "Verwenden Sie dieses Modul nicht für große Systeme."
 
 #: ../../content/performance-tuning.rst:170
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS``"
 msgstr ""
+"``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS``"
 
 #: ../../content/performance-tuning.rst:166
 msgid ""
