@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-08-18 00:30+0200\n"
-"PO-Revision-Date: 2020-08-17 17:48+0000\n"
+"PO-Revision-Date: 2020-08-18 09:03+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <http://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -898,86 +898,116 @@ msgstr ""
 "entschieden, entfällt Schritt 4."
 
 #: ../../content/installation-docker.rst:77
+#, fuzzy
 msgid ""
 "For productive environments we recommend the use of a web proxy. If you want "
 "to install your own web proxy for OTOBO, an extra docker nginx image is "
 "available for use. In this case, please rename the ``."
 "docker_compose_env_https`` file to ``.env``."
 msgstr ""
+"Für Produktivumgebungen empfehlen wir die Verwendung eines Webproxy. Möchten "
+"Sie einen eigenen Webproxy für OTOBO installieren, gibt es hierfür ein "
+"spezielles Docker NGINX Image. Benennen Sie in diesem Fall bitte die Datei ``"
+".docker_compose_env_https`` in ``.env`` um."
 
 #: ../../content/installation-docker.rst:87
 msgid "3. Edit the ``.env`` file"
-msgstr ""
+msgstr "3. Bearbeiten der ``.env``-Datei"
 
 #: ../../content/installation-docker.rst:89
 msgid "Change the following values inside the ``.env`` file:"
-msgstr ""
+msgstr "Ändern Sie folgende Werte in der ``.env``-Datei:"
 
 #: ../../content/installation-docker.rst:91
 msgid ""
 "``OTOBO_DB_ROOT_PASSWORD`` The root password for MySQL. Must be set for "
 "running otobo db to any value."
 msgstr ""
+"``OTOBO_DB_ROOT_PASSWORD`` Das Root-Passwort für MySQL. Muss einen Wert "
+"enthalten, damit die OTOBO Datenbank verwendet werden kann."
 
 #: ../../content/installation-docker.rst:94
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE`` SSL cert for the nginx webproxy. We "
 "configure this value in the next chapter."
 msgstr ""
+"``OTOBO_NGINX_SSL_CERTIFICATE`` SSL-Zertifikat für den NGINX Webproxy. "
+"Dieser Wert wird im nächsten Kapitel konfiguriert."
 
 #: ../../content/installation-docker.rst:97
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY`` SSL key for the nginx webproxy. We "
 "configure this value in the next chapter."
 msgstr ""
+"``OTOBO_NGINX_SSL_CERTIFICATE_KEY`` SSL-schlüssel für den NGINX-Webproxy. "
+"Dieser Wert wird im nächsten Kapitel konfiguriert."
 
 #: ../../content/installation-docker.rst:102
 msgid "4. Set up SSL for the Nginx webproxy"
-msgstr ""
+msgstr "4. Einrichten von SSL für den NGINX-Webproxy"
 
 #: ../../content/installation-docker.rst:104
 msgid "Nginx needs for SSL encryption a certificate and a private key."
 msgstr ""
+"NGINX erfordert für die SSL-Verschlüsselung ein Zertifikat sowie einen "
+"privaten Schlüssel."
 
 #: ../../content/installation-docker.rst:107
 msgid ""
 "For testing and development a self-signed certificate can be used. In the "
 "general case registered certificates must be used."
 msgstr ""
+"Für Testzwecke und beim Entwickeln kann ein selbstsigniertes Zertifikat "
+"verwendet werden. Im Allgemeinen sind registrierte Zertifikate erforderlich."
 
 #: ../../content/installation-docker.rst:111
 msgid ""
 "To specify a CA chain with a certificate in Nginx, it is necessary to copy "
 "the CA chain file with the actual certificate into a file."
 msgstr ""
+"Um im Nginx eine CA-Chain zusammen mit einem Zertifikat anzugeben, ist es "
+"notwendig das CA-Chain-File mit dem eigentlichen Zertifikat in eine Datei zu "
+"kopieren."
 
 #: ../../content/installation-docker.rst:114
+#, fuzzy
 msgid "**Store the certificate in a volume**"
-msgstr ""
+msgstr "**Speichern des Zertifikats auf einem Volume**"
 
 #: ../../content/installation-docker.rst:116
+#, fuzzy
 msgid ""
 "The certificate and the private key are stored in a volume, so that they can "
 "be used by nginx later on. In any case the volume needs to be generated "
 "manually, and we need to copy the certificate and key to the volume:"
 msgstr ""
+"Das Zertifikat und der private Schlüssel werden separat gespeichert, um "
+"später vom Nginx verwendet werden können. Das Verzeichnis muss manuell "
+"angelegt werden, bevor Sie Zertifikat und Schlüssel dorthin kopieren können:"
 
 #: ../../content/installation-docker.rst:124
+#, fuzzy
 msgid ""
 "The names of the copied files need to be set in our new created .env file. E."
 "g."
 msgstr ""
+"Die Namen der kopierten Dateien müssen in die eben angelegte ``.env``-Datei "
+"eingegeben werden. Beispiel:"
 
 #: ../../content/installation-docker.rst:126
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 msgstr ""
+"``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
+"``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 
 #: ../../content/installation-docker.rst:129
 msgid ""
 "Please do not change the path ``/etc/nginx/ssl/``, but only the filename."
 msgstr ""
+"Bitte achten Sie darauf, die Pfadangabe ``/etc/nginx/ssl/`` unverändert zu "
+"lassen und nur den Dateinamen zu ändern."
 
 #: ../../content/installation-docker.rst:133
 msgid "5. Start the docker-compose image"
