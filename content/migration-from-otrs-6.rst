@@ -94,9 +94,9 @@ Now log in on the server as user ``root`` and execute the following commands:
 .. code-block:: bash
 
     root> su - otobo
-    otrs>
-    otrs> /opt/otobo/bin/Cron.sh stop
-    otrs> /opt/otobo/bin/otobo.Daemon stop --force
+    otobo>
+    otobo> /opt/otobo/bin/Cron.sh stop
+    otobo> /opt/otobo/bin/otobo.Daemon stop --force
 
 .. note::
 
