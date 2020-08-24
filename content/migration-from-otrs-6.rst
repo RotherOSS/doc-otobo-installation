@@ -89,7 +89,7 @@ Step 2: Preparing the new OTOBO system and server
 --------------------------------------
 
 After the OTOBO installation, please login again to the OTOBO Admin Area ``Admin -> System Configuration`` and uncheck the config option ``SecureMode``.
-Now log in on the server as user ``root`` and execute one of the following commands:
+Now log in on the server as user ``root`` and execute the following commands:
 
 .. code-block:: bash
 
