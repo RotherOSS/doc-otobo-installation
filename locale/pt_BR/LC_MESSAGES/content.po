@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-08-26 00:30+0200\n"
-"PO-Revision-Date: 2020-08-26 14:36+0000\n"
+"PO-Revision-Date: 2020-08-26 21:59+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.otobo.org/projects/"
 "otobo10/installation-manual/pt_BR/>\n"
@@ -288,6 +288,9 @@ msgid ""
 "installed, mostly for more customized versions of OTOBO. Calling "
 "CheckModules.pl without any argument will list its full functionality."
 msgstr ""
+"Existem vários módulos opcionais ou alternativos que podem ser instalados, "
+"principalmente para versões mais personalizadas do OTOBO. Chamar "
+"CheckModules.pl sem nenhum argumento listará sua funcionalidade completa."
 
 #: ../../content/installation.rst:105
 msgid "Step 3: Create the OTOBO User"
@@ -365,23 +368,19 @@ msgid "Configure Apache without SSL support"
 msgstr "Configurar Apache sem suporte SSL"
 
 #: ../../content/installation.rst:166
-#, fuzzy
 msgid ""
 "Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include."
 "conf`` to a file called ``zzz_otobo.conf`` in the Apache configuration "
 "directory (to make sure it is loaded after the other configurations)."
 msgstr ""
-"A maioria das instalações do Apache possui um diretório incluído ``conf.d``. "
-"Em sistemas Linux, geralmente você pode encontrar este diretório em ``/etc/"
-"apache`` ou ``/etc/apache2``. Efetue login como root, vá para o diretório "
-"``conf.d`` e vincule o modelo apropriado em ``/opt/otobo/scripts/apache2-"
-"httpd.include.conf`` para um arquivo chamado ``zzz_otobo.conf``no diretório "
-"de configuração do Apache (para garantir que ele seja carregado após as "
+"Copie o modelo apropriado em ``/opt/otobo/scripts/apache2-httpd.include."
+"conf`` para um arquivo chamado ``zzz_otobo.conf`` no diretório de "
+"configuração do Apache (para certificar-se de que seja carregado após as "
 "outras configurações)."
 
 #: ../../content/installation.rst:177
 msgid "Configure Apache **with** SSL support"
-msgstr ""
+msgstr "Configure o Apache **com** suporte SSL"
 
 #: ../../content/installation.rst:179
 msgid ""
@@ -389,12 +388,18 @@ msgid ""
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
 "the apache ``sites-availible`` directory`."
 msgstr ""
+"Copie os arquivos de modelo ``/opt/otobo/scripts/apache2-httpd-vhost-80."
+"include.conf`` e ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` "
+"para o diretório ``sites-availible`` ."
 
 #: ../../content/installation.rst:188
 msgid ""
 "Please edit the files and add the required information like SSL certificate "
 "storage path. After that, enable the OTOBO Apache configuration:"
 msgstr ""
+"Edite os arquivos e adicione as informações necessárias, como o caminho de "
+"armazenamento do certificado SSL. Depois disso, ative a configuração do "
+"OTOBO Apache:"
 
 #: ../../content/installation.rst:195
 msgid ""
@@ -460,7 +465,7 @@ msgstr ""
 
 #: ../../content/installation.rst:242
 msgid "For MariaDB > 10.1 use instead the following command:"
-msgstr ""
+msgstr "Para MariaDB > 10.1, use o seguinte comando:"
 
 #: ../../content/installation.rst:258
 msgid ""
@@ -471,7 +476,6 @@ msgstr ""
 "novamente, se necessário."
 
 #: ../../content/installation.rst:262
-#, fuzzy
 msgid ""
 "The following configuration settings are minimum requirements for MySQL "
 "setups. Please add the following lines to the MySQL Server configuration "
@@ -480,8 +484,8 @@ msgid ""
 msgstr ""
 "As seguintes definições de configuração são requisitos mínimos para as "
 "configurações do MySQL. Por favor, adicione as seguintes linhas ao arquivo "
-"de configuração do MySQL Server ``/etc/my.cnf`` ou``/etc/mysql/my.cnf`` "
-"abaixo da seção ``[mysqld]``:"
+"de configuração do MySQL Server ``/etc/my.cnf``,``/etc/mysql/my.cnf`` ou ``/"
+"etc/mysql/mysql.conf.d/mysqld.cnf`` abaixo da seção ``[mysqld]``:"
 
 #: ../../content/installation.rst:269
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
@@ -506,9 +510,8 @@ msgid "After installing execute the script:"
 msgstr "Após a instalação execute o script:"
 
 #: ../../content/installation.rst:291
-#, fuzzy
 msgid "Step 8: Setup Elasticsearch"
-msgstr "Passo 12: Configurando o Cluster do Elasticsearch"
+msgstr "Passo 8: Configurar Elasticsearch"
 
 #: ../../content/installation.rst:293
 msgid ""
@@ -525,14 +528,12 @@ msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "Exemplo de instalação do Elasticsearch baseado no Ubuntu 18.04 LTS"
 
 #: ../../content/installation.rst:298
-#, fuzzy
 msgid "JDK-Installation"
-msgstr "Instalação do JDK:"
+msgstr "JDK-Installation"
 
 #: ../../content/installation.rst:305
-#, fuzzy
 msgid "ElasticSearch-Installation"
-msgstr "Instalação do ElasticSearch:"
+msgstr "Instalação do ElasticSearch"
 
 #: ../../content/installation.rst:315
 msgid "Elasticsearch Installation on another Linux distribution"
@@ -587,7 +588,6 @@ msgstr ""
 "provou ser o melhor."
 
 #: ../../content/installation.rst:348
-#, fuzzy
 msgid ""
 "Now you can restart your Elasticsearch server to load the new configuration "
 "settings. On most systems you can use the following command to do so:"
@@ -659,9 +659,8 @@ msgid "With this step, the basic system setup is finished."
 msgstr "Com esta etapa, a configuração básica do sistema está concluída."
 
 #: ../../content/installation.rst:393
-#, fuzzy
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
-msgstr "Passo 13: Configurar o auto completar do bash (opcional)"
+msgstr "Passo 12: Configurar o auto completar do bash (opcional)"
 
 #: ../../content/installation.rst:395
 msgid ""
@@ -702,18 +701,16 @@ msgstr ""
 "e argumentos possíveis serão mostrados pressionando TAB."
 
 #: ../../content/installation.rst:409
-#, fuzzy
 msgid ""
 "If you have problems, you can execute the following line as user otrs and "
 "add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr ""
-"Se você tiver problemas, pode adicionar a seguinte linha ao seu ``~/."
-"bashrc``para executar os comandos do arquivo."
+"Se tiver problemas, você pode executar a seguinte linha como usuário otrs e "
+"adicioná-la ao seu ``~/ .bashrc`` para executar os comandos do arquivo."
 
 #: ../../content/installation.rst:417
-#, fuzzy
 msgid "Step 13: Further Information"
-msgstr "Passo 14: Informações adicionais"
+msgstr "Passo 13: Informações adicionais"
 
 #: ../../content/installation.rst:419
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
@@ -721,7 +718,7 @@ msgstr "Recomendamos que você leia o capítulo OTOBO :doc:`performance-tuning`.
 
 #: ../../content/installation-docker.rst:12
 msgid "Installing using Docker and Docker Compose"
-msgstr ""
+msgstr "Instalando usando Docker e Docker Compose"
 
 #: ../../content/installation-docker.rst:14
 msgid ""
