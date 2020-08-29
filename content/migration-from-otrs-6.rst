@@ -1,4 +1,4 @@
-Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO 10
+Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10
 =================================
 
 Welcome and thank you for choosing OTOBO!
@@ -32,6 +32,8 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
 5. It is possible to switch from any supported operating system to any other supported operating system during the migration.
 
+6. It is possible to migrate to a Docker based installation of OTOBO 10.
+
 
 Migration Requirements
 ----------------------
@@ -48,8 +50,6 @@ Migration Requirements
 
     If SSH and database access between the servers is not possible, please migrate OTRS to OTOBO on the same server and only then move the new installation.
 
-
-
 Step 1: Install the new OTOBO System
 ------------------------------------
 
@@ -61,7 +61,6 @@ We strongly recommend to read the OTOBO :doc:`installation` chapter.
     If you install OTOBO on the same server as you OTRS / ((OTRS)) Community Edition and under Apache, configure the OTOBO (or OTRS) web server without Mod_perl as long as both systems are running,
     or deactivate OTRS in the web server before the migration. Apache has difficulties with running two systems under Mod_perl on the same server.
     To disable Mod_perl, just comment out the mod_perl part in the file ``/opt/otobo/scripts/apache2-httpd.include.conf``.
-
 
 After finishing the installation tutorial, please login to the OTOBO Admin Area ``Admin -> Packages``
 to install all required OTOBO OPM packages.
@@ -88,7 +87,7 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
 Step 2: Preparing the new OTOBO system and server
 --------------------------------------
 
-After the OTOBO installation, please login again to the OTOBO Admin Area ``Admin -> System Configuration`` and uncheck the config option ``SecureMode``.
+After the OTOBO installation, please login again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``.
 Now log in on the server as user ``root`` and execute the following commands:
 
 .. code-block:: bash
