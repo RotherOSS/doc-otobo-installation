@@ -114,10 +114,10 @@ When OTOBO is running under Docker it suffices to stop the the Docker container 
       We advise you to read the OTOBO :doc:`backup-restore` chapter.
 
 
-Install sshpass if you want to migrate OTRS from another server
+Install sshpass and rsysnc if you want to migrate OTRS from another server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The tool *sshpass* is needed so we can copy files via ssh. Please log in on the server as user ``root``
+The tools *sshpass* and *rsync* are needed so we can copy files via ssh. Please log in on the server as user ``root``
 and execute one of the following commands:
 
 .. code-block:: Install sshpass
@@ -133,6 +133,8 @@ and execute one of the following commands:
 
 .. code-block:: Install sshpass under OpenSUSE Linux
     $ sudo zypper install sshpass
+
+The same thing must be done for *rsysnc* when it isn't available yet.
 
 
 Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
