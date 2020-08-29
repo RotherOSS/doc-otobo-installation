@@ -97,6 +97,13 @@ Now log in on the server as user ``root`` and execute the following commands:
     otobo> /opt/otobo/bin/Cron.sh stop
     otobo> /opt/otobo/bin/otobo.Daemon stop --force
 
+When OTOBO is running under Docker it suffices to stop the the Docker container otobo_cron_1:
+
+.. code-block:: bash
+
+    docker_admin> cd ~/otobo-docker
+    docker_admin> docker-compose stop cron
+
 .. note::
 
    It is recommended to run a backup of the whole OTOBO system at this point. If something goes wrong during migration, you will then not have to
@@ -174,6 +181,13 @@ that the migration was successful and that you want to use OTOBO from now on, st
     otobo>
     otobo> /opt/otobo/bin/Cron.sh start
     otobo> /opt/otobo/bin/otobo.Daemon stop --force
+
+In the docker case:
+
+.. code-block:: bash
+
+    docker_admin> cd ~/otobo-docker
+    docker_admin> docker-compose start cron
 
 
 Step 5: After Successful Migration!
