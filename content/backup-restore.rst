@@ -1,14 +1,14 @@
 Backup and Restore
 ==================
 
-OTOBO has built-in scripts for backup and restore. Execute the scripts with ``-h`` option for more information.
+OTOBO has built in scripts for backup and restore. Execute the scripts with the option ``-h`` for more information.
 
 Backup
 ------
 
 .. note::
 
-   To create a new backup, write permission is needed for ``otobo`` user for the destination directory.
+   To create a new backup, write permission for the destination directory is needed for the user ``otobo``.
 
 .. code-block:: bash
 
@@ -45,6 +45,10 @@ The output of the script:
 
 Restore
 -------
+
+.. note::
+
+   To restore the database make sure that the database ``otobo`` exists and contains no tables.
 
 .. code-block:: bash
 
