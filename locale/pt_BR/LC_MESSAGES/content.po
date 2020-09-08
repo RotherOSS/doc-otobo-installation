@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-08 00:30+0200\n"
+"POT-Creation-Date: 2020-09-09 00:30+0200\n"
 "PO-Revision-Date: 2020-09-02 13:25+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.otobo.org/projects/"
@@ -56,6 +56,45 @@ msgstr "Restaurar"
 msgid ""
 "To restore the database make sure that the database ``otobo`` exists and "
 "contains no tables."
+msgstr ""
+
+#: ../../content/backup-restore.rst:83
+msgid "Considerations for running OTOBO under Docker"
+msgstr ""
+
+#: ../../content/backup-restore.rst:85
+msgid ""
+"The same scripts can be used with OTOBO running under Docker. However some "
+"Docker specific limitation must be considered."
+msgstr ""
+
+#: ../../content/backup-restore.rst:87
+msgid ""
+"First we need to make sure that the backup files are not created in the file "
+"system that is internal to the container. Because in that case all data "
+"would be lost when the container is stopped. Therefore the backup directory "
+"must be in a volume. For now we only consider the most simple case, where "
+"the backup dir is a local dir on the Docker host. The location of the backup "
+"dir in the container can be arbitrarily chosen. In this example we choose ``"
+"$HOME/otobo_backup`` as the location on the host, and ``/otobo_backup`` as "
+"the location in the container."
+msgstr ""
+
+#: ../../content/backup-restore.rst:93
+msgid "First we need to create the volume."
+msgstr ""
+
+#: ../../content/backup-restore.rst:106
+msgid ""
+"For creating the backup we need a running database otobo_opt_otobo. This "
+"means that the webserver and the Daemon may, but don't have to, be stopped."
+msgstr ""
+
+#: ../../content/backup-restore.rst:117
+msgid ""
+"For restoring the backup we also need to specify which backup should be "
+"restored. The placeholder ``<TIMESTAM>`` is something like "
+"``2020-09-07_09-38``."
 msgstr ""
 
 #: ../../content/history.rst:13
@@ -394,10 +433,11 @@ msgid "Configure Apache **with** SSL support"
 msgstr "Configure o Apache **com** suporte SSL"
 
 #: ../../content/installation.rst:179
+#, fuzzy
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
-"the apache ``sites-availible`` directory`."
+"the apache ``sites-available`` directory`."
 msgstr ""
 "Copie os arquivos de modelo ``/opt/otobo/scripts/apache2-httpd-vhost-80."
 "include.conf`` e ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` "
@@ -980,7 +1020,8 @@ msgstr ""
 "hostname: db intocado."
 
 #: ../../content/installation-docker.rst:151
-msgid "**Habe fun with OTOBO!**"
+#, fuzzy
+msgid "**Have fun with OTOBO!**"
 msgstr "**Divirta-se com o OTOBO!**"
 
 #: ../../content/installation-docker.rst:154
@@ -1089,7 +1130,7 @@ msgstr ""
 "compose seria usado por padrão."
 
 #: ../../content/installation-docker.rst:202
-msgid "``COMPOSE_PATH_SEPARATOR`` Seperator for the value of COMPOSE_FILE"
+msgid "``COMPOSE_PATH_SEPARATOR`` Separator for the value of COMPOSE_FILE"
 msgstr ""
 
 #: ../../content/installation-docker.rst:205
@@ -1097,6 +1138,56 @@ msgid ""
 "``COMPOSE_FILE`` Use docker-compose/otobo-base.yml as the base and add the "
 "wanted extension files. E.g docker-compose/otobo-override-http.yml or docker-"
 "compose/otobo-override-https.yml."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:12
+#, fuzzy
+msgid "Installing Perl modules"
+msgstr "Instale o módulo Perl Redis ou Redis::Fast"
+
+#: ../../content/installing-perl-modules.rst:14
+msgid ""
+"When there are special requirements then the need for additional Perl "
+"modules may arise. Fortunately Perl has an excellent package repository that "
+"can satisfy almost all needs. That repository is called CPAN and is "
+"available at https://metacpan.org/."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:18
+msgid ""
+"It is recommended that modules from CPAN are installed with the command line "
+"client ``cpanm``. Alternatively, many Perl modules are also available as "
+"packages for your operating system. These packages can be installed via your "
+"systems regular package manager."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:22
+msgid ""
+"The utility ``cpanm`` is often already installed on your system. Please see "
+"https://metacpan.org/pod/App::cpanminus for what to do when is isn't already "
+"available."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:25
+msgid ""
+"Per default ``cpanm`` installs module into a systemwide location. In this "
+"case modules must be installed as the root user. For example, the command"
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:32
+msgid "results in:"
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:39
+msgid ""
+"Special care must be taken when OTOBO runs under Docker. In this case the "
+"wanted module could easily be installed into the system Perl. However, due "
+"to how Docker works, this change would be lost when the container is "
+"restarted. Therefore the modules must be installed into a location that "
+"survives a restart. The local install location can be specified with the "
+"option ``--local-lib``. The installed modules will found by Perl because the "
+"environment variables ``PERL5LIB`` and ``PATH`` are set up accordingly in "
+"the Docker image."
 msgstr ""
 
 #: ../../content/introduction.rst:12
@@ -2438,7 +2529,8 @@ msgstr ""
 "sistema operacional (rpm, yast, apt-get)."
 
 #: ../../content/requirements.rst:22
-msgid "OTOBO has a console command to for missing modules."
+#, fuzzy
+msgid "OTOBO has also a console command for missing modules."
 msgstr ""
 "O OTOBO possui um comando do console para módulos que faltam na instalação."
 
