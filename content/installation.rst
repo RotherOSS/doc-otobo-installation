@@ -167,7 +167,7 @@ Configure Apache **with** SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
-the apache ``sites-availible`` directory`.
+the apache ``sites-available`` directory`.
 
 .. code-block:: bash
 
