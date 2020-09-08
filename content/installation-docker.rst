@@ -138,7 +138,7 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl
     As MySQL database root password please use the password you add in the .env file
     in the variable ``OTOBO_DB_ROOT_PASSWORD``. Please leave the hostname: db untouched.
 
-**Habe fun with OTOBO!**
+**Have fun with OTOBO!**
 
 .. note::
     To change to the OTOBO directory to work on command line as usual, you can use the following Docker command:
@@ -190,7 +190,7 @@ Must be set because the compose file is located in scripts/docker-compose and th
 would be used per default.
 
 ``COMPOSE_PATH_SEPARATOR``
-Seperator for the value of COMPOSE_FILE
+Separator for the value of COMPOSE_FILE
 
 ``COMPOSE_FILE``
 Use docker-compose/otobo-base.yml as the base and add the wanted extension files.
