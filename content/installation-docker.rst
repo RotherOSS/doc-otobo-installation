@@ -282,7 +282,24 @@ The relevant files are in the git repository https://github.com/RotherOSS/otobo.
 Automatic Installation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is mostly useful for 
+running the test suite on a fresh installation.
+
+.. warning::
+    ``docker-compose down -v`` will eradicate all previous setup and data.
+
+.. code-block:: bash
+
+   root> docker-compose down -v
+   root> docker-compose up
+   root> docker stop otobo_daemon_1
+   root> docker exec -t --user otobo otobo_web_1 bash\
+   -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
+   root> docker exec -t --user otobo otobo_web_1 bash\
+   -c "bin/docker/run_test_suite.sh"
+   .......
+   root>docker start otobo_daemon_1'
+
 
 Upgrading to a new patchlevel release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
