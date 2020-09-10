@@ -263,6 +263,8 @@ Separator for the value of COMPOSE_FILE
 Use docker-compose/otobo-base.yml as the base and add the wanted extension files.
 E.g docker-compose/otobo-override-http.yml or docker-compose/otobo-override-https.yml.
 
+``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``
+Used for specifying alternative Docker images. Useful for testing local builds.
 
 Advanced topics
 ----------------------------------
