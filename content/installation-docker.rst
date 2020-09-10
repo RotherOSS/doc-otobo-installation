@@ -76,13 +76,14 @@ Choose one of the files that suits your needs and rename it to *.env*.
 .. note::
     For productive environments we recommend the use of a web proxy.
     If you want to install your own web proxy for OTOBO, an extra docker nginx image is available for use.
-    In this case, please rename the ``.docker_compose_env_https`` file to *.env*.
+    In this case, please rename the *.docker_compose_env_https* file to *.env*.
 
 .. code-block:: bash
 
     root> cp -p .docker_compose_env_https .env
 
-4. Configure the password for the database admin user
+
+3. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Change the following value inside the *.env* file:
@@ -124,24 +125,24 @@ Please do not change the path ``/etc/nginx/ssl/``, but only the filename.
 5. Start the docker-compose image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now we start the docker-compose image with a simple
+Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be
+fetched from https://hub.docker.com/u/rotheross.
 
 .. code-block:: bash
 
     root> docker-compose up -d
 
-To verify that the five or six services are actually running type:
+To verify that the five, or six, services are actually running type:
 
 .. code-block:: bash
 
     root> docker-compose ps
     root> docker volume ls
 
+6. Install and start OTOBO
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-6. Start OTOBO
-~~~~~~~~~~~~~~~
-
-Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl
+Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 
 .. note::
     Please configure OTOBO inside the Installer with a new MySQL database.
@@ -189,14 +190,14 @@ Run nginx as reverse proxy for providing HTTPS support.
 Overview over the Docker volumes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Volumes are created on the host for persistent data.
+The Docker volumes are created on the host for persistent data.
 These allow starting and stopping the services without losing data. Keep in mind that
 containers are temporary and only data in the volumes is permanent.
 
-* **otobo_opt_otobo** containing `/opt/otobo` on the container `web` and `cron`.
-* **otobo_mariadb_data** containing `/var/lib/mysql` on the container `db`.
-* **otobo_elasticsearch_data** containing `/usr/share/elasticsearch/datal` on the container `elastic`.
-* **otobo_redis_data** containing data on the container `redis`.
+* **otobo_opt_otobo** contains `/opt/otobo` on the container `web` and `cron`.
+* **otobo_mariadb_data** contains `/var/lib/mysql` on the container `db`.
+* **otobo_elasticsearch_data** contais `/usr/share/elasticsearch/datal` on the container `elastic`.
+* **otobo_redis_data** contains data for the container `redis`.
 * **otobo_nginx_ssl** contains the TLS files, certificate and private key, must be initialized manually
 
 Docker environment variables
@@ -260,7 +261,7 @@ Advanced topics
 Building local Images
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The relevant files are in https://github.com/RotherOSS/otobo
+The relevant files are in the git repository https://github.com/RotherOSS/otobo.
 
 * *otobo.web.dockerfile*
 * *otobo.nginx.dockerfile*
