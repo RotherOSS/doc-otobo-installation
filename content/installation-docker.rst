@@ -344,16 +344,16 @@ List of useful commands
 * check containers:       ``docker-compose ps``
 
 Resources
-~~~~~~~~~~~~~
+~~~~~~~~~
 
-* [Perl Maven](https://perlmaven.com/getting-started-with-perl-on-docker)
-* [Docker Compose quick start](http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/)
-* [docker-otrs](https://github.com/juanluisbaptiste/docker-otrs/)
-* [not403](http://not403.blogspot.com/search/label/otrs)
-* [cleanup](https://forums.docker.com/t/command-to-remove-all-unused-images)
-* [Dockerfile best practices](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/)
-* [Docker cache invalidation](https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur)
-* [Docker Host IP](https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container)
-* [Environment](https://vsupalov.com/docker-arg-env-variable-guide/)
-* [Self signed certificate](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04)
-* [Inspect failed builds](https://pythonspeed.com/articles/debugging-docker-build/)
+* `Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_
+* `Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_
+* `docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_
+* `not403 <http://not403.blogspot.com/search/label/otrs>`_
+* `cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
+* `Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_
+* `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
+* `Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_
+* `Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_
+* `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_
+* `Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_
