@@ -45,8 +45,8 @@ dedicated user may be set up as Docker admin.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-The location of the cloned repisitory does not matter.
-For these instructions we chose */opt/otobo-docker* as the working dir.
+    The location of the cloned repisitory does not matter.
+    For these instructions we chose */opt/otobo-docker* as the working dir.
 
 .. code-block:: bash
 
@@ -71,7 +71,7 @@ Run HTTPS on port 443.
 Choose one of the files that suits your needs and rename it to *.env*.
 
 .. note::
-    Use ``ls -a``for listing the hidden template files.
+    Use ``ls -a`` for listing the hidden template files.
 
 .. note::
     For productive environments we recommend the use of a web proxy.
