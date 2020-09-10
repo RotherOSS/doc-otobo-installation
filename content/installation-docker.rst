@@ -222,10 +222,19 @@ Example setting:
 OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m
 Please adjust this value for production env to a value up to 4g.
 
-**Nginx webproxy settings**
+**Webserver settings**
 
 ``OTOBO_WEB_HTTP_PORT``
 Set in case the HTTP port should deviate from the standard port 80.
+When HTTPS is enabled then the HTTP port will redirect to HTTPS.
+
+**Nginx webproxy settings**
+
+These setting are use when HTTPS is enabled.
+
+``OTOBO_WEB_HTTP_PORT``
+Set in case the HTTP port should deviate from the standard port 80.
+Will redirect to HTTPS.
 
 ``OTOBO_WEB_HTTPS_PORT``
 Set in case the HTTPS port should deviate from the standard port 443.
@@ -276,7 +285,7 @@ TODO
 Upgrading to a new patchlevel release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Make sure that the images have the tag `latest` or the wanted version
+* In *.env*, make sure that the images have the tag `latest` or the wanted version
 * ``docker-compose pull``   fetch the new images
 * ``docker-compose down``   stop and remove the containers, named volumes are kept
 * ``docker-compose up``     start again with the new images
@@ -291,8 +300,8 @@ Note that this does not reinstall or upgrade the installed packages.
 * ``docker run -it --rm --volume otobo_opt_otobo:/opt/otobo otobo upgrade`` force upgrade, skip reinstall
 * ``docker-compose up`` start again with the new images
 
-Useful commands
-~~~~~~~~~~~~~~~
+List of useful commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **docker**
 
