@@ -10,7 +10,7 @@ All of OTOBO´s dependencies are already included.
 - Gazelle is used as fast Perl webserver.
 - Nginx is used as optional webproxy for HTTPS support.
 
-We think this is the perfect environment for an OTOBO installation.
+We think that this will become the perfect environment for an OTOBO installation.
 
 .. warning::
     At the moment the docker-compose environment is not tested in depth for production use.
@@ -54,7 +54,7 @@ For these instructions we chose */opt/otobo-docker* as the working dir.
    root> git clone https://github.com/RotherOSS/otobo-docker.git
    root> cd otobo-docker
 
-2. Create an initial ``.env`` file
+2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The file *.env* is the interface that allows you to set up the installation of OTOBO.
@@ -68,7 +68,7 @@ Run HTTP on port 80.
 ``.docker_compose_env_https``
 Run HTTPS on port 443.
 
-Choose one of the files that suits your needs and rename it to ``.env``.
+Choose one of the files that suits your needs and rename it to *.env*.
 
 .. note::
     Use ``ls -a``for listing the hidden template files.
@@ -76,7 +76,7 @@ Choose one of the files that suits your needs and rename it to ``.env``.
 .. note::
     For productive environments we recommend the use of a web proxy.
     If you want to install your own web proxy for OTOBO, an extra docker nginx image is available for use.
-    In this case, please rename the ``.docker_compose_env_https`` file to ``.env``.
+    In this case, please rename the ``.docker_compose_env_https`` file to *.env*.
 
 .. code-block:: bash
 
@@ -85,7 +85,7 @@ Choose one of the files that suits your needs and rename it to ``.env``.
 4. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Change the following value inside the ``.env`` file:
+Change the following value inside the *.env* file:
 
 ``OTOBO_DB_ROOT_PASSWORD``
 The password for the database admin user may be chosen freely. The database admin user creates the database user **otobo**
@@ -145,7 +145,7 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl
 
 .. note::
     Please configure OTOBO inside the Installer with a new MySQL database.
-    As MySQL database root password please use the password you add in the .env file
+    As MySQL database root password please use the password you add in the *.env* file
     in the variable ``OTOBO_DB_ROOT_PASSWORD``. Please leave the hostname: db untouched.
 
 **Have fun with OTOBO!**
