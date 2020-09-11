@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-09-11 00:30+0200\n"
-"PO-Revision-Date: 2020-09-11 10:18+0000\n"
+"PO-Revision-Date: 2020-09-11 22:35+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <http://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -23,21 +23,18 @@ msgid "Backup and Restore"
 msgstr "Backup und Wiederherstellung"
 
 #: ../../content/backup-restore.rst:14
-#, fuzzy
 msgid ""
 "OTOBO has built in scripts for backup and restore. Execute the scripts with "
 "the option ``-h`` for more information."
 msgstr ""
-"OTOBO kommt mit fertigen Skripten zum Erstellen und Wiedereinspielen von "
-"Backups. Für weitere Informationen führen Sie diese mit der Option ``-h`` "
-"aus."
+"OTOBO bietet fertige Skripte zum Erstellen und Wiedereinspielen von Backups. "
+"Für weitere Informationen führen Sie diese mit der Option ``-h`` aus."
 
 #: ../../content/backup-restore.rst:17
 msgid "Backup"
 msgstr "Backup"
 
 #: ../../content/backup-restore.rst:21
-#, fuzzy
 msgid ""
 "To create a new backup, write permission for the destination directory is "
 "needed for the user ``otobo``."
@@ -58,16 +55,21 @@ msgid ""
 "To restore the database make sure that the database ``otobo`` exists and "
 "contains no tables."
 msgstr ""
+"Bevor Sie die Datenbank wiederherstellen, versichern Sie sich, dass die "
+"Datenbank ``otobo``vorhanden ist und keine Tabellen enthält."
 
 #: ../../content/backup-restore.rst:83
 msgid "Considerations for running OTOBO under Docker"
-msgstr ""
+msgstr "Sonderfalll: OTOBO und Docker"
 
 #: ../../content/backup-restore.rst:85
 msgid ""
 "The same scripts can be used with OTOBO running under Docker. However some "
 "Docker specific limitation must be considered."
 msgstr ""
+"Für Docker-basierte OTOBO-Umgebungen können die OTOBO-Standardskripte "
+"verwendet werden. Beachten Sie jedoch einige Docker-spezifische "
+"Besonderheiten."
 
 #: ../../content/backup-restore.rst:87
 msgid ""
@@ -80,16 +82,28 @@ msgid ""
 "$HOME/otobo_backup`` as the location on the host, and ``/otobo_backup`` as "
 "the location in the container."
 msgstr ""
+"Besonders wichtig ist, dass die Backupdateien nicht im internen Dateisystem "
+"des Containers gespeichert werden. Dort wären die Daten beim Stopp des "
+"Containers verloren. Das Backup-Verzeichnis muss also in einem Volume "
+"angelegt werden. Wir betrachten zunächst nur den einfachsten Fall: Als "
+"Backup-Verzeichnis wird ein lokales Verzeichnis auf dem Docker-Host "
+"verwendet. Innerhalb des Containers kann das Backup-Verzeichnis an "
+"beliebiger Stelle angelegt werden. Für dieses Beispiel verwenden wir ``$HOME/"
+"otobo_backup`` als Speicherort auf dem Host und``/otobo_backup`` als "
+"Location im Container."
 
 #: ../../content/backup-restore.rst:93
 msgid "First we need to create the volume."
-msgstr ""
+msgstr "Als erstes legen wir das Volume an."
 
 #: ../../content/backup-restore.rst:106
 msgid ""
 "For creating the backup we need a running database otobo_opt_otobo. This "
 "means that the webserver and the Daemon may, but don't have to, be stopped."
 msgstr ""
+"Wir benötigen eine laufende Datenbank ``otobo_opt_otobo``, um das Backup zu "
+"erstellen. Das bedeutet, Webserver und Daemon können, müssen aber nicht "
+"gestoppt werden."
 
 #: ../../content/backup-restore.rst:117
 msgid ""
@@ -97,13 +111,15 @@ msgid ""
 "restored. The placeholder ``<TIMESTAM>`` is something like "
 "``2020-09-07_09-38``."
 msgstr ""
+"Um das System aus einem Backup wiederherstellen zu können, müssen wir "
+"angeben, welches Backup verwendet werden soll. Der Platzhalter ``<TIMESTAM>``"
+" steht für etwas wie ``2020-09-07_09-38``."
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
 msgstr "Dokumentationshistorie"
 
 #: ../../content/history.rst:15
-#, fuzzy
 msgid "2019 - OTRS Installation Guide - OTRS AG (https://otrs.com)"
 msgstr "2019 - OTRS Installation Guide - OTRS AG (https://otrs.com)"
 
@@ -114,15 +130,14 @@ msgstr ""
 "2020 - OTOBO Installationsanleitung - Rother OSS GmbH (https://otobo.de)"
 
 #: ../../content/history.rst:18
-#, fuzzy
 msgid ""
 "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 "
 "Leiblfing, Germany. Authors: OTRS AG (original version), Rother OSS GmbH "
 "(https://rother-oss.com)"
 msgstr ""
-"Veröffentlicht von: Rother OSS GmbH, Oberwalting 31, 94339 Leiblfing, "
-"Germany (https://otobo.de). Autoren: OTRS AG (Originalversion), Rother OSS "
-"GmbH (OTOBO Version)"
+"Veröffentlicht durch: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, "
+"94339 Leiblfing, Deutschland. Autoren: OTRS AG (Originalversion), Rother OSS "
+"GmbH (Anpassung für OTOBO - https://rother-oss.com)"
 
 #: ../../content/history.rst:21
 msgid ""
@@ -146,7 +161,6 @@ msgid "OTOBO Installation Tutorial"
 msgstr "OTOBO Installationshandbuch"
 
 #: ../../content/index.rst:19
-#, fuzzy
 msgid ""
 "This work is copyrighted by OTRS AG (https://otrs.com), Zimmersmühlenweg 11, "
 "61440 Oberursel, Germany."
@@ -160,10 +174,9 @@ msgid ""
 "(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
 msgstr ""
 "Anpassungen und Ergänzungen unterliegen dem Copyright der Rother OSS GmbH "
-"(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Deutschland"
+"(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Deutschland."
 
 #: ../../content/index.rst:25
-#, fuzzy
 msgid ""
 "Terms and Conditions OTRS: Permission is granted to copy, distribute and/or "
 "modify this document under the terms of the GNU Free Documentation License, "
@@ -171,20 +184,13 @@ msgid ""
 "with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A "
 "copy of the license can be found on the GNU website."
 msgstr ""
-"Dieses Dokument darf im Rahmen der GNU Free Documentation License in Version "
-"1.3 oder jeder neueren, von der Free Software Foundation veröffentlichten "
-"Version kopiert, verbreitet und/oder verändert werden; ohne unveränderliche "
-"Abschnitte, und ohne Umschlagtexte. Den Originaltext der Lizenz finden Sie "
-"auf der `GNU-Website <https://www.gnu.org/licenses/fdl-1.3.txt>`__. "
-"(Permission is granted to copy, distribute and/or modify this document under "
-"the terms of the GNU Free Documentation License, Version 1.3 or any later "
-"version published by the Free Software Foundation; with no Invariant "
-"Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the "
-"license can be found on the `GNU website <https://www.gnu.org/licenses/"
-"fdl-1.3.txt>`__.)."
+"Nutzungsbedingungen OTRS: Dieses Dokument darf im Rahmen der GNU Free "
+"Documentation License in Version 1.3 oder jeder neueren, von der Free "
+"Software Foundation veröffentlichten Version, kopiert, verbreitet und/oder "
+"verändert werden; ohne unveränderliche Abschnitte, und ohne Umschlagtexte. "
+"Eine Kopie der Lizenz finden Sie auf der GNU-Website."
 
 #: ../../content/index.rst:32
-#, fuzzy
 msgid ""
 "Terms and Conditions Rother OSS: Permission is granted to copy, distribute "
 "and/or modify this document under the terms of the GNU Free Documentation "
@@ -193,26 +199,21 @@ msgid ""
 "Cover Texts. A copy of the license is included in the section entitled "
 "\"COPYING\"."
 msgstr ""
-"Dieses Dokument darf im Rahmen der GNU Free Documentation License in Version "
-"1.3 oder jeder neueren, von der Free Software Foundation veröffentlichten "
-"Version kopiert, verbreitet und/oder verändert werden; ohne unveränderliche "
-"Abschnitte, und ohne Umschlagtexte. Den Originaltext der Lizenz finden Sie "
-"auf der `GNU-Website <https://www.gnu.org/licenses/fdl-1.3.txt>`__. "
-"(Permission is granted to copy, distribute and/or modify this document under "
-"the terms of the GNU Free Documentation License, Version 1.3 or any later "
-"version published by the Free Software Foundation; with no Invariant "
-"Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the "
-"license can be found on the `GNU website <https://www.gnu.org/licenses/"
-"fdl-1.3.txt>`__.)."
+"Nutzungsbedingungen Rother OSS: Dieses Dokument darf im Rahmen der GNU Free "
+"Documentation License in Version 1.3 oder jeder neueren, von der Free "
+"Software Foundation veröffentlichten Version kopiert, verbreitet und/oder "
+"verändert werden; ohne unveränderliche Abschnitte, und ohne Umschlagtexte. "
+"Den rechtlich bindenden Originaltext der Lizenz finden Sie auf der `GNU-"
+"Website <https://www.gnu.org/licenses/fdl-1.3.txt>`__, eine Kopie im "
+"Abschnitt \"COPYING\" dieses Dokuments."
 
 #: ../../content/index.rst:39
-#, fuzzy
 msgid ""
 "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 "
 "Leiblfing, Germany."
 msgstr ""
-"Anpassungen und Ergänzungen unterliegen dem Copyright der Rother OSS GmbH, "
-"Oberwalting 31, 94339 Leiblfing, Deutschland (https://otobo.de)."
+"Veröffentlicht durch: Rother OSS GmbH, Oberwalting 31, 94339 Leiblfing, "
+"Deutschland (https://otobo.de)."
 
 #: ../../content/index.rst:42
 msgid ""
@@ -230,7 +231,6 @@ msgid "OTOBO Installation"
 msgstr "OTOBO Installation"
 
 #: ../../content/installation.rst:14
-#, fuzzy
 msgid ""
 "This chapter describes the installation and basic configuration of the "
 "central OTOBO framework."
