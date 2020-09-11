@@ -1,7 +1,7 @@
 Introduction
 ============
 
-OTOBO is an open source ticket request system with many features to manage customer telephone calls and emails. It is distributed under the GNU General Public License (GPL) and tested on various Linux platforms. Do you receive many e-mails and want to answer them with a team of agents?
+OTOBO is an open source ticket request system with many features to manage customer telephone calls and emails. It is distributed under the GNU General Public License (GPL) and tested on various Linux platforms. 
 
 
 About This Manual
