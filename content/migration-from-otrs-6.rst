@@ -22,7 +22,7 @@ Migration Possibilities
 
 With the OTOBO Migration Interface it is possible to perform the following migrations:
 
-1. A 1:1 migration on the same server with the same database
+1. A 1:1 migration on the same server with the same database.
 
 2. A migration and simultaneous move to a new server and operating system.
 
@@ -36,7 +36,7 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 Migration Requirements
 ----------------------
 
-1. Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running, and that you want to transfer configuration and data to OTOBO. Please consider carefully whether you really need the data and configuration. Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway. It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice. We are happy to advise you, please get in touch at sales@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
+1. Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running, and that you want to transfer configuration and data to OTOBO. Please consider carefully whether you really need the data and configuration. Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway. It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice. We are happy to advise you, please get in touch at hallo@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
 2. You need a running OTOBO installation to start the migration from there!
 
@@ -54,7 +54,7 @@ Step 1: Install the new OTOBO System
 ------------------------------------
 
 Please start with installing the new OTOBO system to which your OTRS / ((OTRS)) Community Edition instance will then be migrated.
-We strongly recommend to read the OTOBO :doc:`installation` chapter.
+We strongly recommend to read the :doc:`installation` chapter.
 
 .. warning::
 

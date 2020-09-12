@@ -222,7 +222,7 @@ for detailed information.
 
 ``OTOBO_Elasticsearch_ES_JAVA_OPTS``
     Example setting:
-    OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m
+    *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m*
     Please adjust this value for production env to a value up to 4g.
 
 **Webserver settings**
@@ -244,11 +244,11 @@ These setting are use when HTTPS is enabled.
 
 ``OTOBO_NGINX_SSL_CERTIFICATE``
     SSL cert for the nginx webproxy.
-    Example: OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt
+    Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*
 
 ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``
     SSL key for the nginx webproxy.
-    Example: OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key
+    Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*
 
 **docker-compose settings**
 
@@ -256,15 +256,15 @@ These settings are used by docker-compose directly.
 
 ``COMPOSE_PROJECT_NAME``
     The project name is used as a prefix for the generated volumes and containers.
-    Must be set because the compose file is located in scripts/docker-compose and thus docker-compose
-    would be used per default.
+    Must be set because the compose file is located in the directory *scripts/docker-compose* and thus *docker-compose*
+    would be used per default as the project name.
 
 ``COMPOSE_PATH_SEPARATOR``
     Separator for the value of COMPOSE_FILE
 
 ``COMPOSE_FILE``
-    Use docker-compose/otobo-base.yml as the base and add the wanted extension files.
-    E.g docker-compose/otobo-override-http.yml or docker-compose/otobo-override-https.yml.
+    Use *docker-compose/otobo-base.yml* as the base and add the wanted extension files.
+    E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*.
 
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``
     Used for specifying alternative Docker images. Useful for testing local builds.
