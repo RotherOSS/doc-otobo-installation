@@ -60,7 +60,7 @@ dedicated user may be set up as Docker admin.
 The configuration file *.env* is the interface that allows to set up the installation of OTOBO.
 *.env* is not created automatically, it must be created and edited by the user.
 
-Two template files are available in the newly created folder _otobo-docker_:
+Two template files are available in the docker compose working directory:
 
 ``.docker_compose_env_http``
     Provide HTTP via port 80.
