@@ -38,7 +38,7 @@ Installation
 ------------
 
 The following instructions assume that the requirements are installed and that you have a working Docker environment.
-We assume here that the user _root_ is used for interacting with Docker. Please note that in a production environment a
+We assume here that the user **root** is used for interacting with Docker. Please note that in a production environment a
 dedicated user may be set up as Docker admin.
 
 1. Clone the otobo-docker repo
@@ -60,7 +60,7 @@ dedicated user may be set up as Docker admin.
 The configuration file *.env* is the interface that allows to set up the installation of OTOBO.
 *.env* is not created automatically, it must be created and edited by the user.
 
-Two template files are available in the docker compose working directory:
+Two template files are available in the newly created folder *docker-compose*:
 
 ``.docker_compose_env_http``
     Provide HTTP via port 80.
@@ -222,7 +222,7 @@ for detailed information.
 
 ``OTOBO_Elasticsearch_ES_JAVA_OPTS``
     Example setting:
-    OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m
+    *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m*
     Please adjust this value for production env to a value up to 4g.
 
 **Webserver settings**
@@ -244,11 +244,11 @@ These setting are use when HTTPS is enabled.
 
 ``OTOBO_NGINX_SSL_CERTIFICATE``
     SSL cert for the nginx webproxy.
-    Example: OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt
+    Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*
 
 ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``
     SSL key for the nginx webproxy.
-    Example: OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key
+    Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*
 
 **docker-compose settings**
 
@@ -256,15 +256,15 @@ These settings are used by docker-compose directly.
 
 ``COMPOSE_PROJECT_NAME``
     The project name is used as a prefix for the generated volumes and containers.
-    Must be set because the compose file is located in scripts/docker-compose and thus docker-compose
-    would be used per default.
+    Must be set because the compose file is located in *scripts/docker-compose* and thus **docker-compose**
+    would be used per default as the project name.
 
 ``COMPOSE_PATH_SEPARATOR``
     Separator for the value of COMPOSE_FILE
 
 ``COMPOSE_FILE``
-    Use docker-compose/otobo-base.yml as the base and add the wanted extension files.
-    E.g docker-compose/otobo-override-http.yml or docker-compose/otobo-override-https.yml.
+    Use *docker-compose/otobo-base.yml* as the base and add the wanted extension files.
+    E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*.
 
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``
     Used for specifying alternative Docker images. Useful for testing local builds.
