@@ -1,20 +1,20 @@
 Installing using Docker and Docker Compose
 ==========================================
 
-With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running in minutes.
+With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
 All of OTOBO´s dependencies are already included.
 
 - MariaDB is set up as the default database.
 - Elasticsearch is set up for the OTOBO power search.
 - Redis is enabled for fast caching.
 - Gazelle is used as fast Perl webserver.
-- Nginx is used as optional webproxy for HTTPS support.
-
-We think that this will become the perfect environment for an OTOBO installation.
+- nginx is used as optional webproxy for HTTPS support.
 
 .. warning::
     At the moment the docker-compose environment is not tested in depth for production use.
     Please use the standard installation process for production use, unless you know what you do.
+
+We think that this will become the perfect environment for an OTOBO installation.
 
 Requirements
 ------------
@@ -38,7 +38,7 @@ Installation
 ------------
 
 The following instructions assume that the requirements are installed and that you have a working Docker environment.
-We assume here that the user root is used for interacting with Docker. Please note that in a production environment a
+We assume here that the user **root** is used for interacting with Docker. Please note that in a production environment a
 dedicated user may be set up as Docker admin.
 
 1. Clone the otobo-docker repo
@@ -57,16 +57,16 @@ dedicated user may be set up as Docker admin.
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The file *.env* is the interface that allows you to set up the installation of OTOBO.
-*.env* must be created and edited by the user.
+The configuration file *.env* is the interface that allows to set up the installation of OTOBO.
+*.env* is not created automatically, it must be created and edited by the user.
 
-Two template files are available in the newly created folder ``otobo-docker``:
+Two template files are available in the newly created folder *docker-compose*:
 
 ``.docker_compose_env_http``
-Run HTTP on port 80.
+    Provide HTTP via port 80.
 
 ``.docker_compose_env_https``
-Run HTTPS on port 443.
+    Provide HTTPS via port 443.
 
 Choose one of the files that suits your needs and rename it to *.env*.
 
@@ -92,19 +92,19 @@ Change the following value inside the *.env* file:
 The password for the database admin user may be chosen freely. The database admin user creates the database user **otobo**
 and the database schema **otobo**.
 
-4. Set up a volume with SSL configuration for the Nginx webproxy (optional)
+4. Set up a volume with SSL configuration for the nginx webproxy (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This step can be skipped when OTOBO should be available only via HTTP.
 
-Nginx needs for SSL encryption a certificate and a private key.
+nginx needs for SSL encryption a certificate and a private key.
 
 .. note::
     For testing and development a self-signed certificate can be used. In the general case
     registered certificates must be used.
 
 .. note::
-    To specify a CA chain with a certificate in Nginx, it is necessary to copy the CA chain file
+    To specify a CA chain with a certificate in nginx, it is necessary to copy the CA chain file
     with the actual certificate into a file.
 
 The certificate and the private key are stored in a volume, so that they can be used by nginx later on.
@@ -163,29 +163,23 @@ This section gives some more technical insight into what is happing under the co
 List of Docker containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Container otobo_web_1
+Container otobo_web_1
+    OTOBO webserver on internal port 5000.
 
-OTOBO webserver on internal port 5000.
+Container otobo_cron_1
+    OTOBO daemon. A cronjob checks and restarts the daemon in case of failures.
 
-* Container otobo_cron_1
+Container otobo_db_1
+    Run the database MariaDB on internal port 3306.
 
-OTOBO daemon. A cronjob checks and restarts the daemon in case of failures.
+Container otobo_elastic_1
+    Elasticsearch on the internal ports 9200 and 9300.
 
-* Container otobo_db_1
+Container otobo_redis_1
+    Run Redis as caching service.
 
-Run the database MariaDB on internal port 3306.
-
-* Container otobo_elastic_1
-
-Elasticsearch on the internal ports 9200 and 9300.
-
-* Container otobo_redis_1
-
-Run Redis as caching service.
-
-* Optional container otobo_nginx_1
-
-Run nginx as reverse proxy for providing HTTPS support.
+Optional container otobo_nginx_1
+    Run nginx as reverse proxy for providing HTTPS support.
 
 Overview over the Docker volumes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -194,11 +188,20 @@ The Docker volumes are created on the host for persistent data.
 These allow starting and stopping the services without losing data. Keep in mind that
 containers are temporary and only data in the volumes is permanent.
 
-* **otobo_opt_otobo** contains `/opt/otobo` on the container `web` and `cron`.
-* **otobo_mariadb_data** contains `/var/lib/mysql` on the container `db`.
-* **otobo_elasticsearch_data** contais `/usr/share/elasticsearch/datal` on the container `elastic`.
-* **otobo_redis_data** contains data for the container `redis`.
-* **otobo_nginx_ssl** contains the TLS files, certificate and private key, must be initialized manually
+otobo_opt_otobo
+    contains `/opt/otobo` on the container `web` and `cron`.
+
+otobo_mariadb_data
+    contains `/var/lib/mysql` on the container `db`.
+
+otobo_elasticsearch_data
+    contains `/usr/share/elasticsearch/datal` on the container `elastic`.
+
+otobo_redis_data
+    contains data for the container `redis`.
+
+otobo_nginx_ssl
+    contains the TLS files, certificate and private key, must be initialized manually
 
 Docker environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -209,7 +212,7 @@ more variables. Here is a list of all supported environment variables.
 **MariaDB settings**
 
 ``OTOBO_DB_ROOT_PASSWORD``
-The root password for MySQL. Must be set for running otobo db.
+    The root password for MySQL. Must be set for running otobo db.
 
 **Elasticsearch settings**
 
@@ -218,53 +221,53 @@ https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker.html#docker-p
 for detailed information.
 
 ``OTOBO_Elasticsearch_ES_JAVA_OPTS``
-Example setting:
-*OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m*
-Please adjust this value for production env to a value up to 4g.
+    Example setting:
+    *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m*
+    Please adjust this value for production env to a value up to 4g.
 
 **Webserver settings**
 
 ``OTOBO_WEB_HTTP_PORT``
-Set in case the HTTP port should deviate from the standard port 80.
-When HTTPS is enabled then the HTTP port will redirect to HTTPS.
+    Set in case the HTTP port should deviate from the standard port 80.
+    When HTTPS is enabled then the HTTP port will redirect to HTTPS.
 
-**Nginx webproxy settings**
+**nginx webproxy settings**
 
 These setting are use when HTTPS is enabled.
 
 ``OTOBO_WEB_HTTP_PORT``
-Set in case the HTTP port should deviate from the standard port 80.
-Will redirect to HTTPS.
+    Set in case the HTTP port should deviate from the standard port 80.
+    Will redirect to HTTPS.
 
 ``OTOBO_WEB_HTTPS_PORT``
-Set in case the HTTPS port should deviate from the standard port 443.
+    Set in case the HTTPS port should deviate from the standard port 443.
 
 ``OTOBO_NGINX_SSL_CERTIFICATE``
-SSL cert for the nginx webproxy.
-Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*
+    SSL cert for the nginx webproxy.
+    Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*
 
 ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``
-SSL key for the nginx webproxy.
-Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*
+    SSL key for the nginx webproxy.
+    Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*
 
 **docker-compose settings**
 
 These settings are used by docker-compose directly.
 
 ``COMPOSE_PROJECT_NAME``
-The project name is used as a prefix for the generated volumes and containers.
-Must be set because the compose file is located in ``scripts/docker-compose`` and thus *docker-compose*
-would be used per default.
+    The project name is used as a prefix for the generated volumes and containers.
+    Must be set because the compose file is located in *scripts/docker-compose* and thus **docker-compose**
+    would be used per default as the project name.
 
 ``COMPOSE_PATH_SEPARATOR``
-Separator for the value of COMPOSE_FILE
+    Separator for the value of COMPOSE_FILE
 
 ``COMPOSE_FILE``
-Use *docker-compose/otobo-base.yml* as the base and add the wanted extension files.
-E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*.
+    Use *docker-compose/otobo-base.yml* as the base and add the wanted extension files.
+    E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*.
 
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``
-Used for specifying alternative Docker images. Useful for testing local builds.
+    Used for specifying alternative Docker images. Useful for testing local builds.
 
 Advanced topics
 ----------------------------------
@@ -278,6 +281,17 @@ The relevant files are in the git repository https://github.com/RotherOSS/otobo.
 * *otobo.nginx.dockerfile*
 * *otobo.elasticsearch.dockerfile*
 * *bin/docker/build_docker_images.sh*
+
+.. code-block:: bash
+
+   root> cd /opt
+   root> git clone https://github.com/RotherOSS/otobo.git
+   root> cd otobo
+   root> bin/docker/build_docker_images.sh
+   root> docker image ls
+
+After building one can select the wanted image by setting
+``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
 Automatic Installation
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -324,24 +338,24 @@ List of useful commands
 
 **docker**
 
-* start over:             ``docker system prune -a``
-* show version:           ``docker version``
-* build an image:         ``docker build --tag otobo --file=otobo.web.Dockerfile .``
-* run the new image:      ``docker run --publish 80:5000 otobo``
-* log into the new image: ``docker run -it -v opt_otobo:/opt/otobo otobo bash``
-* with broke entrypoint:  ``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo``
-* show running images:    ``docker ps``
-* show available images:  ``docker images``
-* list volumes :          ``docker volume ls``
-* inspect a volume:       ``docker volume inspect otobo_opt_otobo``
-* get volume mountpoint:  ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl``
-* inspect a container:    ``docker inspect <container>``
-* list files in an image: ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar``
+* ``docker system prune -a`` start over
+* ``docker version`` show version
+* ``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image
+* ``docker run --publish 80:5000 otobo`` run the new image
+* ``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image
+* ``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` with broke entrypoint
+* ``docker ps`` show running images
+* ``docker images`` show available images
+* ``docker volume ls`` list volumes 
+* ``docker volume inspect otobo_opt_otobo`` inspect a volume
+* ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
+* ``docker inspect <container>`` inspect a container
+* ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
 
 **docker-compose**
 
-* check config:           ``docker-compose config``
-* check containers:       ``docker-compose ps``
+* ``docker-compose config`` check config
+* ``docker-compose ps`` check containers
 
 Resources
 ~~~~~~~~~
