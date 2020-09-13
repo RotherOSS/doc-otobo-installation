@@ -307,13 +307,13 @@ running the test suite on a fresh installation.
 
    root> docker-compose down -v
    root> docker-compose up
-   root> docker stop otobo_daemon_1
+   root> docker stop otobo_cron_1
    root> docker exec -t --user otobo otobo_web_1 bash\
    -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
    root> docker exec -t --user otobo otobo_web_1 bash\
    -c "bin/docker/run_test_suite.sh"
    .......
-   root>docker start otobo_daemon_1'
+   root>docker start otobo_cron_1
 
 
 Upgrading to a new patchlevel release
