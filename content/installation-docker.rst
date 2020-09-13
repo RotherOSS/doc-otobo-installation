@@ -62,10 +62,10 @@ The configuration file *.env* is the interface that allows to set up the install
 
 Two template files are available in the newly created folder *docker-compose*:
 
-``.docker_compose_env_http``
+*.docker_compose_env_http*
     Provide HTTP via port 80.
 
-``.docker_compose_env_https``
+*.docker_compose_env_https*
     Provide HTTPS via port 443.
 
 Choose one of the files that suits your needs and rename it to *.env*.
@@ -120,7 +120,7 @@ The names of the copied files need to be set in our newly created *.env* file. E
 ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt``
 ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``
 
-Please do not change the path ``/etc/nginx/ssl/``, but only the filename.
+Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image.
 
 5. Start the docker-compose image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
