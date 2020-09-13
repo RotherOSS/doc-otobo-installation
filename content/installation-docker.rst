@@ -132,7 +132,7 @@ fetched from https://hub.docker.com/u/rotheross.
 
     root> docker-compose up -d
 
-To verify that the five, or six, services are actually running type:
+To verify that the six, or five in the case of HTTP only, services are actually running type:
 
 .. code-block:: bash
 
@@ -145,9 +145,10 @@ To verify that the five, or six, services are actually running type:
 Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 
 .. note::
-    Please configure OTOBO inside the Installer with a new MySQL database.
-    As MySQL database root password please use the password you add in the *.env* file
-    in the variable ``OTOBO_DB_ROOT_PASSWORD``. Please leave the hostname: db untouched.
+    Please configure OTOBO inside the installer with a new MySQL database.
+    As MySQL database root password please use the password you configured
+    in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your *.env* file.
+    Please leave the value ``db`` for the MySQL hostname untouched.
 
 **Have fun with OTOBO!**
 
@@ -272,10 +273,10 @@ These settings are used by docker-compose directly.
 Advanced topics
 ----------------------------------
 
-Building local Images
+Building local images
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The relevant files are in the git repository https://github.com/RotherOSS/otobo.
+The files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:
 
 * *otobo.web.dockerfile*
 * *otobo.nginx.dockerfile*
@@ -323,10 +324,10 @@ Upgrading to a new patchlevel release
 * ``docker-compose down``   stop and remove the containers, named volumes are kept
 * ``docker-compose up``     start again with the new images
 
-Force a patchlevel upgrade
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Force an upgrade to a devel version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Devel images are not upgraded automatically. But the upgrade can be forced.
+Images of devel versions are not upgraded automatically. But the upgrade can be forced.
 Note that this does not reinstall or upgrade the installed packages.
 
 * ``docker-compose down`` stop and remove the containers, named volumes are kept
@@ -346,7 +347,7 @@ List of useful commands
 * ``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` with broke entrypoint
 * ``docker ps`` show running images
 * ``docker images`` show available images
-* ``docker volume ls`` list volumes 
+* ``docker volume ls`` list volumes
 * ``docker volume inspect otobo_opt_otobo`` inspect a volume
 * ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
 * ``docker inspect <container>`` inspect a container
