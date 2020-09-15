@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15 00:30+0200\n"
+"POT-Creation-Date: 2020-09-16 00:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,40 +33,40 @@ msgid "To create a new backup, write permission for the destination directory is
 msgstr ""
 
 #: ../../content/backup-restore.rst:27
-#: ../../content/backup-restore.rst:67
+#: ../../content/backup-restore.rst:80
 msgid "The output of the script:"
 msgstr ""
 
-#: ../../content/backup-restore.rst:57
+#: ../../content/backup-restore.rst:70
 msgid "Restore"
 msgstr ""
 
-#: ../../content/backup-restore.rst:61
+#: ../../content/backup-restore.rst:74
 msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
 msgstr ""
 
-#: ../../content/backup-restore.rst:83
+#: ../../content/backup-restore.rst:96
 msgid "Considerations for running OTOBO under Docker"
 msgstr ""
 
-#: ../../content/backup-restore.rst:85
+#: ../../content/backup-restore.rst:98
 msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered."
 msgstr ""
 
-#: ../../content/backup-restore.rst:87
-msgid "First we need to make sure that the backup files are not created in the file system that is internal to the container. Because in that case all data would be lost when the container is stopped. Therefore the backup directory must be in a volume. For now we only consider the most simple case, where the backup dir is a local dir on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose ``$HOME/otobo_backup`` as the location on the host, and ``/otobo_backup`` as the location in the container."
-msgstr ""
-
-#: ../../content/backup-restore.rst:93
-msgid "First we need to create the volume."
+#: ../../content/backup-restore.rst:100
+msgid "First we need to make sure that the backup files are not created in the file system that is internal to the container. Because in that case all data would be lost when the container is stopped. Therefore the backup directory must be in a volume. For now we only consider the most simple case, where the backup dir is a local dir on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host, and ``/otobo_backup`` as the location in the container."
 msgstr ""
 
 #: ../../content/backup-restore.rst:106
-msgid "For creating the backup we need a running database otobo_opt_otobo. This means that the webserver and the Daemon may, but don't have to, be stopped."
+msgid "First we need to create the volume."
 msgstr ""
 
-#: ../../content/backup-restore.rst:117
-msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAM>`` is something like ``2020-09-07_09-38``."
+#: ../../content/backup-restore.rst:119
+msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the Daemon may, but don't have to, be stopped."
+msgstr ""
+
+#: ../../content/backup-restore.rst:130
+msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr ""
 
 #: ../../content/history.rst:13
@@ -917,158 +917,138 @@ msgid "Upgrading to a new patchlevel release"
 msgstr ""
 
 #: ../../content/installation-docker.rst:332
-msgid "In *.env*, make sure that the images have the tag `latest` or the wanted version"
+msgid "First make sure that in *.env* the images have the tag `latest` or the wanted version."
 msgstr ""
 
-#: ../../content/installation-docker.rst:333
-msgid "``docker-compose pull``   fetch the new images"
-msgstr ""
-
-#: ../../content/installation-docker.rst:334
-msgid "``docker-compose down``   stop and remove the containers, named volumes are kept"
-msgstr ""
-
-#: ../../content/installation-docker.rst:335
-msgid "``docker-compose up``     start again with the new images"
-msgstr ""
-
-#: ../../content/installation-docker.rst:338
+#: ../../content/installation-docker.rst:346
 msgid "Force an upgrade to a devel version"
 msgstr ""
 
-#: ../../content/installation-docker.rst:340
-msgid "Images of devel versions are not upgraded automatically. But the upgrade can be forced. Note that this does not reinstall or upgrade the installed packages."
-msgstr ""
-
-#: ../../content/installation-docker.rst:343
-msgid "``docker-compose down`` stop and remove the containers, named volumes are kept"
-msgstr ""
-
-#: ../../content/installation-docker.rst:344
-msgid "``docker run -it --rm --volume otobo_opt_otobo:/opt/otobo otobo upgrade`` force upgrade, skip reinstall"
-msgstr ""
-
-#: ../../content/installation-docker.rst:345
-msgid "``docker-compose up`` start again with the new images"
-msgstr ""
-
 #: ../../content/installation-docker.rst:348
-msgid "List of useful commands"
-msgstr ""
-
-#: ../../content/installation-docker.rst:350
-msgid "**docker**"
-msgstr ""
-
-#: ../../content/installation-docker.rst:352
-msgid "``docker system prune -a`` start over"
+msgid "Images of devel versions are not upgraded automatically. But the upgrade can be forced. The source of the devel version can either be a local build or an devel image from Docker Hub. Here is a example using the devel image for the OTOBO 10.1.x branch from Docker Hub."
 msgstr ""
 
 #: ../../content/installation-docker.rst:353
-msgid "``docker version`` show version"
+msgid "These coḿmands do not reinstall or upgrade the installed OTOBO packages."
 msgstr ""
 
-#: ../../content/installation-docker.rst:354
-msgid "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
-msgstr ""
-
-#: ../../content/installation-docker.rst:355
-msgid "``docker run --publish 80:5000 otobo`` run the new image"
-msgstr ""
-
-#: ../../content/installation-docker.rst:356
-msgid "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
-msgstr ""
-
-#: ../../content/installation-docker.rst:357
-msgid "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` with broke entrypoint"
-msgstr ""
-
-#: ../../content/installation-docker.rst:358
-msgid "``docker ps`` show running images"
-msgstr ""
-
-#: ../../content/installation-docker.rst:359
-msgid "``docker images`` show available images"
-msgstr ""
-
-#: ../../content/installation-docker.rst:360
-msgid "``docker volume ls`` list volumes"
-msgstr ""
-
-#: ../../content/installation-docker.rst:361
-msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
-msgstr ""
-
-#: ../../content/installation-docker.rst:362
-msgid "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
-msgstr ""
-
-#: ../../content/installation-docker.rst:363
-msgid "``docker inspect <container>`` inspect a container"
-msgstr ""
-
-#: ../../content/installation-docker.rst:364
-msgid "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image"
-msgstr ""
-
-#: ../../content/installation-docker.rst:366
-msgid "**docker-compose**"
-msgstr ""
-
-#: ../../content/installation-docker.rst:368
-msgid "``docker-compose config`` check config"
+#: ../../content/installation-docker.rst:367
+msgid "List of useful commands"
 msgstr ""
 
 #: ../../content/installation-docker.rst:369
-msgid "``docker-compose ps`` check containers"
+msgid "**docker**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:371
+msgid "``docker system prune -a`` start over"
 msgstr ""
 
 #: ../../content/installation-docker.rst:372
-msgid "Resources"
+msgid "``docker version`` show version"
+msgstr ""
+
+#: ../../content/installation-docker.rst:373
+msgid "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr ""
 
 #: ../../content/installation-docker.rst:374
-msgid "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
+msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr ""
 
 #: ../../content/installation-docker.rst:375
-msgid "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_"
+msgid "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr ""
 
 #: ../../content/installation-docker.rst:376
-msgid "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
+msgid "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` with broke entrypoint"
 msgstr ""
 
 #: ../../content/installation-docker.rst:377
-msgid "`not403 <http://not403.blogspot.com/search/label/otrs>`_"
+msgid "``docker ps`` show running images"
 msgstr ""
 
 #: ../../content/installation-docker.rst:378
-msgid "`cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
+msgid "``docker images`` show available images"
 msgstr ""
 
 #: ../../content/installation-docker.rst:379
-msgid "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
+msgid "``docker volume ls`` list volumes"
 msgstr ""
 
 #: ../../content/installation-docker.rst:380
-msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
+msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr ""
 
 #: ../../content/installation-docker.rst:381
-msgid "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
+msgid "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 msgstr ""
 
 #: ../../content/installation-docker.rst:382
-msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
+msgid "``docker inspect <container>`` inspect a container"
 msgstr ""
 
 #: ../../content/installation-docker.rst:383
+msgid "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image"
+msgstr ""
+
+#: ../../content/installation-docker.rst:385
+msgid "**docker-compose**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:387
+msgid "``docker-compose config`` check config"
+msgstr ""
+
+#: ../../content/installation-docker.rst:388
+msgid "``docker-compose ps`` check containers"
+msgstr ""
+
+#: ../../content/installation-docker.rst:391
+msgid "Resources"
+msgstr ""
+
+#: ../../content/installation-docker.rst:393
+msgid "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:394
+msgid "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:395
+msgid "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:396
+msgid "`not403 <http://not403.blogspot.com/search/label/otrs>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:397
+msgid "`cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:398
+msgid "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:399
+msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:400
+msgid "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:401
+msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:402
 msgid "`Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 msgstr ""
 
-#: ../../content/installation-docker.rst:384
+#: ../../content/installation-docker.rst:403
 msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 msgstr ""
 
