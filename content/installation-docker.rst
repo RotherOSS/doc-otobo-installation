@@ -336,11 +336,22 @@ Force an upgrade to a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Images of devel versions are not upgraded automatically. But the upgrade can be forced.
-Note that this does not reinstall or upgrade the installed packages.
+The source of the devel version can either be a local build or an devel image from Docker Hub.
+Here is a example using the devel image for the OTOBO 10.1.x branch from Docker Hub.
 
-* ``docker-compose down`` stop and remove the containers, named volumes are kept
-* ``docker run -it --rm --volume otobo_opt_otobo:/opt/otobo otobo upgrade`` force upgrade, skip reinstall
-* ``docker-compose up`` start again with the new images
+.. note::
+    These coḿmands do not reinstall or upgrade the installed OTOBO packages.
+
+.. code-block:: bash
+
+    # stop and remove the containers, named volumes are kept
+    docker_admin> docker-compose down
+
+    # force upgrade, skip reinstall
+    docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:devel-rel-10_1 upgrade
+
+    start again with the new version
+    docker_admin> docker-compose up -d
 
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
