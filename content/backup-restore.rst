@@ -99,7 +99,7 @@ but don't have to, be stopped.
 .. code-block:: bash
 
     # create a backup
-    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default otobo:latest scripts/backup.pl -d /otobo_backup
+    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/backup.pl -d /otobo_backup
 
     # check the backup file
     docker_admin>tree $HOME/otobo_backup
@@ -110,4 +110,4 @@ The placeholder ``<TIMESTAM>`` is something like ``2020-09-07_09-38``.
 .. code-block:: bash
 
     # create a backup
-    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default otobo:latest scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>
+    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>
