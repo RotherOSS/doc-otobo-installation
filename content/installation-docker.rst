@@ -306,7 +306,7 @@ running the test suite on a fresh installation.
 .. code-block:: bash
 
    root> docker-compose down -v
-   root> docker-compose up
+   root> docker-compose up -d
    root> docker stop otobo_cron_1
    root> docker exec -t --user otobo otobo_web_1 bash\
    -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
@@ -319,10 +319,18 @@ running the test suite on a fresh installation.
 Upgrading to a new patchlevel release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* In *.env*, make sure that the images have the tag `latest` or the wanted version
-* ``docker-compose pull``   fetch the new images
-* ``docker-compose down``   stop and remove the containers, named volumes are kept
-* ``docker-compose up``     start again with the new images
+First make sure that in *.env* the images have the tag `latest` or the wanted version.
+
+.. code-block:: bash
+
+    # fetch the new images that are tagged a 'latest'
+    docker_admin> docker-compose pull
+
+    # stop and remove the containers, named volumes are kept
+    docker_admin> docker-compose down
+
+    # start again with the new images
+    docker_admin> docker-compose up -d
 
 Force an upgrade to a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
