@@ -44,7 +44,7 @@ The output of the script:
     Using -t nofullbackup saves only the database, /Kernel/Config* and /var directories.
     With -t dbonly only the database will be saved.
 
-    Override the max allowed package size:
+    Override the max allowed packet size:
     When backing up a MySQL one might run into very large database fields. In this case the backup fails.
     For making the backup succeed one can explicitly add the parameter --max-allowed-packet=<SIZE IN BYTES>.
     This setting will be passed on to the command mysqldump.
