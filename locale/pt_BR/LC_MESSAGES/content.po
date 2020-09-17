@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-09-17 00:30+0200\n"
-"PO-Revision-Date: 2020-09-02 13:25+0000\n"
+"PO-Revision-Date: 2020-09-17 14:51+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.otobo.org/projects/"
 "otobo10/installation-manual/pt_BR/>\n"
@@ -23,25 +23,23 @@ msgid "Backup and Restore"
 msgstr "Backup e Restauração"
 
 #: ../../content/backup-restore.rst:14
-#, fuzzy
 msgid ""
 "OTOBO has built in scripts for backup and restore. Execute the scripts with "
 "the option ``-h`` for more information."
 msgstr ""
 "OTOBO possui scripts internos para backup e restauração. Execute os scripts "
-"com a opção `` -h`` para obter mais informações."
+"com a opção ``-h`` para obter mais informações."
 
 #: ../../content/backup-restore.rst:17
 msgid "Backup"
 msgstr "Backup"
 
 #: ../../content/backup-restore.rst:21
-#, fuzzy
 msgid ""
 "To create a new backup, write permission for the destination directory is "
 "needed for the user ``otobo``."
 msgstr ""
-"Para criar um backup, é necessária permissão de gravação para o usuário "
+"Para criar um backup, é necessário permissão de gravação para o usuário "
 "``otobo`` no diretório de destino."
 
 #: ../../content/backup-restore.rst:27 ../../content/backup-restore.rst:80
@@ -57,16 +55,20 @@ msgid ""
 "To restore the database make sure that the database ``otobo`` exists and "
 "contains no tables."
 msgstr ""
+"Para restaurar o banco de dados, certifique-se de que o banco de dados "
+"``otobo`` existe e não contém tabelas."
 
 #: ../../content/backup-restore.rst:96
 msgid "Considerations for running OTOBO under Docker"
-msgstr ""
+msgstr "Considerações para executar OTOBO no Docker"
 
 #: ../../content/backup-restore.rst:98
 msgid ""
 "The same scripts can be used with OTOBO running under Docker. However some "
 "Docker specific limitation must be considered."
 msgstr ""
+"Os mesmos scripts podem ser usados com OTOBO em execução no Docker. No "
+"entanto, algumas limitações específicas do Docker devem ser consideradas."
 
 #: ../../content/backup-restore.rst:100
 msgid ""
@@ -79,10 +81,19 @@ msgid ""
 "the local dir ``otobo_backup`` as the location on the host, and ``/"
 "otobo_backup`` as the location in the container."
 msgstr ""
+"Primeiro, precisamos nos certificar de que os arquivos de backup não sejam "
+"criados no sistema de arquivos interno do contêiner. Porque nesse caso todos "
+"os dados seriam perdidos quando o contêiner fosse interrompido. Portanto, o "
+"diretório de backup deve estar em um volume. Por enquanto, consideramos "
+"apenas o caso mais simples, em que o diretório de backup é um diretório "
+"local no host Docker. A localização do diretório de backup no contêiner pode "
+"ser escolhida arbitrariamente. Neste exemplo, escolhemos o diretório local "
+"``otobo_backup`` como o local no host, e ``/otobo_backup`` como o local no "
+"contêiner."
 
 #: ../../content/backup-restore.rst:106
 msgid "First we need to create the volume."
-msgstr ""
+msgstr "Primeiro, precisamos criar o volume."
 
 #: ../../content/backup-restore.rst:119
 msgid ""
