@@ -86,24 +86,22 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
 
 
 Step 2: Preparing the new OTOBO system and server
---------------------------------------
+-------------------------------------------------------
 
 After the OTOBO installation, please login again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``.
 Now log in on the server as user ``root`` and execute the following commands:
 
 .. code-block:: bash
-
     root> su - otobo
     otobo>
     otobo> /opt/otobo/bin/Cron.sh stop
     otobo> /opt/otobo/bin/otobo.Daemon stop --force
 
-When OTOBO is running under Docker it suffices to stop the the Docker container otobo_cron_1:
+When OTOBO is running under Docker it suffices to stop the Docker container ``otobo_daemon_1``:
 
 .. code-block:: bash
-
-    docker_admin> cd ~/otobo-docker
-    docker_admin> docker-compose stop cron
+    docker_admin> cd /opt/otobo-docker
+    docker_admin> docker-compose stop deamon
 
 .. note::
 
@@ -155,7 +153,7 @@ After that, delete all agent and user sessions (``Admin ->  Sessions``) and logo
 Stop All Relevant Services and the OTRS Daemon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please make sure there are no more running services or cron jobs.
+Please make sure there are no running services or cron jobs.
 
 .. code-block:: bash
 
