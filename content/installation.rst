@@ -167,7 +167,7 @@ Configure Apache **with** SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
-the apache ``sites-availible`` directory`.
+the apache ``sites-available`` directory`.
 
 .. code-block:: bash
 
@@ -285,14 +285,14 @@ OTOBO recommends an active installation of Elasticsearch for quick search. The e
 Elasticsearch installation example based on Ubuntu 18.04 LTS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-JDK-Installation
+JDK Installation
 
 .. code-block:: bash
 
    root> apt update
    root> apt install openjdk-8-jdk
 
-ElasticSearch-Installation
+Elasticsearch Installation
 
 .. code-block:: bash
 
@@ -366,7 +366,7 @@ OTOBO daemon is responsible for handling any asynchronous and recurring tasks in
 Step 11: Cron jobs for the OTOBO user
 ----------------------------
 
-There are two default OTOBO cron files in /opt/otobo/var/cron/\*.dist, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
+There are two default OTOBO cron files in ``/opt/otobo/var/cron/\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
 
 .. code-block:: bash
 
@@ -396,7 +396,7 @@ If you type a few characters of the command name, TAB will show all matching com
 
 .. note::
 
-   If you have problems, you can execute the following line as user otrs and add it to your ``~/.bashrc`` to execute the commands from the file.
+   If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file.
 
    .. code-block:: bash
 

@@ -42,5 +42,6 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de).
    migration-from-otrs-6
    updating
    backup-restore
+   installing-perl-modules
    performance-tuning
    history
