@@ -38,13 +38,23 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 Migration Requirements
 ----------------------
 
-1. Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running, and that you want to transfer configuration and data to OTOBO. Please consider carefully whether you really need the data and configuration. Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway. It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice. We are happy to advise you, please get in touch at hallo@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
+1. Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running,
+and that you want to transfer configuration and data to OTOBO.
+
+.. note::
+Please consider carefully whether you really need the data and configuration.
+Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway.
+It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
+We are happy to advise you, please get in touch at hallo@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
 2. You need a running OTOBO installation to start the migration from there!
 
 3. This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too.
 
-4. If you are planning to migrate from one to another server, it must be possible for the OTRS and OTOBO application servers to reach each other via SSH. Furthermore, the database servers must be able to communicate via the set database port and the database must allow external access.
+4. If you are planning to migrate to another server, then the OTOBO webserver must be able
+to access the location where ((OTRS)) Community Edition or OTRS 6.0.\* is installed. In most cases this is the directory */opt/otrs*
+on the server running OTRS. The access can be via ssh or via file system mounts.
+Furthermore, the *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts.
 
 .. note::
 
@@ -88,7 +98,7 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
 Step 2: Preparing the new OTOBO system and server
 -------------------------------------------------------
 
-After the OTOBO installation, please login again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``.
+After installing OTOBO please log in again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``.
 Now log in on the server as user ``root`` and execute the following commands:
 
 .. code-block:: bash
