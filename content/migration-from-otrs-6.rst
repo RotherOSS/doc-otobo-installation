@@ -209,6 +209,10 @@ and follow the process.
 .. note::
     When OTOBO runs inside a Docker container then specify _/opt/otobo/tmp/otrs_ as the OTRS source directory.
 
+.. note::
+    In the Docker case a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
+    Pick one of the IP-addressses reported by ``hostname --all-ip-addresses`` instead.
+
 When the migration is complete, please take your time and test the entire system. Once you have decided
 that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
 
