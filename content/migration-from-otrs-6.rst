@@ -167,8 +167,8 @@ Please make sure there are no running services or cron jobs.
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
 
 
-Step 4: Start the Migration!
-----------------------------
+Step 4: Perform the Migration!
+---------------------------------
 
 Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname)
 and follow the process.
@@ -177,38 +177,35 @@ When the migration is complete, please take your time and test the entire system
 that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
 
 .. code-block:: bash
-
     root> su - otobo
     otobo>
     otobo> /opt/otobo/bin/Cron.sh start
-    otobo> /opt/otobo/bin/otobo.Daemon stop --force
+    otobo> /opt/otobo/bin/otobo.Daemon start
 
 In the docker case:
 
 .. code-block:: bash
-
     docker_admin> cd ~/otobo-docker
-    docker_admin> docker-compose start cron
-
+    docker_admin> docker-compose start daemon
 
 Step 5: After Successful Migration!
-----------------------------
+------------------------------------
 
 1. Uninstall *sshpass* if you don´t needed anymore.
 2. Have fun with OTOBO!
 
 
 Step 6: Known Migration Problems
--------------------------------
+-----------------------------------
 
 1. Login after migration not possible
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 During our migration tests, the browser used for the migration sometimes had problems.
 After restarting the browser, this problem usually was solved. With Safari it was sometimes necessary to manually delete the old OTRS session.
 
 2. Final page of the migration has strange layout due to missing CSS files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This can happen when the setting ScriptAlias has a non-standard value. The migration simple substitutes otrs for otobo. This might lead to
 the effect that the CSS and JavaScript can no longer be retrieved in OTOBO.
