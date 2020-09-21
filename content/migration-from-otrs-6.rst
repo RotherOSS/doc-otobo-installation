@@ -207,11 +207,16 @@ Please use the web migration tool at http://localhost/otobo/migration.pl (replac
 and follow the process.
 
 .. note::
-    When OTOBO runs inside a Docker container then specify _/opt/otobo/tmp/otrs_ as the OTRS source directory.
+    When OTOBO runs inside a Docker container then specify __localhost_ for OTRS server and _/opt/otobo/tmp/otrs_ as the OTRS home directory.
 
 .. note::
     In the Docker case a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
-    Pick one of the IP-addressses reported by ``hostname --all-ip-addresses`` instead.
+    Pick one of the IP-addressses reported by ``hostname --all-ip-addresses`` instead for ``OTRS Server``.
+    In order to make sure that there is a database user that can read the data it might be worthwhile to create a dedicated users.
+    E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration'`` and
+    ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%'``.
+
+
 
 When the migration is complete, please take your time and test the entire system. Once you have decided
 that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
@@ -232,7 +237,8 @@ Step 5: After Successful Migration!
 ------------------------------------
 
 1. Uninstall *sshpass* if you don´t needed anymore.
-2. Have fun with OTOBO!
+2. Drop the databases user dedicated to the migration if you created one.
+3. Have fun with OTOBO!
 
 
 Step 6: Known Migration Problems
