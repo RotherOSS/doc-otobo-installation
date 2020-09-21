@@ -193,7 +193,7 @@ Please make sure there are no running services or cron jobs.
     root> su - otrs
     otrs>
     otrs> /opt/otrs/bin/Cron.sh stop
-    otrs> /opt/otrs/bin/otrs.Daemon stop --force
+    otrs> /opt/otrs/bin/otrs.Daemon.pl stop --force
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
