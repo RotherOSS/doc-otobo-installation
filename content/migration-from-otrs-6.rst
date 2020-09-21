@@ -41,7 +41,7 @@ Migration Requirements
 1. Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running,
 and that you want to transfer configuration and data to OTOBO.
 
-.. note::
+.. warning::
 Please consider carefully whether you really need the data and configuration.
 Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway.
 It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
@@ -53,11 +53,10 @@ We are happy to advise you, please get in touch at hallo@otobo.de or ask your qu
 
 4. If you are planning to migrate to another server, then the OTOBO webserver must be able
 to access the location where ((OTRS)) Community Edition or OTRS 6.0.\* is installed. In most cases this is the directory */opt/otrs*
-on the server running OTRS. The access can be via ssh or via file system mounts.
+on the server running OTRS. The access can be via SSH or via file system mounts.
 Furthermore, the *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts.
 
 .. note::
-
     If SSH and database access between the servers is not possible, please migrate OTRS to OTOBO on the same server and only then move the new installation.
 
 Step 1: Install the new OTOBO System
@@ -147,6 +146,29 @@ and execute one of the following commands:
 
 The same thing must be done for *rsysnc* when it isn't available yet.
 
+Docker: copy /opt/otrs into the volume *otobo_opt_otobo*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section we assume that */opt/otrs* is available on the Docker host.
+
+When the web application OTOBO runs in a container then it can't access directories outside the container.
+The exception are directories that were mounted as volumes inside the container. This means that for
+migration there are two possibilities:
+
+    a. copy */opt/otrs* into an existing volume
+    b. mount */opt/otrs* as an additional volume
+
+Here we concentrate on option **a.**.
+
+For safe copying we use ``rsync``. But first we need to find out the correct target for copying.
+
+.. code-block:: bash
+    root> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    root> echo $mountpoint_opt_otobo
+    root> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/otrs
+
+This copied directory will be available as */opt/otobo/tmp/otrs* within the container.
+
 Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
 ---------------------------------
 
@@ -183,6 +205,9 @@ Step 4: Perform the Migration!
 
 Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname)
 and follow the process.
+
+.. note::
+    When OTOBO runs inside a Docker container then specify _/opt/otobo/tmp/otrs_ as the OTRS source directory.
 
 When the migration is complete, please take your time and test the entire system. Once you have decided
 that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
