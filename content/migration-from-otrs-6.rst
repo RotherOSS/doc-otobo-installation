@@ -1,34 +1,34 @@
 Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10
-=================================
+==================================================================================
 
 Welcome and thank you for choosing OTOBO!
 
-OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, a migration always requires
-preparations and possibly also rework to ensure that it will be carried out successfully.
+OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, migration to OTOBO always requires
+preparation and possibly rework after the migration to ensure that it is successful.
 
 Please take your time for the migration and follow these instructions step by step.
 
-If you have any problems or questions, please do not give up :) Call our support line, write an email or post your query
+If you have any problem or question, please do not give up :) Call our support line, write an email, or post your query
 in the OTOBO Community forum at https://forum.otobo.org/.
 
 We will find a way to help you.
 
 .. note::
-    After the migration all data previously available in OTRS 6 will be available in OTOBO again.
-    We do not touch any OTRS data during the migration.
+    After the migration all data previously available in OTRS 6 will be available in OTOBO.
+    We do not modify any OTRS data during the migration.
 
 Migration Possibilities
-----------------------
+------------------------
 
 With the OTOBO Migration Interface it is possible to perform the following migrations:
 
-1. A 1:1 migration on the same server with the same database.
+1. A 1:1 migration on the same application server with the same database server.
 
-2. A migration and simultaneous move to a new server and operating system.
+2. A migration and simultaneous move to a new application server and operating system.
 
 3. It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database servers), or whether you want to change OTOBO to such a configuration.
 
-4. It is possible to migrate from any one of the supported databases to any other one.
+4. It is possible to migrate from any of the supported databases to any other.
 
 5. It is possible to switch from any supported operating system to any other supported operating system during the migration.
 
@@ -170,7 +170,7 @@ For safe copying we use ``rsync``. But first we need to find out the correct tar
 This copied directory will be available as */opt/otobo/tmp/otrs* within the container.
 
 Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
----------------------------------
+-------------------------------------------------------------------
 
 .. note::
     Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too. Yes, we do not touch any OTRS data during the migration, but at times
