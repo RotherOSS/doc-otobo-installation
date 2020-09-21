@@ -57,10 +57,11 @@ Please start with installing the new OTOBO system to which your OTRS / ((OTRS)) 
 We strongly recommend to read the :doc:`installation` chapter.
 
 .. warning::
-
-    If you install OTOBO on the same server as you OTRS / ((OTRS)) Community Edition and under Apache, configure the OTOBO (or OTRS) web server without Mod_perl as long as both systems are running,
-    or deactivate OTRS in the web server before the migration. Apache has difficulties with running two systems under Mod_perl on the same server.
-    To disable Mod_perl, just comment out the mod_perl part in the file ``/opt/otobo/scripts/apache2-httpd.include.conf``.
+    Apache has difficulties with running two independent applications under mod_perl on the same server.
+    Therefore, if you installed OTOBO on the same server as your OTRS / ((OTRS)) Community Edition,
+    disable mod_perl for OTOBO as long as both systems are running.
+    To disable mod_perl for OTOBO, simply comment out the mod_perl part in the file */opt/otobo/scripts/apache2-httpd.include.conf*.
+    Alternatively you can deactivate OTRS in the web server before the migration.
 
 After finishing the installation tutorial, please login to the OTOBO Admin Area ``Admin -> Packages``
 to install all required OTOBO OPM packages.
@@ -115,7 +116,7 @@ When OTOBO is running under Docker it suffices to stop the the Docker container 
 
 
 Install sshpass and rsysnc if you want to migrate OTRS from another server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The tools *sshpass* and *rsync* are needed so we can copy files via ssh. Please log in on the server as user ``root``
 and execute one of the following commands:
