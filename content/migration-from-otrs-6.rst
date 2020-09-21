@@ -116,25 +116,26 @@ When OTOBO is running under Docker it suffices to stop the Docker container ``ot
 Install sshpass and rsysnc if you want to migrate OTRS from another server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The tools *sshpass* and *rsync* are needed so we can copy files via ssh. Please log in on the server as user ``root``
+The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh. For installing ``sshpass``, please log in on the server as user ``root``
 and execute one of the following commands:
 
-.. code-block:: Install sshpass
-
-.. code-block:: Install sshpass under Debian / Ubuntu Linux
+.. code-block:: bash
+    $ # Install sshpass under Debian / Ubuntu Linux
     $ sudo apt-get install sshpass
 
-.. code-block:: Install sshpass under RHEL/CentOS Linux
+.. code-block:: bash
+    $ #Install sshpass under RHEL/CentOS Linux
     $ sudo yum install sshpass
 
-.. code-block:: Install sshpass under Fedora
+.. code-block:: bash
+    $ # Install sshpass under Fedora
     $ sudo dnf install sshpass
 
-.. code-block:: Install sshpass under OpenSUSE Linux
+.. code-block:: bash
+    $ # Install sshpass under OpenSUSE Linux
     $ sudo zypper install sshpass
 
 The same thing must be done for *rsysnc* when it isn't available yet.
-
 
 Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
 ---------------------------------
