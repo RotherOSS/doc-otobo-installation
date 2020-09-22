@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-09-22 00:30+0200\n"
-"PO-Revision-Date: 2020-09-11 22:35+0000\n"
+"PO-Revision-Date: 2020-09-22 15:05+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <http://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1.1\n"
+"X-Generator: Weblate 4.2.2\n"
 
 #: ../../content/backup-restore.rst:12
 msgid "Backup and Restore"
@@ -67,12 +67,11 @@ msgid ""
 "The same scripts can be used with OTOBO running under Docker. However some "
 "Docker specific limitation must be considered."
 msgstr ""
-"Für Docker-basierte OTOBO-Umgebungen können die OTOBO-Standardskripte "
+"Auch für Docker-basierte OTOBO-Umgebungen können die OTOBO-Standardskripte "
 "verwendet werden. Beachten Sie jedoch einige Docker-spezifische "
 "Besonderheiten."
 
 #: ../../content/backup-restore.rst:100
-#, fuzzy
 msgid ""
 "First we need to make sure that the backup files are not created in the file "
 "system that is internal to the container. Because in that case all data "
@@ -84,32 +83,30 @@ msgid ""
 "otobo_backup`` as the location in the container."
 msgstr ""
 "Besonders wichtig ist, dass die Backupdateien nicht im internen Dateisystem "
-"des Containers gespeichert werden. Dort wären die Daten beim Stopp des "
-"Containers verloren. Das Backup-Verzeichnis muss also in einem Volume "
+"des Containers angelegt werden. Dort wären die Daten verloren, sobald der "
+"Container gestoppt wird. Das Backup-Verzeichnis muss also in einem Volume "
 "angelegt werden. Wir betrachten zunächst nur den einfachsten Fall: Als "
 "Backup-Verzeichnis wird ein lokales Verzeichnis auf dem Docker-Host "
 "verwendet. Innerhalb des Containers kann das Backup-Verzeichnis an "
-"beliebiger Stelle angelegt werden. Für dieses Beispiel verwenden wir ``$HOME/"
-"otobo_backup`` als Speicherort auf dem Host und``/otobo_backup`` als "
-"Location im Container."
+"beliebiger Stelle angelegt werden. Für dieses Beispiel verwenden wir das "
+"lokale Verzeichnis ``otobo_backup`` als Speicherort auf dem Host und "
+"``/otobo_backup`` als Location im Container."
 
 #: ../../content/backup-restore.rst:106
 msgid "First we need to create the volume."
 msgstr "Als erstes legen wir das Volume an."
 
 #: ../../content/backup-restore.rst:119
-#, fuzzy
 msgid ""
 "For creating the backup we need a running database and the volumes "
 "``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and "
 "the Daemon may, but don't have to, be stopped."
 msgstr ""
-"Wir benötigen eine laufende Datenbank ``otobo_opt_otobo``, um das Backup zu "
-"erstellen. Das bedeutet, Webserver und Daemon können, müssen aber nicht "
-"gestoppt werden."
+"Um das Backup zu erstellen, benötigen wir eine laufende Datenbank und die "
+"Volumes ``otobo_opt_otobo`` sowie ``otobo_backup``. Das bedeutet, Webserver "
+"und Daemon können, müssen aber nicht gestoppt werden."
 
 #: ../../content/backup-restore.rst:130
-#, fuzzy
 msgid ""
 "For restoring the backup we also need to specify which backup should be "
 "restored. The placeholder ``<TIMESTAMP>`` is something like "
@@ -117,7 +114,7 @@ msgid ""
 msgstr ""
 "Um das System aus einem Backup wiederherstellen zu können, müssen wir "
 "angeben, welches Backup verwendet werden soll. Der Platzhalter "
-"``<TIMESTAM>`` steht für etwas wie ``2020-09-07_09-38``."
+"``<TIMESTAMP>`` steht für einen Wert wie ``2020-09-07_09-38``."
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
@@ -128,7 +125,6 @@ msgid "2019 - OTRS Installation Guide - OTRS AG (https://otrs.com)"
 msgstr "2019 - OTRS Installation Guide - OTRS AG (https://otrs.com)"
 
 #: ../../content/history.rst:16
-#, fuzzy
 msgid "2020 - OTOBO Installation Tutorial - Rother OSS GmbH (https://otobo.de)"
 msgstr ""
 "2020 - OTOBO Installationsanleitung - Rother OSS GmbH (https://otobo.de)"
@@ -139,9 +135,9 @@ msgid ""
 "Leiblfing, Germany. Authors: OTRS AG (original version), Rother OSS GmbH "
 "(https://rother-oss.com)"
 msgstr ""
-"Veröffentlicht durch: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, "
+"Veröffentlicht durch: Rother OSS GmbH (https://otobo.de), Oberwalting 31, "
 "94339 Leiblfing, Deutschland. Autoren: OTRS AG (Originalversion), Rother OSS "
-"GmbH (Anpassung für OTOBO - https://rother-oss.com)"
+"GmbH (Anpassung für OTOBO, https://rother-oss.com)"
 
 #: ../../content/history.rst:21
 msgid ""
@@ -160,9 +156,8 @@ msgstr ""
 "txt>`__."
 
 #: ../../content/index.rst:17
-#, fuzzy
 msgid "OTOBO Installation Tutorial"
-msgstr "OTOBO Installationshandbuch"
+msgstr "OTOBO Installationsanleitung"
 
 #: ../../content/index.rst:19
 msgid ""
