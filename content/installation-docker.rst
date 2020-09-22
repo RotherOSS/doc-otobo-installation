@@ -167,7 +167,7 @@ List of Docker containers
 Container otobo_web_1
     OTOBO webserver on internal port 5000.
 
-Container otobo_cron_1
+Container otobo_daemon_1
     OTOBO daemon. A cronjob checks and restarts the daemon in case of failures.
 
 Container otobo_db_1
@@ -190,7 +190,7 @@ These allow starting and stopping the services without losing data. Keep in mind
 containers are temporary and only data in the volumes is permanent.
 
 otobo_opt_otobo
-    contains `/opt/otobo` on the container `web` and `cron`.
+    contains `/opt/otobo` on the container `web` and `daemon`.
 
 otobo_mariadb_data
     contains `/var/lib/mysql` on the container `db`.
@@ -307,13 +307,13 @@ running the test suite on a fresh installation.
 
    root> docker-compose down -v
    root> docker-compose up -d
-   root> docker stop otobo_cron_1
+   root> docker stop otobo_daemon_1
    root> docker exec -t --user otobo otobo_web_1 bash\
    -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
    root> docker exec -t --user otobo otobo_web_1 bash\
    -c "bin/docker/run_test_suite.sh"
    .......
-   root>docker start otobo_cron_1
+   root>docker start otobo_daemon_1
 
 
 Upgrading to a new patchlevel release
