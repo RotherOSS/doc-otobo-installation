@@ -168,7 +168,7 @@ Container otobo_web_1
     OTOBO webserver on internal port 5000.
 
 Container otobo_daemon_1
-    OTOBO daemon. A cronjob checks and restarts the daemon in case of failures.
+    OTOBO daemon. The OTOBO daemon is started and periodically checked.
 
 Container otobo_db_1
     Run the database MariaDB on internal port 3306.
