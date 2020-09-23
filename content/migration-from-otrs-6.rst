@@ -51,7 +51,7 @@ We are happy to advise you, please get in touch at hello@otobo.de or ask your qu
 3. This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too.
 
 4. If you are planning to migrate to another server, then the OTOBO webserver must be able
-to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed. In most cases, this is the directory */opt/otrs*
+to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed. In most cases, this is the directory /opt/otrs
 on the server running OTRS. The access can be effected via SSH or via file system mounts.
 Furthermore, the *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts.
 
@@ -254,7 +254,7 @@ After restarting the browser, this problem usually was solved. With Safari it wa
 
 This can happen when the setting ScriptAlias has a non-standard value. The migration simple substitutes otrs for otobo. This might lead to
 the effect that the CSS and JavaScript can no longer be retrieved in OTOBO.
-When that happens, please check the settings in *Kernel/Config.pm* and revert them to sane values.
+When that happens, please check the settings in Kernel/Config.pm and revert them to sane values.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
