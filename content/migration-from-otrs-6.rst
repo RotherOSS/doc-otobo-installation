@@ -3,8 +3,7 @@ Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10
 
 Welcome and thank you for choosing OTOBO!
 
-OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, migration to OTOBO always requires
-preparation and possibly rework after the migration to ensure that it is successful.
+OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, every migration to OTOBO requires thorough preparation and possibly some rework, too.
 
 Please take your time for the migration and follow these instructions step by step.
 
@@ -28,7 +27,7 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
 3. It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database servers), or whether you want to change OTOBO to such a configuration.
 
-4. It is possible to migrate from any of the supported databases to any other.
+4. It is possible to migrate from any of the supported databases to any other one.
 
 5. It is possible to switch from any supported operating system to any other supported operating system during the migration.
 
@@ -45,15 +44,15 @@ and that you want to transfer configuration and data to OTOBO.
 Please consider carefully whether you really need the data and configuration.
 Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway.
 It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
-We are happy to advise you, please get in touch at hallo@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
+We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
 2. You need a running OTOBO installation to start the migration from there!
 
 3. This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too.
 
 4. If you are planning to migrate to another server, then the OTOBO webserver must be able
-to access the location where ((OTRS)) Community Edition or OTRS 6.0.\* is installed. In most cases this is the directory */opt/otrs*
-on the server running OTRS. The access can be via SSH or via file system mounts.
+to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed. In most cases, this is the directory */opt/otrs*
+on the server running OTRS. The access can be effected via SSH or via file system mounts.
 Furthermore, the *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts.
 
 .. note::
@@ -70,7 +69,7 @@ We strongly recommend to read the :doc:`installation` chapter.
     Therefore, if you installed OTOBO on the same server as your OTRS / ((OTRS)) Community Edition,
     disable mod_perl for OTOBO as long as both systems are running.
     To disable mod_perl for OTOBO, simply comment out the mod_perl part in the file */opt/otobo/scripts/apache2-httpd.include.conf*.
-    Alternatively you can deactivate OTRS in the web server before the migration.
+    Alternatively, you can deactivate OTRS in the web server before migration.
 
 After finishing the installation tutorial, please login to the OTOBO Admin Area ``Admin -> Packages``
 to install all required OTOBO OPM packages.
@@ -97,7 +96,7 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
 Step 2: Preparing the new OTOBO system and server
 -------------------------------------------------------
 
-After installing OTOBO please log in again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``.
+After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``.
 Now log in on the server as user ``root`` and execute the following commands:
 
 .. code-block:: bash
@@ -110,7 +109,7 @@ When OTOBO is running under Docker it suffices to stop the Docker container ``ot
 
 .. code-block:: bash
     docker_admin> cd /opt/otobo-docker
-    docker_admin> docker-compose stop deamon
+    docker_admin> docker-compose stop daemon
 
 .. note::
 
@@ -146,21 +145,21 @@ and execute one of the following commands:
 
 The same thing must be done for *rsysnc* when it isn't available yet.
 
-Docker: copy /opt/otrs into the volume *otobo_opt_otobo*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this section we assume that */opt/otrs* is available on the Docker host.
+In this section, we assume that */opt/otrs* is available on the Docker host.
 
-When the web application OTOBO runs in a container then it can't access directories outside the container.
-The exception are directories that were mounted as volumes inside the container. This means that for
+In the case when the web application OTOBO runs inside a container, it generally cannot access directories outside the container ``otobo_web_1``.
+There is an exception though: directories mounted as volumes into the container can be accessed. This means that for
 migration there are two possibilities:
 
     a. copy */opt/otrs* into an existing volume
     b. mount */opt/otrs* as an additional volume
 
-Here we concentrate on option **a.**.
+Let's concentrate on option **a.** here.
 
-For safe copying we use ``rsync``. But first we need to find out the correct target for copying.
+For safe copying, we use ``rsync``. But first we need to find out the correct target.
 
 .. code-block:: bash
     root> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
@@ -207,12 +206,12 @@ Please use the web migration tool at http://localhost/otobo/migration.pl (replac
 and follow the process.
 
 .. note::
-    When OTOBO runs inside a Docker container then specify __localhost_ for OTRS server and _/opt/otobo/tmp/otrs_ as the OTRS home directory.
+    If OTOBO runs inside a Docker container, specify *localhost* for OTRS server and */opt/otobo/tmp/otrs* as the OTRS home directory.
 
 .. note::
-    In the Docker case a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
+    In the Docker case, a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
     Pick one of the IP-addressses reported by ``hostname --all-ip-addresses`` instead for ``OTRS Server``.
-    In order to make sure that there is a database user that can read the data it might be worthwhile to create a dedicated users.
+    In order to make sure that there is a database user who can read the data, it might be worthwhile to create a dedicated user.
     E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration'`` and
     ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%'``.
 
@@ -236,7 +235,7 @@ In the docker case:
 Step 5: After Successful Migration!
 ------------------------------------
 
-1. Uninstall *sshpass* if you don´t needed anymore.
+1. Uninstall ``sshpass`` if you do not need it anymore.
 2. Drop the databases user dedicated to the migration if you created one.
 3. Have fun with OTOBO!
 
@@ -255,7 +254,7 @@ After restarting the browser, this problem usually was solved. With Safari it wa
 
 This can happen when the setting ScriptAlias has a non-standard value. The migration simple substitutes otrs for otobo. This might lead to
 the effect that the CSS and JavaScript can no longer be retrieved in OTOBO.
-When that happens please check the settings in Kernel/Config.pm and changes them back to sane values.
+When that happens, please check the settings in *Kernel/Config.pm* and revert them to sane values.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
