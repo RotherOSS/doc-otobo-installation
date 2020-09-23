@@ -150,7 +150,7 @@ Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
 
 In this section, we assume that */opt/otrs* is available on the Docker host.
 
-In the case when the web application OTOBO runs inside a container, it generally cannot access directories outside the container ``otobo_web_1``.
+In the case when the web application OTOBO runs inside the container ``otobo_web_1``, OTOBO generally cannot access directories outside the container.
 There is an exception though: directories mounted as volumes into the container can be accessed. This means that for
 migration there are two possibilities:
 
