@@ -5,11 +5,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-09-24 00:30+0200\n"
-"PO-Revision-Date: 2020-09-22 15:05+0000\n"
+"PO-Revision-Date: 2020-09-24 13:37+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
-"Language-Team: German <http://translate.otobo.org/projects/otobo10/"
+"Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -82,15 +82,15 @@ msgid ""
 "the local dir ``otobo_backup`` as the location on the host, and ``/"
 "otobo_backup`` as the location in the container."
 msgstr ""
-"Besonders wichtig ist, dass die Backupdateien nicht im internen Dateisystem "
-"des Containers angelegt werden. Dort wären die Daten verloren, sobald der "
-"Container gestoppt wird. Das Backup-Verzeichnis muss also in einem Volume "
-"angelegt werden. Wir betrachten zunächst nur den einfachsten Fall: Als "
-"Backup-Verzeichnis wird ein lokales Verzeichnis auf dem Docker-Host "
-"verwendet. Innerhalb des Containers kann das Backup-Verzeichnis an "
-"beliebiger Stelle angelegt werden. Für dieses Beispiel verwenden wir das "
-"lokale Verzeichnis ``otobo_backup`` als Speicherort auf dem Host und ``/"
-"otobo_backup`` als Location im Container."
+"Besonders wichtig: Legen Sie die Backupdateien nicht im internen Dateisystem "
+"des Containers ab. Wird der Container gestoppt, sind die Daten dort "
+"verloren. Stattdessen empfehlen wir das Backup-Verzeichnis in einem Volume "
+"anzulegen. Wir betrachten zunächst nur den einfachsten Fall: Als Backup-"
+"Verzeichnis wird ein lokales Verzeichnis auf dem Docker-Host verwendet. "
+"Innerhalb des Containers kann das Backup-Verzeichnis an beliebiger Stelle "
+"angelegt werden. Für dieses Beispiel verwenden wir das lokale Verzeichnis "
+"``otobo_backup`` als Speicherort auf dem Host und ``/otobo_backup`` als "
+"Location im Container."
 
 #: ../../content/backup-restore.rst:106
 msgid "First we need to create the volume."
@@ -247,30 +247,26 @@ msgstr ""
 "am System anmelden, um es zu konfigurieren und zu administrieren."
 
 #: ../../content/installation.rst:20
-#, fuzzy
 msgid "Preparation: Disable SELinux when it is installed and enabled"
-msgstr "Vorbereitung: SELinux deaktivieren"
+msgstr "Vorbereitung: Deaktivieren Sie SELinux (sofern aktiv)"
 
 #: ../../content/installation.rst:24
-#, fuzzy
 msgid ""
 "If your system uses SELinux, you should disable it, otherwise OTOBO will not "
 "work correctly."
 msgstr ""
-"Setzen Sie auf Ihrem System SELinux ein, sollten Sie dieses vor der "
-"Installation deaktivieren. Anderenfalls wird OTOBO nicht korrekt "
-"funktionieren."
+"Ist SELinux auf Ihrem System installiert und aktiv, deaktivieren Sie es vor "
+"der Installation. Anderenfalls wird OTOBO nicht korrekt funktionieren."
 
 #: ../../content/installation.rst:26
 msgid ""
 "Try the command ``sestatus`` and ``getenforce`` when you are not sure "
 "whether SELinux is installed and enabled on your system."
 msgstr ""
-"Geben Sie die Befehle ``sestatus`` und ``getenforce`` ein, wenn Sie nicht "
-"sicher sind, ob SELinux installiert und auf Ihrem System aktiv ist."
+"Wenn Sie nicht sicher sind, ob SELinux installiert und aktiv ist, geben Sie "
+"die Befehle ``sestatus`` und ``getenforce`` ein."
 
 #: ../../content/installation.rst:28
-#, fuzzy
 msgid ""
 "The ``sestatus`` command returns the SELinux status and the SELinux policy "
 "being used. SELinux status: enabled is returned when SELinux is enabled. "
@@ -300,13 +296,12 @@ msgid ""
 "Reboot your system. After reboot, confirm that the ``getenforce`` command "
 "returns *Disabled*:"
 msgstr ""
-"Starten Sie das System neu. Versichern Sie sich nach dem Neustart, dass der "
+"Starten Sie Ihr System neu. Versichern Sie sich nach dem Neustart, dass der "
 "Befehl ``getenforce`` *Disabled* zurückgibt:"
 
 #: ../../content/installation.rst:59
-#, fuzzy
 msgid "Step 1: Unpack and Install OTOBO"
-msgstr "Schritt 1: Anwendung entpacken und installieren"
+msgstr "Schritt 1: OTOBO entpacken und installieren"
 
 #: ../../content/installation.rst:61 ../../content/updating.rst:65
 msgid ""
@@ -340,17 +335,17 @@ msgid ""
 msgstr ""
 "Bitte beachten Sie, dass OTOBO eine funktionierende Perl-Installation mit "
 "allen *Core*-Modulen wie dem Modul ``version`` voraussetzt. Diese Module "
-"werden nicht explizit vom Skript überprüft. Auf einigen Systemen, z. B. "
-"unter RHEL, werden nicht alle *Core*-Pakete standardmäßig installiert. Hier "
-"kann es erforderlich sein, ein ``perl-core``-Paket von Hand zu installieren."
+"werden nicht explizit vom Skript überprüft. Auf einigen Systemen, wie z. B. "
+"RHEL, sind nicht alle *Core*-Pakete standardmäßig installiert. Hier kann es "
+"erforderlich sein, ein ``perl-core``-Paket von Hand zu installieren."
 
 #: ../../content/installation.rst:91
 msgid ""
 "To install the required and optional packages, you can use either CPAN or "
 "the package manager of your Linux distribution."
 msgstr ""
-"Verwenden Sie CPAN oder die Paketverwaltung Ihrer Linux-Distribution, um "
-"erforderliche und optionale Pakete zu installieren."
+"Zur Installation der erforderlichen und optionalen Pakete können Sie "
+"wahlweise CPAN oder die Paketverwaltung Ihrer Linux-Distribution verwenden."
 
 #: ../../content/installation.rst:93
 msgid ""
@@ -369,11 +364,11 @@ msgstr ""
 "Es gibt eine Reihe optionaler oder alternativer Module, die insbesondere in "
 "individualisierten OTOBO Systemen zum Einsatz kommen. Ein Aufruf von "
 "CheckModules.pl ohne jedes Argument gibt Aufschluss über den vollen "
-"Funktionsumfang."
+"Funktionsumfang des Systems."
 
 #: ../../content/installation.rst:105
 msgid "Step 3: Create the OTOBO User"
-msgstr "Schritt 3: Anlegen des OTOBO-Benutzers"
+msgstr "Schritt 3: OTOBO-Benutzer anlegen"
 
 #: ../../content/installation.rst:107
 msgid "Create a dedicated user for OTOBO within its own group:"
@@ -381,43 +376,41 @@ msgstr ""
 "Legen Sie einen dedizierten Benutzer für OTOBO in einer eigenen Gruppe an:"
 
 #: ../../content/installation.rst:113
-#, fuzzy
 msgid ""
 "Add the user to web server group (if the web server is not running as otobo "
 "user):"
 msgstr ""
-"Fügen Sie den Benutzer zur Gruppe Webserver hinzu (wenn der Webserver nicht "
-"als OTOBO-Benutzer ausgeführt wird):"
+"Fügen Sie den Benutzer zur Gruppe *Webserver* hinzu (wenn der Webserver "
+"nicht als OTOBO-Benutzer ausgeführt wird):"
 
 #: ../../content/installation.rst:122
 msgid "Step 4: Activate the Default Configuration File"
-msgstr "Schritt 4: Aktivieren der Standard-Konfigurationsdatei"
+msgstr "Schritt 4: Standard-Konfigurationsdatei aktivieren"
 
 #: ../../content/installation.rst:124
-#, fuzzy
 msgid ""
 "There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config."
 "pm.dist``. You must activate it by copying it without the ``.dist`` file "
 "name extension."
 msgstr ""
 "Das Bundle ``$OTOBO_HOME/Kernel/Config.pm.dist`` enthält eine "
-"Konfigurationsdatei für OTOBO. Aktivieren Sie diese, indem Sie sie ohne die "
-"Dateinamenerweiterung ``.dist`` kopieren."
+"Konfigurationsdatei für OTOBO. Aktivieren Sie diese, indem Sie die Datei "
+"ohne Dateinamenerweiterung ``.dist`` kopieren."
 
 #: ../../content/installation.rst:132
 msgid "Step 5: Configure the Apache Web Server"
-msgstr "Schritt 5: Konfigurieren des Apache-Webserver"
+msgstr "Schritt 5: Apache-Webserver konfigurieren"
 
 #: ../../content/installation.rst:134
-#, fuzzy
 msgid ""
 "First of all, you should install the Apache2 web server and mod_perl; you'd "
 "typically do this from your system's package manager. Below you'll find the "
 "commands needed to set up Apache on the most popular Linux distributions."
 msgstr ""
-"Installieren Sie zunächst den Apache2-Webserver und mod_perl; in der Regel "
-"über die Paketverwaltung Ihres Systems. Nachstehend finden Sie die Befehle, "
-"um Apache in den gängigsten Linux-Distributionen aufzusetzen."
+"Installieren Sie zunächst den Apache2-Webserver und mod_perl. In der Regel "
+"nutzen Sie hierzu die Paketverwaltung Ihres Systems. Nachstehend finden Sie "
+"alle Befehle, die Sie benötigen, um Apache in den gängigsten Linux-"
+"Distributionen aufzusetzen."
 
 #: ../../content/installation.rst:148
 msgid ""
@@ -433,9 +426,9 @@ msgid ""
 "when installing. Do not worry and finish the installation, in most cases the "
 "module will not be needed."
 msgstr ""
-"Auf einigen Plattformen sind nicht alle Apache-Module vorhanden, dann wird "
-"während der Installation eine Fehlermeldung ausgegeben. Fahren Sie dennoch "
-"mit der Installation fort, in den meisten Fällen werden die fehlenden Module "
+"Auf manchen Systemen sind nicht alle Apache-Module vorhanden, dann wird "
+"während der Installation eine Fehlermeldung ausgegeben. Fahren Sie einfach "
+"mit der Installation fort. In den meisten Fällen werden die fehlenden Module "
 "nicht benötigt."
 
 #: ../../content/installation.rst:161
@@ -453,47 +446,40 @@ msgid "Configure Apache without SSL support"
 msgstr "Apache ohne SSL-Unterstützung konfigurieren"
 
 #: ../../content/installation.rst:166
-#, fuzzy
 msgid ""
 "Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include."
 "conf`` to a file called ``zzz_otobo.conf`` in the Apache configuration "
 "directory (to make sure it is loaded after the other configurations)."
 msgstr ""
-"Die meisten Apache-Installationen verfügen über ein ``conf.d``-Verzeichnis. "
-"Auf Linux-Systemen findet sich dieses Verzeichnis normalerweise unter ``/etc/"
-"apache`` oder ``/etc/apache2``. Melden Sie sich als Root-Benutzer an, rufen "
-"Sie das ``conf.d``-Verzeichnis auf und verlinken Sie die passende Vorlage "
-"aus ``/opt/otobo/scripts/apache2-httpd.include.conf`` auf die Datei "
-"``zzz_otobo.conf`` im Apache Konfigurationsverzeichnis (so ist "
-"sichergestellt, dass diese Datei nach den anderen Konfigurationen geladen "
-"wird)."
+"Kopieren Sie die passende Vorlage aus ``/opt/otobo/scripts/apache2-httpd."
+"include.conf`` als Datei ``zzz_otobo.conf`` in das Apache-"
+"Konfigurationsverzeichnis (zzz_ um sicherzustellen, dass die Datei nach "
+"allen anderen Konfigurationsdateien geladen wird)."
 
 #: ../../content/installation.rst:177
 msgid "Configure Apache **with** SSL support"
 msgstr "Apache **mit** SSL-Unterstützung kofigurieren"
 
 #: ../../content/installation.rst:179
-#, fuzzy
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
 "the apache ``sites-available`` directory`."
 msgstr ""
-"Kopieren Sie die Vorlagen ``/opt/otobo/scripts/apache2-httpd-vhost-80."
-"include.conf`` und ``/opt/otobo/scripts/apache2-httpd-vhost-443.include."
-"conf`` in das Apache-Verzeichnis ``sites-availible`` ."
+"Kopieren Sie die Vorlagen ``/opt/otobo/scripts/apache2-httpd-vhost-80.include"
+".conf`` und ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` in "
+"das Apache-Verzeichnis ``sites-availible`` ."
 
 #: ../../content/installation.rst:188
 msgid ""
 "Please edit the files and add the required information like SSL certificate "
 "storage path. After that, enable the OTOBO Apache configuration:"
 msgstr ""
-"Bitte bearbeiten Sie die Dateien und erfänzen Sie die benötigten "
-"Informationen wie den Pfad zum SSL-Zertifikat. Anschließend aktivieren Sie "
-"die OTOBO-Apache-Konfiguration:"
+"Bearbeiten Sie die Dateien und ergänzen Sie die benötigten Informationen wie "
+"den Pfad zum SSL-Zertifikat. Anschließend aktivieren Sie die OTOBO-Apache-"
+"Konfiguration:"
 
 #: ../../content/installation.rst:195
-#, fuzzy
 msgid ""
 "Now you can restart your web server to load the new configuration settings. "
 "On most systems you can use the following command to do so:"
@@ -504,7 +490,7 @@ msgstr ""
 
 #: ../../content/installation.rst:203
 msgid "Step 6: Set File Permissions"
-msgstr "Schritt 6: Anpassen der Dateiberechtigungen"
+msgstr "Schritt 6: Dateiberechtigungen anpassen"
 
 #: ../../content/installation.rst:205 ../../content/updating.rst:112
 msgid ""
@@ -513,24 +499,22 @@ msgid ""
 "settings needed for your setup."
 msgstr ""
 "Führen Sie folgenden Befehl aus, um die Datei- und Verzeichnis-"
-"Berechtigungen für OTOBO zu definieren. Der Befehl versucht die passenden "
+"Berechtigungen für OTOBO zu definieren. Es wird versucht, die passenden "
 "Benutzer- und Gruppeneinstellungen für Ihr Setup zu ermitteln."
 
 #: ../../content/installation.rst:213
 msgid "Step 7: Setup the Database"
-msgstr "Schritt 7: Anlegen der Datenbank"
+msgstr "Schritt 7: Datenbank anlegen"
 
 #: ../../content/installation.rst:215
-#, fuzzy
 msgid ""
 "First of all, you should install the database package. It is recommended to "
 "use the MySQL or MariaDB package, which will be delivered with your Linux "
 "system, but it is possible to use PostgreSQL or Oracle as well."
 msgstr ""
-"Installieren Sie zuallererst das Datenbank-Paket. Die OTOBO Community "
-"empfiehlt, das mit Ihrem Linuxsystem zur Verfügung gestellte MySQL oder "
-"MariaDB-Paket zu verwenden. Auch PostgreSQL oder Oracle können genutzt "
-"werden."
+"Installieren Sie zuerst das Datenbank-Paket. Wir empfehlen, das mit Ihrem "
+"Linuxsystem zur Verfügung gestellte MySQL- oder MariaDB-Paket zu verwenden. "
+"Sie können aber auch PostgreSQL oder Oracle nutzen."
 
 #: ../../content/installation.rst:218
 msgid ""
@@ -542,9 +526,8 @@ msgstr ""
 "gängigsten Linux-Distributionen benötigten Befehle."
 
 #: ../../content/installation.rst:232
-#, fuzzy
 msgid "After installing the MySQL server you need configure it."
-msgstr "Nach erfolgter Installation muss der MySQL-Server konfiguriert werden."
+msgstr "Nach der Installation muss der MySQL-Server konfiguriert werden."
 
 #: ../../content/installation.rst:234
 msgid ""
@@ -563,13 +546,12 @@ msgid "For MariaDB > 10.1 use instead the following command:"
 msgstr "Für MariaDB > 10.1 verwenden Sie stattdessen folgenden Befehl:"
 
 #: ../../content/installation.rst:258
-#, fuzzy
 msgid ""
 "After OTOBO installation it is possible to change the authentication module "
 "again, if needed."
 msgstr ""
 "Sofern nötig, können Sie das Authentifizierungsmodul nach der OTOBO-"
-"Installation erneut ändern."
+"Installation wieder ändern."
 
 #: ../../content/installation.rst:262
 msgid ""
@@ -579,9 +561,9 @@ msgid ""
 "mysqld.cnf`` under the ``[mysqld]`` section:"
 msgstr ""
 "Folgende Konfigurationseinstellungen beschreiben die Minimalanforderungen "
-"für MySQL. Bitte ergänzen Sie die MySQL-Server-Konfigurationsdatei unter``/"
-"etc/my.cnf`` oder ``/etc/mysql/my.cnf`` im Abschnitt ``[mysqld]`` um diese "
-"Zeilen:"
+"für MySQL. Bitte ergänzen Sie die MySQL-Server-Konfigurationsdatei unter ``/"
+"etc/my.cnf``, ``/etc/mysql/my.cnf`` oder ``/etc/mysql/mysql.conf.d/mysqld."
+"cnf`` im Abschnitt ``[mysqld]`` um diese Zeilen:"
 
 #: ../../content/installation.rst:269
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
@@ -599,17 +581,16 @@ msgstr ""
 "Für den Produktivbetrieb empfehlen wir die Nutzung des Tools ``mysqltuner``, "
 "mit dem Sie die bestmöglichen Einstellungen für Ihr System ermitteln können. "
 "Sie können das Skript unter ``https://github.com/major/MySQLTuner-perl`` aus "
-"GitHub herunterladen oder finden es in Debian- und Ubuntu-Systemen über die "
+"GitHub herunterladen. In Debian- und Ubuntu-Systemen finden Sie es über die "
 "Paketverwaltung:"
 
 #: ../../content/installation.rst:283
-#, fuzzy
 msgid "After installing execute the script:"
-msgstr "Führen Sie nach der Installation folgendes Skript aus:"
+msgstr "Ist die Installation abgeschlossen, führen Sie das Skript aus:"
 
 #: ../../content/installation.rst:291
 msgid "Step 8: Setup Elasticsearch"
-msgstr "Schritt 8: Aufsetzen des Elasticsearch-Clusters"
+msgstr "Schritt 8: Elasticsearch-Cluster aufsetzen"
 
 #: ../../content/installation.rst:293
 msgid ""
@@ -617,21 +598,19 @@ msgid ""
 "The easiest way is to setup Elasticsearch on the same host as OTOBO and "
 "binding it to its default port."
 msgstr ""
-"Für schnelle Suchen empfiehlt OTOBO ein aktives Elasticsearch-Cluster. Am "
-"einfachsten setzen Sie Elasticsearch auf dem gleichen Host wie OTOBO auf und "
-"verbinden es mit dem Standardport."
+"Für schnelle Suchen in OTOBO empfehlen wir ein aktives Elasticsearch-"
+"Cluster. Am einfachsten setzen Sie Elasticsearch auf dem gleichen Host wie "
+"OTOBO auf und lassen es den Standardport nutzen."
 
 #: ../../content/installation.rst:296
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "Beispiel für eine Elasticsearch-Installation unter Ubuntu 18.04 LTS"
 
 #: ../../content/installation.rst:298
-#, fuzzy
 msgid "JDK Installation"
 msgstr "JDK-Installation"
 
 #: ../../content/installation.rst:305
-#, fuzzy
 msgid "Elasticsearch Installation"
 msgstr "Elasticsearch-Installation"
 
@@ -649,7 +628,7 @@ msgstr ""
 
 #: ../../content/installation.rst:320
 msgid "Elasticsearch Module Installation"
-msgstr "Installieren des Elasticserach-Moduls"
+msgstr "Elasticsearch-Modul installieren"
 
 #: ../../content/installation.rst:321
 msgid ""
@@ -659,7 +638,7 @@ msgstr ""
 
 #: ../../content/installation.rst:330
 msgid "Elasticsearch Configuration"
-msgstr "Elasticsearch-Konfiguration"
+msgstr "Elasticsearch konfigurieren"
 
 #: ../../content/installation.rst:332
 msgid ""
@@ -676,10 +655,10 @@ msgid ""
 "heap size to the same value. For example, to set the heap to 4 GB, set:"
 msgstr ""
 "In größeren OTOBO-Systemen sollten Sie für einen fehlerfreien Betrieb den "
-"JVM Heap Space anpassen. Die Einstellungen finden sich in der Datei ``/etc/"
+"JVM Heap Space anpassen. Diese Einstellungen finden Sie in der Datei ``/etc/"
 "elasticsearch/jvm.options``. Achten Sie darauf, dass Mindest- und "
-"Maximalwert für die JVM Heap Size übereinstimmen . Um den Heap auf 4 GB zu "
-"setzen, nehmen Sie also folgende Einstellung vor:"
+"Maximalwert für die JVM Heap Size übereinstimmen. Um den Heap auf 4 GB zu "
+"setzen, nehmen Sie folgende Einstellung vor:"
 
 #: ../../content/installation.rst:342
 msgid ""
@@ -708,10 +687,10 @@ msgid ""
 "\"localhost\" with your OTOBO hostname) to set up your database and basic "
 "system settings such as email accounts."
 msgstr ""
-"Bitte verwenden Sie den Web Installer unter http://localhost/otobo/installer."
-"pl (ersetzen Sie \"localhost\" durch den Namen Ihres OTOBO Hosts), um die "
-"Konfiguration der Datenbank sowie grundlegender Systemeinstellungen wie die "
-"der E-Mail-Konten vorzunehmen."
+"Bitte verwenden Sie den Web Installer unter http://localhost/otobo/"
+"installer.pl (ersetzen Sie \"localhost\" durch den Namen Ihres OTOBO-Hosts), "
+"um die Datenbank zu konfigurieren und grundlegende Systemeinstellungen wie "
+"die der E-Mail-Konten vorzunehmen."
 
 #: ../../content/installation.rst:362
 msgid "Step 9: First Login"
@@ -722,8 +701,9 @@ msgid ""
 "Now you are ready to login to your system at http://localhost/otobo/index.pl "
 "as user ``root@localhost`` with the password that was generated (see above)."
 msgstr ""
-"Geschafft! Jetzt können Sie sich mit dem generierten Passwort (s. o.) über "
-"http://localhost/otobo/index.pl als Benutzer ``root@localhost`` anmelden."
+"Geschafft! Jetzt können Sie sich mit dem zuvor generierten Passwort (s. o.) "
+"über http://localhost/otobo/index.pl als Benutzer ``root@localhost`` "
+"anmelden."
 
 #: ../../content/installation.rst:368
 msgid "Step 10: Start the OTOBO Daemon"
@@ -738,8 +718,8 @@ msgid ""
 msgstr ""
 "Der OTOBO Daemon übernimmt asynchrone und wiederkehrende Aufgaben in OTOBO. "
 "Was früher in CronFile-Definitionen hinterlegt wurde, wird jetzt durch den "
-"OTOBO Daemon erledigt, der zum Betreiben von OTOBO unerlässlich ist. "
-"Außerdem übernimmt der Daemon alle GenericAgent Jobs und muss vom OTOBO "
+"OTOBO Daemon erledigt. Er ist deshalb für den OTOBO-Betrieb unerlässlich. "
+"Außerdem übernimmt der Daemon alle GenericAgent Jobs. Er muss vom OTOBO-"
 "Benutzer gestartet werden."
 
 #: ../../content/installation.rst:377
@@ -747,17 +727,16 @@ msgid "Step 11: Cron jobs for the OTOBO user"
 msgstr "Schritt 11: CronJobs für den OTOBO-Benutzer"
 
 #: ../../content/installation.rst:379
-#, fuzzy
 msgid ""
 "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, "
 "and their purpose is to make sure that the OTOBO Daemon is running. They "
 "need to be be activated by copying them without the \".dist\" filename "
 "extension."
 msgstr ""
-"In ``/opt/otobo/var/cron/\\*.dist`` finden sich standardmäßig zwei OTOBO "
-"Cron-Dateien, die dazu dienen, sicherzustellen, dass der OTOBO Daemon läuft. "
-"Aktivieren Sie diese, indem Sie die Dateien ohne die Dateinamenerweiterung "
-"\".dist\" kopieren."
+"In ``/opt/otobo/var/cron/\\*.dist`` liegen standardmäßig zwei OTOBO Cron-"
+"Dateien, die sicherstellen sollen, dass der OTOBO Daemon läuft. Aktivieren "
+"Sie diese, indem Sie die Dateien ohne die Dateinamenerweiterung \".dist\" "
+"kopieren."
 
 #: ../../content/installation.rst:389
 msgid "With this step, the basic system setup is finished."
@@ -765,7 +744,7 @@ msgstr "Mit diesem Schritt ist die Grundeinrichtung des Systems abgeschlossen."
 
 #: ../../content/installation.rst:393
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
-msgstr "Schritt 12: Einrichten der Bash Auto-Completion (optional)"
+msgstr "Schritt 12: Bash Auto-Completion einrichten (optional)"
 
 #: ../../content/installation.rst:395
 msgid ""
@@ -773,8 +752,8 @@ msgid ""
 "interface. This provides an auto-completion for the bash shell which makes "
 "finding the right command and options much easier."
 msgstr ""
-"Alle regulären Befehlszeilenoptionen in OTOBO werden über die OTOBO Konsolen-"
-"Schnittstelle ausgeführt. Damit wird eine Auto-Vervollständigung für "
+"Alle regulären Befehlszeilenoptionen in OTOBO werden über die OTOBO-"
+"Konsolenschnittstelle ausgeführt. Damit wird eine Autovervollständigung für "
 "Eingaben in die Bash-Shell angeboten, die das Finden geeigneter Befehle und "
 "Optionen erheblich erleichtert."
 
@@ -793,9 +772,9 @@ msgid ""
 "After restarting your shell, you can just type this command followed by TAB, "
 "and it will list all available commands:"
 msgstr ""
-"Sobald Sie Ihre Konsole neu gestartet haben, können Sie folgenden Befehl "
-"eingeben und durch TAB ergänzen, schon werden alle verfügbaren Befehle "
-"angezeigt:"
+"Sobald Sie Ihre Konsole neu gestartet haben, können Sie dann folgenden "
+"Befehl eingeben und durch TAB ergänzen, um alle verfügbaren Befehle "
+"anzuzeigen:"
 
 #: ../../content/installation.rst:405
 msgid ""
@@ -803,25 +782,23 @@ msgid ""
 "commands. After typing a complete command, all possible options and "
 "arguments will be shown by pressing TAB."
 msgstr ""
-"Geben Sie einige Zeichen des gewünschten Befehls ein, werden durch ein TAB "
-"alle auf der eingegebenen Zeichenfolge basierenden Befehle angezeigt. Geben "
-"Sie einen Befehl vollständig ein und drücken dann TAB, werden alle möglichen "
-"Optionen und Argumente angezeigt."
+"Geben Sie einige Zeichen und lassen ein TAB folgen, werden alle auf der "
+"eingegebenen Zeichenfolge basierenden Befehle angezeigt. Geben Sie einen "
+"Befehl vollständig ein und drücken dann TAB, werden alle möglichen Optionen "
+"und Argumente angezeigt."
 
 #: ../../content/installation.rst:409
-#, fuzzy
 msgid ""
 "If you have problems, you can execute the following line as user ``otobo`` "
 "and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr ""
-"Sollten Sie Probleme haben, können Sie folgende Zeile als OTOBO Benutzer "
+"Sollten Sie Probleme haben, können Sie folgende Zeile als ``otobo``-Benutzer "
 "ausführen und zu Ihrem ``~/.bashrc`` hinzufügen, um die Befehle aus der "
 "Datei heraus auszuführen."
 
 #: ../../content/installation.rst:417
-#, fuzzy
 msgid "Step 13: Further Information"
-msgstr "Schritt 11: OTOBO Daemon starten"
+msgstr "Schritt 13: Weiterführende Informationen"
 
 #: ../../content/installation.rst:419
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
@@ -829,7 +806,7 @@ msgstr "Wir empfehlen, das Kapitel OTOBO :doc:`performance-tuning` zu lesen."
 
 #: ../../content/installation-docker.rst:12
 msgid "Installing using Docker and Docker Compose"
-msgstr "Installieren mit Docker und Docker Compose"
+msgstr "Installation mit Docker und Docker Compose"
 
 #: ../../content/installation-docker.rst:14
 #, fuzzy
