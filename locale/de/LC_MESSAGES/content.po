@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-09-25 00:30+0200\n"
-"PO-Revision-Date: 2020-09-24 22:35+0000\n"
+"PO-Revision-Date: 2020-09-25 16:24+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -1230,7 +1230,7 @@ msgstr "otobo_opt_otobo"
 #: ../../content/installation-docker.rst:203
 #, fuzzy
 msgid "contains `/opt/otobo` on the container `web` and `daemon`."
-msgstr "enthält `/opt/otobo` in den Containern  `web` und `daemon`."
+msgstr "enthält `/opt/otobo` in den Containern `web` und `daemon`."
 
 #: ../../content/installation-docker.rst:206
 msgid "otobo_mariadb_data"
@@ -1268,7 +1268,7 @@ msgid ""
 "contains the TLS files, certificate and private key, must be initialized "
 "manually"
 msgstr ""
-"enthält die TLS-Dateien, Zertifikat und privaten Schhlüssel. Muss von Hand "
+"enthält die TLS-Dateien, Zertifikat und privaten Schlüssel. Muss von Hand "
 "initialisiert werden."
 
 #: ../../content/installation-docker.rst:218
@@ -1276,11 +1276,15 @@ msgid "Docker environment variables"
 msgstr "Docker-Umgebungsvariablen"
 
 #: ../../content/installation-docker.rst:220
+#, fuzzy
 msgid ""
 "In the instructions we did only minimal configuration. But the file *.env* "
 "allows to set more variables. Here is a list of all supported environment "
 "variables."
 msgstr ""
+"Bisher haben wir nur das Nötigste konfiguriert. In der *.env*-Datei können "
+"weitere Konfigurationen vorgenommen werden. Folgende Umgebungsvariablen "
+"werden unterstützt:"
 
 #: ../../content/installation-docker.rst:223
 msgid "**MariaDB settings**"
@@ -1288,19 +1292,17 @@ msgstr "**MariaDB Einstellungen**"
 
 #: ../../content/installation-docker.rst:226
 msgid "``OTOBO_DB_ROOT_PASSWORD``"
-msgstr ""
+msgstr "``OTOBO_DB_ROOT_PASSWORD``"
 
 #: ../../content/installation-docker.rst:226
-#, fuzzy
 msgid "The root password for MySQL. Must be set for running otobo db."
 msgstr ""
-"``OTOBO_DB_ROOT_PASSWORD`` Das Root-Passwort für MySQL. Muss angegeben "
-"werden, damit die OTOBO DB betrieben werden kann."
+"Das Root-Passwort für MySQL. Ohne Root-Passwort kann die OTOBO DB nicht "
+"eingesetzt werden."
 
 #: ../../content/installation-docker.rst:228
-#, fuzzy
 msgid "**Elasticsearch settings**"
-msgstr "Schritt 9: Grundlegende Systemkonfiguration"
+msgstr "**Elasticsearch Einstellungen**"
 
 #: ../../content/installation-docker.rst:230
 msgid ""
@@ -1308,34 +1310,31 @@ msgid ""
 "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker."
 "html#docker-prod-prerequisites for detailed information."
 msgstr ""
-"Elasticsearch erfordert einige Einstellungen für den Produktivbetrieb. "
-"Detaillierte Informationen entnehmen Sie bitte der Elasticsearch-"
-"Dokumentation unter https://www.elastic.co/guide/en/elasticsearch/"
-"reference/7.8/docker.html#docker-prod-prerequisites."
+"Damit Elasticsearch in Produktivumgebungen optimal läuft, sind einige "
+"Einstellungen vorzunehmen. Detaillierte Informationen entnehmen Sie bitte "
+"der Elasticsearch-Dokumentation unter https://www.elastic.co/guide/en/"
+"elasticsearch/reference/7.8/docker.html#docker-prod-prerequisites."
 
 #: ../../content/installation-docker.rst:237
 msgid "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
-msgstr ""
+msgstr "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
 
 #: ../../content/installation-docker.rst:235
-#, fuzzy
 msgid ""
 "Example setting: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* Please "
 "adjust this value for production env to a value up to 4g."
 msgstr ""
-"``OTOBO_Elasticsearch_ES_JAVA_OPTS`` Beispieleinstellung: "
-"*OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* Bitte setzen Sie diesen "
-"Wert in Produktivumgebungen auf einen Wert bis 4g."
+"Beispieleinstellung: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* "
+"Bitte setzen Sie diesen Wert in Produktivumgebungen auf einen Wert bis 4g."
 
 #: ../../content/installation-docker.rst:239
-#, fuzzy
 msgid "**Webserver settings**"
-msgstr "**MariaDB Einstellungen**"
+msgstr "**Webserver Einstellungen**"
 
 #: ../../content/installation-docker.rst:243
 #: ../../content/installation-docker.rst:251
 msgid "``OTOBO_WEB_HTTP_PORT``"
-msgstr ""
+msgstr "``OTOBO_WEB_HTTP_PORT``"
 
 #: ../../content/installation-docker.rst:242
 #, fuzzy
@@ -1343,63 +1342,56 @@ msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. When "
 "HTTPS is enabled then the HTTP port will redirect to HTTPS."
 msgstr ""
-"``OTOBO_WEB_HTTP_PORT`` Hier sind Angaben nötig, falls der HTTP-Port vom "
-"Standardport 80 abweicht."
+"Hier sind Angaben nötig, falls der HTTP-Port vom Standardport 80 abweicht. "
+"Ist HTTPS aktiv, wird der HTTP-Port auf HTTPS umgeleitet."
 
 #: ../../content/installation-docker.rst:245
-#, fuzzy
 msgid "**nginx webproxy settings**"
 msgstr "**Nginx Webproxy Einstellungen**"
 
 #: ../../content/installation-docker.rst:247
+#, fuzzy
 msgid "These setting are use when HTTPS is enabled."
-msgstr ""
+msgstr "Diese Einstellungen werden angewendet, wenn HTTPS aktiv ist."
 
 #: ../../content/installation-docker.rst:250
-#, fuzzy
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. Will "
 "redirect to HTTPS."
 msgstr ""
-"``OTOBO_WEB_HTTP_PORT`` Hier sind Angaben nötig, falls der HTTP-Port vom "
-"Standardport 80 abweicht."
+"Hier sind Angaben nötig, falls der HTTP-Port vom Standardport 80 abweicht."
 
 #: ../../content/installation-docker.rst:254
 msgid "``OTOBO_WEB_HTTPS_PORT``"
-msgstr ""
+msgstr "``OTOBO_WEB_HTTPS_PORT``"
 
 #: ../../content/installation-docker.rst:254
-#, fuzzy
 msgid "Set in case the HTTPS port should deviate from the standard port 443."
-msgstr ""
-"``OTOBO_WEB_HTTPS_PORT`` Bitte anpassen, wenn der HTTPS-Port vom "
-"Standardport 443 abweicht."
+msgstr "Bitte anpassen, falls der HTTPS-Port vom Standardport 443 abweicht."
 
 #: ../../content/installation-docker.rst:258
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE``"
-msgstr ""
+msgstr "``OTOBO_NGINX_SSL_CERTIFICATE``"
 
 #: ../../content/installation-docker.rst:257
-#, fuzzy
 msgid ""
 "SSL cert for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/"
 "nginx/ssl/acme.crt*"
 msgstr ""
-"``OTOBO_NGINX_SSL_CERTIFICATE`` SSL-Zertifikat für den Nginx-Webproxy. "
-"Beispiel: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
+"SSL-Zertifikat für den Nginx-Webproxy. Beispiel: "
+"*OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
 #: ../../content/installation-docker.rst:262
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
-msgstr ""
+msgstr "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 
 #: ../../content/installation-docker.rst:261
-#, fuzzy
 msgid ""
 "SSL key for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/"
 "etc/nginx/ssl/acme.key*"
 msgstr ""
-"``OTOBO_NGINX_SSL_CERTIFICATE_KEY`` SSL-Schlüssel für den Nginx-Webproxy. "
-"Beispiel: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
+"SSL-Schlüssel für den Nginx-Webproxy. Beispiel: "
+"*OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
 #: ../../content/installation-docker.rst:264
 #, fuzzy
@@ -1408,54 +1400,53 @@ msgstr "**OTOBO docker-compose Einstellungen**"
 
 #: ../../content/installation-docker.rst:266
 msgid "These settings are used by docker-compose directly."
-msgstr ""
+msgstr "Diese Einstellungen werden direkt von docker-compose verwendet."
 
 #: ../../content/installation-docker.rst:271
 msgid "``COMPOSE_PROJECT_NAME``"
-msgstr ""
+msgstr "``COMPOSE_PROJECT_NAME``"
 
 #: ../../content/installation-docker.rst:269
-#, fuzzy
 msgid ""
 "The project name is used as a prefix for the generated volumes and "
 "containers. Must be set because the compose file is located in *scripts/"
 "docker-compose* and thus **docker-compose** would be used per default as the "
 "project name."
 msgstr ""
-"``COMPOSE_PROJECT_NAME`` Der Projektname wird als Präfix für die angelegten "
-"Volumes und Container verwendet. Hier ist eine Angabe erforderlich, weil das "
-"compose-File in ``scripts/docker-compose``abgelegt wird und sonst "
-"standardmäßig *docker-compose* verwendet würde."
+"Der Projektname wird als Präfix für die angelegten Volumes und Container "
+"verwendet. Hier ist eine Angabe erforderlich, weil das compose-File in *"
+"scripts/docker-compose* abgelegt wird und sonst standardmäßig **docker-"
+"compose** verwendet würde."
 
 #: ../../content/installation-docker.rst:274
 msgid "``COMPOSE_PATH_SEPARATOR``"
-msgstr ""
+msgstr "``COMPOSE_PATH_SEPARATOR``"
 
 #: ../../content/installation-docker.rst:274
-#, fuzzy
 msgid "Separator for the value of COMPOSE_FILE"
-msgstr "``COMPOSE_PATH_SEPARATOR`` Separator für die Werte im COMPOSE_FILE"
+msgstr "Separator für die Werte im COMPOSE_FILE"
 
 #: ../../content/installation-docker.rst:278
 msgid "``COMPOSE_FILE``"
-msgstr ""
+msgstr "``COMPOSE_FILE``"
 
 #: ../../content/installation-docker.rst:277
-#, fuzzy
 msgid ""
 "Use *docker-compose/otobo-base.yml* as the base and add the wanted extension "
 "files. E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-"
 "override-https.yml*."
 msgstr ""
-"``COMPOSE_FILE`` Verwenden Sie *docker-compose/otobo-base.yml* als Grundlage "
-"und ergänzen Sie erforderlichen Extension Files wie *docker-compose/otobo-"
-"override-http.yml* oder *docker-compose/otobo-override-https.yml*."
+"Verwenden Sie *docker-compose/otobo-base.yml* als Grundlage und ergänzen Sie "
+"erforderlichen Extension Files wie *docker-compose/otobo-override-http.yml* "
+"oder *docker-compose/otobo-override-https.yml*."
 
 #: ../../content/installation-docker.rst:281
 msgid ""
 "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX``"
 msgstr ""
+"``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
+"``OTOBO_IMAGE_OTOBO_NGINX``"
 
 #: ../../content/installation-docker.rst:281
 msgid ""
