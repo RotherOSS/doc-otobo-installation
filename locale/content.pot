@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-25 00:30+0200\n"
+"POT-Creation-Date: 2020-09-26 00:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,27 +46,41 @@ msgid "To restore the database make sure that the database ``otobo`` exists and 
 msgstr ""
 
 #: ../../content/backup-restore.rst:96
+#: ../../content/backup-restore-docker.rst:17
 msgid "Considerations for running OTOBO under Docker"
 msgstr ""
 
 #: ../../content/backup-restore.rst:98
+#: ../../content/backup-restore-docker.rst:19
 msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered."
 msgstr ""
 
 #: ../../content/backup-restore.rst:100
+#: ../../content/backup-restore-docker.rst:21
 msgid "First we need to make sure that the backup files are not created in the file system that is internal to the container. Because in that case all data would be lost when the container is stopped. Therefore the backup directory must be in a volume. For now we only consider the most simple case, where the backup dir is a local dir on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host, and ``/otobo_backup`` as the location in the container."
 msgstr ""
 
 #: ../../content/backup-restore.rst:106
+#: ../../content/backup-restore-docker.rst:27
 msgid "First we need to create the volume."
 msgstr ""
 
 #: ../../content/backup-restore.rst:119
+#: ../../content/backup-restore-docker.rst:40
 msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the Daemon may, but don't have to, be stopped."
 msgstr ""
 
 #: ../../content/backup-restore.rst:130
+#: ../../content/backup-restore-docker.rst:51
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:12
+msgid "Backup and Restore using Docker"
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:14
+msgid "Please read the Backup and Restore description :doc:`backup-restore` for base informations about the backup and restore scripts."
 msgstr ""
 
 #: ../../content/history.rst:13
@@ -917,6 +931,7 @@ msgid "Upgrading to a new patchlevel release"
 msgstr ""
 
 #: ../../content/installation-docker.rst:332
+#: ../../content/updating-docker.rst:17
 msgid "First make sure that in *.env* the images have the tag `latest` or the wanted version."
 msgstr ""
 
@@ -925,10 +940,12 @@ msgid "Force an upgrade to a devel version"
 msgstr ""
 
 #: ../../content/installation-docker.rst:348
+#: ../../content/updating-docker.rst:45
 msgid "Images of devel versions are not upgraded automatically. But the upgrade can be forced. The source of the devel version can either be a local build or an devel image from Docker Hub. Here is a example using the devel image for the OTOBO 10.1.x branch from Docker Hub."
 msgstr ""
 
 #: ../../content/installation-docker.rst:353
+#: ../../content/updating-docker.rst:50
 msgid "These coḿmands do not reinstall or upgrade the installed OTOBO packages."
 msgstr ""
 
@@ -2176,5 +2193,22 @@ msgstr ""
 
 #: ../../content/updating.rst:142
 msgid "Now you can log into your system."
+msgstr ""
+
+#: ../../content/updating-docker.rst:12
+msgid "Updating OTOBO using Docker and Docker Compose"
+msgstr ""
+
+#: ../../content/updating-docker.rst:15
+msgid "Updating to a new patchlevel release"
+msgstr ""
+
+#: ../../content/updating-docker.rst:30
+#: ../../content/updating-docker.rst:63
+msgid "After updating you need to reinstall all OTOBO packages and clear the cache."
+msgstr ""
+
+#: ../../content/updating-docker.rst:43
+msgid "Force an update to a devel version"
 msgstr ""
 
