@@ -2,62 +2,66 @@
 # Copyright (C) 2019-2020 Rother OSS GmbH, https://otobo.de/
 # This file is distributed under the same license as the OTOBO Installation Guide package.
 # Grit Rother <mr@otobo.de>, 2020.
+# Paul Yang <paul.yang@itservice.com.cn>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-09-25 00:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-09-25 10:44+0000\n"
+"Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
+"Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
+"otobo10/installation-manual/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.2.2\n"
 
 #: ../../content/backup-restore.rst:12
 msgid "Backup and Restore"
-msgstr ""
+msgstr "备份和恢复"
 
 #: ../../content/backup-restore.rst:14
 msgid ""
 "OTOBO has built in scripts for backup and restore. Execute the scripts with "
 "the option ``-h`` for more information."
-msgstr ""
+msgstr "OTOBO有内置的脚本用于备份和恢复，执行脚本时加入``-h``可以看到更详细的信息。"
 
 #: ../../content/backup-restore.rst:17
 msgid "Backup"
-msgstr ""
+msgstr "备份"
 
 #: ../../content/backup-restore.rst:21
 msgid ""
 "To create a new backup, write permission for the destination directory is "
 "needed for the user ``otobo``."
-msgstr ""
+msgstr "创建一个新的备份，需要用户 ``otobo``具备对目的目录有写的权限。"
 
 #: ../../content/backup-restore.rst:27 ../../content/backup-restore.rst:80
 msgid "The output of the script:"
-msgstr ""
+msgstr "脚本的输出结果为："
 
 #: ../../content/backup-restore.rst:70
 msgid "Restore"
-msgstr ""
+msgstr "恢复"
 
 #: ../../content/backup-restore.rst:74
 msgid ""
 "To restore the database make sure that the database ``otobo`` exists and "
 "contains no tables."
-msgstr ""
+msgstr "恢复数据库时，请确认数据库``otobo`` 存在并且不包含表单。"
 
 #: ../../content/backup-restore.rst:96
 msgid "Considerations for running OTOBO under Docker"
-msgstr ""
+msgstr "在Docker下运行OTOBO的考量"
 
 #: ../../content/backup-restore.rst:98
 msgid ""
 "The same scripts can be used with OTOBO running under Docker. However some "
 "Docker specific limitation must be considered."
-msgstr ""
+msgstr "相同的脚本可以用于OTOBO在Docker下的运行，不过要考虑一些Docker特定的限制。"
 
 #: ../../content/backup-restore.rst:100
 msgid ""
@@ -70,10 +74,13 @@ msgid ""
 "the local dir ``otobo_backup`` as the location on the host, and ``/"
 "otobo_backup`` as the location in the container."
 msgstr ""
+"首先我们要确认备份文件创建时所在的文件系统，不是一个容器内部的文件系统。因为在那种情况下，当容器被停止后，所有的数据都会丢失。所以，备份目录必须在一个卷。"
+"现在我们先考虑最简单的一种情况，备份目录是Docker主机的一个本地目录。备份目录在容器中的位置可以随意选择。在本例中我们选择本地目录``otobo_ba"
+"ckup``作为备份目录在主机的位置， 而在容器中的位置就是``/otobo_backup`` 。"
 
 #: ../../content/backup-restore.rst:106
 msgid "First we need to create the volume."
-msgstr ""
+msgstr "首先我们需要创建卷。"
 
 #: ../../content/backup-restore.rst:119
 msgid ""
@@ -81,34 +88,43 @@ msgid ""
 "``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and "
 "the Daemon may, but don't have to, be stopped."
 msgstr ""
+"为了创建备份，我们需要一个运行的数据库和卷``otobo_opt_otobo`` 以及 "
+"``otobo_backup``，这意味着网站服务器和Daemon可能，不是必须，被停掉。"
 
 #: ../../content/backup-restore.rst:130
+#, fuzzy
 msgid ""
 "For restoring the backup we also need to specify which backup should be "
 "restored. The placeholder ``<TIMESTAMP>`` is something like "
 "``2020-09-07_09-38``."
 msgstr ""
+"为了把备份文件恢复回来，我们需要确认恢复哪个备份文件。占位符``<TIMESTAMP>`` 就如同``2020-09-07_09-38``的标记一样。"
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
-msgstr ""
+msgstr "文档历史"
 
 #: ../../content/history.rst:15
 msgid "2019 - OTRS Installation Guide - OTRS AG (https://otrs.com)"
-msgstr ""
+msgstr "2019 - OTRS安装指南 - OTRS AG (https://otrs.com)"
 
 #: ../../content/history.rst:16
+#, fuzzy
 msgid "2020 - OTOBO Installation Tutorial - Rother OSS GmbH (https://otobo.de)"
-msgstr ""
+msgstr "2020 - OTOBO安装教程 - Rother OSS GmbH (https://otobo.de)"
 
 #: ../../content/history.rst:18
+#, fuzzy
 msgid ""
 "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 "
 "Leiblfing, Germany. Authors: OTRS AG (original version), Rother OSS GmbH "
 "(https://rother-oss.com)"
 msgstr ""
+"由Rother OSS GmbH出版，地址：德国莱布芬市 Oberwalting 31, 94339。作者：OTRS AG (original "
+"version)，Rother OSS GmbH (https://rother-oss.com)"
 
 #: ../../content/history.rst:21
+#, fuzzy
 msgid ""
 "Permission is granted to copy, distribute and/or modify this document under "
 "the terms of the GNU Free Documentation License, Version 1.3 or any later "
@@ -117,24 +133,33 @@ msgid ""
 "license can be found on the `GNU website <https://www.gnu.org/licenses/"
 "fdl-1.3.txt>`__."
 msgstr ""
+"在GNU免费文档许可条款（版本1."
+"3或之后由自由软件基金会发布更新版）的要求下，没有不变动的章节，没有前后封面文字。授权文件可以在`GNU网站：<https://www.gnu.org/"
+"licenses/fdl-1.3.txt>`上找到。"
 
 #: ../../content/index.rst:17
 msgid "OTOBO Installation Tutorial"
-msgstr ""
+msgstr "OTOBO安装教程"
 
 #: ../../content/index.rst:19
 msgid ""
 "This work is copyrighted by OTRS AG (https://otrs.com), Zimmersmühlenweg 11, "
 "61440 Oberursel, Germany."
 msgstr ""
+"本著作版权属于OTRS AG (https://otrs.com), Zimmersmühlenweg 11, 61440 Oberursel, "
+"Germany."
 
 #: ../../content/index.rst:22
+#, fuzzy
 msgid ""
 "Copyright © for modifications and amendments 2019-2020 ROTHER OSS GmbH "
 "(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
 msgstr ""
+"2019-2020更改和修订版权：ROTHER OSS GmbH (https://otobo.de), Oberwalting 31, 94339 "
+"Leiblfing, Germany"
 
 #: ../../content/index.rst:25
+#, fuzzy
 msgid ""
 "Terms and Conditions OTRS: Permission is granted to copy, distribute and/or "
 "modify this document under the terms of the GNU Free Documentation License, "
@@ -142,8 +167,11 @@ msgid ""
 "with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A "
 "copy of the license can be found on the GNU website."
 msgstr ""
+"OTRS条款：在GNU免费文档许可条款（版本1."
+"3或之后由自由软件基金会发布更新版）的要求下，没有不变动的章节，没有前后封面文字。授权文件的拷贝可以在`GNU网站上找到。"
 
 #: ../../content/index.rst:32
+#, fuzzy
 msgid ""
 "Terms and Conditions Rother OSS: Permission is granted to copy, distribute "
 "and/or modify this document under the terms of the GNU Free Documentation "
@@ -152,55 +180,62 @@ msgid ""
 "Cover Texts. A copy of the license is included in the section entitled "
 "\"COPYING\"."
 msgstr ""
+"Rother OSS条款：在GNU免费文档许可条款（版本1."
+"3或之后由自由软件基金会发布更新版）的要求下，没有不变动的章节，没有前后封面文字。授权文件可以在GNU网站上找到。"
 
 #: ../../content/index.rst:39
+#, fuzzy
 msgid ""
 "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 "
 "Leiblfing, Germany."
 msgstr ""
+"出版人：Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, "
+"Germany."
 
 #: ../../content/index.rst:42
 msgid ""
 "Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de)."
-msgstr ""
+msgstr "作者：OTRS AG (original version), Rother OSS GmbH (https://otobo.de)。"
 
 #: ../../content/index.rst:44
 msgid "Contents"
-msgstr ""
+msgstr "内容"
 
 #: ../../content/installation.rst:12
 msgid "OTOBO Installation"
-msgstr ""
+msgstr "OTOBO安装"
 
 #: ../../content/installation.rst:14
 msgid ""
 "This chapter describes the installation and basic configuration of the "
 "central OTOBO framework."
-msgstr ""
+msgstr "本章讲述了OTOBO构架核心部分的安装和基本设置。"
 
 #: ../../content/installation.rst:16
 msgid ""
 "Follow the detailed steps in this chapter to install OTOBO on your server. "
 "You can then use its web interface to login and administer the system."
-msgstr ""
+msgstr "按照本章的详细步骤在你的服务器上安装OTOBO，而后你就可以从网络接口登陆并管理系统了。"
 
 #: ../../content/installation.rst:20
 msgid "Preparation: Disable SELinux when it is installed and enabled"
-msgstr ""
+msgstr "准备工作：SELinux完成安装和激活后，关闭它"
 
 #: ../../content/installation.rst:24
+#, fuzzy
 msgid ""
 "If your system uses SELinux, you should disable it, otherwise OTOBO will not "
 "work correctly."
-msgstr ""
+msgstr "如果你的系统是SELinux，需要禁用它，否则OTOBO不能正确运行。"
 
 #: ../../content/installation.rst:26
 msgid ""
 "Try the command ``sestatus`` and ``getenforce`` when you are not sure "
 "whether SELinux is installed and enabled on your system."
-msgstr ""
+msgstr "如果你不能确认SELinux是否已经在你的系统上安装激活，可以试一下命令``sestatus`` 和 ``getenforce`` 。"
 
 #: ../../content/installation.rst:28
+#, fuzzy
 msgid ""
 "The ``sestatus`` command returns the SELinux status and the SELinux policy "
 "being used. SELinux status: enabled is returned when SELinux is enabled. "
@@ -208,190 +243,233 @@ msgid ""
 "mode. Policy from config file: targeted is returned when the SELinux "
 "targeted policy is used."
 msgstr ""
+"命令``sestatus`` 可以返回SELinux的状态和应用的策略。SELinux的状态如果返回“被激活”，就说明SELinux已经激活；当前模式如果"
+"返回“强制模式”就说明SELinux是运行在强制模式下；配置文件策略如果返回“目标”，就说明SELinux的目标策略已经激活。"
 
 #: ../../content/installation.rst:33
+#, fuzzy
 msgid "Here's how to disable SELinux for RHEL/CentOS/Fedora."
-msgstr ""
+msgstr "这里是如何在RHEL/CentOS/Fedora中禁用SELinux。"
 
 #: ../../content/installation.rst:35
 msgid "Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:"
-msgstr ""
+msgstr "在``/etc/selinux/config``文件中设置 ``SELINUX=disabled``："
 
 #: ../../content/installation.rst:50
+#, fuzzy
 msgid ""
 "Reboot your system. After reboot, confirm that the ``getenforce`` command "
 "returns *Disabled*:"
-msgstr ""
+msgstr "重启你的系统，重启后，确认一下``getenforce`` 命令返回的是不是“禁用”："
 
 #: ../../content/installation.rst:59
+#, fuzzy
 msgid "Step 1: Unpack and Install OTOBO"
-msgstr ""
+msgstr "步骤1：打开OTOBO封装和安装"
 
 #: ../../content/installation.rst:61 ../../content/updating.rst:65
+#, fuzzy
 msgid ""
 "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and "
 "unpack the source archive (for example, using ``tar``) into the directory ``/"
 "root/otobo-update``:"
 msgstr ""
+"从https://ftp.otobo.org/pub/otobo/"
+"下载最新的OTOBO版本软件，打开封装文档（例如使用``tar``命令），并存到目录``/root/otobo-update``："
 
 #: ../../content/installation.rst:74
+#, fuzzy
 msgid "Step 2: Install Additional Programs and Perl Modules"
-msgstr ""
+msgstr "步骤2：安装其他程序和Perl模块"
 
 #: ../../content/installation.rst:76
+#, fuzzy
 msgid ""
 "Use the following script to get an overview of all installed and required "
 "CPAN modules and other external dependencies."
-msgstr ""
+msgstr "用下面的脚本可以对所有已经安装的，以及必须要的CPAN模块和其他外部环境，有一个通盘的了解。"
 
 #: ../../content/installation.rst:89
+#, fuzzy
 msgid ""
 "Please note that OTOBO requires a working Perl installation with all *core* "
 "modules such as the module ``version``. These modules are not explicitly "
 "checked by the script. You may need to install a ``perl-core`` package on "
 "some systems like RHEL that do not install the Perl core packages by default."
 msgstr ""
+"请注意OTOBO需要一个安装了所有*核心*模块的可以运行的Perl，例如``version``模块。脚本不会对这些模块进行核查，所以针对一些像RHEL的系"
+"统，他们不会去默认安装Perl核心模块，你可能需要自己去安装这些 ``perl-core``软件包。"
 
 #: ../../content/installation.rst:91
+#, fuzzy
 msgid ""
 "To install the required and optional packages, you can use either CPAN or "
 "the package manager of your Linux distribution."
-msgstr ""
+msgstr "你可以用CPAN或者Linux的软件包管理系统，安装必须的以及可选的软件模块。"
 
 #: ../../content/installation.rst:93
 msgid ""
 "Execute this command to get an install command to install the missing "
 "dependencies:"
-msgstr ""
+msgstr "执行这个命令就可以取得一个安装命令，去安装那些缺失的外部环境软件："
 
 #: ../../content/installation.rst:101
+#, fuzzy
 msgid ""
 "There are a number of optional or alternative modules which can be "
 "installed, mostly for more customized versions of OTOBO. Calling "
 "CheckModules.pl without any argument will list its full functionality."
-msgstr ""
+msgstr "有一些可选的或者可替换的模块，在大多数定制化的OTOBO版本中，也可以安装上。调用CheckModules.pl 毫无疑问可以列出所有功能。"
 
 #: ../../content/installation.rst:105
 msgid "Step 3: Create the OTOBO User"
-msgstr ""
+msgstr "步骤3：创建OTOBO用户"
 
 #: ../../content/installation.rst:107
+#, fuzzy
 msgid "Create a dedicated user for OTOBO within its own group:"
-msgstr ""
+msgstr "在用户自己的组中，创建一个专用的OTOBO用户："
 
 #: ../../content/installation.rst:113
 msgid ""
 "Add the user to web server group (if the web server is not running as otobo "
 "user):"
-msgstr ""
+msgstr "把这个用户加入网站服务器组（如果网站服务器不是作为OTOBO用户运行）："
 
 #: ../../content/installation.rst:122
 msgid "Step 4: Activate the Default Configuration File"
-msgstr ""
+msgstr "步骤4：激活默认的配置文件"
 
 #: ../../content/installation.rst:124
+#, fuzzy
 msgid ""
 "There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config."
 "pm.dist``. You must activate it by copying it without the ``.dist`` file "
 "name extension."
 msgstr ""
+"有一个OTOBO配置文件是捆绑在``$OTOBO_HOME/Kernel/Config.pm.dist``中的，你需要拷贝这个文件并去掉``.dist``"
+" ，以便激活它。"
 
 #: ../../content/installation.rst:132
+#, fuzzy
 msgid "Step 5: Configure the Apache Web Server"
-msgstr ""
+msgstr "步骤5：配置Apache网站服务器"
 
 #: ../../content/installation.rst:134
+#, fuzzy
 msgid ""
 "First of all, you should install the Apache2 web server and mod_perl; you'd "
 "typically do this from your system's package manager. Below you'll find the "
 "commands needed to set up Apache on the most popular Linux distributions."
 msgstr ""
+"首先，你需要安装Apache2网站服务器和mod_perl：通常你会通过系统的软件管理系统来进行。在下面你看会看到在当前流行的Linux版本上，安装Apa"
+"che需要的一些命令。"
 
 #: ../../content/installation.rst:148
+#, fuzzy
 msgid ""
 "OTOBO requires a few Apache modules to be active for optimal operation. On "
 "most platforms you can make sure they are active via the tool a2enmod."
-msgstr ""
+msgstr "OTOBO为了实现最优运行，需要一些Apache模块。在大多数平台上，你可以通过a2enmod工具确认这些模块是否已经激活。"
 
 #: ../../content/installation.rst:159
+#, fuzzy
 msgid ""
 "On some platforms not all Apache modules exist and an error is displayed "
 "when installing. Do not worry and finish the installation, in most cases the "
 "module will not be needed."
 msgstr ""
+"在一些平台上，不是所有的Apache模块都存在，这样在安装的时候就会显示错误信息。这种情况不用着急，继续完成安装，大部分情况下，没有成功安装的模块往往都不"
+"需要。"
 
 #: ../../content/installation.rst:161
+#, fuzzy
 msgid ""
 "Most Apache installations have a ``conf.d`` directory included. On Linux "
 "systems you can usually find this directory under ``/etc/apache`` or ``/etc/"
 "apache2``."
 msgstr ""
+"大部分的Apache安装都包括一个``conf.d``目录，在Linux系统中你可以在``/etc/apache`` 或者 ``/etc/"
+"apache2``下面找到这个目录。"
 
 #: ../../content/installation.rst:164
+#, fuzzy
 msgid "Configure Apache without SSL support"
-msgstr ""
+msgstr "在没有SSL支持的情况下配置Apache"
 
 #: ../../content/installation.rst:166
+#, fuzzy
 msgid ""
 "Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include."
 "conf`` to a file called ``zzz_otobo.conf`` in the Apache configuration "
 "directory (to make sure it is loaded after the other configurations)."
 msgstr ""
+"在Apache配置目录中（先确认一下在完成其他配置后是否被加载了），从``/opt/otobo/scripts/apache2-httpd.include"
+".conf``拷贝合适的模板到文件``zzz_otobo.conf`` 。"
 
 #: ../../content/installation.rst:177
+#, fuzzy
 msgid "Configure Apache **with** SSL support"
-msgstr ""
+msgstr "在 **有** SSL 支持的情况下配置Apache"
 
 #: ../../content/installation.rst:179
+#, fuzzy
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
 "the apache ``sites-available`` directory`."
 msgstr ""
+"把模板文件 ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf``和``/opt/"
+"otobo/scripts/apache2-httpd-vhost-443.include.conf`` 拷贝到Apache的``sites-"
+"available``目录下。"
 
 #: ../../content/installation.rst:188
 msgid ""
 "Please edit the files and add the required information like SSL certificate "
 "storage path. After that, enable the OTOBO Apache configuration:"
-msgstr ""
+msgstr "请编辑文件并加入一些必须的信息，例如SSL认证存储路径。之后，激活OTOBO Apache配置："
 
 #: ../../content/installation.rst:195
 msgid ""
 "Now you can restart your web server to load the new configuration settings. "
 "On most systems you can use the following command to do so:"
-msgstr ""
+msgstr "现在你可以重启你的网站服务器，载入新的配置设定了。在多数系统中，你可以用下面的命令来实现："
 
 #: ../../content/installation.rst:203
 msgid "Step 6: Set File Permissions"
-msgstr ""
+msgstr "步骤6：设置文件许可"
 
 #: ../../content/installation.rst:205 ../../content/updating.rst:112
+#, fuzzy
 msgid ""
 "Please execute the following command to set the file and directory "
 "permissions for OTOBO. It will try to detect the correct user and group "
 "settings needed for your setup."
-msgstr ""
+msgstr "请执行下面的命令设置OTOBO的文件和目录许可。系统会尝试为你检测正确的用户和组。"
 
 #: ../../content/installation.rst:213
 msgid "Step 7: Setup the Database"
-msgstr ""
+msgstr "步骤7：建立数据库"
 
 #: ../../content/installation.rst:215
+#, fuzzy
 msgid ""
 "First of all, you should install the database package. It is recommended to "
 "use the MySQL or MariaDB package, which will be delivered with your Linux "
 "system, but it is possible to use PostgreSQL or Oracle as well."
-msgstr ""
+msgstr "首先，你需要安装数据库软件。建议使用你的Linux系统自带的MySQL或者MariaDB，也可以使用PostgreSQL或者Oracle。"
 
 #: ../../content/installation.rst:218
+#, fuzzy
 msgid ""
 "You'd typically do this from your systems package manager. Below you'll find "
 "the commands needed to set up MySQL on the most popular Linux distributions."
-msgstr ""
+msgstr "你可以通过系统的软件管理进行安装，下面是在常用的Linux版本上安装MySQL数据库的一些命令。"
 
 #: ../../content/installation.rst:232
+#, fuzzy
 msgid "After installing the MySQL server you need configure it."
-msgstr ""
+msgstr "安装了MySQL服务器后，需要进行配置。"
 
 #: ../../content/installation.rst:234
 msgid ""
@@ -400,16 +478,20 @@ msgid ""
 "Please login to the mysql console and set a different authentication module "
 "and password for the user ``root`` if this is the case:"
 msgstr ""
+"在MySQL 5.7及更高版本中，激活了一个新的认证模块，这样就不能用OTOBO的网络安装软件建立数据库了。这种情况下， "
+"请登陆进入MySQL控制台，设置不同的认证模块和用户``root`` 的密码："
 
 #: ../../content/installation.rst:242
+#, fuzzy
 msgid "For MariaDB > 10.1 use instead the following command:"
-msgstr ""
+msgstr "对MariaDBM 10.1以上版本，用下面的命令："
 
 #: ../../content/installation.rst:258
+#, fuzzy
 msgid ""
 "After OTOBO installation it is possible to change the authentication module "
 "again, if needed."
-msgstr ""
+msgstr "在OTOBO完成安装后，在需要时也可以更改认证模块。"
 
 #: ../../content/installation.rst:262
 msgid ""
@@ -418,10 +500,13 @@ msgid ""
 "file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/"
 "mysqld.cnf`` under the ``[mysqld]`` section:"
 msgstr ""
+"下面的配置设定是MySQL安装的最低要求。请将下面的脚本加入``[mysqld]`` 下面的MySQL服务器配置文件``/etc/my.cnf``，``/"
+"etc/mysql/my.cnf`` 或者 ``/etc/mysql/mysql.conf.d/mysqld.cnf``："
 
 #: ../../content/installation.rst:269
+#, fuzzy
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
-msgstr ""
+msgstr "对MySQL 8.0之前的版本，查询缓存尺寸需要设定："
 
 #: ../../content/installation.rst:276
 msgid ""
@@ -430,14 +515,17 @@ msgid ""
 "com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via "
 "package manager:"
 msgstr ""
+"出于生产率考虑，我们建议用``mysqltuner`` 工具实现优化。你可以从Github ``https://github.com/major/"
+"MySQLTuner-perl``下载脚本，或者通过软件管理在Debian或Ubuntu系统上安装："
 
 #: ../../content/installation.rst:283
+#, fuzzy
 msgid "After installing execute the script:"
-msgstr ""
+msgstr "安装后运行下面的脚本："
 
 #: ../../content/installation.rst:291
 msgid "Step 8: Setup Elasticsearch"
-msgstr ""
+msgstr "步骤8：安装Elasticsearch弹性搜索"
 
 #: ../../content/installation.rst:293
 msgid ""
