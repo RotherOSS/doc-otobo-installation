@@ -332,7 +332,7 @@ First make sure that in *.env* the images have the tag `latest` or the wanted ve
     # start again with the new images
     docker_admin> docker-compose up -d
 
-Force an upgrade to a devel version
+Force an upgrade to or from a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Images of devel versions are not upgraded automatically. But the upgrade can be forced.
