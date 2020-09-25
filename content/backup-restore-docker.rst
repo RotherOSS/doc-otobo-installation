@@ -1,0 +1,47 @@
+Backup and Restore using Docker
+==================
+
+Please read the Backup and Restore description :doc:`backup-restore` for base informations about the backup and restore scripts.
+
+Considerations for running OTOBO under Docker
+----------------------------------------------
+
+The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered.
+
+First we need to make sure that the backup files are not created in the file system that is internal to the container. Because in that
+case all data would be lost when the container is stopped. Therefore the backup directory must be in a volume. For now we only
+consider the most simple case, where the backup dir is a local dir on the Docker host. The location of the backup dir in the container
+can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host, and ``/otobo_backup`` as
+the location in the container.
+
+First we need to create the volume.
+
+.. code-block:: bash
+
+    # create the backup directory on the host
+    docker_admin>mkdir otobo_backup
+
+    # create the Docker volume
+    docker_admin>docker volume create --name otobo_backup --opt type=none --opt device=$PWD/otobo_backup --opt o=bind
+
+    # inspect the volume out of curiosity
+    docker_admin>docker volume inspect otobo_backup
+
+For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``.
+This means that the webserver and the Daemon may, but don't have to, be stopped.
+
+.. code-block:: bash
+
+    # create a backup
+    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/backup.pl -d /otobo_backup
+
+    # check the backup file
+    docker_admin>tree otobo_backup
+
+For restoring the backup we also need to specify which backup should be restored.
+The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``.
+
+.. code-block:: bash
+
+    # create a backup
+    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>
