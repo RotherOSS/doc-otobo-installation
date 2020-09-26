@@ -291,6 +291,7 @@ The files needed for creating Docker images locally are part of the the git repo
    root> bin/docker/build_docker_images.sh
    root> docker image ls
 
+The locally built images are tagged as ``local-<OTOOB_VERSION>`` using the version set up the file *RELEASE*.
 After building one can select the wanted image by setting
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
