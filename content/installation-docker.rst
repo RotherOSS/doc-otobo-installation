@@ -371,6 +371,7 @@ List of useful commands
 * ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
 * ``docker inspect <container>`` inspect a container
 * ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
+* ``docker exec -it nginx-server nginx -s reload`` reload nginx
 
 **docker-compose**
 
