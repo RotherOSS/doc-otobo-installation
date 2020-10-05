@@ -299,7 +299,7 @@ contains the adapted Nginx config template.
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-compose
+    docker_admin> cd /opt/otobo-cocker
     docker_admin> docker-compose down
     docker_admin> docker volume create otobo_nginx_custom_config
     docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
