@@ -38,8 +38,8 @@ Installation
 ------------
 
 The following instructions assume that the requirements are installed and that you have a working Docker environment.
-We assume here that the user **root** is used for interacting with Docker. Please note that in a production environment a
-dedicated user may be set up as Docker admin.
+We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be **root** of the
+Docker host or a dedicated user with the required permissions.
 
 1. Clone the otobo-docker repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,9 +50,9 @@ dedicated user may be set up as Docker admin.
 
 .. code-block:: bash
 
-   root> cd /opt
-   root> git clone https://github.com/RotherOSS/otobo-docker.git
-   root> cd otobo-docker
+   docker_admin> cd /opt
+   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git
+   docker_admin> cd otobo-docker
 
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,7 +80,7 @@ Choose one of the files that suits your needs and rename it to *.env*.
 
 .. code-block:: bash
 
-    root> cp -p .docker_compose_env_https .env
+    docker_admin> cp -p .docker_compose_env_https .env
 
 
 3. Configure the password for the database admin user
@@ -132,14 +132,14 @@ fetched from https://hub.docker.com/u/rotheross.
 
 .. code-block:: bash
 
-    root> docker-compose up --detach
+    docker_admin> docker-compose up --detach
 
 To verify that the six, or five in the case of HTTP only, services are actually running type:
 
 .. code-block:: bash
 
-    root> docker-compose ps
-    root> docker volume ls
+    docker_admin> docker-compose ps
+    docker_admin> docker volume ls
 
 6. Install and start OTOBO
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -287,11 +287,11 @@ The files needed for creating Docker images locally are part of the the git repo
 
 .. code-block:: bash
 
-   root> cd /opt
-   root> git clone https://github.com/RotherOSS/otobo.git
-   root> cd otobo
-   root> bin/docker/build_docker_images.sh
-   root> docker image ls
+   docker_admin> cd /opt
+   docker_admin> git clone https://github.com/RotherOSS/otobo.git
+   docker_admin> cd otobo
+   docker_admin> bin/docker/build_docker_images.sh
+   docker_admin> docker image ls
 
 After building one can select the wanted image by setting
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
@@ -307,15 +307,15 @@ running the test suite on a fresh installation.
 
 .. code-block:: bash
 
-   root> docker-compose down -v
-   root> docker-compose up -d
-   root> docker stop otobo_daemon_1
-   root> docker exec -t --user otobo otobo_web_1 bash\
+   docker_admin> docker-compose down -v
+   docker_admin> docker-compose up --detach
+   docker_admin> docker stop otobo_daemon_1
+   docker_admin> docker exec -t --user otobo otobo_web_1 bash\
    -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
-   root> docker exec -t --user otobo otobo_web_1 bash\
+   docker_admin> docker exec -t --user otobo otobo_web_1 bash\
    -c "bin/docker/run_test_suite.sh"
    .......
-   root>docker start otobo_daemon_1
+   docker_admin>docker start otobo_daemon_1
 
 
 Upgrading to a new patchlevel release
@@ -332,7 +332,7 @@ First make sure that in *.env* the images have the tag `latest` or the wanted ve
     docker_admin> docker-compose down
 
     # start again with the new images
-    docker_admin> docker-compose up -d
+    docker_admin> docker-compose up --detach
 
 Force an upgrade to a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -353,7 +353,7 @@ Here is a example using the devel image for the OTOBO 10.1.x branch from Docker 
     docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:devel-rel-10_1 upgrade
 
     start again with the new version
-    docker_admin> docker-compose up -d
+    docker_admin> docker-compose up --detach
 
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
