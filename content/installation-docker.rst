@@ -192,13 +192,13 @@ These allow starting and stopping the services without losing data. Keep in mind
 containers are temporary and only data in the volumes is permanent.
 
 otobo_opt_otobo
-    contains `/opt/otobo` on the container `web` and `daemon`.
+    contains `/opt/otobo` in the container `web` and `daemon`.
 
 otobo_mariadb_data
-    contains `/var/lib/mysql` on the container `db`.
+    contains `/var/lib/mysql` in the container `db`.
 
 otobo_elasticsearch_data
-    contains `/usr/share/elasticsearch/datal` on the container `elastic`.
+    contains `/usr/share/elasticsearch/datal` in the container `elastic`.
 
 otobo_redis_data
     contains data for the container `redis`.
