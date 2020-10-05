@@ -112,8 +112,10 @@ In any case the volume needs to be generated manually, and we need to copy the c
 
 .. code-block:: bash
 
-    root> docker volume create otobo_nginx_ssl
-    root> cp /PathToYourSSLCert/ssl-cert.crt /PathToYourSSLCert/ssl-key.key $(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl)
+    docker_admin> docker volume create otobo_nginx_ssl
+    docker_admin> otobo_nginx_ssl_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl)
+    docker_admin> echo $otobo_nginx_ssl_mp  # just a sanity check
+    docker_admin> cp /PathToYourSSLCert/ssl-cert.crt /PathToYourSSLCert/ssl-key.key $otobo_nginx_ssl_mp
 
 The names of the copied files need to be set in our newly created *.env* file. E.g.
 
