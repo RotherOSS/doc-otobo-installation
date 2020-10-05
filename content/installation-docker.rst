@@ -275,6 +275,60 @@ These settings are used by docker-compose directly.
 Advanced topics
 ----------------------------------
 
+Custom configuration of the Nginx webproxy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The default OTOBO Docker based installation provides the container `otobo_nginx_1`. This container
+serves as a reverse proxy that provides HTTPS support for the HTTP based OTOBO web application.
+The default config template for Nginx is located in the image,
+specifically in the file */etc/nginx/template/otobo_nginx.conf.template*.
+When the container is started, the actual config is generated from the template.
+This is done by replacing each macro in the template with the corresponding environment variable.
+In the default template file, only the following macros are used:
+* `${OTOBO_NGINX_SSL_CERTIFICATE}`
+* `${OTOBO_NGINX_SSL_CERTIFICATE_KEY}
+* `${OTOBO_NGINX_WEB_HOST}`
+* `${OTOBO_NGINX_WEB_PORT}`
+
+There are various possiblilites for customizing the Nginx configuration. One way is to use a locally built
+image that is derived from the image `otobo-nginx-webproxy`. In this local image, Nginx can be configured in a
+very flexible way.
+
+Another supported approach is to provide a customized config template in a volume. In this case we first must create a volume that
+contains the adapted Nginx config template.
+
+.. code-block:: bash
+
+    docker_admin> cd /opt/otobo-compose
+    docker_admin> docker-compose down
+    docker_admin> docker volume create otobo_nginx_custom_config
+    docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
+    docker_admin> echo $otobo_nginx_custom_config_mp  # just a sanity check
+    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:devel-rel-10_0  # use the appropriate label
+    docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
+    docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
+    docker_admin> docker rm tmp-nginx-container
+    docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
+
+After setting up the volume, the adapted config must be activated.
+In order to achieve this uncomment or add the following lines in your *.env* file,
+* `NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom`
+* `COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-https.yml:docker-compose/otobo-nginx-custom-config.yml`
+
+The changes Docker compose config can be inspected with:
+
+.. code-block:: bash
+
+    docker_admin> docker-compose config | more
+
+Finally the containers can be restarted:
+
+.. code-block:: bash
+
+    docker_admin> docker-compose up --detach
+
+See also the section "Using environment variables in nginx configuration (new in 1.19)" in https://hub.docker.com/_/nginx.
+
 Building local images
 ~~~~~~~~~~~~~~~~~~~~~~
 
