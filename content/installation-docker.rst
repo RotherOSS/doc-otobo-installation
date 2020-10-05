@@ -132,7 +132,7 @@ fetched from https://hub.docker.com/u/rotheross.
 
 .. code-block:: bash
 
-    root> docker-compose up -d
+    root> docker-compose up --detach
 
 To verify that the six, or five in the case of HTTP only, services are actually running type:
 
