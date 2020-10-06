@@ -335,7 +335,7 @@ The changed Docker Compose configuration can be inspected with:
 
     docker_admin> docker-compose config | more
 
-Finally the containers can be restarted:
+Finally, the containers can be started again:
 
 .. code-block:: bash
 
