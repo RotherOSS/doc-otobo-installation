@@ -275,7 +275,7 @@ These settings are used by Docker Compose directly.
 Advanced topics
 ----------------------------------
 
-Custom configuration of the Nginx webproxy
+Custom configuration of the nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The default Docker-based OTOBO installation provides the container `otobo_nginx_1`. This container
