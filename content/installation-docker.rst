@@ -323,7 +323,7 @@ In this case, we have to create a volume that contains the adapted nginx config 
     docker_admin> docker volume create otobo_nginx_custom_config
     docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
     docker_admin> echo $otobo_nginx_custom_config_mp  # just a sanity check
-    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:devel-rel-10_0  # use the appropriate label
+    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest  # use the appropriate label
     docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
