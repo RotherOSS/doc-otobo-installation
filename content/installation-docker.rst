@@ -2,7 +2,7 @@ Installing using Docker and Docker Compose
 ==========================================
 
 With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
-All of OTOBO´s dependencies are already included.
+All of OTOBO´s dependencies are already included in the collection of Docker images.
 
 - MariaDB is set up as the default database.
 - Elasticsearch is set up for the OTOBO power search.
@@ -11,8 +11,10 @@ All of OTOBO´s dependencies are already included.
 - nginx is used as optional reverse proxy for HTTPS support.
 
 .. warning::
+
     At the moment the Docker Compose environment is not tested in depth for production use.
-    Please use the standard installation process for production use, unless you know what you do.
+    Please use the standard installation process for production use.
+    Brave early adaptors are very welcome to share their experiences.
 
 We think that this will become the perfect environment for an OTOBO installation.
 
@@ -25,7 +27,8 @@ The minimal versions of required software, that have been tested, are listed her
 - Docker Compose 1.25.0
 - Git 2.25.1
 
-Example for installing git, Docker, and Docker Compose installation on Ubuntu 20.04:
+git, Docker, and Docker Compose can be installed with the standard system tools.
+Here is an example for installation on Ubuntu 20.04:
 
 .. code-block:: bash
 
@@ -37,15 +40,20 @@ Please check the Git and the Docker documentation for instructions on further se
 Installation
 ------------
 
-The following instructions assume that the requirements are met and that you have a working Docker environment.
+The following instructions assume that all requirements are met, that you have a working Docker environment.
 We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either
 the **root** user of the Docker host or a dedicated user with the required permissions.
 
 1. Clone the otobo-docker repo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Docker images will eventually be fetched from https://hub.docker.com. But some setup and command files
+need to be cloned from the otobo-docker Github repository. Make sure that you use the fitting versions of these
+files. The git tag must correspond to the version of OTOBO. Here we use OTOBO 10.0.4 as an example.
 
 .. note::
-    The location of the cloned repisitory does not matter.
+
+    The location of the cloned repository does not matter.
     For these instructions we chose */opt/otobo-docker* as the working dir.
 
 .. code-block:: bash
@@ -53,12 +61,13 @@ the **root** user of the Docker host or a dedicated user with the required permi
    docker_admin> cd /opt
    docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git
    docker_admin> cd otobo-docker
+   docker_admin> git checkout rel-10.0.4
 
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The configuration file *.env* is the interface that allows to set up the installation of OTOBO.
-*.env* is not created automatically, it must be created and edited by the user.
+The configuration file *.env* allows you to manage your installation of OTOBO.
+It must be first created and the adapted by yourself.
 
 Two template files are available in the newly created folder *docker-compose*:
 
@@ -71,9 +80,11 @@ Two template files are available in the newly created folder *docker-compose*:
 Choose one of the files that suits your needs and rename it to *.env*.
 
 .. note::
+
     Use ``ls -a`` for listing the hidden template files.
 
 .. note::
+
     For productive environments we recommend the use of a web proxy.
     If you want to install your own web proxy for OTOBO, an extra docker nginx image is available for use.
     In this case, please rename the *.docker_compose_env_https* file to *.env*.
@@ -86,7 +97,7 @@ Choose one of the files that suits your needs and rename it to *.env*.
 3. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Change the following value inside the *.env* file:
+Change the following setting inside the *.env* file:
 
 ``OTOBO_DB_ROOT_PASSWORD``
 The password for the database admin user may be chosen freely. The database admin user creates the database user **otobo**
@@ -100,10 +111,12 @@ This step can be skipped when OTOBO should be available only via HTTP.
 nginx needs for SSL encryption a certificate and a private key.
 
 .. note::
+
     For testing and development a self-signed certificate can be used. In the general case
     registered certificates must be used.
 
 .. note::
+
     To specify a CA chain with a certificate in nginx, it is necessary to copy the CA chain file
     with the actual certificate into a file.
 
@@ -147,6 +160,7 @@ To verify that the six required services (five in the case of HTTP only) are act
 Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 
 .. note::
+
     Please configure OTOBO inside the installer with a new MySQL database.
     As MySQL database root password please use the password you configured
     in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your *.env* file.
@@ -161,7 +175,7 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 Additional technical information
 ----------------------------------
 
-This section gives some more technical insight into what is happing under the cover.
+This section gives some more technical insight into what is happing under the hood.
 
 List of Docker containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
