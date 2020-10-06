@@ -309,7 +309,7 @@ image that is derived from the image `otobo-nginx-webproxy`. In such a local ima
 very flexible way.
 
 Another supported approach is to only override the default config template with a customized version.
-In this case, we have to create a volume, that contains the adapted nginx config template, first.
+In this case, we have to create a volume that contains the adapted nginx config template, first.
 
 .. code-block:: bash
 
