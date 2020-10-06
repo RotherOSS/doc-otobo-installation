@@ -296,7 +296,7 @@ The default Docker-based OTOBO installation provides the container `otobo_nginx_
 provides HTTPS support for the HTTP-based OTOBO web application.
 The default config template for nginx can be found within the Docker image,
 specifically in the file */etc/nginx/template/otobo_nginx.conf.template*.
-When the container is started, the actual config is generated from the template.
+When the container is started, the actually used configuration file is generated from the template.
 This is done by replacing each macro in the template with the corresponding environment variable.
 In the default template file, only the following macros are used:
 * `${OTOBO_NGINX_SSL_CERTIFICATE}`
@@ -324,12 +324,12 @@ In this case, we have to create a volume, that contains the adapted nginx config
     docker_admin> docker rm tmp-nginx-container
     docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
 
-After setting up the volume, the adapted config must be activated.
+After setting up the volume, the adapted configuration must be activated.
 In order to achieve this, uncomment or add the following lines in your *.env* file,
 * `NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom`
 * `COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-https.yml:docker-compose/otobo-nginx-custom-config.yml`
 
-The changed Docker Compose config can be inspected with:
+The changed Docker Compose configuration can be inspected with:
 
 .. code-block:: bash
 
@@ -445,8 +445,8 @@ List of useful commands
 
 **Docker Compose**
 
-* ``docker-compose config`` check config
-* ``docker-compose ps`` check containers
+* ``docker-compose config`` check and show the configuration
+* ``docker-compose ps`` show the running containers
 
 Resources
 ~~~~~~~~~
