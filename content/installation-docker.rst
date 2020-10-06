@@ -329,6 +329,13 @@ In this case, we have to create a volume that contains the adapted nginx config 
     docker_admin> docker rm tmp-nginx-container
     docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
 
+.. warning::
+
+    Your adapted nginx configuration usually contains the directive **listen**, which declare the ports of the webserver.
+    The internally used ports have changed between OTOBO 10.0.3 and OTOBO 10.0.4. This change must be reflected in the
+    adapted nginx configuration. So for version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO 10.0.4 listen
+    to the ports 8080 and 8443.
+
 After setting up the volume, the adapted configuration must be activated.
 In order to achieve this, uncomment or add the following lines in your *.env* file,
 * `NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom`
@@ -376,6 +383,7 @@ Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a 
 running the test suite on a fresh installation.
 
 .. warning::
+
     ``docker-compose down -v`` will eradicate all previous setup and data.
 
 .. code-block:: bash
