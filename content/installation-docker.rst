@@ -308,7 +308,7 @@ There are various possibilites for customizing the nginx configuration. One way 
 image that is derived from the image `otobo-nginx-webproxy`. In such a local image, nginx can be configured in a
 very flexible way.
 
-Another supported approach is to only provide a customized config template.
+Another supported approach is to only override the default config template with a customized version.
 In this case, we have to create a volume, that contains the adapted nginx config template, first.
 
 .. code-block:: bash
