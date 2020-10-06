@@ -37,9 +37,9 @@ Please check the Git and the Docker documentation for instructions on further se
 Installation
 ------------
 
-The following instructions assume that the requirements are installed and that you have a working Docker environment.
-We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be **root** of the
-Docker host or a dedicated user with the required permissions.
+The following instructions assume that the requirements are met and that you have a working Docker environment.
+We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either
+the **root** user of the Docker host or a dedicated user with the required permissions.
 
 1. Clone the otobo-docker repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -134,7 +134,7 @@ fetched from https://hub.docker.com/u/rotheross.
 
     docker_admin> docker-compose up --detach
 
-To verify that the six, or five in the case of HTTP only, services are actually running type:
+To verify that the six required services (five in the case of HTTP only) are actually running, type:
 
 .. code-block:: bash
 
@@ -278,9 +278,9 @@ Advanced topics
 Custom configuration of the Nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default OTOBO Docker based installation provides the container `otobo_nginx_1`. This container
-serves as a reverse proxy that provides HTTPS support for the HTTP based OTOBO web application.
-The default config template for Nginx is located in the image,
+The default Docker-based OTOBO installation provides the container `otobo_nginx_1`. This container
+provides HTTPS support for the HTTP based OTOBO web application.
+The default config template for nginx can be found within the Docker image,
 specifically in the file */etc/nginx/template/otobo_nginx.conf.template*.
 When the container is started, the actual config is generated from the template.
 This is done by replacing each macro in the template with the corresponding environment variable.
@@ -290,12 +290,12 @@ In the default template file, only the following macros are used:
 * `${OTOBO_NGINX_WEB_HOST}`
 * `${OTOBO_NGINX_WEB_PORT}`
 
-There are various possiblilites for customizing the Nginx configuration. One way is to use a locally built
-image that is derived from the image `otobo-nginx-webproxy`. In this local image, Nginx can be configured in a
+There are various possibilites for customizing the nginx configuration. One way is to use a locally built
+image that is derived from the image `otobo-nginx-webproxy`. In such a local image, nginx can be configured in a
 very flexible way.
 
-Another supported approach is to provide a customized config template in a volume. In this case we first must create a volume that
-contains the adapted Nginx config template.
+Another supported approach is to only provide a customized config template.
+In this case, we have to create a volume, that contains the adapted nginx config template, first.
 
 .. code-block:: bash
 
@@ -347,7 +347,7 @@ The files needed for creating Docker images locally are part of the the git repo
    docker_admin> bin/docker/build_docker_images.sh
    docker_admin> docker image ls
 
-After building one can select the wanted image by setting
+After building the local images, one can specify the images to be used by setting
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
 Automatic Installation
@@ -372,7 +372,7 @@ running the test suite on a fresh installation.
    docker_admin>docker start otobo_daemon_1
 
 
-Upgrading to a new patchlevel release
+Upgrading to a new patch level release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First make sure that in *.env* the images have the tag `latest` or the wanted version.
