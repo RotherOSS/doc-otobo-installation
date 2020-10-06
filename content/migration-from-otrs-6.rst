@@ -13,6 +13,7 @@ in the OTOBO Community forum at https://forum.otobo.org/.
 We will find a way to help you.
 
 .. note::
+
     After the migration all data previously available in OTRS 6 will be available in OTOBO.
     We do not modify any OTRS data during the migration.
 
@@ -41,10 +42,11 @@ Migration Requirements
 and that you want to transfer configuration and data to OTOBO.
 
 .. warning::
-Please consider carefully whether you really need the data and configuration.
-Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway.
-It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
-We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
+
+    Please consider carefully whether you really need the data and configuration.
+    Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway.
+    It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
+    We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
 2. You need a running OTOBO installation to start the migration from there!
 
@@ -56,6 +58,7 @@ on the server running OTRS. The access can be effected via SSH or via file syste
 Furthermore, the *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts.
 
 .. note::
+
     If SSH and database access between the servers is not possible, please migrate OTRS to OTOBO on the same server and only then move the new installation.
 
 Step 1: Install the new OTOBO System
@@ -65,6 +68,7 @@ Please start with installing the new OTOBO system to which your OTRS / ((OTRS)) 
 We strongly recommend to read the :doc:`installation` chapter.
 
 .. warning::
+
     Apache has difficulties with running two independent applications under mod_perl on the same server.
     Therefore, if you installed OTOBO on the same server as your OTRS / ((OTRS)) Community Edition,
     disable mod_perl for OTOBO as long as both systems are running.
@@ -100,6 +104,7 @@ After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -> S
 Now log in on the server as user ``root`` and execute the following commands:
 
 .. code-block:: bash
+
     root> su - otobo
     otobo>
     otobo> /opt/otobo/bin/Cron.sh stop
@@ -108,6 +113,7 @@ Now log in on the server as user ``root`` and execute the following commands:
 When OTOBO is running under Docker it suffices to stop the Docker container ``otobo_daemon_1``:
 
 .. code-block:: bash
+
     docker_admin> cd /opt/otobo-docker
     docker_admin> docker-compose stop daemon
 
@@ -128,18 +134,22 @@ The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh. For
 and execute one of the following commands:
 
 .. code-block:: bash
+
     $ # Install sshpass under Debian / Ubuntu Linux
     $ sudo apt-get install sshpass
 
 .. code-block:: bash
+
     $ #Install sshpass under RHEL/CentOS Linux
     $ sudo yum install sshpass
 
 .. code-block:: bash
+
     $ # Install sshpass under Fedora
     $ sudo dnf install sshpass
 
 .. code-block:: bash
+
     $ # Install sshpass under OpenSUSE Linux
     $ sudo zypper install sshpass
 
@@ -162,6 +172,7 @@ Let's concentrate on option **a.** here.
 For safe copying, we use ``rsync``. But first we need to find out the correct target.
 
 .. code-block:: bash
+
     root> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
     root> echo $mountpoint_opt_otobo
     root> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/otrs
@@ -172,6 +183,7 @@ Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
 -------------------------------------------------------------------
 
 .. note::
+
     Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too. Yes, we do not touch any OTRS data during the migration, but at times
     a wrong entry is enough to cause trouble.
 
@@ -206,9 +218,11 @@ Please use the web migration tool at http://localhost/otobo/migration.pl (replac
 and follow the process.
 
 .. note::
+
     If OTOBO runs inside a Docker container, specify *localhost* for OTRS server and */opt/otobo/tmp/otrs* as the OTRS home directory.
 
 .. note::
+
     In the Docker case, a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
     Pick one of the IP-addressses reported by ``hostname --all-ip-addresses`` instead for ``OTRS Server``.
     In order to make sure that there is a database user who can read the data, it might be worthwhile to create a dedicated user.
@@ -221,6 +235,7 @@ When the migration is complete, please take your time and test the entire system
 that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
 
 .. code-block:: bash
+
     root> su - otobo
     otobo>
     otobo> /opt/otobo/bin/Cron.sh start
@@ -229,6 +244,7 @@ that the migration was successful and that you want to use OTOBO from now on, st
 In the docker case:
 
 .. code-block:: bash
+
     docker_admin> cd ~/otobo-docker
     docker_admin> docker-compose start daemon
 

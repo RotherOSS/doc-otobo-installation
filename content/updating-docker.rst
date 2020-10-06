@@ -8,6 +8,9 @@ First make sure that in *.env* the images have the tag `latest` or the wanted ve
 
 .. code-block:: bash
 
+    # Change to the otobo docker directory
+    docker_admin> cd /opt/otobo-docker
+
     # fetch the new images that are tagged a 'latest'
     docker_admin> docker-compose pull
 
@@ -21,13 +24,10 @@ After updating you need to reinstall all OTOBO packages and clear the cache.
 
 .. code-block:: bash
 
-    # Login to the OTOBO Image
-    root> docker exec -it otobo_web_1 bash
-    root> su otobo
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
-
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Admin::Package::ReinstallAll
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Admin::Package::UpgradeAll
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Maint::Config::Rebuild
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Maint::Cache::Delete
 
 Force an update to a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,9 +54,7 @@ After updating you need to reinstall all OTOBO packages and clear the cache.
 
 .. code-block:: bash
 
-    # Login to the OTOBO Image
-    root> docker exec -it otobo_web_1 bash
-    root> su otobo
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Admin::Package::ReinstallAll
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Admin::Package::UpgradeAll
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Maint::Config::Rebuild
+    docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Maint::Cache::Delete

@@ -104,7 +104,7 @@ Add the user to web server group (if the web server is not running as otobo user
 
 .. code-block:: bash
 
-   shell> usermod -G www-data otobo
+   root> usermod -G www-data otobo
    (SUSE=www, Red Hat/CentOS/Fedora=apache, Debian/Ubuntu=www-data)
 
 
@@ -127,13 +127,13 @@ Below you'll find the commands needed to set up Apache on the most popular Linux
 .. code-block:: bash
 
    # RHEL / CentOS:
-   shell> yum install httpd mod_perl
+   root> yum install httpd mod_perl
 
    # SuSE:
-   shell> zypper install apache2-mod_perl
+   root> zypper install apache2-mod_perl
 
    # Debian/Ubuntu:
-   shell> apt-get install apache2 libapache2-mod-perl2
+   root> apt-get install apache2 libapache2-mod-perl2
 
 OTOBO requires a few Apache modules to be active for optimal operation. On most platforms you can make sure they are active via the tool a2enmod.
 
@@ -236,7 +236,7 @@ For MariaDB > 10.1 use instead the following command:
    root> mysql -u root
    root> update mysql.user set authentication_string=password('NewRootPassword') plugin='mysql_native_password' where user='root';
 
- If this command not work, please try the following commands:
+If this command not work, please try the following commands:
 
 .. code-block:: bash
 
