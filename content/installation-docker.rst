@@ -236,7 +236,7 @@ for detailed information.
 
 **nginx webproxy settings**
 
-These setting are use when HTTPS is enabled.
+These setting are used when HTTPS is enabled.
 
 ``OTOBO_WEB_HTTP_PORT``
     Set in case the HTTP port should deviate from the standard port 80.
