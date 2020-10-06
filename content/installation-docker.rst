@@ -53,6 +53,11 @@ files. The git tag must correspond to the version of OTOBO. Here we use OTOBO 10
 
 .. note::
 
+    This manual had been published before OTOBO 10.0.4 was released.
+    This means that the git label rel-10.0.4 might not exist yet.
+
+.. note::
+
     The location of the cloned repository does not matter.
     For these instructions we chose */opt/otobo-docker* as the working dir.
 
