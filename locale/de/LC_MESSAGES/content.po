@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the OTOBO Installation Guide package.
 # Grit Rother <mr@otobo.de>, 2020.
 # sr <sr@otrs.ch>, 2020.
+# Bernhard Schmalhofer <Bernhard.Schmalhofer@gmx.de>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-05 00:34+0200\n"
-"PO-Revision-Date: 2020-09-29 21:16+0000\n"
+"POT-Creation-Date: 2020-10-06 00:34+0200\n"
+"PO-Revision-Date: 2020-10-05 17:16+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -124,15 +125,17 @@ msgstr ""
 "``<TIMESTAMP>`` steht für einen Wert wie ``2020-09-07_09-38``."
 
 #: ../../content/backup-restore-docker.rst:12
-#, fuzzy
 msgid "Backup and Restore using Docker"
-msgstr "Backup und Wiederherstellung"
+msgstr "Backup und Wiederherstellung mit Docker"
 
 #: ../../content/backup-restore-docker.rst:14
 msgid ""
 "Please read the Backup and Restore description :doc:`backup-restore` for "
 "base informations about the backup and restore scripts."
 msgstr ""
+"Bitte lesen Sie die Anleitung Backup und Wiederherstellung :doc:`backup-"
+"restore`. Hier finden Sie alle grundlegenden Informationen zu den "
+"entsprechenden Skripten."
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
@@ -855,7 +858,8 @@ msgstr "Gazelle dient als schneller Perl-Webserver."
 
 #: ../../content/installation-docker.rst:21
 msgid "nginx is used as optional webproxy for HTTPS support."
-msgstr "nginx wird als Webproxy für die HTTPS-Unterstützung eingesetzt."
+msgstr ""
+"nginx wird als optionaler Webproxy für die HTTPS-Unterstützung eingesetzt."
 
 #: ../../content/installation-docker.rst:24
 msgid ""
@@ -904,7 +908,7 @@ msgid ""
 "Example for installing git, docker, and docker-compose installation on "
 "Ubuntu 20.04:"
 msgstr ""
-"Beispiel für eine Git-, Docker- und Docker-Compose-Installation unter Ubuntu "
+"Beispiel für eine Git-, Docker- und Docker Compose-Installation unter Ubuntu "
 "20.04:"
 
 #: ../../content/installation-docker.rst:45
@@ -972,9 +976,8 @@ msgid "*.docker_compose_env_http*"
 msgstr "*.docker_compose_env_http*"
 
 #: ../../content/installation-docker.rst:76
-#, fuzzy
 msgid "Provide HTTP via port 80."
-msgstr "Stellt eine HTTP-Verbindung über Port 80 her."
+msgstr "Stellt eine HTTP-Verbindung über Port 80 zur Verfügung."
 
 #: ../../content/installation-docker.rst:79
 msgid "*.docker_compose_env_https*"
@@ -997,7 +1000,6 @@ msgid "Use ``ls -a`` for listing the hidden template files."
 msgstr "``ls -a`` bietet eine Übersicht über ausgeblendete Vorlagedateien."
 
 #: ../../content/installation-docker.rst:87
-#, fuzzy
 msgid ""
 "For productive environments we recommend the use of a web proxy. If you want "
 "to install your own web proxy for OTOBO, an extra docker nginx image is "
@@ -1006,7 +1008,7 @@ msgid ""
 msgstr ""
 "Für Produktivumgebungen empfehlen wir die Verwendung eines Webproxy. Für "
 "alle, die einen eigenen Webproxy für OTOBO installieren möchten, gibt es ein "
-"spezielles Docker Nginx Image. Ergänzen Sie in diesem Fall bitte die Datei *."
+"spezielles Docker nginx Image. Ergänzen Sie in diesem Fall bitte die Datei *."
 "docker_compose_env_https* um die Dateinamenerweiterung *.env*."
 
 #: ../../content/installation-docker.rst:97
@@ -1029,11 +1031,10 @@ msgstr ""
 "**otobo** und das Datenbankschema **otobo** anzulegen."
 
 #: ../../content/installation-docker.rst:106
-#, fuzzy
 msgid ""
 "4. Set up a volume with SSL configuration for the nginx webproxy (optional)"
 msgstr ""
-"4. Volume mit SSL-Konfiguration für den Nginx-Webproxy aufsetzen (optional)"
+"4. Volume mit SSL-Konfiguration für den nginx-Webproxy aufsetzen (optional)"
 
 #: ../../content/installation-docker.rst:108
 msgid "This step can be skipped when OTOBO should be available only via HTTP."
@@ -1044,24 +1045,24 @@ msgstr ""
 #: ../../content/installation-docker.rst:110
 msgid "nginx needs for SSL encryption a certificate and a private key."
 msgstr ""
-"Nginx erfordert für die SSL-Verschlüsselung ein Zertifikat sowie einen "
+"nginx erfordert für die SSL-Verschlüsselung ein Zertifikat sowie einen "
 "privaten Schlüssel."
 
 #: ../../content/installation-docker.rst:113
-#, fuzzy
 msgid ""
 "For testing and development a self-signed certificate can be used. In the "
 "general case registered certificates must be used."
 msgstr ""
 "Für Testzwecke und beim Entwickeln kann ein selbstsigniertes Zertifikat "
-"verwendet werden. Im Allgemeinen sind registrierte Zertifikate erforderlich."
+"verwendet werden. Grundsätzlich sind jedoch registrierte Zertifikate "
+"erforderlich."
 
 #: ../../content/installation-docker.rst:117
 msgid ""
 "To specify a CA chain with a certificate in nginx, it is necessary to copy "
 "the CA chain file with the actual certificate into a file."
 msgstr ""
-"Um in Nginx eine CA-Chain zusammen mit einem Zertifikat anzugeben, muss das "
+"Um in nginx eine CA-Chain zusammen mit einem Zertifikat anzugeben, muss das "
 "CA-Chain-File mit dem eigentlichen Zertifikat in eine Datei kopiert werden."
 
 #: ../../content/installation-docker.rst:120
@@ -1071,7 +1072,7 @@ msgid ""
 "manually, and we need to copy the certificate and key to the volume:"
 msgstr ""
 "Das Zertifikat und der private Schlüssel werden in einem Volume hinterlegt, "
-"um später von Nginx verwendet werden zu können. Legen Sie zunächst das "
+"um später von nginx verwendet werden zu können. Legen Sie zunächst das "
 "Volume an und kopieren Sie anschließend Zertifikat und Schlüssel hinein:"
 
 #: ../../content/installation-docker.rst:128
@@ -1100,7 +1101,7 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:136
 msgid "5. Start the docker-compose image"
-msgstr "5. Docker-compose Image starten"
+msgstr "5. Docker Compose Image starten"
 
 #: ../../content/installation-docker.rst:138
 #, fuzzy
@@ -1220,11 +1221,11 @@ msgstr "Betreibt Redis als Caching-Dienst."
 
 #: ../../content/installation-docker.rst:193
 msgid "Optional container otobo_nginx_1"
-msgstr "Optional container otobo_nginx_1"
+msgstr "Optionaler Container otobo_nginx_1"
 
 #: ../../content/installation-docker.rst:193
 msgid "Run nginx as reverse proxy for providing HTTPS support."
-msgstr "Setzt Nginx als Reverseproxy für HTTPS-Verbindungen ein."
+msgstr "Setzt nginx als Reverseproxy für HTTPS-Verbindungen ein."
 
 #: ../../content/installation-docker.rst:196
 msgid "Overview over the Docker volumes"
@@ -1294,7 +1295,6 @@ msgid "Docker environment variables"
 msgstr "Docker-Umgebungsvariablen"
 
 #: ../../content/installation-docker.rst:220
-#, fuzzy
 msgid ""
 "In the instructions we did only minimal configuration. But the file *.env* "
 "allows to set more variables. Here is a list of all supported environment "
@@ -1355,7 +1355,6 @@ msgid "``OTOBO_WEB_HTTP_PORT``"
 msgstr "``OTOBO_WEB_HTTP_PORT``"
 
 #: ../../content/installation-docker.rst:242
-#, fuzzy
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. When "
 "HTTPS is enabled then the HTTP port will redirect to HTTPS."
@@ -1365,10 +1364,9 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:245
 msgid "**nginx webproxy settings**"
-msgstr "**Nginx Webproxy Einstellungen**"
+msgstr "**Einstellungen für den nginx-Webproxy**"
 
 #: ../../content/installation-docker.rst:247
-#, fuzzy
 msgid "These setting are use when HTTPS is enabled."
 msgstr "Diese Einstellungen werden angewendet, wenn HTTPS aktiv ist."
 
@@ -1396,7 +1394,7 @@ msgid ""
 "SSL cert for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/"
 "nginx/ssl/acme.crt*"
 msgstr ""
-"SSL-Zertifikat für den Nginx-Webproxy. Beispiel: "
+"SSL-Zertifikat für den nginx-Webproxy. Beispiel: "
 "*OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
 #: ../../content/installation-docker.rst:262
@@ -1408,16 +1406,16 @@ msgid ""
 "SSL key for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/"
 "etc/nginx/ssl/acme.key*"
 msgstr ""
-"SSL-Schlüssel für den Nginx-Webproxy. Beispiel: "
+"SSL-Schlüssel für den nginx-Webproxy. Beispiel: "
 "*OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
 #: ../../content/installation-docker.rst:264
 msgid "**docker-compose settings**"
-msgstr "**docker-compose Einstellungen**"
+msgstr "**Docker Compose-Einstellungen**"
 
 #: ../../content/installation-docker.rst:266
 msgid "These settings are used by docker-compose directly."
-msgstr "Diese Einstellungen werden direkt von docker-compose verwendet."
+msgstr "Diese Einstellungen werden direkt von Docker Compose verwendet."
 
 #: ../../content/installation-docker.rst:271
 msgid "``COMPOSE_PROJECT_NAME``"
@@ -1431,7 +1429,7 @@ msgid ""
 "project name."
 msgstr ""
 "Der Projektname wird als Präfix für die angelegten Volumes und Container "
-"verwendet. Hier ist eine Angabe erforderlich, weil das compose-File in "
+"verwendet. Hier ist eine Angabe erforderlich, weil das Compose-File in "
 "*scripts/docker-compose* abgelegt wird und sonst standardmäßig **docker-"
 "compose** verwendet würde."
 
@@ -1570,11 +1568,10 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:353
 #: ../../content/updating-docker.rst:50
-#, fuzzy
 msgid ""
 "These coḿmands do not reinstall or upgrade the installed OTOBO packages."
 msgstr ""
-"Die installierten OTOBO Pakete werden mit diesen Befehlen nicht neu "
+"Die installierten OTOBO-Pakete werden mit diesen Befehlen nicht neu "
 "installiert oder aktualisiert."
 
 #: ../../content/installation-docker.rst:367
@@ -1660,11 +1657,11 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:384
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
-msgstr ""
+msgstr "``docker exec -it nginx-server nginx -s reload`` nginx-Reload"
 
 #: ../../content/installation-docker.rst:386
 msgid "**docker-compose**"
-msgstr "**docker-compose**"
+msgstr "**Docker Compose**"
 
 #: ../../content/installation-docker.rst:388
 #, fuzzy
@@ -1691,7 +1688,7 @@ msgid ""
 "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
 msgstr ""
-"`docker-compose Schnellstart <http://mfg.fhstp.ac.at/development/"
+"`Docker Compose-Schnellstart <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
 
 #: ../../content/installation-docker.rst:396
@@ -1809,7 +1806,6 @@ msgid "results in:"
 msgstr "folgende Informationen aus:"
 
 #: ../../content/installing-perl-modules.rst:39
-#, fuzzy
 msgid ""
 "Special care must be taken when OTOBO runs under Docker. In this case the "
 "wanted module could easily be installed into the system Perl. However, due "
@@ -1821,14 +1817,15 @@ msgid ""
 "the Docker image."
 msgstr ""
 "Besondere Vorsicht ist geboten, wenn OTOBO in Docker ausgeführt wird. In "
-"diesem Fall kann das gewünschte Modul einfach in das System-Perl installiert "
-"werden. Aufgrund der besonderen Arbeitsweise von Docker geht diese "
-"Veränderung verloren, wenn der Container neu gestartet wird. Die Module "
-"müssen also an einen Ort ausgelagert werden, der auch nach einem Neustart "
-"noch verfügbar ist. Das lokale Verzeichnis für die Installation kann mit der "
-"Option ``--local-lib`` angegeben werden. Die installierten Module werden von "
-"Perl auf Basis der Umgebungsvariablen ``PERL5LIB`` und ``PATH`` gefunden, "
-"die im Docker Image entsprechend gesetzt werden."
+"diesem Fall scheint es die einfachste Lösung, das gewünschte Modul einfach "
+"in das System-Perl zu installieren. Aufgrund der besonderen Arbeitsweise von "
+"Docker geht diese Anpassung aber verloren, sobald der Container neu "
+"gestartet wird. Die Module müssen also an einen Ort ausgelagert werden, der "
+"auch nach einem Neustart noch verfügbar ist. Das lokale Verzeichnis für die "
+"Installation kann mit der Option ``--local-lib`` angegeben werden. Die "
+"installierten Module werden von Perl auf Basis der Umgebungsvariablen "
+"``PERL5LIB`` und ``PATH`` gefunden, die im Docker Image entsprechend gesetzt "
+"werden."
 
 #: ../../content/introduction.rst:12
 msgid "Introduction"
@@ -1903,7 +1900,6 @@ msgstr ""
 "Zielverzeichnis."
 
 #: ../../content/migration-from-otrs-6.rst:12
-#, fuzzy
 msgid ""
 "Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version "
 "10"
@@ -2061,7 +2057,6 @@ msgstr ""
 "bisher in Ihrem OTRS nutzen und künftig in OTOBO nutzen möchten."
 
 #: ../../content/migration-from-otrs-6.rst:65
-#, fuzzy
 msgid ""
 "4. If you are planning to migrate to another server, then the OTOBO "
 "webserver must be able to access the location where your ((OTRS)) Community "
@@ -2071,24 +2066,23 @@ msgid ""
 "from the server running OTOBO. Readonly access must be granted for external "
 "hosts."
 msgstr ""
-"4. Wenn Sie auf einen anderen Server migrieren möchten, muss der OTOBO "
+"4. Wenn Sie auf einen anderen Server migrieren möchten, muss der OTOBO-"
 "Webserver in der Lage sein, auf das Verzeichnis zuzugreifen, in dem die "
-"((OTRS)) Community Edition oder OTRS 6.9.* installiert sind. In den meisten "
-"Systemen ist dies das Verzeichnis /opt/otrs auf dem Server, auf dem OTRS "
-"läuft. Der Zugriff erfolgt über SSH oder Dateisystem Mounts. Außerdem muss "
-"die *otrs*-Datenbank von dem Server aus erreichbar sein, auf dem OTOBO "
-"läuft. Externe Hosts müssen Lesezugriff haben."
+"((OTRS)) Community Edition oder OTRS 6.0.* installiert sind. Meist ist dies "
+"das Verzeichnis /opt/otrs auf dem Server, auf dem OTRS läuft. Der Zugriff "
+"erfolgt über SSH oder Dateisystem-Mounts. Außerdem muss die *otrs*-Datenbank "
+"von dem Server aus erreichbar sein, auf dem OTOBO läuft. Externe Hosts "
+"müssen Lesezugriff haben."
 
 #: ../../content/migration-from-otrs-6.rst:72
-#, fuzzy
 msgid ""
 "If SSH and database access between the servers is not possible, please "
 "migrate OTRS to OTOBO on the same server and only then move the new "
 "installation."
 msgstr ""
 "Sind SSH-Kommunikation und Datenbankzugriff von einem Server auf den anderen "
-"nicht möglich, führen Sie die Migration zunächst mit beiden Systemen auf "
-"einem Server durch und ziehen Sie die neue Instanz erst nachträglich um."
+"nicht möglich, migrieren Sie zunächst auf dem alten Server von OTRS zu OTOBO "
+"und ziehen die neue Instanz erst nachträglich um."
 
 #: ../../content/migration-from-otrs-6.rst:75
 msgid "Step 1: Install the new OTOBO System"
@@ -2105,7 +2099,6 @@ msgstr ""
 "empfehlen dazu dringend das Kapitel :doc:`installation`."
 
 #: ../../content/migration-from-otrs-6.rst:82
-#, fuzzy
 msgid ""
 "Apache has difficulties with running two independent applications under "
 "mod_perl on the same server. Therefore, if you installed OTOBO on the same "
@@ -2117,9 +2110,9 @@ msgid ""
 msgstr ""
 "Apache hat Probleme damit, zwei unabhängige Anwendungen unter mod_perl auf "
 "demselben Server laufen zu lassen. Deaktivieren Sie deshalb mod_perl für "
-"OTOBO solange Ihr OTRS / ((OTRS)) Community Edition und OTOBO gleichzeitig "
-"auf einem Server laufen. Um mod_perl für OTOBO zu deaktivieren, kommentieren "
-"Sie einfach den mod_perl-Abschnitt in der Datei */opt/otobo/scripts/apache2-"
+"OTOBO solange OTRS / ((OTRS)) Community Edition und OTOBO gleichzeitig auf "
+"einem Server laufen. Um mod_perl für OTOBO zu deaktivieren, kommentieren Sie "
+"einfach den mod_perl-Abschnitt in der Datei */opt/otobo/scripts/apache2-"
 "httpd.include.conf* aus. Alternativ können Sie OTRS vor der Migration im "
 "Webserver deaktivieren."
 
@@ -2223,7 +2216,6 @@ msgstr ""
 "``root``-Benutzer am Server an und führen Sie folgende Befehle aus:"
 
 #: ../../content/migration-from-otrs-6.rst:123
-#, fuzzy
 msgid ""
 "When OTOBO is running under Docker it suffices to stop the Docker container "
 "``otobo_daemon_1``:"
@@ -2273,11 +2265,10 @@ msgid "Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*"
 msgstr "Docker: copy */opt/otrs* in das Volume *otobo_opt_otobo*"
 
 #: ../../content/migration-from-otrs-6.rst:171
-#, fuzzy
 msgid ""
 "In this section, we assume that */opt/otrs* is available on the Docker host."
 msgstr ""
-"Wir gehen in diesem Abschnitt davon aus, dass */opt/otrs* auf dem Docker "
+"Wir gehen in diesem Abschnitt davon aus, dass */opt/otrs* auf dem Docker-"
 "Host verfügbar ist."
 
 #: ../../content/migration-from-otrs-6.rst:173
@@ -3458,7 +3449,7 @@ msgstr "Apache2"
 
 #: ../../content/requirements.rst:117
 msgid "nginx"
-msgstr "Nginx"
+msgstr "nginx"
 
 #: ../../content/requirements.rst:118
 msgid "Any other web server that can be used as a reverse proxy"
@@ -3539,9 +3530,8 @@ msgstr ""
 "Testsystem durchzuführen."
 
 #: ../../content/updating.rst:20
-#, fuzzy
 msgid "Step 1: Stop All Relevant Services and the OTOBO Daemon"
-msgstr "Schritt 11: OTOBO Daemon starten"
+msgstr "Schritt 1: Alle relevanten Dienste und den OTOBO Daemon stoppen"
 
 #: ../../content/updating.rst:22
 msgid ""
@@ -3558,9 +3548,8 @@ msgstr ""
 "Stoppen Sie alle OTOBO Cron Jobs und den Daemon (in dieser Reihenfolge):"
 
 #: ../../content/updating.rst:41
-#, fuzzy
 msgid "Step 2: Backup Files and Database"
-msgstr "Schritt 7: Datenbank anlegen"
+msgstr "Schritt 2: Dateien und Datenbank sichern"
 
 #: ../../content/updating.rst:43
 msgid "Create a backup of the hole ``/opt/otobo`` directory and the database."
@@ -3589,14 +3578,12 @@ msgstr ""
 "können dazu auch das Skript :ref:`backup-restore` verwenden."
 
 #: ../../content/updating.rst:63
-#, fuzzy
 msgid "Step 3: Install the New Release"
-msgstr "Schritt 11: OTOBO Daemon starten"
+msgstr "Schritt 3: Neues Release installieren"
 
 #: ../../content/updating.rst:77
-#, fuzzy
 msgid "Restore Old Configuration Files"
-msgstr "Schritt 9: Grundlegende Systemkonfiguration"
+msgstr "Alte Konfigurationsdateien wiederherstellen"
 
 #: ../../content/updating.rst:79
 msgid "We need only copy the file ``Kernel/Config.pm`` in OTOBO 10."
@@ -3631,9 +3618,8 @@ msgstr ""
 "stats`` wiederherstellen."
 
 #: ../../content/updating.rst:110
-#, fuzzy
 msgid "Set File Permissions"
-msgstr "Schritt 6: Dateiberechtigungen anpassen"
+msgstr "Dateiberechtigungen anpassen"
 
 #: ../../content/updating.rst:120
 msgid "Step 4: Update Installed Packages"
@@ -3668,22 +3654,23 @@ msgid "Now you can log into your system."
 msgstr "Jetzt können Sie sich an Ihrem System anmelden."
 
 #: ../../content/updating-docker.rst:12
-#, fuzzy
 msgid "Updating OTOBO using Docker and Docker Compose"
-msgstr "Installation mit Docker und Docker Compose"
+msgstr "OTOBO mit Docker und Docker Compose aktualisieren"
 
 #: ../../content/updating-docker.rst:15
 msgid "Updating to a new patchlevel release"
-msgstr ""
+msgstr "Auf ein neues Patchlevel Release aktualisieren"
 
 #: ../../content/updating-docker.rst:33 ../../content/updating-docker.rst:63
 msgid ""
 "After updating you need to reinstall all OTOBO packages and clear the cache."
 msgstr ""
+"Nach dem Update müssen alle OTOBO-Pakete erneut installiert und der Cache "
+"gelöscht werden."
 
 #: ../../content/updating-docker.rst:43
 msgid "Force an update to a devel version"
-msgstr ""
+msgstr "Update auf eine Entwicklerversion erzwingen"
 
 #~ msgid ""
 #~ "If you are planning to migrate from one to another server, it must be "
