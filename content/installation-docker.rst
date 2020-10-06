@@ -313,6 +313,10 @@ There are various possibilites for customizing the nginx configuration. One way 
 image that is derived from the image `otobo-nginx-webproxy`. In such a local image, nginx can be configured in a
 very flexible way.
 
+.. warning::
+
+    The following approach is only supported in OTOBO 10.0.4 or later.
+
 Another supported approach is to only override the default config template with a customized version.
 In this case, we have to create a volume that contains the adapted nginx config template, first.
 
