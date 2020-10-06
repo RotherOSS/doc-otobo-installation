@@ -63,10 +63,10 @@ The configuration file *.env* is the interface that allows to set up the install
 Two template files are available in the newly created folder *docker-compose*:
 
 *.docker_compose_env_http*
-    Provide HTTP via port 80.
+    Provide HTTP support via port 80.
 
 *.docker_compose_env_https*
-    Provide HTTPS via port 443.
+    Provide HTTPS support via port 443.
 
 Choose one of the files that suits your needs and rename it to *.env*.
 
