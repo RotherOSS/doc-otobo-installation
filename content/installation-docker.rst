@@ -325,7 +325,7 @@ In this case, we have to create a volume, that contains the adapted nginx config
     docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
 
 After setting up the volume, the adapted config must be activated.
-In order to achieve this uncomment or add the following lines in your *.env* file,
+In order to achieve this, uncomment or add the following lines in your *.env* file,
 * `NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom`
 * `COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-https.yml:docker-compose/otobo-nginx-custom-config.yml`
 
