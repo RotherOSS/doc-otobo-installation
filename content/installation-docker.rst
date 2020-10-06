@@ -8,7 +8,7 @@ All of OTOBO´s dependencies are already included.
 - Elasticsearch is set up for the OTOBO power search.
 - Redis is enabled for fast caching.
 - Gazelle is used as fast Perl webserver.
-- nginx is used as optional webproxy for HTTPS support.
+- nginx is used as optional reverse proxy for HTTPS support.
 
 .. warning::
     At the moment the Docker Compose environment is not tested in depth for production use.
