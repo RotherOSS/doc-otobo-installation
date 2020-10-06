@@ -279,7 +279,7 @@ Custom configuration of the nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The default Docker-based OTOBO installation provides the container `otobo_nginx_1`. This container
-provides HTTPS support for the HTTP based OTOBO web application.
+provides HTTPS support for the HTTP-based OTOBO web application.
 The default config template for nginx can be found within the Docker image,
 specifically in the file */etc/nginx/template/otobo_nginx.conf.template*.
 When the container is started, the actual config is generated from the template.
