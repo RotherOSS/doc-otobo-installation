@@ -11,7 +11,7 @@ All of OTOBO´s dependencies are already included.
 - nginx is used as optional webproxy for HTTPS support.
 
 .. warning::
-    At the moment the docker-compose environment is not tested in depth for production use.
+    At the moment the Docker Compose environment is not tested in depth for production use.
     Please use the standard installation process for production use, unless you know what you do.
 
 We think that this will become the perfect environment for an OTOBO installation.
@@ -22,10 +22,10 @@ Requirements
 The minimal versions of required software, that have been tested, are listed here:
 
 - Docker 19.03.08
-- docker-compose 1.25.0
+- Docker Compose 1.25.0
 - Git 2.25.1
 
-Example for installing git, docker, and docker-compose installation on Ubuntu 20.04:
+Example for installing git, Docker, and Docker Compose installation on Ubuntu 20.04:
 
 .. code-block:: bash
 
@@ -124,8 +124,8 @@ The names of the copied files need to be set in our newly created *.env* file. E
 
 Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image.
 
-5. Start the docker-compose image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+5. Start the Docker containers with Docker Compose
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be
 fetched from https://hub.docker.com/u/rotheross.
@@ -253,9 +253,9 @@ These setting are use when HTTPS is enabled.
     SSL key for the nginx webproxy.
     Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*
 
-**docker-compose settings**
+**Docker Compose settings**
 
-These settings are used by docker-compose directly.
+These settings are used by Docker Compose directly.
 
 ``COMPOSE_PROJECT_NAME``
     The project name is used as a prefix for the generated volumes and containers.
@@ -315,7 +315,7 @@ In order to achieve this uncomment or add the following lines in your *.env* fil
 * `NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom`
 * `COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-https.yml:docker-compose/otobo-nginx-custom-config.yml`
 
-The changes Docker compose config can be inspected with:
+The changed Docker Compose config can be inspected with:
 
 .. code-block:: bash
 
@@ -412,7 +412,7 @@ Here is a example using the devel image for the OTOBO 10.1.x branch from Docker 
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**docker**
+**Docker**
 
 * ``docker system prune -a`` start over
 * ``docker version`` show version
@@ -429,7 +429,7 @@ List of useful commands
 * ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
 * ``docker exec -it nginx-server nginx -s reload`` reload nginx
 
-**docker-compose**
+**Docker Compose**
 
 * ``docker-compose config`` check config
 * ``docker-compose ps`` check containers
