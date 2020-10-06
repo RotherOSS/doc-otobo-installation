@@ -373,6 +373,7 @@ The files needed for creating Docker images locally are part of the the git repo
    docker_admin> bin/docker/build_docker_images.sh
    docker_admin> docker image ls
 
+The locally built images are tagged as ``local-<OTOOB_VERSION>`` using the version set up the file *RELEASE*.
 After building the local images, one can specify the images to be used by setting
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
@@ -415,7 +416,7 @@ First make sure that in *.env* the images have the tag `latest` or the wanted ve
     # start again with the new images
     docker_admin> docker-compose up --detach
 
-Force an update to a devel version
+Force an update to or from a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Images of devel versions are not updated automatically. But the update can be forced.
