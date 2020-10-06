@@ -402,10 +402,10 @@ First make sure that in *.env* the images have the tag `latest` or the wanted ve
     # start again with the new images
     docker_admin> docker-compose up --detach
 
-Force an upgrade to a devel version
+Force an update to a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Images of devel versions are not upgraded automatically. But the upgrade can be forced.
+Images of devel versions are not updated automatically. But the update can be forced.
 The source of the devel version can either be a local build or an devel image from Docker Hub.
 Here is a example using the devel image for the OTOBO 10.1.x branch from Docker Hub.
 
@@ -417,7 +417,7 @@ Here is a example using the devel image for the OTOBO 10.1.x branch from Docker 
     # stop and remove the containers, named volumes are kept
     docker_admin> docker-compose down
 
-    # force upgrade, skip reinstall
+    # force update, skip reinstall
     docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:devel-rel-10_1 upgrade
 
     start again with the new version
