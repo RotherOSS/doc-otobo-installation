@@ -323,11 +323,18 @@ In this case, we have to create a volume that contains the adapted nginx config 
     docker_admin> docker volume create otobo_nginx_custom_config
     docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
     docker_admin> echo $otobo_nginx_custom_config_mp  # just a sanity check
-    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:devel-rel-10_0  # use the appropriate label
+    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest  # use the appropriate label
     docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
     docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
+
+.. warning::
+
+    Your adapted nginx configuration usually contains the directive **listen**, which declare the ports of the webserver.
+    The internally used ports have changed between OTOBO 10.0.3 and OTOBO 10.0.4. This change must be reflected in the
+    adapted nginx configuration. So for version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO 10.0.4 listen
+    to the ports 8080 and 8443.
 
 After setting up the volume, the adapted configuration must be activated.
 In order to achieve this, uncomment or add the following lines in your *.env* file,
@@ -376,6 +383,7 @@ Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a 
 running the test suite on a fresh installation.
 
 .. warning::
+
     ``docker-compose down -v`` will eradicate all previous setup and data.
 
 .. code-block:: bash
