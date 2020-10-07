@@ -64,9 +64,8 @@ files. The git tag must correspond to the version of OTOBO. Here we use OTOBO 10
 .. code-block:: bash
 
    docker_admin> cd /opt
-   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git
-   docker_admin> cd otobo-docker
-   docker_admin> git checkout rel-10.0.4
+   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch rel-10_0_4 --single-branch
+   docker_admin> ls otobo-docker    # just a sanity check, README.md should exist
 
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
