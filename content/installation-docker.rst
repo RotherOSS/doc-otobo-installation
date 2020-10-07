@@ -470,6 +470,7 @@ List of useful commands
 * ``docker volume ls`` list volumes
 * ``docker volume inspect otobo_opt_otobo`` inspect a volume
 * ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
+* ``docker volume rm tmp_volume`` remove a volume
 * ``docker inspect <container>`` inspect a container
 * ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
 * ``docker exec -it nginx-server nginx -s reload`` reload nginx
