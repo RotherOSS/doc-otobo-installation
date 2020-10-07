@@ -70,33 +70,26 @@ files. The git tag must correspond to the version of OTOBO. Here we use OTOBO 10
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The configuration file *.env* allows you to manage your installation of OTOBO.
-It must be first created and the adapted by yourself.
-
-Two template files are available in the newly created folder *docker-compose*:
-
-*.docker_compose_env_http*
-    Provide HTTP support via port 80.
-
-*.docker_compose_env_https*
-    Provide HTTPS support via port 443.
-
-Choose one of the files that suits your needs and rename it to *.env*.
+The Docker Compose configuration file *.env* allows you to manage your installation of OTOBO.
+This file must first be created and then be adapted by yourself. In order to simplify the task there
+are two example files that should be used as starting point. If the OTOBO web application is planned to
+be accessed via HTTPS, then please use *.docker_compose_env_https*. Access via HTTPS is the recommended
+mode of operation. If HTTPS is not required then use *.docker_compose_env_http* as the starting point.
 
 .. note::
 
     Use ``ls -a`` for listing the hidden template files.
 
-.. note::
+Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP.
+When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support
+is achieved by an additional reverse proxy, which is implemented as a nginx service.
 
-    For productive environments we recommend the use of a web proxy.
-    If you want to install your own web proxy for OTOBO, an extra docker nginx image is available for use.
-    In this case, please rename the *.docker_compose_env_https* file to *.env*.
+For the following commands we assume that HTTPS should be supported.
 
 .. code-block:: bash
 
-    docker_admin> cp -p .docker_compose_env_https .env
-
+    docker_admin> cd /opt/otobo-docker
+    docker_admin> cp -p .docker_compose_env_https .env # or .docker_compose_env_http for HTTP
 
 3. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
