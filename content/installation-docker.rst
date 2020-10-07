@@ -360,8 +360,20 @@ Finally, the containers can be started again:
 
 See also the section "Using environment variables in nginx configuration (new in 1.19)" in https://hub.docker.com/_/nginx.
 
+Choosing non-standard ports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports
+are already used by other serviced. In these cases the default ports can be overridden by specifying
+`OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
+
+
 Building local images
 ~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+    Building Docker images locally is usually only needed during development.
 
 The files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:
 
