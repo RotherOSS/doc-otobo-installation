@@ -23,7 +23,7 @@ Requirements
 
 The minimal versions of required software, that have been tested, are listed here:
 
-- Docker 19.03.08
+- Docker 19.03.06
 - Docker Compose 1.25.0
 - Git 2.25.1
 
