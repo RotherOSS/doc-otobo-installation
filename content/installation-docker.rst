@@ -94,11 +94,13 @@ For the following commands we assume that HTTPS should be supported.
 3. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Change the following setting inside the *.env* file:
+Change the following setting inside your *.env* file:
 
-``OTOBO_DB_ROOT_PASSWORD``
-The password for the database admin user may be chosen freely. The database admin user creates the database user **otobo**
-and the database schema **otobo**.
+``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``
+
+The password for the database admin user may be chosen freely. The database admin user is needed because she
+creates the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated
+database user **otobo**.
 
 4. Set up a volume with SSL configuration for the nginx webproxy (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
