@@ -1,10 +1,10 @@
 Updating OTOBO using Docker and Docker Compose
 ==========================================
 
-Updating to a new patchlevel release
+Updating to a new patch level release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First make sure that in *.env* the images have the tag `latest` or the wanted version.
+First make sure that in *.env* the images have either the tag `latest` or the wanted version.
 
 .. code-block:: bash
 
@@ -18,7 +18,7 @@ First make sure that in *.env* the images have the tag `latest` or the wanted ve
     docker_admin> docker-compose down
 
     # start again with the new images
-    docker_admin> docker-compose up -d
+    docker_admin> docker-compose up --detach
 
 After updating you need to reinstall all OTOBO packages and clear the cache.
 
@@ -29,15 +29,12 @@ After updating you need to reinstall all OTOBO packages and clear the cache.
     docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Maint::Config::Rebuild
     docker_admin> docker exec -it -uotobo otobo_web_1 bin/otobo.Console.pl Maint::Cache::Delete
 
-Force an update to a devel version
+Force an update to or from a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Images of devel versions are not upgraded automatically. But the upgrade can be forced.
 The source of the devel version can either be a local build or an devel image from Docker Hub.
 Here is a example using the devel image for the OTOBO 10.1.x branch from Docker Hub.
-
-.. note::
-    These coḿmands do not reinstall or upgrade the installed OTOBO packages.
 
 .. code-block:: bash
 
