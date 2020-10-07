@@ -111,8 +111,11 @@ nginx needs for SSL encryption a certificate and a private key.
 
 .. note::
 
-    For testing and development a self-signed certificate can be used. In the general case
-    registered certificates must be used.
+    For testing and development a self-signed certificate can be used. However for productive use you should
+    work with regular registered certificates.
+
+    See e.g. <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`
+    on how to create self signed certificates.
 
 .. note::
 
@@ -168,6 +171,7 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 **Have fun with OTOBO!**
 
 .. note::
+
     To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command:
     ``docker exec -it otobo_web_1 bash``
 
