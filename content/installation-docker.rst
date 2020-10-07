@@ -64,49 +64,43 @@ files. The git tag must correspond to the version of OTOBO. Here we use OTOBO 10
 .. code-block:: bash
 
    docker_admin> cd /opt
-   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git
-   docker_admin> cd otobo-docker
-   docker_admin> git checkout rel-10.0.4
+   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch rel-10_0_4 --single-branch
+   docker_admin> ls otobo-docker    # just a sanity check, README.md should exist
 
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The configuration file *.env* allows you to manage your installation of OTOBO.
-It must be first created and the adapted by yourself.
-
-Two template files are available in the newly created folder *docker-compose*:
-
-*.docker_compose_env_http*
-    Provide HTTP support via port 80.
-
-*.docker_compose_env_https*
-    Provide HTTPS support via port 443.
-
-Choose one of the files that suits your needs and rename it to *.env*.
+The Docker Compose configuration file *.env* allows you to manage your installation of OTOBO.
+This file must first be created and then be adapted by yourself. In order to simplify the task there
+are two example files that should be used as starting point. If the OTOBO web application is planned to
+be accessed via HTTPS, then please use *.docker_compose_env_https*. Access via HTTPS is the recommended
+mode of operation. If HTTPS is not required then use *.docker_compose_env_http* as the starting point.
 
 .. note::
 
     Use ``ls -a`` for listing the hidden template files.
 
-.. note::
+Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP.
+When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support
+is achieved by an additional reverse proxy, which is implemented as a nginx service.
 
-    For productive environments we recommend the use of a web proxy.
-    If you want to install your own web proxy for OTOBO, an extra docker nginx image is available for use.
-    In this case, please rename the *.docker_compose_env_https* file to *.env*.
+For the following commands we assume that HTTPS should be supported.
 
 .. code-block:: bash
 
-    docker_admin> cp -p .docker_compose_env_https .env
-
+    docker_admin> cd /opt/otobo-docker
+    docker_admin> cp -p .docker_compose_env_https .env # or .docker_compose_env_http for HTTP
 
 3. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Change the following setting inside the *.env* file:
+Change the following setting inside your *.env* file:
 
-``OTOBO_DB_ROOT_PASSWORD``
-The password for the database admin user may be chosen freely. The database admin user creates the database user **otobo**
-and the database schema **otobo**.
+``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``
+
+The password for the database admin user may be chosen freely. The database admin user is needed because she
+creates the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated
+database user **otobo**.
 
 4. Set up a volume with SSL configuration for the nginx webproxy (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,8 +111,11 @@ nginx needs for SSL encryption a certificate and a private key.
 
 .. note::
 
-    For testing and development a self-signed certificate can be used. In the general case
-    registered certificates must be used.
+    For testing and development a self-signed certificate can be used. However for productive use you should
+    work with regular registered certificates.
+
+    See e.g. <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`
+    on how to create self signed certificates.
 
 .. note::
 
@@ -174,6 +171,7 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 **Have fun with OTOBO!**
 
 .. note::
+
     To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command:
     ``docker exec -it otobo_web_1 bash``
 
@@ -322,7 +320,7 @@ In this case, we have to create a volume that contains the adapted nginx config 
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-cocker
+    docker_admin> cd /opt/otobo-docker
     docker_admin> docker-compose down
     docker_admin> docker volume create otobo_nginx_custom_config
     docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
@@ -341,9 +339,12 @@ In this case, we have to create a volume that contains the adapted nginx config 
     to the ports 8080 and 8443.
 
 After setting up the volume, the adapted configuration must be activated.
-In order to achieve this, uncomment or add the following lines in your *.env* file,
-* `NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom`
-* `COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-https.yml:docker-compose/otobo-nginx-custom-config.yml`
+In order to achieve this, uncomment or add the following lines in your *.env* file:
+
+.. code-block:: text
+
+    NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom
+    COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-https.yml:docker-compose/otobo-nginx-custom-config.yml
 
 The changed Docker Compose configuration can be inspected with:
 
@@ -359,8 +360,20 @@ Finally, the containers can be started again:
 
 See also the section "Using environment variables in nginx configuration (new in 1.19)" in https://hub.docker.com/_/nginx.
 
+Choosing non-standard ports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports
+are already used by other serviced. In these cases the default ports can be overridden by specifying
+`OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
+
+
 Building local images
 ~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+    Building Docker images locally is usually only needed during development.
 
 The files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:
 
@@ -457,6 +470,7 @@ List of useful commands
 * ``docker volume ls`` list volumes
 * ``docker volume inspect otobo_opt_otobo`` inspect a volume
 * ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
+* ``docker volume rm tmp_volume`` remove a volume
 * ``docker inspect <container>`` inspect a container
 * ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
 * ``docker exec -it nginx-server nginx -s reload`` reload nginx
