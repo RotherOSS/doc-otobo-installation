@@ -320,7 +320,7 @@ In this case, we have to create a volume that contains the adapted nginx config 
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-cocker
+    docker_admin> cd /opt/otobo-docker
     docker_admin> docker-compose down
     docker_admin> docker volume create otobo_nginx_custom_config
     docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
