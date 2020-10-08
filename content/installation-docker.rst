@@ -485,6 +485,8 @@ Resources
 
 * `Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_
 * `Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_
+* `Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04>`_
+* `Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_
 * `docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_
 * `not403 <http://not403.blogspot.com/search/label/otrs>`_
 * `cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
