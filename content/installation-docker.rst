@@ -25,7 +25,7 @@ The minimal versions of required software, that have been tested, are listed her
 
 - Docker 19.03.06
 - Docker Compose 1.25.0
-- Git 2.25.1
+- Git 2.17.1
 
 git, Docker, and Docker Compose can be installed with the standard system tools.
 Here is an example for installation on Ubuntu 20.04:
@@ -333,7 +333,7 @@ In this case, we have to create a volume that contains the adapted nginx config 
 
 .. warning::
 
-    Your adapted nginx configuration usually contains the directive **listen**, which declare the ports of the webserver.
+    Your adapted nginx configuration usually contains the directive **listen**, which declares the ports of the webserver.
     The internally used ports have changed between OTOBO 10.0.3 and OTOBO 10.0.4. This change must be reflected in the
     adapted nginx configuration. So for version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO 10.0.4 listen
     to the ports 8080 and 8443.
@@ -364,7 +364,7 @@ Choosing non-standard ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports
-are already used by other serviced. In these cases the default ports can be overridden by specifying
+are already used by other services. In these cases the default ports can be overridden by specifying
 `OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
 
 
@@ -402,7 +402,7 @@ running the test suite on a fresh installation.
 
 .. warning::
 
-    ``docker-compose down -v`` will eradicate all previous setup and data.
+    ``docker-compose down -v`` will remove all previous setup and data.
 
 .. code-block:: bash
 
@@ -447,6 +447,8 @@ Resources
 
 * `Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_
 * `Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_
+* `Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04>`_
+* `Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_
 * `docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_
 * `not403 <http://not403.blogspot.com/search/label/otrs>`_
 * `cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
