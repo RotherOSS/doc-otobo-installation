@@ -27,6 +27,12 @@ The minimal versions of required software, that have been tested, are listed her
 - Docker Compose 1.25.0
 - Git 2.17.1
 
+.. note::
+
+    To get the required minimal versions on Ubuntu 18.04 follow the instructions in
+    https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04
+    and https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+
 git, Docker, and Docker Compose can be installed with the standard system tools.
 Here is an example for installation on Ubuntu 20.04:
 
