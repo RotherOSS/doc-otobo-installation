@@ -426,7 +426,7 @@ List of useful commands
 * ``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image
 * ``docker run --publish 80:5000 otobo`` run the new image
 * ``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image
-* ``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` with broke entrypoint
+* ``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that in case entrypoint.sh is broken
 * ``docker ps`` show running images
 * ``docker images`` show available images
 * ``docker volume ls`` list volumes
