@@ -402,7 +402,7 @@ running the test suite on a fresh installation.
 
 .. warning::
 
-    ``docker-compose down -v`` will eradicate all previous setup and data.
+    ``docker-compose down -v`` will remove all previous setup and data.
 
 .. code-block:: bash
 
