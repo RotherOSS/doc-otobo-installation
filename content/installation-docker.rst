@@ -441,7 +441,7 @@ The source of the devel version can either be a local build or an devel image fr
 Here is a example using the devel image for the OTOBO 10.1.x branch from Docker Hub.
 
 .. note::
-    These coḿmands do not reinstall or upgrade the installed OTOBO packages.
+    These commands do not reinstall or upgrade the installed OTOBO packages.
 
 .. code-block:: bash
 
