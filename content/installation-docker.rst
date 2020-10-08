@@ -333,7 +333,7 @@ In this case, we have to create a volume that contains the adapted nginx config 
 
 .. warning::
 
-    Your adapted nginx configuration usually contains the directive **listen**, which declare the ports of the webserver.
+    Your adapted nginx configuration usually contains the directive **listen**, which declares the ports of the webserver.
     The internally used ports have changed between OTOBO 10.0.3 and OTOBO 10.0.4. This change must be reflected in the
     adapted nginx configuration. So for version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO 10.0.4 listen
     to the ports 8080 and 8443.
@@ -364,7 +364,7 @@ Choosing non-standard ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports
-are already used by other serviced. In these cases the default ports can be overridden by specifying
+are already used by other services. In these cases the default ports can be overridden by specifying
 `OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
 
 
