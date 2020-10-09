@@ -98,13 +98,13 @@ First we need to create the volume.
 .. code-block:: bash
 
     # create the backup directory on the host
-    docker_admin>mkdir otobo_backup
+    docker_admin> mkdir otobo_backup
 
     # create the Docker volume
-    docker_admin>docker volume create --name otobo_backup --opt type=none --opt device=$PWD/otobo_backup --opt o=bind
+    docker_admin> docker volume create --name otobo_backup --opt type=none --opt device=$PWD/otobo_backup --opt o=bind
 
     # inspect the volume out of curiosity
-    docker_admin>docker volume inspect otobo_backup
+    docker_admin> docker volume inspect otobo_backup
 
 For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``.
 This means that the webserver and the Daemon may, but don't have to, be stopped.
@@ -112,10 +112,10 @@ This means that the webserver and the Daemon may, but don't have to, be stopped.
 .. code-block:: bash
 
     # create a backup
-    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/backup.pl -d /otobo_backup
+    docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/backup.pl -d /otobo_backup
 
     # check the backup file
-    docker_admin>tree otobo_backup
+    docker_admin> tree otobo_backup
 
 For restoring the backup we also need to specify which backup should be restored.
 The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``.
@@ -123,4 +123,4 @@ The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``.
 .. code-block:: bash
 
     # create a backup
-    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>
+    docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>
