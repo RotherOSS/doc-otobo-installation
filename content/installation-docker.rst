@@ -313,7 +313,7 @@ In the default template file, only the following macros are used:
 * `${OTOBO_NGINX_WEB_HOST}`
 * `${OTOBO_NGINX_WEB_PORT}`
 
-There are various possibilites for customizing the nginx configuration. One way is to use a locally built
+There are various possibilities for customizing the nginx configuration. One way is to use a locally built
 image that is derived from the image `otobo-nginx-webproxy`. In such a local image, nginx can be configured in a
 very flexible way.
 
@@ -420,7 +420,7 @@ running the test suite on a fresh installation.
    docker_admin> docker exec -t --user otobo otobo_web_1 bash\
    -c "bin/docker/run_test_suite.sh"
    .......
-   docker_admin>docker start otobo_daemon_1
+   docker_admin> docker start otobo_daemon_1
 
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

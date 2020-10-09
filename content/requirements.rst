@@ -39,7 +39,7 @@ are marked with a comment.
      o DBI..............................ok (v1.641)
      o DBD::mysql.......................ok (v4.046)
      o DBD::ODBC........................Not installed!  Use: 'apt-get install -y libdbd-odbc-perl' (optional - Required to connect to a MS-SQL database.)
-     o DBD::Oracle......................Not installed!  Use: 'cpan DBD::Oracle' (optional - Required to connect to a Oracle database.)
+     o DBD::Oracle......................Not installed!  Use: 'cpan DBD::Oracle' (optional - Required to connect to an Oracle database.)
      o DBD::Pg..........................Not installed!  Use: 'apt-get install -y libdbd-pg-perl' (optional - Required to connect to a PostgreSQL database.)
      o Digest::SHA......................ok (v5.96)
      o Encode::HanExtra.................ok (v0.23)
