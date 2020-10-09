@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-10-09 00:34+0200\n"
-"PO-Revision-Date: 2020-09-29 21:16+0000\n"
+"PO-Revision-Date: 2020-10-09 04:58+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
 "otobo10/installation-manual/zh_Hans/>\n"
@@ -500,7 +500,7 @@ msgstr "对MariaDBM 10.1以上版本，用下面的命令："
 
 #: ../../content/installation.rst:249
 msgid "If this command not work, please try the following commands:"
-msgstr ""
+msgstr "如果此命令不起作用，请尝试以下命令："
 
 #: ../../content/installation.rst:258
 msgid ""
@@ -735,14 +735,12 @@ msgid "Installing using Docker and Docker Compose"
 msgstr "安装应用 Docker和Docker Compose"
 
 #: ../../content/installation-docker.rst:14
-#, fuzzy
 msgid ""
 "With the dockerized OTOBO deployment you can get your personal OTOBO "
 "instance up and running within minutes. All of OTOBO´s dependencies are "
 "already included in the collection of Docker images."
 msgstr ""
-"用=容器虚拟化实施你的OTOBO系统，你可以马上建立你的个人OTOBO并在几分钟内开始运"
-"行，因为所有的OTOBO需要的外部环境软件都已经包括在内了。"
+"用容器虚拟化实施你的OTOBO系统，你可以马上建立你的个人OTOBO并在几分钟内开始运行，因为所有的OTOBO需要的外部环境软件都已经包括在内了。"
 
 #: ../../content/installation-docker.rst:17
 msgid "MariaDB is set up as the default database."
@@ -761,19 +759,15 @@ msgid "Gazelle is used as fast Perl webserver."
 msgstr "Gazelle用来作为快速Perl网站服务器。"
 
 #: ../../content/installation-docker.rst:21
-#, fuzzy
 msgid "nginx is used as optional reverse proxy for HTTPS support."
 msgstr "nginx作为HTTPS支持的可选网络代理。"
 
 #: ../../content/installation-docker.rst:25
-#, fuzzy
 msgid ""
 "At the moment the Docker Compose environment is not tested in depth for "
 "production use. Please use the standard installation process for production "
 "use. Brave early adaptors are very welcome to share their experiences."
-msgstr ""
-"在容器虚拟化环境没有在生产条件下完成测试的情况下，请按照标准安装流程安装生产"
-"应用，除非你很清楚自己每个步骤的所有结果。"
+msgstr "在容器虚拟化环境没有在生产条件下完成测试的情况下，请按照标准安装流程安装生产应用，除非你很清楚自己每个步骤的所有结果。"
 
 #: ../../content/installation-docker.rst:29
 msgid ""
@@ -792,17 +786,14 @@ msgid ""
 msgstr "经过测试的所需软件最低版本，请参考下面列表："
 
 #: ../../content/installation-docker.rst:36
-#, fuzzy
 msgid "Docker 19.03.06"
 msgstr "Docker 19.03.08"
 
 #: ../../content/installation-docker.rst:37
-#, fuzzy
 msgid "Docker Compose 1.25.0"
-msgstr "Docker Compose 1.25.0"
+msgstr "DockerCompose 1.25.0"
 
 #: ../../content/installation-docker.rst:38
-#, fuzzy
 msgid "Git 2.17.1"
 msgstr "Git 2.25.1"
 
@@ -813,12 +804,15 @@ msgid ""
 "compose-on-ubuntu-18-04 and https://www.digitalocean.com/community/tutorials/"
 "how-to-install-and-use-docker-on-ubuntu-18-04"
 msgstr ""
+"要得到所需的Ubuntu18.04最低版本，请按照https://www.digitalocean.com/community/tutorials/"
+"how-to-install-docker-compose-on-ubuntu-18-04和https://wwwdigitalocean.com/"
+"community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04中的说明进行操作。"
 
 #: ../../content/installation-docker.rst:46
 msgid ""
 "git, Docker, and Docker Compose can be installed with the standard system "
 "tools. Here is an example for installation on Ubuntu 20.04:"
-msgstr ""
+msgstr "可以使用标准系统工具来安装git，Docker和Docker Compose。这是在Ubuntu 20.04上安装的示例："
 
 #: ../../content/installation-docker.rst:54
 msgid ""
@@ -831,7 +825,6 @@ msgid "Installation"
 msgstr "安装"
 
 #: ../../content/installation-docker.rst:59
-#, fuzzy
 msgid ""
 "The following instructions assume that all requirements are met, that you "
 "have a working Docker environment. We assume here that the user "
@@ -839,9 +832,8 @@ msgid ""
 "be either the **root** user of the Docker host or a dedicated user with the "
 "required permissions."
 msgstr ""
-"下面的介绍是在假设所有需要的系统都已经安装，并且你已经有了一个工作的Docker环"
-"境。我们假设用户**root**被用来和Docker互动，请注意针对一个生产环境，需要有一"
-"个专用用户作为Docker管理员。"
+"下面的介绍是在假设所有需要的系统都已经安装，并且你已经有了一个工作的Docker环境。我们假设用户**root**被用来和Docker互动，请注意针对一个"
+"生产环境，需要有一个专用用户作为Docker管理员。"
 
 #: ../../content/installation-docker.rst:64
 msgid "1. Clone the otobo-docker repo"
@@ -855,12 +847,14 @@ msgid ""
 "files. The git tag must correspond to the version of OTOBO. Here we use "
 "OTOBO 10.0.4 as an example."
 msgstr ""
+"Docker映像最终将从https://hub.docker.com获取，但是需要从otobo-docker "
+"Github存储库中克隆一些设置和命令文件。请确保使用这些文件的合适版本，其中git标签必须对应OTOBO的版本，这里以OTOBO 10.0.4为例。"
 
 #: ../../content/installation-docker.rst:72
 msgid ""
 "This manual had been published before OTOBO 10.0.4 was released. This means "
 "that the git label rel-10.0.4 might not exist yet."
-msgstr ""
+msgstr "本手册已在OTOBO 10.0.4发布之前就出版了，这意味着git标签rel-10.0.4可能还不存在。"
 
 #: ../../content/installation-docker.rst:77
 #, fuzzy
@@ -884,6 +878,10 @@ msgid ""
 "via HTTPS is the recommended mode of operation. If HTTPS is not required "
 "then use *.docker_compose_env_http* as the starting point."
 msgstr ""
+"Docker Compose配置文件* .env "
+"*让你可以管理OTOBO的安装。你必须先创建此文件，然后根据情况修改。为了简化工作，这里有两个示例文件可以作为起始点。如果要通过HTTPS访问OTOBO "
+"Web应用程序，请使用* .docker_compose_env_https *，我们建议使用HTTPS进行访问操作。如果不需要HTTPS，可以使用* ."
+"docker_compose_env_http *作为起点。"
 
 #: ../../content/installation-docker.rst:97
 msgid "Use ``ls -a`` for listing the hidden template files."
@@ -896,10 +894,12 @@ msgid ""
 "actually still runs with HTTP. HTTPS support is achieved by an additional "
 "reverse proxy, which is implemented as a nginx service."
 msgstr ""
+"默认情况下，OTOBO在标准端口上提供， HTTPS的端口443和端口80。激活HTTPS后，OTOBO Web应用程序实际上始终使用HTTP运行。 "
+"HTTPS的支持通过另外的反向代理来实现，该代理通过nginx服务实现。"
 
 #: ../../content/installation-docker.rst:103
 msgid "For the following commands we assume that HTTPS should be supported."
-msgstr ""
+msgstr "我们假定以下命令都支持HTTPS。"
 
 #: ../../content/installation-docker.rst:111
 msgid "3. Configure the password for the database admin user"
@@ -953,6 +953,8 @@ msgid ""
 "self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>` on how to create "
 "self signed certificates."
 msgstr ""
+"参考<https://www.digitalocean.com/community/tutorials/how-to-create-a-self-"
+"signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`中的案例，如何创建自己签名的证书。"
 
 #: ../../content/installation-docker.rst:138
 msgid ""
@@ -993,7 +995,6 @@ msgstr ""
 "请仅调整文件名，因为路径* / etc / nginx / ssl / *在Docker映像中是硬编码的。"
 
 #: ../../content/installation-docker.rst:159
-#, fuzzy
 msgid "5. Start the Docker containers with Docker Compose"
 msgstr "安装应用 Docker和Docker Compose"
 
@@ -1006,7 +1007,6 @@ msgstr ""
 "docker.com/u/rotheross获取Docker映像。"
 
 #: ../../content/installation-docker.rst:168
-#, fuzzy
 msgid ""
 "To verify that the six required services (five in the case of HTTP only) are "
 "actually running, type:"
@@ -1049,7 +1049,6 @@ msgid "Additional technical information"
 msgstr "附加技术信息"
 
 #: ../../content/installation-docker.rst:197
-#, fuzzy
 msgid ""
 "This section gives some more technical insight into what is happing under "
 "the hood."
@@ -1125,7 +1124,6 @@ msgid "otobo_opt_otobo"
 msgstr "otobo_opt_otobo"
 
 #: ../../content/installation-docker.rst:228
-#, fuzzy
 msgid "contains `/opt/otobo` in the container `web` and `daemon`."
 msgstr "容器 `web` 和 `daemon`中包含`/opt/otobo` 。"
 
@@ -1134,7 +1132,6 @@ msgid "otobo_mariadb_data"
 msgstr "otobo_mariadb_data"
 
 #: ../../content/installation-docker.rst:231
-#, fuzzy
 msgid "contains `/var/lib/mysql` in the container `db`."
 msgstr "容器`db`包含`/var/lib/mysql`。"
 
@@ -1143,7 +1140,6 @@ msgid "otobo_elasticsearch_data"
 msgstr "otobo_elasticsearch_data"
 
 #: ../../content/installation-docker.rst:234
-#, fuzzy
 msgid "contains `/usr/share/elasticsearch/datal` in the container `elastic`."
 msgstr "容器`elastic`包含`/usr/share/elasticsearch/datal`。"
 
@@ -1236,7 +1232,6 @@ msgid "**nginx webproxy settings**"
 msgstr "**nginx网络代理设置**"
 
 #: ../../content/installation-docker.rst:272
-#, fuzzy
 msgid "These setting are used when HTTPS is enabled."
 msgstr "这些设置在启用HTTPS时使用。"
 
@@ -1279,12 +1274,10 @@ msgstr ""
 "nginx / ssl / acme.key *"
 
 #: ../../content/installation-docker.rst:289
-#, fuzzy
 msgid "**Docker Compose settings**"
 msgstr "**docker-compose设置**"
 
 #: ../../content/installation-docker.rst:291
-#, fuzzy
 msgid "These settings are used by Docker Compose directly."
 msgstr "这些设置由docker-compose直接使用。"
 
@@ -1308,11 +1301,11 @@ msgstr "``COMPOSE_PATH_SEPARATOR``"
 
 #: ../../content/installation-docker.rst:299
 msgid "Separator for the value of COMPOSE_FILE"
-msgstr ""
+msgstr "COMPOSE_FILE数值的分隔符"
 
 #: ../../content/installation-docker.rst:303
 msgid "``COMPOSE_FILE``"
-msgstr ""
+msgstr "``COMPOSE_FILE``"
 
 #: ../../content/installation-docker.rst:302
 msgid ""
@@ -1320,27 +1313,30 @@ msgid ""
 "files. E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-"
 "override-https.yml*."
 msgstr ""
+"使用* docker-compose / otobo-base.yml *作为基础，并添加所需的扩展文件。例如* docker-compose / "
+"otobo-override-http.yml *或* docker-compose / otobo-override-https.yml *。"
 
 #: ../../content/installation-docker.rst:306
 msgid ""
 "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX``"
 msgstr ""
+"``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
+"``OTOBO_IMAGE_OTOBO_NGINX``"
 
 #: ../../content/installation-docker.rst:306
 msgid ""
 "Used for specifying alternative Docker images. Useful for testing local "
 "builds."
-msgstr ""
+msgstr "用于指定备用Docker映像，这对测试本地版本很有用。"
 
 #: ../../content/installation-docker.rst:309
 msgid "Advanced topics"
-msgstr ""
+msgstr "进阶主题"
 
 #: ../../content/installation-docker.rst:312
-#, fuzzy
 msgid "Custom configuration of the nginx webproxy"
-msgstr "4. 为nginx网络代理建立一个带有SSL设置的卷（可选）"
+msgstr "Nginx网络代理的自定义配置"
 
 #: ../../content/installation-docker.rst:314
 msgid ""
@@ -1355,6 +1351,12 @@ msgid ""
 "${OTOBO_NGINX_SSL_CERTIFICATE}` * `${OTOBO_NGINX_SSL_CERTIFICATE_KEY} * `"
 "${OTOBO_NGINX_WEB_HOST}` * `${OTOBO_NGINX_WEB_PORT}`"
 msgstr ""
+"基于Docker的默认OTOBO安装提供了容器otobo_nginx_1，为基于HTTP的OTOBO Web应用程序提供HTTPS支持。 "
+"nginx的默认配置模板可以在Docker映像中找到，特别是在文件* / etc / nginx / template / "
+"otobo_nginx.conf.template "
+"*中。启动容器后，将从模板生成实际使用的配置文件。这是通过用相应的环境变量替换模板中的每个宏来完成的。在默认模板文件中，仅使用以下宏：*`$ "
+"{OTOBO_NGINX_SSL_CERTIFICATE}`*`$ {OTOBO_NGINX_SSL_CERTIFICATE_KEY} *`$ "
+"{OTOBO_NGINX_WEB_HOST}`*`$ {OTOBO_NGINX_WEB_PORT}`"
 
 #: ../../content/installation-docker.rst:326
 msgid ""
@@ -1363,17 +1365,19 @@ msgid ""
 "nginx-webproxy`. In such a local image, nginx can be configured in a very "
 "flexible way."
 msgstr ""
+"自定义nginx配置有多种可能性。一种方法是使用从otobo-nginx-"
+"webproxy派生的本地镜像。在这样的本地镜像中，可以非常灵活地配置nginx。"
 
 #: ../../content/installation-docker.rst:332
 msgid "The following approach is only supported in OTOBO 10.0.4 or later."
-msgstr ""
+msgstr "只有OTOBO 10.0.4或更高版本支持以下方法。"
 
 #: ../../content/installation-docker.rst:334
 msgid ""
 "Another supported approach is to only override the default config template "
 "with a customized version. In this case, we have to create a volume that "
 "contains the adapted nginx config template, first."
-msgstr ""
+msgstr "另一种可行的方法是使用自定义版本覆盖默认配置模板。在这种情况下，我们必须首先创建一个卷，包含nginx修改后的配置模板。"
 
 #: ../../content/installation-docker.rst:352
 msgid ""
@@ -1383,13 +1387,16 @@ msgid ""
 "in the adapted nginx configuration. So for version 10.0.3 or earlier listen "
 "to the ports 80 and 443. For OTOBO 10.0.4 listen to the ports 8080 and 8443."
 msgstr ""
+"调整后的Nginx配置通常包含指令** listen **，以明确Web服务器的端口。在OTOBO 10.0.3和OTOBO 10.0."
+"4两个版本中，内部使用的端口有所变化。这个变化必须体现在调整后的nginx配置中。因此，对于10.0.3或更早版本，请使用端口80和443。"
+"对于OTOBO 10.0.4，请使用端口8080和8443。"
 
 #: ../../content/installation-docker.rst:357
 msgid ""
 "After setting up the volume, the adapted configuration must be activated. In "
 "order to achieve this, uncomment or add the following lines in your *.env* "
 "file:"
-msgstr ""
+msgstr "创立卷之后，必须激活调整后的配置。为此，请取消注释或在* .env *文件中添加以下行："
 
 #: ../../content/installation-docker.rst:365
 msgid "The changed Docker Compose configuration can be inspected with:"
