@@ -313,7 +313,7 @@ In the default template file, only the following macros are used:
 * `${OTOBO_NGINX_WEB_HOST}`
 * `${OTOBO_NGINX_WEB_PORT}`
 
-There are various possibilites for customizing the nginx configuration. One way is to use a locally built
+There are various possibilities for customizing the nginx configuration. One way is to use a locally built
 image that is derived from the image `otobo-nginx-webproxy`. In such a local image, nginx can be configured in a
 very flexible way.
 

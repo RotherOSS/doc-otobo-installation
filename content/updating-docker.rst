@@ -33,8 +33,8 @@ Force an update to or from a devel version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Images of devel versions are not upgraded automatically. But the upgrade can be forced.
-The source of the devel version can either be a local build or an devel image from Docker Hub.
-Here is a example using the devel image for the OTOBO 10.1.x branch from Docker Hub.
+The source of the devel version can either be a local build or a devel image from Docker Hub.
+Here is an example using the devel image for the OTOBO 10.1.x branch from Docker Hub.
 
 .. code-block:: bash
 

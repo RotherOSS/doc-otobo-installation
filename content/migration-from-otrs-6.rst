@@ -224,7 +224,7 @@ and follow the process.
 .. note::
 
     In the Docker case, a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
-    Pick one of the IP-addressses reported by ``hostname --all-ip-addresses`` instead for ``OTRS Server``.
+    Pick one of the IP-addresses reported by ``hostname --all-ip-addresses`` instead for ``OTRS Server``.
     In order to make sure that there is a database user who can read the data, it might be worthwhile to create a dedicated user.
     E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration'`` and
     ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%'``.
