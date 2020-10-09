@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-10-10 00:34+0200\n"
-"PO-Revision-Date: 2020-10-09 22:35+0000\n"
+"PO-Revision-Date: 2020-10-10 03:00+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -897,33 +897,38 @@ msgstr ""
 "Software aufgeführt:"
 
 #: ../../content/installation-docker.rst:36
-#, fuzzy
 msgid "Docker 19.03.06"
-msgstr "Docker 19.03.08"
+msgstr "Docker 19.03.06"
 
 #: ../../content/installation-docker.rst:37
-#, fuzzy
 msgid "Docker Compose 1.25.0"
 msgstr "Docker Compose 1.25.0"
 
 #: ../../content/installation-docker.rst:38
-#, fuzzy
 msgid "Git 2.17.1"
-msgstr "Git 2.25.1"
+msgstr "Git 2.17.1"
 
 #: ../../content/installation-docker.rst:42
+#, fuzzy
 msgid ""
 "To get the required minimal versions on Ubuntu 18.04 follow the instructions "
 "in https://www.digitalocean.com/community/tutorials/how-to-install-docker-"
 "compose-on-ubuntu-18-04 and https://www.digitalocean.com/community/tutorials/"
 "how-to-install-and-use-docker-on-ubuntu-18-04"
 msgstr ""
+"Um die erforderlichen Mindestversionen unter Ubuntu 18.04 zu erhalten, "
+"befolgen Sie die Anleitung unter https://www.digitalocean.com/community/"
+"tutorials/how-to-install-docker-compose-on-ubuntu-18-04 und https://www."
+"digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-"
+"ubuntu-18-04"
 
 #: ../../content/installation-docker.rst:46
 msgid ""
 "git, Docker, and Docker Compose can be installed with the standard system "
 "tools. Here is an example for installation on Ubuntu 20.04:"
 msgstr ""
+"git, Docker und Docker Compose können mit den Standard-Systemtools "
+"installiert werden. Ein Beispiel für die Installation unter Ubuntu 20.04:"
 
 #: ../../content/installation-docker.rst:54
 msgid ""
@@ -938,7 +943,6 @@ msgid "Installation"
 msgstr "Installation"
 
 #: ../../content/installation-docker.rst:59
-#, fuzzy
 msgid ""
 "The following instructions assume that all requirements are met, that you "
 "have a working Docker environment. We assume here that the user "
@@ -946,17 +950,19 @@ msgid ""
 "be either the **root** user of the Docker host or a dedicated user with the "
 "required permissions."
 msgstr ""
-"Wir gehen im Folgenden davon aus, dass die erforderliche Software "
-"installiert wurde und eine funktionierende Docker-Umgebung zur Verfügung "
-"steht. Außerdem, dass zur Interaktion mit Docker der **root**-Benutzer "
-"verwendet wird. Bitte beachten Sie, dass in Produktivumgebungen spezifische "
-"Benutzer als Docker-Admin definiert sein können."
+"Wir gehen im Folgenden davon aus, dass alle erforderlichen Softwaremodule "
+"installiert sind und eine funktionierende Docker-Umgebung zur Verfügung "
+"steht. Außerdem, dass zur Interaktion mit Docker der Benutzer "
+"**docker_admin** verwendet wird. Der Docker-Admin kann entweder der **root**-"
+"Benutzer des Docker-Host oder ein spezieller Benutzer mit den erforderlichen "
+"Berechtigungen sein."
 
 #: ../../content/installation-docker.rst:64
 msgid "1. Clone the otobo-docker repo"
-msgstr "1. OTOBO-Docker-Repo clonen"
+msgstr "1. OTOBO-Docker-Repo klonen"
 
 #: ../../content/installation-docker.rst:66
+#, fuzzy
 msgid ""
 "The Docker images will eventually be fetched from https://hub.docker.com. "
 "But some setup and command files need to be cloned from the otobo-docker "
@@ -964,15 +970,21 @@ msgid ""
 "files. The git tag must correspond to the version of OTOBO. Here we use "
 "OTOBO 10.0.4 as an example."
 msgstr ""
+"Die Docker Images werden letztlich von https://hub.docker.com abgerufen. "
+"Doch einige Einstellungs- und Befehlsdateien müssen aus dem OTOBO-Docker-"
+"Github-Repository geklont werden. Achten Sie darauf, die passenden Versionen "
+"dieser Dateien zu verwenden. Das Git Tag muss mit der OTOBO-Version "
+"übereinstimmen. In unserem Beispiel verwenden wir OTOBO 10.0.4."
 
 #: ../../content/installation-docker.rst:72
 msgid ""
 "This manual had been published before OTOBO 10.0.4 was released. This means "
 "that the git label rel-10.0.4 might not exist yet."
 msgstr ""
+"Diese Anleitung wurde noch vor OTOBO 10.0.4 veröffentlicht. Das Git Label "
+"rel-10.0.4 ist also vielleicht noch gar nicht verfügbar."
 
 #: ../../content/installation-docker.rst:77
-#, fuzzy
 msgid ""
 "The location of the cloned repository does not matter. For these "
 "instructions we chose */opt/otobo-docker* as the working dir."
@@ -994,6 +1006,14 @@ msgid ""
 "via HTTPS is the recommended mode of operation. If HTTPS is not required "
 "then use *.docker_compose_env_http* as the starting point."
 msgstr ""
+"In der Docker Compose Konfigurationsdatei *.env* werden die Einstellungen "
+"für die OTOBO-Umgebung vorgenommen. Diese Datei muss von Ihnen erstellt und "
+"individualisiert werden. Um Ihnen die Aufgabe zu erleichtern, werden zwei "
+"Beispieldateien mitausgeliefert, die Sie als Ausgangspunkt verwenden können. "
+"Soll per HTTPS auf die OTOBO Webapplikation via HTTPS zugegriffen werden, "
+"verwenden Sie bitte *.docker_compose_env_https*. Wir empfehlen, über HTTPS "
+"zuzugreifen. Wird kein HTTPS benötigt, verwenden Sie *."
+"docker_compose_env_http* als Ausgangspunkt."
 
 #: ../../content/installation-docker.rst:97
 msgid "Use ``ls -a`` for listing the hidden template files."
