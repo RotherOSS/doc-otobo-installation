@@ -420,7 +420,7 @@ running the test suite on a fresh installation.
    docker_admin> docker exec -t --user otobo otobo_web_1 bash\
    -c "bin/docker/run_test_suite.sh"
    .......
-   docker_admin>docker start otobo_daemon_1
+   docker_admin> docker start otobo_daemon_1
 
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
