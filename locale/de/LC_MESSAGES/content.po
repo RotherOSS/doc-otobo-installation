@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-10-10 00:34+0200\n"
-"PO-Revision-Date: 2020-10-10 03:00+0000\n"
+"PO-Revision-Date: 2020-10-10 22:35+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -909,18 +909,16 @@ msgid "Git 2.17.1"
 msgstr "Git 2.17.1"
 
 #: ../../content/installation-docker.rst:42
-#, fuzzy
 msgid ""
 "To get the required minimal versions on Ubuntu 18.04 follow the instructions "
 "in https://www.digitalocean.com/community/tutorials/how-to-install-docker-"
 "compose-on-ubuntu-18-04 and https://www.digitalocean.com/community/tutorials/"
 "how-to-install-and-use-docker-on-ubuntu-18-04"
 msgstr ""
-"Um die erforderlichen Mindestversionen unter Ubuntu 18.04 zu erhalten, "
-"befolgen Sie die Anleitung unter https://www.digitalocean.com/community/"
-"tutorials/how-to-install-docker-compose-on-ubuntu-18-04 und https://www."
-"digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-"
-"ubuntu-18-04"
+"Um die benötigten Versionen für Ubuntu 18.04 zu installieren, folgen Sie den "
+"Anweisungen unter https://www.digitalocean.com/community/tutorials/how-to-"
+"install-docker-compose-on-ubuntu-18-04 und https://www.digitalocean.com/"
+"community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04."
 
 #: ../../content/installation-docker.rst:46
 msgid ""
@@ -962,7 +960,6 @@ msgid "1. Clone the otobo-docker repo"
 msgstr "1. OTOBO-Docker-Repo klonen"
 
 #: ../../content/installation-docker.rst:66
-#, fuzzy
 msgid ""
 "The Docker images will eventually be fetched from https://hub.docker.com. "
 "But some setup and command files need to be cloned from the otobo-docker "
@@ -970,11 +967,10 @@ msgid ""
 "files. The git tag must correspond to the version of OTOBO. Here we use "
 "OTOBO 10.0.4 as an example."
 msgstr ""
-"Die Docker Images werden letztlich von https://hub.docker.com abgerufen. "
-"Doch einige Einstellungs- und Befehlsdateien müssen aus dem OTOBO-Docker-"
-"Github-Repository geklont werden. Achten Sie darauf, die passenden Versionen "
-"dieser Dateien zu verwenden. Das Git Tag muss mit der OTOBO-Version "
-"übereinstimmen. In unserem Beispiel verwenden wir OTOBO 10.0.4."
+"Die Docker Images werden von https://hub.docker.com heruntergeladen. Doch "
+"einige Einstellungs- und Befehlsdateien müssen aus dem OTOBO-Docker-Github-"
+"Repository geklont werden. Achten Sie hierbei darauf, dass das Git-Tag der "
+"OTOBO-Version entspricht. In unserem Beispiel verwenden wir OTOBO 10.0.4."
 
 #: ../../content/installation-docker.rst:72
 msgid ""
@@ -1026,36 +1022,40 @@ msgid ""
 "actually still runs with HTTP. HTTPS support is achieved by an additional "
 "reverse proxy, which is implemented as a nginx service."
 msgstr ""
+"In der Grundeinstellung erfolgt die Verbindung zu OTOBO über die "
+"Standardports: Port 443 für HTTPS und Port 80 für HTTP. Auch bei aktiviertem "
+"HTTPS, läuft die OTOBO Webapplikation via HTTP. Die HTTPS-Unterstützung "
+"erfolgt über einen zusätzlichen Reverseproxy, der als nginx-Service "
+"vorgeschaltet wird."
 
 #: ../../content/installation-docker.rst:103
 msgid "For the following commands we assume that HTTPS should be supported."
 msgstr ""
+"Für die folgenden Befehle gehen wir davon aus, dass HTTPS unterstützt werden "
+"soll."
 
 #: ../../content/installation-docker.rst:111
 msgid "3. Configure the password for the database admin user"
 msgstr "3. Passwort für den Datenbankadministrator konfigurieren"
 
 #: ../../content/installation-docker.rst:113
-#, fuzzy
 msgid "Change the following setting inside your *.env* file:"
-msgstr "Ändern Sie den folgenden Wert in der *.env*-Datei:"
+msgstr "Ändern Sie folgenden Wert in der *.env*-Datei:"
 
 #: ../../content/installation-docker.rst:115
-#, fuzzy
 msgid "``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``"
-msgstr "``OTOBO_DB_ROOT_PASSWORD``"
+msgstr "``OTOBO_DB_ROOT_PASSWORD=<Ihr_geheimes_Passwort>``"
 
 #: ../../content/installation-docker.rst:117
-#, fuzzy
 msgid ""
 "The password for the database admin user may be chosen freely. The database "
 "admin user is needed because she creates the database user **otobo** and the "
 "database schema **otobo**. OTOBO will actually use the dedicated database "
 "user **otobo**."
 msgstr ""
-"``OTOBO_DB_ROOT_PASSWORD`` Das Passwort für den Datenbankadministrator ist "
-"frei wählbar. Dieser wird benötigt, um den Datenbankbenutzer **otobo** und "
-"das Datenbankschema **otobo** anzulegen."
+"Das Passwort für den Datenbankadministrator ist frei wählbar. Dieser wird "
+"benötigt, um den Datenbankbenutzer **otobo** und das Datenbankschema "
+"**otobo** anzulegen."
 
 #: ../../content/installation-docker.rst:122
 msgid ""
@@ -1076,25 +1076,23 @@ msgstr ""
 "privaten Schlüssel."
 
 #: ../../content/installation-docker.rst:130
-#, fuzzy
 msgid ""
 "For testing and development a self-signed certificate can be used. However "
 "for productive use you should work with regular registered certificates."
 msgstr ""
-"Für Testzwecke und beim Entwickeln kann ein selbstsigniertes Zertifikat "
-"verwendet werden. Grundsätzlich sind jedoch registrierte Zertifikate "
+"Für Testzwecke und beim Entwickeln kann ein selbst signiertes Zertifikat "
+"verwendet werden. Grundsätzlich sind jedoch offizielle Zertifikate "
 "erforderlich."
 
 #: ../../content/installation-docker.rst:133
-#, fuzzy
 msgid ""
 "See e.g. <https://www.digitalocean.com/community/tutorials/how-to-create-a-"
 "self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>` on how to create "
 "self signed certificates."
 msgstr ""
-"`Selbstsigniertes Zertifikat <https://www.digitalocean.com/community/"
-"tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-"
-"ubuntu-18-04>`_"
+"Mehr dazu, wie Sie ein selbst signiertes Zertifikat erstellen, erfahren Sie "
+"z. B. unter https://www.digitalocean.com/community/tutorials/how-to-create-a"
+"-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04."
 
 #: ../../content/installation-docker.rst:138
 msgid ""
@@ -1139,12 +1137,10 @@ msgstr ""
 "Docker Image festgeschrieben."
 
 #: ../../content/installation-docker.rst:159
-#, fuzzy
 msgid "5. Start the Docker containers with Docker Compose"
-msgstr "Installation mit Docker und Docker Compose"
+msgstr "5. Installation mit Docker und Docker Compose"
 
 #: ../../content/installation-docker.rst:161
-#, fuzzy
 msgid ""
 "Now we start the Docker containers using ``docker-compose``. Per default the "
 "Docker images will be fetched from https://hub.docker.com/u/rotheross."
@@ -1153,14 +1149,13 @@ msgstr ""
 "werden die Docker Images von https://hub.docker.com/u/rotheross abgerufen."
 
 #: ../../content/installation-docker.rst:168
-#, fuzzy
 msgid ""
 "To verify that the six required services (five in the case of HTTP only) are "
 "actually running, type:"
 msgstr ""
-"Geben Sie folgende Befehle ein, um sicherzustellen, ob die sechs "
-"erforderlichen Dienste wirklich laufen (fünf, wenn nur HTTP verwendet werden "
-"soll):"
+"Geben Sie folgende Befehle ein, um sicherzustellen, dass die sechs "
+"erforderlichen Dienste (fünf, wenn nur HTTP verwendet werden soll) wirklich "
+"laufen :"
 
 #: ../../content/installation-docker.rst:176
 msgid "6. Install and start OTOBO"
@@ -1169,7 +1164,7 @@ msgstr "6. OTOBO installieren und starten"
 #: ../../content/installation-docker.rst:178
 msgid "Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl."
 msgstr ""
-"Führen Sie den OTOBO Installer von http://yourIPorFQDN/otobo/installer.pl "
+"Führen Sie den OTOBO Installer von http://IhreIPoderFQDN/otobo/installer.pl "
 "aus."
 
 #: ../../content/installation-docker.rst:182
@@ -1195,7 +1190,7 @@ msgid ""
 "command line as usual, you can use the following Docker command: ``docker "
 "exec -it otobo_web_1 bash``"
 msgstr ""
-"Um im laufenden Container in das OTOBO-Verzeichnis zu wechseln, und wie "
+"Um im laufenden Container in das OTOBO-Verzeichnis zu wechseln und wie "
 "gewohnt in der Kommandozeile zu arbeiten, können Sie folgenden Docker-Befehl "
 "nutzen: ``docker exec -it otobo_web_1 bash``."
 
@@ -1204,13 +1199,12 @@ msgid "Additional technical information"
 msgstr "Ergänzende technische Informationen"
 
 #: ../../content/installation-docker.rst:197
-#, fuzzy
 msgid ""
 "This section gives some more technical insight into what is happing under "
 "the hood."
 msgstr ""
-"Dieser Abschnitt bietet einen Einblick in die technischen Aspekte im "
-"Hintergrund."
+"Dieser Abschnitt bietet einige Zusatzinformationen zu den technischen "
+"Hintergründen."
 
 #: ../../content/installation-docker.rst:200
 msgid "List of Docker containers"
@@ -1237,7 +1231,6 @@ msgid "Container otobo_db_1"
 msgstr "Container otobo_db_1"
 
 #: ../../content/installation-docker.rst:209
-#, fuzzy
 msgid "Run the database MariaDB on internal port 3306."
 msgstr "Betreibt die Datenbank MariaDB über den internen Port 3306."
 
@@ -1254,7 +1247,6 @@ msgid "Container otobo_redis_1"
 msgstr "Container otobo_redis_1"
 
 #: ../../content/installation-docker.rst:215
-#, fuzzy
 msgid "Run Redis as caching service."
 msgstr "Betreibt Redis als Caching-Dienst."
 
@@ -1286,7 +1278,6 @@ msgid "otobo_opt_otobo"
 msgstr "otobo_opt_otobo"
 
 #: ../../content/installation-docker.rst:228
-#, fuzzy
 msgid "contains `/opt/otobo` in the container `web` and `daemon`."
 msgstr "enthält `/opt/otobo` in den Containern `web` und `daemon`."
 
@@ -1295,7 +1286,6 @@ msgid "otobo_mariadb_data"
 msgstr "otobo_mariadb_data"
 
 #: ../../content/installation-docker.rst:231
-#, fuzzy
 msgid "contains `/var/lib/mysql` in the container `db`."
 msgstr "beinhaltet `/var/lib/mysql` im Container `db`."
 
@@ -1304,7 +1294,6 @@ msgid "otobo_elasticsearch_data"
 msgstr "otobo_elasticsearch_data"
 
 #: ../../content/installation-docker.rst:234
-#, fuzzy
 msgid "contains `/usr/share/elasticsearch/datal` in the container `elastic`."
 msgstr "enthält `/usr/share/elasticsearch/datal` im Container `elastic`."
 
@@ -1405,7 +1394,6 @@ msgid "**nginx webproxy settings**"
 msgstr "**Einstellungen für den nginx-Webproxy**"
 
 #: ../../content/installation-docker.rst:272
-#, fuzzy
 msgid "These setting are used when HTTPS is enabled."
 msgstr "Diese Einstellungen werden angewendet, wenn HTTPS aktiv ist."
 
@@ -1449,12 +1437,10 @@ msgstr ""
 "*OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
 #: ../../content/installation-docker.rst:289
-#, fuzzy
 msgid "**Docker Compose settings**"
 msgstr "**Docker Compose-Einstellungen**"
 
 #: ../../content/installation-docker.rst:291
-#, fuzzy
 msgid "These settings are used by Docker Compose directly."
 msgstr "Diese Einstellungen werden direkt von Docker Compose verwendet."
 
@@ -1517,12 +1503,11 @@ msgid "Advanced topics"
 msgstr "Weiterführende Themen"
 
 #: ../../content/installation-docker.rst:312
-#, fuzzy
 msgid "Custom configuration of the nginx webproxy"
-msgstr ""
-"4. Volume mit SSL-Konfiguration für den nginx-Webproxy aufsetzen (optional)"
+msgstr "Individuelle Konfiguration des nginx-Webproxy"
 
 #: ../../content/installation-docker.rst:314
+#, fuzzy
 msgid ""
 "The default Docker-based OTOBO installation provides the container "
 "`otobo_nginx_1`. This container provides HTTPS support for the HTTP-based "
@@ -1535,18 +1520,34 @@ msgid ""
 "${OTOBO_NGINX_SSL_CERTIFICATE}` * `${OTOBO_NGINX_SSL_CERTIFICATE_KEY} * `"
 "${OTOBO_NGINX_WEB_HOST}` * `${OTOBO_NGINX_WEB_PORT}`"
 msgstr ""
+"Die Docker-basierte OTOBO-Standardinstallation enthält den Container "
+"`otobo_nginx_1`. Dieser Container bietet HTTPS-Unterstützung für die "
+"grundsätzlich HTTP-basierte Webapplikation OTOBO. Sie finden das Config-"
+"Template für nginx im Docker Image in der Datei */etc/nginx/template/"
+"otobo_nginx.conf.template*. Beim Start des Containers wird aus diesem "
+"Template die schließlich verwendete Konfigurationsdatei generiert. Dazu wird "
+"jedes Macro in der Datei durch die zugehörige Umgebungsvariable ersetzt. In "
+"der Standard-Template-Datei werden lediglich folgende Macros verwendet: * "
+"`${OTOBO_NGINX_SSL_CERTIFICATE}` * `${OTOBO_NGINX_SSL_CERTIFICATE_KEY} * "
+"`${OTOBO_NGINX_WEB_HOST}` * `${OTOBO_NGINX_WEB_PORT}`"
 
 #: ../../content/installation-docker.rst:326
+#, fuzzy
 msgid ""
 "There are various possibilities for customizing the nginx configuration. One "
 "way is to use a locally built image that is derived from the image `otobo-"
 "nginx-webproxy`. In such a local image, nginx can be configured in a very "
 "flexible way."
 msgstr ""
+"Es gibt verschiedene Möglichkeiten, die nginx-Konfiguration anzupassen. Eine "
+"davon ist die Verwendung eines lokal erstellten Image auf Basis von `otobo-"
+"nginx-webproxy`. In einem solchen lokalen Image können Sie nginx sehr "
+"flexibel konfigurieren."
 
 #: ../../content/installation-docker.rst:332
 msgid "The following approach is only supported in OTOBO 10.0.4 or later."
 msgstr ""
+"Der im Folgenden beschriebene Ansatz wird erst ab OTOBO 10.0.4 unterstützt."
 
 #: ../../content/installation-docker.rst:334
 msgid ""
@@ -1554,8 +1555,12 @@ msgid ""
 "with a customized version. In this case, we have to create a volume that "
 "contains the adapted nginx config template, first."
 msgstr ""
+"Eine weitere Möglichkeit besteht darin, das Standard-Config-Template mit "
+"einer individualisierten Version zu überschreiben. Dazu erstellen wir "
+"zunächst ein Volume, das das angepasste nginx-Config-Template enthält."
 
 #: ../../content/installation-docker.rst:352
+#, fuzzy
 msgid ""
 "Your adapted nginx configuration usually contains the directive **listen**, "
 "which declares the ports of the webserver. The internally used ports have "
@@ -1563,56 +1568,82 @@ msgid ""
 "in the adapted nginx configuration. So for version 10.0.3 or earlier listen "
 "to the ports 80 and 443. For OTOBO 10.0.4 listen to the ports 8080 and 8443."
 msgstr ""
+"Die individualisierte nginx-Konfiguration enthält in der Regel die Anweisung "
+"**listen**, in der die Ports für den Webserver definiert werden. Die "
+"internen Ports haben sich von OTOBO 10.0.3 zu OTOBO 10.0.4 geändert. Diese "
+"Veränderung muss in die nginx-Konfiguration übernommen werden. In Version "
+"10.0.3 und früher lauscht OTOBO auf Ports 80 und 443. In OTOBO 10.0.4 sind "
+"es die Ports 8080 und 8443."
 
 #: ../../content/installation-docker.rst:357
+#, fuzzy
 msgid ""
 "After setting up the volume, the adapted configuration must be activated. In "
 "order to achieve this, uncomment or add the following lines in your *.env* "
 "file:"
 msgstr ""
+"Sobald das Volume angelegt ist, muss die angepasste Konfiguration aktiviert "
+"werden. Löschen Sie zu diesem Zweck die Auskommentierung vor den folgenden "
+"Zeilen oder ergänzen Sie diese in Ihrer *.env*-Datei:"
 
 #: ../../content/installation-docker.rst:365
+#, fuzzy
 msgid "The changed Docker Compose configuration can be inspected with:"
 msgstr ""
+"Verwenden Sie folgenden Befehl, um Informationen zur angepassten Docker-"
+"Compose-Konfiguration anzuzeigen:"
 
 #: ../../content/installation-docker.rst:371
+#, fuzzy
 msgid "Finally, the containers can be started again:"
-msgstr ""
+msgstr "Schließlich können die Container wieder gestartet werden:"
 
 #: ../../content/installation-docker.rst:377
+#, fuzzy
 msgid ""
 "See also the section \"Using environment variables in nginx configuration "
 "(new in 1.19)\" in https://hub.docker.com/_/nginx."
 msgstr ""
+"Weitere Informationen dazu finden Sie auf https://hub.docker.com/_/nginx im "
+"Abschnitt zur Verwendung von Umgebungsvariablen in der nginx-Konfiguration ("
+"\"Using environment variables in nginx configuration (new in 1.19)\")."
 
 #: ../../content/installation-docker.rst:380
+#, fuzzy
 msgid "Choosing non-standard ports"
-msgstr ""
+msgstr "Individuelle Ports definieren"
 
 #: ../../content/installation-docker.rst:382
+#, fuzzy
 msgid ""
 "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There "
 "can be cases where one or both of these ports are already used by other "
 "services. In these cases the default ports can be overridden by specifying "
 "`OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file."
 msgstr ""
+"Standardmäßig nutzt OTOBO die Ports 443 und 80 für HTTPS und HTTPS. In "
+"manchen Systemen werden dieses Ports bereits von anderen Diensten verwendet. "
+"In diesem Fall können Sie über die Variablen `OTOBO_WEB_HTTP_PORT` und "
+"`OTOBO_WEB_HTTPS_PORT` in der *.env*-Datei andere Ports definieren."
 
 #: ../../content/installation-docker.rst:388
 msgid "Building local images"
 msgstr "Lokale Images erstellen"
 
 #: ../../content/installation-docker.rst:392
+#, fuzzy
 msgid ""
 "Building Docker images locally is usually only needed during development."
-msgstr ""
+msgstr "Lokale Docker Images werden in der Regel nur zur Entwicklung erstellt."
 
 #: ../../content/installation-docker.rst:394
+#, fuzzy
 msgid ""
 "The files needed for creating Docker images locally are part of the the git "
 "repository https://github.com/RotherOSS/otobo:"
 msgstr ""
-"Die zum Erstellen lokaler Docker Images benötigten Dateien sind im Git "
-"Repository unter https://github.com/RotherOSS/otobo enthalten:"
+"Sie finden die zum Erstellen lokaler Docker Images benötigten Dateien im Git "
+"Repository unter https://github.com/RotherOSS/otobo:"
 
 #: ../../content/installation-docker.rst:396
 msgid "*otobo.web.dockerfile*"
@@ -1638,9 +1669,11 @@ msgid ""
 "specify the images to be used by setting ``OTOBO_IMAGE_OTOBO``, "
 "``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*."
 msgstr ""
-"Ein neu erstelltes Image kann mit den entsprechenden Vorgaben in "
-"``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
-"``OTOBO_IMAGE_OTOBO_NGINX`` in *.env* ausgewählt werden."
+"Lokal erstellte Images werden auf Basis der Einstellungsdaten aus der Datei "
+"*RELEASE* als ``local-<OTOBO_VERSION>`` getaggt. Neu erstellte Images können "
+"mit den entsprechenden Vorgaben in ``OTOBO_IMAGE_OTOBO``, "
+"``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env* "
+"ausgewählt werden."
 
 #: ../../content/installation-docker.rst:414
 msgid "Automatic Installation"
@@ -1668,14 +1701,14 @@ msgid "List of useful commands"
 msgstr "Liste nützlicher Befehle"
 
 #: ../../content/installation-docker.rst:438
-#, fuzzy
 msgid "**Docker**"
 msgstr "**Docker**"
 
 #: ../../content/installation-docker.rst:440
-#, fuzzy
 msgid "``docker system prune -a`` start over"
-msgstr "``docker system prune -a`` Neustart"
+msgstr ""
+"``docker system prune -a`` Systembereinigung (entfernt alle ungenutzten "
+"Images, Container, Volumes und Netzwerke)"
 
 #: ../../content/installation-docker.rst:441
 msgid "``docker version`` show version"
@@ -1698,7 +1731,6 @@ msgstr ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` Login auf neuem Image"
 
 #: ../../content/installation-docker.rst:445
-#, fuzzy
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that "
 "in case entrypoint.sh is broken"
@@ -1733,9 +1765,8 @@ msgstr ""
 "Volume Mountpoint ausgeben"
 
 #: ../../content/installation-docker.rst:451
-#, fuzzy
 msgid "``docker volume rm tmp_volume`` remove a volume"
-msgstr "``docker volume ls`` Volumes auflisten"
+msgstr "``docker volume rm tmp_volume`` entfernt ein Volume"
 
 #: ../../content/installation-docker.rst:452
 msgid "``docker inspect <container>`` inspect a container"
@@ -1755,19 +1786,16 @@ msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` nginx-Reload"
 
 #: ../../content/installation-docker.rst:456
-#, fuzzy
 msgid "**Docker Compose**"
 msgstr "**Docker Compose**"
 
 #: ../../content/installation-docker.rst:458
-#, fuzzy
 msgid "``docker-compose config`` check and show the configuration"
 msgstr "``docker-compose config`` Informationen zur Konfiguration anzeigen"
 
 #: ../../content/installation-docker.rst:459
-#, fuzzy
 msgid "``docker-compose ps`` show the running containers"
-msgstr "``docker-compose ps`` Informationen zu laufenden Container anzeigen"
+msgstr "``docker-compose ps`` Informationen zu laufenden Containern anzeigen"
 
 #: ../../content/installation-docker.rst:462
 msgid "Resources"
@@ -1794,9 +1822,9 @@ msgid ""
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
 "ubuntu-18-04>`_"
 msgstr ""
-"`Selbstsigniertes Zertifikat <https://www.digitalocean.com/community/"
-"tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-"
-"ubuntu-18-04>`_"
+"`Neuere Docker-Compose-Version unter Ubuntu 18.04 LTS installieren "
+"<https://www.digitalocean.com/community/tutorials/how-to-install-docker-"
+"compose-on-ubuntu-18-04>`_"
 
 #: ../../content/installation-docker.rst:467
 #, fuzzy
@@ -1804,8 +1832,8 @@ msgid ""
 "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
 msgstr ""
-"`Selbstsigniertes Zertifikat <https://www.digitalocean.com/community/"
-"tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-"
+"`Neuere Docker-Version unter Ubuntu 18.04 LTS installieren <https://www."
+"digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-"
 "ubuntu-18-04>`_"
 
 #: ../../content/installation-docker.rst:468
@@ -2456,7 +2484,7 @@ msgid ""
 "add a new system maintenance slot for a few hours. After that, delete all "
 "agent and user sessions (``Admin ->  Sessions``) and logout yourself."
 msgstr ""
-"Rufen Sie im OTRS Admin-Bereich ``Administration ->  Systemwartung`` auf und "
+"Rufen Sie im OTRS-Admin-Bereich ``Administration ->  Systemwartung`` auf und "
 "fügen Sie ein neues Systemwartungs-Zeitfenster über einige Stunden hinzu. "
 "Löschen Sie anschließend alle Agenten- und User-Sitzungen (``Administration -"
 ">  Sitzungsverwaltung``) und melden Sie sich ab."
@@ -2489,8 +2517,8 @@ msgid ""
 "If OTOBO runs inside a Docker container, specify *localhost* for OTRS server "
 "and */opt/otobo/tmp/otrs* as the OTRS home directory."
 msgstr ""
-"Wir OTOBO in einem Docker Container ausgeführt, geben Sie den *localhost* "
-"des OTRS Servers und */opt/otobo/tmp/otrs* als OTRS Home-Verzeichnis an."
+"Wird OTOBO in einem Docker Container ausgeführt, geben Sie den *localhost* "
+"des OTRS-Servers und */opt/otobo/tmp/otrs* als OTRS-Home-Verzeichnis an."
 
 #: ../../content/migration-from-otrs-6.rst:236
 #, fuzzy
@@ -2866,7 +2894,8 @@ msgstr ""
 #: ../../content/performance-tuning.rst:95
 #, fuzzy
 msgid "``Ticket::SearchIndex::StopWords###en`` Setting"
-msgstr "Einstellungen ``Ticket::SearchIndex::StopWords###en``"
+msgstr ""
+"``Ticket::SearchIndex::StopWords###en`` Einstellungen englische Stopwörter"
 
 #: ../../content/performance-tuning.rst:97
 msgid ""
@@ -3327,9 +3356,9 @@ msgid ""
 "to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as "
 "OTOBO and binding it to its default port."
 msgstr ""
-"Installieren Sie zunächst die neueste *Redis Server*-Version. Am einfachsten "
-"ist es, Redis auf dem gleichen Host wie OTOBO `aufzusetzen <https://redis.io/"
-"topics/quickstart>`__ und an den Standardport zu binden."
+"Installieren Sie zunächst die neueste Version von Redis Server. Am "
+"einfachsten ist es, Redis auf dem gleichen Host wie OTOBO `aufzusetzen "
+"<https://redis.io/topics/quickstart>`__ und an den Standardport zu binden."
 
 #: ../../content/performance-tuning.rst:235
 msgid "Install Perl module Redis or Redis::Fast"
@@ -3771,7 +3800,6 @@ msgid "Updating OTOBO using Docker and Docker Compose"
 msgstr "OTOBO mit Docker und Docker Compose aktualisieren"
 
 #: ../../content/updating-docker.rst:15
-#, fuzzy
 msgid "Updating to a new patch level release"
 msgstr "Auf ein neues Patchlevel Release aktualisieren"
 
@@ -3792,12 +3820,10 @@ msgstr ""
 "gelöscht werden."
 
 #: ../../content/updating-docker.rst:43
-#, fuzzy
 msgid "Force an update to or from a devel version"
-msgstr "Update auf eine Entwicklerversion erzwingen"
+msgstr "Update auf eine oder von einer Entwicklerversion erzwingen"
 
 #: ../../content/updating-docker.rst:45
-#, fuzzy
 msgid ""
 "Images of devel versions are not upgraded automatically. But the upgrade can "
 "be forced. The source of the devel version can either be a local build or a "
@@ -3806,8 +3832,8 @@ msgid ""
 msgstr ""
 "Images von Entwicklungsversionen werden nicht automatisch aktualisiert. Das "
 "Upgrade kann jedoch erzwungen werden. Als Quelle für die Entwicklungsversion "
-"kann entweder ein lokal erstelltes oder ein Entwicklungs-Image von Docker "
-"Hub dienen. In unserem Beispiel verwenden wir das auf Docker Hub "
+"kann entweder ein lokal erstelltes Image oder ein Entwicklungs-Image von "
+"Docker Hub dienen. In unserem Beispiel verwenden wir das auf Docker Hub "
 "bereitgestellte Image für den Entwicklungszweig OTOBO 10.1.x."
 
 #, fuzzy
