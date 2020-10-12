@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-10-12 00:34+0200\n"
-"PO-Revision-Date: 2020-10-12 08:42+0000\n"
+"PO-Revision-Date: 2020-10-12 10:02+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
 "otobo10/installation-manual/zh_Hans/>\n"
@@ -2502,47 +2502,47 @@ msgstr "第一个过滤器会去除特殊字符，例如：，＆<>？ “！* |
 msgid ""
 "The second filter strips out words which begin or end with one of following "
 "chars: ' : ."
-msgstr ""
+msgstr "第二个过滤器会去除以以下字符之一开头或结尾的单词：'：。"
 
 #: ../../content/performance-tuning.rst:87
 msgid ""
 "The third filter strips out words which do not contain a word character: a-"
 "z, A-Z, 0-9, _"
-msgstr ""
+msgstr "第三个过滤器会去除不包含单词字符的单词：a-z，A-Z，0-9，_"
 
 #: ../../content/performance-tuning.rst:103
 msgid "``Ticket::SearchIndex::StopWords``"
-msgstr ""
+msgstr "`` Ticket::SearchIndex::StopWords ``"
 
 #: ../../content/performance-tuning.rst:90
 msgid ""
 "English stop words for full-text index. These words will be removed from the "
 "search index."
-msgstr ""
+msgstr "全文索引的英语停用词，这些单词将从搜索索引中删除。"
 
 #: ../../content/performance-tuning.rst:95
 msgid "``Ticket::SearchIndex::StopWords###en`` Setting"
-msgstr ""
+msgstr "``Ticket::SearchIndex::StopWords###en`` 设置"
 
 #: ../../content/performance-tuning.rst:97
 msgid ""
 "There are so-called stop-words defined for some languages. These stop-words "
 "will be skipped while creating the search index."
-msgstr ""
+msgstr "有些语言定义了所谓的停用词。创建搜索索引时，将跳过这些停用词。"
 
 #: ../../content/performance-tuning.rst:100
 msgid ""
 "If your language is not in the system configuration settings or you want to "
 "add more words, you can add them to this setting:"
-msgstr ""
+msgstr "如果您的语言不在系统配置设置中，或者您想添加更多单词，则可以将它们添加到此设置中："
 
 #: ../../content/performance-tuning.rst:102
 msgid "``Ticket::SearchIndex::StopWords###Custom``"
-msgstr ""
+msgstr "`` Ticket::SearchIndex::StopWords###Custom ``"
 
 #: ../../content/performance-tuning.rst:106
 msgid "Document Search"
-msgstr ""
+msgstr "文档搜索"
 
 #: ../../content/performance-tuning.rst:108
 msgid ""
@@ -2551,10 +2551,13 @@ msgid ""
 "please follow the `Getting Started guide <https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/getting-started.html>`__."
 msgstr ""
+"OTOBO使用Elasticsearch作为其文档搜索，要对Elasticsearch的概念、安装和使用进行介绍，请遵循“入门指南<https://www"
+".elastic.co/guide/zh-cn/elasticsearch/reference/current/getting-started."
+"html>” __ 。"
 
 #: ../../content/performance-tuning.rst:112
 msgid "Heap Size"
-msgstr ""
+msgstr "堆尺寸"
 
 #: ../../content/performance-tuning.rst:114
 msgid ""
@@ -2563,20 +2566,22 @@ msgid ""
 "called *heap*, which size can be configured in configuration file ``jvm."
 "options``."
 msgstr ""
+"Elasticsearch用Java编写，可以在任何群集节点上的Java虚拟机（JVM）中运行。这样的JVM使用一部分内存，称为*堆*，其大小可以在配置文"
+"件``jvm.options''中进行配置。"
 
 #: ../../content/performance-tuning.rst:116
 msgid ""
 "The heap minimum and maximum configurations are by default set to a value of "
 "1 GB and can be modified with the following options:"
-msgstr ""
+msgstr "默认情况下，堆的最小和最大配置设置为1 GB，可以使用以下选项进行修改："
 
 #: ../../content/performance-tuning.rst:118
 msgid "``Xms1g``: minimum heap size."
-msgstr ""
+msgstr "``Xms1g`` ：最小堆尺寸。"
 
 #: ../../content/performance-tuning.rst:119
 msgid "``Xmx1g``: maximum heap size."
-msgstr ""
+msgstr "``Xmx1g``: maximum heap size."
 
 #: ../../content/performance-tuning.rst:121
 msgid ""
@@ -2587,12 +2592,14 @@ msgid ""
 "actions. Therefore it is highly recommended to set those configurations to "
 "an equal value."
 msgstr ""
+"如果``Xms''的值比``Xmx''的值低，那么只要超过当前限制，JVM就会调整已使用堆的大小，直到达到``Xmx''的值为止。这种调整大小会导致服务暂"
+"停直到完成为止，这可能会降低搜索或索引操作的速度和反应性。因此，强烈建议将这些配置设置为相等的值。"
 
 #: ../../content/performance-tuning.rst:125
 msgid ""
 "If the maximum heap size is exceeded, the related cluster node stops working "
 "and might even shutdown the service."
-msgstr ""
+msgstr "如果超过了堆大小的最大值，则相关的群集节点将停止工作，甚至可能关闭服务。"
 
 #: ../../content/performance-tuning.rst:127
 msgid ""
@@ -2601,6 +2608,8 @@ msgid ""
 "collection, done by the JVM. Therefore it is recommended to set a value for "
 "``Xmx``, that is not higher than 50% of the physical memory."
 msgstr ""
+"堆最大值设置得越高，Elasticsearch可以使用更多的内存，这也增加了JVM进行垃圾收集的可能暂停。因此建议为``Xmx''设置一个不大于物理内存5"
+"0％的值。"
 
 #: ../../content/performance-tuning.rst:129
 msgid ""
@@ -2608,10 +2617,12 @@ msgid ""
 "follow `the official documentation <https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/heap-size.html>`__."
 msgstr ""
+"有关更多信息和有关堆大小的良好经验法则，请遵循`官方文档 <https://www.elastic.co/guide/en/elasticsearch/"
+"reference/current/heap-size.html>`__。"
 
 #: ../../content/performance-tuning.rst:133
 msgid "Disk Allocation"
-msgstr ""
+msgstr "磁盘分配"
 
 #: ../../content/performance-tuning.rst:135
 msgid ""
@@ -2623,10 +2634,12 @@ msgid ""
 "important configurations, that come with good default values, but might be "
 "important:"
 msgstr ""
+"在服务运行期间，Elasticsearch检查可用的磁盘空间，并因此决定是将新的分片分配给相关的群集节点，还是将分片从该特定节点移开。这种行为将由当前磁盘"
+"容量控制，并可以在配置文件“ elasticsearch.yml”中进行配置。随附一些重要的配置，这些配置带有较好的默认值，这很重要："
 
 #: ../../content/performance-tuning.rst:138
 msgid "``cluster.routing.allocation.disk.watermark.low``"
-msgstr ""
+msgstr "`` cluster.routing.allocation.disk.watermark.low ``"
 
 #: ../../content/performance-tuning.rst:138
 msgid ""
@@ -2634,21 +2647,22 @@ msgid ""
 "allocate more shards to the related cluster node. The operation of that node "
 "is not influenced and data can still be indexed and searched."
 msgstr ""
+"默认值为85％。如果超出此限制，Elasticsearch将不会向相关集群节点分配更多的分片。该节点的操作不会受到影响，并且仍然可以对数据进行索引和搜索。"
 
 #: ../../content/performance-tuning.rst:141
 msgid "``cluster.routing.allocation.disk.watermark.high``"
-msgstr ""
+msgstr "``cluster.routing.allocation.disk.watermark.high``"
 
 #: ../../content/performance-tuning.rst:141
 msgid ""
 "Default value of 90%. If this limit is exceeded, Elasticsearch will try to "
 "relocate existing shards to other nodes (if possible), that have enough "
 "space available."
-msgstr ""
+msgstr "默认值为90％。如果超出此限制，Elasticsearch将尝试将现有分片重新定位到具有足够可用空间的其他节点（如果可能）。"
 
 #: ../../content/performance-tuning.rst:144
 msgid "``cluster.routing.allocation.disk.watermark.flood_stage``"
-msgstr ""
+msgstr "`` cluster.routing.allocation.disk.watermark.flood_stage ``"
 
 #: ../../content/performance-tuning.rst:144
 msgid ""
@@ -2658,6 +2672,8 @@ msgid ""
 "related cluster node. Since then, it is not possible to index new data to "
 "such indices and restricted to searches and delete actions."
 msgstr ""
+"默认值为95％。如果超出此限制，Elasticsearch将所有索引的配置更新为只读索引块“ index.blocks."
+"read_only_allow_delete”，其中至少一个分片分配给相关的集群节点。从那时起，就不可能将新数据编入此类索引，并且无法进行搜索和删除操作。"
 
 #: ../../content/performance-tuning.rst:148
 msgid ""
@@ -2667,6 +2683,8 @@ msgid ""
 "manual actions, it is needed to change the configuration back to normal mode "
 "manually."
 msgstr ""
+"如果超出了洪水阶段，并且某些索引被配置为只读模式，则这种配置*不会*被Elasticsearch自动更改。如果相关磁盘由于手动操作而再次包含足够的可用空间"
+"，则需要将配置手动更改回普通模式。"
 
 #: ../../content/performance-tuning.rst:150
 msgid ""
@@ -2674,6 +2692,8 @@ msgid ""
 "please follow `the official documentation <https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/disk-allocator.html>`__."
 msgstr ""
+"有关磁盘水印和基于磁盘的分片分配的更多信息，请遵循 `官方文档 <https://www.elastic.co/guide/en/"
+"elasticsearch/reference/current/disk-allocator.html>`__。"
 
 #: ../../content/performance-tuning.rst:154
 msgid "Article Storage"
