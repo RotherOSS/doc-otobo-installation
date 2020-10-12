@@ -24,6 +24,8 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
 1. A 1:1 migration on the same application server with the same database server.
 
+    For MySQL there is also a script for optimised database migration.
+
 2. A migration and simultaneous move to a new application server and operating system.
 
 3. It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database servers), or whether you want to change OTOBO to such a configuration.
@@ -155,32 +157,12 @@ and execute one of the following commands:
 
 The same thing must be done for *rsysnc* when it isn't available yet.
 
-Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In this section, we assume that */opt/otrs* is available on the Docker host.
-
-In the case when the web application OTOBO runs inside the container ``otobo_web_1``, OTOBO generally cannot access directories outside the container.
-There is an exception though: directories mounted as volumes into the container can be accessed. This means that for
-migration there are two possibilities:
-
-    a. copy */opt/otrs* into an existing volume
-    b. mount */opt/otrs* as an additional volume
-
-Let's concentrate on option **a.** here.
-
-For safe copying, we use ``rsync``. But first we need to find out the correct target.
-
-.. code-block:: bash
-
-    root> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
-    root> echo $mountpoint_opt_otobo
-    root> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/otrs
-
-This copied directory will be available as */opt/otobo/tmp/otrs* within the container.
-
-Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
+Step 3 non-Docker: Preparing the OTRS / ((OTRS)) Community Edition system
 -------------------------------------------------------------------
+
+.. note::
+
+See the next section for migration to a Docker-based installation
 
 .. note::
 
@@ -211,8 +193,42 @@ Please make sure there are no running services or cron jobs.
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
 
 
+Step 3 Docker: provide data for migration
+-------------------------------------------------------------------
+
+Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section, we assume that */opt/otrs* is available on the Docker host.
+
+In the case when the web application OTOBO runs inside the container ``otobo_web_1``, OTOBO generally cannot access directories outside the container.
+There is an exception though: directories mounted as volumes into the container can be accessed. This means that for
+migration there are two possibilities:
+
+    a. copy */opt/otrs* into an existing volume
+    b. mount */opt/otrs* as an additional volume
+
+Let's concentrate on option **a.** here.
+
+For safe copying, we use ``rsync``. But first we need to find out the correct target.
+
+.. code-block:: bash
+
+    root> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    root> echo $mountpoint_opt_otobo
+    root> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/otrs
+
+This copied directory will be available as */opt/otobo/tmp/otrs* within the container.
+
+Docker: copy the otrs database schema into otobo_db_1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Currently only for MySQL.
+
 Step 4: Perform the Migration!
 ---------------------------------
+
+TODO: call the new script
 
 Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname)
 and follow the process.
