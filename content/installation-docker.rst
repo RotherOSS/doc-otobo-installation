@@ -336,6 +336,7 @@ In this case, we have to create a volume that contains the adapted nginx config 
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
     docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
+    docker_admin> docker-compose up --detach
 
 .. warning::
 
