@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-10-12 00:34+0200\n"
-"PO-Revision-Date: 2020-10-12 10:02+0000\n"
+"PO-Revision-Date: 2020-10-13 16:49+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
 "otobo10/installation-manual/zh_Hans/>\n"
@@ -2697,7 +2697,7 @@ msgstr ""
 
 #: ../../content/performance-tuning.rst:154
 msgid "Article Storage"
-msgstr ""
+msgstr "物品存放"
 
 #: ../../content/performance-tuning.rst:156
 msgid ""
@@ -2705,27 +2705,31 @@ msgid ""
 "email and internal articles. The used article storage can be configured in "
 "the setting ``Ticket::Article::Backend::MIMEBase::ArticleStorage``."
 msgstr ""
+"对于电话，电子邮件和内部物品的存储，有两个不同的后端模块。可以在``Ticket :: Article :: Backend :: MIMEBase ::"
+" ArticleStorage``中配置使用过的物品存储空间。"
 
 #: ../../content/performance-tuning.rst:163
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB``"
 msgstr ""
+"`` Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB ``"
 
 #: ../../content/performance-tuning.rst:159
 msgid ""
 "This default module will store attachments in the database. It also works "
 "with multiple front end servers, but requires much storage space in the "
 "database."
-msgstr ""
+msgstr "这个默认模块将附件存储在数据库中，还可以与多个前端服务器一起使用，但是需要很多数据库存储空间。"
 
 #: ../../content/performance-tuning.rst:163
 msgid "Don't use this with large setups."
-msgstr ""
+msgstr "不要将其用于大型系统。"
 
 #: ../../content/performance-tuning.rst:170
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS``"
 msgstr ""
+"`` Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS ``"
 
 #: ../../content/performance-tuning.rst:166
 msgid ""
@@ -2734,10 +2738,12 @@ msgid ""
 "system is shared between the servers. Place it on an NFS share or preferably "
 "a SAN or similar solution."
 msgstr ""
+"使用此模块可将附件存储在本地文件系统上。这样速度很快，但是如果你有多个前端服务器，则必须确保文件系统在服务器之间可以共享。可以将其放在NFS共享文件系统，"
+"当然最好放在SAN或类似解决方案上。"
 
 #: ../../content/performance-tuning.rst:170
 msgid "Recommended for large setups."
-msgstr ""
+msgstr "建议用于大型系统。"
 
 #: ../../content/performance-tuning.rst:172
 msgid ""
@@ -2745,18 +2751,18 @@ msgid ""
 "back end in the system configuration, and then run this command line utility "
 "to put the articles from the database onto the file system or the other way "
 "around:"
-msgstr ""
+msgstr "您可以即时从一个后端切换到另一个。您可以在系统配置中切换后端，然后运行此命令行实用程序将物品从数据库放到文件系统上，或者以其他方式："
 
 #: ../../content/performance-tuning.rst:178
 msgid "You can use the ``--target`` option to specify the target back end."
-msgstr ""
+msgstr "您可以使用 ``--target`` 选项指定目标后端。"
 
 #: ../../content/performance-tuning.rst:182
 msgid ""
 "The entire process can take considerable time to run, depending on the "
 "number of articles you have and the available CPU power and/or network "
 "capacity."
-msgstr ""
+msgstr "根据您拥有的物品数量、可用的CPU能力和/或网络容量，整个过程可能需要花费大量时间才能运行。"
 
 #: ../../content/performance-tuning.rst:184
 msgid ""
@@ -2764,17 +2770,19 @@ msgid ""
 "system configuration option ``Ticket::Article::Backend::MIMEBase::"
 "CheckAllStorageBackends`` to make sure OTOBO will still find them."
 msgstr ""
+"如果要将旧附件保留在数据库中，则可以激活系统配置选项``Ticket :: Article :: Backend :: MIMEBase :: "
+"CheckAllStorageBackends``以确保OTOBO仍然可以找到它们。"
 
 #: ../../content/performance-tuning.rst:188
 msgid "Archiving Tickets"
-msgstr ""
+msgstr "封存工单"
 
 #: ../../content/performance-tuning.rst:190
 msgid ""
 "As OTOBO can be used as an audit-proof system, deleting closed tickets may "
 "not be a good idea. Therefore there is a feature that allows you to archive "
 "tickets."
-msgstr ""
+msgstr "由于OTOBO的数据可用作审查证据，因此删除已关闭的工单可能不是一个好主意，这项功能可让您封存工单。"
 
 #: ../../content/performance-tuning.rst:192
 msgid ""
@@ -2784,101 +2792,103 @@ msgid ""
 "any longer as only the latest tickets are taken into consideration when "
 "using OTOBO. This can result in a huge performance gain on large systems."
 msgstr ""
+"符合特定条件的故障单可以标记为已存档。这样在你进行常规工单搜索或进行常规话务员工作时，不会访问这些工单。这样系统不再需要处理大量旧工单，而是仅考虑最新的工"
+"单，这可以在大型系统上获得巨大的性能提升。"
 
 #: ../../content/performance-tuning.rst:194
 msgid "To use the archive feature:"
-msgstr ""
+msgstr "要使用存档功能："
 
 #: ../../content/performance-tuning.rst:196
 msgid ""
 "Activate the ``Ticket::ArchiveSystem`` setting in the system configuration."
-msgstr ""
+msgstr "在系统配置中激活 ``Ticket::ArchiveSystem``设置。"
 
 #: ../../content/performance-tuning.rst:197
 msgid "Define a generic agent job:"
-msgstr ""
+msgstr "定义通用话务员工作："
 
 #: ../../content/performance-tuning.rst:199
 msgid "Click on the *Add Job* button in the *Generic Agent* screen."
-msgstr ""
+msgstr "单击*通用话务员*屏幕中的*添加工作*按钮。"
 
 #: ../../content/performance-tuning.rst:200
 msgid "*Job Settings*: provide a name for the archiving job."
-msgstr ""
+msgstr "*工作配置*：为封存工作提供一个名字。"
 
 #: ../../content/performance-tuning.rst:201
 msgid "*Automatic Execution*: select proper options to schedule this job."
-msgstr ""
+msgstr "*自动化执行*：为工作的时间安排选择合适的选项。"
 
 #: ../../content/performance-tuning.rst:202
 msgid ""
 "*Select Tickets*: it might be a good idea to only archive those tickets in a "
 "closed state that have been closed a few months before."
-msgstr ""
+msgstr "*选择票证*：最好只归档几个月前就已经完成关闭的那些工单。"
 
 #: ../../content/performance-tuning.rst:203
 msgid ""
 "*Update/Add Ticket Attributes*: set the field *Archive selected tickets* to "
 "*archive tickets*."
-msgstr ""
+msgstr "*更新/添加工单属性*：将字段*将所选工单存档*设置为*存档工单*。"
 
 #: ../../content/performance-tuning.rst:204
 msgid "Save the job at the end of the page."
-msgstr ""
+msgstr "将工作保存在页面末尾。"
 
 #: ../../content/performance-tuning.rst:205
 msgid ""
 "Click on the *Run this task* link in the overview table to see the affected "
 "tickets."
-msgstr ""
+msgstr "单击概述表中的*运行此任务*的链接，查看受到影响的工单。"
 
 #: ../../content/performance-tuning.rst:206
 msgid "Click on the *Run Job* button."
-msgstr ""
+msgstr "点击*运行工作*按钮。"
 
 #: ../../content/performance-tuning.rst:210
 msgid "Up to 5000 tickets can be modified by running this job manually."
-msgstr ""
+msgstr "手动运行这项工作最多可以修改5000张工单。"
 
 #: ../../content/performance-tuning.rst:212
 msgid ""
 "When you search for tickets, the system default is to search tickets which "
 "are not archived."
-msgstr ""
+msgstr "搜索工单时，系统默认只搜索未归档的工单。"
 
 #: ../../content/performance-tuning.rst:214
 msgid "To search for archived tickets:"
-msgstr ""
+msgstr "要搜索已经归档的工单："
 
 #: ../../content/performance-tuning.rst:216
 msgid "Open the ticket search screen."
-msgstr ""
+msgstr "打款工单搜索界面。"
 
 #: ../../content/performance-tuning.rst:217
 msgid "Set *Archive search* to *Unarchived tickets* or *All tickets*."
-msgstr ""
+msgstr "将*归档搜索*设置为*未归档工单*或者*所有工单*。"
 
 #: ../../content/performance-tuning.rst:218
 msgid "Perform the search."
-msgstr ""
+msgstr "进行搜索。"
 
 #: ../../content/performance-tuning.rst:222
 msgid "Caching"
-msgstr ""
+msgstr "缓存"
 
 #: ../../content/performance-tuning.rst:224
 msgid ""
 "A fast cache module is a great help in terms of performance. We recommend to "
 "use a Redis Cache server or to create a ramdisk."
-msgstr ""
+msgstr "快速缓存模块在性能方面有很大的帮助，我们建议使用Redis Cache服务器或创建虚拟硬盘。"
 
 #: ../../content/performance-tuning.rst:227
 msgid "Install a Redis Cache Server"
-msgstr ""
+msgstr "安装一个 Redis Cache服务器"
 
 #: ../../content/performance-tuning.rst:229
 msgid "Install Redis Server"
-msgstr ""
+msgstr "安装Redis服务器"
 
 #: ../../content/performance-tuning.rst:231
 msgid ""
@@ -2886,10 +2896,12 @@ msgid ""
 "to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as "
 "OTOBO and binding it to its default port."
 msgstr ""
+"首先，你需要安装最新的Redis服务器。最简单的方法是在与OTOBO相同的主机上`配置Redis <https://redis.io/topics/"
+"quickstart>`__并将其绑定到其默认端口。"
 
 #: ../../content/performance-tuning.rst:235
 msgid "Install Perl module Redis or Redis::Fast"
-msgstr ""
+msgstr "安装Redis Perl 模块或者Redis::Fast"
 
 #: ../../content/performance-tuning.rst:237
 msgid ""
@@ -2897,20 +2909,22 @@ msgid ""
 "compatible with `Redis` but **~2x faster**). Please use our ``otobo."
 "CheckModules.pl --list`` to choose the right package for you:"
 msgstr ""
+"你可以选择要使用的Redis模块：`Redis`或`Redis :: Fast`（与`Redis`兼容，但**快2倍**）。请使用我们的``"
+"otobo.CheckModules.pl --list`` 为您选择合适的软件包："
 
 #: ../../content/performance-tuning.rst:244
 msgid "Configure OTOBO for Redis"
-msgstr ""
+msgstr "为Redis进行OTOBO设置"
 
 #: ../../content/performance-tuning.rst:246
 msgid ""
 "Please use the OTOBO `SysConfig` (Admin -> System Configuration) to "
 "configure OTOBO properly:"
-msgstr ""
+msgstr "请使用OTOBO`SysConfig`（管理员->系统配置）正确配置OTOBO："
 
 #: ../../content/performance-tuning.rst:259
 msgid "RamDisk Caching"
-msgstr ""
+msgstr "虚拟磁盘缓存"
 
 #: ../../content/performance-tuning.rst:261
 msgid ""
@@ -2918,21 +2932,23 @@ msgid ""
 "sure that this uses a high performance file system and storage. If you have "
 "enough RAM, you can also try to put this directory on a ramdisk like this:"
 msgstr ""
+"OTOBO在/ opt / otobo / var / "
+"tmp中缓存了许多临时数据，请确保这里使用的是高性能的文件和存储系统。如果你有足够的RAM，也可以尝试将此目录放在如下所示的虚拟磁盘上："
 
 #: ../../content/performance-tuning.rst:271
 msgid "Add persistent mount point in ``/etc/fstab``."
-msgstr ""
+msgstr "在``/ etc / fstab``中添加持久挂载点。"
 
 #: ../../content/performance-tuning.rst:275
 msgid ""
 "This will be a non-permanent storage that will be lost on server reboot. All "
 "your sessions (if you store them in the file system) and your cache data "
 "will be lost."
-msgstr ""
+msgstr "这不是一个永久性存储，将会在服务器重启时丢失，从而你的所有会话（如果你将它们存储在文件系统中）和缓存数据都会丢失。"
 
 #: ../../content/performance-tuning.rst:278
 msgid "Clustering"
-msgstr ""
+msgstr "集群"
 
 #: ../../content/performance-tuning.rst:280
 msgid ""
@@ -2941,16 +2957,19 @@ msgid ""
 "Therefore, Rother OSS provides support for clusters in its `managed OTOBO "
 "<https://otobo.de/>`__ environment exclusively."
 msgstr ""
+"对于非常高的生产负载，可能需要在多个前端服务器的群集上运行OTOBO，这项工作很复杂，也有很多陷阱。因此，Rother OSS专门在其 `管理OTOBO "
+"<https://otobo.de/>`__ 环境中为集群应用提供支持。"
 
 #: ../../content/requirements.rst:12
 msgid "Hardware and Software Requirements"
-msgstr ""
+msgstr "软硬件要求"
 
 #: ../../content/requirements.rst:14
 msgid ""
 "OTOBO can be installed on Linux and other Unix derivates (e.g. OpenBSD or "
 "FreeBSD). Running OTOBO on Microsoft Windows is not supported."
 msgstr ""
+"OTOBO可以安装在Linux和其他Unix派生版本（例如OpenBSD或FreeBSD）上，不支持在Microsoft Windows上运行OTOBO。"
 
 #: ../../content/requirements.rst:16
 msgid ""
@@ -2958,12 +2977,13 @@ msgid ""
 "database server. Apart from that, you should install Perl and/or install "
 "some additional Perl modules on the OTOBO machine."
 msgstr ""
+"要运行OTOBO，需要使用一个Web服务器作为反向代理和一个数据库服务器。除此之外，您应该在OTOBO主机上安装Perl和/或一些其他Perl模块。"
 
 #: ../../content/requirements.rst:18
 msgid ""
 "Perl must be installed on the same machine as OTOBO. The database back end "
 "and the web server may be installed locally or on another host."
-msgstr ""
+msgstr "Perl必须与OTOBO安装在同一台计算机上。数据库后端和Web服务器可以安装在本地或其他主机上。"
 
 #: ../../content/requirements.rst:20
 msgid ""
@@ -2971,30 +2991,32 @@ msgid ""
 "either with Perl from CPAN, or via the package manager of your operating "
 "system (rpm, yast, apt-get)."
 msgstr ""
+"对于Perl，你还需要一些其他模块，这些模块可以与CPAN的Perl一起安装，也可以通过操作系统的软件包管理器（rpm，yast，apt-"
+"get）进行安装。"
 
 #: ../../content/requirements.rst:22
 msgid "OTOBO has also a console command for missing modules."
-msgstr ""
+msgstr "OTOBO也有一个控制台命令，用于检查缺失的模块。"
 
 #: ../../content/requirements.rst:28
 msgid ""
 "If some packages are missing, you can get an install command for your "
 "operating system if you run the script with ``--list`` option."
-msgstr ""
+msgstr "如果缺少某些软件包，可以用``--list``选项运行脚本，获取操作系统的安装命令。"
 
 #: ../../content/requirements.rst:34
 msgid "The listed commands should then be executed with root privileges."
-msgstr ""
+msgstr "将以root权限执行列出的命令。"
 
 #: ../../content/requirements.rst:36
 msgid ""
 "The output of the module check script shows the installed packages and the "
 "version numbers. Missing modules are marked with a comment."
-msgstr ""
+msgstr "模块检查脚本的输出，会显示已安装的软件包和版本号。缺失的模块会带着注释。"
 
 #: ../../content/requirements.rst:87
 msgid "Hardware Requirements"
-msgstr ""
+msgstr "硬件要求"
 
 #: ../../content/requirements.rst:89
 msgid ""
@@ -3003,166 +3025,168 @@ msgid ""
 "day. The storage requirement also depends on the number of tickets and size "
 "of attachments."
 msgstr ""
+"硬件要求在很大程度上取决于OTOBO的使用情况，因为 "
+"OTOBO可以用于每月处理几张工单，或着每天处理数百张工单。而其存储要求还取决于工单的数量和附件的尺寸。"
 
 #: ../../content/requirements.rst:91
 msgid "We recommend using a machine for testing purposes with **at least**:"
-msgstr ""
+msgstr "我们建议使用一台计算机进行测试并**至少**具备以下条件："
 
 #: ../../content/requirements.rst:93
 msgid "small CPU"
-msgstr ""
+msgstr "小CPU"
 
 #: ../../content/requirements.rst:94
 msgid "4 GB RAM"
-msgstr ""
+msgstr "4 GB 内存"
 
 #: ../../content/requirements.rst:95
 msgid "10 GB storage"
-msgstr ""
+msgstr "10 GB 存储空间"
 
 #: ../../content/requirements.rst:97
 msgid "We recommend using a machine for production purpose with **at least**:"
-msgstr ""
+msgstr "我们建议为生产环境准备一台计算机，并**至少**具备以下条件："
 
 #: ../../content/requirements.rst:99
 msgid "3 GHz Xeon or comparable CPU"
-msgstr ""
+msgstr "3 GHz Xeon 或兼容的 CPU"
 
 #: ../../content/requirements.rst:100
 msgid "8 GB RAM (16 GB recommend)"
-msgstr ""
+msgstr "8 GB 内存 （建议 16 GB）"
 
 #: ../../content/requirements.rst:101
 msgid "40 GB storage"
-msgstr ""
+msgstr "40 GB 存储空间"
 
 #: ../../content/requirements.rst:105
 msgid ""
 "Hardware requirements depend on the usage of OTOBO. Please contact your "
 "OTOBO consultant before deploying any hardware."
-msgstr ""
+msgstr "硬件要求取决于OTOBO的使用，请在部署任何硬件之前，联系你的OTOBO顾问。"
 
 #: ../../content/requirements.rst:109
 msgid "Software requirements"
-msgstr ""
+msgstr "软件要求"
 
 #: ../../content/requirements.rst:113
 msgid "Perl"
-msgstr ""
+msgstr "Perl"
 
 #: ../../content/requirements.rst:112
 msgid "Perl 5.24.0 or higher"
-msgstr ""
+msgstr "Perl 5.24.0 或更高版本"
 
 #: ../../content/requirements.rst:113
 msgid ""
 "Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl`` console "
 "command"
-msgstr ""
+msgstr "控制台命令``/opt/otobo/bin/otobo.CheckModules.pl``会列出Perl软件包"
 
 #: ../../content/requirements.rst:118
 msgid "Web Servers"
-msgstr ""
+msgstr "Web服务器"
 
 #: ../../content/requirements.rst:116
 msgid "Apache2"
-msgstr ""
+msgstr "Apache2"
 
 #: ../../content/requirements.rst:117
 msgid "nginx"
-msgstr ""
+msgstr "nginx"
 
 #: ../../content/requirements.rst:118
 msgid "Any other web server that can be used as a reverse proxy"
-msgstr ""
+msgstr "任何其他的可以用作反向代理的Web服务器"
 
 #: ../../content/requirements.rst:124
 msgid "Databases"
-msgstr ""
+msgstr "数据库"
 
 #: ../../content/requirements.rst:121
 msgid "MySQL 5.6 or higher"
-msgstr ""
+msgstr "MySQL 5.6或更高版本"
 
 #: ../../content/requirements.rst:122
 msgid "MariaDB"
-msgstr ""
+msgstr "MariaDB"
 
 #: ../../content/requirements.rst:123
 msgid "PostgreSQL 9.2 or higher"
-msgstr ""
+msgstr "PostgreSQL 9.2 或更高版本"
 
 #: ../../content/requirements.rst:124
 msgid "Oracle 10g or higher"
-msgstr ""
+msgstr "Oracle 10g 或更高版本"
 
 #: ../../content/requirements.rst:128
 msgid "Optional"
-msgstr ""
+msgstr "可选"
 
 #: ../../content/requirements.rst:127
 msgid "Elasticsearch 7.x (fast search function for live previews)"
-msgstr ""
+msgstr "Elasticsearch 7.x（实时预览的快速搜索功能）"
 
 #: ../../content/requirements.rst:128
 msgid "Node.js 8.9 or higher (only for development)"
-msgstr ""
+msgstr "Node.js 8.9 或更高版本（仅用于开发）"
 
 #: ../../content/requirements.rst:135
 msgid "Web browsers"
-msgstr ""
+msgstr "网络浏览器"
 
 #: ../../content/requirements.rst:131
 msgid "Apple Safari"
-msgstr ""
+msgstr "苹果 Safari"
 
 #: ../../content/requirements.rst:132
 msgid "Google Chrome"
-msgstr ""
+msgstr "谷歌 Chrome"
 
 #: ../../content/requirements.rst:133
 msgid "Microsoft Internet Explorer 11"
-msgstr ""
+msgstr "微软 Internet Explorer 11"
 
 #: ../../content/requirements.rst:134
 msgid "Microsoft Edge"
-msgstr ""
+msgstr "微软 Edge"
 
 #: ../../content/requirements.rst:135
 msgid "Mozilla Firefox"
-msgstr ""
+msgstr "Mozilla Firefox"
 
 #: ../../content/requirements.rst:136
 msgid "Any other modern web browser with JavaScript support"
-msgstr ""
+msgstr "其他任何支持JavaScript的网络浏览器"
 
 #: ../../content/updating.rst:12
 msgid "Updating"
-msgstr ""
+msgstr "更新"
 
 #: ../../content/updating.rst:16
 msgid ""
 "It is highly recommended to perform a test update on a separate testing "
 "machine first."
-msgstr ""
+msgstr "强烈建议先在单独的测试计算机上对更新进行测试。"
 
 #: ../../content/updating.rst:20
 msgid "Step 1: Stop All Relevant Services and the OTOBO Daemon"
-msgstr ""
+msgstr "步骤 1：停用所有相关服务和OTOBO守护程序"
 
 #: ../../content/updating.rst:22
 msgid ""
 "Please make sure there are no more running services or cron jobs that try to "
 "access OTOBO. This will depend on your service configuration."
-msgstr ""
+msgstr "请确保没有其他正在运行的服务或cron作业，会尝试访问OTOBO的，当然这将取决于你对服务的配置。"
 
 #: ../../content/updating.rst:30
 msgid "Stop OTOBO cron jobs and the daemon (in this order):"
-msgstr ""
+msgstr "停用OTOBO cron作业和守护程序（按照这个顺序）："
 
 #: ../../content/updating.rst:41
 msgid "Step 2: Backup Files and Database"
-msgstr ""
+msgstr "步骤 2：备份文件和数据库"
 
 #: ../../content/updating.rst:43
 msgid "Create a backup of the hole ``/opt/otobo`` directory and the database."
