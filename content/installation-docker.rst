@@ -31,7 +31,7 @@ The minimal versions of required software, that have been tested, are listed her
 
     To get the required minimal versions on Ubuntu 18.04 follow the instructions in
     https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04
-    and https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+    and https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04.
 
 git, Docker, and Docker Compose can be installed with the standard system tools.
 Here is an example for installation on Ubuntu 20.04:
@@ -104,8 +104,8 @@ Change the following setting inside your *.env* file:
 
 ``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``
 
-The password for the database admin user may be chosen freely. The database admin user is needed because she
-creates the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated
+The password for the database admin user may be chosen freely. The database admin user is needed to
+create the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated
 database user **otobo**.
 
 4. Set up a volume with SSL configuration for the nginx webproxy (optional)
@@ -120,8 +120,8 @@ nginx needs for SSL encryption a certificate and a private key.
     For testing and development a self-signed certificate can be used. However for productive use you should
     work with regular registered certificates.
 
-    See e.g. <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`
-    on how to create self signed certificates.
+    See e.g. https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
+    on how to create self-signed certificates.
 
 .. note::
 
@@ -179,7 +179,7 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 .. note::
 
     To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command:
-    ``docker exec -it otobo_web_1 bash``
+    ``docker exec -it otobo_web_1 bash``.
 
 Additional technical information
 ----------------------------------
@@ -227,13 +227,13 @@ otobo_redis_data
     contains data for the container `redis`.
 
 otobo_nginx_ssl
-    contains the TLS files, certificate and private key, must be initialized manually
+    contains the TLS files, certificate and private key, must be initialized manually.
 
 Docker environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the instructions we did only minimal configuration. But the file *.env* allows to set
-more variables. Here is a list of all supported environment variables.
+more variables. Here is a list of all supported environment variables:
 
 **MariaDB settings**
 
@@ -255,7 +255,7 @@ for detailed information.
 
 ``OTOBO_WEB_HTTP_PORT``
     Set in case the HTTP port should deviate from the standard port 80.
-    When HTTPS is enabled then the HTTP port will redirect to HTTPS.
+    When HTTPS is enabled, the HTTP port will redirect to HTTPS.
 
 **nginx webproxy settings**
 
@@ -336,6 +336,7 @@ In this case, we have to create a volume that contains the adapted nginx config 
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
     docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
+    docker_admin> docker-compose up --detach
 
 .. warning::
 
@@ -396,7 +397,7 @@ The files needed for creating Docker images locally are part of the the git repo
    docker_admin> bin/docker/build_docker_images.sh
    docker_admin> docker image ls
 
-The locally built images are tagged as ``local-<OTOOB_VERSION>`` using the version set up the file *RELEASE*.
+The locally built images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*.
 After building the local images, one can specify the images to be used by setting
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
@@ -427,7 +428,7 @@ List of useful commands
 
 **Docker**
 
-* ``docker system prune -a`` start over
+* ``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)
 * ``docker version`` show version
 * ``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image
 * ``docker run --publish 80:5000 otobo`` run the new image
@@ -456,7 +457,6 @@ Resources
 * `Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04>`_
 * `Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_
 * `docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_
-* `not403 <http://not403.blogspot.com/search/label/otrs>`_
 * `cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
 * `Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_
 * `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
