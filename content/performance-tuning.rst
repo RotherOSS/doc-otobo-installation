@@ -225,7 +225,7 @@ The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on th
 2. Install Perl module Redis or Redis::Fast
 
 You can choose which Redis module to use: `Redis` or `Redis::Fast` (which is compatible with `Redis` but **~2x faster**).
-Please use our ``otobo.CheckModules.pl --list`` to choose the right package for you:
+Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:
 
 .. code-block:: bash
 

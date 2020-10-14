@@ -26,10 +26,10 @@ results in:
     otobo> perldoc -l Acme::Dice
     /usr/local/share/perl/5.30.0/Acme/Dice.pm
 
-Special care must be taken when OTOBO runs under Docker. In this case the wanted module could easily be installed into the system Perl.
+Special care must be taken when OTOBO runs within Docker. In this case, it seems an easy option to install the wanted module into the system Perl.
 However, due to how Docker works, this change would be lost when the container is restarted. Therefore the modules must be installed
-into a location that survives a restart. The local install location can be specified with the option ``--local-lib``. The installed modules
-will found by Perl because the environment variables ``PERL5LIB`` and ``PATH`` are set up accordingly in the Docker image.
+into a location that survives a restart. The local install location can be specified with the option ``--local-lib``. Installed modules
+will be found by Perl because of the environment variables ``PERL5LIB`` and ``PATH``, which are set-up accordingly in the Docker image.
 
 
 .. code-block:: bash

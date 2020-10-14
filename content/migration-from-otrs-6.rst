@@ -110,7 +110,7 @@ Now log in on the server as user ``root`` and execute the following commands:
     otobo> /opt/otobo/bin/Cron.sh stop
     otobo> /opt/otobo/bin/otobo.Daemon stop --force
 
-When OTOBO is running under Docker it suffices to stop the Docker container ``otobo_daemon_1``:
+When OTOBO is running in Docker, you just need to stop the Docker container ``otobo_daemon_1``:
 
 .. code-block:: bash
 
@@ -153,7 +153,7 @@ and execute one of the following commands:
     $ # Install sshpass under OpenSUSE Linux
     $ sudo zypper install sshpass
 
-The same thing must be done for *rsysnc* when it isn't available yet.
+The same thing must be done for *rsync* when it isn't available yet.
 
 Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
