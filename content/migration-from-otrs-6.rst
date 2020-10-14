@@ -232,9 +232,9 @@ Depending on your Docker setup the ``rsync`` might need to run with ``sudo``.
     docker_admin> # if docker_admin is not root
     docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/opt/otrs
 
-This copied directory will be available as */opt/otobo/tmp/otrs* within the container.
+This copied directory will be available as */opt/otobo/tmp/opt/otrs* within the container.
 
-Docker: copy the otrs database schema into otobo_db_1
+TODO: Docker: optionally copy the otrs database schema into otobo_db_1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Currently only for MySQL.
