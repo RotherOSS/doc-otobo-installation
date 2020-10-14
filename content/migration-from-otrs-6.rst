@@ -301,6 +301,10 @@ TODO: call the new script
 Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname and potentially add the port)
 and follow the process.
 
+.. warning::
+
+    Sometimes a bug pops up where the changed setting for SecureMode is not recognised. In this case restart the webserver.
+
 .. note::
 
     If OTOBO runs inside a Docker container, keep the default settings *localhost* for the OTRS server
