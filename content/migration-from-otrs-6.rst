@@ -36,6 +36,10 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
 6. It is possible to migrate to a Docker based installation of OTOBO 10.
 
+    .. note::
+        In the sample commands we assume that the user **docker_admin** is used for interacting with Docker.
+        The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions.
+
 
 Migration Requirements
 ----------------------
@@ -118,6 +122,7 @@ When OTOBO is running in Docker, you just need to stop the Docker container ``ot
 
     docker_admin> cd /opt/otobo-docker
     docker_admin> docker-compose stop daemon
+    docker_admin> docker-compose ps     # otobo_daemon_1 should have exited with the code 0
 
 .. note::
 
@@ -214,9 +219,15 @@ For safe copying, we use ``rsync``. But first we need to find out the correct ta
 
 .. code-block:: bash
 
-    root> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
-    root> echo $mountpoint_opt_otobo
-    root> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/otrs
+    docker_admin> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    docker_admin> echo $mountpoint_opt_otobo  # just a sanity check
+
+Depending on your Docker setup the ``rsync`` might need to run with ``sudo``.
+.. code-block:: bash
+
+    docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/opt/otrs
+    docker_admin> # if docker_admin is not root
+    docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/opt/otrs
 
 This copied directory will be available as */opt/otobo/tmp/otrs* within the container.
 
@@ -257,7 +268,7 @@ that the migration was successful and that you want to use OTOBO from now on, st
     otobo> /opt/otobo/bin/Cron.sh start
     otobo> /opt/otobo/bin/otobo.Daemon start
 
-In the docker case:
+In the Docker case:
 
 .. code-block:: bash
 
