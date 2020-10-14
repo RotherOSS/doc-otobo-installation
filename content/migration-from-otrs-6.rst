@@ -281,8 +281,17 @@ Note that the password for the database root is now the password that has been s
 The copied database will be read by the database user *otobo* during the migration. Therefore, *otobo*
 needs to be given read access to the copied database.
 
-When performing the next steps please enter the OTRS database host *db* and OTRS database name *otrs*.
+.. code-block:: bash
 
+    otobo@2695c293c557:~$ mysql -h db -u root -p -e "GRANT SELECT, SHOW VIEW ON otrs.* TO 'otobo'@'%'"
+    otobo@2695c293c557:~$ mysql -h db -u otobo -p homebernharddeve -e "SELECT COUNT(*), DATABASE(), NOW() FROM ticket"   # sanity check
+
+When performing the next steps, please enter the following values when prompted:
+
+- 'db' as the OTRS database host
+- 'otobo' as the OTRS database user
+- the database password of 'otobo' as the OTRS database user password
+- 'otrs' as the OTRS database name
 
 Step 4: Perform the Migration!
 ---------------------------------
