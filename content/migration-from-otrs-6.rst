@@ -162,8 +162,8 @@ and execute one of the following commands:
 
 The same thing must be done for *rsync* when it isn't available yet.
 
-Step 3 non-Docker: Preparing the OTRS / ((OTRS)) Community Edition system
--------------------------------------------------------------------
+Step 3a non-Docker: Preparing the OTRS / ((OTRS)) Community Edition system
+----------------------------------------------------------------------------
 
 .. note::
 
@@ -198,12 +198,16 @@ Please make sure there are no running services or cron jobs.
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
 
 
-Step 3 Docker: provide data for migration
+Step 3b Docker: make required data available inside container
 -------------------------------------------------------------------
 
-When the targeted OTOBO installation runs under Docker some specifities have to be considered.
+Some specifities have to be considered when the targeted OTOBO installation runs under Docker,
+
 The most relevant effect is that processes running in a Docker container generally cannot access directories
 outside the container.  There is an exception though: directories mounted as volumes into the container can be accessed.
+
+The other effect is that the MariaDB database running in `otobo_db_1` is not accessible outside the container network.
+
 
 Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -211,33 +215,59 @@ Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
 In this section, we assume that the OTRS home directory */opt/otrs* is available
 on the Docker host.
 
-In the Docker case there are at least two possibilities:
+There are at least two viable possibilities:
 
     a. copy */opt/otrs* into the existing volume *otobo_opt_otobo*
     b. mount */opt/otrs* as an additional volume
 
-Both possibilities are viable, but let's concentrate on option **a.** here.
+Let's concentrate on option **a.** here.
 
-For safe copying, we use ``rsync``. But first we need to find out the correct target.
+First we need to find out where the volume *otobo_opt_otobo* is available on the Docker host.
 
 .. code-block:: bash
 
-    docker_admin> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
-    docker_admin> echo $mountpoint_opt_otobo  # just a sanity check
+    docker_admin> otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    docker_admin> echo $otobo_opt_otobo_mp  # just a sanity check
 
+For safe copying, we use ``rsync``.
 Depending on your Docker setup the ``rsync`` might need to run with ``sudo``.
+
 .. code-block:: bash
 
-    docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/opt/otrs
+    docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
     docker_admin> # if docker_admin is not root
-    docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/opt/otrs
+    docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
 
-This copied directory will be available as */opt/otobo/tmp/opt/otrs* within the container.
+This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container.
 
 TODO: Docker: optionally copy the otrs database schema into otobo_db_1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Currently only for MySQL.
+Here we concentrate on the most common case, where OTRS is running under MySQL and uses the database
+**otrs**.
+
+First we dump the database. The dumped database is stored in the volume *otobo_opt_otobo*.
+Depending on your Docker setup the commands ``rsync`` and `head`` might need to run with ``sudo``.
+
+.. code-block:: bash
+
+    docker_admin> otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    docker_admin> mysqldump -h localhost -u root -p --databases otrs --result-file $otobo_opt_otobo_mp/var/tmp/mysqldump_otrs.sql
+    docker_admin> head $otobo_opt_otobo_mp/var/tmp/mysqldump_otrs.sql # just a sanity check
+
+For importing the dumped database it is convienient to use a session inside the container *otobo_web_1*.
+Note that now the database root password is the password that has been set up in _.env_.
+
+.. code-block:: bash
+
+    docker_admin> docker exec -it --user otobo otobo_web_1 bash
+    otobo@2695c293c557:~$ ls -l var/tmp/mysqldump_otrs.sql # sanity check
+    otobo@2695c293c557:~$ mysql -h db -u root -p < var/tmp/mysqldump_otrs.sql
+    otobo@2695c293c557:~$ mysql -h db -u root -p -e 'SHOW DATABASES'
+    otobo@2695c293c557:~$ mysql -h db -u root -p otrs -e 'SHOW TABLES'
+
+When performing the next steps please enter the OTRS database host *db* and OTRS database name *otrs*.
+
 
 Step 4: Perform the Migration!
 ---------------------------------
@@ -250,12 +280,13 @@ and follow the process.
 .. note::
 
     If OTOBO runs inside a Docker container, keep the default settings *localhost* for the OTRS server
-    and */opt/otobo/tmp/opt/otrs* for the OTRS home directory.
+    and */opt/otobo/var/tmp/copied_otrs* for the OTRS home directory.
 
 .. note::
 
     The default values for OTRS database user and password are taken from *Kernel/Config.pm* in the OTRS home directory.
     Change the proposed setting if you are working with a database user that is dedicated to the migration.
+    Also change the settings when you work with a database that was copied into the *otobo_db_1* Docker container.
 
 .. note::
 
