@@ -201,19 +201,22 @@ Please make sure there are no running services or cron jobs.
 Step 3 Docker: provide data for migration
 -------------------------------------------------------------------
 
+When the targeted OTOBO installation runs under Docker some specifities have to be considered.
+The most relevant effect is that processes running in a Docker container generally cannot access directories
+outside the container.  There is an exception though: directories mounted as volumes into the container can be accessed.
+
 Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In this section, we assume that */opt/otrs* is available on the Docker host.
+In this section, we assume that the OTRS home directory */opt/otrs* is available
+on the Docker host.
 
-In the case when the web application OTOBO runs inside the container ``otobo_web_1``, OTOBO generally cannot access directories outside the container.
-There is an exception though: directories mounted as volumes into the container can be accessed. This means that for
-migration there are two possibilities:
+In the Docker case there are at least two possibilities:
 
-    a. copy */opt/otrs* into an existing volume
+    a. copy */opt/otrs* into the existing volume *otobo_opt_otobo*
     b. mount */opt/otrs* as an additional volume
 
-Let's concentrate on option **a.** here.
+Both possibilities are viable, but let's concentrate on option **a.** here.
 
 For safe copying, we use ``rsync``. But first we need to find out the correct target.
 
@@ -241,22 +244,33 @@ Step 4: Perform the Migration!
 
 TODO: call the new script
 
-Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname)
+Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname and potentially add the port)
 and follow the process.
 
 .. note::
 
-    If OTOBO runs inside a Docker container, specify *localhost* for OTRS server and */opt/otobo/tmp/otrs* as the OTRS home directory.
+    If OTOBO runs inside a Docker container, keep the default settings *localhost* for the OTRS server
+    and */opt/otobo/tmp/opt/otrs* for the OTRS home directory.
 
 .. note::
 
-    In the Docker case, a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
-    Pick one of the IP-addresses reported by ``hostname --all-ip-addresses`` instead for ``OTRS Server``.
-    In order to make sure that there is a database user who can read the data, it might be worthwhile to create a dedicated user.
-    E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration'`` and
-    ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%'``.
+    The default values for OTRS database user and password are taken from *Kernel/Config.pm* in the OTRS home directory.
+    Change the proposed setting if you are working with a database user that is dedicated to the migration.
 
+.. note::
 
+    In the Docker case, a database runnung on the Docker host won't be reachable via ``127.0.0.1`` from within the Docker container.
+    This means that the setting ``127.0.0.1`` won't be valid for the input field ``OTRS Server``.
+    In that case, enter for ``OTRS Server`` one of the alternative IP-addresses reported by the command ``hostname --all-ip-addresses``.
+
+.. note::
+
+    When migrating to a new application server, or when migration to a Docker-based installation, the database often can't be accessed
+    from the target installation. This is usually due to that the otobo database user can only connect from the same host as the database runs on.
+    In order to allow access anyways it is recommended to create a dedicated database user for the migration.
+    E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';`` and
+    ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``.
+    After the migration this user can be dropped again: ``DROP USER 'otrs_migration'@'%';``.
 
 When the migration is complete, please take your time and test the entire system. Once you have decided
 that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
