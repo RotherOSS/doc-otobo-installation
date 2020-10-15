@@ -24,21 +24,19 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
 1. A 1:1 migration on the same application server with the same database server.
 
-    TODO: For MySQL there is also a script for optimised database migration.
+2. A streamlined migration where the source database is first copied to the target database server.
 
-2. A migration and simultaneous move to a new application server and operating system.
+3. A general migration where many combinations are possible.
 
-3. It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database servers), or whether you want to change OTOBO to such a configuration.
+    1. A migration and simultaneous move to a new application server and operating system.
 
-4. It is possible to migrate from any of the supported databases to any other one.
+    2. It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database servers), or whether you want to change OTOBO to such a configuration.
 
-5. It is possible to switch from any supported operating system to any other supported operating system during the migration.
+    3. It is possible to migrate from any of the supported databases to any other one.
 
-6. It is possible to migrate to a Docker based installation of OTOBO 10.
+    4. It is possible to switch from any supported operating system to any other supported operating system during the migration.
 
-    .. note::
-        In the sample commands we assume that the user **docker_admin** is used for interacting with Docker.
-        The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions.
+    5. It is possible to migrate to a Docker based installation of OTOBO 10.
 
 
 Migration Requirements
@@ -252,9 +250,9 @@ Optionally copy the otrs database schema to the containerised database server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The migration can take copy databases more effectively when soure and target are located on
-the same database server. In order to take advantage of that we can optionally copy the source
-database into the *otobo_db_1* container. This approach allow to simply rename tables instead
-of copying the rows.
+the same database server. In order to take advantage of that we can optionally import the source
+database into the database server runnning in the *otobo_db_1* container.
+This approach allow to simply rename tables instead of copying the rows.
 
 First we need a dump of the source OTRS database. The dumping can, but doesn't have to, be performed on the Docker host.
 Here we concentrate on the case, where OTRS is running with MySQL on the Docker host and uses the database
