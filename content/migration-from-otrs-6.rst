@@ -281,14 +281,15 @@ needs to be given read access to the copied database.
 
 .. code-block:: bash
 
-    otobo@2695c293c557:~$ mysql -h db -u root -p -e "GRANT SELECT, SHOW VIEW, DROP, ALTER ON otrs.* TO 'otobo'@'%'"
-    otobo@2695c293c557:~$ mysql -h db -u otobo -p homebernharddeve -e "SELECT COUNT(*), DATABASE(), NOW() FROM ticket"   # sanity check
+    docker_admin> # note that 'root' and 'otobo' have different passwords
+    docker_admin> docker exec -i otobo_db_1 mysql -u root  -p<root_secrect>       -e "GRANT SELECT, SHOW VIEW, DROP, ALTER ON otrs.* TO 'otobo'@'%'"
+    docker_admin> docker exec -i otobo_db_1 mysql -u otobo -p<otobo_secrect> otrs -e "SELECT COUNT(*), DATABASE(), USER(), NOW() FROM ticket"
 
-When performing the next steps, please enter the following values when prompted:
+When performing the migration with the web-based migration tool, please enter the following values when prompted:
 
 - 'db' as the OTRS database host
 - 'otobo' as the OTRS database user
-- the database password of 'otobo' as the OTRS database user password
+- the password of the database user 'otobo' as the OTRS database user password
 - 'otrs' as the OTRS database name
 
 Step 4: Perform the Migration!
