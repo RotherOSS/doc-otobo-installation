@@ -248,7 +248,9 @@ Optionally copy the otrs database schema to the containerised database server
 
 The migration can take copy databases more effectively when soure and target are located on
 the same database server. In order to take advantage of that we can optionally copy the source
-database into the *otobo_db_1* container.
+database into the *otobo_db_1* container. This approach allow to simply rename tables instead
+of copying the rows.
+
 Here we concentrate on the most common case, where OTRS is running under MySQL and uses the database
 **otrs**.
 
@@ -283,7 +285,7 @@ needs to be given read access to the copied database.
 
 .. code-block:: bash
 
-    otobo@2695c293c557:~$ mysql -h db -u root -p -e "GRANT SELECT, SHOW VIEW ON otrs.* TO 'otobo'@'%'"
+    otobo@2695c293c557:~$ mysql -h db -u root -p -e "GRANT SELECT, SHOW VIEW, DROP, ALTER ON otrs.* TO 'otobo'@'%'"
     otobo@2695c293c557:~$ mysql -h db -u otobo -p homebernharddeve -e "SELECT COUNT(*), DATABASE(), NOW() FROM ticket"   # sanity check
 
 When performing the next steps, please enter the following values when prompted:
