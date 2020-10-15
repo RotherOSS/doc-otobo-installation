@@ -208,6 +208,11 @@ outside the container. There is an exception though: directories mounted as volu
 
 The other effect is that the MariaDB database running in `otobo_db_1` is not accessible outside the container network.
 
+.. note::
+
+    In the sample commands we assume that the user **docker_admin** is used for interacting with Docker.A
+    The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions.
+
 Copy */opt/otrs* into the volume *otobo_opt_otobo*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -251,34 +256,25 @@ the same database server. In order to take advantage of that we can optionally c
 database into the *otobo_db_1* container. This approach allow to simply rename tables instead
 of copying the rows.
 
-Here we concentrate on the most common case, where OTRS is running under MySQL and uses the database
+First we need a dump of the source OTRS database. The dumping can, but doesn't have to, be performed on the Docker host.
+Here we concentrate on the case, where OTRS is running with MySQL on the Docker host and uses the database
 **otrs**.
 
-First we dump the database. The dumped database is stored in the volume *otobo_opt_otobo*.
-Depending on your Docker setup the commands ``rsync`` and `head`` might need to run with ``sudo``.
+The database can be dumped with the command ``mysqldump``
 
 .. code-block:: bash
 
-    docker_admin> otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    docker_admin> mysqldump -h localhost -u root -p --databases otrs --dump-date > mysqldump_otrs.sql
+    docker_admin> head -n 30 mysqldump_otrs.sql # just a sanity check
 
-    docker_admin> # when docker_admin is root
-    docker_admin> mysqldump -h localhost -u root -p --databases otrs --result-file $otobo_opt_otobo_mp/var/tmp/mysqldump_otrs.sql
-    docker_admin> head $otobo_opt_otobo_mp/var/tmp/mysqldump_otrs.sql # just a sanity check
-
-    docker_admin> # when docker_admin is not root
-    docker_admin> sudo mysqldump -h localhost -u root -p --databases otrs --result-file $otobo_opt_otobo_mp/var/tmp/mysqldump_otrs.sql
-    docker_admin> sudo head -n 30 $otobo_opt_otobo_mp/var/tmp/mysqldump_otrs.sql # just a sanity check
-
-For importing the dumped database it is convenient to use a session inside the container *otobo_web_1*.
+For importing the dumped database we run ``mysql`` inside the running Docker container *otobo_db_1*.
 Note that the password for the database root is now the password that has been set up in _.env_.
 
 .. code-block:: bash
 
-    docker_admin> docker exec -it --user otobo otobo_web_1 bash
-    otobo@2695c293c557:~$ ls -l var/tmp/mysqldump_otrs.sql # sanity check
-    otobo@2695c293c557:~$ mysql -h db -u root -p < var/tmp/mysqldump_otrs.sql
-    otobo@2695c293c557:~$ mysql -h db -u root -p -e 'SHOW DATABASES'     # sanity check
-    otobo@2695c293c557:~$ mysql -h db -u root -p otrs -e 'SHOW TABLES'   # sanity check
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < mysqldump_otrs.sql
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'     # sanity check
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW TABLES'   # sanity check
 
 The copied database will be read by the database user *otobo* during the migration. Therefore, *otobo*
 needs to be given read access to the copied database.
@@ -298,8 +294,6 @@ When performing the next steps, please enter the following values when prompted:
 Step 4: Perform the Migration!
 ---------------------------------
 
-TODO: call the new script
-
 Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname and potentially add the port)
 and follow the process.
 
@@ -307,10 +301,17 @@ and follow the process.
 
     Sometimes a bug pops up where the changed setting for SecureMode is not recognised. In this case restart the webserver.
 
+    .. code-block:: bash
+
+        docker_admin> cd /opt/otobo-docker
+        docker_admin> docker-compose restart web
+        docker_admin> docker-compose ps     # otobo_web_1 should be running again
+
 .. note::
 
     If OTOBO runs inside a Docker container, keep the default settings *localhost* for the OTRS server
-    and */opt/otobo/var/tmp/copied_otrs* for the OTRS home directory.
+    and */opt/otobo/var/tmp/copied_otrs* for the OTRS home directory. This is the path of the data that
+    was copied in step 3b).
 
 .. note::
 
