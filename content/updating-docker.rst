@@ -1,6 +1,10 @@
 Updating OTOBO using Docker and Docker Compose
 ==========================================
 
+.. code-block:: warning
+
+    Between OTOBO 10.0.3 and 10.0.4 the default ports changes from 80 to 8080 and 433 to 8443. Please be adware to change the ports in yout firewall if needed.
+
 Updating to a new patch level release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -10,6 +14,9 @@ First make sure that in *.env* the images have either the tag `latest` or the wa
 
     # Change to the otobo docker directory
     docker_admin> cd /opt/otobo-docker
+
+    # Update OTOBO docker-compose repository
+    git pull
 
     # fetch the new images that are tagged a 'latest'
     docker_admin> docker-compose pull
