@@ -1,7 +1,7 @@
 Performance Tuning
 ==================
 
-There is a list of performance enhancing techniques for your OTOBO installation, including configuration, coding, memory use, and more.
+This is a list of performance enhancing techniques for your OTOBO installation. The topics include configuration, coding, memory use, and more.
 
 
 Ticket Index Module
@@ -122,16 +122,21 @@ For more information and good rules of thumb about the heap size, please follow 
 Disk Allocation
 ~~~~~~~~~~~~~~~
 
-During the run-time of the service, Elasticsearch inspects the available disk space and therefore decides whether to allocate new shards to the related cluster node or even relocate shards away from that particular node. Such behavior will be controlled by the current disk capacity and can be configured in configuration file ``elasticsearch.yml``. Enclosed are some important configurations, that come with good default values, but might be important:
+While running the service, Elasticsearch inspects the available disk space. Based on the result,
+it decides whether to allocate new shards to a cluster node. In some cases it even relocates shards away from a node.
+This behavior is determined by the current disk capacity. It can be configured by settings in the configuration file *elasticsearch.yml*.
+Here are some relevant configuration settings. They come with good default values, but might be important in trouble shooting.
 
 ``cluster.routing.allocation.disk.watermark.low``
-   Default value of 85%. If this limit is exceeded, Elasticsearch will not allocate more shards to the related cluster node. The operation of that node is not influenced and data can still be indexed and searched.
+   Default value of 85%. When this limit is exceeded, Elasticsearch will no longer allocate more shards to the related cluster node.
+   The operation of that node is not influenced and data can still be indexed and searched.
 
 ``cluster.routing.allocation.disk.watermark.high``
-   Default value of 90%. If this limit is exceeded, Elasticsearch will try to relocate existing shards to other nodes (if possible), that have enough space available.
+   Default value of 90%. When this limit is exceeded, Elasticsearch will try to relocate existing shards to other nodes that have enough space available.
 
 ``cluster.routing.allocation.disk.watermark.flood_stage``
-   Default value of 95%. If this limit is exceeded, Elasticsearch will update the configuration of all indices to read-only index blocks ``index.blocks.read_only_allow_delete``, that have at least one shard allocated to the related cluster node. Since then, it is not possible to index new data to such indices and restricted to searches and delete actions.
+   Default value of 95%. When this limit is exceeded, Elasticsearch will update the configuration of all indices, that have at least one shard allocated to the related cluster node, to read-only index blocks. Specifically, they are flagged with ``index.blocks.read_only_allow_delete``.
+  After that update, it is no longer possible to index new data to such indices. The indexes are restricted to searches and to delete actions only.
 
 .. note::
 
