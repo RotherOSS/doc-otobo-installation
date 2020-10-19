@@ -73,11 +73,10 @@ We strongly recommend to read the :doc:`installation` chapter.
 
 .. warning::
 
-    Apache has difficulties with running two independent applications under mod_perl on the same server.
-    Therefore, if you installed OTOBO on the same server as your OTRS / ((OTRS)) Community Edition,
-    disable mod_perl for OTOBO as long as both systems are running.
-    To disable mod_perl for OTOBO, simply comment out the mod_perl part in the file */opt/otobo/scripts/apache2-httpd.include.conf*.
-    Alternatively, you can deactivate OTRS in the web server before migration.
+    Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server.
+    These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure
+    that the relevant application uses it's own dedicated Perl interpreter. Please check your Apache config files in
+    the directory */etc/apache2/sites-enabled* and add the setting in case it is missing.
 
 After finishing the installation tutorial, please login to the OTOBO Admin Area ``Admin -> Packages``
 to install all required OTOBO OPM packages.

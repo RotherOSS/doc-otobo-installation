@@ -63,7 +63,7 @@ There are some options available for fine-tuning the search index:
       Used as word length boundaries. Only words with a length between these two values are stored in the article search index.
 
 ``Ticket::SearchIndex::Filters``
-   Full-text index regular expression filters to remove parts of the text.
+   Filters based on regular expressions exclude parts of the original text from the full-text index.
 
    .. figure:: images/sysconfig-ticket-searchIndex-filters.png
       :alt: ``Ticket::SearchIndex::Filters`` Setting
