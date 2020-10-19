@@ -264,12 +264,12 @@ Step 6: Known Migration Problems
 During our migration tests, the browser used for the migration sometimes had problems.
 After restarting the browser, this problem usually was solved. With Safari it was sometimes necessary to manually delete the old OTRS session.
 
-2. Final page of the migration has strange layout due to missing CSS files
+2. Final page of the migration has a strange layout due to missing CSS files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This can happen when the setting ScriptAlias has a non-standard value. The migration simple substitutes otrs for otobo. This might lead to
+This can happen when the setting ScriptAlias has a non-standard value. The migration simply substitutes otrs for otobo. This might lead to
 the effect that the CSS and JavaScript can no longer be retrieved in OTOBO.
-When that happens, please check the settings in Kernel/Config.pm and revert them to sane values.
+When that happens, please check the settings in *Kernel/Config.pm* and revert them to sane values.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
