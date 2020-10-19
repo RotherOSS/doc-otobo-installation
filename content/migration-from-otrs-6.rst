@@ -175,8 +175,8 @@ See the next section for migration to a Docker-based installation
 Now we are ready for the migration. First of all we need to make sure that no more tickets are processed and
 no users log on to OTRS:
 
-Please login to the OTOBO Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours.
-After that, delete all agent and user sessions (``Admin ->  Sessions``) and logout yourself.
+Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours.
+After that, delete all agent and user sessions (``Admin ->  Sessions``) and log out.
 
 Stop All Relevant Services and the OTRS Daemon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -366,12 +366,12 @@ Step 6: Known Migration Problems
 During our migration tests, the browser used for the migration sometimes had problems.
 After restarting the browser, this problem usually was solved. With Safari it was sometimes necessary to manually delete the old OTRS session.
 
-2. Final page of the migration has strange layout due to missing CSS files
+2. Final page of the migration has a strange layout due to missing CSS files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This can happen when the setting ScriptAlias has a non-standard value. The migration simple substitutes otrs for otobo. This might lead to
+This can happen when the setting ScriptAlias has a non-standard value. The migration simply substitutes otrs for otobo. This might lead to
 the effect that the CSS and JavaScript can no longer be retrieved in OTOBO.
-When that happens, please check the settings in Kernel/Config.pm and revert them to sane values.
+When that happens, please check the settings in *Kernel/Config.pm* and revert them to sane values.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
