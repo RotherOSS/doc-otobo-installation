@@ -190,8 +190,8 @@ Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
 Now we are ready for the migration. First of all we need to make sure that no more tickets are processed and
 no users log on to OTRS:
 
-Please login to the OTOBO Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours.
-After that, delete all agent and user sessions (``Admin ->  Sessions``) and logout yourself.
+Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours.
+After that, delete all agent and user sessions (``Admin ->  Sessions``) and log out.
 
 Stop All Relevant Services and the OTRS Daemon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
