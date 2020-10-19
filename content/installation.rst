@@ -49,12 +49,12 @@ Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
 Download the latest otobo release from https://ftp.otobo.org/pub/otobo/.
-and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
+Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
 
-    root> mkdir /root/otobo-install                                         # Create a install directory
-    root> cd /root/otobo-install                                            # Change into the update directory
+    root> mkdir /opt/otobo-install                                          # Create a temporary install directory
+    root> cd /opt/otobo-install                                             # Change into the update directory
     root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
     root> tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
     root> cp -r otobo-10.x.x /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
@@ -92,7 +92,7 @@ Execute this command to get an install command to install the missing dependenci
 
 
 Step 3: Create the OTOBO User
-----------------------------
+-----------------------------
 
 Create a dedicated user for OTOBO within its own group:
 
