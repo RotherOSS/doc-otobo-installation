@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-19 00:34+0200\n"
+"POT-Creation-Date: 2020-10-20 00:34+0200\n"
 "PO-Revision-Date: 2020-09-30 22:35+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
@@ -313,11 +313,12 @@ msgstr ""
 msgid "Step 1: Unpack and Install OTOBO"
 msgstr "Passo 1: Desempacotar e Instalar o OTOBO"
 
-#: ../../content/installation.rst:61 ../../content/updating.rst:65
+#: ../../content/installation.rst:61
+#, fuzzy
 msgid ""
-"Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and "
-"unpack the source archive (for example, using ``tar``) into the directory ``/"
-"root/otobo-update``:"
+"Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. "
+"Unpack the source archive (for example, using ``tar``) into the directory ``/"
+"opt/otobo-install``:"
 msgstr ""
 "Baixe a última versão do otobo em https://ftp.otobo.org/pub/otobo/. e "
 "descompacte o arquivo fonte (por exemplo, usando``tar``) dentro do diretório "
@@ -2102,16 +2103,15 @@ msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:82
 msgid ""
-"Apache has difficulties with running two independent applications under "
-"mod_perl on the same server. Therefore, if you installed OTOBO on the same "
-"server as your OTRS / ((OTRS)) Community Edition, disable mod_perl for OTOBO "
-"as long as both systems are running. To disable mod_perl for OTOBO, simply "
-"comment out the mod_perl part in the file */opt/otobo/scripts/apache2-httpd."
-"include.conf*. Alternatively, you can deactivate OTRS in the web server "
-"before migration."
+"Under Apache, there are pitfalls with running two independent applications "
+"under mod_perl on the same server. These pitfalls can be alleviated with the "
+"mod_perl setting ``PerlOptions +Parent``. This setting makes sure that the "
+"relevant application uses it's own dedicated Perl interpreter. Please check "
+"your Apache config files in the directory */etc/apache2/sites-enabled* and "
+"add the setting in case it is missing."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:88
+#: ../../content/migration-from-otrs-6.rst:87
 msgid ""
 "After finishing the installation tutorial, please login to the OTOBO Admin "
 "Area ``Admin -> Packages`` to install all required OTOBO OPM packages."
@@ -2120,7 +2120,7 @@ msgstr ""
 "do OTOBO ``Admin -> Packages`` para instalar todos os pacotes OTOBO OPM "
 "necessários."
 
-#: ../../content/migration-from-otrs-6.rst:108
+#: ../../content/migration-from-otrs-6.rst:107
 msgid ""
 "The following OPM packages and OTRS \"Feature Addons\" need NOT and should "
 "NOT be installed, as these features are already available in the OTOBO "
@@ -2129,75 +2129,75 @@ msgstr ""
 "Os seguintes pacotes OPM e OTRS \"Feature Addons\" NÃO precisa e NÃO deve "
 "ser instalado, pois esses recursos já estão disponíveis no padrão OTOBO:"
 
-#: ../../content/migration-from-otrs-6.rst:92
+#: ../../content/migration-from-otrs-6.rst:91
 msgid "OTRSHideShowDynamicField"
 msgstr "OTRSHideShowDynamicField"
 
-#: ../../content/migration-from-otrs-6.rst:93
+#: ../../content/migration-from-otrs-6.rst:92
 msgid "RotherOSSHideShowDynamicField"
 msgstr "RotherOSSHideShowDynamicField"
 
-#: ../../content/migration-from-otrs-6.rst:94
+#: ../../content/migration-from-otrs-6.rst:93
 msgid "TicketForms"
 msgstr "TicketForms"
 
-#: ../../content/migration-from-otrs-6.rst:95
+#: ../../content/migration-from-otrs-6.rst:94
 msgid "RotherOSS-LongEscalationPerformanceBoost"
 msgstr "RotherOSS-LongEscalationPerformanceBoost"
 
-#: ../../content/migration-from-otrs-6.rst:96
+#: ../../content/migration-from-otrs-6.rst:95
 msgid "Znuny4OTRS-AdvancedDynamicFields"
 msgstr "Znuny4OTRS-AdvancedDynamicFields"
 
-#: ../../content/migration-from-otrs-6.rst:97
+#: ../../content/migration-from-otrs-6.rst:96
 msgid "Znuny4OTRS-AutoSelect"
 msgstr "Znuny4OTRS-AutoSelect"
 
-#: ../../content/migration-from-otrs-6.rst:98
+#: ../../content/migration-from-otrs-6.rst:97
 msgid "Znuny4OTRS-EscalationSuspend"
 msgstr "Znuny4OTRS-EscalationSuspend"
 
-#: ../../content/migration-from-otrs-6.rst:99
+#: ../../content/migration-from-otrs-6.rst:98
 msgid "OTRSEscalationSuspend"
 msgstr "OTRSEscalationSuspend"
 
-#: ../../content/migration-from-otrs-6.rst:100
+#: ../../content/migration-from-otrs-6.rst:99
 msgid "OTRSDynamicFieldAttachment"
 msgstr "OTRSDynamicFieldAttachment"
 
-#: ../../content/migration-from-otrs-6.rst:101
+#: ../../content/migration-from-otrs-6.rst:100
 msgid "OTRSDynamicFieldDatabase"
 msgstr "OTRSDynamicFieldDatabase"
 
-#: ../../content/migration-from-otrs-6.rst:102
+#: ../../content/migration-from-otrs-6.rst:101
 msgid "OTRSDynamicFieldWebService"
 msgstr "OTRSDynamicFieldWebService"
 
-#: ../../content/migration-from-otrs-6.rst:103
+#: ../../content/migration-from-otrs-6.rst:102
 msgid "OTRSBruteForceAttackProtection"
 msgstr "OTRSBruteForceAttackProtection"
 
-#: ../../content/migration-from-otrs-6.rst:104
+#: ../../content/migration-from-otrs-6.rst:103
 msgid "Znuny4OTRS-ExternalURLJump"
 msgstr "Znuny4OTRS-ExternalURLJump"
 
-#: ../../content/migration-from-otrs-6.rst:105
+#: ../../content/migration-from-otrs-6.rst:104
 msgid "Znuny4OTRS-QuickClose"
 msgstr "Znuny4OTRS-QuickClose"
 
-#: ../../content/migration-from-otrs-6.rst:106
+#: ../../content/migration-from-otrs-6.rst:105
 msgid "Znuny4OTRS-AutoCheckbox"
 msgstr "Znuny4OTRS-AutoCheckbox"
 
-#: ../../content/migration-from-otrs-6.rst:107
+#: ../../content/migration-from-otrs-6.rst:106
 msgid "OTRSSystemConfigurationHistory"
 msgstr "OTRSSystemConfigurationHistory"
 
-#: ../../content/migration-from-otrs-6.rst:111
+#: ../../content/migration-from-otrs-6.rst:110
 msgid "Step 2: Preparing the new OTOBO system and server"
 msgstr "Passo 2: Preparando o novo sistema e servidor OTOBO"
 
-#: ../../content/migration-from-otrs-6.rst:113
+#: ../../content/migration-from-otrs-6.rst:112
 #, fuzzy
 msgid ""
 "After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -"
@@ -2209,13 +2209,13 @@ msgstr ""
 "configuração ``SecureMode``. Agora efetue login no servidor como usuário "
 "``root`` e execute os seguintes comandos:"
 
-#: ../../content/migration-from-otrs-6.rst:123
+#: ../../content/migration-from-otrs-6.rst:122
 msgid ""
 "When OTOBO is running in Docker, you just need to stop the Docker container "
 "``otobo_daemon_1``:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:132
+#: ../../content/migration-from-otrs-6.rst:131
 msgid ""
 "It is recommended to run a backup of the whole OTOBO system at this point. "
 "If something goes wrong during migration, you will then not have to repeat "
@@ -2226,17 +2226,17 @@ msgstr ""
 "algo der errado durante a migração, você não precisará repetir todo o "
 "processo de instalação, mas poderá importar o backup para uma nova migração."
 
-#: ../../content/migration-from-otrs-6.rst:137
+#: ../../content/migration-from-otrs-6.rst:136
 msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
 msgstr "Nós aconselhamos a ler o capitulo OTOBO :doc:`backup-restore`."
 
-#: ../../content/migration-from-otrs-6.rst:141
+#: ../../content/migration-from-otrs-6.rst:140
 #, fuzzy
 msgid ""
 "Install sshpass and rsysnc if you want to migrate OTRS from another server"
 msgstr "Instale o sshpass se desejar migrar o OTRS de outro servidor"
 
-#: ../../content/migration-from-otrs-6.rst:143
+#: ../../content/migration-from-otrs-6.rst:142
 #, fuzzy
 msgid ""
 "The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh. "
@@ -2247,20 +2247,20 @@ msgstr ""
 "ssh. Faça logon no servidor como usuário ``root`` e execute um dos seguintes "
 "comandos:"
 
-#: ../../content/migration-from-otrs-6.rst:166
+#: ../../content/migration-from-otrs-6.rst:165
 msgid "The same thing must be done for *rsync* when it isn't available yet."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:169
+#: ../../content/migration-from-otrs-6.rst:168
 msgid "Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:171
+#: ../../content/migration-from-otrs-6.rst:170
 msgid ""
 "In this section, we assume that */opt/otrs* is available on the Docker host."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:173
+#: ../../content/migration-from-otrs-6.rst:172
 msgid ""
 "In the case when the web application OTOBO runs inside the container "
 "``otobo_web_1``, OTOBO generally cannot access directories outside the "
@@ -2269,35 +2269,35 @@ msgid ""
 "possibilities:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:177
+#: ../../content/migration-from-otrs-6.rst:176
 msgid "copy */opt/otrs* into an existing volume"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:178
+#: ../../content/migration-from-otrs-6.rst:177
 msgid "mount */opt/otrs* as an additional volume"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:180
+#: ../../content/migration-from-otrs-6.rst:179
 msgid "Let's concentrate on option **a.** here."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:182
+#: ../../content/migration-from-otrs-6.rst:181
 msgid ""
 "For safe copying, we use ``rsync``. But first we need to find out the "
 "correct target."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:190
+#: ../../content/migration-from-otrs-6.rst:189
 msgid ""
 "This copied directory will be available as */opt/otobo/tmp/otrs* within the "
 "container."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:193
+#: ../../content/migration-from-otrs-6.rst:192
 msgid "Step 3: Preparing the OTRS / ((OTRS)) Community Edition system"
 msgstr "Passo 3: Preparando o OTRS / ((OTRS)) Community Edition system"
 
-#: ../../content/migration-from-otrs-6.rst:197
+#: ../../content/migration-from-otrs-6.rst:196
 msgid ""
 "Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition "
 "system, too. Yes, we do not touch any OTRS data during the migration, but at "
@@ -2308,7 +2308,7 @@ msgstr ""
 "migração, mas às vezes uma entrada incorreta é suficiente para causar "
 "problemas."
 
-#: ../../content/migration-from-otrs-6.rst:201
+#: ../../content/migration-from-otrs-6.rst:200
 msgid ""
 "Now we are ready for the migration. First of all we need to make sure that "
 "no more tickets are processed and no users log on to OTRS:"
@@ -2316,32 +2316,33 @@ msgstr ""
 "Agora estamos prontos para a migração. Antes de tudo, precisamos garantir "
 "que nenhum ticket seja processado e que nenhum usuário efetue logon no OTRS:"
 
-#: ../../content/migration-from-otrs-6.rst:204
+#: ../../content/migration-from-otrs-6.rst:203
+#, fuzzy
 msgid ""
-"Please login to the OTOBO Admin Area ``Admin ->  System Maintenance`` and "
+"Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and "
 "add a new system maintenance slot for a few hours. After that, delete all "
-"agent and user sessions (``Admin ->  Sessions``) and logout yourself."
+"agent and user sessions (``Admin ->  Sessions``) and log out."
 msgstr ""
 "Faça login na Área de administração do OTOBO ``Admin ->  System "
 "Maintenance`` e adicione um novo registro de manutenção do sistema por "
 "algumas horas. Depois disso, exclua todas as sessões de agente e usuário "
 "(``Admin ->  Sessions``) e efetue logout."
 
-#: ../../content/migration-from-otrs-6.rst:208
+#: ../../content/migration-from-otrs-6.rst:207
 msgid "Stop All Relevant Services and the OTRS Daemon"
 msgstr "Interromper todos os serviços relevantes e o Daemon OTRS"
 
-#: ../../content/migration-from-otrs-6.rst:210
+#: ../../content/migration-from-otrs-6.rst:209
 #, fuzzy
 msgid "Please make sure there are no running services or cron jobs."
 msgstr "Verifique se não há mais serviços em execução ou trabalhos cron."
 
-#: ../../content/migration-from-otrs-6.rst:225
+#: ../../content/migration-from-otrs-6.rst:224
 #, fuzzy
 msgid "Step 4: Perform the Migration!"
 msgstr "Passo 4: Inicie a migração!"
 
-#: ../../content/migration-from-otrs-6.rst:227
+#: ../../content/migration-from-otrs-6.rst:226
 msgid ""
 "Please use the web migration tool at http://localhost/otobo/migration.pl "
 "(replace \"localhost\" with your OTOBO hostname) and follow the process."
@@ -2350,13 +2351,13 @@ msgstr ""
 "migration.pl (substitua \"localhost\" pelo seu hostname OTOBO) e siga o "
 "processo."
 
-#: ../../content/migration-from-otrs-6.rst:232
+#: ../../content/migration-from-otrs-6.rst:231
 msgid ""
 "If OTOBO runs inside a Docker container, specify *localhost* for OTRS server "
 "and */opt/otobo/tmp/otrs* as the OTRS home directory."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:236
+#: ../../content/migration-from-otrs-6.rst:235
 msgid ""
 "In the Docker case, a local database won't be reachable via ``127.0.0.1`` "
 "from within the Docker container. Pick one of the IP-addresses reported by "
@@ -2367,7 +2368,7 @@ msgid ""
 "SHOW VIEW ON otrs.* TO 'otrs_migration'@'%'``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:244
+#: ../../content/migration-from-otrs-6.rst:243
 msgid ""
 "When the migration is complete, please take your time and test the entire "
 "system. Once you have decided that the migration was successful and that you "
@@ -2377,36 +2378,36 @@ msgstr ""
 "Depois de decidir que a migração foi bem-sucedida e que você deseja usar o "
 "OTOBO a partir de agora, inicie o Daemon OTOBO:"
 
-#: ../../content/migration-from-otrs-6.rst:254
+#: ../../content/migration-from-otrs-6.rst:253
 msgid "In the docker case:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:262
+#: ../../content/migration-from-otrs-6.rst:261
 msgid "Step 5: After Successful Migration!"
 msgstr "Passo 5: Após uma migração bem-sucedida!"
 
-#: ../../content/migration-from-otrs-6.rst:264
+#: ../../content/migration-from-otrs-6.rst:263
 #, fuzzy
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
 msgstr "Desinstale *sshpass* se você não precisar mais."
 
-#: ../../content/migration-from-otrs-6.rst:265
+#: ../../content/migration-from-otrs-6.rst:264
 msgid "Drop the databases user dedicated to the migration if you created one."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:266
+#: ../../content/migration-from-otrs-6.rst:265
 msgid "Have fun with OTOBO!"
 msgstr "Divirta-se com o OTOBO!"
 
-#: ../../content/migration-from-otrs-6.rst:270
+#: ../../content/migration-from-otrs-6.rst:269
 msgid "Step 6: Known Migration Problems"
 msgstr "Passo 6: Problemas conhecidos de migração"
 
-#: ../../content/migration-from-otrs-6.rst:273
+#: ../../content/migration-from-otrs-6.rst:272
 msgid "1. Login after migration not possible"
 msgstr "1. O login após a migração não é possível"
 
-#: ../../content/migration-from-otrs-6.rst:275
+#: ../../content/migration-from-otrs-6.rst:274
 msgid ""
 "During our migration tests, the browser used for the migration sometimes had "
 "problems. After restarting the browser, this problem usually was solved. "
@@ -2418,25 +2419,25 @@ msgstr ""
 "geralmente era resolvido. Com o Safari, às vezes era necessário excluir "
 "manualmente a sessão antiga do OTRS."
 
-#: ../../content/migration-from-otrs-6.rst:279
+#: ../../content/migration-from-otrs-6.rst:278
 msgid ""
-"2. Final page of the migration has strange layout due to missing CSS files"
+"2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:281
+#: ../../content/migration-from-otrs-6.rst:280
 msgid ""
 "This can happen when the setting ScriptAlias has a non-standard value. The "
-"migration simple substitutes otrs for otobo. This might lead to the effect "
+"migration simply substitutes otrs for otobo. This might lead to the effect "
 "that the CSS and JavaScript can no longer be retrieved in OTOBO. When that "
-"happens, please check the settings in Kernel/Config.pm and revert them to "
+"happens, please check the settings in *Kernel/Config.pm* and revert them to "
 "sane values."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:286
+#: ../../content/migration-from-otrs-6.rst:285
 msgid "Step 7: Manual Migration Tasks and Changes"
 msgstr "Etapa 7: Tarefas de migração manual e alterações"
 
-#: ../../content/migration-from-otrs-6.rst:288
+#: ../../content/migration-from-otrs-6.rst:287
 msgid ""
 "With OTOBO 10 a new default password policy for agent and customer users is "
 "in effect, if local authentication is used. The password policy rules can be "
@@ -2449,61 +2450,61 @@ msgstr ""
 "(``PreferencesGroups###Password`` and "
 "``CustomerPersonalPreference###Password``)."
 
-#: ../../content/migration-from-otrs-6.rst:291
+#: ../../content/migration-from-otrs-6.rst:290
 msgid "Password Policy Rule"
 msgstr "Regra de política de senha"
 
-#: ../../content/migration-from-otrs-6.rst:291
+#: ../../content/migration-from-otrs-6.rst:290
 msgid "Default"
 msgstr "Padrão"
 
-#: ../../content/migration-from-otrs-6.rst:293
+#: ../../content/migration-from-otrs-6.rst:292
 msgid "``PasswordMinSize``"
 msgstr "``PasswordMinSize``"
 
-#: ../../content/migration-from-otrs-6.rst:293
+#: ../../content/migration-from-otrs-6.rst:292
 msgid "8"
 msgstr "8"
 
-#: ../../content/migration-from-otrs-6.rst:295
+#: ../../content/migration-from-otrs-6.rst:294
 msgid "``PasswordMin2Lower2UpperCharacters``"
 msgstr "``PasswordMin2Lower2UpperCharacters``"
 
-#: ../../content/migration-from-otrs-6.rst:295
-#: ../../content/migration-from-otrs-6.rst:297
-#: ../../content/migration-from-otrs-6.rst:305
+#: ../../content/migration-from-otrs-6.rst:294
+#: ../../content/migration-from-otrs-6.rst:296
+#: ../../content/migration-from-otrs-6.rst:304
 msgid "Yes"
 msgstr "Sim"
 
-#: ../../content/migration-from-otrs-6.rst:297
+#: ../../content/migration-from-otrs-6.rst:296
 msgid "``PasswordNeedDigit``"
 msgstr "``PasswordNeedDigit``"
 
-#: ../../content/migration-from-otrs-6.rst:299
+#: ../../content/migration-from-otrs-6.rst:298
 msgid "``PasswordHistory``"
 msgstr "``PasswordHistory``"
 
-#: ../../content/migration-from-otrs-6.rst:299
+#: ../../content/migration-from-otrs-6.rst:298
 msgid "10"
 msgstr "10"
 
-#: ../../content/migration-from-otrs-6.rst:301
+#: ../../content/migration-from-otrs-6.rst:300
 msgid "``PasswordTTL``"
 msgstr "``PasswordTTL``"
 
-#: ../../content/migration-from-otrs-6.rst:301
+#: ../../content/migration-from-otrs-6.rst:300
 msgid "30 days"
 msgstr "30 dias"
 
-#: ../../content/migration-from-otrs-6.rst:303
+#: ../../content/migration-from-otrs-6.rst:302
 msgid "``PasswordWarnBeforeExpiry``"
 msgstr "``PasswordWarnBeforeExpiry``"
 
-#: ../../content/migration-from-otrs-6.rst:303
+#: ../../content/migration-from-otrs-6.rst:302
 msgid "5 days"
 msgstr "5 dias"
 
-#: ../../content/migration-from-otrs-6.rst:305
+#: ../../content/migration-from-otrs-6.rst:304
 msgid "``PasswordChangeAfterFirstLogin``"
 msgstr "``PasswordChangeAfterFirstLogin``"
 
@@ -2512,9 +2513,10 @@ msgid "Performance Tuning"
 msgstr "Ajuste de desempenho"
 
 #: ../../content/performance-tuning.rst:14
+#, fuzzy
 msgid ""
-"There is a list of performance enhancing techniques for your OTOBO "
-"installation, including configuration, coding, memory use, and more."
+"This is a list of performance enhancing techniques for your OTOBO "
+"installation. The topics include configuration, coding, memory use, and more."
 msgstr ""
 "Há uma lista de técnicas de aprimoramento de desempenho para a instalação do "
 "OTOBO, incluindo configuração, codificação, uso de memória e muito mais."
@@ -2659,10 +2661,10 @@ msgid "``Ticket::SearchIndex::Filters``"
 msgstr "``Ticket::SearchIndex::Filters``"
 
 #: ../../content/performance-tuning.rst:76
-msgid "Full-text index regular expression filters to remove parts of the text."
+msgid ""
+"Filters based on regular expressions exclude parts of the original text from "
+"the full-text index."
 msgstr ""
-"Filtros de expressão regular de índice de texto completo para remover partes "
-"do texto."
 
 #: ../../content/performance-tuning.rst:81
 msgid "``Ticket::SearchIndex::Filters`` Setting"
@@ -2832,14 +2834,15 @@ msgid "Disk Allocation"
 msgstr "Alocação de disco"
 
 #: ../../content/performance-tuning.rst:135
+#, fuzzy
 msgid ""
-"During the run-time of the service, Elasticsearch inspects the available "
-"disk space and therefore decides whether to allocate new shards to the "
-"related cluster node or even relocate shards away from that particular node. "
-"Such behavior will be controlled by the current disk capacity and can be "
-"configured in configuration file ``elasticsearch.yml``. Enclosed are some "
-"important configurations, that come with good default values, but might be "
-"important:"
+"While running the service, Elasticsearch inspects the available disk space. "
+"Based on the result, it decides whether to allocate new shards to a cluster "
+"node. In some cases it even relocates shards away from a node. This behavior "
+"is determined by the current disk capacity. It can be configured by settings "
+"in the configuration file *elasticsearch.yml*. Here are some relevant "
+"configuration settings. They come with good default values, but might be "
+"important in trouble shooting."
 msgstr ""
 "Durante o tempo de execução do serviço, o Elasticsearch inspeciona o espaço "
 "em disco disponível e, portanto, decide se deve alocar novos shards para o "
@@ -2849,45 +2852,46 @@ msgstr ""
 "yml``. Incluídas estão algumas configurações importantes, que vêm com bons "
 "valores padrão, mas podem ser importantes:"
 
-#: ../../content/performance-tuning.rst:138
+#: ../../content/performance-tuning.rst:142
 msgid "``cluster.routing.allocation.disk.watermark.low``"
 msgstr "``cluster.routing.allocation.disk.watermark.low``"
 
-#: ../../content/performance-tuning.rst:138
+#: ../../content/performance-tuning.rst:141
+#, fuzzy
 msgid ""
-"Default value of 85%. If this limit is exceeded, Elasticsearch will not "
-"allocate more shards to the related cluster node. The operation of that node "
-"is not influenced and data can still be indexed and searched."
+"Default value of 85%. When this limit is exceeded, Elasticsearch will no "
+"longer allocate more shards to the related cluster node. The operation of "
+"that node is not influenced and data can still be indexed and searched."
 msgstr ""
 "Valor padrão de 85%. Se esse limite for excedido, o Elasticsearch não "
 "alocará mais shards para o nó do cluster relacionado. A operação desse nó "
 "não é influenciada e os dados ainda podem ser indexados e pesquisados."
 
-#: ../../content/performance-tuning.rst:141
+#: ../../content/performance-tuning.rst:145
 msgid "``cluster.routing.allocation.disk.watermark.high``"
 msgstr "``cluster.routing.allocation.disk.watermark.high``"
 
-#: ../../content/performance-tuning.rst:141
+#: ../../content/performance-tuning.rst:145
+#, fuzzy
 msgid ""
-"Default value of 90%. If this limit is exceeded, Elasticsearch will try to "
-"relocate existing shards to other nodes (if possible), that have enough "
-"space available."
+"Default value of 90%. When this limit is exceeded, Elasticsearch will try to "
+"relocate existing shards to other nodes that have enough space available."
 msgstr ""
 "Valor padrão de 90%. Se esse limite for excedido, o Elasticsearch tentará "
 "realocar os shards existentes para outros nós (se possível), com espaço "
 "suficiente disponível."
 
-#: ../../content/performance-tuning.rst:144
+#: ../../content/performance-tuning.rst:149
 msgid "``cluster.routing.allocation.disk.watermark.flood_stage``"
 msgstr "``cluster.routing.allocation.disk.watermark.flood_stage``"
 
-#: ../../content/performance-tuning.rst:144
+#: ../../content/performance-tuning.rst:148
+#, fuzzy
 msgid ""
-"Default value of 95%. If this limit is exceeded, Elasticsearch will update "
-"the configuration of all indices to read-only index blocks ``index.blocks."
-"read_only_allow_delete``, that have at least one shard allocated to the "
-"related cluster node. Since then, it is not possible to index new data to "
-"such indices and restricted to searches and delete actions."
+"Default value of 95%. When this limit is exceeded, Elasticsearch will update "
+"the configuration of all indices, that have at least one shard allocated to "
+"the related cluster node, to read-only index blocks. Specifically, they are "
+"flagged with ``index.blocks.read_only_allow_delete``."
 msgstr ""
 "Valor padrão de 95%. Se esse limite for excedido, o Elasticsearch atualizará "
 "a configuração de todos os índices para blocos de índice somente leitura "
@@ -2896,7 +2900,13 @@ msgstr ""
 "indexar novos dados para esses índices e restringir a pesquisas e excluir "
 "ações."
 
-#: ../../content/performance-tuning.rst:148
+#: ../../content/performance-tuning.rst:149
+msgid ""
+"After that update, it is no longer possible to index new data to such "
+"indices. The indexes are restricted to searches and to delete actions only."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:153
 msgid ""
 "If the flood stage was exceeded and certain indices are configured to read-"
 "only mode, such configuration *will not* automatically be changed by "
@@ -2910,7 +2920,7 @@ msgstr ""
 "espaço livre suficiente novamente devido a ações manuais, será necessário "
 "alterar a configuração novamente para o modo normal manualmente."
 
-#: ../../content/performance-tuning.rst:150
+#: ../../content/performance-tuning.rst:155
 msgid ""
 "For more information about disk watermarks and disk-based shard allocation, "
 "please follow `the official documentation <https://www.elastic.co/guide/en/"
@@ -2920,11 +2930,11 @@ msgstr ""
 "com base em disco, acesse `the official documentation <https://www.elastic."
 "co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__."
 
-#: ../../content/performance-tuning.rst:154
+#: ../../content/performance-tuning.rst:159
 msgid "Article Storage"
 msgstr "Armazenamento de artigos"
 
-#: ../../content/performance-tuning.rst:156
+#: ../../content/performance-tuning.rst:161
 msgid ""
 "There are two different back end modules for the article storage of phone, "
 "email and internal articles. The used article storage can be configured in "
@@ -2935,13 +2945,13 @@ msgstr ""
 "pode ser configurado na configuração ``Ticket::Article::Backend::MIMEBase::"
 "ArticleStorage``."
 
-#: ../../content/performance-tuning.rst:163
+#: ../../content/performance-tuning.rst:168
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB``"
 msgstr ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB``"
 
-#: ../../content/performance-tuning.rst:159
+#: ../../content/performance-tuning.rst:164
 msgid ""
 "This default module will store attachments in the database. It also works "
 "with multiple front end servers, but requires much storage space in the "
@@ -2951,17 +2961,17 @@ msgstr ""
 "vários servidores front-end, mas requer muito espaço de armazenamento no "
 "banco de dados."
 
-#: ../../content/performance-tuning.rst:163
+#: ../../content/performance-tuning.rst:168
 msgid "Don't use this with large setups."
 msgstr "Não use isso com instalações grandes."
 
-#: ../../content/performance-tuning.rst:170
+#: ../../content/performance-tuning.rst:175
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS``"
 msgstr ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS``"
 
-#: ../../content/performance-tuning.rst:166
+#: ../../content/performance-tuning.rst:171
 msgid ""
 "Use this module to store attachments on the local file system. It is fast, "
 "but if you have multiple front end servers, you must make sure the file "
@@ -2973,11 +2983,11 @@ msgstr ""
 "sistema de arquivos é compartilhado entre os servidores. Coloque-o em um "
 "compartilhamento NFS ou, de preferência, em uma SAN ou solução semelhante."
 
-#: ../../content/performance-tuning.rst:170
+#: ../../content/performance-tuning.rst:175
 msgid "Recommended for large setups."
 msgstr "Recomendado para grandes instalações."
 
-#: ../../content/performance-tuning.rst:172
+#: ../../content/performance-tuning.rst:177
 msgid ""
 "You can switch from one back end to the other on the fly. You can switch the "
 "back end in the system configuration, and then run this command line utility "
@@ -2989,12 +2999,12 @@ msgstr ""
 "utilitário de linha de comando para colocar os artigos do banco de dados no "
 "sistema de arquivos ou vice-versa:"
 
-#: ../../content/performance-tuning.rst:178
+#: ../../content/performance-tuning.rst:183
 msgid "You can use the ``--target`` option to specify the target back end."
 msgstr ""
 "Você pode usar o ``--target`` opção para especificar o backend de destino."
 
-#: ../../content/performance-tuning.rst:182
+#: ../../content/performance-tuning.rst:187
 msgid ""
 "The entire process can take considerable time to run, depending on the "
 "number of articles you have and the available CPU power and/or network "
@@ -3004,7 +3014,7 @@ msgstr ""
 "dependendo do número de artigos que você possui e da energia da CPU "
 "disponível e / ou capacidade da rede."
 
-#: ../../content/performance-tuning.rst:184
+#: ../../content/performance-tuning.rst:189
 msgid ""
 "If you want to keep old attachments in the database, you can activate the "
 "system configuration option ``Ticket::Article::Backend::MIMEBase::"
@@ -3014,11 +3024,11 @@ msgstr ""
 "de configuração do sistema ``Ticket::Article::Backend::MIMEBase::"
 "CheckAllStorageBackends`` para garantir que o OTOBO ainda os encontre."
 
-#: ../../content/performance-tuning.rst:188
+#: ../../content/performance-tuning.rst:193
 msgid "Archiving Tickets"
 msgstr "Arquivando Tickets"
 
-#: ../../content/performance-tuning.rst:190
+#: ../../content/performance-tuning.rst:195
 msgid ""
 "As OTOBO can be used as an audit-proof system, deleting closed tickets may "
 "not be a good idea. Therefore there is a feature that allows you to archive "
@@ -3028,7 +3038,7 @@ msgstr ""
 "tickets fechados pode não ser uma boa ideia. Portanto, há um recurso que "
 "permite arquivar tickets."
 
-#: ../../content/performance-tuning.rst:192
+#: ../../content/performance-tuning.rst:197
 msgid ""
 "Tickets that match certain criteria can be marked as archived. These tickets "
 "are not accessed if you do a regular ticket search or run a generic agent "
@@ -3043,36 +3053,36 @@ msgstr ""
 "os tickets mais recentes são levados em consideração ao usar o OTOBO. Isso "
 "pode resultar em um enorme ganho de desempenho em sistemas grandes."
 
-#: ../../content/performance-tuning.rst:194
+#: ../../content/performance-tuning.rst:199
 msgid "To use the archive feature:"
 msgstr "Para usar o recurso de arquivamento:"
 
-#: ../../content/performance-tuning.rst:196
+#: ../../content/performance-tuning.rst:201
 msgid ""
 "Activate the ``Ticket::ArchiveSystem`` setting in the system configuration."
 msgstr ""
 "Ative a configuração ``Ticket::ArchiveSystem``nas Configurações de Sistema."
 
-#: ../../content/performance-tuning.rst:197
+#: ../../content/performance-tuning.rst:202
 msgid "Define a generic agent job:"
 msgstr "Defina uma tarefa do agente genérico:"
 
-#: ../../content/performance-tuning.rst:199
+#: ../../content/performance-tuning.rst:204
 msgid "Click on the *Add Job* button in the *Generic Agent* screen."
 msgstr "Clique no botão *Adicionar Tarega* na tela *Atendente genérico*."
 
-#: ../../content/performance-tuning.rst:200
+#: ../../content/performance-tuning.rst:205
 msgid "*Job Settings*: provide a name for the archiving job."
 msgstr ""
 "*Configurações da tarefa* forneça um nome para o trabalho de arquivamento."
 
-#: ../../content/performance-tuning.rst:201
+#: ../../content/performance-tuning.rst:206
 msgid "*Automatic Execution*: select proper options to schedule this job."
 msgstr ""
 "*Execução automática*: selecione as opções apropriadas para agendar essa "
 "tarefa."
 
-#: ../../content/performance-tuning.rst:202
+#: ../../content/performance-tuning.rst:207
 msgid ""
 "*Select Tickets*: it might be a good idea to only archive those tickets in a "
 "closed state that have been closed a few months before."
@@ -3080,7 +3090,7 @@ msgstr ""
 "*Selecionar chamados*: Pode ser uma boa ideia arquivar apenas os tickets em "
 "um estado fechado que foram fechados há alguns meses antes."
 
-#: ../../content/performance-tuning.rst:203
+#: ../../content/performance-tuning.rst:208
 msgid ""
 "*Update/Add Ticket Attributes*: set the field *Archive selected tickets* to "
 "*archive tickets*."
@@ -3088,11 +3098,11 @@ msgstr ""
 "*Alterar/Adicionar Atributos do Chamado*: defina o campo*Arquivar chamados "
 "selecionados* to *Arquivar os chamados*."
 
-#: ../../content/performance-tuning.rst:204
+#: ../../content/performance-tuning.rst:209
 msgid "Save the job at the end of the page."
 msgstr "Salve a tarefa no final da página."
 
-#: ../../content/performance-tuning.rst:205
+#: ../../content/performance-tuning.rst:210
 msgid ""
 "Click on the *Run this task* link in the overview table to see the affected "
 "tickets."
@@ -3100,16 +3110,16 @@ msgstr ""
 "Clique no link * Executar esta Tarefa * na tabela de visão geral para ver os "
 "tickets afetados."
 
-#: ../../content/performance-tuning.rst:206
+#: ../../content/performance-tuning.rst:211
 msgid "Click on the *Run Job* button."
 msgstr "Clique no botão *Executar Tarefa*."
 
-#: ../../content/performance-tuning.rst:210
+#: ../../content/performance-tuning.rst:215
 msgid "Up to 5000 tickets can be modified by running this job manually."
 msgstr ""
 "Até 5000 tickets podem ser modificados executando esta tarefa manualmente."
 
-#: ../../content/performance-tuning.rst:212
+#: ../../content/performance-tuning.rst:217
 msgid ""
 "When you search for tickets, the system default is to search tickets which "
 "are not archived."
@@ -3117,29 +3127,29 @@ msgstr ""
 "Ao procurar tickets, o padrão do sistema é procurar tickets que não estão "
 "arquivados."
 
-#: ../../content/performance-tuning.rst:214
+#: ../../content/performance-tuning.rst:219
 msgid "To search for archived tickets:"
 msgstr "Para procurar tickets arquivados:"
 
-#: ../../content/performance-tuning.rst:216
+#: ../../content/performance-tuning.rst:221
 msgid "Open the ticket search screen."
 msgstr "Abra a tela de pesquisa de tickets."
 
-#: ../../content/performance-tuning.rst:217
+#: ../../content/performance-tuning.rst:222
 msgid "Set *Archive search* to *Unarchived tickets* or *All tickets*."
 msgstr ""
 "Defina *Procurar Arquivo* como *Tickets não arquivados* ou * Todos os "
 "tickets *."
 
-#: ../../content/performance-tuning.rst:218
+#: ../../content/performance-tuning.rst:223
 msgid "Perform the search."
 msgstr "Realize a pesquisa."
 
-#: ../../content/performance-tuning.rst:222
+#: ../../content/performance-tuning.rst:227
 msgid "Caching"
 msgstr "Armazenamento em cache"
 
-#: ../../content/performance-tuning.rst:224
+#: ../../content/performance-tuning.rst:229
 msgid ""
 "A fast cache module is a great help in terms of performance. We recommend to "
 "use a Redis Cache server or to create a ramdisk."
@@ -3147,15 +3157,15 @@ msgstr ""
 "Um módulo de cache rápido é uma grande ajuda em termos de desempenho. "
 "Recomendamos usar um servidor Redis Cache ou criar um ramdisk."
 
-#: ../../content/performance-tuning.rst:227
+#: ../../content/performance-tuning.rst:232
 msgid "Install a Redis Cache Server"
 msgstr "Instale um servidor de cache Redis"
 
-#: ../../content/performance-tuning.rst:229
+#: ../../content/performance-tuning.rst:234
 msgid "Install Redis Server"
 msgstr "Instale servidor Redis"
 
-#: ../../content/performance-tuning.rst:231
+#: ../../content/performance-tuning.rst:236
 msgid ""
 "First of all you need to install the newest Redis Server. The easiest way is "
 "to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as "
@@ -3165,11 +3175,11 @@ msgstr ""
 "mais fácil é `setup Redis <https://redis.io/topics/quickstart>`__ no mesmo "
 "host que OTOBO esta instalado à sua porta padrão."
 
-#: ../../content/performance-tuning.rst:235
+#: ../../content/performance-tuning.rst:240
 msgid "Install Perl module Redis or Redis::Fast"
 msgstr "Instale o módulo Perl Redis ou Redis::Fast"
 
-#: ../../content/performance-tuning.rst:237
+#: ../../content/performance-tuning.rst:242
 #, fuzzy
 msgid ""
 "You can choose which Redis module to use: `Redis` or `Redis::Fast` (which is "
@@ -3180,11 +3190,11 @@ msgstr ""
 "compatível com `Redis` mas 2 vezes mais rápido**). Por favor use nosso "
 "``otobo.CheckModules.pl --list``escolher o pacote certo para você:"
 
-#: ../../content/performance-tuning.rst:244
+#: ../../content/performance-tuning.rst:249
 msgid "Configure OTOBO for Redis"
 msgstr "Configurar OTOBO para Redis"
 
-#: ../../content/performance-tuning.rst:246
+#: ../../content/performance-tuning.rst:251
 msgid ""
 "Please use the OTOBO `SysConfig` (Admin -> System Configuration) to "
 "configure OTOBO properly:"
@@ -3192,11 +3202,11 @@ msgstr ""
 "Por favor, use o OTOBO `SysConfig` (Administração-> Configuração do sistema) "
 "para configurar o OTOBO corretamente:"
 
-#: ../../content/performance-tuning.rst:259
+#: ../../content/performance-tuning.rst:264
 msgid "RamDisk Caching"
 msgstr "Cache do RamDisk"
 
-#: ../../content/performance-tuning.rst:261
+#: ../../content/performance-tuning.rst:266
 msgid ""
 "OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make "
 "sure that this uses a high performance file system and storage. If you have "
@@ -3207,11 +3217,11 @@ msgstr ""
 "desempenho. Se você possui RAM suficiente, também pode tentar colocar este "
 "diretório em um ramdisk como este:"
 
-#: ../../content/performance-tuning.rst:271
+#: ../../content/performance-tuning.rst:276
 msgid "Add persistent mount point in ``/etc/fstab``."
 msgstr "Adicione ponto de montagem persistente no ``/etc/fstab``."
 
-#: ../../content/performance-tuning.rst:275
+#: ../../content/performance-tuning.rst:280
 msgid ""
 "This will be a non-permanent storage that will be lost on server reboot. All "
 "your sessions (if you store them in the file system) and your cache data "
@@ -3221,11 +3231,11 @@ msgstr ""
 "reinicialização do servidor. Todas as suas sessões (se você as armazenar no "
 "sistema de arquivos) e os dados do cache serão perdidos."
 
-#: ../../content/performance-tuning.rst:278
+#: ../../content/performance-tuning.rst:283
 msgid "Clustering"
 msgstr "Clustering"
 
-#: ../../content/performance-tuning.rst:280
+#: ../../content/performance-tuning.rst:285
 msgid ""
 "For very high loads, it can be required to operate OTOBO on a cluster of "
 "multiple front end servers. This is a complex task with many pitfalls. "
@@ -3518,6 +3528,16 @@ msgstr ""
 msgid "Step 3: Install the New Release"
 msgstr "Passo 1: Instalação do novo Sistema OTOBO"
 
+#: ../../content/updating.rst:65
+msgid ""
+"Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and "
+"unpack the source archive (for example, using ``tar``) into the directory ``/"
+"root/otobo-update``:"
+msgstr ""
+"Baixe a última versão do otobo em https://ftp.otobo.org/pub/otobo/. e "
+"descompacte o arquivo fonte (por exemplo, usando``tar``) dentro do diretório "
+"``/root/otobo-update``:"
+
 #: ../../content/updating.rst:77
 #, fuzzy
 msgid "Restore Old Configuration Files"
@@ -3584,12 +3604,12 @@ msgstr ""
 msgid "Updating OTOBO using Docker and Docker Compose"
 msgstr "Atualizando usando Docker e Docker Compose"
 
-#: ../../content/updating-docker.rst:19
+#: ../../content/updating-docker.rst:15
 #, fuzzy
 msgid "Updating to a new patch level release"
 msgstr "Atualizando para uma nova versão de nível de patch"
 
-#: ../../content/updating-docker.rst:21
+#: ../../content/updating-docker.rst:17
 #, fuzzy
 msgid ""
 "First make sure that in *.env* the images have either the tag `latest` or "
@@ -3598,19 +3618,19 @@ msgstr ""
 "Primeiro certifique-se de que em *.env* as imagens tenham a tag `latest` ou "
 "a versão desejada."
 
-#: ../../content/updating-docker.rst:40 ../../content/updating-docker.rst:67
+#: ../../content/updating-docker.rst:36 ../../content/updating-docker.rst:63
 msgid ""
 "After updating you need to reinstall all OTOBO packages and clear the cache."
 msgstr ""
 "Após a atualização, você precisa reinstalar todos os pacotes OTOBO e limpar "
 "o cache."
 
-#: ../../content/updating-docker.rst:50
+#: ../../content/updating-docker.rst:46
 #, fuzzy
 msgid "Force an update to or from a devel version"
 msgstr "Força uma atualização para uma versão devel"
 
-#: ../../content/updating-docker.rst:52
+#: ../../content/updating-docker.rst:48
 #, fuzzy
 msgid ""
 "Images of devel versions are not upgraded automatically. But the upgrade can "
@@ -3623,6 +3643,12 @@ msgstr ""
 "ser uma compilação local ou uma imagem do desenvolvimento do Docker Hub. "
 "Aqui está um exemplo usando a imagem devel para o branch OTOBO 10.1.x do "
 "Docker Hub."
+
+#~ msgid ""
+#~ "Full-text index regular expression filters to remove parts of the text."
+#~ msgstr ""
+#~ "Filtros de expressão regular de índice de texto completo para remover "
+#~ "partes do texto."
 
 #~ msgid "``docker system prune -a`` start over"
 #~ msgstr "recomeçar ``docker system prune -a``"

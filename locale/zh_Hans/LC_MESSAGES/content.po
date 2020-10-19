@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-19 00:34+0200\n"
+"POT-Creation-Date: 2020-10-20 00:34+0200\n"
 "PO-Revision-Date: 2020-10-14 07:14+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -283,11 +283,12 @@ msgstr "重启你的系统，重启后，确认一下``getenforce`` 命令返回
 msgid "Step 1: Unpack and Install OTOBO"
 msgstr "步骤1：打开OTOBO封装和安装"
 
-#: ../../content/installation.rst:61 ../../content/updating.rst:65
+#: ../../content/installation.rst:61
+#, fuzzy
 msgid ""
-"Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and "
-"unpack the source archive (for example, using ``tar``) into the directory ``/"
-"root/otobo-update``:"
+"Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. "
+"Unpack the source archive (for example, using ``tar``) into the directory ``/"
+"opt/otobo-install``:"
 msgstr ""
 "从https://ftp.otobo.org/pub/otobo/下载最新的OTOBO版本软件，打开封装文档（例如"
 "使用``tar``命令），并存到目录``/root/otobo-update``："
@@ -1988,21 +1989,15 @@ msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:82
 msgid ""
-"Apache has difficulties with running two independent applications under "
-"mod_perl on the same server. Therefore, if you installed OTOBO on the same "
-"server as your OTRS / ((OTRS)) Community Edition, disable mod_perl for OTOBO "
-"as long as both systems are running. To disable mod_perl for OTOBO, simply "
-"comment out the mod_perl part in the file */opt/otobo/scripts/apache2-httpd."
-"include.conf*. Alternatively, you can deactivate OTRS in the web server "
-"before migration."
+"Under Apache, there are pitfalls with running two independent applications "
+"under mod_perl on the same server. These pitfalls can be alleviated with the "
+"mod_perl setting ``PerlOptions +Parent``. This setting makes sure that the "
+"relevant application uses it's own dedicated Perl interpreter. Please check "
+"your Apache config files in the directory */etc/apache2/sites-enabled* and "
+"add the setting in case it is missing."
 msgstr ""
-"Apache难以在同一服务器上的mod_perl下运行两个独立的应用程序。因此，如果您将"
-"OTOBO与OTRS /（（OTRS））Community Edition安装在同一台服务器上，则只要两个系"
-"统都在运行，请禁用OTOBO的mod_perl。要禁用OTOBO的mod_perl，只需注释掉文件* / "
-"opt / otobo / scripts / apache2-httpd.include.conf *中的mod_perl部分。或者，"
-"您可以在迁移之前停用Web服务器中的OTRS。"
 
-#: ../../content/migration-from-otrs-6.rst:88
+#: ../../content/migration-from-otrs-6.rst:87
 msgid ""
 "After finishing the installation tutorial, please login to the OTOBO Admin "
 "Area ``Admin -> Packages`` to install all required OTOBO OPM packages."
@@ -2010,7 +2005,7 @@ msgstr ""
 "完成安装教程后，请登录到OTOBO管理员区域``Admin -> Packages`` ，安装所有需要的"
 "OTOBO OPM软件包。"
 
-#: ../../content/migration-from-otrs-6.rst:108
+#: ../../content/migration-from-otrs-6.rst:107
 msgid ""
 "The following OPM packages and OTRS \"Feature Addons\" need NOT and should "
 "NOT be installed, as these features are already available in the OTOBO "
@@ -2019,75 +2014,75 @@ msgstr ""
 "以下OPM软件包和OTRS“功能附加组件”不需要，也不应该安装，因为这些功能已在标准的"
 "OTOBO版本中提供了："
 
-#: ../../content/migration-from-otrs-6.rst:92
+#: ../../content/migration-from-otrs-6.rst:91
 msgid "OTRSHideShowDynamicField"
 msgstr "OTRSHideShowDynamicField"
 
-#: ../../content/migration-from-otrs-6.rst:93
+#: ../../content/migration-from-otrs-6.rst:92
 msgid "RotherOSSHideShowDynamicField"
 msgstr "RotherOSSHideShowDynamicField"
 
-#: ../../content/migration-from-otrs-6.rst:94
+#: ../../content/migration-from-otrs-6.rst:93
 msgid "TicketForms"
 msgstr "TicketForms"
 
-#: ../../content/migration-from-otrs-6.rst:95
+#: ../../content/migration-from-otrs-6.rst:94
 msgid "RotherOSS-LongEscalationPerformanceBoost"
 msgstr "RotherOSS-LongEscalationPerformanceBoost"
 
-#: ../../content/migration-from-otrs-6.rst:96
+#: ../../content/migration-from-otrs-6.rst:95
 msgid "Znuny4OTRS-AdvancedDynamicFields"
 msgstr "Znuny4OTRS - AdvancedDynamicFields"
 
-#: ../../content/migration-from-otrs-6.rst:97
+#: ../../content/migration-from-otrs-6.rst:96
 msgid "Znuny4OTRS-AutoSelect"
 msgstr "Znuny4OTRS-AutoSelect"
 
-#: ../../content/migration-from-otrs-6.rst:98
+#: ../../content/migration-from-otrs-6.rst:97
 msgid "Znuny4OTRS-EscalationSuspend"
 msgstr "Znuny4OTRS-EscalationSuspend"
 
-#: ../../content/migration-from-otrs-6.rst:99
+#: ../../content/migration-from-otrs-6.rst:98
 msgid "OTRSEscalationSuspend"
 msgstr "OTRSEscalationSuspend"
 
-#: ../../content/migration-from-otrs-6.rst:100
+#: ../../content/migration-from-otrs-6.rst:99
 msgid "OTRSDynamicFieldAttachment"
 msgstr "OTRSDynamicFieldAttachment"
 
-#: ../../content/migration-from-otrs-6.rst:101
+#: ../../content/migration-from-otrs-6.rst:100
 msgid "OTRSDynamicFieldDatabase"
 msgstr "OTRSDynamicFieldDatabase"
 
-#: ../../content/migration-from-otrs-6.rst:102
+#: ../../content/migration-from-otrs-6.rst:101
 msgid "OTRSDynamicFieldWebService"
 msgstr "OTRSDynamicFieldWebService"
 
-#: ../../content/migration-from-otrs-6.rst:103
+#: ../../content/migration-from-otrs-6.rst:102
 msgid "OTRSBruteForceAttackProtection"
 msgstr "OTRSBruteForceAttackProtection"
 
-#: ../../content/migration-from-otrs-6.rst:104
+#: ../../content/migration-from-otrs-6.rst:103
 msgid "Znuny4OTRS-ExternalURLJump"
 msgstr "Znuny4OTRS-ExternalURLJump"
 
-#: ../../content/migration-from-otrs-6.rst:105
+#: ../../content/migration-from-otrs-6.rst:104
 msgid "Znuny4OTRS-QuickClose"
 msgstr "Znuny4OTRS-QuickClose"
 
-#: ../../content/migration-from-otrs-6.rst:106
+#: ../../content/migration-from-otrs-6.rst:105
 msgid "Znuny4OTRS-AutoCheckbox"
 msgstr "Znuny4OTRS-AutoCheckbox"
 
-#: ../../content/migration-from-otrs-6.rst:107
+#: ../../content/migration-from-otrs-6.rst:106
 msgid "OTRSSystemConfigurationHistory"
 msgstr "OTRSSystemConfigurationHistory"
 
-#: ../../content/migration-from-otrs-6.rst:111
+#: ../../content/migration-from-otrs-6.rst:110
 msgid "Step 2: Preparing the new OTOBO system and server"
 msgstr "步骤 2：准备新的OTOBO系统和服务器"
 
-#: ../../content/migration-from-otrs-6.rst:113
+#: ../../content/migration-from-otrs-6.rst:112
 msgid ""
 "After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -"
 "> System Configuration`` and deactivate the config option ``SecureMode``. "
@@ -2096,13 +2091,13 @@ msgstr ""
 "安装OTOBO后，请再次登录到OTOBO管理员区域``Admin -> System Configuration``，然"
 "后停用配置选项“ SecureMode”。现在以``root''用户身份登录服务器并执行以下命令："
 
-#: ../../content/migration-from-otrs-6.rst:123
+#: ../../content/migration-from-otrs-6.rst:122
 msgid ""
 "When OTOBO is running in Docker, you just need to stop the Docker container "
 "``otobo_daemon_1``:"
 msgstr "当OTOBO在Docker下运行时，就可以停止Docker容器`otobo_daemon_1``："
 
-#: ../../content/migration-from-otrs-6.rst:132
+#: ../../content/migration-from-otrs-6.rst:131
 msgid ""
 "It is recommended to run a backup of the whole OTOBO system at this point. "
 "If something goes wrong during migration, you will then not have to repeat "
@@ -2112,16 +2107,16 @@ msgstr ""
 "建议此时运行整个OTOBO系统的备份。如果在迁移过程中出现问题，则不必重复整个安装"
 "过程，而可以导入备份以进行新的迁移。"
 
-#: ../../content/migration-from-otrs-6.rst:137
+#: ../../content/migration-from-otrs-6.rst:136
 msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
 msgstr "我们建议你阅读OTOBO：backup-restore`章节。"
 
-#: ../../content/migration-from-otrs-6.rst:141
+#: ../../content/migration-from-otrs-6.rst:140
 msgid ""
 "Install sshpass and rsysnc if you want to migrate OTRS from another server"
 msgstr "如果要从另一台服务器迁移OTRS，请安装sshpass和rsysnc"
 
-#: ../../content/migration-from-otrs-6.rst:143
+#: ../../content/migration-from-otrs-6.rst:142
 msgid ""
 "The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh. "
 "For installing ``sshpass``, please log in on the server as user ``root`` and "
@@ -2130,20 +2125,20 @@ msgstr ""
 "想要通过ssh复制文件，需要``sshpass''和``rsync''工具。要安装sshpass，请以root"
 "用户身份登录服务器并执行以下命令之一："
 
-#: ../../content/migration-from-otrs-6.rst:166
+#: ../../content/migration-from-otrs-6.rst:165
 msgid "The same thing must be done for *rsync* when it isn't available yet."
 msgstr "如果* rsysnc *不可用，则必须执行相同的操作。"
 
-#: ../../content/migration-from-otrs-6.rst:169
+#: ../../content/migration-from-otrs-6.rst:168
 msgid "Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*"
 msgstr "Docker：将* / opt / otrs *复制到卷* otobo_opt_otobo *"
 
-#: ../../content/migration-from-otrs-6.rst:171
+#: ../../content/migration-from-otrs-6.rst:170
 msgid ""
 "In this section, we assume that */opt/otrs* is available on the Docker host."
 msgstr "在本节中，我们假设Docker主机上有* / opt / otrs *。"
 
-#: ../../content/migration-from-otrs-6.rst:173
+#: ../../content/migration-from-otrs-6.rst:172
 msgid ""
 "In the case when the web application OTOBO runs inside the container "
 "``otobo_web_1``, OTOBO generally cannot access directories outside the "
@@ -2155,35 +2150,35 @@ msgstr ""
 "目录。但是有一个例外：可以访问作为卷装入到容器中的目录。这意味着迁移有两种可"
 "能："
 
-#: ../../content/migration-from-otrs-6.rst:177
+#: ../../content/migration-from-otrs-6.rst:176
 msgid "copy */opt/otrs* into an existing volume"
 msgstr "将* / opt / otrs *复制到现有的一个卷中"
 
-#: ../../content/migration-from-otrs-6.rst:178
+#: ../../content/migration-from-otrs-6.rst:177
 msgid "mount */opt/otrs* as an additional volume"
 msgstr "挂载* / opt / otrs *作为附加卷"
 
-#: ../../content/migration-from-otrs-6.rst:180
+#: ../../content/migration-from-otrs-6.rst:179
 msgid "Let's concentrate on option **a.** here."
 msgstr "在这里我们集中讨论选项** a.**。"
 
-#: ../../content/migration-from-otrs-6.rst:182
+#: ../../content/migration-from-otrs-6.rst:181
 msgid ""
 "For safe copying, we use ``rsync``. But first we need to find out the "
 "correct target."
 msgstr "为了安全复制，我们使用“ rsync”。但是首先我们需要找出正确的目标。"
 
-#: ../../content/migration-from-otrs-6.rst:190
+#: ../../content/migration-from-otrs-6.rst:189
 msgid ""
 "This copied directory will be available as */opt/otobo/tmp/otrs* within the "
 "container."
 msgstr "该复制的目录应该是容器中的* / opt / otobo / tmp / otrs *。"
 
-#: ../../content/migration-from-otrs-6.rst:193
+#: ../../content/migration-from-otrs-6.rst:192
 msgid "Step 3: Preparing the OTRS / ((OTRS)) Community Edition system"
 msgstr "步骤 3：准备OTRS / ((OTRS)) Community Edition系统"
 
-#: ../../content/migration-from-otrs-6.rst:197
+#: ../../content/migration-from-otrs-6.rst:196
 msgid ""
 "Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition "
 "system, too. Yes, we do not touch any OTRS data during the migration, but at "
@@ -2192,7 +2187,7 @@ msgstr ""
 "另外，你还要确保你的OTRS /（（OTRS））Community Edition系统具备有效的备份。是"
 "的，在迁移过程中我们不会修改任何OTRS数据，但有时各种错误会造成一些麻烦。"
 
-#: ../../content/migration-from-otrs-6.rst:201
+#: ../../content/migration-from-otrs-6.rst:200
 msgid ""
 "Now we are ready for the migration. First of all we need to make sure that "
 "no more tickets are processed and no users log on to OTRS:"
@@ -2200,29 +2195,30 @@ msgstr ""
 "现在我们已准备好进行迁移。首先，我们需要确保不再处理任何工单并且没有用户登录"
 "到OTRS："
 
-#: ../../content/migration-from-otrs-6.rst:204
+#: ../../content/migration-from-otrs-6.rst:203
+#, fuzzy
 msgid ""
-"Please login to the OTOBO Admin Area ``Admin ->  System Maintenance`` and "
+"Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and "
 "add a new system maintenance slot for a few hours. After that, delete all "
-"agent and user sessions (``Admin ->  Sessions``) and logout yourself."
+"agent and user sessions (``Admin ->  Sessions``) and log out."
 msgstr ""
 "请登录到OTOBO管理员区域 ``Admin ->  System Maintenance``，并插入几个小时的新"
 "系统维护。之后，删除所有话务员和用户的会话（“ Admin-> Sessions”），而后退出登"
 "陆。"
 
-#: ../../content/migration-from-otrs-6.rst:208
+#: ../../content/migration-from-otrs-6.rst:207
 msgid "Stop All Relevant Services and the OTRS Daemon"
 msgstr "停止所有相关服务和OTRS守护程序"
 
-#: ../../content/migration-from-otrs-6.rst:210
+#: ../../content/migration-from-otrs-6.rst:209
 msgid "Please make sure there are no running services or cron jobs."
 msgstr "请确保没有正在运行的服务或cron作业。"
 
-#: ../../content/migration-from-otrs-6.rst:225
+#: ../../content/migration-from-otrs-6.rst:224
 msgid "Step 4: Perform the Migration!"
 msgstr "步骤 4：进行迁移！"
 
-#: ../../content/migration-from-otrs-6.rst:227
+#: ../../content/migration-from-otrs-6.rst:226
 msgid ""
 "Please use the web migration tool at http://localhost/otobo/migration.pl "
 "(replace \"localhost\" with your OTOBO hostname) and follow the process."
@@ -2230,7 +2226,7 @@ msgstr ""
 "请使用http：//localhost/otobo/migration.pl上的Web迁移工具（用OTOBO主机名替"
 "换“ localhost”），然后按照此过程进行操作。"
 
-#: ../../content/migration-from-otrs-6.rst:232
+#: ../../content/migration-from-otrs-6.rst:231
 msgid ""
 "If OTOBO runs inside a Docker container, specify *localhost* for OTRS server "
 "and */opt/otobo/tmp/otrs* as the OTRS home directory."
@@ -2238,7 +2234,7 @@ msgstr ""
 "如果OTOBO在Docker容器中运行，请为OTRS服务器指定* localhost *，指定* / opt / "
 "otobo / tmp / otrs *作为OTRS主目录。"
 
-#: ../../content/migration-from-otrs-6.rst:236
+#: ../../content/migration-from-otrs-6.rst:235
 msgid ""
 "In the Docker case, a local database won't be reachable via ``127.0.0.1`` "
 "from within the Docker container. Pick one of the IP-addresses reported by "
@@ -2254,7 +2250,7 @@ msgstr ""
 "'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration'`` 和``GRANT SELECT, SHOW "
 "VIEW ON otrs.* TO 'otrs_migration'@'%'``。"
 
-#: ../../content/migration-from-otrs-6.rst:244
+#: ../../content/migration-from-otrs-6.rst:243
 msgid ""
 "When the migration is complete, please take your time and test the entire "
 "system. Once you have decided that the migration was successful and that you "
@@ -2263,35 +2259,35 @@ msgstr ""
 "迁移完成后，请花点时间测试整个系统。一旦确定迁移成功并且要从现在开始使用"
 "OTOBO，请启动OTOBO守护程序："
 
-#: ../../content/migration-from-otrs-6.rst:254
+#: ../../content/migration-from-otrs-6.rst:253
 msgid "In the docker case:"
 msgstr "在Docker情况下："
 
-#: ../../content/migration-from-otrs-6.rst:262
+#: ../../content/migration-from-otrs-6.rst:261
 msgid "Step 5: After Successful Migration!"
 msgstr "步骤 5：成功迁移后！"
 
-#: ../../content/migration-from-otrs-6.rst:264
+#: ../../content/migration-from-otrs-6.rst:263
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
 msgstr "如果不再需要，卸载 ``sshpass``。"
 
-#: ../../content/migration-from-otrs-6.rst:265
+#: ../../content/migration-from-otrs-6.rst:264
 msgid "Drop the databases user dedicated to the migration if you created one."
 msgstr "如果你为了迁移，创建了数据库用户，现在删除它。"
 
-#: ../../content/migration-from-otrs-6.rst:266
+#: ../../content/migration-from-otrs-6.rst:265
 msgid "Have fun with OTOBO!"
 msgstr "享受OTOBO带来的快乐吧！"
 
-#: ../../content/migration-from-otrs-6.rst:270
+#: ../../content/migration-from-otrs-6.rst:269
 msgid "Step 6: Known Migration Problems"
 msgstr "步骤 6：了解迁移的问题"
 
-#: ../../content/migration-from-otrs-6.rst:273
+#: ../../content/migration-from-otrs-6.rst:272
 msgid "1. Login after migration not possible"
 msgstr "1. 不能迁移后登陆系统"
 
-#: ../../content/migration-from-otrs-6.rst:275
+#: ../../content/migration-from-otrs-6.rst:274
 msgid ""
 "During our migration tests, the browser used for the migration sometimes had "
 "problems. After restarting the browser, this problem usually was solved. "
@@ -2301,28 +2297,30 @@ msgstr ""
 "在我们的迁移测试中，用于迁移的浏览器有时会出现问题。重新启动浏览器后，通常可"
 "以解决此问题。使用Safari，有时需要手动删除旧的OTRS会话。"
 
-#: ../../content/migration-from-otrs-6.rst:279
+#: ../../content/migration-from-otrs-6.rst:278
+#, fuzzy
 msgid ""
-"2. Final page of the migration has strange layout due to missing CSS files"
+"2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr "2. 由于缺少CSS文件，迁移的最终页面出现布局异常"
 
-#: ../../content/migration-from-otrs-6.rst:281
+#: ../../content/migration-from-otrs-6.rst:280
+#, fuzzy
 msgid ""
 "This can happen when the setting ScriptAlias has a non-standard value. The "
-"migration simple substitutes otrs for otobo. This might lead to the effect "
+"migration simply substitutes otrs for otobo. This might lead to the effect "
 "that the CSS and JavaScript can no longer be retrieved in OTOBO. When that "
-"happens, please check the settings in Kernel/Config.pm and revert them to "
+"happens, please check the settings in *Kernel/Config.pm* and revert them to "
 "sane values."
 msgstr ""
 "当ScriptAlias的配置不是标准值时，可能会发生这种情况。迁移简单地用otrs代替"
 "otobo可能会导致无法在OTOBO中检索CSS和JavaScript。发生这种情况时，请检查"
 "Kernel / Config.pm中的设置并将其恢复为合理的值。"
 
-#: ../../content/migration-from-otrs-6.rst:286
+#: ../../content/migration-from-otrs-6.rst:285
 msgid "Step 7: Manual Migration Tasks and Changes"
 msgstr "步骤 7：手工迁移的任务和修改"
 
-#: ../../content/migration-from-otrs-6.rst:288
+#: ../../content/migration-from-otrs-6.rst:287
 msgid ""
 "With OTOBO 10 a new default password policy for agent and customer users is "
 "in effect, if local authentication is used. The password policy rules can be "
@@ -2333,61 +2331,61 @@ msgstr ""
 "可以在系统配置（“ PreferencesGroups ### Password”和“ "
 "CustomerPersonalPreference #### Password”）中更改密码策略规则。"
 
-#: ../../content/migration-from-otrs-6.rst:291
+#: ../../content/migration-from-otrs-6.rst:290
 msgid "Password Policy Rule"
 msgstr "密码策略规则"
 
-#: ../../content/migration-from-otrs-6.rst:291
+#: ../../content/migration-from-otrs-6.rst:290
 msgid "Default"
 msgstr "默认"
 
-#: ../../content/migration-from-otrs-6.rst:293
+#: ../../content/migration-from-otrs-6.rst:292
 msgid "``PasswordMinSize``"
 msgstr "`` PasswordMinSize ``"
 
-#: ../../content/migration-from-otrs-6.rst:293
+#: ../../content/migration-from-otrs-6.rst:292
 msgid "8"
 msgstr "8"
 
-#: ../../content/migration-from-otrs-6.rst:295
+#: ../../content/migration-from-otrs-6.rst:294
 msgid "``PasswordMin2Lower2UpperCharacters``"
 msgstr "`` PasswordMin2Lower2UpperCharacters ``"
 
-#: ../../content/migration-from-otrs-6.rst:295
-#: ../../content/migration-from-otrs-6.rst:297
-#: ../../content/migration-from-otrs-6.rst:305
+#: ../../content/migration-from-otrs-6.rst:294
+#: ../../content/migration-from-otrs-6.rst:296
+#: ../../content/migration-from-otrs-6.rst:304
 msgid "Yes"
 msgstr "是"
 
-#: ../../content/migration-from-otrs-6.rst:297
+#: ../../content/migration-from-otrs-6.rst:296
 msgid "``PasswordNeedDigit``"
 msgstr "`` PasswordNeedDigit ``"
 
-#: ../../content/migration-from-otrs-6.rst:299
+#: ../../content/migration-from-otrs-6.rst:298
 msgid "``PasswordHistory``"
 msgstr "`` PasswordHistory ``"
 
-#: ../../content/migration-from-otrs-6.rst:299
+#: ../../content/migration-from-otrs-6.rst:298
 msgid "10"
 msgstr "10"
 
-#: ../../content/migration-from-otrs-6.rst:301
+#: ../../content/migration-from-otrs-6.rst:300
 msgid "``PasswordTTL``"
 msgstr "`` PasswordTTL ``"
 
-#: ../../content/migration-from-otrs-6.rst:301
+#: ../../content/migration-from-otrs-6.rst:300
 msgid "30 days"
 msgstr "30天"
 
-#: ../../content/migration-from-otrs-6.rst:303
+#: ../../content/migration-from-otrs-6.rst:302
 msgid "``PasswordWarnBeforeExpiry``"
 msgstr "`` PasswordWarnBeforeExpiry ``"
 
-#: ../../content/migration-from-otrs-6.rst:303
+#: ../../content/migration-from-otrs-6.rst:302
 msgid "5 days"
 msgstr "5天"
 
-#: ../../content/migration-from-otrs-6.rst:305
+#: ../../content/migration-from-otrs-6.rst:304
 msgid "``PasswordChangeAfterFirstLogin``"
 msgstr "`` PasswordChangeAfterFirstLogin ``"
 
@@ -2396,9 +2394,10 @@ msgid "Performance Tuning"
 msgstr "性能调整"
 
 #: ../../content/performance-tuning.rst:14
+#, fuzzy
 msgid ""
-"There is a list of performance enhancing techniques for your OTOBO "
-"installation, including configuration, coding, memory use, and more."
+"This is a list of performance enhancing techniques for your OTOBO "
+"installation. The topics include configuration, coding, memory use, and more."
 msgstr "有一系列用于OTOBO安装的性能增强技术，包括配置，编码，内存使用等。"
 
 #: ../../content/performance-tuning.rst:18
@@ -2532,8 +2531,10 @@ msgid "``Ticket::SearchIndex::Filters``"
 msgstr "`` Ticket::SearchIndex::Filters ``"
 
 #: ../../content/performance-tuning.rst:76
-msgid "Full-text index regular expression filters to remove parts of the text."
-msgstr "全文索引正则表达式过滤器可删除部分文本。"
+msgid ""
+"Filters based on regular expressions exclude parts of the original text from "
+"the full-text index."
+msgstr ""
 
 #: ../../content/performance-tuning.rst:81
 msgid "``Ticket::SearchIndex::Filters`` Setting"
@@ -2681,63 +2682,71 @@ msgid "Disk Allocation"
 msgstr "磁盘分配"
 
 #: ../../content/performance-tuning.rst:135
+#, fuzzy
 msgid ""
-"During the run-time of the service, Elasticsearch inspects the available "
-"disk space and therefore decides whether to allocate new shards to the "
-"related cluster node or even relocate shards away from that particular node. "
-"Such behavior will be controlled by the current disk capacity and can be "
-"configured in configuration file ``elasticsearch.yml``. Enclosed are some "
-"important configurations, that come with good default values, but might be "
-"important:"
+"While running the service, Elasticsearch inspects the available disk space. "
+"Based on the result, it decides whether to allocate new shards to a cluster "
+"node. In some cases it even relocates shards away from a node. This behavior "
+"is determined by the current disk capacity. It can be configured by settings "
+"in the configuration file *elasticsearch.yml*. Here are some relevant "
+"configuration settings. They come with good default values, but might be "
+"important in trouble shooting."
 msgstr ""
 "在服务运行期间，Elasticsearch检查可用的磁盘空间，并因此决定是将新的分片分配给"
 "相关的群集节点，还是将分片从该特定节点移开。这种行为将由当前磁盘容量控制，并"
 "可以在配置文件“ elasticsearch.yml”中进行配置。随附一些重要的配置，这些配置带"
 "有较好的默认值，这很重要："
 
-#: ../../content/performance-tuning.rst:138
+#: ../../content/performance-tuning.rst:142
 msgid "``cluster.routing.allocation.disk.watermark.low``"
 msgstr "`` cluster.routing.allocation.disk.watermark.low ``"
 
-#: ../../content/performance-tuning.rst:138
+#: ../../content/performance-tuning.rst:141
+#, fuzzy
 msgid ""
-"Default value of 85%. If this limit is exceeded, Elasticsearch will not "
-"allocate more shards to the related cluster node. The operation of that node "
-"is not influenced and data can still be indexed and searched."
+"Default value of 85%. When this limit is exceeded, Elasticsearch will no "
+"longer allocate more shards to the related cluster node. The operation of "
+"that node is not influenced and data can still be indexed and searched."
 msgstr ""
 "默认值为85％。如果超出此限制，Elasticsearch将不会向相关集群节点分配更多的分"
 "片。该节点的操作不会受到影响，并且仍然可以对数据进行索引和搜索。"
 
-#: ../../content/performance-tuning.rst:141
+#: ../../content/performance-tuning.rst:145
 msgid "``cluster.routing.allocation.disk.watermark.high``"
 msgstr "``cluster.routing.allocation.disk.watermark.high``"
 
-#: ../../content/performance-tuning.rst:141
+#: ../../content/performance-tuning.rst:145
+#, fuzzy
 msgid ""
-"Default value of 90%. If this limit is exceeded, Elasticsearch will try to "
-"relocate existing shards to other nodes (if possible), that have enough "
-"space available."
+"Default value of 90%. When this limit is exceeded, Elasticsearch will try to "
+"relocate existing shards to other nodes that have enough space available."
 msgstr ""
 "默认值为90％。如果超出此限制，Elasticsearch将尝试将现有分片重新定位到具有足够"
 "可用空间的其他节点（如果可能）。"
 
-#: ../../content/performance-tuning.rst:144
+#: ../../content/performance-tuning.rst:149
 msgid "``cluster.routing.allocation.disk.watermark.flood_stage``"
 msgstr "`` cluster.routing.allocation.disk.watermark.flood_stage ``"
 
-#: ../../content/performance-tuning.rst:144
+#: ../../content/performance-tuning.rst:148
+#, fuzzy
 msgid ""
-"Default value of 95%. If this limit is exceeded, Elasticsearch will update "
-"the configuration of all indices to read-only index blocks ``index.blocks."
-"read_only_allow_delete``, that have at least one shard allocated to the "
-"related cluster node. Since then, it is not possible to index new data to "
-"such indices and restricted to searches and delete actions."
+"Default value of 95%. When this limit is exceeded, Elasticsearch will update "
+"the configuration of all indices, that have at least one shard allocated to "
+"the related cluster node, to read-only index blocks. Specifically, they are "
+"flagged with ``index.blocks.read_only_allow_delete``."
 msgstr ""
 "默认值为95％。如果超出此限制，Elasticsearch将所有索引的配置更新为只读索引块“ "
 "index.blocks.read_only_allow_delete”，其中至少一个分片分配给相关的集群节点。"
 "从那时起，就不可能将新数据编入此类索引，并且无法进行搜索和删除操作。"
 
-#: ../../content/performance-tuning.rst:148
+#: ../../content/performance-tuning.rst:149
+msgid ""
+"After that update, it is no longer possible to index new data to such "
+"indices. The indexes are restricted to searches and to delete actions only."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:153
 msgid ""
 "If the flood stage was exceeded and certain indices are configured to read-"
 "only mode, such configuration *will not* automatically be changed by "
@@ -2749,7 +2758,7 @@ msgstr ""
 "Elasticsearch自动更改。如果相关磁盘由于手动操作而再次包含足够的可用空间，则需"
 "要将配置手动更改回普通模式。"
 
-#: ../../content/performance-tuning.rst:150
+#: ../../content/performance-tuning.rst:155
 msgid ""
 "For more information about disk watermarks and disk-based shard allocation, "
 "please follow `the official documentation <https://www.elastic.co/guide/en/"
@@ -2758,11 +2767,11 @@ msgstr ""
 "有关磁盘水印和基于磁盘的分片分配的更多信息，请遵循 `官方文档 <https://www."
 "elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__。"
 
-#: ../../content/performance-tuning.rst:154
+#: ../../content/performance-tuning.rst:159
 msgid "Article Storage"
 msgstr "物品存放"
 
-#: ../../content/performance-tuning.rst:156
+#: ../../content/performance-tuning.rst:161
 msgid ""
 "There are two different back end modules for the article storage of phone, "
 "email and internal articles. The used article storage can be configured in "
@@ -2772,13 +2781,13 @@ msgstr ""
 "Article :: Backend :: MIMEBase :: ArticleStorage``中配置使用过的物品存储空"
 "间。"
 
-#: ../../content/performance-tuning.rst:163
+#: ../../content/performance-tuning.rst:168
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB``"
 msgstr ""
 "`` Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB ``"
 
-#: ../../content/performance-tuning.rst:159
+#: ../../content/performance-tuning.rst:164
 msgid ""
 "This default module will store attachments in the database. It also works "
 "with multiple front end servers, but requires much storage space in the "
@@ -2787,17 +2796,17 @@ msgstr ""
 "这个默认模块将附件存储在数据库中，还可以与多个前端服务器一起使用，但是需要很"
 "多数据库存储空间。"
 
-#: ../../content/performance-tuning.rst:163
+#: ../../content/performance-tuning.rst:168
 msgid "Don't use this with large setups."
 msgstr "不要将其用于大型系统。"
 
-#: ../../content/performance-tuning.rst:170
+#: ../../content/performance-tuning.rst:175
 msgid ""
 "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS``"
 msgstr ""
 "`` Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS ``"
 
-#: ../../content/performance-tuning.rst:166
+#: ../../content/performance-tuning.rst:171
 msgid ""
 "Use this module to store attachments on the local file system. It is fast, "
 "but if you have multiple front end servers, you must make sure the file "
@@ -2808,11 +2817,11 @@ msgstr ""
 "务器，则必须确保文件系统在服务器之间可以共享。可以将其放在NFS共享文件系统，当"
 "然最好放在SAN或类似解决方案上。"
 
-#: ../../content/performance-tuning.rst:170
+#: ../../content/performance-tuning.rst:175
 msgid "Recommended for large setups."
 msgstr "建议用于大型系统。"
 
-#: ../../content/performance-tuning.rst:172
+#: ../../content/performance-tuning.rst:177
 msgid ""
 "You can switch from one back end to the other on the fly. You can switch the "
 "back end in the system configuration, and then run this command line utility "
@@ -2822,11 +2831,11 @@ msgstr ""
 "您可以即时从一个后端切换到另一个。您可以在系统配置中切换后端，然后运行此命令"
 "行实用程序将物品从数据库放到文件系统上，或者以其他方式："
 
-#: ../../content/performance-tuning.rst:178
+#: ../../content/performance-tuning.rst:183
 msgid "You can use the ``--target`` option to specify the target back end."
 msgstr "您可以使用 ``--target`` 选项指定目标后端。"
 
-#: ../../content/performance-tuning.rst:182
+#: ../../content/performance-tuning.rst:187
 msgid ""
 "The entire process can take considerable time to run, depending on the "
 "number of articles you have and the available CPU power and/or network "
@@ -2835,7 +2844,7 @@ msgstr ""
 "根据您拥有的物品数量、可用的CPU能力和/或网络容量，整个过程可能需要花费大量时"
 "间才能运行。"
 
-#: ../../content/performance-tuning.rst:184
+#: ../../content/performance-tuning.rst:189
 msgid ""
 "If you want to keep old attachments in the database, you can activate the "
 "system configuration option ``Ticket::Article::Backend::MIMEBase::"
@@ -2844,11 +2853,11 @@ msgstr ""
 "如果要将旧附件保留在数据库中，则可以激活系统配置选项``Ticket :: Article :: "
 "Backend :: MIMEBase :: CheckAllStorageBackends``以确保OTOBO仍然可以找到它们。"
 
-#: ../../content/performance-tuning.rst:188
+#: ../../content/performance-tuning.rst:193
 msgid "Archiving Tickets"
 msgstr "封存工单"
 
-#: ../../content/performance-tuning.rst:190
+#: ../../content/performance-tuning.rst:195
 msgid ""
 "As OTOBO can be used as an audit-proof system, deleting closed tickets may "
 "not be a good idea. Therefore there is a feature that allows you to archive "
@@ -2857,7 +2866,7 @@ msgstr ""
 "由于OTOBO的数据可用作审查证据，因此删除已关闭的工单可能不是一个好主意，这项功"
 "能可让您封存工单。"
 
-#: ../../content/performance-tuning.rst:192
+#: ../../content/performance-tuning.rst:197
 msgid ""
 "Tickets that match certain criteria can be marked as archived. These tickets "
 "are not accessed if you do a regular ticket search or run a generic agent "
@@ -2869,88 +2878,88 @@ msgstr ""
 "员工作时，不会访问这些工单。这样系统不再需要处理大量旧工单，而是仅考虑最新的"
 "工单，这可以在大型系统上获得巨大的性能提升。"
 
-#: ../../content/performance-tuning.rst:194
+#: ../../content/performance-tuning.rst:199
 msgid "To use the archive feature:"
 msgstr "要使用存档功能："
 
-#: ../../content/performance-tuning.rst:196
+#: ../../content/performance-tuning.rst:201
 msgid ""
 "Activate the ``Ticket::ArchiveSystem`` setting in the system configuration."
 msgstr "在系统配置中激活 ``Ticket::ArchiveSystem``设置。"
 
-#: ../../content/performance-tuning.rst:197
+#: ../../content/performance-tuning.rst:202
 msgid "Define a generic agent job:"
 msgstr "定义通用话务员工作："
 
-#: ../../content/performance-tuning.rst:199
+#: ../../content/performance-tuning.rst:204
 msgid "Click on the *Add Job* button in the *Generic Agent* screen."
 msgstr "单击*通用话务员*屏幕中的*添加工作*按钮。"
 
-#: ../../content/performance-tuning.rst:200
+#: ../../content/performance-tuning.rst:205
 msgid "*Job Settings*: provide a name for the archiving job."
 msgstr "*工作配置*：为封存工作提供一个名字。"
 
-#: ../../content/performance-tuning.rst:201
+#: ../../content/performance-tuning.rst:206
 msgid "*Automatic Execution*: select proper options to schedule this job."
 msgstr "*自动化执行*：为工作的时间安排选择合适的选项。"
 
-#: ../../content/performance-tuning.rst:202
+#: ../../content/performance-tuning.rst:207
 msgid ""
 "*Select Tickets*: it might be a good idea to only archive those tickets in a "
 "closed state that have been closed a few months before."
 msgstr "*选择票证*：最好只归档几个月前就已经完成关闭的那些工单。"
 
-#: ../../content/performance-tuning.rst:203
+#: ../../content/performance-tuning.rst:208
 msgid ""
 "*Update/Add Ticket Attributes*: set the field *Archive selected tickets* to "
 "*archive tickets*."
 msgstr "*更新/添加工单属性*：将字段*将所选工单存档*设置为*存档工单*。"
 
-#: ../../content/performance-tuning.rst:204
+#: ../../content/performance-tuning.rst:209
 msgid "Save the job at the end of the page."
 msgstr "将工作保存在页面末尾。"
 
-#: ../../content/performance-tuning.rst:205
+#: ../../content/performance-tuning.rst:210
 msgid ""
 "Click on the *Run this task* link in the overview table to see the affected "
 "tickets."
 msgstr "单击概述表中的*运行此任务*的链接，查看受到影响的工单。"
 
-#: ../../content/performance-tuning.rst:206
+#: ../../content/performance-tuning.rst:211
 msgid "Click on the *Run Job* button."
 msgstr "点击*运行工作*按钮。"
 
-#: ../../content/performance-tuning.rst:210
+#: ../../content/performance-tuning.rst:215
 msgid "Up to 5000 tickets can be modified by running this job manually."
 msgstr "手动运行这项工作最多可以修改5000张工单。"
 
-#: ../../content/performance-tuning.rst:212
+#: ../../content/performance-tuning.rst:217
 msgid ""
 "When you search for tickets, the system default is to search tickets which "
 "are not archived."
 msgstr "搜索工单时，系统默认只搜索未归档的工单。"
 
-#: ../../content/performance-tuning.rst:214
+#: ../../content/performance-tuning.rst:219
 msgid "To search for archived tickets:"
 msgstr "要搜索已经归档的工单："
 
-#: ../../content/performance-tuning.rst:216
+#: ../../content/performance-tuning.rst:221
 msgid "Open the ticket search screen."
 msgstr "打款工单搜索界面。"
 
-#: ../../content/performance-tuning.rst:217
+#: ../../content/performance-tuning.rst:222
 msgid "Set *Archive search* to *Unarchived tickets* or *All tickets*."
 msgstr "将*归档搜索*设置为*未归档工单*或者*所有工单*。"
 
-#: ../../content/performance-tuning.rst:218
+#: ../../content/performance-tuning.rst:223
 msgid "Perform the search."
 msgstr "进行搜索。"
 
-#: ../../content/performance-tuning.rst:222
+#: ../../content/performance-tuning.rst:227
 msgid "Caching"
 msgstr "缓存"
 
-#: ../../content/performance-tuning.rst:224
+#: ../../content/performance-tuning.rst:229
 msgid ""
 "A fast cache module is a great help in terms of performance. We recommend to "
 "use a Redis Cache server or to create a ramdisk."
@@ -2958,15 +2967,15 @@ msgstr ""
 "快速缓存模块在性能方面有很大的帮助，我们建议使用Redis Cache服务器或创建虚拟硬"
 "盘。"
 
-#: ../../content/performance-tuning.rst:227
+#: ../../content/performance-tuning.rst:232
 msgid "Install a Redis Cache Server"
 msgstr "安装一个 Redis Cache服务器"
 
-#: ../../content/performance-tuning.rst:229
+#: ../../content/performance-tuning.rst:234
 msgid "Install Redis Server"
 msgstr "安装Redis服务器"
 
-#: ../../content/performance-tuning.rst:231
+#: ../../content/performance-tuning.rst:236
 msgid ""
 "First of all you need to install the newest Redis Server. The easiest way is "
 "to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as "
@@ -2975,11 +2984,11 @@ msgstr ""
 "首先，你需要安装最新的Redis服务器。最简单的方法是在与OTOBO相同的主机上`配置"
 "Redis <https://redis.io/topics/quickstart>`__并将其绑定到其默认端口。"
 
-#: ../../content/performance-tuning.rst:235
+#: ../../content/performance-tuning.rst:240
 msgid "Install Perl module Redis or Redis::Fast"
 msgstr "安装Redis Perl 模块或者Redis::Fast"
 
-#: ../../content/performance-tuning.rst:237
+#: ../../content/performance-tuning.rst:242
 msgid ""
 "You can choose which Redis module to use: `Redis` or `Redis::Fast` (which is "
 "compatible with `Redis` but **~2x faster**). Please use ``otobo.CheckModules."
@@ -2988,21 +2997,21 @@ msgstr ""
 "你可以选择要使用的Redis模块：`Redis`或`Redis :: Fast`（与`Redis`兼容，但**快2"
 "倍**）。请使用我们的``otobo.CheckModules.pl --list`` 为您选择合适的软件包："
 
-#: ../../content/performance-tuning.rst:244
+#: ../../content/performance-tuning.rst:249
 msgid "Configure OTOBO for Redis"
 msgstr "为Redis进行OTOBO设置"
 
-#: ../../content/performance-tuning.rst:246
+#: ../../content/performance-tuning.rst:251
 msgid ""
 "Please use the OTOBO `SysConfig` (Admin -> System Configuration) to "
 "configure OTOBO properly:"
 msgstr "请使用OTOBO`SysConfig`（管理员->系统配置）正确配置OTOBO："
 
-#: ../../content/performance-tuning.rst:259
+#: ../../content/performance-tuning.rst:264
 msgid "RamDisk Caching"
 msgstr "虚拟磁盘缓存"
 
-#: ../../content/performance-tuning.rst:261
+#: ../../content/performance-tuning.rst:266
 msgid ""
 "OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make "
 "sure that this uses a high performance file system and storage. If you have "
@@ -3012,11 +3021,11 @@ msgstr ""
 "能的文件和存储系统。如果你有足够的RAM，也可以尝试将此目录放在如下所示的虚拟磁"
 "盘上："
 
-#: ../../content/performance-tuning.rst:271
+#: ../../content/performance-tuning.rst:276
 msgid "Add persistent mount point in ``/etc/fstab``."
 msgstr "在``/ etc / fstab``中添加持久挂载点。"
 
-#: ../../content/performance-tuning.rst:275
+#: ../../content/performance-tuning.rst:280
 msgid ""
 "This will be a non-permanent storage that will be lost on server reboot. All "
 "your sessions (if you store them in the file system) and your cache data "
@@ -3025,11 +3034,11 @@ msgstr ""
 "这不是一个永久性存储，将会在服务器重启时丢失，从而你的所有会话（如果你将它们"
 "存储在文件系统中）和缓存数据都会丢失。"
 
-#: ../../content/performance-tuning.rst:278
+#: ../../content/performance-tuning.rst:283
 msgid "Clustering"
 msgstr "集群"
 
-#: ../../content/performance-tuning.rst:280
+#: ../../content/performance-tuning.rst:285
 msgid ""
 "For very high loads, it can be required to operate OTOBO on a cluster of "
 "multiple front end servers. This is a complex task with many pitfalls. "
@@ -3300,6 +3309,15 @@ msgstr "没有完整的系统备份，请勿继续。你也可以参考：`backu
 msgid "Step 3: Install the New Release"
 msgstr "步骤 3：安装新的版本"
 
+#: ../../content/updating.rst:65
+msgid ""
+"Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and "
+"unpack the source archive (for example, using ``tar``) into the directory ``/"
+"root/otobo-update``:"
+msgstr ""
+"从https://ftp.otobo.org/pub/otobo/下载最新的OTOBO版本软件，打开封装文档（例如"
+"使用``tar``命令），并存到目录``/root/otobo-update``："
+
 #: ../../content/updating.rst:77
 msgid "Restore Old Configuration Files"
 msgstr "恢复旧配置文件"
@@ -3371,26 +3389,26 @@ msgstr "现在你可以登陆到你的系统。"
 msgid "Updating OTOBO using Docker and Docker Compose"
 msgstr "用Docker和DockerCompose更新OTOBO"
 
-#: ../../content/updating-docker.rst:19
+#: ../../content/updating-docker.rst:15
 msgid "Updating to a new patch level release"
 msgstr "更新到新的补丁程序版本"
 
-#: ../../content/updating-docker.rst:21
+#: ../../content/updating-docker.rst:17
 msgid ""
 "First make sure that in *.env* the images have either the tag `latest` or "
 "the wanted version."
 msgstr "首先，请确保在* .env *中，镜像的标签是`最新`或所需版本。"
 
-#: ../../content/updating-docker.rst:40 ../../content/updating-docker.rst:67
+#: ../../content/updating-docker.rst:36 ../../content/updating-docker.rst:63
 msgid ""
 "After updating you need to reinstall all OTOBO packages and clear the cache."
 msgstr "更新后，需要重新安装所有OTOBO软件包并清除缓存。"
 
-#: ../../content/updating-docker.rst:50
+#: ../../content/updating-docker.rst:46
 msgid "Force an update to or from a devel version"
 msgstr "强制更新到开发版本或从开发版本更新"
 
-#: ../../content/updating-docker.rst:52
+#: ../../content/updating-docker.rst:48
 msgid ""
 "Images of devel versions are not upgraded automatically. But the upgrade can "
 "be forced. The source of the devel version can either be a local build or a "
@@ -3400,6 +3418,25 @@ msgstr ""
 "开发版本的镜像不会自动升级，但是可以强制升级。开发版本的来源可以是本地构建，"
 "也可以是来自Docker Hub的开发镜像。这是一个使用Docker Hub的OTOBO 10.1.x分支的"
 "开发镜像的示例。"
+
+#~ msgid ""
+#~ "Apache has difficulties with running two independent applications under "
+#~ "mod_perl on the same server. Therefore, if you installed OTOBO on the "
+#~ "same server as your OTRS / ((OTRS)) Community Edition, disable mod_perl "
+#~ "for OTOBO as long as both systems are running. To disable mod_perl for "
+#~ "OTOBO, simply comment out the mod_perl part in the file */opt/otobo/"
+#~ "scripts/apache2-httpd.include.conf*. Alternatively, you can deactivate "
+#~ "OTRS in the web server before migration."
+#~ msgstr ""
+#~ "Apache难以在同一服务器上的mod_perl下运行两个独立的应用程序。因此，如果您将"
+#~ "OTOBO与OTRS /（（OTRS））Community Edition安装在同一台服务器上，则只要两个"
+#~ "系统都在运行，请禁用OTOBO的mod_perl。要禁用OTOBO的mod_perl，只需注释掉文件"
+#~ "* / opt / otobo / scripts / apache2-httpd.include.conf *中的mod_perl部分。"
+#~ "或者，您可以在迁移之前停用Web服务器中的OTRS。"
+
+#~ msgid ""
+#~ "Full-text index regular expression filters to remove parts of the text."
+#~ msgstr "全文索引正则表达式过滤器可删除部分文本。"
 
 #~ msgid "`not403 <http://not403.blogspot.com/search/label/otrs>`_"
 #~ msgstr "`not403 <http://not403.blogspot.com/search/label/otrs>`_"
