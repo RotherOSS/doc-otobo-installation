@@ -240,7 +240,7 @@ Depending on your Docker setup, the command ``rsync`` might need to be run with 
     docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
     docker_admin> ls -l $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
-    docker_admin> # if docker_admin is not root
+    docker_admin> # when docker_admin is not root
     docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
     docker_admin> sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
@@ -271,18 +271,21 @@ you can create the database dump directly on the Docker host.
 Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
 
 We'll concentrate on OTRS running with MySQL on the Docker host, assuming that the OTRS database is called **otrs**.
+The conversion from the character set *utf8* to *utf8mb4* is handled by modifying the schema of the copied OTRS database.
 
 .. code-block:: bash
 
-    docker_admin> mysqldump -h localhost -u root -p --databases otrs --dump-date > mysqldump_otrs.sql
-    docker_admin> head -n 30 mysqldump_otrs.sql # just a sanity check
+    docker_admin> mysqldump -h localhost -u root -p --databases otrs --no-data --dump-date > otrs_schema.sql
+    docker_admin> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' otrs_schema.sql
+    docker_admin> mysqldump -h localhost -u root -p --databases otrs --no-create-info --no-create-db --dump-date > otrs_data.sql
 
 In order to import the dumped database, we run ``mysql`` inside the running Docker container *otobo_db_1*.
 Note that the password for the database root is now the password that has been set up in _.env_.
 
 .. code-block:: bash
 
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < mysqldump_otrs.sql
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_schema.sql
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_data.sql
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'     # sanity check
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW TABLES'   # sanity check
 
