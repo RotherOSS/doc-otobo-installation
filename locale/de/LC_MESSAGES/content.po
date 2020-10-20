@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-10-20 00:34+0200\n"
-"PO-Revision-Date: 2020-10-19 19:31+0000\n"
+"PO-Revision-Date: 2020-10-20 14:47+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -325,15 +325,14 @@ msgid "Step 1: Unpack and Install OTOBO"
 msgstr "Schritt 1: OTOBO entpacken und installieren"
 
 #: ../../content/installation.rst:61
-#, fuzzy
 msgid ""
 "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. "
 "Unpack the source archive (for example, using ``tar``) into the directory ``/"
 "opt/otobo-install``:"
 msgstr ""
-"Laden Sie unter https://ftp.otobo.org/pub/otobo/ das neueste OTOBO-Release "
-"herunter und entpacken Sie das Quell-Archiv (zum Beispiel mit ``tar``) in "
-"das Verzeichnis ``/root/otobo-update``:"
+"Laden Sie das neueste OTOBO-Release von https://ftp.otobo.org/pub/otobo/ "
+"herunter. Entpacken Sie das Quell-Archiv (zum Beispiel mit ``tar``) in das "
+"Verzeichnis ``/opt/otobo-install``:"
 
 #: ../../content/installation.rst:74
 msgid "Step 2: Install Additional Programs and Perl Modules"
@@ -2234,6 +2233,12 @@ msgid ""
 "your Apache config files in the directory */etc/apache2/sites-enabled* and "
 "add the setting in case it is missing."
 msgstr ""
+"Unter Apache kann es zu Problemen kommen, wenn zwei Anwendungen zeitgleich "
+"unter mod_perl auf demselben Server laufen. Abhilfe schafft hier die "
+"mod_perl-Einstellung ``PerlOptions +Parent``. Sie sorgt dafür, dass die "
+"Anwendungen jeweils eigene Perl-Interpreter verwenden. Bitte prüfen Sie die "
+"Apache-Konfigurationsdateien im Verzeichnis */etc/apache2/sites-enabled* und "
+"ergänzen Sie die Einstellung, falls sie noch nicht gesetzt ist."
 
 #: ../../content/migration-from-otrs-6.rst:87
 msgid ""
@@ -2456,7 +2461,6 @@ msgstr ""
 "Benutzer nicht mehr in OTRS anmelden können:"
 
 #: ../../content/migration-from-otrs-6.rst:203
-#, fuzzy
 msgid ""
 "Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and "
 "add a new system maintenance slot for a few hours. After that, delete all "
@@ -2569,7 +2573,6 @@ msgstr ""
 "Sitzung manuell zu löschen."
 
 #: ../../content/migration-from-otrs-6.rst:278
-#, fuzzy
 msgid ""
 "2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr ""
@@ -2577,7 +2580,6 @@ msgstr ""
 "Migration"
 
 #: ../../content/migration-from-otrs-6.rst:280
-#, fuzzy
 msgid ""
 "This can happen when the setting ScriptAlias has a non-standard value. The "
 "migration simply substitutes otrs for otobo. This might lead to the effect "
@@ -2588,8 +2590,8 @@ msgstr ""
 "Kann vorkommen, wenn die Einstellung ScriptAlias keinen Standardwert "
 "enthält. Bei der Migration wird lediglich otrs durch otobo ersetzt. Das kann "
 "dazu führen, dass OTOBO nicht mehr korrekt auf CSS und JavaScript zugreifen "
-"kann. Bitte überprüfen Sie in diesem Fall die Einstellungen in Kernel/Config."
-"pm und korrigieren Sie diese auf geeignete Werte."
+"kann. Bitte überprüfen Sie in diesem Fall die Einstellungen in *Kernel/Config"
+".pm* und korrigieren Sie diese auf geeignete Werte."
 
 #: ../../content/migration-from-otrs-6.rst:285
 msgid "Step 7: Manual Migration Tasks and Changes"
@@ -2671,13 +2673,13 @@ msgid "Performance Tuning"
 msgstr "Performance Tuning"
 
 #: ../../content/performance-tuning.rst:14
-#, fuzzy
 msgid ""
 "This is a list of performance enhancing techniques for your OTOBO "
 "installation. The topics include configuration, coding, memory use, and more."
 msgstr ""
-"Es gibt eine Reihe von Möglichkeiten, die Leistung Ihrer OTOBO-Installation "
-"z. B. durch Konfiguration, Entwicklung, Speichernutzung, etc. zu verbessern."
+"Hier finden Sie eine Reihe von Möglichkeiten, die Leistung Ihrer OTOBO-"
+"Installation zu verbessern – z. B. durch Konfiguration, Entwicklung, "
+"Speichernutzung, etc."
 
 #: ../../content/performance-tuning.rst:18
 msgid "Ticket Index Module"
@@ -2824,6 +2826,8 @@ msgid ""
 "Filters based on regular expressions exclude parts of the original text from "
 "the full-text index."
 msgstr ""
+"Filter auf Basis regulärer Ausdrücke schließen Teile des Originaltextes aus "
+"dem Volltextindex aus."
 
 #: ../../content/performance-tuning.rst:81
 msgid "``Ticket::SearchIndex::Filters`` Setting"
@@ -2993,7 +2997,6 @@ msgid "Disk Allocation"
 msgstr "Festplattennutzung"
 
 #: ../../content/performance-tuning.rst:135
-#, fuzzy
 msgid ""
 "While running the service, Elasticsearch inspects the available disk space. "
 "Based on the result, it decides whether to allocate new shards to a cluster "
@@ -3003,20 +3006,18 @@ msgid ""
 "configuration settings. They come with good default values, but might be "
 "important in trouble shooting."
 msgstr ""
-"Elasticsearch prüft während der Laufzeit den verfügbaren Festplattenplatz "
-"und entscheidet darüber, ob dem jeweiligen Clusterknoten weitere Shards "
-"zugewiesen oder diese sogar abgezogen werden. Dieses Verhalten wird durch "
-"die verfügbare Festplattenkapazität gesteuert und kann in der "
-"Konfigurationsdatei ``elasticsearch.yml`` konfiguriert werden. Hier finden "
-"Sie einige wichtige Konfigurationen, für die gute Standardwerte vorgegeben "
-"sind, die aber von Bedeutung sein können:"
+"Elasticsearch prüft während der Laufzeit den verfügbaren Festplattenplatz. "
+"Je nach Auslastung werden Clusterknoten weitere Shards zugewiesen oder sogar "
+"abgezogen. Dieses Verhalten wird durch die verfügbare Festplattenkapazität "
+"gesteuert und kann in der Konfigurationsdatei *elasticsearch.yml* "
+"konfiguriert werden. Hier finden Sie einige wichtige Konfigurationen, für "
+"die gute Standardwerte vorgegeben sind, die aber von Bedeutung sein können."
 
 #: ../../content/performance-tuning.rst:142
 msgid "``cluster.routing.allocation.disk.watermark.low``"
 msgstr "``cluster.routing.allocation.disk.watermark.low``"
 
 #: ../../content/performance-tuning.rst:141
-#, fuzzy
 msgid ""
 "Default value of 85%. When this limit is exceeded, Elasticsearch will no "
 "longer allocate more shards to the related cluster node. The operation of "
@@ -3032,21 +3033,19 @@ msgid "``cluster.routing.allocation.disk.watermark.high``"
 msgstr "``cluster.routing.allocation.disk.watermark.high``"
 
 #: ../../content/performance-tuning.rst:145
-#, fuzzy
 msgid ""
 "Default value of 90%. When this limit is exceeded, Elasticsearch will try to "
 "relocate existing shards to other nodes that have enough space available."
 msgstr ""
 "Standardwert 90 % . Wird dieser Grenzwert überschritten, versucht "
-"Elasticsearch (sofern möglich) vorhandene Shards auf andere Knoten mit "
-"ausreichend Platz zu verschieben."
+"Elasticsearch vorhandene Shards auf andere Knoten mit ausreichend Platz zu "
+"verschieben."
 
 #: ../../content/performance-tuning.rst:149
 msgid "``cluster.routing.allocation.disk.watermark.flood_stage``"
 msgstr "``cluster.routing.allocation.disk.watermark.flood_stage``"
 
 #: ../../content/performance-tuning.rst:148
-#, fuzzy
 msgid ""
 "Default value of 95%. When this limit is exceeded, Elasticsearch will update "
 "the configuration of all indices, that have at least one shard allocated to "
@@ -3054,17 +3053,19 @@ msgid ""
 "flagged with ``index.blocks.read_only_allow_delete``."
 msgstr ""
 "Standardwert 95 %. Wird dieser Grenzwert überschritten, aktualisiert "
-"Elasticsearch die Konfiguration aller Indizes auf schreibgeschützte "
-"Indexblöcke ``index.blocks.read_only_allow_delete``, von denen mindestens "
-"ein Shard dem jeweiligen Clusterknoten zugeordnet ist. Ab diesem Zeitpunkt "
-"ist es nicht mehr möglich, neue Daten zu diesen Indizes hinzuzufügen. Es "
-"können nur noch Such- und Löschvorgänge durchgeführt werden."
+"Elasticsearch die Konfiguration aller Indizes, von denen mindestens ein "
+"Shard dem jeweiligen Clusterknoten zugeordnet ist, auf schreibgeschützte "
+"Indexblöcke. Diese werden mit dem Tag ``index.blocks.read_only_allow_delete``"
+" gekennzeichnet."
 
 #: ../../content/performance-tuning.rst:149
 msgid ""
 "After that update, it is no longer possible to index new data to such "
 "indices. The indexes are restricted to searches and to delete actions only."
 msgstr ""
+"Ab diesem Zeitpunkt ist es nicht mehr möglich, neue Daten zum jeweiligen "
+"Index hinzuzufügen. Es können nur noch Such- und Löschvorgänge durchgeführt "
+"werden."
 
 #: ../../content/performance-tuning.rst:153
 msgid ""
