@@ -30,7 +30,8 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
     1. Change server: Migrate and simultaneously move to a new application server.
 
-    2. Separate servers: It does not matter whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database server). It also does not matter whether you want to change OTOBO to such a configuration.
+    2. Separate application and web servers: It's your choice whether you want to run application and database server on
+    the same host or each on a dedictated host. This choice is regardless of the previous setup in OTRS / ((OTRS)) Community Edition.
 
     3. Different databases: Migrate from any of the supported databases to any other one.
 
