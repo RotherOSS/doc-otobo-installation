@@ -78,7 +78,7 @@ We strongly recommend to read the :doc:`installation` chapter.
 
     Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server.
     These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure
-    that the relevant application uses it's own dedicated Perl interpreter. Please check your Apache config files in
+    that the applications uses their own dedicated Perl interpreter. Please check your Apache config files in
     the directory */etc/apache2/sites-enabled* and add the setting in case it is missing.
 
 After finishing the installation tutorial, please log in to the OTOBO Admin Area ``Admin -> Packages``
