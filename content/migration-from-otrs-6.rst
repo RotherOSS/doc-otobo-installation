@@ -202,7 +202,7 @@ Step 3b Docker: make required data available inside container
 -------------------------------------------------------------------
 
 There are some specifics to be considered when your OTOBO installation is running under Docker.
-Most relevant is that processes running in a Docker container generally cannot access directories
+The most relevant: processes running in a Docker container generally cannot access directories
 outside the container. There is an exception though: directories mounted as volumes into the container can be accessed.
 Also, the MariaDB database running in ``otobo_db_1`` is not directly accessible outside the container network.
 
@@ -253,22 +253,22 @@ Copy the otrs database schema to the containerised database server
 
     This is the recommended approach. But migration from a running OTRS database is still possible.
 
-In the general case, the data in the database table is copied row for row from the OTRS database
-into the OTOBO database. This approach is time consuming and can be optimised.
-For enabling a performance optimisation, we first to create a temporary copy of the OTRS database
-in the same dabase server as is used for OTOBO.
+Generally, all data in the database tables is copied row by row from the OTRS database
+into the OTOBO database. This approach is time-consuming and can be optimised.
+To speed-up the process, we create a temporary copy of the OTRS database
+on the server used for the OTOBO database.
 In our case, this is the MariaDB-server running in the container ``otobo_db_1``.
-After creating the temporary copy, the relevant OTRS tables can then be moved into the OTOBO database.
+After creating the temporary copy, all relevant OTRS tables can be moved into the OTOBO database.
 
 .. warning::
 
-    Moving tables from one schema to another schema makes the source schema unusable.
-    So make sure that OTRS database is really a throwaway copy of the productive OTRS database.
+    Moving tables from one schema to another makes the source schema unusable.
+    So make sure the OTRS database used really is a throwaway copy of the productive OTRS database.
 
 First of all, we need a dump of the source OTRS database.
 When ``mysqldump`` is installed and a database connection is possible,
-then the database dump can be created on the Docker host.
-Alternatively the database can be dumped on another server and then be transfered to the Docker host.
+you can create the database dump directly on the Docker host.
+Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
 
 We'll concentrate on OTRS running with MySQL on the Docker host, assuming that the OTRS database is called **otrs**.
 
