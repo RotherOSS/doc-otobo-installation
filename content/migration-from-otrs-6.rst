@@ -286,8 +286,14 @@ Note that the password for the database root is now the password that has been s
 
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_schema.sql
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_data.sql
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'     # sanity check
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW TABLES'   # sanity check
+
+For a quick checl whether the import worked, you can run the following commands.
+
+.. code-block:: bash
+
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW TABLES'
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW CREATE TABLE ticket'
 
 The copied database will be read by the database user *otobo* during the migration. Therefore, *otobo*
 needs to be given read access to the copied database.
