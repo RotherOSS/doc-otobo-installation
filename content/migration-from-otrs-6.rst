@@ -24,15 +24,20 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
 1. A 1:1 migration on the same application server with the same database server.
 
-2. A migration and simultaneous move to a new application server and operating system.
+2. A streamlined migration where the source database is first copied to the target database server.
 
-3. It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was previously installed on two separate servers (application and database servers), or whether you want to change OTOBO to such a configuration.
+3. A general migration where many combinations are possible.
 
-4. It is possible to migrate from any of the supported databases to any other one.
+    1. Change server: Migrate and simultaneously move to a new application server.
 
-5. It is possible to switch from any supported operating system to any other supported operating system during the migration.
+    2. Separate application and web servers: It's your choice whether you want to run application and database server on
+    the same host or each on a dedictated host. This choice is regardless of the previous setup in OTRS / ((OTRS)) Community Edition.
 
-6. It is possible to migrate to a Docker based installation of OTOBO 10.
+    3. Different databases: Migrate from any of the supported databases to any other one.
+
+    4. Different operating system: Switch from any supported operating system to any other supported operating system during migration.
+
+    5. Docker: Migrate to a Docker-based installation of OTOBO 10.
 
 
 Migration Requirements
@@ -53,9 +58,12 @@ and that you want to transfer configuration and data to OTOBO.
 3. This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too.
 
 4. If you are planning to migrate to another server, then the OTOBO webserver must be able
-to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed. In most cases, this is the directory /opt/otrs
-on the server running OTRS. The access can be effected via SSH or via file system mounts.
-Furthermore, the *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts.
+to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed.
+In most cases, this is the directory */opt/otrs* on the server running OTRS.
+The read access can be effected via SSH or via file system mounts.
+
+5. The *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts.
+If access is not possible, or when the speed of the migration should be optimised, then a dump of the database is sufficient.
 
 .. note::
 
@@ -71,10 +79,10 @@ We strongly recommend to read the :doc:`installation` chapter.
 
     Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server.
     These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure
-    that the relevant application uses it's own dedicated Perl interpreter. Please check your Apache config files in
+    that the applications use their own dedicated Perl interpreter. Please check your Apache config files in
     the directory */etc/apache2/sites-enabled* and add the setting in case it is missing.
 
-After finishing the installation tutorial, please login to the OTOBO Admin Area ``Admin -> Packages``
+After finishing the installation tutorial, please log in to the OTOBO Admin Area ``Admin -> Packages``
 to install all required OTOBO OPM packages.
 
 The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be installed, as these features are already available in the OTOBO standard:
@@ -100,7 +108,7 @@ Step 2: Preparing the new OTOBO system and server
 -------------------------------------------------------
 
 After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``.
-Now log in on the server as user ``root`` and execute the following commands:
+Then log in on the server as user ``root`` and execute the following commands:
 
 .. code-block:: bash
 
@@ -115,6 +123,7 @@ When OTOBO is running in Docker, you just need to stop the Docker container ``ot
 
     docker_admin> cd /opt/otobo-docker
     docker_admin> docker-compose stop daemon
+    docker_admin> docker-compose ps     # otobo_daemon_1 should have exited with the code 0
 
 .. note::
 
@@ -154,32 +163,12 @@ and execute one of the following commands:
 
 The same thing must be done for *rsync* when it isn't available yet.
 
-Docker: copy */opt/otrs* into the volume *otobo_opt_otobo*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 3a non-Docker: Preparing the OTRS / ((OTRS)) Community Edition system
+----------------------------------------------------------------------------
 
-In this section, we assume that */opt/otrs* is available on the Docker host.
+.. note::
 
-In the case when the web application OTOBO runs inside the container ``otobo_web_1``, OTOBO generally cannot access directories outside the container.
-There is an exception though: directories mounted as volumes into the container can be accessed. This means that for
-migration there are two possibilities:
-
-    a. copy */opt/otrs* into an existing volume
-    b. mount */opt/otrs* as an additional volume
-
-Let's concentrate on option **a.** here.
-
-For safe copying, we use ``rsync``. But first we need to find out the correct target.
-
-.. code-block:: bash
-
-    root> mountpoint_opt_otobo=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
-    root> echo $mountpoint_opt_otobo
-    root> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $mountpoint_opt_otobo/tmp/otrs
-
-This copied directory will be available as */opt/otobo/tmp/otrs* within the container.
-
-Step 3: Preparing the OTRS / ((OTRS)) Community Edition system
--------------------------------------------------------------------
+Perform the step 3b for migrating to a Docker-based installation
 
 .. note::
 
@@ -210,25 +199,162 @@ Please make sure there are no running services or cron jobs.
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
 
 
+Step 3b Docker: make required data available inside container
+-------------------------------------------------------------------
+
+There are some specifics to be considered when your OTOBO installation is running under Docker.
+The most relevant: processes running in a Docker container generally cannot access directories
+outside the container. There is an exception though: directories mounted as volumes into the container can be accessed.
+Also, the MariaDB database running in ``otobo_db_1`` is not directly accessible outside the container network.
+
+.. note::
+
+    In the sample commands, we assume that the user **docker_admin** is used for interacting with Docker.
+    The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions.
+
+Copy */opt/otrs* into the volume *otobo_opt_otobo*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section, we assume that the OTRS home directory */opt/otrs* is available
+on the Docker host.
+
+There are at least two viable possibilities:
+
+    a. copy */opt/otrs* into the existing volume *otobo_opt_otobo*
+    b. mount */opt/otrs* as an additional volume
+
+Let's concentrate on option **a.** here.
+
+First we need to find out where the volume *otobo_opt_otobo* is available on the Docker host.
+
+.. code-block:: bash
+
+    docker_admin> otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    docker_admin> echo $otobo_opt_otobo_mp  # just a sanity check
+
+For safe copying, we use ``rsync``.
+Depending on your Docker setup, the command ``rsync`` might need to be run with ``sudo``.
+
+.. code-block:: bash
+
+    docker_admin> # when docker_admin is root
+    docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
+    docker_admin> ls -l $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+
+    docker_admin> # when docker_admin is not root
+    docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
+    docker_admin> sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+
+This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container.
+
+Copy the otrs database schema to the containerised database server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+    This is the recommended approach. But migration from a running OTRS database is still possible.
+
+Generally, all data in the database tables is copied row by row from the OTRS database
+into the OTOBO database. This approach is time-consuming and can be optimised.
+To speed-up the process, we create a temporary copy of the OTRS database
+on the server used for the OTOBO database.
+In our case, this is the MariaDB-server running in the container ``otobo_db_1``.
+After creating the temporary copy, all relevant OTRS tables can be moved into the OTOBO database.
+
+.. warning::
+
+    Moving tables from one schema to another makes the source schema unusable.
+    So make sure the OTRS database used really is a throwaway copy of the productive OTRS database.
+
+First of all, we need a dump of the source OTRS database.
+When ``mysqldump`` is installed and a database connection is possible,
+you can create the database dump directly on the Docker host.
+Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
+
+We'll concentrate on OTRS running with MySQL on the Docker host, assuming that the OTRS database is called **otrs**.
+The conversion from the character set *utf8* to *utf8mb4* is handled by modifying the schema of the copied OTRS database.
+
+.. code-block:: bash
+
+    docker_admin> mysqldump -h localhost -u root -p --databases otrs --no-data --dump-date > otrs_schema.sql
+    docker_admin> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' otrs_schema.sql
+    docker_admin> mysqldump -h localhost -u root -p --databases otrs --no-create-info --no-create-db --dump-date > otrs_data.sql
+
+In order to import the dumped database, we run ``mysql`` inside the running Docker container *otobo_db_1*.
+Note that the password for the database root is now the password that has been set up in _.env_.
+
+.. code-block:: bash
+
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_schema.sql
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_data.sql
+
+For a quick check whether the import worked, you can run the following commands.
+
+.. code-block:: bash
+
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW TABLES'
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW CREATE TABLE ticket'
+
+The copied database will be read by the database user *otobo* during the migration. Therefore, *otobo*
+needs to be given read access to the copied database.
+
+.. code-block:: bash
+
+    docker_admin> # note that 'root' and 'otobo' have different passwords
+    docker_admin> docker exec -i otobo_db_1 mysql -u root  -p<root_secrect>       -e "GRANT SELECT, SHOW VIEW, UPDATE, DROP, ALTER ON otrs.* TO 'otobo'@'%'"
+    docker_admin> docker exec -i otobo_db_1 mysql -u otobo -p<otobo_secrect> otrs -e "SELECT COUNT(*), DATABASE(), USER(), NOW() FROM ticket"
+
+When performing the migration using the web-based migration tool, please enter the following values when prompted:
+
+- 'db' as the OTRS database host
+- 'otobo' as the OTRS database user
+- the password of the database user 'otobo' as the OTRS database user password
+- 'otrs' as the OTRS database name
+
 Step 4: Perform the Migration!
 ---------------------------------
 
-Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname)
+Please use the web migration tool at http://localhost/otobo/migration.pl (replace "localhost" with your OTOBO hostname and potentially add the port)
 and follow the process.
 
+.. warning::
+
+    Sometimes, a warning is shown that the deactivation of **SecureMode** has not been detected.
+    Please restart the webserver in this case. This forces the webserver to read in the current configuration.
+
+    .. code-block:: bash
+
+        docker_admin> cd /opt/otobo-docker
+        docker_admin> docker-compose restart web
+        docker_admin> docker-compose ps     # otobo_web_1 should be running again
+
 .. note::
 
-    If OTOBO runs inside a Docker container, specify *localhost* for OTRS server and */opt/otobo/tmp/otrs* as the OTRS home directory.
+    If OTOBO runs inside a Docker container, keep the default settings *localhost* for the OTRS server
+    and */opt/otobo/var/tmp/copied_otrs* for the OTRS home directory. This is the path of the data that
+    was copied in step 3b).
 
 .. note::
 
-    In the Docker case, a local database won't be reachable via ``127.0.0.1`` from within the Docker container.
-    Pick one of the IP-addresses reported by ``hostname --all-ip-addresses`` instead for ``OTRS Server``.
-    In order to make sure that there is a database user who can read the data, it might be worthwhile to create a dedicated user.
-    E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration'`` and
-    ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%'``.
+    The default values for OTRS database user and password are taken from *Kernel/Config.pm* in the OTRS home directory.
+    Change the proposed settings if you are using a dedicated database user for the migration.
+    Also change the settings when you work with a database that was copied into the *otobo_db_1* Docker container.
 
+.. note::
 
+    In the Docker case, a database running on the Docker host won't be reachable via ``127.0.0.1`` from within the Docker container.
+    This means that the setting ``127.0.0.1`` won't be valid for the input field ``OTRS Server``.
+    In that case, enter one of the alternative IP-addresses reported by the command ``hostname --all-ip-addresses`` for ``OTRS Server``.
+
+.. note::
+
+    When migrating to a new application server, or to a Docker-based installation, quite often the database cannot be accessed
+    from the target installation. This is usually due to the fact that the otobo database user can only connect from the host the database runs on.
+    In order to allow access anyways it is recommended to create a dedicated database user for the migration.
+    E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';`` and
+    ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``.
+    This user can be dropped again after the migration: ``DROP USER 'otrs_migration'@'%'``.
 
 When the migration is complete, please take your time and test the entire system. Once you have decided
 that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:
@@ -240,7 +366,7 @@ that the migration was successful and that you want to use OTOBO from now on, st
     otobo> /opt/otobo/bin/Cron.sh start
     otobo> /opt/otobo/bin/otobo.Daemon start
 
-In the docker case:
+In the Docker case:
 
 .. code-block:: bash
 

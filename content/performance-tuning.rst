@@ -272,4 +272,6 @@ OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make sure
 Clustering
 ----------
 
-For very high loads, it can be required to operate OTOBO on a cluster of multiple front end servers. This is a complex task with many pitfalls. Therefore, Rother OSS provides support for clusters in its `managed OTOBO <https://otobo.de/>`__ environment exclusively.
+For very high loads, it can be required to operate OTOBO on a cluster of multiple front end servers.
+This is a complex task with many pitfalls.
+We strongly advise to get in touch with our experts before trying to implement this on your own.
