@@ -78,7 +78,7 @@ We strongly recommend to read the :doc:`installation` chapter.
 
     Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server.
     These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure
-    that the applications uses their own dedicated Perl interpreter. Please check your Apache config files in
+    that the applications use their own dedicated Perl interpreter. Please check your Apache config files in
     the directory */etc/apache2/sites-enabled* and add the setting in case it is missing.
 
 After finishing the installation tutorial, please log in to the OTOBO Admin Area ``Admin -> Packages``
@@ -287,7 +287,7 @@ Note that the password for the database root is now the password that has been s
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_schema.sql
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_data.sql
 
-For a quick checl whether the import worked, you can run the following commands.
+For a quick check whether the import worked, you can run the following commands.
 
 .. code-block:: bash
 
