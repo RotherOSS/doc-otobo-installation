@@ -266,9 +266,9 @@ After creating the temporary copy, all relevant OTRS tables can be moved into th
     Moving tables from one schema to another makes the source schema unusable.
     So make sure the OTRS database used really is a throwaway copy of the productive OTRS database.
 
-First of all, we need a dump of the source OTRS database. As the imported table are copied
-into the OTOBO database we also have to make sure that the character set is converted to *utf8mb4*.
-The dump is split up in *otrs_schema.sql* and *otrs_data.sql* so that the conversion can be
+First of all, we need a dump of the source OTRS database. As the imported tables are copied
+into the OTOBO database, we also have to make sure that the character set is converted to *utf8mb4*.
+The dump is split up into the files *otrs_schema.sql* and *otrs_data.sql* so that the conversion can be
 done in a safe way.
 
 When ``mysqldump`` is installed and a connection to the OTRS database is possible,
