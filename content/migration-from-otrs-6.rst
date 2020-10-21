@@ -309,8 +309,8 @@ For a quick check whether the import worked, you can run the following commands.
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW TABLES'
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW CREATE TABLE ticket'
 
-The copied database will be read by the database user *otobo* during the migration. Therefore, *otobo*
-needs to be given read access to the copied database.
+The copied database will be read and altered by the database user *otobo* during the migration. Therefore, *otobo*
+needs to be given extensive access to the copied database.
 
 .. code-block:: bash
 
