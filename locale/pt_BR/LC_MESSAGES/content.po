@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 00:34+0200\n"
+"POT-Creation-Date: 2020-10-22 00:34+0200\n"
 "PO-Revision-Date: 2020-09-30 22:35+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
@@ -676,6 +676,15 @@ msgid ""
 msgstr ""
 "Em nossos testes, um valor entre 4 e 10 GB para instalações de tamanho médio "
 "provou ser o melhor."
+
+#: ../../content/installation.rst:346
+#, fuzzy
+msgid ""
+"See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
+"size.html`` for more information."
+msgstr ""
+"Veja https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
+"size.html para mais informações."
 
 #: ../../content/installation.rst:348
 msgid ""
@@ -2422,69 +2431,81 @@ msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:279
 msgid ""
-"First of all, we need a dump of the source OTRS database. When ``mysqldump`` "
-"is installed and a database connection is possible, you can create the "
-"database dump directly on the Docker host. Alternatively, the database can "
-"be dumped on another server and be transferred to the Docker host afterwards."
+"First of all, we need a dump of the source OTRS database. As the imported "
+"tables are copied into the OTOBO database, we also have to make sure that "
+"the character set is converted to *utf8mb4*. The dump is split up into the "
+"files *otrs_schema.sql* and *otrs_data.sql* so that the conversion can be "
+"done in a safe way."
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:284
 msgid ""
-"We'll concentrate on OTRS running with MySQL on the Docker host, assuming "
-"that the OTRS database is called **otrs**. The conversion from the character "
-"set *utf8* to *utf8mb4* is handled by modifying the schema of the copied "
-"OTRS database."
+"When ``mysqldump`` is installed and a connection to the OTRS database is "
+"possible, you can create the database dump directly on the Docker host. This "
+"case is supported by the script *bin/backup.pl*."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:293
+#: ../../content/migration-from-otrs-6.rst:290
+msgid ""
+"This requires that an OTOBO installation is available on the Docker host."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:297
+msgid ""
+"Alternatively, the database can be dumped on another server and be "
+"transferred to the Docker host afterwards. Here are sample commands that "
+"achieve this goal."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:306
 msgid ""
 "In order to import the dumped database, we run ``mysql`` inside the running "
 "Docker container *otobo_db_1*. Note that the password for the database root "
 "is now the password that has been set up in _.env_."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:301
+#: ../../content/migration-from-otrs-6.rst:314
 msgid ""
 "For a quick check whether the import worked, you can run the following "
 "commands."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:309
+#: ../../content/migration-from-otrs-6.rst:322
 msgid ""
-"The copied database will be read by the database user *otobo* during the "
-"migration. Therefore, *otobo* needs to be given read access to the copied "
-"database."
+"The copied database will be read and altered by the database user *otobo* "
+"during the migration. Therefore, *otobo* needs to be given extensive access "
+"to the copied database."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:318
+#: ../../content/migration-from-otrs-6.rst:331
 msgid ""
 "When performing the migration using the web-based migration tool, please "
 "enter the following values when prompted:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:320
+#: ../../content/migration-from-otrs-6.rst:333
 msgid "'db' as the OTRS database host"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:321
+#: ../../content/migration-from-otrs-6.rst:334
 msgid "'otobo' as the OTRS database user"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:322
+#: ../../content/migration-from-otrs-6.rst:335
 msgid ""
 "the password of the database user 'otobo' as the OTRS database user password"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:323
+#: ../../content/migration-from-otrs-6.rst:336
 msgid "'otrs' as the OTRS database name"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:326
+#: ../../content/migration-from-otrs-6.rst:339
 #, fuzzy
 msgid "Step 4: Perform the Migration!"
 msgstr "Passo 4: Inicie a migração!"
 
-#: ../../content/migration-from-otrs-6.rst:328
+#: ../../content/migration-from-otrs-6.rst:341
 #, fuzzy
 msgid ""
 "Please use the web migration tool at http://localhost/otobo/migration.pl "
@@ -2495,14 +2516,14 @@ msgstr ""
 "migration.pl (substitua \"localhost\" pelo seu hostname OTOBO) e siga o "
 "processo."
 
-#: ../../content/migration-from-otrs-6.rst:333
+#: ../../content/migration-from-otrs-6.rst:346
 msgid ""
 "Sometimes, a warning is shown that the deactivation of **SecureMode** has "
 "not been detected. Please restart the webserver in this case. This forces "
 "the webserver to read in the current configuration."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:344
+#: ../../content/migration-from-otrs-6.rst:357
 msgid ""
 "If OTOBO runs inside a Docker container, keep the default settings "
 "*localhost* for the OTRS server and */opt/otobo/var/tmp/copied_otrs* for the "
@@ -2510,7 +2531,7 @@ msgid ""
 "3b)."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:350
+#: ../../content/migration-from-otrs-6.rst:363
 msgid ""
 "The default values for OTRS database user and password are taken from "
 "*Kernel/Config.pm* in the OTRS home directory. Change the proposed settings "
@@ -2519,7 +2540,7 @@ msgid ""
 "*otobo_db_1* Docker container."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:356
+#: ../../content/migration-from-otrs-6.rst:369
 msgid ""
 "In the Docker case, a database running on the Docker host won't be reachable "
 "via ``127.0.0.1`` from within the Docker container. This means that the "
@@ -2528,7 +2549,7 @@ msgid ""
 "``hostname --all-ip-addresses`` for ``OTRS Server``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:362
+#: ../../content/migration-from-otrs-6.rst:375
 msgid ""
 "When migrating to a new application server, or to a Docker-based "
 "installation, quite often the database cannot be accessed from the target "
@@ -2541,7 +2562,7 @@ msgid ""
 "``DROP USER 'otrs_migration'@'%'``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:369
+#: ../../content/migration-from-otrs-6.rst:382
 msgid ""
 "When the migration is complete, please take your time and test the entire "
 "system. Once you have decided that the migration was successful and that you "
@@ -2551,36 +2572,36 @@ msgstr ""
 "Depois de decidir que a migração foi bem-sucedida e que você deseja usar o "
 "OTOBO a partir de agora, inicie o Daemon OTOBO:"
 
-#: ../../content/migration-from-otrs-6.rst:379
+#: ../../content/migration-from-otrs-6.rst:392
 msgid "In the Docker case:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:387
+#: ../../content/migration-from-otrs-6.rst:400
 msgid "Step 5: After Successful Migration!"
 msgstr "Passo 5: Após uma migração bem-sucedida!"
 
-#: ../../content/migration-from-otrs-6.rst:389
+#: ../../content/migration-from-otrs-6.rst:402
 #, fuzzy
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
 msgstr "Desinstale *sshpass* se você não precisar mais."
 
-#: ../../content/migration-from-otrs-6.rst:390
+#: ../../content/migration-from-otrs-6.rst:403
 msgid "Drop the databases user dedicated to the migration if you created one."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:391
+#: ../../content/migration-from-otrs-6.rst:404
 msgid "Have fun with OTOBO!"
 msgstr "Divirta-se com o OTOBO!"
 
-#: ../../content/migration-from-otrs-6.rst:395
+#: ../../content/migration-from-otrs-6.rst:408
 msgid "Step 6: Known Migration Problems"
 msgstr "Passo 6: Problemas conhecidos de migração"
 
-#: ../../content/migration-from-otrs-6.rst:398
+#: ../../content/migration-from-otrs-6.rst:411
 msgid "1. Login after migration not possible"
 msgstr "1. O login após a migração não é possível"
 
-#: ../../content/migration-from-otrs-6.rst:400
+#: ../../content/migration-from-otrs-6.rst:413
 msgid ""
 "During our migration tests, the browser used for the migration sometimes had "
 "problems. After restarting the browser, this problem usually was solved. "
@@ -2592,12 +2613,12 @@ msgstr ""
 "geralmente era resolvido. Com o Safari, às vezes era necessário excluir "
 "manualmente a sessão antiga do OTRS."
 
-#: ../../content/migration-from-otrs-6.rst:404
+#: ../../content/migration-from-otrs-6.rst:417
 msgid ""
 "2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:406
+#: ../../content/migration-from-otrs-6.rst:419
 msgid ""
 "This can happen when the setting ScriptAlias has a non-standard value. The "
 "migration simply substitutes otrs for otobo. This might lead to the effect "
@@ -2606,11 +2627,11 @@ msgid ""
 "sane values."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:411
+#: ../../content/migration-from-otrs-6.rst:424
 msgid "Step 7: Manual Migration Tasks and Changes"
 msgstr "Etapa 7: Tarefas de migração manual e alterações"
 
-#: ../../content/migration-from-otrs-6.rst:413
+#: ../../content/migration-from-otrs-6.rst:426
 msgid ""
 "With OTOBO 10 a new default password policy for agent and customer users is "
 "in effect, if local authentication is used. The password policy rules can be "
@@ -2623,61 +2644,61 @@ msgstr ""
 "(``PreferencesGroups###Password`` and "
 "``CustomerPersonalPreference###Password``)."
 
-#: ../../content/migration-from-otrs-6.rst:416
+#: ../../content/migration-from-otrs-6.rst:429
 msgid "Password Policy Rule"
 msgstr "Regra de política de senha"
 
-#: ../../content/migration-from-otrs-6.rst:416
+#: ../../content/migration-from-otrs-6.rst:429
 msgid "Default"
 msgstr "Padrão"
 
-#: ../../content/migration-from-otrs-6.rst:418
+#: ../../content/migration-from-otrs-6.rst:431
 msgid "``PasswordMinSize``"
 msgstr "``PasswordMinSize``"
 
-#: ../../content/migration-from-otrs-6.rst:418
+#: ../../content/migration-from-otrs-6.rst:431
 msgid "8"
 msgstr "8"
 
-#: ../../content/migration-from-otrs-6.rst:420
+#: ../../content/migration-from-otrs-6.rst:433
 msgid "``PasswordMin2Lower2UpperCharacters``"
 msgstr "``PasswordMin2Lower2UpperCharacters``"
 
-#: ../../content/migration-from-otrs-6.rst:420
-#: ../../content/migration-from-otrs-6.rst:422
-#: ../../content/migration-from-otrs-6.rst:430
+#: ../../content/migration-from-otrs-6.rst:433
+#: ../../content/migration-from-otrs-6.rst:435
+#: ../../content/migration-from-otrs-6.rst:443
 msgid "Yes"
 msgstr "Sim"
 
-#: ../../content/migration-from-otrs-6.rst:422
+#: ../../content/migration-from-otrs-6.rst:435
 msgid "``PasswordNeedDigit``"
 msgstr "``PasswordNeedDigit``"
 
-#: ../../content/migration-from-otrs-6.rst:424
+#: ../../content/migration-from-otrs-6.rst:437
 msgid "``PasswordHistory``"
 msgstr "``PasswordHistory``"
 
-#: ../../content/migration-from-otrs-6.rst:424
+#: ../../content/migration-from-otrs-6.rst:437
 msgid "10"
 msgstr "10"
 
-#: ../../content/migration-from-otrs-6.rst:426
+#: ../../content/migration-from-otrs-6.rst:439
 msgid "``PasswordTTL``"
 msgstr "``PasswordTTL``"
 
-#: ../../content/migration-from-otrs-6.rst:426
+#: ../../content/migration-from-otrs-6.rst:439
 msgid "30 days"
 msgstr "30 dias"
 
-#: ../../content/migration-from-otrs-6.rst:428
+#: ../../content/migration-from-otrs-6.rst:441
 msgid "``PasswordWarnBeforeExpiry``"
 msgstr "``PasswordWarnBeforeExpiry``"
 
-#: ../../content/migration-from-otrs-6.rst:428
+#: ../../content/migration-from-otrs-6.rst:441
 msgid "5 days"
 msgstr "5 dias"
 
-#: ../../content/migration-from-otrs-6.rst:430
+#: ../../content/migration-from-otrs-6.rst:443
 msgid "``PasswordChangeAfterFirstLogin``"
 msgstr "``PasswordChangeAfterFirstLogin``"
 
@@ -4058,13 +4079,6 @@ msgstr ""
 
 #~ msgid "Restart Elasticsearch afterwards."
 #~ msgstr "Reinicie o Elasticsearch posteriormente."
-
-#~ msgid ""
-#~ "See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
-#~ "size.html for more information."
-#~ msgstr ""
-#~ "Veja https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
-#~ "size.html para mais informações."
 
 #~ msgid "Elasticsearch Activation in OTOBO"
 #~ msgstr "Ativação do Elasticsearch no OTOBO"
