@@ -168,7 +168,7 @@ Step 3a non-Docker: Preparing the OTRS / ((OTRS)) Community Edition system
 
 .. note::
 
-Perform the step 3b for migrating to a Docker-based installation
+    Perform the step 3b for migrating to a Docker-based installation
 
 .. note::
 
