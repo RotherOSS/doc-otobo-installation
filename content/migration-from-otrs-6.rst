@@ -266,19 +266,32 @@ After creating the temporary copy, all relevant OTRS tables can be moved into th
     Moving tables from one schema to another makes the source schema unusable.
     So make sure the OTRS database used really is a throwaway copy of the productive OTRS database.
 
-First of all, we need a dump of the source OTRS database.
-When ``mysqldump`` is installed and a database connection is possible,
-you can create the database dump directly on the Docker host.
-Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
+First of all, we need a dump of the source OTRS database. As the imported table are copied
+into the OTOBO database we also have to make sure that the character set is converted to *utf8mb4*.
+The dump is split up in *otrs_schema.sql* and *otrs_data.sql* so that the conversion can be
+done in a safe way.
 
-We'll concentrate on OTRS running with MySQL on the Docker host, assuming that the OTRS database is called **otrs**.
-The conversion from the character set *utf8* to *utf8mb4* is handled by modifying the schema of the copied OTRS database.
+When ``mysqldump`` is installed and a connection to the OTRS database is possible,
+you can create the database dump directly on the Docker host. This case is supported
+by the script *bin/backup.pl*.
+
+.. warning::
+
+    This requires that an OTOBO installation is available on the Docker host.
 
 .. code-block:: bash
 
-    docker_admin> mysqldump -h localhost -u root -p --databases otrs --no-data --dump-date > otrs_schema.sql
-    docker_admin> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' otrs_schema.sql
-    docker_admin> mysqldump -h localhost -u root -p --databases otrs --no-create-info --no-create-db --dump-date > otrs_data.sql
+    otobo> cd /opt/otobo
+    otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password=secret_otrs_password
+
+Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
+Here are sample commands that achieve this goal.
+
+.. code-block:: bash
+
+    otobo> mysqldump -h localhost -u root -p --databases otrs --no-data --dump-date > otrs_schema.sql
+    otobo> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' otrs_schema.sql
+    otobo> mysqldump -h localhost -u root -p --databases otrs --no-create-info --no-create-db --dump-date > otrs_data.sql
 
 In order to import the dumped database, we run ``mysql`` inside the running Docker container *otobo_db_1*.
 Note that the password for the database root is now the password that has been set up in _.env_.
