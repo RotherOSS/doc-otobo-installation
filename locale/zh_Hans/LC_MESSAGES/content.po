@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 00:34+0100\n"
+"POT-Creation-Date: 2020-10-27 00:34+0100\n"
 "PO-Revision-Date: 2020-10-14 07:14+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -857,18 +857,20 @@ msgid "1. Clone the otobo-docker repo"
 msgstr "1.  克隆otobo-docker存储"
 
 #: ../../content/installation-docker.rst:66
+#, fuzzy
 msgid ""
-"The Docker images will eventually be fetched from https://hub.docker.com. "
-"But some setup and command files need to be cloned from the otobo-docker "
-"Github repository. Make sure that you use the fitting versions of these "
-"files. The git tag must correspond to the version of OTOBO. Here we use "
-"OTOBO 10.0.4 as an example."
+"The Docker images will eventually be fetched from the image repository "
+"https://hub.docker.com. But there are some setup and command files that need "
+"to be cloned from the *otobo-docker* Github repository. Make sure that you "
+"specify the branch that corresponds to the current version of OTOBO. For "
+"example, when *OTOBO 10.0.6* is the current version then please use the "
+"branch *rel-10_0_6*."
 msgstr ""
 "Docker映像最终将从https://hub.docker.com获取，但是需要从otobo-docker Github存"
 "储库中克隆一些设置和命令文件。请确保使用这些文件的合适版本，其中git标签必须对"
 "应OTOBO的版本，这里以OTOBO 10.0.4为例。"
 
-#: ../../content/installation-docker.rst:72
+#: ../../content/installation-docker.rst:73
 msgid ""
 "This manual had been published before OTOBO 10.0.4 was released. This means "
 "that the git label rel-10.0.4 might not exist yet."
@@ -876,18 +878,18 @@ msgstr ""
 "本手册已在OTOBO 10.0.4发布之前就出版了，这意味着git标签rel-10.0.4可能还不存"
 "在。"
 
-#: ../../content/installation-docker.rst:77
+#: ../../content/installation-docker.rst:78
 msgid ""
 "The location of the cloned repository does not matter. For these "
 "instructions we chose */opt/otobo-docker* as the working dir."
 msgstr ""
 "克隆副本的位置并不重要，在介绍中我们选择 */opt/otobo-docker*作为工作目录。"
 
-#: ../../content/installation-docker.rst:87
+#: ../../content/installation-docker.rst:88
 msgid "2. Create an initial *.env* file"
 msgstr "2. 创建初始*.env*文件"
 
-#: ../../content/installation-docker.rst:89
+#: ../../content/installation-docker.rst:90
 msgid ""
 "The Docker Compose configuration file *.env* allows you to manage your "
 "installation of OTOBO. This file must first be created and then be adapted "
@@ -903,11 +905,11 @@ msgstr ""
 "HTTPS进行访问操作。如果不需要HTTPS，可以使用* .docker_compose_env_http *作为"
 "起点。"
 
-#: ../../content/installation-docker.rst:97
+#: ../../content/installation-docker.rst:98
 msgid "Use ``ls -a`` for listing the hidden template files."
 msgstr "用``ls -a`` 列出隐藏的模板文件。"
 
-#: ../../content/installation-docker.rst:99
+#: ../../content/installation-docker.rst:100
 msgid ""
 "Per default OTOBO is served on the standard ports. Port 443 for HTTPS and "
 "port 80 for HTTP. When HTTPS is activated then the OTOBO web application "
@@ -918,23 +920,23 @@ msgstr ""
 "OTOBO Web应用程序实际上始终使用HTTP运行。 HTTPS的支持通过另外的反向代理来实"
 "现，该代理通过nginx服务实现。"
 
-#: ../../content/installation-docker.rst:103
+#: ../../content/installation-docker.rst:104
 msgid "For the following commands we assume that HTTPS should be supported."
 msgstr "我们假定以下命令都支持HTTPS。"
 
-#: ../../content/installation-docker.rst:111
+#: ../../content/installation-docker.rst:112
 msgid "3. Configure the password for the database admin user"
 msgstr "3. 为数据库管理员用户设置密码"
 
-#: ../../content/installation-docker.rst:113
+#: ../../content/installation-docker.rst:114
 msgid "Change the following setting inside your *.env* file:"
 msgstr "调整*.env*文件中的以下数值："
 
-#: ../../content/installation-docker.rst:115
+#: ../../content/installation-docker.rst:116
 msgid "``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``"
 msgstr "``OTOBO_DB_ROOT_PASSWORD``"
 
-#: ../../content/installation-docker.rst:117
+#: ../../content/installation-docker.rst:118
 msgid ""
 "The password for the database admin user may be chosen freely. The database "
 "admin user is needed to create the database user **otobo** and the database "
@@ -944,27 +946,27 @@ msgstr ""
 "``OTOBO_DB_ROOT_PASSWORD``数据库管理员的密码可以自由选择，数据库管理员创建了"
 "数据库用户**otobo**和数据库模式**otobo**。"
 
-#: ../../content/installation-docker.rst:122
+#: ../../content/installation-docker.rst:123
 msgid ""
 "4. Set up a volume with SSL configuration for the nginx webproxy (optional)"
 msgstr "4. 为nginx网络代理建立一个带有SSL设置的卷（可选）"
 
-#: ../../content/installation-docker.rst:124
+#: ../../content/installation-docker.rst:125
 msgid "This step can be skipped when OTOBO should be available only via HTTP."
 msgstr "如果OTOBO只能通过HTTP进行，这个步骤就可以跳过。"
 
-#: ../../content/installation-docker.rst:126
+#: ../../content/installation-docker.rst:127
 msgid "nginx needs for SSL encryption a certificate and a private key."
 msgstr "nginx需要SSL加密的证书和私钥。"
 
-#: ../../content/installation-docker.rst:130
+#: ../../content/installation-docker.rst:131
 msgid ""
 "For testing and development a self-signed certificate can be used. However "
 "for productive use you should work with regular registered certificates."
 msgstr ""
 "为了进行测试和开发，可以使用自签名证书。在一般情况下，必须使用注册证书。"
 
-#: ../../content/installation-docker.rst:133
+#: ../../content/installation-docker.rst:134
 msgid ""
 "See e.g. https://www.digitalocean.com/community/tutorials/how-to-create-a-"
 "self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04 on how to create self-"
@@ -974,7 +976,7 @@ msgstr ""
 "signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`中的案例，如何创建自己签名"
 "的证书。"
 
-#: ../../content/installation-docker.rst:138
+#: ../../content/installation-docker.rst:139
 msgid ""
 "To specify a CA chain with a certificate in nginx, it is necessary to copy "
 "the CA chain file with the actual certificate into a file."
@@ -982,7 +984,7 @@ msgstr ""
 "在nginx中指定一个带有证书的CA链，需要将这个带有实际证书的CA链文件考入一个文件"
 "中去。"
 
-#: ../../content/installation-docker.rst:141
+#: ../../content/installation-docker.rst:142
 msgid ""
 "The certificate and the private key are stored in a volume, so that they can "
 "be used by nginx later on. In any case the volume needs to be generated "
@@ -991,13 +993,13 @@ msgstr ""
 "证书和私钥存储在一个卷中，以便以后Nginx使用，在任何情况下，都需要手动生成该"
 "卷，并且需要将证书和密钥复制到该卷："
 
-#: ../../content/installation-docker.rst:151
+#: ../../content/installation-docker.rst:152
 msgid ""
 "The names of the copied files need to be set in our newly created *.env* "
 "file. E.g."
 msgstr "需要在我们新创建的* .env *文件中设置复制文件的名称，例如。"
 
-#: ../../content/installation-docker.rst:153
+#: ../../content/installation-docker.rst:154
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
@@ -1005,18 +1007,18 @@ msgstr ""
 "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 
-#: ../../content/installation-docker.rst:156
+#: ../../content/installation-docker.rst:157
 msgid ""
 "Please adapt only the name of the files as the path */etc/nginx/ssl/* is "
 "hard coded in the Docker image."
 msgstr ""
 "请仅调整文件名，因为路径* / etc / nginx / ssl / *在Docker映像中是硬编码的。"
 
-#: ../../content/installation-docker.rst:159
+#: ../../content/installation-docker.rst:160
 msgid "5. Start the Docker containers with Docker Compose"
 msgstr "安装应用 Docker和Docker Compose"
 
-#: ../../content/installation-docker.rst:161
+#: ../../content/installation-docker.rst:162
 msgid ""
 "Now we start the Docker containers using ``docker-compose``. Per default the "
 "Docker images will be fetched from https://hub.docker.com/u/rotheross."
@@ -1024,21 +1026,21 @@ msgstr ""
 "现在我们使用``docker-compose``启动Docker容器。默认情况下，将从https://hub."
 "docker.com/u/rotheross获取Docker映像。"
 
-#: ../../content/installation-docker.rst:168
+#: ../../content/installation-docker.rst:169
 msgid ""
 "To verify that the six required services (five in the case of HTTP only) are "
 "actually running, type:"
 msgstr "在使用HTTP的情况下，要验证六个或五个服务是否正在实际运行，请输入："
 
-#: ../../content/installation-docker.rst:176
+#: ../../content/installation-docker.rst:177
 msgid "6. Install and start OTOBO"
 msgstr "6. 安装和启动OTOBO"
 
-#: ../../content/installation-docker.rst:178
+#: ../../content/installation-docker.rst:179
 msgid "Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl."
 msgstr "在http：//yourIPorFQDN/otobo/installer.pl中运行OTOBO安装程序。"
 
-#: ../../content/installation-docker.rst:182
+#: ../../content/installation-docker.rst:183
 msgid ""
 "Please configure OTOBO inside the installer with a new MySQL database. As "
 "MySQL database root password please use the password you configured in the "
@@ -1049,11 +1051,11 @@ msgstr ""
 "在* .env *文件的变量``OTOBO_DB_ROOT_PASSWORD''中配置的密码。请保持MySQL主机名"
 "的``db''值不变。"
 
-#: ../../content/installation-docker.rst:187
+#: ../../content/installation-docker.rst:188
 msgid "**Have fun with OTOBO!**"
 msgstr "**与OTOBO玩得开心吧！**"
 
-#: ../../content/installation-docker.rst:191
+#: ../../content/installation-docker.rst:192
 msgid ""
 "To change to the OTOBO directory, inside the running container, to work on "
 "command line as usual, you can use the following Docker command: ``docker "
@@ -1062,73 +1064,73 @@ msgstr ""
 "要切换到运行容器内的OTOBO目录，以便正常在命令行下工作，可以使用以下Docker命"
 "令：``docker exec -it otobo_web_1 bash``。"
 
-#: ../../content/installation-docker.rst:195
+#: ../../content/installation-docker.rst:196
 msgid "Additional technical information"
 msgstr "附加技术信息"
 
-#: ../../content/installation-docker.rst:197
+#: ../../content/installation-docker.rst:198
 msgid ""
 "This section gives some more technical insight into what is happing under "
 "the hood."
 msgstr "本节对隐含的内容提供了更多的技术见解。"
 
-#: ../../content/installation-docker.rst:200
+#: ../../content/installation-docker.rst:201
 msgid "List of Docker containers"
 msgstr "Docker容器列表"
 
-#: ../../content/installation-docker.rst:203
+#: ../../content/installation-docker.rst:204
 msgid "Container otobo_web_1"
 msgstr "容器otobo_web_1"
 
-#: ../../content/installation-docker.rst:203
+#: ../../content/installation-docker.rst:204
 msgid "OTOBO webserver on internal port 5000."
 msgstr "内部端口5000上的OTOBO Web服务器。"
 
-#: ../../content/installation-docker.rst:206
+#: ../../content/installation-docker.rst:207
 msgid "Container otobo_daemon_1"
 msgstr "容器otobo_daemon_1"
 
-#: ../../content/installation-docker.rst:206
+#: ../../content/installation-docker.rst:207
 msgid "OTOBO daemon. The OTOBO daemon is started and periodically checked."
 msgstr "OTOBO守护程序。 OTOBO守护程序已启动并定期检查。"
 
-#: ../../content/installation-docker.rst:209
+#: ../../content/installation-docker.rst:210
 msgid "Container otobo_db_1"
 msgstr "容器otobo_db_1"
 
-#: ../../content/installation-docker.rst:209
+#: ../../content/installation-docker.rst:210
 msgid "Run the database MariaDB on internal port 3306."
 msgstr "在内部端口3306上运行数据库MariaDB。"
 
-#: ../../content/installation-docker.rst:212
+#: ../../content/installation-docker.rst:213
 msgid "Container otobo_elastic_1"
 msgstr "容器otobo_elastic_1"
 
-#: ../../content/installation-docker.rst:212
+#: ../../content/installation-docker.rst:213
 msgid "Elasticsearch on the internal ports 9200 and 9300."
 msgstr "在内部端口9200和9300上运行Elasticsearch。"
 
-#: ../../content/installation-docker.rst:215
+#: ../../content/installation-docker.rst:216
 msgid "Container otobo_redis_1"
 msgstr "容器otobo_redis_1"
 
-#: ../../content/installation-docker.rst:215
+#: ../../content/installation-docker.rst:216
 msgid "Run Redis as caching service."
 msgstr "将Redis作为缓存服务运行。"
 
-#: ../../content/installation-docker.rst:218
+#: ../../content/installation-docker.rst:219
 msgid "Optional container otobo_nginx_1"
 msgstr "可选容器otobo_nginx_1"
 
-#: ../../content/installation-docker.rst:218
+#: ../../content/installation-docker.rst:219
 msgid "Run nginx as reverse proxy for providing HTTPS support."
 msgstr "运行nginx作为反向代理以提供HTTPS支持。"
 
-#: ../../content/installation-docker.rst:221
+#: ../../content/installation-docker.rst:222
 msgid "Overview over the Docker volumes"
 msgstr "Docker卷概述"
 
-#: ../../content/installation-docker.rst:223
+#: ../../content/installation-docker.rst:224
 msgid ""
 "The Docker volumes are created on the host for persistent data. These allow "
 "starting and stopping the services without losing data. Keep in mind that "
@@ -1137,53 +1139,53 @@ msgstr ""
 "Docker卷是在主机上创建的，用于持久性数据。这些允许启动和停止服务而不会丢失数"
 "据。请记住，容器是临时的，只有卷中的数据是永久的。"
 
-#: ../../content/installation-docker.rst:228
+#: ../../content/installation-docker.rst:229
 msgid "otobo_opt_otobo"
 msgstr "otobo_opt_otobo"
 
-#: ../../content/installation-docker.rst:228
+#: ../../content/installation-docker.rst:229
 msgid "contains `/opt/otobo` in the container `web` and `daemon`."
 msgstr "容器 `web` 和 `daemon`中包含`/opt/otobo` 。"
 
-#: ../../content/installation-docker.rst:231
+#: ../../content/installation-docker.rst:232
 msgid "otobo_mariadb_data"
 msgstr "otobo_mariadb_data"
 
-#: ../../content/installation-docker.rst:231
+#: ../../content/installation-docker.rst:232
 msgid "contains `/var/lib/mysql` in the container `db`."
 msgstr "容器`db`包含`/var/lib/mysql`。"
 
-#: ../../content/installation-docker.rst:234
+#: ../../content/installation-docker.rst:235
 msgid "otobo_elasticsearch_data"
 msgstr "otobo_elasticsearch_data"
 
-#: ../../content/installation-docker.rst:234
+#: ../../content/installation-docker.rst:235
 msgid "contains `/usr/share/elasticsearch/datal` in the container `elastic`."
 msgstr "容器`elastic`包含`/usr/share/elasticsearch/datal`。"
 
-#: ../../content/installation-docker.rst:237
+#: ../../content/installation-docker.rst:238
 msgid "otobo_redis_data"
 msgstr "otobo_redis_data"
 
-#: ../../content/installation-docker.rst:237
+#: ../../content/installation-docker.rst:238
 msgid "contains data for the container `redis`."
 msgstr "包含容器“ redis”的数据。"
 
-#: ../../content/installation-docker.rst:240
+#: ../../content/installation-docker.rst:241
 msgid "otobo_nginx_ssl"
 msgstr "otobo_nginx_ssl"
 
-#: ../../content/installation-docker.rst:240
+#: ../../content/installation-docker.rst:241
 msgid ""
 "contains the TLS files, certificate and private key, must be initialized "
 "manually."
 msgstr "包含TLS文件，证书和私钥，必须手动初始化。"
 
-#: ../../content/installation-docker.rst:243
+#: ../../content/installation-docker.rst:244
 msgid "Docker environment variables"
 msgstr "Docker环境变量"
 
-#: ../../content/installation-docker.rst:245
+#: ../../content/installation-docker.rst:246
 msgid ""
 "In the instructions we did only minimal configuration. But the file *.env* "
 "allows to set more variables. Here is a list of all supported environment "
@@ -1192,23 +1194,23 @@ msgstr ""
 "在说明中，我们仅进行了最少的配置。但是文件* .env *允许设置更多变量。这是所有"
 "支持的环境变量的列表："
 
-#: ../../content/installation-docker.rst:248
+#: ../../content/installation-docker.rst:249
 msgid "**MariaDB settings**"
 msgstr "**MariaDB设置**"
 
-#: ../../content/installation-docker.rst:251
+#: ../../content/installation-docker.rst:252
 msgid "``OTOBO_DB_ROOT_PASSWORD``"
 msgstr "``OTOBO_DB_ROOT_PASSWORD``"
 
-#: ../../content/installation-docker.rst:251
+#: ../../content/installation-docker.rst:252
 msgid "The root password for MySQL. Must be set for running otobo db."
 msgstr "MySQL的根密码。必须设置为运行otobo db。"
 
-#: ../../content/installation-docker.rst:253
+#: ../../content/installation-docker.rst:254
 msgid "**Elasticsearch settings**"
 msgstr "**Elasticsearch设置**"
 
-#: ../../content/installation-docker.rst:255
+#: ../../content/installation-docker.rst:256
 msgid ""
 "Elasticsearch needs some settings for productive environments. Please read "
 "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker."
@@ -1218,11 +1220,11 @@ msgstr ""
 "guide/zh-CN/elasticsearch/reference/7.8/docker.html#docker-prod-prerequisites"
 "了解详细信息。"
 
-#: ../../content/installation-docker.rst:262
+#: ../../content/installation-docker.rst:263
 msgid "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
 msgstr "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
 
-#: ../../content/installation-docker.rst:260
+#: ../../content/installation-docker.rst:261
 msgid ""
 "Example setting: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* Please "
 "adjust this value for production env to a value up to 4g."
@@ -1230,48 +1232,48 @@ msgstr ""
 "设置案例：* OTOBO_Elasticsearch_ES_JAVA_OPTS = -Xms512m -Xmx512m *，在生产环"
 "境中，请将该值提高为4G。"
 
-#: ../../content/installation-docker.rst:264
+#: ../../content/installation-docker.rst:265
 msgid "**Webserver settings**"
 msgstr "**Webserver设置**"
 
-#: ../../content/installation-docker.rst:268
-#: ../../content/installation-docker.rst:276
+#: ../../content/installation-docker.rst:269
+#: ../../content/installation-docker.rst:277
 msgid "``OTOBO_WEB_HTTP_PORT``"
 msgstr "``OTOBO_WEB_HTTP_PORT``"
 
-#: ../../content/installation-docker.rst:267
+#: ../../content/installation-docker.rst:268
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. When "
 "HTTPS is enabled, the HTTP port will redirect to HTTPS."
 msgstr "设置以防HTTP端口偏离标准端口80。启用HTTPS时，HTTP端口将重定向到HTTPS。"
 
-#: ../../content/installation-docker.rst:270
+#: ../../content/installation-docker.rst:271
 msgid "**nginx webproxy settings**"
 msgstr "**nginx网络代理设置**"
 
-#: ../../content/installation-docker.rst:272
+#: ../../content/installation-docker.rst:273
 msgid "These setting are used when HTTPS is enabled."
 msgstr "这些设置在启用HTTPS时使用。"
 
-#: ../../content/installation-docker.rst:275
+#: ../../content/installation-docker.rst:276
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. Will "
 "redirect to HTTPS."
 msgstr "设置以防HTTP端口偏离标准端口80。将重定向到HTTPS。"
 
-#: ../../content/installation-docker.rst:279
+#: ../../content/installation-docker.rst:280
 msgid "``OTOBO_WEB_HTTPS_PORT``"
 msgstr "``OTOBO_WEB_HTTPS_PORT``"
 
-#: ../../content/installation-docker.rst:279
+#: ../../content/installation-docker.rst:280
 msgid "Set in case the HTTPS port should deviate from the standard port 443."
 msgstr "设置以防HTTPS端口偏离标准端口443。"
 
-#: ../../content/installation-docker.rst:283
+#: ../../content/installation-docker.rst:284
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE``"
 msgstr "``OTOBO_NGINX_SSL_CERTIFICATE``"
 
-#: ../../content/installation-docker.rst:282
+#: ../../content/installation-docker.rst:283
 msgid ""
 "SSL cert for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/"
 "nginx/ssl/acme.crt*"
@@ -1279,11 +1281,11 @@ msgstr ""
 "Nginx Webproxy的SSL证书。例如：* OTOBO_NGINX_SSL_CERTIFICATE = / etc / "
 "nginx / ssl / acme.crt *"
 
-#: ../../content/installation-docker.rst:287
+#: ../../content/installation-docker.rst:288
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 msgstr "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 
-#: ../../content/installation-docker.rst:286
+#: ../../content/installation-docker.rst:287
 msgid ""
 "SSL key for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/"
 "etc/nginx/ssl/acme.key*"
@@ -1291,19 +1293,19 @@ msgstr ""
 "Nginx Webproxy的SSL密钥。例如：* OTOBO_NGINX_SSL_CERTIFICATE_KEY = / etc / "
 "nginx / ssl / acme.key *"
 
-#: ../../content/installation-docker.rst:289
+#: ../../content/installation-docker.rst:290
 msgid "**Docker Compose settings**"
 msgstr "**docker-compose设置**"
 
-#: ../../content/installation-docker.rst:291
+#: ../../content/installation-docker.rst:292
 msgid "These settings are used by Docker Compose directly."
 msgstr "这些设置由docker-compose直接使用。"
 
-#: ../../content/installation-docker.rst:296
+#: ../../content/installation-docker.rst:297
 msgid "``COMPOSE_PROJECT_NAME``"
 msgstr "``COMPOSE_PROJECT_NAME``"
 
-#: ../../content/installation-docker.rst:294
+#: ../../content/installation-docker.rst:295
 msgid ""
 "The project name is used as a prefix for the generated volumes and "
 "containers. Must be set because the compose file is located in *scripts/"
@@ -1313,19 +1315,19 @@ msgstr ""
 "项目名称是用作生成的卷和容器的前缀。必须设置，因为编辑的文件位于* scripts / "
 "docker-compose *中，默认情况下将使用 **docker-compose**作为项目名称。"
 
-#: ../../content/installation-docker.rst:299
+#: ../../content/installation-docker.rst:300
 msgid "``COMPOSE_PATH_SEPARATOR``"
 msgstr "``COMPOSE_PATH_SEPARATOR``"
 
-#: ../../content/installation-docker.rst:299
+#: ../../content/installation-docker.rst:300
 msgid "Separator for the value of COMPOSE_FILE"
 msgstr "COMPOSE_FILE数值的分隔符"
 
-#: ../../content/installation-docker.rst:303
+#: ../../content/installation-docker.rst:304
 msgid "``COMPOSE_FILE``"
 msgstr "``COMPOSE_FILE``"
 
-#: ../../content/installation-docker.rst:302
+#: ../../content/installation-docker.rst:303
 msgid ""
 "Use *docker-compose/otobo-base.yml* as the base and add the wanted extension "
 "files. E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-"
@@ -1335,7 +1337,7 @@ msgstr ""
 "docker-compose / otobo-override-http.yml *或* docker-compose / otobo-"
 "override-https.yml *。"
 
-#: ../../content/installation-docker.rst:306
+#: ../../content/installation-docker.rst:307
 msgid ""
 "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX``"
@@ -1343,21 +1345,21 @@ msgstr ""
 "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX``"
 
-#: ../../content/installation-docker.rst:306
+#: ../../content/installation-docker.rst:307
 msgid ""
 "Used for specifying alternative Docker images. Useful for testing local "
 "builds."
 msgstr "用于指定备用Docker映像，这对测试本地版本很有用。"
 
-#: ../../content/installation-docker.rst:309
+#: ../../content/installation-docker.rst:310
 msgid "Advanced topics"
 msgstr "进阶主题"
 
-#: ../../content/installation-docker.rst:312
+#: ../../content/installation-docker.rst:313
 msgid "Custom configuration of the nginx webproxy"
 msgstr "Nginx网络代理的自定义配置"
 
-#: ../../content/installation-docker.rst:314
+#: ../../content/installation-docker.rst:315
 msgid ""
 "The default Docker-based OTOBO installation provides the container "
 "`otobo_nginx_1`. This container provides HTTPS support for the HTTP-based "
@@ -1378,7 +1380,7 @@ msgstr ""
 "{OTOBO_NGINX_SSL_CERTIFICATE_KEY} *`$ {OTOBO_NGINX_WEB_HOST}`*`$ "
 "{OTOBO_NGINX_WEB_PORT}`"
 
-#: ../../content/installation-docker.rst:326
+#: ../../content/installation-docker.rst:327
 msgid ""
 "There are various possibilities for customizing the nginx configuration. One "
 "way is to use a locally built image that is derived from the image `otobo-"
@@ -1388,11 +1390,11 @@ msgstr ""
 "自定义nginx配置有多种可能性。一种方法是使用从otobo-nginx-webproxy派生的本地镜"
 "像。在这样的本地镜像中，可以非常灵活地配置nginx。"
 
-#: ../../content/installation-docker.rst:332
+#: ../../content/installation-docker.rst:333
 msgid "The following approach is only supported in OTOBO 10.0.4 or later."
 msgstr "只有OTOBO 10.0.4或更高版本支持以下方法。"
 
-#: ../../content/installation-docker.rst:334
+#: ../../content/installation-docker.rst:335
 msgid ""
 "Another supported approach is to only override the default config template "
 "with a customized version. In this case, we have to create a volume that "
@@ -1401,7 +1403,7 @@ msgstr ""
 "另一种可行的方法是使用自定义版本覆盖默认配置模板。在这种情况下，我们必须首先"
 "创建一个卷，包含nginx修改后的配置模板。"
 
-#: ../../content/installation-docker.rst:353
+#: ../../content/installation-docker.rst:354
 msgid ""
 "Your adapted nginx configuration usually contains the directive **listen**, "
 "which declares the ports of the webserver. The internally used ports have "
@@ -1414,7 +1416,7 @@ msgstr ""
 "整后的nginx配置中。因此，对于10.0.3或更早版本，请使用端口80和443。对于OTOBO "
 "10.0.4，请使用端口8080和8443。"
 
-#: ../../content/installation-docker.rst:358
+#: ../../content/installation-docker.rst:359
 msgid ""
 "After setting up the volume, the adapted configuration must be activated. In "
 "order to achieve this, uncomment or add the following lines in your *.env* "
@@ -1423,15 +1425,15 @@ msgstr ""
 "创立卷之后，必须激活调整后的配置。为此，请取消注释或在* .env *文件中添加以下"
 "行："
 
-#: ../../content/installation-docker.rst:366
+#: ../../content/installation-docker.rst:367
 msgid "The changed Docker Compose configuration can be inspected with:"
 msgstr "更改后的Docker Compose配置可以通过以下方式进行检查："
 
-#: ../../content/installation-docker.rst:372
+#: ../../content/installation-docker.rst:373
 msgid "Finally, the containers can be started again:"
 msgstr "最后，可以再次启动容器："
 
-#: ../../content/installation-docker.rst:378
+#: ../../content/installation-docker.rst:379
 msgid ""
 "See also the section \"Using environment variables in nginx configuration "
 "(new in 1.19)\" in https://hub.docker.com/_/nginx."
@@ -1439,11 +1441,11 @@ msgstr ""
 "另请参见https://hub.docker.com/_/nginx中的“在nginx配置中使用环境变量（1.19中"
 "的新功能）”部分。"
 
-#: ../../content/installation-docker.rst:381
+#: ../../content/installation-docker.rst:382
 msgid "Choosing non-standard ports"
 msgstr "选择非标准端口"
 
-#: ../../content/installation-docker.rst:383
+#: ../../content/installation-docker.rst:384
 msgid ""
 "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There "
 "can be cases where one or both of these ports are already used by other "
@@ -1454,16 +1456,16 @@ msgstr ""
 "使用了这些端口中的一个或两个。在这些情况下，可以通过在* .env *文件中指定"
 "`OTOBO_WEB_HTTP_PORT`和`OTOBO_WEB_HTTPS_PORT`来覆盖默认端口。"
 
-#: ../../content/installation-docker.rst:389
+#: ../../content/installation-docker.rst:390
 msgid "Building local images"
 msgstr "创建本地镜像"
 
-#: ../../content/installation-docker.rst:393
+#: ../../content/installation-docker.rst:394
 msgid ""
 "Building Docker images locally is usually only needed during development."
 msgstr "通常仅在开发期间才需要在本地构建Docker映像。"
 
-#: ../../content/installation-docker.rst:395
+#: ../../content/installation-docker.rst:396
 msgid ""
 "The files needed for creating Docker images locally are part of the the git "
 "repository https://github.com/RotherOSS/otobo:"
@@ -1471,23 +1473,23 @@ msgstr ""
 "在本地创建Docker映像所需的文件是git存储库https://github.com/RotherOSS/otobo的"
 "一部分："
 
-#: ../../content/installation-docker.rst:397
+#: ../../content/installation-docker.rst:398
 msgid "*otobo.web.dockerfile*"
 msgstr "*otobo.web.dockerfile*"
 
-#: ../../content/installation-docker.rst:398
+#: ../../content/installation-docker.rst:399
 msgid "*otobo.nginx.dockerfile*"
 msgstr "*otobo.nginx.dockerfile*"
 
-#: ../../content/installation-docker.rst:399
+#: ../../content/installation-docker.rst:400
 msgid "*otobo.elasticsearch.dockerfile*"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
-#: ../../content/installation-docker.rst:400
+#: ../../content/installation-docker.rst:401
 msgid "*bin/docker/build_docker_images.sh*"
 msgstr "*bin/docker/build_docker_images.sh*"
 
-#: ../../content/installation-docker.rst:410
+#: ../../content/installation-docker.rst:411
 msgid ""
 "The locally built images are tagged as ``local-<OTOBO_VERSION>`` using the "
 "version set up the file *RELEASE*. After building the local images, one can "
@@ -1499,11 +1501,11 @@ msgstr ""
 "`OTOBO_IMAGE_OTOBO'，`OTOBO_IMAGE_OTOBO_ELASTICSEARCH，"
 "`OTOBO_IMAGE_OTOBO_NGINX'来指定要使用的镜像。"
 
-#: ../../content/installation-docker.rst:415
+#: ../../content/installation-docker.rst:416
 msgid "Automatic Installation"
 msgstr "自动安装"
 
-#: ../../content/installation-docker.rst:417
+#: ../../content/installation-docker.rst:418
 msgid ""
 "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can "
 "take a short cut. This is mostly useful for running the test suite on a "
@@ -1512,45 +1514,45 @@ msgstr ""
 "您可以通过捷径来代替http：//yourIPorFQDN/otobo/installer.pl。这对于在全新安装"
 "上运行测试套件非常有用。"
 
-#: ../../content/installation-docker.rst:422
+#: ../../content/installation-docker.rst:423
 msgid "``docker-compose down -v`` will remove all previous setup and data."
 msgstr "``docker-compose down -v`` 将清除所有之前的配置和数据。"
 
-#: ../../content/installation-docker.rst:437
+#: ../../content/installation-docker.rst:438
 msgid "List of useful commands"
 msgstr "常用命令列表"
 
-#: ../../content/installation-docker.rst:439
+#: ../../content/installation-docker.rst:440
 msgid "**Docker**"
 msgstr "** Docker **"
 
-#: ../../content/installation-docker.rst:441
+#: ../../content/installation-docker.rst:442
 msgid ""
 "``docker system prune -a`` system clean-up (removes all unused images, "
 "containers, volumes, networks)"
 msgstr ""
 "``docker system prune -a`` 系统清理（清除所有未使用的镜像、容器、卷和网络）"
 
-#: ../../content/installation-docker.rst:442
+#: ../../content/installation-docker.rst:443
 msgid "``docker version`` show version"
 msgstr "``docker version`` 显示版本"
 
-#: ../../content/installation-docker.rst:443
+#: ../../content/installation-docker.rst:444
 msgid ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` 创建一个镜像"
 
-#: ../../content/installation-docker.rst:444
+#: ../../content/installation-docker.rst:445
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``docker run --publish 80:5000 otobo``运行新的镜像"
 
-#: ../../content/installation-docker.rst:445
+#: ../../content/installation-docker.rst:446
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` 登陆新的镜像"
 
-#: ../../content/installation-docker.rst:446
+#: ../../content/installation-docker.rst:447
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that "
 "in case entrypoint.sh is broken"
@@ -1558,23 +1560,23 @@ msgstr ""
 "如果entrypoint.sh被破坏了，可以尝试一下 ``docker run -it -v opt_otobo:/opt/"
 "otobo --entrypoint bash otobo``"
 
-#: ../../content/installation-docker.rst:447
+#: ../../content/installation-docker.rst:448
 msgid "``docker ps`` show running images"
 msgstr "``docker ps`` 显示正在运行的镜像"
 
-#: ../../content/installation-docker.rst:448
+#: ../../content/installation-docker.rst:449
 msgid "``docker images`` show available images"
 msgstr "``docker images`` 显示可用的镜像"
 
-#: ../../content/installation-docker.rst:449
+#: ../../content/installation-docker.rst:450
 msgid "``docker volume ls`` list volumes"
 msgstr "``docker volume ls``列出卷名"
 
-#: ../../content/installation-docker.rst:450
+#: ../../content/installation-docker.rst:451
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr "``docker volume inspect otobo_opt_otobo`` 检查一个卷"
 
-#: ../../content/installation-docker.rst:451
+#: ../../content/installation-docker.rst:452
 msgid ""
 "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get "
 "volume mountpoint"
@@ -1582,15 +1584,15 @@ msgstr ""
 "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` 获取卷"
 "挂载点"
 
-#: ../../content/installation-docker.rst:452
+#: ../../content/installation-docker.rst:453
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``docker volume rm tmp_volume``清除一个卷"
 
-#: ../../content/installation-docker.rst:453
+#: ../../content/installation-docker.rst:454
 msgid "``docker inspect <container>`` inspect a container"
 msgstr "``docker inspect <container>`` 检查一个容器"
 
-#: ../../content/installation-docker.rst:454
+#: ../../content/installation-docker.rst:455
 msgid ""
 "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list "
 "files in an image"
@@ -1598,33 +1600,33 @@ msgstr ""
 "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar``显示一个"
 "镜像中的文件列表"
 
-#: ../../content/installation-docker.rst:455
+#: ../../content/installation-docker.rst:456
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` 重新加载 nginx"
 
-#: ../../content/installation-docker.rst:457
+#: ../../content/installation-docker.rst:458
 msgid "**Docker Compose**"
 msgstr "**docker-compose设置**"
 
-#: ../../content/installation-docker.rst:459
+#: ../../content/installation-docker.rst:460
 msgid "``docker-compose config`` check and show the configuration"
 msgstr "``docker-compose config``检查并显示相应配置"
 
-#: ../../content/installation-docker.rst:460
+#: ../../content/installation-docker.rst:461
 msgid "``docker-compose ps`` show the running containers"
 msgstr "``docker-compose ps`` 显示正在运行的容器"
 
-#: ../../content/installation-docker.rst:463
+#: ../../content/installation-docker.rst:464
 msgid "Resources"
 msgstr "资源"
 
-#: ../../content/installation-docker.rst:465
+#: ../../content/installation-docker.rst:466
 msgid ""
 "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 msgstr ""
 "`Perl Maven： <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
-#: ../../content/installation-docker.rst:466
+#: ../../content/installation-docker.rst:467
 msgid ""
 "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
@@ -1632,7 +1634,7 @@ msgstr ""
 "`Docker Compose快速启动请参考 <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
 
-#: ../../content/installation-docker.rst:467
+#: ../../content/installation-docker.rst:468
 msgid ""
 "`Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www."
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
@@ -1642,7 +1644,7 @@ msgstr ""
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
 "ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:468
+#: ../../content/installation-docker.rst:469
 msgid ""
 "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
@@ -1650,17 +1652,17 @@ msgstr ""
 "`在Ubuntu 18.04 LTS上运行的Docker更新版本请参考 <https://www.digitalocean."
 "com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:469
+#: ../../content/installation-docker.rst:470
 msgid "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
 msgstr "`docker-otrs： <https://github.com/juanluisbaptiste/docker-otrs/>`_"
 
-#: ../../content/installation-docker.rst:470
+#: ../../content/installation-docker.rst:471
 msgid ""
 "`cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 msgstr ""
 "`清理： <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
-#: ../../content/installation-docker.rst:471
+#: ../../content/installation-docker.rst:472
 msgid ""
 "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
@@ -1668,7 +1670,7 @@ msgstr ""
 "`Dockerfile 最佳实践： <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
 
-#: ../../content/installation-docker.rst:472
+#: ../../content/installation-docker.rst:473
 msgid ""
 "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/"
 "when-does-docker-image-cache-invalidation-occur>`_"
@@ -1676,7 +1678,7 @@ msgstr ""
 "`Docker缓存失效：<https://stackoverflow.com/questions/34814669/when-does-"
 "docker-image-cache-invalidation-occur>`_"
 
-#: ../../content/installation-docker.rst:473
+#: ../../content/installation-docker.rst:474
 msgid ""
 "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
@@ -1684,11 +1686,11 @@ msgstr ""
 "`Docker主机IP地址： <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
 
-#: ../../content/installation-docker.rst:474
+#: ../../content/installation-docker.rst:475
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`环境： <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
-#: ../../content/installation-docker.rst:475
+#: ../../content/installation-docker.rst:476
 msgid ""
 "`Self signed certificate <https://www.digitalocean.com/community/tutorials/"
 "how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
@@ -1696,7 +1698,7 @@ msgstr ""
 "`自己签名的证书：<https://www.digitalocean.com/community/tutorials/how-to-"
 "create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:476
+#: ../../content/installation-docker.rst:477
 msgid ""
 "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-"
 "build/>`_"
