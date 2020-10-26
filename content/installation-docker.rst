@@ -51,11 +51,12 @@ We assume here that the user **docker_admin** is used for interacting with Docke
 the **root** user of the Docker host or a dedicated user with the required permissions.
 
 1. Clone the otobo-docker repo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Docker images will eventually be fetched from https://hub.docker.com. But some setup and command files
-need to be cloned from the otobo-docker Github repository. Make sure that you use the fitting versions of these
-files. The git tag must correspond to the version of OTOBO. Here we use OTOBO 10.0.4 as an example.
+The Docker images will eventually be fetched from the image repository https://hub.docker.com.
+But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository.
+Make sure that you specify the branch that corresponds to the current version of OTOBO.
+For example, when *OTOBO 10.0.6* is the current version then please use the branch *rel-10_0_6*.
 
 .. note::
 
@@ -70,7 +71,7 @@ files. The git tag must correspond to the version of OTOBO. Here we use OTOBO 10
 .. code-block:: bash
 
    docker_admin> cd /opt
-   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch rel-10_0_4 --single-branch
+   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch <BRANCH> --single-branch
    docker_admin> ls otobo-docker    # just a sanity check, README.md should exist
 
 2. Create an initial *.env* file
