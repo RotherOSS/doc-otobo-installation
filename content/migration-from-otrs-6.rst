@@ -239,7 +239,7 @@ Depending on your Docker setup, the command ``rsync`` might need to be run with 
 
     docker_admin> # when docker_admin is root
     docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
-    docker_admin> ls -l $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+    docker_admin> ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
     docker_admin> # when docker_admin is not root
     docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
