@@ -289,8 +289,8 @@ Here are sample commands that achieve this goal.
 
 .. warning::
 
-    With these commands any special setup of MySQL collations is removed.
-    In case special collations are needed, they have to be readded manually.
+    The provided commands remove any special setup of MySQL collations.
+    In case you need any special collations, make sure to re-add them manually.
 
 .. code-block:: bash
 
