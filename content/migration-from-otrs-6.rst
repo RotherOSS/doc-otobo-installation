@@ -418,6 +418,9 @@ When that happens, please check the settings in *Kernel/Config.pm* and revert th
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
 
+1. Password policy rules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 With OTOBO 10 a new default password policy for agent and customer users is in effect, if local authentication is used. The password policy rules can be changed in the system configuration (``PreferencesGroups###Password`` and ``CustomerPersonalPreference###Password``).
 
 +---------------------------------------+--------------+
@@ -437,3 +440,12 @@ With OTOBO 10 a new default password policy for agent and customer users is in e
 +---------------------------------------+--------------+
 | ``PasswordChangeAfterFirstLogin``     | Yes          |
 +---------------------------------------+--------------+
+
+2. Under Docker: Manually migrate cron jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In a non-Docker installation of OTOBO, there is at least one cron job which checks the health of the Daemon.
+Under Docker, this cron job no longer exists.
+Furthermore, there is no cron daemon running in any of the Docker containers.
+This means that you have to look for an individual solution for OTRS systems with customer-specific cron jobs
+(e. g. backing up the database).
