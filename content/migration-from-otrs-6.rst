@@ -287,10 +287,15 @@ by the script *bin/backup.pl*.
 Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
 Here are sample commands that achieve this goal.
 
+.. warning::
+
+    With these commands any special setup of MySQL collations is removed.
+    In case special collations are needed, they have to be readded manually.
+
 .. code-block:: bash
 
     otobo> mysqldump -h localhost -u root -p --databases otrs --no-data --dump-date > otrs_schema.sql
-    otobo> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' otrs_schema.sql
+    otobo> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' -e 's/COLLATE \w\+/ /' otrs_schema.sql
     otobo> mysqldump -h localhost -u root -p --databases otrs --no-create-info --no-create-db --dump-date > otrs_data.sql
 
 In order to import the dumped database, we run ``mysql`` inside the running Docker container *otobo_db_1*.
