@@ -295,7 +295,7 @@ Here are sample commands that achieve this goal.
 .. code-block:: bash
 
     otobo> mysqldump -h localhost -u root -p --databases otrs --no-data --dump-date > otrs_schema.sql
-    otobo> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' -e 's/COLLATE \w\+/ /' otrs_schema.sql
+    otobo> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' -e 's/COLLATE=\w\+/ /' otrs_schema.sql
     otobo> mysqldump -h localhost -u root -p --databases otrs --no-create-info --no-create-db --dump-date > otrs_data.sql
 
 In order to import the dumped database, we run ``mysql`` inside the running Docker container *otobo_db_1*.
