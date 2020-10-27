@@ -439,7 +439,8 @@ With OTOBO 10 a new default password policy for agent and customer users is in e
 2. Under Docker: Manually migrate cron jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In a non-Docker installation, there is at least one cron job which checks the health of the OTOBO Daemon.
-Under Docker this cron job no longer exists. Furthermore there is no cron daemon running in any of
-the Docker containers. This means that an individual solution must be found when OTRS had customer specific
-cron jobs. Backing up the database is an example for such an customer specific cron job.
+In a non-Docker installation of OTOBO, there is at least one cron job which checks the health of the Daemon.
+Under Docker, this cron job no longer exists.
+Furthermore, there is no cron daemon running in any of the Docker containers.
+This means that you have to look for an individual solution for OTRS systems with customer-specific cron jobs
+(e. g. backing up the database).
