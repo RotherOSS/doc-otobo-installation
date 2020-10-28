@@ -82,7 +82,13 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
     docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:rel-10_x_y copy_otobo_next
 
     # start containers again, using the new version
-    docker_admin> docker-compose up -d
+    docker_admin> docker-compose up --detach
+
+    # a quick sanity check
+    docker_admin> docker-compose ps
+
+    # complete the update, with running database
+    docker_admin> docker exec -t otobo_web_1 /opt/otobo_install/entrypoint.sh do_update_tasks
 
     # inspect the update log
     docker exec -t otobo_web_1  cat /opt/otobo/var/log/update.log
