@@ -19,6 +19,10 @@ When updating to a new version of OTOBO several things have to happen.
     In the sample commands below, the version **10.x.y** is used as the example version.
     Please substitute it with the real version, e.g. **10.0.6**.
 
+.. warning::
+
+    These instructions apply only to OTOBO 10.0.6 or later.
+
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
