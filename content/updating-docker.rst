@@ -4,7 +4,7 @@ Updating a Docker-based installation of OTOBO
 For running OTOBO under Docker we need the OTOBO software itself and an
 environment in which OTOBO can run. The OTOBO Docker image provides the environment
 and a copy of the OTOBO software. The software itself is installed in the volume *otobo_opt_otobo*.
-A volume is used because run time data, e.g. configuration files and installed packages,
+A named volume is used because run time data, e.g. configuration files and installed packages,
 is stored in the same directory tree.
 
 When updating to a new version of OTOBO several things have to happen.
@@ -13,6 +13,7 @@ When updating to a new version of OTOBO several things have to happen.
 - The Docker Compose config file *.env* has to be checked.
 - The new Docker image has to be fetched.
 - The volume *otobo_opt_otobo* must be updated.
+- Some maintainance tasks must be executed.
 
 .. note::
 
@@ -26,10 +27,8 @@ When updating to a new version of OTOBO several things have to happen.
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The file *.env* controls the OTOBO Docker container. Within that file, the variables
-*OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and *OTOBO_IMAGE_OTOBO_NGINX* declare
-which images are used. The latest images are used when these variables are not set.
-If you want to use a specific version, then please set these variables accordingly.
+The OTOBO Docker Compose files can change between releases. Therefore is must be
+made sure that the correct setup is used.
 
 .. note::
 
@@ -40,10 +39,16 @@ If you want to use a specific version, then please set these variables according
     # Change to the otobo docker directory
     docker_admin> cd /opt/otobo-docker
 
+    # For the curious
+    docker-admin> git diff rel-10_x_y     # Please use the wanted version
+
     # Update OTOBO docker-compose repository
     docker-admin> git checkout rel-10_x_y # Please use the wanted version
 
-    # check the .env file
+The file *.env* controls the OTOBO Docker container. Within that file, the variables
+*OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and *OTOBO_IMAGE_OTOBO_NGINX* declare
+which images are used. The latest images are used when these variables are not set.
+If you want to use a specific version, then please set these variables accordingly.
 
 Fetch the new Docker images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,14 +78,11 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
     # stop and remove the containers, but keep the named volumes
     docker_admin> docker-compose down
 
-    # start again with the new images
-    docker_admin> docker-compose up --detach
-
-    # copy the OTOBO software
+    # copy the OTOBO software, while containers are still stopped
     docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:rel-10_x_y copy_otobo_next
 
     # start containers again, using the new version
     docker_admin> docker-compose up -d
 
-    # complete the update
-    docker exec -t otobo otobo_web_1 do_update_tasks
+    # inspect the update log
+    docker exec -t otobo_web_1  cat /opt/otobo/var/log/update.log
