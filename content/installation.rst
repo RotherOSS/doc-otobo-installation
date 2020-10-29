@@ -24,7 +24,7 @@ Here's how to disable SELinux for RHEL/CentOS/Fedora.
 
 1. Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:
 
-   .. code-block:: none
+   .. code-block:: text
 
       # This file controls the state of SELinux on the system.
       # SELINUX= can take one of these three values:
@@ -49,12 +49,12 @@ Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
 Download the latest otobo release from https://ftp.otobo.org/pub/otobo/.
-and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
+Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
 
-    root> mkdir /root/otobo-install                                         # Create a install directory
-    root> cd /root/otobo-install                                            # Change into the update directory
+    root> mkdir /opt/otobo-install                                          # Create a temporary install directory
+    root> cd /opt/otobo-install                                             # Change into the update directory
     root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
     root> tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
     root> cp -r otobo-10.x.x /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
@@ -65,7 +65,7 @@ Step 2: Install Additional Programs and Perl Modules
 
 Use the following script to get an overview of all installed and required CPAN modules and other external dependencies.
 
-.. code-block:: none
+.. code-block:: text
 
    root> perl /opt/otobo/bin/otobo.CheckModules.pl -list
    Checking for Perl Modules:
@@ -92,7 +92,7 @@ Execute this command to get an install command to install the missing dependenci
 
 
 Step 3: Create the OTOBO User
-----------------------------
+-----------------------------
 
 Create a dedicated user for OTOBO within its own group:
 
@@ -164,7 +164,7 @@ Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf
 
 
 Configure Apache **with** SSL support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
 the apache ``sites-available`` directory`.
@@ -283,7 +283,7 @@ Step 8: Setup Elasticsearch
 OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
 Elasticsearch installation example based on Ubuntu 18.04 LTS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 JDK Installation
 
@@ -317,7 +317,7 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
 
 Elasticsearch Configuration
-~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Elasticsearch has a multitude of configuration options and possibilities.
 
@@ -331,7 +331,7 @@ You should always set the min and max JVM heap size to the same value. For examp
 
 In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best.
 
-.. code-block:: info
+.. note::
 
     See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information.
 
@@ -343,7 +343,7 @@ Now you can restart your Elasticsearch server to load the new configuration sett
 
 
 Step 8: Basic System Configuration
---------------------------
+-------------------------------------
 
 Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
 
@@ -364,7 +364,7 @@ OTOBO daemon is responsible for handling any asynchronous and recurring tasks in
    otobo> /opt/otobo/bin/otobo.Daemon.pl start
 
 Step 11: Cron jobs for the OTOBO user
-----------------------------
+-----------------------------------------------
 
 There are two default OTOBO cron files in ``/opt/otobo/var/cron/\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
 

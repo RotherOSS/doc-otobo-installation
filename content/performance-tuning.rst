@@ -1,7 +1,7 @@
 Performance Tuning
 ==================
 
-There is a list of performance enhancing techniques for your OTOBO installation, including configuration, coding, memory use, and more.
+This is a list of performance enhancing techniques for your OTOBO installation. The topics include configuration, coding, memory use, and more.
 
 
 Ticket Index Module
@@ -63,7 +63,7 @@ There are some options available for fine-tuning the search index:
       Used as word length boundaries. Only words with a length between these two values are stored in the article search index.
 
 ``Ticket::SearchIndex::Filters``
-   Full-text index regular expression filters to remove parts of the text.
+   Filters based on regular expressions exclude parts of the original text from the full-text index.
 
    .. figure:: images/sysconfig-ticket-searchIndex-filters.png
       :alt: ``Ticket::SearchIndex::Filters`` Setting
@@ -122,16 +122,21 @@ For more information and good rules of thumb about the heap size, please follow 
 Disk Allocation
 ~~~~~~~~~~~~~~~
 
-During the run-time of the service, Elasticsearch inspects the available disk space and therefore decides whether to allocate new shards to the related cluster node or even relocate shards away from that particular node. Such behavior will be controlled by the current disk capacity and can be configured in configuration file ``elasticsearch.yml``. Enclosed are some important configurations, that come with good default values, but might be important:
+While running the service, Elasticsearch inspects the available disk space. Based on the result,
+it decides whether to allocate new shards to a cluster node. In some cases it even relocates shards away from a node.
+This behavior is determined by the current disk capacity. It can be configured by settings in the configuration file *elasticsearch.yml*.
+Here are some relevant configuration settings. They come with good default values, but might be important in trouble shooting.
 
 ``cluster.routing.allocation.disk.watermark.low``
-   Default value of 85%. If this limit is exceeded, Elasticsearch will not allocate more shards to the related cluster node. The operation of that node is not influenced and data can still be indexed and searched.
+   Default value of 85%. When this limit is exceeded, Elasticsearch will no longer allocate more shards to the related cluster node.
+   The operation of that node is not influenced and data can still be indexed and searched.
 
 ``cluster.routing.allocation.disk.watermark.high``
-   Default value of 90%. If this limit is exceeded, Elasticsearch will try to relocate existing shards to other nodes (if possible), that have enough space available.
+   Default value of 90%. When this limit is exceeded, Elasticsearch will try to relocate existing shards to other nodes that have enough space available.
 
 ``cluster.routing.allocation.disk.watermark.flood_stage``
-   Default value of 95%. If this limit is exceeded, Elasticsearch will update the configuration of all indices to read-only index blocks ``index.blocks.read_only_allow_delete``, that have at least one shard allocated to the related cluster node. Since then, it is not possible to index new data to such indices and restricted to searches and delete actions.
+   Default value of 95%. When this limit is exceeded, Elasticsearch will update the configuration of all indices, that have at least one shard allocated to the related cluster node, to read-only index blocks. Specifically, they are flagged with ``index.blocks.read_only_allow_delete``.
+  After that update, it is no longer possible to index new data to such indices. The indexes are restricted to searches and to delete actions only.
 
 .. note::
 
@@ -225,7 +230,7 @@ The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on th
 2. Install Perl module Redis or Redis::Fast
 
 You can choose which Redis module to use: `Redis` or `Redis::Fast` (which is compatible with `Redis` but **~2x faster**).
-Please use our ``otobo.CheckModules.pl --list`` to choose the right package for you:
+Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:
 
 .. code-block:: bash
 
@@ -267,4 +272,6 @@ OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make sure
 Clustering
 ----------
 
-For very high loads, it can be required to operate OTOBO on a cluster of multiple front end servers. This is a complex task with many pitfalls. Therefore, Rother OSS provides support for clusters in its `managed OTOBO <https://otobo.de/>`__ environment exclusively.
+For very high loads, it can be required to operate OTOBO on a cluster of multiple front end servers.
+This is a complex task with many pitfalls.
+We strongly advise to get in touch with our experts before trying to implement this on your own.

@@ -11,6 +11,9 @@ First make sure that in *.env* the images have either the tag `latest` or the wa
     # Change to the otobo docker directory
     docker_admin> cd /opt/otobo-docker
 
+    # Update OTOBO docker-compose repository
+    docker-admin> git checkout rel-10_0_0 # Please use the required version
+
     # fetch the new images that are tagged a 'latest'
     docker_admin> docker-compose pull
 
