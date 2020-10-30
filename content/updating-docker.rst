@@ -47,7 +47,7 @@ Here is an example using the devel image for the OTOBO 10.1.x branch from Docker
     # force upgrade, skip reinstall
     docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:devel-rel-10_1 upgrade
 
-    start again with the new version
+    # start again with the new version
     docker_admin> docker-compose up -d
 
 After updating you need to reinstall all OTOBO packages and clear the cache.
