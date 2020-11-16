@@ -40,7 +40,7 @@ Example for a standard installation with Ubuntu and MySQL
     root> mkdir /root/otobo-update                      # Create a update directory
     root> cd /root/otobo-update                         # Change into the update directory
     root> cp -pr /opt/otobo otobo-prod-old              # Backup the hole OTOBO directory to the update directory
-    root> mysql -otobo -p otobo > otobo-prod-old.sql    # Backup the otobo database and save as dump otobo-prod-old.sql
+    root> mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
 
 Please check if all files a valid. Now we have a backup with all required data.
 
