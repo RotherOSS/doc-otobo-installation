@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-16 00:34+0100\n"
+"POT-Creation-Date: 2020-11-17 00:34+0100\n"
 "PO-Revision-Date: 2020-09-30 22:35+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
@@ -3823,48 +3823,156 @@ msgid "Now you can log into your system."
 msgstr ""
 
 #: ../../content/updating-docker.rst:12
-msgid "Updating OTOBO using Docker and Docker Compose"
-msgstr "Atualizando usando Docker e Docker Compose"
-
-#: ../../content/updating-docker.rst:15
 #, fuzzy
-msgid "Updating to a new patch level release"
-msgstr "Atualizando para uma nova versão de nível de patch"
-
-#: ../../content/updating-docker.rst:17
-#, fuzzy
-msgid ""
-"First make sure that in *.env* the images have either the tag `latest` or "
-"the wanted version."
+msgid "Updating a Docker-based installation of OTOBO"
 msgstr ""
-"Primeiro certifique-se de que em *.env* as imagens tenham a tag `latest` ou "
-"a versão desejada."
+"É possível migrar de qualquer um dos bancos de dados suportados para "
+"qualquer outro."
 
-#: ../../content/updating-docker.rst:36 ../../content/updating-docker.rst:63
+#: ../../content/updating-docker.rst:14
 msgid ""
-"After updating you need to reinstall all OTOBO packages and clear the cache."
+"For running OTOBO under Docker we need the OTOBO software itself and an "
+"environment in which OTOBO can run. The OTOBO Docker image provides the "
+"environment and a copy of the OTOBO software. The software itself is "
+"installed in the volume *otobo_opt_otobo*. A named volume is used because "
+"run time data, e.g. configuration files and installed packages, is stored in "
+"the same directory tree."
 msgstr ""
-"Após a atualização, você precisa reinstalar todos os pacotes OTOBO e limpar "
-"o cache."
 
-#: ../../content/updating-docker.rst:46
-#, fuzzy
-msgid "Force an update to or from a devel version"
-msgstr "Força uma atualização para uma versão devel"
+#: ../../content/updating-docker.rst:20
+msgid "When updating to a new version of OTOBO several things have to happen."
+msgstr ""
 
-#: ../../content/updating-docker.rst:48
-#, fuzzy
+#: ../../content/updating-docker.rst:22
+msgid "The Docker Compose files have to be updated."
+msgstr ""
+
+#: ../../content/updating-docker.rst:23
+msgid "The Docker Compose config file *.env* has to be checked."
+msgstr ""
+
+#: ../../content/updating-docker.rst:24
+msgid "The new Docker image has to be fetched."
+msgstr ""
+
+#: ../../content/updating-docker.rst:25
+msgid "The volume *otobo_opt_otobo* must be updated."
+msgstr ""
+
+#: ../../content/updating-docker.rst:26
+msgid "Some maintainance tasks must be executed."
+msgstr ""
+
+#: ../../content/updating-docker.rst:30
 msgid ""
-"Images of devel versions are not upgraded automatically. But the upgrade can "
-"be forced. The source of the devel version can either be a local build or a "
-"devel image from Docker Hub. Here is an example using the devel image for "
-"the OTOBO 10.1.x branch from Docker Hub."
+"In the sample commands below, the version **10.x.y** is used as the example "
+"version. Please substitute it with the real version, e.g. **10.0.6**."
 msgstr ""
-"Imagens de versões desenvolvimento não são atualizadas automaticamente. Mas "
-"a atualização pode ser forçada. A fonte da versão do desenvolvimento pode "
-"ser uma compilação local ou uma imagem do desenvolvimento do Docker Hub. "
-"Aqui está um exemplo usando a imagem devel para o branch OTOBO 10.1.x do "
-"Docker Hub."
+
+#: ../../content/updating-docker.rst:35
+msgid "These instructions apply only to OTOBO 10.0.6 or later."
+msgstr ""
+
+#: ../../content/updating-docker.rst:38
+#, fuzzy
+msgid "Updating the Docker Compose files"
+msgstr "5. Inicie a imagem docker-compose"
+
+#: ../../content/updating-docker.rst:40
+msgid ""
+"The OTOBO Docker Compose files can change between releases. Therefore is "
+"must be made sure that the correct setup is used."
+msgstr ""
+
+#: ../../content/updating-docker.rst:45
+msgid ""
+"See https://hub.docker.com/repository/docker/rotheross/otobo/tags for the "
+"available releases."
+msgstr ""
+
+#: ../../content/updating-docker.rst:58
+msgid ""
+"The file *.env* controls the OTOBO Docker container. Within that file, the "
+"variables *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and "
+"*OTOBO_IMAGE_OTOBO_NGINX* declare which images are used. The latest images "
+"are used when these variables are not set. If you want to use a specific "
+"version, then please set these variables accordingly."
+msgstr ""
+
+#: ../../content/updating-docker.rst:64
+msgid "Fetch the new Docker images"
+msgstr ""
+
+#: ../../content/updating-docker.rst:66
+msgid ""
+"Docker compose can be used for fetching the wanted images from https://hub."
+"docker.com/repository/docker/rotheross/."
+msgstr ""
+
+#: ../../content/updating-docker.rst:77
+msgid "Update OTOBO"
+msgstr ""
+
+#: ../../content/updating-docker.rst:79
+msgid ""
+"Here the volume *otobo_opt_otobo* is updated and the following console "
+"commands are performed:"
+msgstr ""
+
+#: ../../content/updating-docker.rst:81
+msgid "Admin::Package::ReinstallAll"
+msgstr ""
+
+#: ../../content/updating-docker.rst:82
+msgid "Admin::Package::UpgradeAll"
+msgstr ""
+
+#: ../../content/updating-docker.rst:83
+msgid "Maint::Config::Rebuild"
+msgstr ""
+
+#: ../../content/updating-docker.rst:84
+msgid "Maint::Cache::Delete"
+msgstr ""
+
+#~ msgid "Updating OTOBO using Docker and Docker Compose"
+#~ msgstr "Atualizando usando Docker e Docker Compose"
+
+#, fuzzy
+#~ msgid "Updating to a new patch level release"
+#~ msgstr "Atualizando para uma nova versão de nível de patch"
+
+#, fuzzy
+#~ msgid ""
+#~ "First make sure that in *.env* the images have either the tag `latest` or "
+#~ "the wanted version."
+#~ msgstr ""
+#~ "Primeiro certifique-se de que em *.env* as imagens tenham a tag `latest` "
+#~ "ou a versão desejada."
+
+#~ msgid ""
+#~ "After updating you need to reinstall all OTOBO packages and clear the "
+#~ "cache."
+#~ msgstr ""
+#~ "Após a atualização, você precisa reinstalar todos os pacotes OTOBO e "
+#~ "limpar o cache."
+
+#, fuzzy
+#~ msgid "Force an update to or from a devel version"
+#~ msgstr "Força uma atualização para uma versão devel"
+
+#, fuzzy
+#~ msgid ""
+#~ "Images of devel versions are not upgraded automatically. But the upgrade "
+#~ "can be forced. The source of the devel version can either be a local "
+#~ "build or a devel image from Docker Hub. Here is an example using the "
+#~ "devel image for the OTOBO 10.1.x branch from Docker Hub."
+#~ msgstr ""
+#~ "Imagens de versões desenvolvimento não são atualizadas automaticamente. "
+#~ "Mas a atualização pode ser forçada. A fonte da versão do desenvolvimento "
+#~ "pode ser uma compilação local ou uma imagem do desenvolvimento do Docker "
+#~ "Hub. Aqui está um exemplo usando a imagem devel para o branch OTOBO 10.1."
+#~ "x do Docker Hub."
 
 #~ msgid ""
 #~ "It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was "
@@ -3961,9 +4069,6 @@ msgstr ""
 #~ "Ubuntu 20.04:"
 #~ msgstr ""
 #~ "Exemplo de instalação do git, docker e docker-compose no Ubuntu 20.04:"
-
-#~ msgid "5. Start the docker-compose image"
-#~ msgstr "5. Inicie a imagem docker-compose"
 
 #~ msgid "Force an upgrade to a devel version"
 #~ msgstr "Força uma atualização para uma versão de desenvolvimento"
