@@ -39,8 +39,8 @@ made sure that the correct setup is used.
     # Change to the otobo docker directory
     docker_admin> cd /opt/otobo-docker
 
-    # For the curious
-    docker-admin> git diff rel-10_x_y     # Please use the wanted version
+    # Get the latest tags
+    docker-admin> git pull --tags
 
     # Update OTOBO docker-compose repository
     docker-admin> git checkout rel-10_x_y # Please use the wanted version
@@ -60,7 +60,7 @@ Docker compose can be used for fetching the wanted images from https://hub.docke
     # Change to the otobo docker directory
     docker_admin> cd /opt/otobo-docker
 
-    # fetch the ne~w images, either 'latest' or the specific version declared in .env
+    # fetch the new images, either 'latest' or the specific version declared in .env
     docker_admin> docker-compose pull
 
 Update OTOBO
