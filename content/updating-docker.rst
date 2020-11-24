@@ -91,4 +91,4 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
     docker_admin> docker exec -t otobo_web_1 /opt/otobo_install/entrypoint.sh do_update_tasks
 
     # inspect the update log
-    docker exec -t otobo_web_1  cat /opt/otobo/var/log/update.log
+    docker_admin> docker exec -t otobo_web_1  cat /opt/otobo/var/log/update.log
