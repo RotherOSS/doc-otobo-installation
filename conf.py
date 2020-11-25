@@ -6,7 +6,7 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2020-11-24'
+doc_datestamp = '2020-11-25'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
@@ -141,8 +141,8 @@ html_copy_source = False
 
 html_context = {
     "display_github": True,
-    "github_user": "RotherOSS",
-    "github_repo": "doc-otobo-installation",
+    "github_user": "OTOBO",
+    "github_repo": "doc-installation",
     "github_version": "master",
     "conf_py_path": "/",
 }
