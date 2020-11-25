@@ -141,8 +141,8 @@ html_copy_source = False
 
 html_context = {
     "display_github": True,
-    "github_user": "OTOBO",
-    "github_repo": "doc-installation",
+    "github_user": "RotherOSS",
+    "github_repo": "doc-otobo-installation",
     "github_version": "master",
     "conf_py_path": "/",
 }
