@@ -42,7 +42,7 @@ Example for a standard installation with Ubuntu and MySQL
     root> cp -pr /opt/otobo otobo-prod-old              # Backup the hole OTOBO directory to the update directory
     root> mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
 
-Please check if all files a valid. Now we have a backup with all required data.
+Please check if all files are valid. Now we have a backup with all required data.
 
 .. warning::
 
