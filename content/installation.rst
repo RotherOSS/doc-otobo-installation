@@ -262,6 +262,12 @@ After OTOBO installation it is possible to change the authentication module agai
 
       query_cache_size     = 32M
 
+   Also add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:
+
+   .. code-block:: ini
+
+      max_allowed_packet   = 64M  
+
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
 or install it on Debian or Ubuntu systems via package manager:
