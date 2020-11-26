@@ -282,7 +282,7 @@ by the script *bin/backup.pl*.
 .. code-block:: bash
 
     otobo> cd /opt/otobo
-    otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password=secret_otrs_password
+    otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
 
 Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
 Here are sample commands that achieve this goal.
