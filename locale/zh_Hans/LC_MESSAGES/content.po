@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-26 00:34+0100\n"
+"POT-Creation-Date: 2020-11-27 00:34+0100\n"
 "PO-Revision-Date: 2020-10-14 07:14+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -525,7 +525,18 @@ msgstr ""
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
 msgstr "对MySQL 8.0之前的版本，查询缓存尺寸需要设定："
 
-#: ../../content/installation.rst:276
+#: ../../content/installation.rst:275
+#, fuzzy
+msgid ""
+"Also add the following lines to the MySQL Server configuration file ``/etc/"
+"my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` "
+"under the ``[mysqldump]`` section:"
+msgstr ""
+"下面的配置设定是MySQL安装的最低要求。请将下面的脚本加入``[mysqld]`` 下面的"
+"MySQL服务器配置文件``/etc/my.cnf``，``/etc/mysql/my.cnf`` 或者 ``/etc/mysql/"
+"mysql.conf.d/mysqld.cnf``："
+
+#: ../../content/installation.rst:282
 msgid ""
 "For production purposes we recommend to use the tool ``mysqltuner`` to find "
 "the perfect setup. You can download the script from github ``https://github."
@@ -536,15 +547,15 @@ msgstr ""
 "``https://github.com/major/MySQLTuner-perl``下载脚本，或者通过软件管理在"
 "Debian或Ubuntu系统上安装："
 
-#: ../../content/installation.rst:283
+#: ../../content/installation.rst:289
 msgid "After installing execute the script:"
 msgstr "安装后运行下面的脚本："
 
-#: ../../content/installation.rst:291
+#: ../../content/installation.rst:297
 msgid "Step 8: Setup Elasticsearch"
 msgstr "步骤8：安装Elasticsearch弹性搜索"
 
-#: ../../content/installation.rst:293
+#: ../../content/installation.rst:299
 msgid ""
 "OTOBO recommends an active installation of Elasticsearch for quick search. "
 "The easiest way is to setup Elasticsearch on the same host as OTOBO and "
@@ -553,23 +564,23 @@ msgstr ""
 "OTOBO建议活性安装Elasticsearch以便快速搜索，最简单的办法就是将Elasticsearch和"
 "OTOBO安装在一台主机上，并绑定默认端口。"
 
-#: ../../content/installation.rst:296
+#: ../../content/installation.rst:302
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "基于Ubuntu 18.04 LTS的Elasticsearch安装范例"
 
-#: ../../content/installation.rst:298
+#: ../../content/installation.rst:304
 msgid "JDK Installation"
 msgstr "JDK安装"
 
-#: ../../content/installation.rst:305
+#: ../../content/installation.rst:311
 msgid "Elasticsearch Installation"
 msgstr "Elasticsearch安装"
 
-#: ../../content/installation.rst:315
+#: ../../content/installation.rst:321
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "在其他Linux版本中的Elasticsearch安装"
 
-#: ../../content/installation.rst:317
+#: ../../content/installation.rst:323
 msgid ""
 "Please follow the installation tutorial found at https://www.elastic.co/"
 "guide/en/elasticsearch/reference/current/setup.html."
@@ -577,25 +588,25 @@ msgstr ""
 "请遵照 https://www.elastic.co/guide/en/elasticsearch/reference/current/setup."
 "html中的安装教程进行。"
 
-#: ../../content/installation.rst:320
+#: ../../content/installation.rst:326
 msgid "Elasticsearch Module Installation"
 msgstr "Elasticsearch模块安装"
 
-#: ../../content/installation.rst:321
+#: ../../content/installation.rst:327
 msgid ""
 "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "另外，OTOBO需要在Elasticsearch上安装插件："
 
-#: ../../content/installation.rst:330
+#: ../../content/installation.rst:336
 msgid "Elasticsearch Configuration"
 msgstr "Elasticsearch配置"
 
-#: ../../content/installation.rst:332
+#: ../../content/installation.rst:338
 msgid ""
 "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr "Elasticsearch的配置有很多选择和可能。"
 
-#: ../../content/installation.rst:334
+#: ../../content/installation.rst:340
 msgid ""
 "In order to ensure error-free operation, you should adjust the jvm heap "
 "space for larger OTOBO systems. Please adjust the settings in the file ``/"
@@ -606,13 +617,13 @@ msgstr ""
 "etc/elasticsearch/jvm.options``中进行调整。一定要吧JVM堆空间的最大和最小值设"
 "置为同一个，例如都设为4GB，设置："
 
-#: ../../content/installation.rst:342
+#: ../../content/installation.rst:348
 msgid ""
 "In our tests, a value between 4 and 10 GB for medium-sized installations has "
 "proven to be the best."
 msgstr "在我们的测试中，对于中型安装，这个值设为4-10GB是最好的。"
 
-#: ../../content/installation.rst:346
+#: ../../content/installation.rst:352
 #, fuzzy
 msgid ""
 "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
@@ -621,7 +632,7 @@ msgstr ""
 "请遵照 https://www.elastic.co/guide/en/elasticsearch/reference/current/setup."
 "html中的安装教程进行。"
 
-#: ../../content/installation.rst:348
+#: ../../content/installation.rst:354
 msgid ""
 "Now you can restart your Elasticsearch server to load the new configuration "
 "settings. On most systems you can use the following command to do so:"
@@ -629,11 +640,11 @@ msgstr ""
 "现在你可以重启你的Elasticsearch服务器，以便新的配置生效。对于大部分系统，可以"
 "用下面的命令实现："
 
-#: ../../content/installation.rst:356
+#: ../../content/installation.rst:362
 msgid "Step 8: Basic System Configuration"
 msgstr "步骤8：系统基础配置"
 
-#: ../../content/installation.rst:358
+#: ../../content/installation.rst:364
 msgid ""
 "Please use the web installer at http://localhost/otobo/installer.pl (replace "
 "\"localhost\" with your OTOBO hostname) to set up your database and basic "
@@ -642,11 +653,11 @@ msgstr ""
 "请用 http://localhost/otobo/installer.pl （请用你的主机名替换“localhost”）中"
 "的网络安装软件，设置你的数据库和基本系统配置，例如电子邮件账户。"
 
-#: ../../content/installation.rst:362
+#: ../../content/installation.rst:368
 msgid "Step 9: First Login"
 msgstr "步骤9：首次登陆"
 
-#: ../../content/installation.rst:364
+#: ../../content/installation.rst:370
 msgid ""
 "Now you are ready to login to your system at http://localhost/otobo/index.pl "
 "as user ``root@localhost`` with the password that was generated (see above)."
@@ -654,11 +665,11 @@ msgstr ""
 "现在你可以通过http://localhost/otobo/index.pl登陆你的系统了，用户名"
 "``root@localhost`` ，密码是上面生成的（请参考之前描述）。"
 
-#: ../../content/installation.rst:368
+#: ../../content/installation.rst:374
 msgid "Step 10: Start the OTOBO Daemon"
 msgstr "步骤10：启动OTOBO Daemon"
 
-#: ../../content/installation.rst:370
+#: ../../content/installation.rst:376
 msgid ""
 "OTOBO daemon is responsible for handling any asynchronous and recurring "
 "tasks in OTOBO. What has been in cron file definitions previously is now "
@@ -669,11 +680,11 @@ msgstr ""
 "定义中描述的现在由OTOBO守护程序处理，这是运行OTOBO的需要。守护程序还要处理由"
 "用户发起的GenericAgent任务。"
 
-#: ../../content/installation.rst:377
+#: ../../content/installation.rst:383
 msgid "Step 11: Cron jobs for the OTOBO user"
 msgstr "步骤11：OTOBO用户的cron任务"
 
-#: ../../content/installation.rst:379
+#: ../../content/installation.rst:385
 msgid ""
 "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, "
 "and their purpose is to make sure that the OTOBO Daemon is running. They "
@@ -684,15 +695,15 @@ msgstr ""
 "Daemon守护程序已经运行起来了。激活这两个文件只需要不带“.dist\"扩展名进行拷贝"
 "就好。"
 
-#: ../../content/installation.rst:389
+#: ../../content/installation.rst:395
 msgid "With this step, the basic system setup is finished."
 msgstr "到这一步，基本的系统配置就完成了。"
 
-#: ../../content/installation.rst:393
+#: ../../content/installation.rst:399
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
 msgstr "步骤12：设置Bash Auto-Completion （可选）"
 
-#: ../../content/installation.rst:395
+#: ../../content/installation.rst:401
 msgid ""
 "All regular OTOBO command line operations happen via the OTOBO console "
 "interface. This provides an auto-completion for the bash shell which makes "
@@ -701,7 +712,7 @@ msgstr ""
 "所有正常的OTOBO命令行的执行都是通过OTOBO管理接口，管理接口可以实现Linux内核任"
 "务的自动完成，从而更方便地找到合适的命令和选项。"
 
-#: ../../content/installation.rst:397
+#: ../../content/installation.rst:403
 msgid ""
 "You can activate the bash auto-completion by installing the package ``bash-"
 "completion``. It will automatically detect and load the file ``/opt/otobo/."
@@ -710,13 +721,13 @@ msgstr ""
 "你可以通过安装软件包``bash-completion``来激活内核任务自动完成，它将为"
 "``otobo`` 用户自动检测并调用``/opt/otobo/.bash_completion``文件。"
 
-#: ../../content/installation.rst:399
+#: ../../content/installation.rst:405
 msgid ""
 "After restarting your shell, you can just type this command followed by TAB, "
 "and it will list all available commands:"
 msgstr "重启你的shell后，你可以键入这个命令再加上TAB，就会列出所有可用的命令："
 
-#: ../../content/installation.rst:405
+#: ../../content/installation.rst:411
 msgid ""
 "If you type a few characters of the command name, TAB will show all matching "
 "commands. After typing a complete command, all possible options and "
@@ -725,7 +736,7 @@ msgstr ""
 "如果你只键入命令名字的几个字母，TAB将会列出所有匹配的命令。键入完整命令，按下"
 "TAB键将显示所有的可选项和相应信息。"
 
-#: ../../content/installation.rst:409
+#: ../../content/installation.rst:415
 msgid ""
 "If you have problems, you can execute the following line as user ``otobo`` "
 "and add it to your ``~/.bashrc`` to execute the commands from the file."
@@ -733,11 +744,11 @@ msgstr ""
 "如果有问题，你可以作为用户``otobo`` 执行下面的命令行，并将它加入你的``~/."
 "bashrc`` ，执行文件中的命令。"
 
-#: ../../content/installation.rst:417
+#: ../../content/installation.rst:423
 msgid "Step 13: Further Information"
 msgstr "步骤13：更多信息"
 
-#: ../../content/installation.rst:419
+#: ../../content/installation.rst:425
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr "我们建议你阅读OTOBO文档中的：`performance-tuning` 章节。"
 
