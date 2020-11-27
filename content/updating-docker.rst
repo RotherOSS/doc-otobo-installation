@@ -80,7 +80,7 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
 
     # copy the OTOBO software, while containers are still stopped
     docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:rel-10_x_y copy_otobo_next
-    
+
     # start containers again, using the new version
     docker_admin> docker-compose up --detach
 
@@ -92,3 +92,16 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
 
     # inspect the update log
     docker_admin> docker exec -t otobo_web_1  cat /opt/otobo/var/log/update.log
+
+.. note::
+
+    The commands, listed above, can of course be automated.
+    For that purpose the script *scripts/update.sh* is under development.
+    The gist is that the user creates the template file *env.m4*.
+    The Docker environment file *.env* will then be created from the template file.
+    Currently only the settings that specify the exact Docker images will adapted by *scripts/update.sh*.
+
+    .. code-block:: bash
+
+        ./scripts/update.sh --help
+        ./scripts/update.sh --repository "rotheross" --tag "10.0.6"
