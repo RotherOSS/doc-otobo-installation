@@ -82,9 +82,9 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
     docker_admin> docker-compose down
 
     # copy the OTOBO software, while containers are still stopped
-    docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:rel-10_x_y copy_otobo_next
-    
-    # start containers again, using the new version
+    docker_admin> docker-compose run --no-deps --rm web copy_otobo_next
+
+    # start containers again, using the new version and the updated /opt/otobo
     docker_admin> docker-compose up --detach
 
     # a quick sanity check
