@@ -107,4 +107,4 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
     .. code-block:: bash
 
         ./scripts/update.sh --help
-        ./scripts/update.sh --repository "rotheross" --tag "10.0.6"
+        ./scripts/update.sh
