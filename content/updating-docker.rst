@@ -45,6 +45,9 @@ made sure that the correct setup is used.
     # Update OTOBO docker-compose repository
     docker-admin> git checkout rel-10_x_y # Please use the wanted version
 
+Checking the Docker Compose .env file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The file *.env* controls the OTOBO Docker container. Within that file, the variables
 *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and *OTOBO_IMAGE_OTOBO_NGINX* declare
 which images are used. The latest images are used when these variables are not set.
@@ -79,9 +82,9 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
     docker_admin> docker-compose down
 
     # copy the OTOBO software, while containers are still stopped
-    docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo rotheross/otobo:rel-10_x_y copy_otobo_next
-    
-    # start containers again, using the new version
+    docker_admin> docker-compose run --no-deps --rm web copy_otobo_next
+
+    # start containers again, using the new version and the updated /opt/otobo
     docker_admin> docker-compose up --detach
 
     # a quick sanity check
