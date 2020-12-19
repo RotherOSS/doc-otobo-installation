@@ -45,6 +45,9 @@ made sure that the correct setup is used.
     # Update OTOBO docker-compose repository
     docker-admin> git checkout rel-10_x_y # Please use the wanted version
 
+Checking the Docker Compose .env file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The file *.env* controls the OTOBO Docker container. Within that file, the variables
 *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and *OTOBO_IMAGE_OTOBO_NGINX* declare
 which images are used. The latest images are used when these variables are not set.
