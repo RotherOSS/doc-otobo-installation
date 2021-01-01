@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2020-12-31 00:34+0100\n"
-"PO-Revision-Date: 2020-12-31 13:07+0000\n"
+"PO-Revision-Date: 2020-12-31 22:33+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
 "otobo10/installation-manual/pt_BR/>\n"
@@ -2732,6 +2732,16 @@ msgid ""
 "'otrs_migration'@'%';``. This user can be dropped again after the migration: "
 "``DROP USER 'otrs_migration'@'%'``."
 msgstr ""
+"Ao migrar para um novo servidor de aplicativos ou para uma instalação "
+"baseada em Docker, muitas vezes o banco de dados não pode ser acessado a "
+"partir da instalação de destino. Isso geralmente se deve ao fato de que o "
+"usuário do banco de dados otobo só pode se conectar a partir do host em que "
+"o banco de dados é executado. Para permitir o acesso de qualquer maneira, é "
+"recomendável criar um usuário de banco de dados dedicado para a migração. "
+"Por exemplo. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY "
+"'otrs_migration';`` e ``GRANT SELECT, SHOW VIEW ON otrs.* TO "
+"'otrs_migration'@'%';``. Este usuário pode ser descartado novamente após a "
+"migração: ``DROP USER 'otrs_migration'@'%'``."
 
 #: ../../content/migration-from-otrs-6.rst:387
 msgid ""
@@ -2898,6 +2908,12 @@ msgid ""
 "OTRS systems with customer-specific cron jobs (e. g. backing up the "
 "database)."
 msgstr ""
+"Em uma instalação não Docker do OTOBO, há pelo menos um cron job que "
+"verifica a integridade do Daemon. No Docker, esse cron job não existe mais. "
+"Além disso, não há daemon cron em execução em nenhum dos contêineres do "
+"Docker. Isso significa que você deve procurar uma solução individual para "
+"sistemas OTRS com cron jobs específicos do cliente (por exemplo, backup do "
+"banco de dados)."
 
 #: ../../content/performance-tuning.rst:12
 msgid "Performance Tuning"
@@ -3947,10 +3963,13 @@ msgid ""
 "restore the ``article`` folder to ``/opt/otobo/var/`` or the folder "
 "specified in the system configuration."
 msgstr ""
+"Se você configurou o OTOBO para armazenar dados do artigo no sistema de "
+"arquivos, você deve restaurar a pasta ``article`` para ``/opt/otobo/var/`` "
+"ou a pasta especificada na configuração do sistema."
 
 #: ../../content/updating.rst:99
 msgid "Restore Already Installed Default Statistics"
-msgstr ""
+msgstr "Restaurar estatísticas padrão já instaladas"
 
 #: ../../content/updating.rst:101
 msgid ""
@@ -3958,15 +3977,17 @@ msgid ""
 "the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/"
 "stats``."
 msgstr ""
+"Se você tiver pacotes adicionais com estatísticas padrão, você deve "
+"restaurar os arquivos XML de estatísticas com o sufixo ``*.installed`` para "
+"``/opt/otobo/var/stats``."
 
 #: ../../content/updating.rst:110
-#, fuzzy
 msgid "Set File Permissions"
-msgstr "Passo 6: Configurando Permissões de Arquivos"
+msgstr "Definir permissões de arquivo"
 
 #: ../../content/updating.rst:120
 msgid "Step 4: Update Installed Packages"
-msgstr ""
+msgstr "Etapa 4: Atualizar os pacotes instalados"
 
 #: ../../content/updating.rst:122
 msgid ""
@@ -3975,27 +3996,32 @@ msgid ""
 "other packages later via the package manager (this requires a running OTOBO "
 "daemon)."
 msgstr ""
+"Você pode usar o comando abaixo para atualizar todos os pacotes instalados. "
+"Isso funciona para todos os pacotes disponíveis em repositórios online. Você "
+"pode atualizar outros pacotes mais tarde através do gerenciador de pacotes ("
+"isso requer um daemon OTOBO em execução)."
 
 #: ../../content/updating.rst:132
 msgid "Step 5: Start your Services"
-msgstr ""
+msgstr "Etapa 5: Inicie seus serviços"
 
 #: ../../content/updating.rst:134
 msgid ""
 "Now the services can be started. This will depend on your service "
 "configuration, here is an example:"
 msgstr ""
+"Agora os serviços podem ser iniciados. Isso vai depender da configuração do "
+"seu serviço, aqui está um exemplo:"
 
 #: ../../content/updating.rst:142
 msgid "Now you can log into your system."
-msgstr ""
+msgstr "Agora você pode entrar em seu sistema."
 
 #: ../../content/updating-docker.rst:12
-#, fuzzy
 msgid "Updating a Docker-based installation of OTOBO"
 msgstr ""
 "É possível migrar de qualquer um dos bancos de dados suportados para "
-"qualquer outro."
+"qualquer outro"
 
 #: ../../content/updating-docker.rst:14
 msgid ""
@@ -4006,62 +4032,73 @@ msgid ""
 "run time data, e.g. configuration files and installed packages, is stored in "
 "the same directory tree."
 msgstr ""
+"Para executar o OTOBO no Docker, precisamos do próprio software OTOBO e de "
+"um ambiente no qual o OTOBO possa ser executado. A imagem OTOBO Docker "
+"fornece o ambiente e uma cópia do software OTOBO. O próprio software é "
+"instalado no volume *otobo_opt_otobo*. Um volume nomeado é usado porque os "
+"dados de tempo de execução, por exemplo, arquivos de configuração e pacotes "
+"instalados, são armazenados na mesma árvore de diretório."
 
 #: ../../content/updating-docker.rst:20
 msgid "When updating to a new version of OTOBO several things have to happen."
 msgstr ""
+"Ao atualizar para uma nova versão do OTOBO, várias coisas precisam acontecer."
 
 #: ../../content/updating-docker.rst:22
 msgid "The Docker Compose files have to be updated."
-msgstr ""
+msgstr "Os arquivos Docker Compose devem ser atualizados."
 
 #: ../../content/updating-docker.rst:23
 msgid "The Docker Compose config file *.env* has to be checked."
-msgstr ""
+msgstr "O arquivo de configuração *.env* do Docker Compose deve ser verificado."
 
 #: ../../content/updating-docker.rst:24
 msgid "The new Docker image has to be fetched."
-msgstr ""
+msgstr "A nova imagem do Docker deve ser buscada."
 
 #: ../../content/updating-docker.rst:25
 msgid "The volume *otobo_opt_otobo* must be updated."
-msgstr ""
+msgstr "O volume *otobo_opt_otobo* deve ser atualizado."
 
 #: ../../content/updating-docker.rst:26
 msgid "Some maintainance tasks must be executed."
-msgstr ""
+msgstr "Algumas tarefas de manutenção devem ser executadas."
 
 #: ../../content/updating-docker.rst:30
 msgid ""
 "In the sample commands below, the version **10.x.y** is used as the example "
 "version. Please substitute it with the real version, e.g. **10.0.6**."
 msgstr ""
+"Nos comandos de exemplo abaixo, a versão **10.x.y** é usada como a versão de "
+"exemplo. Substitua-o pela versão real, por ex. **10.0.6**."
 
 #: ../../content/updating-docker.rst:35
 msgid "These instructions apply only to OTOBO 10.0.6 or later."
-msgstr ""
+msgstr "Estas instruções se aplicam apenas ao OTOBO 10.0.6 ou posterior."
 
 #: ../../content/updating-docker.rst:38
-#, fuzzy
 msgid "Updating the Docker Compose files"
-msgstr "5. Inicie a imagem docker-compose"
+msgstr "Atualizar os arquivos Docker Compose"
 
 #: ../../content/updating-docker.rst:40
 msgid ""
 "The OTOBO Docker Compose files can change between releases. Therefore is "
 "must be made sure that the correct setup is used."
 msgstr ""
+"Os arquivos OTOBO Docker Compose podem mudar entre as versões. Portanto, "
+"deve-se ter certeza de que a configuração correta é usada."
 
 #: ../../content/updating-docker.rst:45
 msgid ""
 "See https://hub.docker.com/repository/docker/rotheross/otobo/tags for the "
 "available releases."
 msgstr ""
+"Veja https://hub.docker.com/repository/docker/rotheross/otobo/tags os "
+"lançamentos disponíveis."
 
 #: ../../content/updating-docker.rst:59
-#, fuzzy
 msgid "Checking the Docker Compose .env file"
-msgstr "5. Inicie a imagem docker-compose"
+msgstr "Verificando o arquivo Docker Compose .env"
 
 #: ../../content/updating-docker.rst:61
 msgid ""
@@ -4071,38 +4108,47 @@ msgid ""
 "are used when these variables are not set. If you want to use a specific "
 "version, then please set these variables accordingly."
 msgstr ""
+"O arquivo *.env* controla o contêiner do Docker OTOBO. Nesse arquivo, as "
+"variáveis *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, e "
+"*OTOBO_IMAGE_OTOBO_NGINX* declaram quais imagens são usadas. As imagens mais "
+"recentes são usadas quando essas variáveis não são definidas. Se você quiser "
+"usar uma versão específica, defina essas variáveis de acordo."
 
 #: ../../content/updating-docker.rst:67
 msgid "Fetch the new Docker images"
-msgstr ""
+msgstr "Busque as novas imagens do Docker"
 
 #: ../../content/updating-docker.rst:69
 msgid ""
 "Docker compose can be used for fetching the wanted images from https://hub."
 "docker.com/repository/docker/rotheross/."
 msgstr ""
+"O Docker compose pode ser usado para buscar as imagens desejadas em "
+"https://hub.docker.com/repository/docker/rotheross/."
 
 #: ../../content/updating-docker.rst:80
 msgid "Update OTOBO"
-msgstr ""
+msgstr "Atualize o OTOBO"
 
 #: ../../content/updating-docker.rst:82
 msgid ""
 "Here the volume *otobo_opt_otobo* is updated and the following console "
 "commands are performed:"
 msgstr ""
+"Aqui, o volume *otobo_opt_otobo* é atualizado e os seguintes comandos do "
+"console são executados:"
 
 #: ../../content/updating-docker.rst:84
 msgid "Admin::Package::ReinstallAll"
-msgstr ""
+msgstr "Admin::Package::ReinstallAll"
 
 #: ../../content/updating-docker.rst:85
 msgid "Admin::Package::UpgradeAll"
-msgstr ""
+msgstr "Admin::Package::UpgradeAll"
 
 #: ../../content/updating-docker.rst:86
 msgid "Maint::Config::Rebuild"
-msgstr ""
+msgstr "Maint::Config::Rebuild"
 
 #: ../../content/updating-docker.rst:87
 msgid "Maint::Cache::Delete"
