@@ -2,13 +2,13 @@
 # Copyright (C) 2019-2020 Rother OSS GmbH, https://otobo.de/
 # This file is distributed under the same license as the OTOBO Installation Guide package.
 # Grit Rother <mr@otobo.de>, 2020.
-# Paul Yang <paul.yang@itservice.com.cn>, 2020.
+# Paul Yang <paul.yang@itservice.com.cn>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2021-01-04 00:34+0100\n"
-"PO-Revision-Date: 2020-12-31 04:52+0000\n"
+"PO-Revision-Date: 2021-01-04 02:55+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
 "otobo10/installation-manual/zh_Hans/>\n"
@@ -2217,7 +2217,7 @@ msgstr "请确保没有正在运行的服务或cron作业。"
 
 #: ../../content/migration-from-otrs-6.rst:213
 msgid "Step 3b Docker: make required data available inside container"
-msgstr ""
+msgstr "3b Docker步骤：在容器中准备好需要的数据"
 
 #: ../../content/migration-from-otrs-6.rst:215
 msgid ""
@@ -2254,7 +2254,7 @@ msgstr "在本节中，我们假设Docker主机上有* / opt / otrs *。"
 
 #: ../../content/migration-from-otrs-6.rst:231
 msgid "There are at least two viable possibilities:"
-msgstr ""
+msgstr "最少有两种可能性："
 
 #: ../../content/migration-from-otrs-6.rst:233
 msgid "copy */opt/otrs* into the existing volume *otobo_opt_otobo*"
@@ -2278,7 +2278,7 @@ msgstr "在本节中，我们假设Docker主机上有* / opt / otrs *。"
 msgid ""
 "For safe copying, we use ``rsync``. Depending on your Docker setup, the "
 "command ``rsync`` might need to be run with ``sudo``."
-msgstr ""
+msgstr "我们用``rsync``进行安全复制，根据你的Docker设置，这个命令有可能需要和``sudo``一起运行。"
 
 #: ../../content/migration-from-otrs-6.rst:258
 msgid ""
@@ -2288,13 +2288,13 @@ msgstr "该复制的目录应该是容器中的* / opt / otobo / tmp / otrs *。
 
 #: ../../content/migration-from-otrs-6.rst:261
 msgid "Copy the otrs database schema to the containerised database server"
-msgstr ""
+msgstr "OTRS数据库模式复制到容器化数据库服务器"
 
 #: ../../content/migration-from-otrs-6.rst:265
 msgid ""
 "This is the recommended approach. But migration from a running OTRS database "
 "is still possible."
-msgstr ""
+msgstr "这是推荐的方法。但是仍然可以从运行中的OTRS数据库进行迁移。"
 
 #: ../../content/migration-from-otrs-6.rst:267
 msgid ""
@@ -2306,13 +2306,16 @@ msgid ""
 "creating the temporary copy, all relevant OTRS tables can be moved into the "
 "OTOBO database."
 msgstr ""
+"通常，数据库表中的所有数据都从OTRS数据库逐行复制到OTOBO数据库。这种方法是耗时的并且可以被优化。为了加快该过程，我们在用于OTOBO数据库的服务器"
+"上创建OTRS数据库的临时副本。在我们的例子中，这是在容器``otobo_db_1''中运行的MariaDB服务器。创建临时副本后，所有相关的OTRS表都"
+"可以移入OTOBO数据库。"
 
 #: ../../content/migration-from-otrs-6.rst:276
 msgid ""
 "Moving tables from one schema to another makes the source schema unusable. "
 "So make sure the OTRS database used really is a throwaway copy of the "
 "productive OTRS database."
-msgstr ""
+msgstr "将表单从一个模式移动到另一个模式会使源模式不可用。因此，请确保所使用的OTRS数据库一定是生产环境OTRS数据库的一次性复制品。"
 
 #: ../../content/migration-from-otrs-6.rst:279
 msgid ""
@@ -2322,6 +2325,8 @@ msgid ""
 "files *otrs_schema.sql* and *otrs_data.sql* so that the conversion can be "
 "done in a safe way."
 msgstr ""
+"首先，我们需要转储源OTRS数据库。将导入的表单复制到OTOBO数据库时，我们还必须确保将字符集转换为* utf8mb4 *。转储分为* "
+"otrs_schema.sql *和* otrs_data.sql *文件，以便可以安全的方式进行转换。"
 
 #: ../../content/migration-from-otrs-6.rst:284
 msgid ""
