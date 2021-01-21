@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-21 00:34+0100\n"
+"POT-Creation-Date: 2021-01-22 00:34+0100\n"
 "PO-Revision-Date: 2020-12-31 22:33+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
@@ -260,10 +260,21 @@ msgstr ""
 "administrar o sistema."
 
 #: ../../content/installation.rst:20
+msgid ""
+"As of OTOBO version 10.0.7, we recommend Docker and Docker Compose for the "
+"OTOBO installation. By using our Docker-Compose image, all recommended "
+"dependencies (such as Elasticsearch, Redis Cache, etc.) are installed and "
+"configured automatically. Updates are thus greatly simplified and the "
+"performance has been increased. You can find the installation instructions "
+"at https://doc.otobo.org/manual/installation/stable/en/content/installation-"
+"docker.html"
+msgstr ""
+
+#: ../../content/installation.rst:24
 msgid "Preparation: Disable SELinux when it is installed and enabled"
 msgstr "Preparação: Desative SELinux quando estiver instalado e ativado"
 
-#: ../../content/installation.rst:24
+#: ../../content/installation.rst:28
 msgid ""
 "If your system uses SELinux, you should disable it, otherwise OTOBO will not "
 "work correctly."
@@ -271,7 +282,7 @@ msgstr ""
 "Se seu sistema usa o SELinux, você deve desativa-lo, caso contrário o OTOBO "
 "não funcionará corretamente."
 
-#: ../../content/installation.rst:26
+#: ../../content/installation.rst:30
 msgid ""
 "Try the command ``sestatus`` and ``getenforce`` when you are not sure "
 "whether SELinux is installed and enabled on your system."
@@ -279,7 +290,7 @@ msgstr ""
 "Tente os comandos``sestatus`` e `getenforce`` quando você não tiver certeza "
 "se o SELinux está instalado e ativado no seu sistema."
 
-#: ../../content/installation.rst:28
+#: ../../content/installation.rst:32
 msgid ""
 "The ``sestatus`` command returns the SELinux status and the SELinux policy "
 "being used. SELinux status: enabled is returned when SELinux is enabled. "
@@ -293,15 +304,15 @@ msgstr ""
 "está sendo executado no modo enforcing. Política do arquivo de configuração: "
 "target é retornada quando a política de destino do SELinux é usada."
 
-#: ../../content/installation.rst:33
+#: ../../content/installation.rst:37
 msgid "Here's how to disable SELinux for RHEL/CentOS/Fedora."
 msgstr "Veja como desativar o SELinux para RHEL/CentOS/Fedora."
 
-#: ../../content/installation.rst:35
+#: ../../content/installation.rst:39
 msgid "Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:"
 msgstr "Configurar ``SELINUX=disabled`` no arquivo ``/etc/selinux/config`` :"
 
-#: ../../content/installation.rst:50
+#: ../../content/installation.rst:54
 msgid ""
 "Reboot your system. After reboot, confirm that the ``getenforce`` command "
 "returns *Disabled*:"
@@ -309,11 +320,11 @@ msgstr ""
 "Reinicie seu sistema. Após reiniciar, confirme que o comando``getenforce`` "
 "retorne *Disabled*:"
 
-#: ../../content/installation.rst:59
+#: ../../content/installation.rst:63
 msgid "Step 1: Unpack and Install OTOBO"
 msgstr "Passo 1: Desempacotar e Instalar o OTOBO"
 
-#: ../../content/installation.rst:61
+#: ../../content/installation.rst:65
 msgid ""
 "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. "
 "Unpack the source archive (for example, using ``tar``) into the directory ``/"
@@ -323,11 +334,11 @@ msgstr ""
 "Descompacte o arquivo fonte (por exemplo, usando``tar``) dentro do diretório "
 "``/opt/otobo-install``:"
 
-#: ../../content/installation.rst:74
+#: ../../content/installation.rst:78
 msgid "Step 2: Install Additional Programs and Perl Modules"
 msgstr "Passo 2: Instale Programas Adicionais e Módulos Perl"
 
-#: ../../content/installation.rst:76
+#: ../../content/installation.rst:80
 msgid ""
 "Use the following script to get an overview of all installed and required "
 "CPAN modules and other external dependencies."
@@ -335,7 +346,7 @@ msgstr ""
 "Use o seguinte script para obter uma visão geral de todos os módulos CPAN "
 "instalados e requeridos e outros dependências externas."
 
-#: ../../content/installation.rst:89
+#: ../../content/installation.rst:93
 msgid ""
 "Please note that OTOBO requires a working Perl installation with all *core* "
 "modules such as the module ``version``. These modules are not explicitly "
@@ -348,7 +359,7 @@ msgstr ""
 "pacote ``perl-core`` em alguns sistemas como o RHEL que não instalam os "
 "pacotes principais do Perl por padrão."
 
-#: ../../content/installation.rst:91
+#: ../../content/installation.rst:95
 msgid ""
 "To install the required and optional packages, you can use either CPAN or "
 "the package manager of your Linux distribution."
@@ -356,7 +367,7 @@ msgstr ""
 "Para instalar os pacotes obrigatórios e opcionais, você pode usar o CPAN ou "
 "o gerenciador de pacotes da sua distribuição Linux."
 
-#: ../../content/installation.rst:93
+#: ../../content/installation.rst:97
 msgid ""
 "Execute this command to get an install command to install the missing "
 "dependencies:"
@@ -364,7 +375,7 @@ msgstr ""
 "Execute este comando para obter um comando de instalação para instalar as "
 "dependências ausentes:"
 
-#: ../../content/installation.rst:101
+#: ../../content/installation.rst:105
 msgid ""
 "There are a number of optional or alternative modules which can be "
 "installed, mostly for more customized versions of OTOBO. Calling "
@@ -374,15 +385,15 @@ msgstr ""
 "principalmente para versões mais personalizadas do OTOBO. Chamar "
 "CheckModules.pl sem nenhum argumento listará sua funcionalidade completa."
 
-#: ../../content/installation.rst:105
+#: ../../content/installation.rst:109
 msgid "Step 3: Create the OTOBO User"
 msgstr "Passo 3: Crie o usuário OTOBO"
 
-#: ../../content/installation.rst:107
+#: ../../content/installation.rst:111
 msgid "Create a dedicated user for OTOBO within its own group:"
 msgstr "Crie um usuário dedicado para OTOBO dentro de seu próprio grupo:"
 
-#: ../../content/installation.rst:113
+#: ../../content/installation.rst:117
 msgid ""
 "Add the user to web server group (if the web server is not running as otobo "
 "user):"
@@ -390,11 +401,11 @@ msgstr ""
 "Adicione o usuário no grupo do seu servidor web (se o seu servidor web não "
 "estiver rodando com o usuário otobo):"
 
-#: ../../content/installation.rst:122
+#: ../../content/installation.rst:126
 msgid "Step 4: Activate the Default Configuration File"
 msgstr "Passo 4: Ative o arquivo de configuração padrão"
 
-#: ../../content/installation.rst:124
+#: ../../content/installation.rst:128
 msgid ""
 "There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config."
 "pm.dist``. You must activate it by copying it without the ``.dist`` file "
@@ -404,11 +415,11 @@ msgstr ""
 "pm.dist``. Você deve ativa-lo copiando o arquivo sem a extensão do arquivo "
 "``.dist``."
 
-#: ../../content/installation.rst:132
+#: ../../content/installation.rst:136
 msgid "Step 5: Configure the Apache Web Server"
 msgstr "Passo 5: Configure seu servidor Web Apache"
 
-#: ../../content/installation.rst:134
+#: ../../content/installation.rst:138
 msgid ""
 "First of all, you should install the Apache2 web server and mod_perl; you'd "
 "typically do this from your system's package manager. Below you'll find the "
@@ -419,7 +430,7 @@ msgstr ""
 "você encontrará os comandos necessários para configurar o Apache nas "
 "distribuições Linux mais populares."
 
-#: ../../content/installation.rst:148
+#: ../../content/installation.rst:152
 msgid ""
 "OTOBO requires a few Apache modules to be active for optimal operation. On "
 "most platforms you can make sure they are active via the tool a2enmod."
@@ -428,7 +439,7 @@ msgstr ""
 "ideal. Na maioria das plataformas, você pode garantir que elas estejam "
 "ativas através da ferramenta a2enmod."
 
-#: ../../content/installation.rst:159
+#: ../../content/installation.rst:163
 msgid ""
 "On some platforms not all Apache modules exist and an error is displayed "
 "when installing. Do not worry and finish the installation, in most cases the "
@@ -438,7 +449,7 @@ msgstr ""
 "exibido durante a instalação. Não se preocupe e termine a instalação, na "
 "maioria dos casos o módulo não será necessário."
 
-#: ../../content/installation.rst:161
+#: ../../content/installation.rst:165
 msgid ""
 "Most Apache installations have a ``conf.d`` directory included. On Linux "
 "systems you can usually find this directory under ``/etc/apache`` or ``/etc/"
@@ -448,11 +459,11 @@ msgstr ""
 "sistemas Linux, você geralmente pode encontrar este diretório em ``/etc/"
 "apache`` ou``/etc/apache2``."
 
-#: ../../content/installation.rst:164
+#: ../../content/installation.rst:168
 msgid "Configure Apache without SSL support"
 msgstr "Configurar Apache sem suporte SSL"
 
-#: ../../content/installation.rst:166
+#: ../../content/installation.rst:170
 msgid ""
 "Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include."
 "conf`` to a file called ``zzz_otobo.conf`` in the Apache configuration "
@@ -463,11 +474,11 @@ msgstr ""
 "configuração do Apache (para certificar-se de que seja carregado após as "
 "outras configurações)."
 
-#: ../../content/installation.rst:177
+#: ../../content/installation.rst:181
 msgid "Configure Apache **with** SSL support"
 msgstr "Configure o Apache **com** suporte SSL"
 
-#: ../../content/installation.rst:179
+#: ../../content/installation.rst:183
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
@@ -477,7 +488,7 @@ msgstr ""
 "include.conf`` e ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` "
 "para o diretório ``sites-availible`` ."
 
-#: ../../content/installation.rst:188
+#: ../../content/installation.rst:192
 msgid ""
 "Please edit the files and add the required information like SSL certificate "
 "storage path. After that, enable the OTOBO Apache configuration:"
@@ -486,7 +497,7 @@ msgstr ""
 "armazenamento do certificado SSL. Depois disso, ative a configuração do "
 "OTOBO Apache:"
 
-#: ../../content/installation.rst:195
+#: ../../content/installation.rst:199
 msgid ""
 "Now you can restart your web server to load the new configuration settings. "
 "On most systems you can use the following command to do so:"
@@ -495,11 +506,11 @@ msgstr ""
 "definições de configuração. Na maioria dos sistemas, você pode usar o "
 "seguinte comando para fazer isso:"
 
-#: ../../content/installation.rst:203
+#: ../../content/installation.rst:207
 msgid "Step 6: Set File Permissions"
 msgstr "Passo 6: Configurando Permissões de Arquivos"
 
-#: ../../content/installation.rst:205 ../../content/updating.rst:112
+#: ../../content/installation.rst:209 ../../content/updating.rst:112
 msgid ""
 "Please execute the following command to set the file and directory "
 "permissions for OTOBO. It will try to detect the correct user and group "
@@ -509,11 +520,11 @@ msgstr ""
 "e diretório para o OTOBO. Ele tentará detectar as configurações corretas de "
 "usuário e grupo necessárias para sua configuração."
 
-#: ../../content/installation.rst:213
+#: ../../content/installation.rst:217
 msgid "Step 7: Setup the Database"
 msgstr "Passo 7: Configurando o Banco de Dados"
 
-#: ../../content/installation.rst:215
+#: ../../content/installation.rst:219
 msgid ""
 "First of all, you should install the database package. It is recommended to "
 "use the MySQL or MariaDB package, which will be delivered with your Linux "
@@ -523,7 +534,7 @@ msgstr ""
 "recomendável usar o pacote MySQL ou MariaDB, que será entregue com o sistema "
 "Linux, mas é possível usar o PostgreSQL ou Oracle também."
 
-#: ../../content/installation.rst:218
+#: ../../content/installation.rst:222
 msgid ""
 "You'd typically do this from your systems package manager. Below you'll find "
 "the commands needed to set up MySQL on the most popular Linux distributions."
@@ -532,11 +543,11 @@ msgstr ""
 "você encontrará os comandos necessários para configurar o MySQL nas "
 "distribuições Linux mais populares."
 
-#: ../../content/installation.rst:232
+#: ../../content/installation.rst:236
 msgid "After installing the MySQL server you need configure it."
 msgstr "Depois de instalar o servidor MySQL, você precisa configurá-lo."
 
-#: ../../content/installation.rst:234
+#: ../../content/installation.rst:238
 msgid ""
 "In MySQL higher or equal version 5.7  a new authentication module is active, "
 "and it is not possible to use the OTOBO web installer for database creation. "
@@ -548,15 +559,15 @@ msgstr ""
 "de dados. Por favor, faça login no console do mysql e defina um módulo de "
 "autenticação e senha diferentes para o usuário ``root``, se este for o caso:"
 
-#: ../../content/installation.rst:242
+#: ../../content/installation.rst:246
 msgid "For MariaDB > 10.1 use instead the following command:"
 msgstr "Para MariaDB > 10.1, use o seguinte comando:"
 
-#: ../../content/installation.rst:249
+#: ../../content/installation.rst:253
 msgid "If this command not work, please try the following commands:"
 msgstr "Se este comando não funcionar, tente os seguintes comandos:"
 
-#: ../../content/installation.rst:258
+#: ../../content/installation.rst:262
 msgid ""
 "After OTOBO installation it is possible to change the authentication module "
 "again, if needed."
@@ -564,7 +575,7 @@ msgstr ""
 "Após a instalação do OTOBO, é possível alterar o módulo de autenticação "
 "novamente, se necessário."
 
-#: ../../content/installation.rst:262
+#: ../../content/installation.rst:266
 msgid ""
 "The following configuration settings are minimum requirements for MySQL "
 "setups. Please add the following lines to the MySQL Server configuration "
@@ -576,13 +587,13 @@ msgstr ""
 "de configuração do MySQL Server ``/etc/my.cnf``,``/etc/mysql/my.cnf`` ou ``/"
 "etc/mysql/mysql.conf.d/mysqld.cnf`` abaixo da seção ``[mysqld]``:"
 
-#: ../../content/installation.rst:269
+#: ../../content/installation.rst:273
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
 msgstr ""
 "Para o MySQL anterior ao MySQL 8.0, o tamanho do cache da consulta também "
 "deve ser definido:"
 
-#: ../../content/installation.rst:275
+#: ../../content/installation.rst:279
 msgid ""
 "Also add the following lines to the MySQL Server configuration file ``/etc/"
 "my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` "
@@ -592,7 +603,7 @@ msgstr ""
 "servidor MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` ou ``/etc/mysql/mysql."
 "conf.d/mysqldump.cnf`` debaixo da seção ``[mysqldump]``:"
 
-#: ../../content/installation.rst:282
+#: ../../content/installation.rst:286
 msgid ""
 "For production purposes we recommend to use the tool ``mysqltuner`` to find "
 "the perfect setup. You can download the script from github ``https://github."
@@ -604,15 +615,15 @@ msgstr ""
 "github ``https://github.com/major/MySQLTuner-perl`` ou instalá-lo nos "
 "sistemas Debian ou Ubuntu através do gerenciador de pacotes:"
 
-#: ../../content/installation.rst:289
+#: ../../content/installation.rst:293
 msgid "After installing execute the script:"
 msgstr "Após a instalação execute o script:"
 
-#: ../../content/installation.rst:297
+#: ../../content/installation.rst:301
 msgid "Step 8: Setup Elasticsearch"
 msgstr "Passo 8: Configurar Elasticsearch"
 
-#: ../../content/installation.rst:299
+#: ../../content/installation.rst:303
 msgid ""
 "OTOBO recommends an active installation of Elasticsearch for quick search. "
 "The easiest way is to setup Elasticsearch on the same host as OTOBO and "
@@ -622,23 +633,23 @@ msgstr ""
 "rápida. A maneira mais fácil é configurar o Elasticsearch no mesmo host que "
 "o OTOBO e vinculá-lo à sua porta padrão."
 
-#: ../../content/installation.rst:302
+#: ../../content/installation.rst:306
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "Exemplo de instalação do Elasticsearch baseado no Ubuntu 18.04 LTS"
 
-#: ../../content/installation.rst:304
+#: ../../content/installation.rst:308
 msgid "JDK Installation"
 msgstr "Instalação do JDK"
 
-#: ../../content/installation.rst:311
+#: ../../content/installation.rst:315
 msgid "Elasticsearch Installation"
 msgstr "Instalação do ElasticSearch"
 
-#: ../../content/installation.rst:321
+#: ../../content/installation.rst:325
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "Instalação do ElasticSearch em outra distribuição Linux"
 
-#: ../../content/installation.rst:323
+#: ../../content/installation.rst:327
 msgid ""
 "Please follow the installation tutorial found at https://www.elastic.co/"
 "guide/en/elasticsearch/reference/current/setup.html."
@@ -646,26 +657,26 @@ msgstr ""
 "Siga o tutorial de instalação encontrado em https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/setup.html."
 
-#: ../../content/installation.rst:326
+#: ../../content/installation.rst:330
 msgid "Elasticsearch Module Installation"
 msgstr "Instalação do Módulo do ElasticSearch"
 
-#: ../../content/installation.rst:327
+#: ../../content/installation.rst:331
 msgid ""
 "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "Além disso, o OTOBO exige a instalação de plug-ins no Elasticsearch:"
 
-#: ../../content/installation.rst:336
+#: ../../content/installation.rst:340
 msgid "Elasticsearch Configuration"
 msgstr "Configuração do Elasticsearch"
 
-#: ../../content/installation.rst:338
+#: ../../content/installation.rst:342
 msgid ""
 "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr ""
 "O Elasticsearch possui diversas opções e possibilidades de configuração."
 
-#: ../../content/installation.rst:340
+#: ../../content/installation.rst:344
 msgid ""
 "In order to ensure error-free operation, you should adjust the jvm heap "
 "space for larger OTOBO systems. Please adjust the settings in the file ``/"
@@ -678,7 +689,7 @@ msgstr ""
 "tamanho mínimo e máximo do heap da JVM para o mesmo valor. Por exemplo, para "
 "definir o heap como 4 GB, defina:"
 
-#: ../../content/installation.rst:348
+#: ../../content/installation.rst:352
 msgid ""
 "In our tests, a value between 4 and 10 GB for medium-sized installations has "
 "proven to be the best."
@@ -686,7 +697,7 @@ msgstr ""
 "Em nossos testes, um valor entre 4 e 10 GB para instalações de tamanho médio "
 "provou ser o melhor."
 
-#: ../../content/installation.rst:352
+#: ../../content/installation.rst:356
 msgid ""
 "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
 "size.html`` for more information."
@@ -694,7 +705,7 @@ msgstr ""
 "Veja ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
 "size.html`` para mais informações."
 
-#: ../../content/installation.rst:354
+#: ../../content/installation.rst:358
 msgid ""
 "Now you can restart your Elasticsearch server to load the new configuration "
 "settings. On most systems you can use the following command to do so:"
@@ -703,11 +714,11 @@ msgstr ""
 "definições de configuração. Na maioria dos sistemas, você pode usar o "
 "seguinte comando para fazer isso:"
 
-#: ../../content/installation.rst:362
+#: ../../content/installation.rst:366
 msgid "Step 8: Basic System Configuration"
 msgstr "Passo 8: Configurações de Sistema básicas"
 
-#: ../../content/installation.rst:364
+#: ../../content/installation.rst:368
 msgid ""
 "Please use the web installer at http://localhost/otobo/installer.pl (replace "
 "\"localhost\" with your OTOBO hostname) to set up your database and basic "
@@ -717,11 +728,11 @@ msgstr ""
 "(substitua \"localhost\" pelo seu nome de host OTOBO) para configurar seu "
 "banco de dados e configurações básicas do sistema, como contas de email."
 
-#: ../../content/installation.rst:368
+#: ../../content/installation.rst:372
 msgid "Step 9: First Login"
 msgstr "Passo 9: Primeiro Login"
 
-#: ../../content/installation.rst:370
+#: ../../content/installation.rst:374
 msgid ""
 "Now you are ready to login to your system at http://localhost/otobo/index.pl "
 "as user ``root@localhost`` with the password that was generated (see above)."
@@ -730,11 +741,11 @@ msgstr ""
 "index.pl com o usuário ``root@localhost`` com a senha que foi gerada (veja "
 "acima)."
 
-#: ../../content/installation.rst:374
+#: ../../content/installation.rst:378
 msgid "Step 10: Start the OTOBO Daemon"
 msgstr "Passo 10: Inicie o Daemon do OTOBO"
 
-#: ../../content/installation.rst:376
+#: ../../content/installation.rst:380
 msgid ""
 "OTOBO daemon is responsible for handling any asynchronous and recurring "
 "tasks in OTOBO. What has been in cron file definitions previously is now "
@@ -747,11 +758,11 @@ msgstr ""
 "daemon também manipula todas as tarefas GenericAgent e deve ser iniciado a "
 "partir do usuário OTOBO."
 
-#: ../../content/installation.rst:383
+#: ../../content/installation.rst:387
 msgid "Step 11: Cron jobs for the OTOBO user"
 msgstr "Passo 11: Tarefas Cron para o usuário OTOBO"
 
-#: ../../content/installation.rst:385
+#: ../../content/installation.rst:389
 msgid ""
 "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, "
 "and their purpose is to make sure that the OTOBO Daemon is running. They "
@@ -762,15 +773,15 @@ msgstr ""
 "seu objetivo é garantir que o Daemon OTOBO esteja em execução. Eles precisam "
 "ser ativados, copiando-os sem a extensão de arquivo \".dist\"."
 
-#: ../../content/installation.rst:395
+#: ../../content/installation.rst:399
 msgid "With this step, the basic system setup is finished."
 msgstr "Com esta etapa, a configuração básica do sistema está concluída."
 
-#: ../../content/installation.rst:399
+#: ../../content/installation.rst:403
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
 msgstr "Passo 12: Configurar o auto completar do bash (opcional)"
 
-#: ../../content/installation.rst:401
+#: ../../content/installation.rst:405
 msgid ""
 "All regular OTOBO command line operations happen via the OTOBO console "
 "interface. This provides an auto-completion for the bash shell which makes "
@@ -780,7 +791,7 @@ msgstr ""
 "interface do console OTOBO. Isso fornece um preenchimento automático para o "
 "shell bash, o que facilita a localização do comando e das opções corretas."
 
-#: ../../content/installation.rst:403
+#: ../../content/installation.rst:407
 msgid ""
 "You can activate the bash auto-completion by installing the package ``bash-"
 "completion``. It will automatically detect and load the file ``/opt/otobo/."
@@ -790,7 +801,7 @@ msgstr ""
 "completion``. Ele detectará e carregará o arquivo automaticamente ``/opt/"
 "otobo/.bash_completion`` para o usuário ``otobo``."
 
-#: ../../content/installation.rst:405
+#: ../../content/installation.rst:409
 msgid ""
 "After restarting your shell, you can just type this command followed by TAB, "
 "and it will list all available commands:"
@@ -798,7 +809,7 @@ msgstr ""
 "Após reiniciar seu shell, você pode apenas digitar este comando, seguido de "
 "TAB, e ele listará todos os comandos disponíveis:"
 
-#: ../../content/installation.rst:411
+#: ../../content/installation.rst:415
 msgid ""
 "If you type a few characters of the command name, TAB will show all matching "
 "commands. After typing a complete command, all possible options and "
@@ -808,7 +819,7 @@ msgstr ""
 "comandos correspondentes. Após digitar um comando completo, todas as opções "
 "e argumentos possíveis serão mostrados pressionando TAB."
 
-#: ../../content/installation.rst:415
+#: ../../content/installation.rst:419
 msgid ""
 "If you have problems, you can execute the following line as user ``otobo`` "
 "and add it to your ``~/.bashrc`` to execute the commands from the file."
@@ -817,11 +828,11 @@ msgstr ""
 "``otobo`` e adicioná-la ao seu ``~/ .bashrc`` para executar os comandos do "
 "arquivo."
 
-#: ../../content/installation.rst:423
+#: ../../content/installation.rst:427
 msgid "Step 13: Further Information"
 msgstr "Passo 13: Informações adicionais"
 
-#: ../../content/installation.rst:425
+#: ../../content/installation.rst:429
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr "Recomendamos que você leia o capítulo OTOBO :doc:`performance-tuning`."
 
@@ -859,18 +870,7 @@ msgstr "Gazelle é usado como um servidor web Perl rápido."
 msgid "nginx is used as optional reverse proxy for HTTPS support."
 msgstr "nginx é usado como proxy reverso opcional para suporte HTTPS."
 
-#: ../../content/installation-docker.rst:25
-msgid ""
-"At the moment the Docker Compose environment is not tested in depth for "
-"production use. Please use the standard installation process for production "
-"use. Brave early adaptors are very welcome to share their experiences."
-msgstr ""
-"No momento, o ambiente Docker Compose não foi testado em profundidade para "
-"uso em produção. Use o processo de instalação padrão para uso de produção. "
-"Os bravos primeiros adaptadores são bem-vindos para compartilhar suas "
-"experiências."
-
-#: ../../content/installation-docker.rst:29
+#: ../../content/installation-docker.rst:23
 msgid ""
 "We think that this will become the perfect environment for an OTOBO "
 "installation."
@@ -878,11 +878,11 @@ msgstr ""
 "Acreditamos que este se tornará o ambiente perfeito para uma instalação "
 "OTOBO."
 
-#: ../../content/installation-docker.rst:32
+#: ../../content/installation-docker.rst:26
 msgid "Requirements"
 msgstr "Requerimentos"
 
-#: ../../content/installation-docker.rst:34
+#: ../../content/installation-docker.rst:28
 msgid ""
 "The minimal versions of required software, that have been tested, are listed "
 "here:"
@@ -890,19 +890,19 @@ msgstr ""
 "As versões mínimas do software necessário, que foram testadas, estão "
 "listadas aqui:"
 
-#: ../../content/installation-docker.rst:36
+#: ../../content/installation-docker.rst:30
 msgid "Docker 19.03.13"
 msgstr "Docker 19.03.13"
 
-#: ../../content/installation-docker.rst:37
+#: ../../content/installation-docker.rst:31
 msgid "Docker Compose 1.25.0"
 msgstr "Docker Compose 1.25.0"
 
-#: ../../content/installation-docker.rst:38
+#: ../../content/installation-docker.rst:32
 msgid "Git 2.17.1"
 msgstr "Git 2.17.1"
 
-#: ../../content/installation-docker.rst:42
+#: ../../content/installation-docker.rst:36
 msgid ""
 "To get the required minimal versions on Ubuntu 18.04 follow the instructions "
 "in https://www.digitalocean.com/community/tutorials/how-to-install-docker-"
@@ -914,7 +914,7 @@ msgstr ""
 "install-docker-compose-on-ubuntu-18-04 e https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04."
 
-#: ../../content/installation-docker.rst:46
+#: ../../content/installation-docker.rst:40
 msgid ""
 "git, Docker, and Docker Compose can be installed with the standard system "
 "tools. Here is an example for installation on Ubuntu 20.04:"
@@ -922,7 +922,7 @@ msgstr ""
 "git, Docker e Docker Compose podem ser instalados com as ferramentas de "
 "sistema padrão. Aqui está um exemplo de instalação no Ubuntu 20.04:"
 
-#: ../../content/installation-docker.rst:54
+#: ../../content/installation-docker.rst:48
 msgid ""
 "Please check the Git and the Docker documentation for instructions on "
 "further setup."
@@ -930,11 +930,11 @@ msgstr ""
 "Verifique a documentação do Git e do Docker para obter instruções sobre "
 "configurações adicionais."
 
-#: ../../content/installation-docker.rst:57
+#: ../../content/installation-docker.rst:51
 msgid "Installation"
 msgstr "Instalação"
 
-#: ../../content/installation-docker.rst:59
+#: ../../content/installation-docker.rst:53
 msgid ""
 "The following instructions assume that all requirements are met, that you "
 "have a working Docker environment. We assume here that the user "
@@ -948,11 +948,11 @@ msgstr ""
 "Docker pode ser o usuário **root** do host do Docker ou um usuário dedicado "
 "com as permissões necessárias."
 
-#: ../../content/installation-docker.rst:64
+#: ../../content/installation-docker.rst:58
 msgid "1. Clone the otobo-docker repo"
 msgstr "1. Clone o repositório otobo-docker"
 
-#: ../../content/installation-docker.rst:66
+#: ../../content/installation-docker.rst:60
 msgid ""
 "The Docker images will eventually be fetched from the image repository "
 "https://hub.docker.com. But there are some setup and command files that need "
@@ -968,7 +968,7 @@ msgstr ""
 "OTOBO. Por exemplo, quando *OTOBO 10.0.6* é a versão atual, use o branch "
 "*rel-10_0_6*."
 
-#: ../../content/installation-docker.rst:73
+#: ../../content/installation-docker.rst:67
 msgid ""
 "This manual had been published before OTOBO 10.0.4 was released. This means "
 "that the git label rel-10.0.4 might not exist yet."
@@ -976,7 +976,7 @@ msgstr ""
 "Este manual foi publicado antes do lançamento do OTOBO 10.0.4. Isso "
 "significa que a git label rel-10.0.4 pode não existir ainda."
 
-#: ../../content/installation-docker.rst:78
+#: ../../content/installation-docker.rst:72
 msgid ""
 "The location of the cloned repository does not matter. For these "
 "instructions we chose */opt/otobo-docker* as the working dir."
@@ -984,11 +984,11 @@ msgstr ""
 "A localização do repositório clonado não importa. Para essas instruções, "
 "escolhemos */opt/otobo-docker* como o diretório de trabalho."
 
-#: ../../content/installation-docker.rst:88
+#: ../../content/installation-docker.rst:82
 msgid "2. Create an initial *.env* file"
 msgstr "2. Crie um arquivo *.env* inicial"
 
-#: ../../content/installation-docker.rst:90
+#: ../../content/installation-docker.rst:84
 msgid ""
 "The Docker Compose configuration file *.env* allows you to manage your "
 "installation of OTOBO. This file must first be created and then be adapted "
@@ -1007,11 +1007,11 @@ msgstr ""
 "recomendado. Se HTTPS não for necessário, use *.docker_compose_env_http* "
 "como ponto de partida."
 
-#: ../../content/installation-docker.rst:98
+#: ../../content/installation-docker.rst:92
 msgid "Use ``ls -a`` for listing the hidden template files."
 msgstr "Use ``ls -a`` para listar os arquivos de template ocultos."
 
-#: ../../content/installation-docker.rst:100
+#: ../../content/installation-docker.rst:94
 msgid ""
 "Per default OTOBO is served on the standard ports. Port 443 for HTTPS and "
 "port 80 for HTTP. When HTTPS is activated then the OTOBO web application "
@@ -1023,23 +1023,23 @@ msgstr ""
 "ainda é executado com HTTP. O suporte HTTPS é obtido por um proxy reverso "
 "adicional, que é implementado como um serviço nginx."
 
-#: ../../content/installation-docker.rst:104
+#: ../../content/installation-docker.rst:98
 msgid "For the following commands we assume that HTTPS should be supported."
 msgstr "Para os comandos a seguir, presumimos que HTTPS deve ser compatível."
 
-#: ../../content/installation-docker.rst:112
+#: ../../content/installation-docker.rst:106
 msgid "3. Configure the password for the database admin user"
 msgstr "3. Configure a senha para o usuário administrador do banco de dados"
 
-#: ../../content/installation-docker.rst:114
+#: ../../content/installation-docker.rst:108
 msgid "Change the following setting inside your *.env* file:"
 msgstr "Altere o seguinte valor dentro do arquivo *.env*:"
 
-#: ../../content/installation-docker.rst:116
+#: ../../content/installation-docker.rst:110
 msgid "``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``"
 msgstr "``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``"
 
-#: ../../content/installation-docker.rst:118
+#: ../../content/installation-docker.rst:112
 msgid ""
 "The password for the database admin user may be chosen freely. The database "
 "admin user is needed to create the database user **otobo** and the database "
@@ -1052,24 +1052,24 @@ msgstr ""
 "**otobo**. O OTOBO realmente usará o usuário de banco de dados dedicado "
 "**otobo**."
 
-#: ../../content/installation-docker.rst:123
+#: ../../content/installation-docker.rst:117
 msgid ""
 "4. Set up a volume with SSL configuration for the nginx webproxy (optional)"
 msgstr ""
 "4. Configure um volume com configuração SSL para o nginx webproxy (opcional)"
 
-#: ../../content/installation-docker.rst:125
+#: ../../content/installation-docker.rst:119
 msgid "This step can be skipped when OTOBO should be available only via HTTP."
 msgstr ""
 "Esta etapa pode ser ignorada quando o OTOBO deve estar disponível apenas via "
 "HTTP."
 
-#: ../../content/installation-docker.rst:127
+#: ../../content/installation-docker.rst:121
 msgid "nginx needs for SSL encryption a certificate and a private key."
 msgstr ""
 "O nginx precisa de um certificado e uma chave privada para criptografia SSL."
 
-#: ../../content/installation-docker.rst:131
+#: ../../content/installation-docker.rst:125
 msgid ""
 "For testing and development a self-signed certificate can be used. However "
 "for productive use you should work with regular registered certificates."
@@ -1078,7 +1078,7 @@ msgstr ""
 "No entanto, para uso produtivo, você deve trabalhar com certificados "
 "regulares registrados."
 
-#: ../../content/installation-docker.rst:134
+#: ../../content/installation-docker.rst:128
 msgid ""
 "See e.g. https://www.digitalocean.com/community/tutorials/how-to-create-a-"
 "self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04 on how to create self-"
@@ -1088,7 +1088,7 @@ msgstr ""
 "create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04 sobre como "
 "criar certificados auto-assinados."
 
-#: ../../content/installation-docker.rst:139
+#: ../../content/installation-docker.rst:133
 msgid ""
 "To specify a CA chain with a certificate in nginx, it is necessary to copy "
 "the CA chain file with the actual certificate into a file."
@@ -1096,7 +1096,7 @@ msgstr ""
 "Para especificar uma cadeia de CA com um certificado no nginx, é necessário "
 "copiar o arquivo de cadeia de CA com o certificado real em um arquivo."
 
-#: ../../content/installation-docker.rst:142
+#: ../../content/installation-docker.rst:136
 msgid ""
 "The certificate and the private key are stored in a volume, so that they can "
 "be used by nginx later on. In any case the volume needs to be generated "
@@ -1107,7 +1107,7 @@ msgstr ""
 "precisa ser gerado manualmente e precisamos copiar o certificado e a chave "
 "para o volume:"
 
-#: ../../content/installation-docker.rst:152
+#: ../../content/installation-docker.rst:146
 msgid ""
 "The names of the copied files need to be set in our newly created *.env* "
 "file. E.g."
@@ -1115,7 +1115,7 @@ msgstr ""
 "Os nomes dos arquivos copiados precisam ser definidos em nosso arquivo *."
 "env* recém-criado. Por exemplo."
 
-#: ../../content/installation-docker.rst:154
+#: ../../content/installation-docker.rst:148
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
@@ -1123,7 +1123,7 @@ msgstr ""
 "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 
-#: ../../content/installation-docker.rst:157
+#: ../../content/installation-docker.rst:151
 msgid ""
 "Please adapt only the name of the files as the path */etc/nginx/ssl/* is "
 "hard coded in the Docker image."
@@ -1131,11 +1131,11 @@ msgstr ""
 "Adapte apenas o nome dos arquivos, pois o caminho */etc/nginx/ssl/* é "
 "codificado na imagem do Docker."
 
-#: ../../content/installation-docker.rst:160
+#: ../../content/installation-docker.rst:154
 msgid "5. Start the Docker containers with Docker Compose"
 msgstr "5. Inicie os contêineres do Docker com Docker Compose"
 
-#: ../../content/installation-docker.rst:162
+#: ../../content/installation-docker.rst:156
 msgid ""
 "Now we start the Docker containers using ``docker-compose``. Per default the "
 "Docker images will be fetched from https://hub.docker.com/u/rotheross."
@@ -1144,7 +1144,7 @@ msgstr ""
 "padrão, as imagens do Docker serão obtidas em https://hub.docker.com/u/"
 "rotheross."
 
-#: ../../content/installation-docker.rst:169
+#: ../../content/installation-docker.rst:163
 msgid ""
 "To verify that the six required services (five in the case of HTTP only) are "
 "actually running, type:"
@@ -1152,15 +1152,15 @@ msgstr ""
 "Para verificar se os seis serviços necessários (cinco no caso de HTTP "
 "apenas) estão realmente em execução, digite:"
 
-#: ../../content/installation-docker.rst:177
+#: ../../content/installation-docker.rst:171
 msgid "6. Install and start OTOBO"
 msgstr "6. Instale e inicie o OTOBO"
 
-#: ../../content/installation-docker.rst:179
+#: ../../content/installation-docker.rst:173
 msgid "Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl."
 msgstr "Execute o instalador OTOBO em http: //yourIPorFQDN/otobo/installer.pl."
 
-#: ../../content/installation-docker.rst:183
+#: ../../content/installation-docker.rst:177
 msgid ""
 "Please configure OTOBO inside the installer with a new MySQL database. As "
 "MySQL database root password please use the password you configured in the "
@@ -1172,11 +1172,11 @@ msgstr ""
 "variável ``OTOBO_DB_ROOT_PASSWORD`` do seu arquivo *.env*. Por favor, deixe "
 "o valor ``db`` para o nome do host MySQL intocado."
 
-#: ../../content/installation-docker.rst:188
+#: ../../content/installation-docker.rst:182
 msgid "**Have fun with OTOBO!**"
 msgstr "**Divirta-se com o OTOBO!**"
 
-#: ../../content/installation-docker.rst:192
+#: ../../content/installation-docker.rst:186
 msgid ""
 "To change to the OTOBO directory, inside the running container, to work on "
 "command line as usual, you can use the following Docker command: ``docker "
@@ -1186,11 +1186,11 @@ msgstr ""
 "trabalhar na linha de comando como de costume, você pode usar o seguinte "
 "comando do Docker: ``docker exec -it otobo_web_1 bash``."
 
-#: ../../content/installation-docker.rst:196
+#: ../../content/installation-docker.rst:190
 msgid "Additional technical information"
 msgstr "Informações técnicas adicionais"
 
-#: ../../content/installation-docker.rst:198
+#: ../../content/installation-docker.rst:192
 msgid ""
 "This section gives some more technical insight into what is happing under "
 "the hood."
@@ -1198,63 +1198,63 @@ msgstr ""
 "Esta seção oferece mais informações técnicas sobre o que está acontecendo "
 "nos bastidores."
 
-#: ../../content/installation-docker.rst:201
+#: ../../content/installation-docker.rst:195
 msgid "List of Docker containers"
 msgstr "Lista de contêineres Docker"
 
-#: ../../content/installation-docker.rst:204
+#: ../../content/installation-docker.rst:198
 msgid "Container otobo_web_1"
 msgstr "Contêiner otobo_web_1"
 
-#: ../../content/installation-docker.rst:204
+#: ../../content/installation-docker.rst:198
 msgid "OTOBO webserver on internal port 5000."
 msgstr "Servidor web OTOBO na porta interna 5000."
 
-#: ../../content/installation-docker.rst:207
+#: ../../content/installation-docker.rst:201
 msgid "Container otobo_daemon_1"
 msgstr "Contêiner otobo_daemon_1"
 
-#: ../../content/installation-docker.rst:207
+#: ../../content/installation-docker.rst:201
 msgid "OTOBO daemon. The OTOBO daemon is started and periodically checked."
 msgstr "Daemon OTOBO. O daemon OTOBO é iniciado e verificado periodicamente."
 
-#: ../../content/installation-docker.rst:210
+#: ../../content/installation-docker.rst:204
 msgid "Container otobo_db_1"
 msgstr "Contêiner otobo_db_1"
 
-#: ../../content/installation-docker.rst:210
+#: ../../content/installation-docker.rst:204
 msgid "Run the database MariaDB on internal port 3306."
 msgstr "Executa o banco de dados MariaDB na porta interna 3306."
 
-#: ../../content/installation-docker.rst:213
+#: ../../content/installation-docker.rst:207
 msgid "Container otobo_elastic_1"
 msgstr "Contêiner otobo_elastic_1"
 
-#: ../../content/installation-docker.rst:213
+#: ../../content/installation-docker.rst:207
 msgid "Elasticsearch on the internal ports 9200 and 9300."
 msgstr "Elasticsearch nas portas internas 9200 e 9300."
 
-#: ../../content/installation-docker.rst:216
+#: ../../content/installation-docker.rst:210
 msgid "Container otobo_redis_1"
 msgstr "Contêiner otobo_redis_1"
 
-#: ../../content/installation-docker.rst:216
+#: ../../content/installation-docker.rst:210
 msgid "Run Redis as caching service."
 msgstr "Execute o Redis como serviço de cache."
 
-#: ../../content/installation-docker.rst:219
+#: ../../content/installation-docker.rst:213
 msgid "Optional container otobo_nginx_1"
 msgstr "Contêiner opcional otobo_nginx_1"
 
-#: ../../content/installation-docker.rst:219
+#: ../../content/installation-docker.rst:213
 msgid "Run nginx as reverse proxy for providing HTTPS support."
 msgstr "Execute o nginx como proxy reverso para fornecer suporte HTTPS."
 
-#: ../../content/installation-docker.rst:222
+#: ../../content/installation-docker.rst:216
 msgid "Overview over the Docker volumes"
 msgstr "Visão geral dos volumes do Docker"
 
-#: ../../content/installation-docker.rst:224
+#: ../../content/installation-docker.rst:218
 msgid ""
 "The Docker volumes are created on the host for persistent data. These allow "
 "starting and stopping the services without losing data. Keep in mind that "
@@ -1264,43 +1264,43 @@ msgstr ""
 "iniciar e interromper os serviços sem perder dados. Lembre-se de que os "
 "contêineres são temporários e apenas os dados nos volumes são permanentes."
 
-#: ../../content/installation-docker.rst:229
+#: ../../content/installation-docker.rst:223
 msgid "otobo_opt_otobo"
 msgstr "otobo_opt_otobo"
 
-#: ../../content/installation-docker.rst:229
+#: ../../content/installation-docker.rst:223
 msgid "contains `/opt/otobo` in the container `web` and `daemon`."
 msgstr "contém `/opt/otobo` no container `web` e `daemon`."
 
-#: ../../content/installation-docker.rst:232
+#: ../../content/installation-docker.rst:226
 msgid "otobo_mariadb_data"
 msgstr "otobo_mariadb_data"
 
-#: ../../content/installation-docker.rst:232
+#: ../../content/installation-docker.rst:226
 msgid "contains `/var/lib/mysql` in the container `db`."
 msgstr "contém `/var/lib/mysql` no container `db`."
 
-#: ../../content/installation-docker.rst:235
+#: ../../content/installation-docker.rst:229
 msgid "otobo_elasticsearch_data"
 msgstr "otobo_elasticsearch_data"
 
-#: ../../content/installation-docker.rst:235
+#: ../../content/installation-docker.rst:229
 msgid "contains `/usr/share/elasticsearch/datal` in the container `elastic`."
 msgstr "contém `/usr/share/elasticsearch/datal` no container `elastic`."
 
-#: ../../content/installation-docker.rst:238
+#: ../../content/installation-docker.rst:232
 msgid "otobo_redis_data"
 msgstr "otobo_redis_data"
 
-#: ../../content/installation-docker.rst:238
+#: ../../content/installation-docker.rst:232
 msgid "contains data for the container `redis`."
 msgstr "contém dados para o contêiner `redis`."
 
-#: ../../content/installation-docker.rst:241
+#: ../../content/installation-docker.rst:235
 msgid "otobo_nginx_ssl"
 msgstr "otobo_nginx_ssl"
 
-#: ../../content/installation-docker.rst:241
+#: ../../content/installation-docker.rst:235
 msgid ""
 "contains the TLS files, certificate and private key, must be initialized "
 "manually."
@@ -1308,11 +1308,11 @@ msgstr ""
 "contém os arquivos TLS, certificado e chave privada, deve ser inicializado "
 "manualmente."
 
-#: ../../content/installation-docker.rst:244
+#: ../../content/installation-docker.rst:238
 msgid "Docker environment variables"
 msgstr "Variáveis de ambiente do Docker"
 
-#: ../../content/installation-docker.rst:246
+#: ../../content/installation-docker.rst:240
 msgid ""
 "In the instructions we did only minimal configuration. But the file *.env* "
 "allows to set more variables. Here is a list of all supported environment "
@@ -1322,23 +1322,23 @@ msgstr ""
 "permite definir mais variáveis. Aqui está uma lista de todas as variáveis de "
 "ambiente com suporte:"
 
-#: ../../content/installation-docker.rst:249
+#: ../../content/installation-docker.rst:243
 msgid "**MariaDB settings**"
 msgstr "**Configurações MariaDB**"
 
-#: ../../content/installation-docker.rst:252
+#: ../../content/installation-docker.rst:246
 msgid "``OTOBO_DB_ROOT_PASSWORD``"
 msgstr "``OTOBO_DB_ROOT_PASSWORD``"
 
-#: ../../content/installation-docker.rst:252
+#: ../../content/installation-docker.rst:246
 msgid "The root password for MySQL. Must be set for running otobo db."
 msgstr "A senha raiz do MySQL. Deve ser definido para rodar otobo db."
 
-#: ../../content/installation-docker.rst:254
+#: ../../content/installation-docker.rst:248
 msgid "**Elasticsearch settings**"
 msgstr "**Configurações do Elasticsearch**"
 
-#: ../../content/installation-docker.rst:256
+#: ../../content/installation-docker.rst:250
 msgid ""
 "Elasticsearch needs some settings for productive environments. Please read "
 "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker."
@@ -1348,11 +1348,11 @@ msgstr ""
 "Por favor leia https://www.elastic.co/guide/en/elasticsearch/reference/7.8/"
 "docker.html#docker-prod-prerequisites para informações detalhadas."
 
-#: ../../content/installation-docker.rst:263
+#: ../../content/installation-docker.rst:257
 msgid "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
 msgstr "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
 
-#: ../../content/installation-docker.rst:261
+#: ../../content/installation-docker.rst:255
 msgid ""
 "Example setting: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* Please "
 "adjust this value for production env to a value up to 4g."
@@ -1360,16 +1360,16 @@ msgstr ""
 "Configuração de exemplo: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -"
 "Xmx512m* Ajuste este valor para env de produção para um valor de até 4g."
 
-#: ../../content/installation-docker.rst:265
+#: ../../content/installation-docker.rst:259
 msgid "**Webserver settings**"
 msgstr "**Configurações do Webserver **"
 
-#: ../../content/installation-docker.rst:269
-#: ../../content/installation-docker.rst:277
+#: ../../content/installation-docker.rst:263
+#: ../../content/installation-docker.rst:271
 msgid "``OTOBO_WEB_HTTP_PORT``"
 msgstr "``OTOBO_WEB_HTTP_PORT``"
 
-#: ../../content/installation-docker.rst:268
+#: ../../content/installation-docker.rst:262
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. When "
 "HTTPS is enabled, the HTTP port will redirect to HTTPS."
@@ -1377,15 +1377,15 @@ msgstr ""
 "Definido caso a porta HTTP deva se desviar da porta 80 padrão. Quando HTTPS "
 "está habilitado, a porta HTTP redireciona para HTTPS."
 
-#: ../../content/installation-docker.rst:271
+#: ../../content/installation-docker.rst:265
 msgid "**nginx webproxy settings**"
 msgstr "**configurações do webproxy nginx**"
 
-#: ../../content/installation-docker.rst:273
+#: ../../content/installation-docker.rst:267
 msgid "These setting are used when HTTPS is enabled."
 msgstr "Essas configurações serão usadas quando HTTPS está habilitado."
 
-#: ../../content/installation-docker.rst:276
+#: ../../content/installation-docker.rst:270
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. Will "
 "redirect to HTTPS."
@@ -1393,19 +1393,19 @@ msgstr ""
 "Definido caso a porta HTTP se desvie da porta 80 padrão. Irá redirecionar "
 "para HTTPS."
 
-#: ../../content/installation-docker.rst:280
+#: ../../content/installation-docker.rst:274
 msgid "``OTOBO_WEB_HTTPS_PORT``"
 msgstr "``OTOBO_WEB_HTTPS_PORT``"
 
-#: ../../content/installation-docker.rst:280
+#: ../../content/installation-docker.rst:274
 msgid "Set in case the HTTPS port should deviate from the standard port 443."
 msgstr "Definido no caso de a porta HTTPS se desviar da porta 443 padrão."
 
-#: ../../content/installation-docker.rst:284
+#: ../../content/installation-docker.rst:278
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE``"
 msgstr "``OTOBO_NGINX_SSL_CERTIFICATE``"
 
-#: ../../content/installation-docker.rst:283
+#: ../../content/installation-docker.rst:277
 msgid ""
 "SSL cert for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/"
 "nginx/ssl/acme.crt*"
@@ -1413,11 +1413,11 @@ msgstr ""
 "Certificado SSL para o webproxy nginx. Exemplo: "
 "*OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
-#: ../../content/installation-docker.rst:288
+#: ../../content/installation-docker.rst:282
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 msgstr "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 
-#: ../../content/installation-docker.rst:287
+#: ../../content/installation-docker.rst:281
 msgid ""
 "SSL key for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/"
 "etc/nginx/ssl/acme.key*"
@@ -1425,19 +1425,19 @@ msgstr ""
 "Chave SSL para o webproxy nginx. Exemplo: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/"
 "etc/nginx/ssl/acme.key*"
 
-#: ../../content/installation-docker.rst:290
+#: ../../content/installation-docker.rst:284
 msgid "**Docker Compose settings**"
 msgstr "**Configurações do Docker Compose**"
 
-#: ../../content/installation-docker.rst:292
+#: ../../content/installation-docker.rst:286
 msgid "These settings are used by Docker Compose directly."
 msgstr "Essas configurações são usadas diretamente pelo Docker Compose."
 
-#: ../../content/installation-docker.rst:297
+#: ../../content/installation-docker.rst:291
 msgid "``COMPOSE_PROJECT_NAME``"
 msgstr "``COMPOSE_PROJECT_NAME``"
 
-#: ../../content/installation-docker.rst:295
+#: ../../content/installation-docker.rst:289
 msgid ""
 "The project name is used as a prefix for the generated volumes and "
 "containers. Must be set because the compose file is located in *scripts/"
@@ -1449,19 +1449,19 @@ msgstr ""
 "*scripts/docker-compose* e, portanto, **docker-compose** seria usado por "
 "padrão como o nome do projeto."
 
-#: ../../content/installation-docker.rst:300
+#: ../../content/installation-docker.rst:294
 msgid "``COMPOSE_PATH_SEPARATOR``"
 msgstr "``COMPOSE_PATH_SEPARATOR``"
 
-#: ../../content/installation-docker.rst:300
+#: ../../content/installation-docker.rst:294
 msgid "Separator for the value of COMPOSE_FILE"
 msgstr "Separador para o valor de COMPOSE_FILE"
 
-#: ../../content/installation-docker.rst:304
+#: ../../content/installation-docker.rst:298
 msgid "``COMPOSE_FILE``"
 msgstr "``COMPOSE_FILE``"
 
-#: ../../content/installation-docker.rst:303
+#: ../../content/installation-docker.rst:297
 msgid ""
 "Use *docker-compose/otobo-base.yml* as the base and add the wanted extension "
 "files. E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-"
@@ -1471,7 +1471,7 @@ msgstr ""
 "extensão desejados. Por exemplo *docker-compose/otobo-override-http.yml* ou "
 "*docker-compose/otobo-override-https.yml*."
 
-#: ../../content/installation-docker.rst:307
+#: ../../content/installation-docker.rst:301
 msgid ""
 "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX``"
@@ -1479,7 +1479,7 @@ msgstr ""
 "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX``"
 
-#: ../../content/installation-docker.rst:307
+#: ../../content/installation-docker.rst:301
 msgid ""
 "Used for specifying alternative Docker images. Useful for testing local "
 "builds."
@@ -1487,15 +1487,15 @@ msgstr ""
 "Usado para especificar imagens alternativas do Docker. Útil para testar "
 "compilações locais."
 
-#: ../../content/installation-docker.rst:310
+#: ../../content/installation-docker.rst:304
 msgid "Advanced topics"
 msgstr "Tópicos avançados"
 
-#: ../../content/installation-docker.rst:313
+#: ../../content/installation-docker.rst:307
 msgid "Custom configuration of the nginx webproxy"
 msgstr "Configuração personalizada do nginx webproxy"
 
-#: ../../content/installation-docker.rst:315
+#: ../../content/installation-docker.rst:309
 msgid ""
 "The default Docker-based OTOBO installation provides the container "
 "`otobo_nginx_1`. This container provides HTTPS support for the HTTP-based "
@@ -1520,7 +1520,7 @@ msgstr ""
 "${OTOBO_NGINX_SSL_CERTIFICATE_KEY} * `${OTOBO_NGINX_WEB_HOST}` * `"
 "${OTOBO_NGINX_WEB_PORT}`"
 
-#: ../../content/installation-docker.rst:327
+#: ../../content/installation-docker.rst:321
 msgid ""
 "There are various possibilities for customizing the nginx configuration. One "
 "way is to use a locally built image that is derived from the image `otobo-"
@@ -1532,11 +1532,11 @@ msgstr ""
 "`otobo-nginx-webproxy`. Nessa imagem local, o nginx pode ser configurado de "
 "uma forma muito flexível."
 
-#: ../../content/installation-docker.rst:333
+#: ../../content/installation-docker.rst:327
 msgid "The following approach is only supported in OTOBO 10.0.4 or later."
 msgstr "A abordagem a seguir só é compatível com OTOBO 10.0.4 ou posterior."
 
-#: ../../content/installation-docker.rst:335
+#: ../../content/installation-docker.rst:329
 msgid ""
 "Another supported approach is to only override the default config template "
 "with a customized version. In this case, we have to create a volume that "
@@ -1546,7 +1546,7 @@ msgstr ""
 "configuração padrão por uma versão personalizada. Nesse caso, primeiro temos "
 "que criar um volume que contenha o template de configuração nginx adaptado."
 
-#: ../../content/installation-docker.rst:354
+#: ../../content/installation-docker.rst:348
 msgid ""
 "Your adapted nginx configuration usually contains the directive **listen**, "
 "which declares the ports of the webserver. The internally used ports have "
@@ -1560,7 +1560,7 @@ msgstr ""
 "na configuração nginx adaptada. Portanto, para a versão 10.0.3 ou anterior, "
 "escute as portas 80 e 443. Para o OTOBO 10.0.4, escute as portas 8080 e 8443."
 
-#: ../../content/installation-docker.rst:359
+#: ../../content/installation-docker.rst:353
 msgid ""
 "After setting up the volume, the adapted configuration must be activated. In "
 "order to achieve this, uncomment or add the following lines in your *.env* "
@@ -1570,15 +1570,15 @@ msgstr ""
 "fazer isso, descomente ou adicione as seguintes linhas em seu arquivo *."
 "env* :"
 
-#: ../../content/installation-docker.rst:367
+#: ../../content/installation-docker.rst:361
 msgid "The changed Docker Compose configuration can be inspected with:"
 msgstr "A configuração do Docker Compose alterada pode ser inspecionada com:"
 
-#: ../../content/installation-docker.rst:373
+#: ../../content/installation-docker.rst:367
 msgid "Finally, the containers can be started again:"
 msgstr "Finalmente, os contêineres podem ser iniciados novamente:"
 
-#: ../../content/installation-docker.rst:379
+#: ../../content/installation-docker.rst:373
 msgid ""
 "See also the section \"Using environment variables in nginx configuration "
 "(new in 1.19)\" in https://hub.docker.com/_/nginx."
@@ -1586,11 +1586,11 @@ msgstr ""
 "Consulte também a seção \"Using environment variables in nginx configuration "
 "(new in 1.19)\" em https://hub.docker.com/_/nginx."
 
-#: ../../content/installation-docker.rst:382
+#: ../../content/installation-docker.rst:376
 msgid "Choosing non-standard ports"
 msgstr "Escolhendo portas não padrão"
 
-#: ../../content/installation-docker.rst:384
+#: ../../content/installation-docker.rst:378
 msgid ""
 "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There "
 "can be cases where one or both of these ports are already used by other "
@@ -1602,18 +1602,18 @@ msgstr ""
 "Nestes casos, as portas padrão podem ser substituídas especificando "
 "`OTOBO_WEB_HTTP_PORT` e `OTOBO_WEB_HTTPS_PORT` no arquivo *.env*."
 
-#: ../../content/installation-docker.rst:390
+#: ../../content/installation-docker.rst:384
 msgid "Building local images"
 msgstr "Construindo imagens locais"
 
-#: ../../content/installation-docker.rst:394
+#: ../../content/installation-docker.rst:388
 msgid ""
 "Building Docker images locally is usually only needed during development."
 msgstr ""
 "A construção de imagens Docker localmente geralmente só é necessária durante "
 "o desenvolvimento."
 
-#: ../../content/installation-docker.rst:396
+#: ../../content/installation-docker.rst:390
 msgid ""
 "The files needed for creating Docker images locally are part of the the git "
 "repository https://github.com/RotherOSS/otobo:"
@@ -1621,23 +1621,23 @@ msgstr ""
 "Os arquivos necessários para criar imagens Docker localmente fazem parte do "
 "repositório git https://github.com/RotherOSS/otobo:"
 
-#: ../../content/installation-docker.rst:398
+#: ../../content/installation-docker.rst:392
 msgid "*otobo.web.dockerfile*"
 msgstr "*otobo.web.dockerfile*"
 
-#: ../../content/installation-docker.rst:399
+#: ../../content/installation-docker.rst:393
 msgid "*otobo.nginx.dockerfile*"
 msgstr "*otobo.nginx.dockerfile*"
 
-#: ../../content/installation-docker.rst:400
+#: ../../content/installation-docker.rst:394
 msgid "*otobo.elasticsearch.dockerfile*"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
-#: ../../content/installation-docker.rst:401
+#: ../../content/installation-docker.rst:395
 msgid "*bin/docker/build_docker_images.sh*"
 msgstr "*bin/docker/build_docker_images.sh*"
 
-#: ../../content/installation-docker.rst:411
+#: ../../content/installation-docker.rst:405
 msgid ""
 "The locally built images are tagged as ``local-<OTOBO_VERSION>`` using the "
 "version set up the file *RELEASE*. After building the local images, one can "
@@ -1650,11 +1650,11 @@ msgstr ""
 "configurando ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX`` em *.env*."
 
-#: ../../content/installation-docker.rst:416
+#: ../../content/installation-docker.rst:410
 msgid "Automatic Installation"
 msgstr "Instalação automática"
 
-#: ../../content/installation-docker.rst:418
+#: ../../content/installation-docker.rst:412
 msgid ""
 "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can "
 "take a short cut. This is mostly useful for running the test suite on a "
@@ -1664,21 +1664,21 @@ msgstr ""
 "atalho. Isso é útil principalmente para executar o conjunto de testes em uma "
 "instalação nova."
 
-#: ../../content/installation-docker.rst:423
+#: ../../content/installation-docker.rst:417
 msgid "``docker-compose down -v`` will remove all previous setup and data."
 msgstr ""
 "``docker-compose down -v`` irá remover todas as configurações e dados "
 "anteriores."
 
-#: ../../content/installation-docker.rst:438
+#: ../../content/installation-docker.rst:432
 msgid "List of useful commands"
 msgstr "Lista de comandos úteis"
 
-#: ../../content/installation-docker.rst:440
+#: ../../content/installation-docker.rst:434
 msgid "**Docker**"
 msgstr "**Docker**"
 
-#: ../../content/installation-docker.rst:442
+#: ../../content/installation-docker.rst:436
 msgid ""
 "``docker system prune -a`` system clean-up (removes all unused images, "
 "containers, volumes, networks)"
@@ -1686,29 +1686,29 @@ msgstr ""
 "``docker system prune -a`` limpeza do sistema (remove todas as imagens, "
 "contêineres, volumes e redes não utilizados)"
 
-#: ../../content/installation-docker.rst:443
+#: ../../content/installation-docker.rst:437
 msgid "``docker version`` show version"
 msgstr "Mostrar versão ``docker version``"
 
-#: ../../content/installation-docker.rst:444
+#: ../../content/installation-docker.rst:438
 msgid ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` constrói uma "
 "imagem"
 
-#: ../../content/installation-docker.rst:445
+#: ../../content/installation-docker.rst:439
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``docker run --publish 80:5000 otobo`` executa a nova imagem"
 
-#: ../../content/installation-docker.rst:446
+#: ../../content/installation-docker.rst:440
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` faça login na nova "
 "imagem"
 
-#: ../../content/installation-docker.rst:447
+#: ../../content/installation-docker.rst:441
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that "
 "in case entrypoint.sh is broken"
@@ -1716,23 +1716,23 @@ msgstr ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` tente "
 "isso caso o entrypoint.sh esteja quebrado"
 
-#: ../../content/installation-docker.rst:448
+#: ../../content/installation-docker.rst:442
 msgid "``docker ps`` show running images"
 msgstr "``docker ps`` mostra imagens em execução"
 
-#: ../../content/installation-docker.rst:449
+#: ../../content/installation-docker.rst:443
 msgid "``docker images`` show available images"
 msgstr "mostrar imagens disponíveis ``docker images``"
 
-#: ../../content/installation-docker.rst:450
+#: ../../content/installation-docker.rst:444
 msgid "``docker volume ls`` list volumes"
 msgstr "lista volumes ``docker volume ls``"
 
-#: ../../content/installation-docker.rst:451
+#: ../../content/installation-docker.rst:445
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr "``docker volume inspect otobo_opt_otobo`` inspecionar um volume"
 
-#: ../../content/installation-docker.rst:452
+#: ../../content/installation-docker.rst:446
 msgid ""
 "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get "
 "volume mountpoint"
@@ -1740,15 +1740,15 @@ msgstr ""
 "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` obter "
 "ponto de montagem de volume"
 
-#: ../../content/installation-docker.rst:453
+#: ../../content/installation-docker.rst:447
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``docker volume rm tmp_volume`` remove um volume"
 
-#: ../../content/installation-docker.rst:454
+#: ../../content/installation-docker.rst:448
 msgid "``docker inspect <container>`` inspect a container"
 msgstr "``docker inspect <container>`` inspecionar um contêiner"
 
-#: ../../content/installation-docker.rst:455
+#: ../../content/installation-docker.rst:449
 msgid ""
 "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list "
 "files in an image"
@@ -1756,33 +1756,33 @@ msgstr ""
 "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` lista "
 "os arquivos em uma imagem"
 
-#: ../../content/installation-docker.rst:456
+#: ../../content/installation-docker.rst:450
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` recarrega o nginx"
 
-#: ../../content/installation-docker.rst:458
+#: ../../content/installation-docker.rst:452
 msgid "**Docker Compose**"
 msgstr "**Docker Compose**"
 
-#: ../../content/installation-docker.rst:460
+#: ../../content/installation-docker.rst:454
 msgid "``docker-compose config`` check and show the configuration"
 msgstr "``docker-compose config`` verifique e mostre a configuração"
 
-#: ../../content/installation-docker.rst:461
+#: ../../content/installation-docker.rst:455
 msgid "``docker-compose ps`` show the running containers"
 msgstr "``docker-compose ps`` mostrar os contêineres em execução"
 
-#: ../../content/installation-docker.rst:464
+#: ../../content/installation-docker.rst:458
 msgid "Resources"
 msgstr "Recursos"
 
-#: ../../content/installation-docker.rst:466
+#: ../../content/installation-docker.rst:460
 msgid ""
 "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 msgstr ""
 "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
-#: ../../content/installation-docker.rst:467
+#: ../../content/installation-docker.rst:461
 msgid ""
 "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
@@ -1790,7 +1790,7 @@ msgstr ""
 "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
 
-#: ../../content/installation-docker.rst:468
+#: ../../content/installation-docker.rst:462
 msgid ""
 "`Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www."
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
@@ -1800,7 +1800,7 @@ msgstr ""
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
 "ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:469
+#: ../../content/installation-docker.rst:463
 msgid ""
 "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
@@ -1808,17 +1808,17 @@ msgstr ""
 "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:470
+#: ../../content/installation-docker.rst:464
 msgid "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
 msgstr "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
 
-#: ../../content/installation-docker.rst:471
+#: ../../content/installation-docker.rst:465
 msgid ""
 "`cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 msgstr ""
 "`cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
-#: ../../content/installation-docker.rst:472
+#: ../../content/installation-docker.rst:466
 msgid ""
 "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
@@ -1826,7 +1826,7 @@ msgstr ""
 "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
 
-#: ../../content/installation-docker.rst:473
+#: ../../content/installation-docker.rst:467
 msgid ""
 "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/"
 "when-does-docker-image-cache-invalidation-occur>`_"
@@ -1834,7 +1834,7 @@ msgstr ""
 "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/"
 "when-does-docker-image-cache-invalidation-occur>`_"
 
-#: ../../content/installation-docker.rst:474
+#: ../../content/installation-docker.rst:468
 msgid ""
 "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
@@ -1842,11 +1842,11 @@ msgstr ""
 "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
 
-#: ../../content/installation-docker.rst:475
+#: ../../content/installation-docker.rst:469
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
-#: ../../content/installation-docker.rst:476
+#: ../../content/installation-docker.rst:470
 msgid ""
 "`Self signed certificate <https://www.digitalocean.com/community/tutorials/"
 "how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
@@ -1854,7 +1854,7 @@ msgstr ""
 "`Self signed certificate <https://www.digitalocean.com/community/tutorials/"
 "how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:477
+#: ../../content/installation-docker.rst:471
 msgid ""
 "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-"
 "build/>`_"
@@ -4155,6 +4155,17 @@ msgstr "Maint::Config::Rebuild"
 #: ../../content/updating-docker.rst:87
 msgid "Maint::Cache::Delete"
 msgstr "Maint::Cache::Delete"
+
+#~ msgid ""
+#~ "At the moment the Docker Compose environment is not tested in depth for "
+#~ "production use. Please use the standard installation process for "
+#~ "production use. Brave early adaptors are very welcome to share their "
+#~ "experiences."
+#~ msgstr ""
+#~ "No momento, o ambiente Docker Compose não foi testado em profundidade "
+#~ "para uso em produção. Use o processo de instalação padrão para uso de "
+#~ "produção. Os bravos primeiros adaptadores são bem-vindos para "
+#~ "compartilhar suas experiências."
 
 #~ msgid "Updating OTOBO using Docker and Docker Compose"
 #~ msgstr "Atualizando usando Docker e Docker Compose"
