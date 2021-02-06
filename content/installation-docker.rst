@@ -10,12 +10,6 @@ All of OTOBO´s dependencies are already included in the collection of Docker im
 - Gazelle is used as fast Perl webserver.
 - nginx is used as optional reverse proxy for HTTPS support.
 
-.. warning::
-
-    At the moment the Docker Compose environment is not tested in depth for production use.
-    Please use the standard installation process for production use.
-    Brave early adaptors are very welcome to share their experiences.
-
 We think that this will become the perfect environment for an OTOBO installation.
 
 Requirements
