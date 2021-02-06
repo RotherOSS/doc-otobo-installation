@@ -1,4 +1,4 @@
-Updating a Docker-based installation of OTOBO
+Updating a Docker-based Installation of OTOBO
 ===============================================
 
 For running OTOBO under Docker we need the OTOBO software itself and an
@@ -17,8 +17,8 @@ When updating to a new version of OTOBO several things have to happen.
 
 .. note::
 
-    In the sample commands below, the version **10.x.y** is used as the example version.
-    Please substitute it with the real version, e.g. **10.0.6**.
+    In the sample commands below, the version **10.x.y**, corresponding to the tag **10_x_y**, is used as the example version.
+    Please substitute it with the real version, e.g. **10.0.7**.
 
 .. warning::
 
@@ -42,8 +42,8 @@ made sure that the correct setup is used.
     # Get the latest tags
     docker-admin> git pull --tags
 
-    # Update OTOBO docker-compose repository
-    docker-admin> git checkout rel-10_x_y # Please use the wanted version
+    # Update OTOBO docker-compose repository to version 10.x.y.
+    docker-admin> git checkout rel-10_x_y
 
 Checking the Docker Compose .env file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,7 +54,7 @@ which images are used. The latest images are used when these variables are not s
 If you want to use a specific version, then please set these variables accordingly.
 
 Fetch the new Docker images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Docker compose can be used for fetching the wanted images from https://hub.docker.com/repository/docker/rotheross/.
 
@@ -69,7 +69,7 @@ Docker compose can be used for fetching the wanted images from https://hub.docke
 Update OTOBO
 ~~~~~~~~~~~~~~~
 
-Here the volume *otobo_opt_otobo* is updated and the following console commands are performed:
+In this step the volume *otobo_opt_otobo* is updated and the following OTOBO console commands are performed:
 
 - Admin::Package::ReinstallAll
 - Admin::Package::UpgradeAll
@@ -98,11 +98,9 @@ Here the volume *otobo_opt_otobo* is updated and the following console commands 
 
 .. note::
 
-    The commands, listed above, can of course be automated.
-    For that purpose the script *scripts/update.sh* is under development.
-    The gist is that the user creates the template file *env.m4*.
-    The Docker environment file *.env* will then be created from the template file.
-    Currently only the settings that specify the exact Docker images will adapted by *scripts/update.sh*.
+    The above listed commands can be automated.
+    For that purpose the script *scripts/update.sh* will be made available in OTOBO 10.0.8.
+    This script runs the commands, starting with the **docker-compose pull** command.
 
     .. code-block:: bash
 
