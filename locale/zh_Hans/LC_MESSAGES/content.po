@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 00:34+0100\n"
+"POT-Creation-Date: 2021-03-03 00:34+0100\n"
 "PO-Revision-Date: 2021-01-06 03:17+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -60,7 +60,6 @@ msgid "Considerations for running OTOBO under Docker"
 msgstr "在Docker下运行OTOBO的考量"
 
 #: ../../content/backup-restore.rst:98
-#: ../../content/backup-restore-docker.rst:19
 msgid ""
 "The same scripts can be used with OTOBO running under Docker. However some "
 "Docker specific limitation must be considered."
@@ -68,7 +67,6 @@ msgstr ""
 "相同的脚本可以用于OTOBO在Docker下的运行，不过要考虑一些Docker特定的限制。"
 
 #: ../../content/backup-restore.rst:100
-#: ../../content/backup-restore-docker.rst:21
 msgid ""
 "First we need to make sure that the backup files are not created in the file "
 "system that is internal to the container. Because in that case all data "
@@ -86,12 +84,11 @@ msgstr ""
 "备份目录在主机的位置， 而在容器中的位置就是``/otobo_backup`` 。"
 
 #: ../../content/backup-restore.rst:106
-#: ../../content/backup-restore-docker.rst:27
+#: ../../content/backup-restore-docker.rst:32
 msgid "First we need to create the volume."
 msgstr "首先我们需要创建卷。"
 
 #: ../../content/backup-restore.rst:119
-#: ../../content/backup-restore-docker.rst:40
 msgid ""
 "For creating the backup we need a running database and the volumes "
 "``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and "
@@ -101,7 +98,7 @@ msgstr ""
 "``otobo_backup``，这意味着网站服务器和Daemon可能，不是必须，被停掉。"
 
 #: ../../content/backup-restore.rst:130
-#: ../../content/backup-restore-docker.rst:51
+#: ../../content/backup-restore-docker.rst:59
 msgid ""
 "For restoring the backup we also need to specify which backup should be "
 "restored. The placeholder ``<TIMESTAMP>`` is something like "
@@ -115,11 +112,57 @@ msgid "Backup and Restore using Docker"
 msgstr "备份和恢复"
 
 #: ../../content/backup-restore-docker.rst:14
+#, fuzzy
 msgid ""
 "Please read the Backup and Restore description :doc:`backup-restore` for "
-"base informations about the backup and restore scripts."
+"basic information about the backup and restore scripts."
 msgstr ""
 "请阅读备份和恢复的介绍文档：`backup-restore` 了解备份和恢复脚本的基本信息。"
+
+#: ../../content/backup-restore-docker.rst:19
+#, fuzzy
+msgid ""
+"The scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO "
+"running under Docker. However some Docker specific limitations have to be "
+"considered."
+msgstr ""
+"相同的脚本可以用于OTOBO在Docker下的运行，不过要考虑一些Docker特定的限制。"
+
+#: ../../content/backup-restore-docker.rst:22
+#, fuzzy
+msgid ""
+"First, we need to make sure that the backup files are not created in the "
+"file system that is internal to a Docker container. Because in that case all "
+"data would be lost when the container is stopped. This means that the backup "
+"directory must located within in a volume. For this manual we only consider "
+"the most simple case, where the backup directory is a local directory on the "
+"Docker host. The location of the backup dir in the container can be "
+"arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` "
+"as the location on the host and ``/otobo_backup`` as the location in the "
+"container."
+msgstr ""
+"首先我们要确认备份文件创建时所在的文件系统，不是一个容器内部的文件系统。因为"
+"在那种情况下，当容器被停止后，所有的数据都会丢失。所以，备份目录必须在一个"
+"卷。现在我们先考虑最简单的一种情况，备份目录是Docker主机的一个本地目录。备份"
+"目录在容器中的位置可以随意选择。在本例中我们选择本地目录``otobo_backup``作为"
+"备份目录在主机的位置， 而在容器中的位置就是``/otobo_backup`` 。"
+
+#: ../../content/backup-restore-docker.rst:29
+msgid ""
+"Secondly, commands in the Docker container usually run as the user `otobo` "
+"with the user id 1000 and the group id 1000. It must be made sure, that this "
+"user can write in the backup directory."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:48
+#, fuzzy
+msgid ""
+"For creating the backup we need a running database and the volumes "
+"``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and "
+"the OTOBO daemon may, but don't have to, be stopped."
+msgstr ""
+"为了创建备份，我们需要一个运行的数据库和卷``otobo_opt_otobo`` 以及 "
+"``otobo_backup``，这意味着网站服务器和Daemon可能，不是必须，被停掉。"
 
 #: ../../content/history.rst:13
 msgid "Documentation History"

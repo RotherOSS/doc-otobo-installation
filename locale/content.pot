@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 00:34+0100\n"
+"POT-Creation-Date: 2021-03-03 00:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,27 +51,24 @@ msgid "Considerations for running OTOBO under Docker"
 msgstr ""
 
 #: ../../content/backup-restore.rst:98
-#: ../../content/backup-restore-docker.rst:19
 msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered."
 msgstr ""
 
 #: ../../content/backup-restore.rst:100
-#: ../../content/backup-restore-docker.rst:21
 msgid "First we need to make sure that the backup files are not created in the file system that is internal to the container. Because in that case all data would be lost when the container is stopped. Therefore the backup directory must be in a volume. For now we only consider the most simple case, where the backup dir is a local dir on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host, and ``/otobo_backup`` as the location in the container."
 msgstr ""
 
 #: ../../content/backup-restore.rst:106
-#: ../../content/backup-restore-docker.rst:27
+#: ../../content/backup-restore-docker.rst:32
 msgid "First we need to create the volume."
 msgstr ""
 
 #: ../../content/backup-restore.rst:119
-#: ../../content/backup-restore-docker.rst:40
 msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the Daemon may, but don't have to, be stopped."
 msgstr ""
 
 #: ../../content/backup-restore.rst:130
-#: ../../content/backup-restore-docker.rst:51
+#: ../../content/backup-restore-docker.rst:59
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr ""
 
@@ -80,7 +77,23 @@ msgid "Backup and Restore using Docker"
 msgstr ""
 
 #: ../../content/backup-restore-docker.rst:14
-msgid "Please read the Backup and Restore description :doc:`backup-restore` for base informations about the backup and restore scripts."
+msgid "Please read the Backup and Restore description :doc:`backup-restore` for basic information about the backup and restore scripts."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:19
+msgid "The scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:22
+msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case all data would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:29
+msgid "Secondly, commands in the Docker container usually run as the user `otobo` with the user id 1000 and the group id 1000. It must be made sure, that this user can write in the backup directory."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:48
+msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
 msgstr ""
 
 #: ../../content/history.rst:13
