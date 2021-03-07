@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2021-03-07 00:34+0100\n"
-"PO-Revision-Date: 2021-02-10 23:35+0000\n"
+"PO-Revision-Date: 2021-03-07 23:35+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
 "otobo10/installation-manual/pt_BR/>\n"
@@ -122,26 +122,24 @@ msgid "Backup and Restore using Docker"
 msgstr "Backup e Restauração usando Docker"
 
 #: ../../content/backup-restore-docker.rst:14
-#, fuzzy
 msgid ""
 "Please read to the chapter :doc:`backup-restore` for basic information about "
 "the backup and restore scripts."
 msgstr ""
-"Por favor, leia a descrição de Backup e Restauração :doc:`backup-restore` "
-"para informações básicas sobre os scripts de backup e restauração."
+"Por favor, leia o capítulo :doc:`backup-restore` para informações básicas "
+"sobre os scripts de backup e restauração."
 
 #: ../../content/backup-restore-docker.rst:19
-#, fuzzy
 msgid ""
 "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with "
 "OTOBO running under Docker. However some Docker specific limitations have to "
 "be considered."
 msgstr ""
-"Os mesmos scripts podem ser usados com OTOBO em execução no Docker. No "
-"entanto, algumas limitações específicas do Docker devem ser consideradas."
+"Os scripts padrão ``backup.pl`` e ``restore.pl`` também podem ser usados com "
+"OTOBO rodando no Docker. No entanto, algumas limitações específicas do "
+"Docker devem ser consideradas."
 
 #: ../../content/backup-restore-docker.rst:22
-#, fuzzy
 msgid ""
 "First, we need to make sure that the backup files are not created in the "
 "file system that is internal to a Docker container. Because in that case the "
@@ -154,14 +152,14 @@ msgid ""
 "location in the container."
 msgstr ""
 "Primeiro, precisamos nos certificar de que os arquivos de backup não sejam "
-"criados no sistema de arquivos interno do contêiner. Porque nesse caso todos "
-"os dados seriam perdidos quando o contêiner fosse interrompido. Portanto, o "
-"diretório de backup deve estar em um volume. Por enquanto, consideramos "
-"apenas o caso mais simples, em que o diretório de backup é um diretório "
-"local no host Docker. A localização do diretório de backup no contêiner pode "
-"ser escolhida arbitrariamente. Neste exemplo, escolhemos o diretório local "
-"``otobo_backup`` como o local no host, e ``/otobo_backup`` como o local no "
-"contêiner."
+"criados no sistema de arquivos interno de um contêiner do Docker. Porque, "
+"nesse caso, os arquivos criados seriam perdidos quando o contêiner for "
+"interrompido. Isso significa que o diretório de backup deve estar localizado "
+"em um volume. Para este manual, consideramos apenas o caso mais simples, em "
+"que o diretório de backup é um diretório local no host Docker. A localização "
+"do diretório de backup no contêiner pode ser escolhida arbitrariamente. "
+"Neste exemplo, escolhemos o dir local ``otobo_backup`` como o local no host "
+"e ``/otobo_backup`` como o local no contêiner."
 
 #: ../../content/backup-restore-docker.rst:29
 msgid ""
@@ -169,9 +167,11 @@ msgid ""
 "with the user id 1000 and the group id 1000. It must be made sure, that this "
 "user can write in the backup directory."
 msgstr ""
+"Em segundo lugar, os comandos no contêiner Docker geralmente são executados "
+"como o usuário `otobo` com a id de usuário 1000 e a id de grupo 1000. Deve-"
+"se ter certeza de que este usuário pode escrever no diretório de backup."
 
 #: ../../content/backup-restore-docker.rst:48
-#, fuzzy
 msgid ""
 "For creating the backup we need a running database and the volumes "
 "``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and "
@@ -179,7 +179,7 @@ msgid ""
 msgstr ""
 "Para criar o backup, precisamos de um banco de dados em execução e os "
 "volumes ``otobo_opt_otobo`` e ``otobo_backup``. Isso significa que o "
-"servidor da Web e o Daemon podem, mas não precisam, ser interrompidos."
+"servidor da web e o daemon OTOBO podem, mas não precisam, ser parados."
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
