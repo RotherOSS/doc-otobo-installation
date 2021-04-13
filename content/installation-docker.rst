@@ -50,12 +50,7 @@ the **root** user of the Docker host or a dedicated user with the required permi
 The Docker images will eventually be fetched from the image repository https://hub.docker.com.
 But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository.
 Make sure that you specify the branch that corresponds to the current version of OTOBO.
-For example, when *OTOBO 10.0.6* is the current version then please use the branch *rel-10_0_6*.
-
-.. note::
-
-    This manual had been published before OTOBO 10.0.4 was released.
-    This means that the git label rel-10.0.4 might not exist yet.
+For example, when *OTOBO 10.0.9* is the current version then please use the branch *rel-10_0_9*.
 
 .. note::
 
