@@ -39,7 +39,6 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
     5. Docker: Migrate to a Docker-based installation of OTOBO 10.
 
-
 Migration Requirements
 ----------------------
 
@@ -73,7 +72,7 @@ Step 1: Install the new OTOBO System
 ------------------------------------
 
 Please start with installing the new OTOBO system to which your OTRS / ((OTRS)) Community Edition instance will then be migrated.
-We strongly recommend to read the :doc:`installation` chapter.
+We strongly recommend to read the chapter :doc:`installation`. For Docker-based installations we refer to the chapter :doc:`installation-docker`.
 
 .. warning::
 
