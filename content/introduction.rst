@@ -17,7 +17,8 @@ All console commands look like ``username> command-to-execute``. Username indica
 
    Do not select ``username>`` when you copy the command and paste it to the shell. Otherwise you will get an error.
 
-We supposed that OTOBO will be installed to ``/opt/otobo``. If you want to install OTOBO to a different directory, you have to change the path in the commands or create a symbolic link to this directory.
+We assume that OTOBO will be installed to the directory ``/opt/otobo``. If you want to install OTOBO to a different location,
+then you have to change the path in the commands or create a symbolic link to this directory.
 
 .. code-block:: bash
 
