@@ -167,13 +167,12 @@ Step 3a non-Docker: Preparing the OTRS / ((OTRS)) Community Edition system
 
 .. note::
 
-    Perform the step 3b for migrating to a Docker-based installation
+    Perform the step 3b for migrating to a Docker-based installation.
 
 .. note::
 
     Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too. Yes, we do not touch any OTRS data during the migration, but at times
     a wrong entry is enough to cause trouble.
-
 
 Now we are ready for the migration. First of all we need to make sure that no more tickets are processed and
 no users log on to OTRS:
@@ -204,7 +203,7 @@ Step 3b Docker: make required data available inside container
 There are some specifics to be considered when your OTOBO installation is running under Docker.
 The most relevant: processes running in a Docker container generally cannot access directories
 outside the container. There is an exception though: directories mounted as volumes into the container can be accessed.
-Also, the MariaDB database running in ``otobo_db_1`` is not directly accessible outside the container network.
+Also, note that the MariaDB database running in ``otobo_db_1`` is not directly accessible from outside the container network.
 
 .. note::
 
@@ -251,21 +250,21 @@ Copy the otrs database schema to the containerised database server
 
 .. note::
 
-    This is the recommended approach. But migration from a running OTRS database is still possible.
+    Only the recommended approach is described here.
+    But migration from a running OTRS database is still feasable.
 
-Generally, all data in the database tables is copied row by row from the OTRS database
+.. note::
+
+    These instructions require that OTRS is using MySQL as its backend.
+
+In the generic approach, all data in the database tables is copied row by row from the OTRS database
 into the OTOBO database. This approach is time-consuming and can be optimised.
 To speed-up the process, we create a temporary copy of the OTRS database
 on the server used for the OTOBO database.
 In our case, this is the MariaDB-server running in the container ``otobo_db_1``.
 After creating the temporary copy, all relevant OTRS tables can be moved into the OTOBO database.
 
-.. warning::
-
-    Moving tables from one schema to another makes the source schema unusable.
-    So make sure the OTRS database used really is a throwaway copy of the productive OTRS database.
-
-First of all, we need a dump of the source OTRS database. As the imported tables are copied
+First of all, we need a dump of the needed OTRS database tables. As the dumped tables are copied
 into the OTOBO database, we also have to make sure that the character set is converted to *utf8mb4*.
 The dump is split up into the files *otrs_schema.sql* and *otrs_data.sql* so that the conversion can be
 done in a safe way.
