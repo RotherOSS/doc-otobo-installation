@@ -7,7 +7,11 @@ Follow the detailed steps in this chapter to install OTOBO on your server. You c
 
 .. note::
 
-    As of OTOBO version 10.0.7, we recommend Docker and Docker Compose for the OTOBO installation. By using our Docker-Compose image, all recommended dependencies (such as Elasticsearch, Redis Cache, etc.) are installed and configured automatically. Updates are thus greatly simplified and the performance has been increased. You can find the installation instructions at https://doc.otobo.org/manual/installation/stable/en/content/installation-docker.html
+    As of OTOBO version 10.0.7, we recommend Docker and Docker Compose for the OTOBO installation.
+    By using the provided Docker images, all recommended dependencies (such as Elasticsearch, Redis Cache, etc.)
+    are installed and configured automatically. Updates are thus greatly simplified and the performance has been improved.
+    You can find the instructions for Docker-based installation at
+    https://doc.otobo.org/manual/installation/stable/en/content/installation-docker.html .
 
 
 Preparation: Disable SELinux when it is installed and enabled
