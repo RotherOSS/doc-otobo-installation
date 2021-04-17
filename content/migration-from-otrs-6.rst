@@ -3,7 +3,8 @@ Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10
 
 Welcome and thank you for choosing OTOBO!
 
-OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, every migration to OTOBO requires thorough preparation and possibly some rework, too.
+OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application.
+Thus, every migration to OTOBO requires thorough preparation and possibly some rework, too.
 
 Please take your time for the migration and follow these instructions step by step.
 
@@ -20,13 +21,9 @@ We will find a way to help you.
 Migration Possibilities
 ------------------------
 
-With the OTOBO Migration Interface it is possible to perform the following migrations:
+With the OTOBO Migration Interface it is possible to employ the following migration strategies:
 
-1. A 1:1 migration on the same application server with the same database server.
-
-2. A streamlined migration where the source database is first copied to the target database server.
-
-3. A general migration where many combinations are possible.
+1. The general strategy where many combinations are possible.
 
     1. Change server: Migrate and simultaneously move to a new application server.
 
@@ -39,16 +36,27 @@ With the OTOBO Migration Interface it is possible to perform the following migra
 
     5. Docker: Migrate to a Docker-based installation of OTOBO 10.
 
+2. A variant of the general strategy where the database migration is streamlined.
+The relevant OTRS database tables are exported, transformed, and then imported into the OTOBO database.
+This ETL-like migration is recommended when the source database should not be impaired by the migration,
+or when access to the source database is slow.
+
+3. Migration from an Oracle source database to an Oracle target database. In this case the variant 2. is required.
+
+The strategies 1. and 2. work for both Docker-based and for native installations.
+For Docker-based installations some peculiarities have to be considered.
+
 Migration Requirements
 ----------------------
 
 1. Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running,
-and that you want to transfer configuration and data to OTOBO.
+and that you want to transfer both configuration and data to OTOBO.
 
 .. warning::
 
     Please consider carefully whether you really need the data and configuration.
-    Experience shows that quite often a new start is the better option, as the previously used installation and configuration was rather suboptimal anyway.
+    Experience shows that quite often a new start is the better option, as in many cases
+    the previously used installation and configuration was rather suboptimal anyway.
     It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
     We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
