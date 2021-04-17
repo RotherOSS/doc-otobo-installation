@@ -253,29 +253,28 @@ Depending on your Docker setup, the command ``rsync`` might need to be run with 
 
 This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container.
 
-Copy the otrs database schema to the containerised database server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Optional step: Copy the OTRS database tables to the OTOBO schema
+-------------------------------------------------------------------
+
+In the generic migration strategy, all data in the database tables is copied row by row from the OTRS database
+into the OTOBO database.
+Exporting the data from the OTRS database and importing it into the OTOBO database might save time and is more
+stable in some circumstances.
 
 .. note::
 
-    Only the recommended approach is described here.
-    But migration from a running OTRS database is still feasable.
+    This variant works for both Docker-based and native installations.
 
 .. note::
 
-    These instructions require that OTRS is using MySQL as its backend.
+    These instructions assume that OTRS is using MySQL as its backend.
 
-In the generic approach, all data in the database tables is copied row by row from the OTRS database
-into the OTOBO database. This approach is time-consuming and can be optimised.
-To speed-up the process, we create a temporary copy of the OTRS database
-on the server used for the OTOBO database.
-In our case, this is the MariaDB-server running in the container ``otobo_db_1``.
-After creating the temporary copy, all relevant OTRS tables can be moved into the OTOBO database.
-
-First of all, we need a dump of the needed OTRS database tables. As the dumped tables are copied
-into the OTOBO database, we also have to make sure that the character set is converted to *utf8mb4*.
-The dump is split up into the files *otrs_schema.sql* and *otrs_data.sql* so that the conversion can be
-done in a safe way.
+First of all, we need a dump of the needed OTRS database tables. Before importing the dumped table into the OTOBO schema,
+we need to perform a couple for transformations:
+  - convert the character set to *utf8mb4*
+  - rename a couple of tables
+  - shorted some table columns
+Effectively we need not a single dump file, but several SQL scripts.
 
 When ``mysqldump`` is installed and a connection to the OTRS database is possible,
 you can create the database dump directly on the Docker host. This case is supported
@@ -290,44 +289,52 @@ by the script *bin/backup.pl*.
     otobo> cd /opt/otobo
     otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
 
-Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
-Here are sample commands that achieve this goal.
+.. note::
 
-.. warning::
+    Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
+    An easy way to do this is to copy */opt/otobo* to the server running OTRS and perform the same command as above.
 
-    The provided commands remove any special setup of MySQL collations.
-    In case you need any special collations, make sure to re-add them manually.
+The script *bin/backup.pl* generates four SQL scripts in the dump directory e.g. in *2021-04-13_12-13-04*
+In order to execute the SQL scripts, we need to run the command  ``mysql``.
 
-.. code-block:: bash
-
-    otobo> mysqldump -h localhost -u root -p --databases otrs --no-data --dump-date > otrs_schema.sql
-    otobo> sed -i.bak -e 's/DEFAULT CHARACTER SET utf8/DEFAULT CHARACTER SET utf8mb4/' -e 's/DEFAULT CHARSET=utf8/DEFAULT CHARSET=utf8mb4/' -e 's/COLLATE=\w\+/ /' otrs_schema.sql
-    otobo> mysqldump -h localhost -u root -p --databases otrs --no-create-info --no-create-db --dump-date > otrs_data.sql
-
-In order to import the dumped database, we run ``mysql`` inside the running Docker container *otobo_db_1*.
-Note that the password for the database root is now the password that has been set up in _.env_.
+Native installation:
 
 .. code-block:: bash
 
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_schema.sql
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> < otrs_data.sql
+    otobo> cd <dump_dir>
+    otobo> mysql -u root -p<root_secret> otobo < otrs_pre.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_data.sql
+
+Docker-based installation:
+
+Run ``mysql`` within the MariaDB container.
+Note that the password for the database root is now the password that has been set up in *.env*.
+
+.. code-block:: bash
+
+    docker_admin> cd <dump_dir>
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_pre.sql
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_post.sql
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_data.sql
 
 For a quick check whether the import worked, you can run the following commands.
 
 .. code-block:: bash
 
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW TABLES'
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otrs -e 'SHOW CREATE TABLE ticket'
+    otobo> mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
-The copied database will be read and altered by the database user *otobo* during the migration. Therefore, *otobo*
-needs to be given extensive access to the copied database.
+or
 
 .. code-block:: bash
 
-    docker_admin> # note that 'root' and 'otobo' have different passwords
-    docker_admin> docker exec -i otobo_db_1 mysql -u root  -p<root_secrect>       -e "GRANT SELECT, SHOW VIEW, UPDATE, DROP, ALTER ON otrs.* TO 'otobo'@'%'"
-    docker_admin> docker exec -i otobo_db_1 mysql -u otobo -p<otobo_secrect> otrs -e "SELECT COUNT(*), DATABASE(), USER(), NOW() FROM ticket"
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 When performing the migration using the web-based migration tool, please enter the following values when prompted:
 
@@ -335,6 +342,7 @@ When performing the migration using the web-based migration tool, please enter t
 - 'otobo' as the OTRS database user
 - the password of the database user 'otobo' as the OTRS database user password
 - 'otrs' as the OTRS database name
+- skip database migration
 
 Step 4: Perform the Migration!
 ---------------------------------
