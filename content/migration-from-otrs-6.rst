@@ -463,3 +463,80 @@ Under Docker, this cron job no longer exists.
 Furthermore, there is no cron daemon running in any of the Docker containers.
 This means that you have to look for an individual solution for OTRS systems with customer-specific cron jobs
 (e. g. backing up the database).
+
+Special topics
+---------------
+
+Migration from Oracle to Oracle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For migration to Oracle the ETL-like strategy must be employed.
+This is because Oracle provides no easy way to temporarily turn off foreign key checks.
+
+On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must be installed.
+
+.. note::
+
+    When using the Oracle instant client, then the optional SDK is also needed for installing DBD::Oracle.
+
+There are many ways of cloning a schema. In the sample commands we use ``expdb`` and ``impdb`` which use
+Data Pump under the hood.
+
+.. note::
+
+    The connect strings shown in this documentation refer to the case when both source and target database
+    run in a Docker container. See also https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md .
+
+
+1. Clear out otobo
+
+Stop the webserver for otobo, so that the DB connection for otobo is closed.
+
+.. code-block:: SQL
+
+    -- in the OTOBO database
+    DROP USER otobo CASCADE
+
+2. Export the complete OTRS schema.
+
+.. code-block:: bash
+
+   mkdir /tmp/otrs_dump_dir
+
+.. code-block:: SQL
+
+    -- in the OTRS database
+    CREATE DIRECTORY OTRS_DUMP_DIR AS '/tmp/otrs_dump_dir';
+    GRANT READ, WRITE ON DIRECTORY OTRS_DUMP_DIR TO sys;
+
+.. code-block:: bash
+
+    expdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
+
+3. Import the OTRS schema, renaming the schema to 'otobo'.
+
+.. code-block:: bash
+
+    impdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
+
+.. code-block:: SQL
+
+    -- in the OTOBO database
+    -- double check
+    select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
+
+    -- optionally, set the password for the user otobo
+        ALTER USER otobo IDENTIFIED BY XXXXXX;
+
+4. Adapt the cloned schema otobo
+
+.. code-block:: bash
+
+    cd /opt/otobo
+    scripts/backup.pl --backup-type migratefromotrs it's OK that the command knows only about the otobo database, only last line is relevant
+    sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /home/bernhard/devel/OTOBO/otobo/2021-03-31_13-36-55/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
+    double check with `select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
+
+5. Start the web server for otobo again
+
+6. Proceed with step 4, that is with running ``migration.pl``.
