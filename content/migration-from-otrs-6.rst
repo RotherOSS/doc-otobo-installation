@@ -46,6 +46,11 @@ or when access to the source database is slow.
 The strategies 1. and 2. work for both Docker-based and for native installations.
 For Docker-based installations some peculiarities have to be considered.
 
+.. note::
+
+It is also feasible to clone the OTRS databe to the OTOBO database server. This can speed up the generic migration.
+
+
 Migration Requirements
 ----------------------
 
