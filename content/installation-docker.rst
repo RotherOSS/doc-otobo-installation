@@ -375,15 +375,17 @@ Installing extra Debian packages is a little bit trickier. One approach is to cr
 and use the OTOBO images as the base image. Another approach is to create a modified image directly from a running
 container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice writeup of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image.
 
-Bu there is a hurdle to overcome for the latter approach. The image *otobo* runs per default as the user *otobo*
+But there is a hurdle to overcome for the latter approach. The image *otobo* runs per default as the user *otobo*
 which has the UID 1000.  The problem is that the user *otobo* can't install system packages.
-The first'part of the solution is to pass the option `--user root` when running the image.
+The first part of the solution is to pass the option `--user root` when running the image.
 However this is only a partial solution, as the default entrypoint script */opt/otobo_install/entrypoint.sh*
 exits immediately when it is called as *root*. The reasoning behind that design decision is that
 running inadvertently as *root* should be discouraged. So, the second part of the solution is to specify
-the entrypoint script as well. Thes leaves us with following example commands:
+the entrypoint script as well. This leaves us with following example commands:
 
 Get the latest otobo image:
+
+.. code-block:: bash
 
     $ docker pull rotheross/otobo:rel-10_0_10
     rel-10_0_10: Pulling from rotheross/otobo
@@ -393,11 +395,15 @@ Get the latest otobo image:
 
 Extract the ID of the pulled image:
 
+.. code-block:: bash
+
     $ docker images | grep rotheross/otobo | grep rel-10_0_10
     rotheross/otobo                                 rel-10_0_10     6831c7342427   13 days ago         1.6GB
 
 Run the image as root, evading the user check in */opt/otobo_install/entrypoints.sh*.
-Install a sample system command and then stop the container
+Install a sample system command and then stop the container:
+
+.. code-block:: bash
 
     $ docker run -it --user root  --entrypoint /bin/bash 6831c7342427
     root@50ac203409eb:/opt/otobo# htop
@@ -407,20 +413,27 @@ Install a sample system command and then stop the container
     root@50ac203409eb:/opt/otobo# exit
 
 Find the ID of the stopped container:
+
+.. code-block:: bash
+
     $ docker ps -a --format '{{.ID}} {{.Image}} {{.Status}}' | head
     $ 50ac203409eb 6831c7342427 Exited (0) 2 minutes ago
 
 Create an image from the stopped container and give it a name.
 Restore the USER and the entrypoint script:
 
+.. code-block:: bash
+
     $ docker commit -c 'USER otobo'  -c 'ENTRYPOINT ["/opt/otobo_install/entrypoint.sh"]' 50ac203409eb otobo_with_htop
 
-Doublecheck:
+Finally we can doublecheck:
+
+.. code-block:: bash
 
     $ docker run -it otobo_with_htop which htop
     /usr/bin/htop
 
-The modified image can then be specified in the *.env* file and be used productively.
+The modified image can be specified in the *.env* file and the be used for fun and profit.
 
 Building local images
 ~~~~~~~~~~~~~~~~~~~~~~
