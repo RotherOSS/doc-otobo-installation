@@ -364,76 +364,62 @@ Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be
 are already used by other services. In these cases the default ports can be overridden by specifying
 `OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
 
-Customizing the OTOBO Docker images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Customizing the OTOBO Docker image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Many customizations can be done in the external volume *otobo_opt_otobo* which corresponds to the directory */opt/otobo*
 in the Docker image. This works e.g. for local Perl modules, which can be installed into */opt/otobo/local*.
 The advantage of this approach is that the image itself does not have to be modified.
 
 Installing extra Debian packages is a little bit trickier. One approach is to create a custom *Dockerfile*
-and use the OTOBO images as the base image. Another approach is to create a modified image directly from a running
-container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice writeup of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image.
+and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running
+container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/.
+A nice writeup of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image.
 
-But there is a hurdle to overcome for the latter approach. The image *otobo* runs per default as the user *otobo*
-which has the UID 1000.  The problem is that the user *otobo* can't install system packages.
-The first part of the solution is to pass the option `--user root` when running the image.
-However this is only a partial solution, as the default entrypoint script */opt/otobo_install/entrypoint.sh*
+But for the latter approach there are two hurdles to overcome. First, the image *otobo* runs per default as the user *otobo*
+with the UID 1000. The problem is that the user *otobo* is not allowed to install system packages.
+Thus, the first part of the solution is to pass the option `--user root` when running the image.
+However the second hurdle is that the default entrypoint script */opt/otobo_install/entrypoint.sh*
 exits immediately when it is called as *root*. The reasoning behind that design decision is that
 running inadvertently as *root* should be discouraged. So, the second part of the solution is to specify
-the entrypoint script as well. This leaves us with following example commands:
+a different entrypoint script that does not care who the caller is.
+This leaves us with following example commands, where we add furtune cookies to otobo:
 
-Get the latest otobo image:
-
-.. code-block:: bash
-
-    $ docker pull rotheross/otobo:rel-10_0_10
-    rel-10_0_10: Pulling from rotheross/otobo
-    Digest: sha256:13f38d9926ef186d77fefb665ebbbea886fb918bf68af2a5b035e492bf4e2352
-    Status: Image is up to date for rotheross/otobo:rel-10_0_10
-    docker.io/rotheross/otobo:rel-10_0_10
-
-Extract the ID of the pulled image:
+Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:
 
 .. code-block:: bash
 
-    $ docker images | grep rotheross/otobo | grep rel-10_0_10
-    rotheross/otobo                                 rel-10_0_10     6831c7342427   13 days ago         1.6GB
+    $ docker run rotheross/otobo:rel-10_0_10 /usr/games/fortune
+    /opt/otobo_install/entrypoint.sh: line 57: /usr/games/fortune: No such file or directory
 
-Run the image as root, evading the user check in */opt/otobo_install/entrypoints.sh*.
-Install a sample system command and then stop the container:
+Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive
+session as the user *root*:
 
 .. code-block:: bash
 
-    $ docker run -it --user root  --entrypoint /bin/bash 6831c7342427
-    root@50ac203409eb:/opt/otobo# htop
-    bash: htop: command not found
+    $ docker run -it --user root --entrypoint /bin/bash --name otobo_orig rotheross/otobo:rel-10_0_10
     root@50ac203409eb:/opt/otobo# apt update
-    root@50ac203409eb:/opt/otobo# apt install htop
+    root@50ac203409eb:/opt/otobo# apt install fortunes
     root@50ac203409eb:/opt/otobo# exit
-
-Find the ID of the stopped container:
-
-.. code-block:: bash
-
-    $ docker ps -a --format '{{.ID}} {{.Image}} {{.Status}}' | head
-    $ 50ac203409eb 6831c7342427 Exited (0) 2 minutes ago
+    $ docker ps -a | head
 
 Create an image from the stopped container and give it a name.
-Restore the USER and the entrypoint script:
+Take into account that the default user and entrypoint script must be restored:
 
 .. code-block:: bash
 
-    $ docker commit -c 'USER otobo'  -c 'ENTRYPOINT ["/opt/otobo_install/entrypoint.sh"]' 50ac203409eb otobo_with_htop
+    $ docker commit -c 'USER otobo'  -c 'ENTRYPOINT ["/opt/otobo_install/entrypoint.sh"]' otobo_orig otobo_with_fortune_cookies
 
 Finally we can doublecheck:
 
 .. code-block:: bash
 
-    $ docker run -it otobo_with_htop which htop
-    /usr/bin/htop
+    $ docker run otobo_with_fortune_cookies /usr/games/fortune
+    A platitude is simply a truth repeated till people get tired of hearing it.
+                    -- Stanley Baldwin
 
-The modified image can be specified in the *.env* file and the be used for fun and profit.
+
+The modified image can be specified in your *.env* file and then be used for fun and profit.
 
 Building local images
 ~~~~~~~~~~~~~~~~~~~~~~
