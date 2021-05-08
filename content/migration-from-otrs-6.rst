@@ -3,8 +3,7 @@ Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10
 
 Welcome and thank you for choosing OTOBO!
 
-OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application.
-Thus, every migration to OTOBO requires thorough preparation and possibly some rework, too.
+OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, every migration to OTOBO requires thorough preparation and possibly some rework, too.
 
 Please take your time for the migration and follow these instructions step by step.
 
@@ -16,7 +15,7 @@ We will find a way to help you.
 .. note::
 
     After the migration all data previously available in OTRS 6 will be available in OTOBO.
-    We do not modify any OTRS data during the migration.
+    We do not modify any data of the OTRS 6 installation during the migration.
 
 Migration Possibilities
 ------------------------
@@ -38,18 +37,19 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
 
 2. A variant of the general strategy where the database migration is streamlined.
 The relevant OTRS database tables are exported, transformed, and then imported into the OTOBO database.
-This ETL-like migration is recommended when the source database should not be impaired by the migration,
-or when access to the source database is slow.
+This ETL-like migration is recommended when the source database mustn't have to suffer increased load
+or when access to the source database is a bottleneck.
 
-3. Migration from an Oracle source database to an Oracle target database. In this case the variant 2. is required.
+3. Migration from an Oracle based OTRS 6 installation to Oracle based OTOBO installation
+This use case is not supported by the general strategy. This means that a variant of the streamlined strategy must be used.
 
-The strategies 1. and 2. work for both Docker-based and for native installations.
-For Docker-based installations some peculiarities have to be considered.
+All strategies work for both Docker-based and for native installations.
+But for Docker-based installations some peculiarities have to be considered.
 
 .. note::
 
-It is also feasible to clone the OTRS databe to the OTOBO database server. This can speed up the generic migration.
-
+It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration.
+This can speed up the generic migration.
 
 Migration Requirements
 ----------------------
@@ -95,7 +95,7 @@ We strongly recommend to read the chapter :doc:`installation`. For Docker-based 
     the directory */etc/apache2/sites-enabled* and add the setting in case it is missing.
 
 After finishing the installation tutorial, please log in to the OTOBO Admin Area ``Admin -> Packages``
-to install all required OTOBO OPM packages.
+and install all required OTOBO OPM packages.
 
 The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be installed, as these features are already available in the OTOBO standard:
     - OTRSHideShowDynamicField
@@ -114,7 +114,6 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
     - Znuny4OTRS-QuickClose
     - Znuny4OTRS-AutoCheckbox
     - OTRSSystemConfigurationHistory
-
 
 Step 2: Preparing the new OTOBO system and server
 -------------------------------------------------------
@@ -258,8 +257,8 @@ Depending on your Docker setup, the command ``rsync`` might need to be run with 
 
 This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container.
 
-Optional step: Copy the OTRS database tables to the OTOBO schema
--------------------------------------------------------------------
+Optional step: Streamlined migration of the database
+----------------------------------------------------
 
 In the generic migration strategy, all data in the database tables is copied row by row from the OTRS database
 into the OTOBO database.
@@ -274,11 +273,12 @@ stable in some circumstances.
 
     These instructions assume that OTRS is using MySQL as its backend.
 
-First of all, we need a dump of the needed OTRS database tables. Before importing the dumped table into the OTOBO schema,
-we need to perform a couple for transformations:
+First of all, we need a dump of the needed OTRS database tables.
+Then we need to perform a couple of transformations:
   - convert the character set to *utf8mb4*
   - rename a couple of tables
-  - shorted some table columns
+  - shorten some table columns
+After the transfomation we can overwrite the tables in the OTOBO schema with the transformed data from OTRS.
 Effectively we need not a single dump file, but several SQL scripts.
 
 When ``mysqldump`` is installed and a connection to the OTRS database is possible,
@@ -296,11 +296,11 @@ by the script *bin/backup.pl*.
 
 .. note::
 
-    Alternatively, the database can be dumped on another server and be transferred to the Docker host afterwards.
+    Alternatively, the database can be dumped on another server and then be transferred to the Docker host afterwards.
     An easy way to do this is to copy */opt/otobo* to the server running OTRS and perform the same command as above.
 
-The script *bin/backup.pl* generates four SQL scripts in the dump directory e.g. in *2021-04-13_12-13-04*
-In order to execute the SQL scripts, we need to run the command  ``mysql``.
+The script *bin/backup.pl* generates four SQL scripts in a dump directory, e.g. in *2021-04-13_12-13-04*
+In order to execute the SQL scripts, we need to run the command ``mysql``.
 
 Native installation:
 
@@ -341,13 +341,8 @@ or
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
     docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
-When performing the migration using the web-based migration tool, please enter the following values when prompted:
-
-- 'db' as the OTRS database host
-- 'otobo' as the OTRS database user
-- the password of the database user 'otobo' as the OTRS database user password
-- 'otrs' as the OTRS database name
-- skip database migration
+The database is now migrated. This means that during step 4 of the migration we can skip the database migration.
+Watch out for the relevant checkbox.
 
 Step 4: Perform the Migration!
 ---------------------------------
@@ -538,7 +533,7 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 .. code-block:: bash
 
     cd /opt/otobo
-    scripts/backup.pl --backup-type migratefromotrs it's OK that the command knows only about the otobo database, only last line is relevant
+    scripts/backup.pl --backup-type migratefromotrs # it's OK that the command knows only about the otobo database, only last line is relevant
     sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /home/bernhard/devel/OTOBO/otobo/2021-03-31_13-36-55/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
     double check with `select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
 
