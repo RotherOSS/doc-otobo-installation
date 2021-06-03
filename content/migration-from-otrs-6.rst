@@ -106,7 +106,6 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
     - Znuny4OTRS-AutoSelect
     - Znuny4OTRS-EscalationSuspend
     - OTRSEscalationSuspend
-    - OTRSDynamicFieldAttachment
     - OTRSDynamicFieldDatabase
     - OTRSDynamicFieldWebService
     - OTRSBruteForceAttackProtection
@@ -428,6 +427,12 @@ After restarting the browser, this problem usually was solved. With Safari it wa
 This can happen when the setting ScriptAlias has a non-standard value. The migration simply substitutes otrs for otobo. This might lead to
 the effect that the CSS and JavaScript can no longer be retrieved in OTOBO.
 When that happens, please check the settings in *Kernel/Config.pm* and revert them to sane values.
+
+3. Migration stops due to MySQL errors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors in Table ticket and Table ticket_history (NULL). These have to be manually resolved before you can resume the migration. 
+
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
