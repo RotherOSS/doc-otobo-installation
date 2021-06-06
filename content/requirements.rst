@@ -140,7 +140,7 @@ Databases
 
 Optional
    - Elasticsearch 7.x (fast search function for live previews)
-   - Node.js 8.9 or higher (only for development)
+   - Redis (fast caching)
 
 Web browsers
    - Apple Safari
