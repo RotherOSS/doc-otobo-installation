@@ -131,8 +131,6 @@ Perl
 
 Web Servers
    - Apache2
-   - nginx
-   - Any other web server that can be used as a reverse proxy
 
 Databases
    - MySQL 5.6 or higher
@@ -143,6 +141,7 @@ Databases
 Optional
    - Elasticsearch 7.x (fast search function for live previews)
    - Redis (fast caching)
+   - nginx or any other web server that can be used as a reverse proxy (SSL support and load distribution)
 
 Web browsers
    - Apple Safari
