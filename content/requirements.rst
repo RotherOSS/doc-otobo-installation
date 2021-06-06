@@ -13,13 +13,13 @@ OTOBO has also a console command for missing modules.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl --inst
 
-If some packages are missing, you can get an install command for your operating system if you run the script with ``--list`` option.
+If some packages are missing, you can get an install command for your operating system by running the script with the ``--list`` option.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list | more
 
 The listed commands should then be executed with root privileges.
 
@@ -100,7 +100,7 @@ Software requirements
 
 Perl
    - Perl 5.24.0 or higher
-   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl`` console command
+   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl --list`` console command
 
 Web Servers
    - Apache2
