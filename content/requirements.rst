@@ -1,17 +1,16 @@
 Hardware and Software Requirements
 ==================================
 
-The OTOBO web application can be installed on Linux and other Unix derivates (e.g. OpenBSD or FreeBSD).
+The OTOBO web application can be installed on Linux and other Unix derivates, e.g. OpenBSD or FreeBSD.
 Running OTOBO on Microsoft Windows is not supported.
 
-The web application uses a database as backend. So, to run OTOBO, you'll need to run at least a web server and a database server.
-Additionally, there is also a separate process, the OTOBO daemon, which handles recurring and asynchronous tasks.
-The database backend, web server, and the daemon may be installed either on the same or on different hosts.
+The web application uses a relational database as backend. So, to run OTOBO, you'll need to run at least a web server and a database server.
+The web server and the database server may be installed either on the same or on different hosts.
 
 Alternatively, OTOBO can also run under Docker. Support for deployment with Kubernetes is under development.
 
-The OTOBO web application and the OTOBO Daemon require Perl along with additional Perl modules from CPAN.
-The modules can be installed either with a Perl package manages
+The OTOBO web application requires Perl along with additional Perl modules from CPAN.
+The modules can be installed either with a Perl package manager
 or via the package manager of your operating system (rpm, yast, apt-get).
 There is console command for checking the module dependencies.
 
