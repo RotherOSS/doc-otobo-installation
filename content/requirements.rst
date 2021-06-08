@@ -130,8 +130,8 @@ Perl
    - Perl 5.24.0 or higher
    - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl --list`` console command
 
-Web Servers
-   - Apache2
+Web Server
+   - Apache HTTP Server Version 2.4
 
 Databases
    - MySQL 5.6 or higher
