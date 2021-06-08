@@ -7,7 +7,8 @@ Running OTOBO on Microsoft Windows is not supported.
 The web application uses a relational database as backend. So, to run OTOBO, you'll need to run at least a web server and a database server.
 The web server and the database server may be installed either on the same or on different hosts.
 
-Alternatively, OTOBO can also run under Docker. Support for deployment with Kubernetes is under development.
+Alternatively, OTOBO can also run under Docker. When running under Docker, the web and the database server are already included in the setup.
+Support for deployment with Kubernetes is under development.
 
 The OTOBO web application requires Perl along with additional Perl modules from CPAN.
 The modules can be installed either with a Perl package manager
