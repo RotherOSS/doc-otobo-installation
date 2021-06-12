@@ -92,6 +92,7 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
     - Znuny4OTRS-AdvancedDynamicFields
     - Znuny4OTRS-AutoSelect
     - Znuny4OTRS-EscalationSuspend
+    - Znuny4OTRS-PasswordPolicy
     - OTRSEscalationSuspend
     - OTRSDynamicFieldDatabase
     - OTRSDynamicFieldWebService
