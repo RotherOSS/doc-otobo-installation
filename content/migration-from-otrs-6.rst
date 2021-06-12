@@ -113,6 +113,7 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
     - Znuny4OTRS-QuickClose
     - Znuny4OTRS-AutoCheckbox
     - OTRSSystemConfigurationHistory
+    - Znuny4OTRS-PasswordPolicy
 
 Step 2: Preparing the new OTOBO system and server
 -------------------------------------------------------
