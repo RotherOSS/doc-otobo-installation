@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-12 00:34+0200\n"
+"POT-Creation-Date: 2021-06-13 00:34+0200\n"
 "PO-Revision-Date: 2021-01-06 03:17+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -2156,7 +2156,7 @@ msgstr ""
 "完成安装教程后，请登录到OTOBO管理员区域``Admin -> Packages`` ，安装所有需要的"
 "OTOBO OPM软件包。"
 
-#: ../../content/migration-from-otrs-6.rst:113
+#: ../../content/migration-from-otrs-6.rst:114
 msgid ""
 "The following OPM packages and OTRS \"Feature Addons\" need NOT and should "
 "NOT be installed, as these features are already available in the OTOBO "
@@ -2225,11 +2225,16 @@ msgstr "Znuny4OTRS-AutoCheckbox"
 msgid "OTRSSystemConfigurationHistory"
 msgstr "OTRSSystemConfigurationHistory"
 
-#: ../../content/migration-from-otrs-6.rst:116
+#: ../../content/migration-from-otrs-6.rst:113
+#, fuzzy
+msgid "Znuny4OTRS-PasswordPolicy"
+msgstr "密码策略规则"
+
+#: ../../content/migration-from-otrs-6.rst:117
 msgid "Step 2: Preparing the new OTOBO system and server"
 msgstr "步骤 2：准备新的OTOBO系统和服务器"
 
-#: ../../content/migration-from-otrs-6.rst:118
+#: ../../content/migration-from-otrs-6.rst:119
 msgid ""
 "After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -"
 "> System Configuration`` and deactivate the config option ``SecureMode``. "
@@ -2239,13 +2244,13 @@ msgstr ""
 "安装OTOBO后，请再次登录到OTOBO管理员区域``Admin -> System Configuration``，然"
 "后停用配置选项“ SecureMode”。现在以``root''用户身份登录服务器并执行以下命令："
 
-#: ../../content/migration-from-otrs-6.rst:128
+#: ../../content/migration-from-otrs-6.rst:129
 msgid ""
 "When OTOBO is running in Docker, you just need to stop the Docker container "
 "``otobo_daemon_1``:"
 msgstr "当OTOBO在Docker下运行时，就可以停止Docker容器`otobo_daemon_1``："
 
-#: ../../content/migration-from-otrs-6.rst:138
+#: ../../content/migration-from-otrs-6.rst:139
 msgid ""
 "It is recommended to run a backup of the whole OTOBO system at this point. "
 "If something goes wrong during migration, you will then not have to repeat "
@@ -2255,16 +2260,16 @@ msgstr ""
 "建议此时运行整个OTOBO系统的备份。如果在迁移过程中出现问题，则不必重复整个安装"
 "过程，而可以导入备份以进行新的迁移。"
 
-#: ../../content/migration-from-otrs-6.rst:143
+#: ../../content/migration-from-otrs-6.rst:144
 msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
 msgstr "我们建议你阅读OTOBO：backup-restore`章节。"
 
-#: ../../content/migration-from-otrs-6.rst:147
+#: ../../content/migration-from-otrs-6.rst:148
 msgid ""
 "Install sshpass and rsysnc if you want to migrate OTRS from another server"
 msgstr "如果要从另一台服务器迁移OTRS，请安装sshpass和rsysnc"
 
-#: ../../content/migration-from-otrs-6.rst:149
+#: ../../content/migration-from-otrs-6.rst:150
 msgid ""
 "The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh. "
 "For installing ``sshpass``, please log in on the server as user ``root`` and "
@@ -2273,21 +2278,21 @@ msgstr ""
 "想要通过ssh复制文件，需要``sshpass''和``rsync''工具。要安装sshpass，请以root"
 "用户身份登录服务器并执行以下命令之一："
 
-#: ../../content/migration-from-otrs-6.rst:172
+#: ../../content/migration-from-otrs-6.rst:173
 msgid "The same thing must be done for *rsync* when it isn't available yet."
 msgstr "如果* rsysnc *不可用，则必须执行相同的操作。"
 
-#: ../../content/migration-from-otrs-6.rst:175
+#: ../../content/migration-from-otrs-6.rst:176
 msgid ""
 "Step 3a non-Docker: Preparing the OTRS / ((OTRS)) Community Edition system"
 msgstr "步骤 3：准备OTRS / ((OTRS)) Community Edition系统"
 
-#: ../../content/migration-from-otrs-6.rst:179
+#: ../../content/migration-from-otrs-6.rst:180
 #, fuzzy
 msgid "Perform the step 3b for migrating to a Docker-based installation."
 msgstr "可以迁移到基于Docker的OTOBO 10"
 
-#: ../../content/migration-from-otrs-6.rst:183
+#: ../../content/migration-from-otrs-6.rst:184
 msgid ""
 "Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition "
 "system, too. Yes, we do not touch any OTRS data during the migration, but at "
@@ -2296,7 +2301,7 @@ msgstr ""
 "另外，你还要确保你的OTRS /（（OTRS））Community Edition系统具备有效的备份。是"
 "的，在迁移过程中我们不会修改任何OTRS数据，但有时各种错误会造成一些麻烦。"
 
-#: ../../content/migration-from-otrs-6.rst:186
+#: ../../content/migration-from-otrs-6.rst:187
 msgid ""
 "Now we are ready for the migration. First of all we need to make sure that "
 "no more tickets are processed and no users log on to OTRS:"
@@ -2304,7 +2309,7 @@ msgstr ""
 "现在我们已准备好进行迁移。首先，我们需要确保不再处理任何工单并且没有用户登录"
 "到OTRS："
 
-#: ../../content/migration-from-otrs-6.rst:189
+#: ../../content/migration-from-otrs-6.rst:190
 msgid ""
 "Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and "
 "add a new system maintenance slot for a few hours. After that, delete all "
@@ -2314,19 +2319,19 @@ msgstr ""
 "系统维护。之后，删除所有话务员和用户的会话（“ Admin-> Sessions”），而后退出登"
 "陆。"
 
-#: ../../content/migration-from-otrs-6.rst:193
+#: ../../content/migration-from-otrs-6.rst:194
 msgid "Stop All Relevant Services and the OTRS Daemon"
 msgstr "停止所有相关服务和OTRS守护程序"
 
-#: ../../content/migration-from-otrs-6.rst:195
+#: ../../content/migration-from-otrs-6.rst:196
 msgid "Please make sure there are no running services or cron jobs."
 msgstr "请确保没有正在运行的服务或cron作业。"
 
-#: ../../content/migration-from-otrs-6.rst:210
+#: ../../content/migration-from-otrs-6.rst:211
 msgid "Step 3b Docker: make required data available inside container"
 msgstr "3b Docker步骤：在容器中准备好需要的数据"
 
-#: ../../content/migration-from-otrs-6.rst:212
+#: ../../content/migration-from-otrs-6.rst:213
 #, fuzzy
 msgid ""
 "There are some specifics to be considered when your OTOBO installation is "
@@ -2340,7 +2345,7 @@ msgstr ""
 "目录。但是有一个例外：可以访问作为卷装入到容器中的目录。这意味着迁移有两种可"
 "能。"
 
-#: ../../content/migration-from-otrs-6.rst:219
+#: ../../content/migration-from-otrs-6.rst:220
 msgid ""
 "In the sample commands, we assume that the user **docker_admin** is used for "
 "interacting with Docker. The Docker admin may be either the **root** user of "
@@ -2350,39 +2355,39 @@ msgstr ""
 "境。我们假设用户**root**被用来和Docker互动，请注意针对一个生产环境，需要有一"
 "个专用用户作为Docker管理员。"
 
-#: ../../content/migration-from-otrs-6.rst:223
+#: ../../content/migration-from-otrs-6.rst:224
 msgid "Copy */opt/otrs* into the volume *otobo_opt_otobo*"
 msgstr "Docker：将* / opt / otrs *复制到卷* otobo_opt_otobo *"
 
-#: ../../content/migration-from-otrs-6.rst:225
+#: ../../content/migration-from-otrs-6.rst:226
 msgid ""
 "In this section, we assume that the OTRS home directory */opt/otrs* is "
 "available on the Docker host."
 msgstr "在本节中，我们假设Docker主机上有* / opt / otrs *。"
 
-#: ../../content/migration-from-otrs-6.rst:228
+#: ../../content/migration-from-otrs-6.rst:229
 msgid "There are at least two viable possibilities:"
 msgstr "最少有两种可能性："
 
-#: ../../content/migration-from-otrs-6.rst:230
+#: ../../content/migration-from-otrs-6.rst:231
 msgid "copy */opt/otrs* into the existing volume *otobo_opt_otobo*"
 msgstr "Docker：将* / opt / otrs *复制到卷* otobo_opt_otobo *"
 
-#: ../../content/migration-from-otrs-6.rst:231
+#: ../../content/migration-from-otrs-6.rst:232
 msgid "mount */opt/otrs* as an additional volume"
 msgstr "挂载* / opt / otrs *作为附加卷"
 
-#: ../../content/migration-from-otrs-6.rst:233
+#: ../../content/migration-from-otrs-6.rst:234
 msgid "Let's concentrate on option **a.** here."
 msgstr "在这里我们集中讨论选项** a.**。"
 
-#: ../../content/migration-from-otrs-6.rst:235
+#: ../../content/migration-from-otrs-6.rst:236
 msgid ""
 "First we need to find out where the volume *otobo_opt_otobo* is available on "
 "the Docker host."
 msgstr "在本节中，我们假设Docker主机上有* / opt / otrs *。"
 
-#: ../../content/migration-from-otrs-6.rst:242
+#: ../../content/migration-from-otrs-6.rst:243
 msgid ""
 "For safe copying, we use ``rsync``. Depending on your Docker setup, the "
 "command ``rsync`` might need to be run with ``sudo``."
@@ -2390,28 +2395,28 @@ msgstr ""
 "我们用``rsync``进行安全复制，根据你的Docker设置，这个命令有可能需要和``sudo``"
 "一起运行。"
 
-#: ../../content/migration-from-otrs-6.rst:255
+#: ../../content/migration-from-otrs-6.rst:256
 msgid ""
 "This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* "
 "within the container."
 msgstr "该复制的目录应该是容器中的* / opt / otobo / tmp / otrs *。"
 
-#: ../../content/migration-from-otrs-6.rst:258
+#: ../../content/migration-from-otrs-6.rst:259
 msgid "Copy the otrs database schema to the containerised database server"
 msgstr "OTRS数据库模式复制到容器化数据库服务器"
 
-#: ../../content/migration-from-otrs-6.rst:262
+#: ../../content/migration-from-otrs-6.rst:263
 #, fuzzy
 msgid ""
 "Only the recommended approach is described here. But migration from a "
 "running OTRS database is still feasable."
 msgstr "这是推荐的方法。但是仍然可以从运行中的OTRS数据库进行迁移。"
 
-#: ../../content/migration-from-otrs-6.rst:267
+#: ../../content/migration-from-otrs-6.rst:268
 msgid "These instructions require that OTRS is using MySQL as its backend."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:269
+#: ../../content/migration-from-otrs-6.rst:270
 #, fuzzy
 msgid ""
 "In the generic approach, all data in the database tables is copied row by "
@@ -2427,7 +2432,7 @@ msgstr ""
 "库的临时副本。在我们的例子中，这是在容器``otobo_db_1''中运行的MariaDB服务器。"
 "创建临时副本后，所有相关的OTRS表都可以移入OTOBO数据库。"
 
-#: ../../content/migration-from-otrs-6.rst:276
+#: ../../content/migration-from-otrs-6.rst:277
 #, fuzzy
 msgid ""
 "First of all, we need a dump of the needed OTRS database tables. As the "
@@ -2440,7 +2445,7 @@ msgstr ""
 "保将字符集转换为* utf8mb4 *。转储分为* otrs_schema.sql *和* otrs_data.sql *文"
 "件，以便可以安全的方式进行转换。"
 
-#: ../../content/migration-from-otrs-6.rst:281
+#: ../../content/migration-from-otrs-6.rst:282
 msgid ""
 "When ``mysqldump`` is installed and a connection to the OTRS database is "
 "possible, you can create the database dump directly on the Docker host. This "
@@ -2449,12 +2454,12 @@ msgstr ""
 "当安装了mysqldump并且可以连接到OTRS数据库时，您可以直接在Docker主机上创建数据"
 "库转储。脚本* bin / backup.pl *支持这种情况。"
 
-#: ../../content/migration-from-otrs-6.rst:287
+#: ../../content/migration-from-otrs-6.rst:288
 msgid ""
 "This requires that an OTOBO installation is available on the Docker host."
 msgstr "在本节中，我们假设Docker主机上有* / opt / otrs *。"
 
-#: ../../content/migration-from-otrs-6.rst:294
+#: ../../content/migration-from-otrs-6.rst:295
 msgid ""
 "Alternatively, the database can be dumped on another server and be "
 "transferred to the Docker host afterwards. Here are sample commands that "
@@ -2463,7 +2468,7 @@ msgstr ""
 "或者，可以将数据库转储到另一台服务器上，然后再转移到Docker主机上。以下是实现"
 "此目标的命令示例。"
 
-#: ../../content/migration-from-otrs-6.rst:299
+#: ../../content/migration-from-otrs-6.rst:300
 msgid ""
 "The provided commands remove any special setup of MySQL collations. In case "
 "you need any special collations, make sure to re-add them manually."
@@ -2471,54 +2476,54 @@ msgstr ""
 "所提供的命令删除了MySQL校对的特殊设置。如果您需要任何特殊的校对设置，请确保手"
 "动将其重新添加。"
 
-#: ../../content/migration-from-otrs-6.rst:308
+#: ../../content/migration-from-otrs-6.rst:309
 msgid ""
 "In order to import the dumped database, we run ``mysql`` inside the running "
 "Docker container *otobo_db_1*. Note that the password for the database root "
 "is now the password that has been set up in _.env_."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:316
+#: ../../content/migration-from-otrs-6.rst:317
 msgid ""
 "For a quick check whether the import worked, you can run the following "
 "commands."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:324
+#: ../../content/migration-from-otrs-6.rst:325
 msgid ""
 "The copied database will be read and altered by the database user *otobo* "
 "during the migration. Therefore, *otobo* needs to be given extensive access "
 "to the copied database."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:333
+#: ../../content/migration-from-otrs-6.rst:334
 msgid ""
 "When performing the migration using the web-based migration tool, please "
 "enter the following values when prompted:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:335
+#: ../../content/migration-from-otrs-6.rst:336
 msgid "'db' as the OTRS database host"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:336
+#: ../../content/migration-from-otrs-6.rst:337
 msgid "'otobo' as the OTRS database user"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:337
+#: ../../content/migration-from-otrs-6.rst:338
 msgid ""
 "the password of the database user 'otobo' as the OTRS database user password"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:338
+#: ../../content/migration-from-otrs-6.rst:339
 msgid "'otrs' as the OTRS database name"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:341
+#: ../../content/migration-from-otrs-6.rst:342
 msgid "Step 4: Perform the Migration!"
 msgstr "步骤 4：进行迁移！"
 
-#: ../../content/migration-from-otrs-6.rst:343
+#: ../../content/migration-from-otrs-6.rst:344
 msgid ""
 "Please use the web migration tool at http://localhost/otobo/migration.pl "
 "(replace \"localhost\" with your OTOBO hostname and potentially add the "
@@ -2527,14 +2532,14 @@ msgstr ""
 "请使用http：//localhost/otobo/migration.pl上的Web迁移工具（用OTOBO主机名替"
 "换“ localhost”），然后按照此过程进行操作。"
 
-#: ../../content/migration-from-otrs-6.rst:348
+#: ../../content/migration-from-otrs-6.rst:349
 msgid ""
 "Sometimes, a warning is shown that the deactivation of **SecureMode** has "
 "not been detected. Please restart the webserver in this case. This forces "
 "the webserver to read in the current configuration."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:359
+#: ../../content/migration-from-otrs-6.rst:360
 msgid ""
 "If OTOBO runs inside a Docker container, keep the default settings "
 "*localhost* for the OTRS server and */opt/otobo/var/tmp/copied_otrs* for the "
@@ -2544,7 +2549,7 @@ msgstr ""
 "如果OTOBO在Docker容器中运行，请为OTRS服务器指定* localhost *，指定* / opt / "
 "otobo / tmp / otrs *作为OTRS主目录。"
 
-#: ../../content/migration-from-otrs-6.rst:365
+#: ../../content/migration-from-otrs-6.rst:366
 msgid ""
 "The default values for OTRS database user and password are taken from "
 "*Kernel/Config.pm* in the OTRS home directory. Change the proposed settings "
@@ -2553,7 +2558,7 @@ msgid ""
 "*otobo_db_1* Docker container."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:371
+#: ../../content/migration-from-otrs-6.rst:372
 msgid ""
 "In the Docker case, a database running on the Docker host won't be reachable "
 "via ``127.0.0.1`` from within the Docker container. This means that the "
@@ -2562,7 +2567,7 @@ msgid ""
 "``hostname --all-ip-addresses`` for ``OTRS Server``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:377
+#: ../../content/migration-from-otrs-6.rst:378
 msgid ""
 "When migrating to a new application server, or to a Docker-based "
 "installation, quite often the database cannot be accessed from the target "
@@ -2575,7 +2580,7 @@ msgid ""
 "``DROP USER 'otrs_migration'@'%'``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:384
+#: ../../content/migration-from-otrs-6.rst:385
 msgid ""
 "When the migration is complete, please take your time and test the entire "
 "system. Once you have decided that the migration was successful and that you "
@@ -2584,35 +2589,35 @@ msgstr ""
 "迁移完成后，请花点时间测试整个系统。一旦确定迁移成功并且要从现在开始使用"
 "OTOBO，请启动OTOBO守护程序："
 
-#: ../../content/migration-from-otrs-6.rst:394
+#: ../../content/migration-from-otrs-6.rst:395
 msgid "In the Docker case:"
 msgstr "在Docker情况下："
 
-#: ../../content/migration-from-otrs-6.rst:402
+#: ../../content/migration-from-otrs-6.rst:403
 msgid "Step 5: After Successful Migration!"
 msgstr "步骤 5：成功迁移后！"
 
-#: ../../content/migration-from-otrs-6.rst:404
+#: ../../content/migration-from-otrs-6.rst:405
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
 msgstr "如果不再需要，卸载 ``sshpass``。"
 
-#: ../../content/migration-from-otrs-6.rst:405
+#: ../../content/migration-from-otrs-6.rst:406
 msgid "Drop the databases user dedicated to the migration if you created one."
 msgstr "如果你为了迁移，创建了数据库用户，现在删除它。"
 
-#: ../../content/migration-from-otrs-6.rst:406
+#: ../../content/migration-from-otrs-6.rst:407
 msgid "Have fun with OTOBO!"
 msgstr "享受OTOBO带来的快乐吧！"
 
-#: ../../content/migration-from-otrs-6.rst:410
+#: ../../content/migration-from-otrs-6.rst:411
 msgid "Step 6: Known Migration Problems"
 msgstr "步骤 6：了解迁移的问题"
 
-#: ../../content/migration-from-otrs-6.rst:413
+#: ../../content/migration-from-otrs-6.rst:414
 msgid "1. Login after migration not possible"
 msgstr "1. 不能迁移后登陆系统"
 
-#: ../../content/migration-from-otrs-6.rst:415
+#: ../../content/migration-from-otrs-6.rst:416
 msgid ""
 "During our migration tests, the browser used for the migration sometimes had "
 "problems. After restarting the browser, this problem usually was solved. "
@@ -2622,12 +2627,12 @@ msgstr ""
 "在我们的迁移测试中，用于迁移的浏览器有时会出现问题。重新启动浏览器后，通常可"
 "以解决此问题。使用Safari，有时需要手动删除旧的OTRS会话。"
 
-#: ../../content/migration-from-otrs-6.rst:419
+#: ../../content/migration-from-otrs-6.rst:420
 msgid ""
 "2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr "2. 由于缺少CSS文件，迁移的最终页面出现布局异常"
 
-#: ../../content/migration-from-otrs-6.rst:421
+#: ../../content/migration-from-otrs-6.rst:422
 msgid ""
 "This can happen when the setting ScriptAlias has a non-standard value. The "
 "migration simply substitutes otrs for otobo. This might lead to the effect "
@@ -2639,11 +2644,11 @@ msgstr ""
 "otobo可能会导致无法在OTOBO中检索CSS和JavaScript。发生这种情况时，请检查"
 "Kernel / Config.pm中的设置并将其恢复为合理的值。"
 
-#: ../../content/migration-from-otrs-6.rst:426
+#: ../../content/migration-from-otrs-6.rst:427
 msgid "3. Migration stops due to MySQL errors"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:428
+#: ../../content/migration-from-otrs-6.rst:429
 msgid ""
 "On systems that experienced problems with an upgrade in the past, the "
 "migration process may stop due to MySQL errors in Table ticket and Table "
@@ -2651,15 +2656,15 @@ msgid ""
 "resume the migration."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:432
+#: ../../content/migration-from-otrs-6.rst:433
 msgid "Step 7: Manual Migration Tasks and Changes"
 msgstr "步骤 7：手工迁移的任务和修改"
 
-#: ../../content/migration-from-otrs-6.rst:435
+#: ../../content/migration-from-otrs-6.rst:436
 msgid "1. Password policy rules"
 msgstr "1. 密码策略规则"
 
-#: ../../content/migration-from-otrs-6.rst:437
+#: ../../content/migration-from-otrs-6.rst:438
 msgid ""
 "With OTOBO 10 a new default password policy for agent and customer users is "
 "in effect, if local authentication is used. The password policy rules can be "
@@ -2670,69 +2675,69 @@ msgstr ""
 "可以在系统配置（“ PreferencesGroups ### Password”和“ "
 "CustomerPersonalPreference #### Password”）中更改密码策略规则。"
 
-#: ../../content/migration-from-otrs-6.rst:440
+#: ../../content/migration-from-otrs-6.rst:441
 msgid "Password Policy Rule"
 msgstr "密码策略规则"
 
-#: ../../content/migration-from-otrs-6.rst:440
+#: ../../content/migration-from-otrs-6.rst:441
 msgid "Default"
 msgstr "默认"
 
-#: ../../content/migration-from-otrs-6.rst:442
+#: ../../content/migration-from-otrs-6.rst:443
 msgid "``PasswordMinSize``"
 msgstr "`` PasswordMinSize ``"
 
-#: ../../content/migration-from-otrs-6.rst:442
+#: ../../content/migration-from-otrs-6.rst:443
 msgid "8"
 msgstr "8"
 
-#: ../../content/migration-from-otrs-6.rst:444
+#: ../../content/migration-from-otrs-6.rst:445
 msgid "``PasswordMin2Lower2UpperCharacters``"
 msgstr "`` PasswordMin2Lower2UpperCharacters ``"
 
-#: ../../content/migration-from-otrs-6.rst:444
-#: ../../content/migration-from-otrs-6.rst:446
-#: ../../content/migration-from-otrs-6.rst:454
+#: ../../content/migration-from-otrs-6.rst:445
+#: ../../content/migration-from-otrs-6.rst:447
+#: ../../content/migration-from-otrs-6.rst:455
 msgid "Yes"
 msgstr "是"
 
-#: ../../content/migration-from-otrs-6.rst:446
+#: ../../content/migration-from-otrs-6.rst:447
 msgid "``PasswordNeedDigit``"
 msgstr "`` PasswordNeedDigit ``"
 
-#: ../../content/migration-from-otrs-6.rst:448
+#: ../../content/migration-from-otrs-6.rst:449
 msgid "``PasswordHistory``"
 msgstr "`` PasswordHistory ``"
 
-#: ../../content/migration-from-otrs-6.rst:448
+#: ../../content/migration-from-otrs-6.rst:449
 msgid "10"
 msgstr "10"
 
-#: ../../content/migration-from-otrs-6.rst:450
+#: ../../content/migration-from-otrs-6.rst:451
 msgid "``PasswordTTL``"
 msgstr "`` PasswordTTL ``"
 
-#: ../../content/migration-from-otrs-6.rst:450
+#: ../../content/migration-from-otrs-6.rst:451
 msgid "30 days"
 msgstr "30天"
 
-#: ../../content/migration-from-otrs-6.rst:452
+#: ../../content/migration-from-otrs-6.rst:453
 msgid "``PasswordWarnBeforeExpiry``"
 msgstr "`` PasswordWarnBeforeExpiry ``"
 
-#: ../../content/migration-from-otrs-6.rst:452
+#: ../../content/migration-from-otrs-6.rst:453
 msgid "5 days"
 msgstr "5天"
 
-#: ../../content/migration-from-otrs-6.rst:454
+#: ../../content/migration-from-otrs-6.rst:455
 msgid "``PasswordChangeAfterFirstLogin``"
 msgstr "`` PasswordChangeAfterFirstLogin ``"
 
-#: ../../content/migration-from-otrs-6.rst:458
+#: ../../content/migration-from-otrs-6.rst:459
 msgid "2. Under Docker: Manually migrate cron jobs"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:460
+#: ../../content/migration-from-otrs-6.rst:461
 msgid ""
 "In a non-Docker installation of OTOBO, there is at least one cron job which "
 "checks the health of the Daemon. Under Docker, this cron job no longer "
