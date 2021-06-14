@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 00:34+0200\n"
+"POT-Creation-Date: 2021-06-15 00:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,211 +269,211 @@ msgid "Configure Apache without SSL support"
 msgstr ""
 
 #: ../../content/installation.rst:174
-msgid "Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called ``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations)."
-msgstr ""
-
-#: ../../content/installation.rst:185
-msgid "Configure Apache **with** SSL support"
+msgid "Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to the apache ``sites-available`` directory. In most cases no further editing of the template is required. Then enable the new configuration."
 msgstr ""
 
 #: ../../content/installation.rst:187
-msgid "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to the apache ``sites-available`` directory`."
+msgid "Configure Apache **with** SSL support"
 msgstr ""
 
-#: ../../content/installation.rst:196
+#: ../../content/installation.rst:189
+msgid "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to the apache ``sites-available`` directory."
+msgstr ""
+
+#: ../../content/installation.rst:198
 msgid "Please edit the files and add the required information like SSL certificate storage path. After that, enable the OTOBO Apache configuration:"
 msgstr ""
 
-#: ../../content/installation.rst:203
+#: ../../content/installation.rst:205
 msgid "Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr ""
 
-#: ../../content/installation.rst:211
+#: ../../content/installation.rst:213
 msgid "Step 6: Set File Permissions"
 msgstr ""
 
-#: ../../content/installation.rst:213
+#: ../../content/installation.rst:215
 #: ../../content/updating.rst:112
 msgid "Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup."
 msgstr ""
 
-#: ../../content/installation.rst:221
+#: ../../content/installation.rst:223
 msgid "Step 7: Setup the Database"
 msgstr ""
 
-#: ../../content/installation.rst:223
+#: ../../content/installation.rst:225
 msgid "First of all, you should install the database package. It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system, but it is possible to use PostgreSQL or Oracle as well."
 msgstr ""
 
-#: ../../content/installation.rst:226
+#: ../../content/installation.rst:228
 msgid "You'd typically do this from your systems package manager. Below you'll find the commands needed to set up MySQL on the most popular Linux distributions."
 msgstr ""
 
-#: ../../content/installation.rst:240
+#: ../../content/installation.rst:242
 msgid "After installing the MySQL server you need configure it."
 msgstr ""
 
-#: ../../content/installation.rst:242
+#: ../../content/installation.rst:244
 msgid "In MySQL higher or equal version 5.7  a new authentication module is active, and it is not possible to use the OTOBO web installer for database creation. Please login to the mysql console and set a different authentication module and password for the user ``root`` if this is the case:"
 msgstr ""
 
-#: ../../content/installation.rst:250
+#: ../../content/installation.rst:252
 msgid "For MariaDB > 10.1 use instead the following command:"
 msgstr ""
 
-#: ../../content/installation.rst:257
+#: ../../content/installation.rst:259
 msgid "If this command not work, please try the following commands:"
 msgstr ""
 
-#: ../../content/installation.rst:266
+#: ../../content/installation.rst:268
 msgid "After OTOBO installation it is possible to change the authentication module again, if needed."
 msgstr ""
 
-#: ../../content/installation.rst:270
+#: ../../content/installation.rst:272
 msgid "The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqld.cnf`` under the ``[mysqld]`` section:"
 msgstr ""
 
-#: ../../content/installation.rst:277
+#: ../../content/installation.rst:279
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
 msgstr ""
 
-#: ../../content/installation.rst:283
+#: ../../content/installation.rst:285
 msgid "Also add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr ""
 
-#: ../../content/installation.rst:290
+#: ../../content/installation.rst:292
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr ""
 
-#: ../../content/installation.rst:297
+#: ../../content/installation.rst:299
 msgid "After installing execute the script:"
 msgstr ""
 
-#: ../../content/installation.rst:305
+#: ../../content/installation.rst:307
 msgid "Step 8: Setup Elasticsearch"
 msgstr ""
 
-#: ../../content/installation.rst:307
+#: ../../content/installation.rst:309
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr ""
 
-#: ../../content/installation.rst:310
+#: ../../content/installation.rst:312
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr ""
 
-#: ../../content/installation.rst:312
+#: ../../content/installation.rst:314
 msgid "JDK Installation"
 msgstr ""
 
-#: ../../content/installation.rst:319
+#: ../../content/installation.rst:321
 msgid "Elasticsearch Installation"
 msgstr ""
 
-#: ../../content/installation.rst:329
+#: ../../content/installation.rst:331
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr ""
 
-#: ../../content/installation.rst:331
+#: ../../content/installation.rst:333
 msgid "Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 msgstr ""
 
-#: ../../content/installation.rst:334
+#: ../../content/installation.rst:336
 msgid "Elasticsearch Module Installation"
 msgstr ""
 
-#: ../../content/installation.rst:335
+#: ../../content/installation.rst:337
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr ""
 
-#: ../../content/installation.rst:344
+#: ../../content/installation.rst:346
 msgid "Elasticsearch Configuration"
 msgstr ""
 
-#: ../../content/installation.rst:346
+#: ../../content/installation.rst:348
 msgid "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr ""
 
-#: ../../content/installation.rst:348
+#: ../../content/installation.rst:350
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 4 GB, set:"
 msgstr ""
 
-#: ../../content/installation.rst:356
+#: ../../content/installation.rst:358
 msgid "In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best."
 msgstr ""
 
-#: ../../content/installation.rst:360
+#: ../../content/installation.rst:362
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr ""
 
-#: ../../content/installation.rst:362
+#: ../../content/installation.rst:364
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr ""
 
-#: ../../content/installation.rst:370
+#: ../../content/installation.rst:372
 msgid "Step 8: Basic System Configuration"
 msgstr ""
 
-#: ../../content/installation.rst:372
+#: ../../content/installation.rst:374
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr ""
 
-#: ../../content/installation.rst:376
+#: ../../content/installation.rst:378
 msgid "Step 9: First Login"
 msgstr ""
 
-#: ../../content/installation.rst:378
+#: ../../content/installation.rst:380
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr ""
 
-#: ../../content/installation.rst:382
+#: ../../content/installation.rst:384
 msgid "Step 10: Start the OTOBO Daemon"
 msgstr ""
 
-#: ../../content/installation.rst:384
+#: ../../content/installation.rst:386
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr ""
 
-#: ../../content/installation.rst:391
+#: ../../content/installation.rst:393
 msgid "Step 11: Cron jobs for the OTOBO user"
 msgstr ""
 
-#: ../../content/installation.rst:393
+#: ../../content/installation.rst:395
 msgid "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the \".dist\" filename extension."
 msgstr ""
 
-#: ../../content/installation.rst:403
+#: ../../content/installation.rst:405
 msgid "With this step, the basic system setup is finished."
 msgstr ""
 
-#: ../../content/installation.rst:407
+#: ../../content/installation.rst:409
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
 msgstr ""
 
-#: ../../content/installation.rst:409
+#: ../../content/installation.rst:411
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier."
 msgstr ""
 
-#: ../../content/installation.rst:411
+#: ../../content/installation.rst:413
 msgid "You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user."
 msgstr ""
 
-#: ../../content/installation.rst:413
+#: ../../content/installation.rst:415
 msgid "After restarting your shell, you can just type this command followed by TAB, and it will list all available commands:"
 msgstr ""
 
-#: ../../content/installation.rst:419
+#: ../../content/installation.rst:421
 msgid "If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB."
 msgstr ""
 
-#: ../../content/installation.rst:423
+#: ../../content/installation.rst:425
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr ""
 
-#: ../../content/installation.rst:431
+#: ../../content/installation.rst:433
 msgid "Step 13: Further Information"
 msgstr ""
 
-#: ../../content/installation.rst:433
+#: ../../content/installation.rst:435
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr ""
 
@@ -1335,7 +1335,7 @@ msgid "Please start with installing the new OTOBO system to which your OTRS / ((
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:89
-msgid "Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server. These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure that the applications use their own dedicated Perl interpreter. Please check your Apache config files in the directory */etc/apache2/sites-enabled* and add the setting in case it is missing."
+msgid "Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server. These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure that the applications use their own dedicated Perl interpreter. Please check your Apache config files in the directory */etc/apache2/sites-available* and add the setting in case it is missing."
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:94
