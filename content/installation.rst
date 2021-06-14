@@ -161,13 +161,15 @@ Most Apache installations have a ``conf.d`` directory included. On Linux systems
 Configure Apache without SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
-``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations).
+Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to
+the apache ``sites-available`` directory. In most cases no further editing of the template
+is required. Then enable the new configuration.
 
 .. code-block:: bash
 
    # Debian/Ubuntu:
-   root> cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otobo.conf
+   root> cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-available/zzz_otobo.conf
+   root> a2ensite zzz_otobo.conf
    root> systemctl restart apache2
 
 
@@ -175,7 +177,7 @@ Configure Apache **with** SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
-the apache ``sites-available`` directory`.
+the apache ``sites-available`` directory.
 
 .. code-block:: bash
 
