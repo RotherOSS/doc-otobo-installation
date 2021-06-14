@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 00:34+0200\n"
+"POT-Creation-Date: 2021-06-15 00:34+0200\n"
 "PO-Revision-Date: 2021-01-06 03:17+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -462,29 +462,31 @@ msgid "Configure Apache without SSL support"
 msgstr "在没有SSL支持的情况下配置Apache"
 
 #: ../../content/installation.rst:174
+#, fuzzy
 msgid ""
-"Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include."
-"conf`` to a file called ``zzz_otobo.conf`` in the Apache configuration "
-"directory (to make sure it is loaded after the other configurations)."
+"Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to "
+"the apache ``sites-available`` directory. In most cases no further editing "
+"of the template is required. Then enable the new configuration."
 msgstr ""
 "在Apache配置目录中（先确认一下在完成其他配置后是否被加载了），从``/opt/otobo/"
 "scripts/apache2-httpd.include.conf``拷贝合适的模板到文件``zzz_otobo.conf`` 。"
 
-#: ../../content/installation.rst:185
+#: ../../content/installation.rst:187
 msgid "Configure Apache **with** SSL support"
 msgstr "在 **有** SSL 支持的情况下配置Apache"
 
-#: ../../content/installation.rst:187
+#: ../../content/installation.rst:189
+#, fuzzy
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
-"the apache ``sites-available`` directory`."
+"the apache ``sites-available`` directory."
 msgstr ""
 "把模板文件 ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf``和``/"
 "opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` 拷贝到Apache的"
 "``sites-available``目录下。"
 
-#: ../../content/installation.rst:196
+#: ../../content/installation.rst:198
 msgid ""
 "Please edit the files and add the required information like SSL certificate "
 "storage path. After that, enable the OTOBO Apache configuration:"
@@ -492,7 +494,7 @@ msgstr ""
 "请编辑文件并加入一些必须的信息，例如SSL认证存储路径。之后，激活OTOBO Apache配"
 "置："
 
-#: ../../content/installation.rst:203
+#: ../../content/installation.rst:205
 msgid ""
 "Now you can restart your web server to load the new configuration settings. "
 "On most systems you can use the following command to do so:"
@@ -500,11 +502,11 @@ msgstr ""
 "现在你可以重启你的网站服务器，载入新的配置设定了。在多数系统中，你可以用下面"
 "的命令来实现："
 
-#: ../../content/installation.rst:211
+#: ../../content/installation.rst:213
 msgid "Step 6: Set File Permissions"
 msgstr "步骤6：设置文件许可"
 
-#: ../../content/installation.rst:213 ../../content/updating.rst:112
+#: ../../content/installation.rst:215 ../../content/updating.rst:112
 msgid ""
 "Please execute the following command to set the file and directory "
 "permissions for OTOBO. It will try to detect the correct user and group "
@@ -512,11 +514,11 @@ msgid ""
 msgstr ""
 "请执行下面的命令设置OTOBO的文件和目录许可。系统会尝试为你检测正确的用户和组。"
 
-#: ../../content/installation.rst:221
+#: ../../content/installation.rst:223
 msgid "Step 7: Setup the Database"
 msgstr "步骤7：建立数据库"
 
-#: ../../content/installation.rst:223
+#: ../../content/installation.rst:225
 msgid ""
 "First of all, you should install the database package. It is recommended to "
 "use the MySQL or MariaDB package, which will be delivered with your Linux "
@@ -525,7 +527,7 @@ msgstr ""
 "首先，你需要安装数据库软件。建议使用你的Linux系统自带的MySQL或者MariaDB，也可"
 "以使用PostgreSQL或者Oracle。"
 
-#: ../../content/installation.rst:226
+#: ../../content/installation.rst:228
 msgid ""
 "You'd typically do this from your systems package manager. Below you'll find "
 "the commands needed to set up MySQL on the most popular Linux distributions."
@@ -533,11 +535,11 @@ msgstr ""
 "你可以通过系统的软件管理进行安装，下面是在常用的Linux版本上安装MySQL数据库的"
 "一些命令。"
 
-#: ../../content/installation.rst:240
+#: ../../content/installation.rst:242
 msgid "After installing the MySQL server you need configure it."
 msgstr "安装了MySQL服务器后，需要进行配置。"
 
-#: ../../content/installation.rst:242
+#: ../../content/installation.rst:244
 msgid ""
 "In MySQL higher or equal version 5.7  a new authentication module is active, "
 "and it is not possible to use the OTOBO web installer for database creation. "
@@ -548,21 +550,21 @@ msgstr ""
 "软件建立数据库了。这种情况下， 请登陆进入MySQL控制台，设置不同的认证模块和用"
 "户``root`` 的密码："
 
-#: ../../content/installation.rst:250
+#: ../../content/installation.rst:252
 msgid "For MariaDB > 10.1 use instead the following command:"
 msgstr "对MariaDBM 10.1以上版本，用下面的命令："
 
-#: ../../content/installation.rst:257
+#: ../../content/installation.rst:259
 msgid "If this command not work, please try the following commands:"
 msgstr "如果此命令不起作用，请尝试以下命令："
 
-#: ../../content/installation.rst:266
+#: ../../content/installation.rst:268
 msgid ""
 "After OTOBO installation it is possible to change the authentication module "
 "again, if needed."
 msgstr "在OTOBO完成安装后，在需要时也可以更改认证模块。"
 
-#: ../../content/installation.rst:270
+#: ../../content/installation.rst:272
 msgid ""
 "The following configuration settings are minimum requirements for MySQL "
 "setups. Please add the following lines to the MySQL Server configuration "
@@ -573,11 +575,11 @@ msgstr ""
 "MySQL服务器配置文件``/etc/my.cnf``，``/etc/mysql/my.cnf`` 或者 ``/etc/mysql/"
 "mysql.conf.d/mysqld.cnf``："
 
-#: ../../content/installation.rst:277
+#: ../../content/installation.rst:279
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
 msgstr "对MySQL 8.0之前的版本，查询缓存尺寸需要设定："
 
-#: ../../content/installation.rst:283
+#: ../../content/installation.rst:285
 msgid ""
 "Also add the following lines to the MySQL Server configuration file ``/etc/"
 "my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` "
@@ -587,7 +589,7 @@ msgstr ""
 "MySQL服务器配置文件``/etc/my.cnf``，``/etc/mysql/my.cnf`` 或者 ``/etc/mysql/"
 "mysql.conf.d/mysqld.cnf``："
 
-#: ../../content/installation.rst:290
+#: ../../content/installation.rst:292
 msgid ""
 "For production purposes we recommend to use the tool ``mysqltuner`` to find "
 "the perfect setup. You can download the script from github ``https://github."
@@ -598,15 +600,15 @@ msgstr ""
 "``https://github.com/major/MySQLTuner-perl``下载脚本，或者通过软件管理在"
 "Debian或Ubuntu系统上安装："
 
-#: ../../content/installation.rst:297
+#: ../../content/installation.rst:299
 msgid "After installing execute the script:"
 msgstr "安装后运行下面的脚本："
 
-#: ../../content/installation.rst:305
+#: ../../content/installation.rst:307
 msgid "Step 8: Setup Elasticsearch"
 msgstr "步骤8：安装Elasticsearch弹性搜索"
 
-#: ../../content/installation.rst:307
+#: ../../content/installation.rst:309
 msgid ""
 "OTOBO recommends an active installation of Elasticsearch for quick search. "
 "The easiest way is to setup Elasticsearch on the same host as OTOBO and "
@@ -615,23 +617,23 @@ msgstr ""
 "OTOBO建议活性安装Elasticsearch以便快速搜索，最简单的办法就是将Elasticsearch和"
 "OTOBO安装在一台主机上，并绑定默认端口。"
 
-#: ../../content/installation.rst:310
+#: ../../content/installation.rst:312
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "基于Ubuntu 18.04 LTS的Elasticsearch安装范例"
 
-#: ../../content/installation.rst:312
+#: ../../content/installation.rst:314
 msgid "JDK Installation"
 msgstr "JDK安装"
 
-#: ../../content/installation.rst:319
+#: ../../content/installation.rst:321
 msgid "Elasticsearch Installation"
 msgstr "Elasticsearch安装"
 
-#: ../../content/installation.rst:329
+#: ../../content/installation.rst:331
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "在其他Linux版本中的Elasticsearch安装"
 
-#: ../../content/installation.rst:331
+#: ../../content/installation.rst:333
 msgid ""
 "Please follow the installation tutorial found at https://www.elastic.co/"
 "guide/en/elasticsearch/reference/current/setup.html."
@@ -639,25 +641,25 @@ msgstr ""
 "请遵照 https://www.elastic.co/guide/en/elasticsearch/reference/current/setup."
 "html中的安装教程进行。"
 
-#: ../../content/installation.rst:334
+#: ../../content/installation.rst:336
 msgid "Elasticsearch Module Installation"
 msgstr "Elasticsearch模块安装"
 
-#: ../../content/installation.rst:335
+#: ../../content/installation.rst:337
 msgid ""
 "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "另外，OTOBO需要在Elasticsearch上安装插件："
 
-#: ../../content/installation.rst:344
+#: ../../content/installation.rst:346
 msgid "Elasticsearch Configuration"
 msgstr "Elasticsearch配置"
 
-#: ../../content/installation.rst:346
+#: ../../content/installation.rst:348
 msgid ""
 "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr "Elasticsearch的配置有很多选择和可能。"
 
-#: ../../content/installation.rst:348
+#: ../../content/installation.rst:350
 msgid ""
 "In order to ensure error-free operation, you should adjust the jvm heap "
 "space for larger OTOBO systems. Please adjust the settings in the file ``/"
@@ -668,13 +670,13 @@ msgstr ""
 "etc/elasticsearch/jvm.options``中进行调整。一定要吧JVM堆空间的最大和最小值设"
 "置为同一个，例如都设为4GB，设置："
 
-#: ../../content/installation.rst:356
+#: ../../content/installation.rst:358
 msgid ""
 "In our tests, a value between 4 and 10 GB for medium-sized installations has "
 "proven to be the best."
 msgstr "在我们的测试中，对于中型安装，这个值设为4-10GB是最好的。"
 
-#: ../../content/installation.rst:360
+#: ../../content/installation.rst:362
 msgid ""
 "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
 "size.html`` for more information."
@@ -682,7 +684,7 @@ msgstr ""
 "请遵照 https://www.elastic.co/guide/en/elasticsearch/reference/current/setup."
 "html中的安装教程进行。"
 
-#: ../../content/installation.rst:362
+#: ../../content/installation.rst:364
 msgid ""
 "Now you can restart your Elasticsearch server to load the new configuration "
 "settings. On most systems you can use the following command to do so:"
@@ -690,11 +692,11 @@ msgstr ""
 "现在你可以重启你的Elasticsearch服务器，以便新的配置生效。对于大部分系统，可以"
 "用下面的命令实现："
 
-#: ../../content/installation.rst:370
+#: ../../content/installation.rst:372
 msgid "Step 8: Basic System Configuration"
 msgstr "步骤8：系统基础配置"
 
-#: ../../content/installation.rst:372
+#: ../../content/installation.rst:374
 msgid ""
 "Please use the web installer at http://localhost/otobo/installer.pl (replace "
 "\"localhost\" with your OTOBO hostname) to set up your database and basic "
@@ -703,11 +705,11 @@ msgstr ""
 "请用 http://localhost/otobo/installer.pl （请用你的主机名替换“localhost”）中"
 "的网络安装软件，设置你的数据库和基本系统配置，例如电子邮件账户。"
 
-#: ../../content/installation.rst:376
+#: ../../content/installation.rst:378
 msgid "Step 9: First Login"
 msgstr "步骤9：首次登陆"
 
-#: ../../content/installation.rst:378
+#: ../../content/installation.rst:380
 msgid ""
 "Now you are ready to login to your system at http://localhost/otobo/index.pl "
 "as user ``root@localhost`` with the password that was generated (see above)."
@@ -715,11 +717,11 @@ msgstr ""
 "现在你可以通过http://localhost/otobo/index.pl登陆你的系统了，用户名"
 "``root@localhost`` ，密码是上面生成的（请参考之前描述）。"
 
-#: ../../content/installation.rst:382
+#: ../../content/installation.rst:384
 msgid "Step 10: Start the OTOBO Daemon"
 msgstr "步骤10：启动OTOBO Daemon"
 
-#: ../../content/installation.rst:384
+#: ../../content/installation.rst:386
 msgid ""
 "OTOBO daemon is responsible for handling any asynchronous and recurring "
 "tasks in OTOBO. What has been in cron file definitions previously is now "
@@ -730,11 +732,11 @@ msgstr ""
 "定义中描述的现在由OTOBO守护程序处理，这是运行OTOBO的需要。守护程序还要处理由"
 "用户发起的GenericAgent任务。"
 
-#: ../../content/installation.rst:391
+#: ../../content/installation.rst:393
 msgid "Step 11: Cron jobs for the OTOBO user"
 msgstr "步骤11：OTOBO用户的cron任务"
 
-#: ../../content/installation.rst:393
+#: ../../content/installation.rst:395
 msgid ""
 "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, "
 "and their purpose is to make sure that the OTOBO Daemon is running. They "
@@ -745,15 +747,15 @@ msgstr ""
 "Daemon守护程序已经运行起来了。激活这两个文件只需要不带“.dist\"扩展名进行拷贝"
 "就好。"
 
-#: ../../content/installation.rst:403
+#: ../../content/installation.rst:405
 msgid "With this step, the basic system setup is finished."
 msgstr "到这一步，基本的系统配置就完成了。"
 
-#: ../../content/installation.rst:407
+#: ../../content/installation.rst:409
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
 msgstr "步骤12：设置Bash Auto-Completion （可选）"
 
-#: ../../content/installation.rst:409
+#: ../../content/installation.rst:411
 msgid ""
 "All regular OTOBO command line operations happen via the OTOBO console "
 "interface. This provides an auto-completion for the bash shell which makes "
@@ -762,7 +764,7 @@ msgstr ""
 "所有正常的OTOBO命令行的执行都是通过OTOBO管理接口，管理接口可以实现Linux内核任"
 "务的自动完成，从而更方便地找到合适的命令和选项。"
 
-#: ../../content/installation.rst:411
+#: ../../content/installation.rst:413
 msgid ""
 "You can activate the bash auto-completion by installing the package ``bash-"
 "completion``. It will automatically detect and load the file ``/opt/otobo/."
@@ -771,13 +773,13 @@ msgstr ""
 "你可以通过安装软件包``bash-completion``来激活内核任务自动完成，它将为"
 "``otobo`` 用户自动检测并调用``/opt/otobo/.bash_completion``文件。"
 
-#: ../../content/installation.rst:413
+#: ../../content/installation.rst:415
 msgid ""
 "After restarting your shell, you can just type this command followed by TAB, "
 "and it will list all available commands:"
 msgstr "重启你的shell后，你可以键入这个命令再加上TAB，就会列出所有可用的命令："
 
-#: ../../content/installation.rst:419
+#: ../../content/installation.rst:421
 msgid ""
 "If you type a few characters of the command name, TAB will show all matching "
 "commands. After typing a complete command, all possible options and "
@@ -786,7 +788,7 @@ msgstr ""
 "如果你只键入命令名字的几个字母，TAB将会列出所有匹配的命令。键入完整命令，按下"
 "TAB键将显示所有的可选项和相应信息。"
 
-#: ../../content/installation.rst:423
+#: ../../content/installation.rst:425
 msgid ""
 "If you have problems, you can execute the following line as user ``otobo`` "
 "and add it to your ``~/.bashrc`` to execute the commands from the file."
@@ -794,11 +796,11 @@ msgstr ""
 "如果有问题，你可以作为用户``otobo`` 执行下面的命令行，并将它加入你的``~/."
 "bashrc`` ，执行文件中的命令。"
 
-#: ../../content/installation.rst:431
+#: ../../content/installation.rst:433
 msgid "Step 13: Further Information"
 msgstr "步骤13：更多信息"
 
-#: ../../content/installation.rst:433
+#: ../../content/installation.rst:435
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr "我们建议你阅读OTOBO文档中的：`performance-tuning` 章节。"
 
@@ -2135,12 +2137,13 @@ msgstr ""
 "系统。这里我们强烈建议你先阅读：doc：ʻinstallation`。"
 
 #: ../../content/migration-from-otrs-6.rst:89
+#, fuzzy
 msgid ""
 "Under Apache, there are pitfalls with running two independent applications "
 "under mod_perl on the same server. These pitfalls can be alleviated with the "
 "mod_perl setting ``PerlOptions +Parent``. This setting makes sure that the "
 "applications use their own dedicated Perl interpreter. Please check your "
-"Apache config files in the directory */etc/apache2/sites-enabled* and add "
+"Apache config files in the directory */etc/apache2/sites-available* and add "
 "the setting in case it is missing."
 msgstr ""
 "在Apache环境下，在同一服务器上的mod_perl之下运行两个独立的应用程序会有陷阱，"
