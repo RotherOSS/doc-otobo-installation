@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 00:34+0200\n"
+"POT-Creation-Date: 2021-06-17 00:34+0200\n"
 "PO-Revision-Date: 2021-05-12 20:17+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
@@ -501,13 +501,39 @@ msgstr ""
 
 #: ../../content/installation.rst:156
 msgid ""
-"OTOBO requires a few Apache modules to be active for optimal operation. On "
-"most platforms you can make sure they are active via the tool a2enmod."
+"A critical setting of the Apache web server is the choice of the multi-"
+"processing module. For running OTOBO, the recommended choice is the module "
+"**mpm_prefork**. Like other Apache modules the multi-processing module can "
+"be managed with the tools a2dismod and a2enmod."
+msgstr ""
+
+#: ../../content/installation.rst:165
+msgid "All is fine whem mpm_prefork already is enabled."
+msgstr ""
+
+#: ../../content/installation.rst:167
+msgid "Disable mpm_event when it is currently active"
+msgstr ""
+
+#: ../../content/installation.rst:173
+msgid "Disable mpm_worker in case that MPM is enabled."
+msgstr ""
+
+#: ../../content/installation.rst:179
+msgid "Finally activate mpm_prefork."
+msgstr ""
+
+#: ../../content/installation.rst:185
+#, fuzzy
+msgid ""
+"OTOBO requires a few more Apache modules to be active for optimal operation. "
+"Again, on most platforms you can make sure they are active via the tool "
+"a2enmod."
 msgstr ""
 "Damit OTOBO optimal funktioniert, müssen einige Apache-Module aktiv sein. "
 "Deren Status können Sie auf den meisten Systemen mit dem Tool a2enmod prüfen."
 
-#: ../../content/installation.rst:167
+#: ../../content/installation.rst:196
 msgid ""
 "On some platforms not all Apache modules exist and an error is displayed "
 "when installing. Do not worry and finish the installation, in most cases the "
@@ -518,7 +544,7 @@ msgstr ""
 "mit der Installation fort. In den meisten Fällen werden die fehlenden Module "
 "nicht benötigt."
 
-#: ../../content/installation.rst:169
+#: ../../content/installation.rst:198
 msgid ""
 "Most Apache installations have a ``conf.d`` directory included. On Linux "
 "systems you can usually find this directory under ``/etc/apache`` or ``/etc/"
@@ -528,11 +554,11 @@ msgstr ""
 "Auf Linux-Systemen finden Sie es in aller Regel unter ``/etc/apache`` oder "
 "``/etc/apache2``."
 
-#: ../../content/installation.rst:172
+#: ../../content/installation.rst:201
 msgid "Configure Apache without SSL support"
 msgstr "Apache ohne SSL-Unterstützung konfigurieren"
 
-#: ../../content/installation.rst:174
+#: ../../content/installation.rst:203
 #, fuzzy
 msgid ""
 "Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to "
@@ -544,11 +570,11 @@ msgstr ""
 "Konfigurationsverzeichnis (zzz_ um sicherzustellen, dass die Datei nach "
 "allen anderen Konfigurationsdateien geladen wird)."
 
-#: ../../content/installation.rst:187
+#: ../../content/installation.rst:216
 msgid "Configure Apache **with** SSL support"
 msgstr "Apache **mit** SSL-Unterstützung kofigurieren"
 
-#: ../../content/installation.rst:189
+#: ../../content/installation.rst:218
 #, fuzzy
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
@@ -559,7 +585,7 @@ msgstr ""
 "include.conf`` und ``/opt/otobo/scripts/apache2-httpd-vhost-443.include."
 "conf`` in das Apache-Verzeichnis ``sites-availible`` ."
 
-#: ../../content/installation.rst:198
+#: ../../content/installation.rst:227
 msgid ""
 "Please edit the files and add the required information like SSL certificate "
 "storage path. After that, enable the OTOBO Apache configuration:"
@@ -568,7 +594,7 @@ msgstr ""
 "den Pfad zum SSL-Zertifikat. Anschließend aktivieren Sie die OTOBO-Apache-"
 "Konfiguration:"
 
-#: ../../content/installation.rst:205
+#: ../../content/installation.rst:234
 msgid ""
 "Now you can restart your web server to load the new configuration settings. "
 "On most systems you can use the following command to do so:"
@@ -577,11 +603,11 @@ msgstr ""
 "Konfigurationseinstellungen laden. Auf den meisten Systemen gelingt dies mit "
 "folgendem Befehl:"
 
-#: ../../content/installation.rst:213
+#: ../../content/installation.rst:242
 msgid "Step 6: Set File Permissions"
 msgstr "Schritt 6: Dateiberechtigungen anpassen"
 
-#: ../../content/installation.rst:215 ../../content/updating.rst:112
+#: ../../content/installation.rst:244 ../../content/updating.rst:112
 msgid ""
 "Please execute the following command to set the file and directory "
 "permissions for OTOBO. It will try to detect the correct user and group "
@@ -591,11 +617,11 @@ msgstr ""
 "Berechtigungen für OTOBO zu definieren. Es wird versucht, die passenden "
 "Benutzer- und Gruppeneinstellungen für Ihr Setup zu ermitteln."
 
-#: ../../content/installation.rst:223
+#: ../../content/installation.rst:252
 msgid "Step 7: Setup the Database"
 msgstr "Schritt 7: Datenbank anlegen"
 
-#: ../../content/installation.rst:225
+#: ../../content/installation.rst:254
 msgid ""
 "First of all, you should install the database package. It is recommended to "
 "use the MySQL or MariaDB package, which will be delivered with your Linux "
@@ -605,7 +631,7 @@ msgstr ""
 "Linuxsystem zur Verfügung gestellte MySQL- oder MariaDB-Paket zu verwenden. "
 "Sie können aber auch PostgreSQL oder Oracle nutzen."
 
-#: ../../content/installation.rst:228
+#: ../../content/installation.rst:257
 msgid ""
 "You'd typically do this from your systems package manager. Below you'll find "
 "the commands needed to set up MySQL on the most popular Linux distributions."
@@ -614,11 +640,11 @@ msgstr ""
 "Ihres Systems. Nachstehend finden Sie die zum Aufsetzen von MySQL in den "
 "gängigsten Linux-Distributionen benötigten Befehle."
 
-#: ../../content/installation.rst:242
+#: ../../content/installation.rst:271
 msgid "After installing the MySQL server you need configure it."
 msgstr "Nach der Installation muss der MySQL-Server konfiguriert werden."
 
-#: ../../content/installation.rst:244
+#: ../../content/installation.rst:273
 msgid ""
 "In MySQL higher or equal version 5.7  a new authentication module is active, "
 "and it is not possible to use the OTOBO web installer for database creation. "
@@ -630,16 +656,16 @@ msgstr ""
 "Sie sich in diesem Fall in die MySQL-Konsole ein und definieren Sie ein "
 "anderes Authentifizierungsmodul und ein Passwort für den ``root``-Benutzer:"
 
-#: ../../content/installation.rst:252
+#: ../../content/installation.rst:281
 msgid "For MariaDB > 10.1 use instead the following command:"
 msgstr "Für MariaDB > 10.1 verwenden Sie stattdessen folgenden Befehl:"
 
-#: ../../content/installation.rst:259
+#: ../../content/installation.rst:288
 msgid "If this command not work, please try the following commands:"
 msgstr ""
 "Funktioniert dieser Befehl nicht, versuchen Sie es mit folgenden Kommandos:"
 
-#: ../../content/installation.rst:268
+#: ../../content/installation.rst:297
 msgid ""
 "After OTOBO installation it is possible to change the authentication module "
 "again, if needed."
@@ -647,7 +673,7 @@ msgstr ""
 "Sofern nötig, können Sie das Authentifizierungsmodul nach der OTOBO-"
 "Installation wieder ändern."
 
-#: ../../content/installation.rst:272
+#: ../../content/installation.rst:301
 msgid ""
 "The following configuration settings are minimum requirements for MySQL "
 "setups. Please add the following lines to the MySQL Server configuration "
@@ -659,13 +685,13 @@ msgstr ""
 "etc/my.cnf``, ``/etc/mysql/my.cnf`` oder ``/etc/mysql/mysql.conf.d/mysqld."
 "cnf`` im Abschnitt ``[mysqld]`` um diese Zeilen:"
 
-#: ../../content/installation.rst:279
+#: ../../content/installation.rst:308
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
 msgstr ""
 "Für MySQL-Versionen vor MySQL 8.0 sollten Sie außerdem den Query-Cache "
 "definieren:"
 
-#: ../../content/installation.rst:285
+#: ../../content/installation.rst:314
 msgid ""
 "Also add the following lines to the MySQL Server configuration file ``/etc/"
 "my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` "
@@ -675,7 +701,7 @@ msgstr ""
 "cnf``, ``/etc/mysql/my.cnf`` oder ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` "
 "im Abschnitt ``[mysqldump]`` um diese Zeilen:"
 
-#: ../../content/installation.rst:292
+#: ../../content/installation.rst:321
 msgid ""
 "For production purposes we recommend to use the tool ``mysqltuner`` to find "
 "the perfect setup. You can download the script from github ``https://github."
@@ -688,15 +714,15 @@ msgstr ""
 "GitHub herunterladen. In Debian- und Ubuntu-Systemen finden Sie es über die "
 "Paketverwaltung:"
 
-#: ../../content/installation.rst:299
+#: ../../content/installation.rst:328
 msgid "After installing execute the script:"
 msgstr "Ist die Installation abgeschlossen, führen Sie das Skript aus:"
 
-#: ../../content/installation.rst:307
+#: ../../content/installation.rst:336
 msgid "Step 8: Setup Elasticsearch"
 msgstr "Schritt 8: Elasticsearch-Cluster aufsetzen"
 
-#: ../../content/installation.rst:309
+#: ../../content/installation.rst:338
 msgid ""
 "OTOBO recommends an active installation of Elasticsearch for quick search. "
 "The easiest way is to setup Elasticsearch on the same host as OTOBO and "
@@ -706,23 +732,23 @@ msgstr ""
 "Cluster. Am einfachsten setzen Sie Elasticsearch auf dem gleichen Host wie "
 "OTOBO auf und lassen es den Standardport nutzen."
 
-#: ../../content/installation.rst:312
+#: ../../content/installation.rst:341
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "Beispiel für eine Elasticsearch-Installation unter Ubuntu 18.04 LTS"
 
-#: ../../content/installation.rst:314
+#: ../../content/installation.rst:343
 msgid "JDK Installation"
 msgstr "JDK-Installation"
 
-#: ../../content/installation.rst:321
+#: ../../content/installation.rst:350
 msgid "Elasticsearch Installation"
 msgstr "Elasticsearch-Installation"
 
-#: ../../content/installation.rst:331
+#: ../../content/installation.rst:360
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "Elasticsearch-Installation auf anderen Linux-Distributionen"
 
-#: ../../content/installation.rst:333
+#: ../../content/installation.rst:362
 msgid ""
 "Please follow the installation tutorial found at https://www.elastic.co/"
 "guide/en/elasticsearch/reference/current/setup.html."
@@ -730,28 +756,28 @@ msgstr ""
 "Bitte nutzen Sie das Installations-Tutorial unter https://www.elastic.co/"
 "guide/en/elasticsearch/reference/current/setup.html."
 
-#: ../../content/installation.rst:336
+#: ../../content/installation.rst:365
 msgid "Elasticsearch Module Installation"
 msgstr "Elasticsearch-Modul installieren"
 
-#: ../../content/installation.rst:337
+#: ../../content/installation.rst:366
 msgid ""
 "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr ""
 "Außerdem erfordert OTOBO die Installation von Plugins in Elasticsearch:"
 
-#: ../../content/installation.rst:346
+#: ../../content/installation.rst:375
 msgid "Elasticsearch Configuration"
 msgstr "Elasticsearch konfigurieren"
 
-#: ../../content/installation.rst:348
+#: ../../content/installation.rst:377
 msgid ""
 "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr ""
 "Elasticsearch bietet viele unterschiedliche Konfigurationsoptionen und -"
 "möglichkeiten."
 
-#: ../../content/installation.rst:350
+#: ../../content/installation.rst:379
 msgid ""
 "In order to ensure error-free operation, you should adjust the jvm heap "
 "space for larger OTOBO systems. Please adjust the settings in the file ``/"
@@ -764,7 +790,7 @@ msgstr ""
 "Maximalwert für die JVM Heap Size übereinstimmen. Um den Heap auf 4 GB zu "
 "setzen, nehmen Sie folgende Einstellung vor:"
 
-#: ../../content/installation.rst:358
+#: ../../content/installation.rst:387
 msgid ""
 "In our tests, a value between 4 and 10 GB for medium-sized installations has "
 "proven to be the best."
@@ -772,7 +798,7 @@ msgstr ""
 "In unseren Tests hat sich ein Wert zwischen 4 und 10 GB für mittlere Systeme "
 "als optimal erwiesen."
 
-#: ../../content/installation.rst:362
+#: ../../content/installation.rst:391
 msgid ""
 "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
 "size.html`` for more information."
@@ -780,7 +806,7 @@ msgstr ""
 "Bitte nutzen Sie das Installations-Tutorial unter ``https://www.elastic.co/"
 "guide/en/elasticsearch/reference/current/setup.html``."
 
-#: ../../content/installation.rst:364
+#: ../../content/installation.rst:393
 msgid ""
 "Now you can restart your Elasticsearch server to load the new configuration "
 "settings. On most systems you can use the following command to do so:"
@@ -789,11 +815,11 @@ msgstr ""
 "Konfigurationseinstellungen zu laden. Auf den meisten Systemen gelingt dies "
 "mit folgendem Befehl:"
 
-#: ../../content/installation.rst:372
+#: ../../content/installation.rst:401
 msgid "Step 8: Basic System Configuration"
 msgstr "Schritt 8: Grundlegende Systemkonfiguration"
 
-#: ../../content/installation.rst:374
+#: ../../content/installation.rst:403
 msgid ""
 "Please use the web installer at http://localhost/otobo/installer.pl (replace "
 "\"localhost\" with your OTOBO hostname) to set up your database and basic "
@@ -804,11 +830,11 @@ msgstr ""
 "Datenbank zu konfigurieren und grundlegende Systemeinstellungen wie die der "
 "E-Mail-Konten vorzunehmen."
 
-#: ../../content/installation.rst:378
+#: ../../content/installation.rst:407
 msgid "Step 9: First Login"
 msgstr "Schritt 9: Erste Anmeldung"
 
-#: ../../content/installation.rst:380
+#: ../../content/installation.rst:409
 msgid ""
 "Now you are ready to login to your system at http://localhost/otobo/index.pl "
 "as user ``root@localhost`` with the password that was generated (see above)."
@@ -817,11 +843,11 @@ msgstr ""
 "über http://localhost/otobo/index.pl als Benutzer ``root@localhost`` "
 "anmelden."
 
-#: ../../content/installation.rst:384
+#: ../../content/installation.rst:413
 msgid "Step 10: Start the OTOBO Daemon"
 msgstr "Schritt 10: OTOBO Daemon starten"
 
-#: ../../content/installation.rst:386
+#: ../../content/installation.rst:415
 msgid ""
 "OTOBO daemon is responsible for handling any asynchronous and recurring "
 "tasks in OTOBO. What has been in cron file definitions previously is now "
@@ -834,11 +860,11 @@ msgstr ""
 "Außerdem übernimmt der Daemon alle GenericAgent Jobs. Er muss vom OTOBO-"
 "Benutzer gestartet werden."
 
-#: ../../content/installation.rst:393
+#: ../../content/installation.rst:422
 msgid "Step 11: Cron jobs for the OTOBO user"
 msgstr "Schritt 11: CronJobs für den OTOBO-Benutzer"
 
-#: ../../content/installation.rst:395
+#: ../../content/installation.rst:424
 msgid ""
 "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, "
 "and their purpose is to make sure that the OTOBO Daemon is running. They "
@@ -850,15 +876,15 @@ msgstr ""
 "Sie diese, indem Sie die Dateien ohne die Dateinamenerweiterung \".dist\" "
 "kopieren."
 
-#: ../../content/installation.rst:405
+#: ../../content/installation.rst:434
 msgid "With this step, the basic system setup is finished."
 msgstr "Mit diesem Schritt ist die Grundeinrichtung des Systems abgeschlossen."
 
-#: ../../content/installation.rst:409
+#: ../../content/installation.rst:438
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
 msgstr "Schritt 12: Bash Auto-Completion einrichten (optional)"
 
-#: ../../content/installation.rst:411
+#: ../../content/installation.rst:440
 msgid ""
 "All regular OTOBO command line operations happen via the OTOBO console "
 "interface. This provides an auto-completion for the bash shell which makes "
@@ -869,7 +895,7 @@ msgstr ""
 "Eingaben in die Bash-Shell angeboten, die das Finden geeigneter Befehle und "
 "Optionen erheblich erleichtert."
 
-#: ../../content/installation.rst:413
+#: ../../content/installation.rst:442
 msgid ""
 "You can activate the bash auto-completion by installing the package ``bash-"
 "completion``. It will automatically detect and load the file ``/opt/otobo/."
@@ -879,7 +905,7 @@ msgstr ""
 "completion``. Damit wird automatisch die Datei ``/opt/otobo/."
 "bash_completion`` für den Benutzer ``otobo`` gesucht und geladen."
 
-#: ../../content/installation.rst:415
+#: ../../content/installation.rst:444
 msgid ""
 "After restarting your shell, you can just type this command followed by TAB, "
 "and it will list all available commands:"
@@ -888,7 +914,7 @@ msgstr ""
 "Befehl eingeben und durch TAB ergänzen, um alle verfügbaren Befehle "
 "anzuzeigen:"
 
-#: ../../content/installation.rst:421
+#: ../../content/installation.rst:450
 msgid ""
 "If you type a few characters of the command name, TAB will show all matching "
 "commands. After typing a complete command, all possible options and "
@@ -899,7 +925,7 @@ msgstr ""
 "Befehl vollständig ein und drücken dann TAB, werden alle möglichen Optionen "
 "und Argumente angezeigt."
 
-#: ../../content/installation.rst:425
+#: ../../content/installation.rst:454
 msgid ""
 "If you have problems, you can execute the following line as user ``otobo`` "
 "and add it to your ``~/.bashrc`` to execute the commands from the file."
@@ -908,11 +934,11 @@ msgstr ""
 "ausführen und zu Ihrem ``~/.bashrc`` hinzufügen, um die Befehle aus der "
 "Datei heraus auszuführen."
 
-#: ../../content/installation.rst:433
+#: ../../content/installation.rst:462
 msgid "Step 13: Further Information"
 msgstr "Schritt 13: Weiterführende Informationen"
 
-#: ../../content/installation.rst:435
+#: ../../content/installation.rst:464
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr "Wir empfehlen, das Kapitel OTOBO :doc:`performance-tuning` zu lesen."
 
