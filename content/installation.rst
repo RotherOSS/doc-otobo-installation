@@ -143,7 +143,36 @@ Below you'll find the commands needed to set up Apache on the most popular Linux
    # Debian/Ubuntu:
    root> apt-get install apache2 libapache2-mod-perl2
 
-OTOBO requires a few Apache modules to be active for optimal operation. On most platforms you can make sure they are active via the tool a2enmod.
+A critical setting of the Apache web server is the choice of the multi-processing module.
+For running OTOBO, the recommended choice is the module **mpm_prefork**.
+Like other Apache modules the multi-processing module can be managed with the tools a2dismod and a2enmod.
+
+.. code-block:: bash
+
+   root> # check which MPM is active
+   root> apache2ctl -M | grep mpm_
+
+All is fine whem mpm_prefork already is enabled.
+
+Disable mpm_event when it is currently active
+
+.. code-block:: bash
+
+   root> a2dismod mpm_event
+
+Disable mpm_worker in case that MPM is enabled.
+
+.. code-block:: bash
+
+   root> a2dismod mpm_worker
+
+Finally activate mpm_prefork.
+
+.. code-block:: bash
+
+   root> a2enmod mpm_prefork
+
+OTOBO requires a few more Apache modules to be active for optimal operation. Again, on most platforms you can make sure they are active via the tool a2enmod.
 
 .. code-block:: bash
 
