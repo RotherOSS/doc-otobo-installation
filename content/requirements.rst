@@ -1,25 +1,29 @@
 Hardware and Software Requirements
 ==================================
 
-OTOBO can be installed on Linux and other Unix derivates (e.g. OpenBSD or FreeBSD). Running OTOBO on Microsoft Windows is not supported.
+The OTOBO web application can be installed on Linux and other Unix derivates, e.g. OpenBSD or FreeBSD.
+Running OTOBO on Microsoft Windows is not supported.
 
-To run OTOBO, you'll also need to use a web server as reverse proxy and a database server. Apart from that, you should install Perl and/or install some additional Perl modules on the OTOBO machine.
+The web application uses a relational database as backend. So, to run OTOBO, you'll need to run at least a web server and a database server.
+The web server and the database server may be installed either on the same or on different hosts.
 
-Perl must be installed on the same machine as OTOBO. The database back end and the web server may be installed locally or on another host.
+Alternatively, OTOBO can also run under Docker. When running under Docker, the web and the database server are already included in the setup.
+Support for deployment with Kubernetes is under development.
 
-For Perl, you will need some additional modules which can be installed either with Perl from CPAN, or via the package manager of your operating system (rpm, yast, apt-get).
-
-OTOBO has also a console command for missing modules.
-
-.. code-block:: bash
-
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl
-
-If some packages are missing, you can get an install command for your operating system if you run the script with ``--list`` option.
+The OTOBO web application requires Perl along with additional Perl modules from CPAN.
+The modules can be installed either with a Perl package manager
+or via the package manager of your operating system (rpm, yast, apt-get).
+There is console command for checking the module dependencies.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl --inst
+
+If some packages are missing, you can get an install command for your operating system by running the script with the ``--list`` option.
+
+.. code-block:: bash
+
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list | more
 
 The listed commands should then be executed with root privileges.
 
@@ -28,49 +32,74 @@ are marked with a comment.
 
 .. code-block:: none
 
-   Checking for Perl Modules:
-     o Archive::Tar.....................ok (v2.24)
-     o Archive::Zip.....................ok (v1.63)
-     o Crypt::Eksblowfish::Bcrypt.......ok (v0.009)
-     o Crypt::SSLeay....................ok (v0.73_06)
-     o CryptX...........................ok (v0.061)
+   Required packages:
+     o Archive::Tar.....................ok (v2.32)
+     o Archive::Zip.....................ok (v1.67)
+     o Const::Fast......................ok (v0.014)
      o Date::Format.....................ok (v2.24)
-     o DateTime.........................ok (v1.50)
-     o DBI..............................ok (v1.641)
-     o DBD::mysql.......................ok (v4.046)
-     o DBD::ODBC........................Not installed!  Use: 'apt-get install -y libdbd-odbc-perl' (optional - Required to connect to a MS-SQL database.)
-     o DBD::Oracle......................Not installed!  Use: 'cpan DBD::Oracle' (optional - Required to connect to an Oracle database.)
-     o DBD::Pg..........................Not installed!  Use: 'apt-get install -y libdbd-pg-perl' (optional - Required to connect to a PostgreSQL database.)
-     o Digest::SHA......................ok (v5.96)
-     o Encode::HanExtra.................ok (v0.23)
-     o EV...............................ok (v4.22)
-     o IO::Socket::SSL..................ok (v2.060)
-     o JSON::XS.........................ok (v3.04)
-     o List::Util::XS...................ok (v1.46_02)
-     o LWP::UserAgent...................ok (v6.35)
-     o Mail::IMAPClient.................ok (v3.39)
-       o Authen::SASL...................ok (v2.16)
-       o Authen::NTLM...................ok (v1.09)
-     o Moose............................ok (v2.2011)
-     o Net::DNS.........................ok (v1.17)
-     o Net::LDAP........................ok (v0.65)
-     o Search::Elasticsearch............ok (v6.00)
-     o Specio...........................ok (v0.42)
-     o Specio::Subs.....................ok (v0.42)
-     o Template.........................ok (v2.27)
+     o DateTime.........................ok (v1.51)
+       o DateTime::TimeZone.............ok (v2.38)
+     o Convert::BinHex..................ok (v1.125)
+     o DBI..............................ok (v1.643)
+     o Digest::SHA......................ok (v6.02)
+     o File::chmod......................ok (v0.42)
+     o List::AllUtils...................ok (v0.15)
+     o LWP::UserAgent...................ok (v6.26)
+     o Moo..............................ok (v2.003006)
+     o namespace::autoclean.............ok (v0.29)
+     o Net::DNS.........................ok (v1.22)
+     o Net::SMTP::SSL...................ok (v1.04)
+     o Path::Class......................ok (v0.37)
+     o Sub::Exporter....................ok (v0.987)
+     o Template::Toolkit................ok (undef)
      o Template::Stash::XS..............ok (undef)
-     o Text::CSV_XS.....................ok (v1.36)
-     o Time::HiRes......................ok (v1.9741)
-     o XML::LibXML......................ok (v2.0132)
-     o XML::LibXSLT.....................ok (v1.96)
-     o XML::Parser......................ok (v2.44)
-     o YAML::XS.........................ok (v0.74)
+     o Text::CSV........................ok (v1.95)
+     o Text::Trim.......................ok (v1.04)
+     o Time::HiRes......................ok (v1.9760)
+     o Try::Tiny........................ok (v0.30)
+     o URI..............................ok (v1.71)
+     o XML::LibXML......................ok (v2.0207)
+     o YAML::XS.........................ok (v0.81)
+     o Unicode::Collate.................ok (v1.27)
+     o CGI::PSGI........................ok (v0.15)
+     o DBIx::Connector..................ok (v0.56)
+     o Path::Class......................ok (v0.37)
+     o Plack............................ok (v1.0047)
+     o Plack::Middleware::ForceEnv......ok (v0.02)
+     o Plack::Middleware::Header........ok (v0.04)
+     o Plack::Middleware::Refresh.......ok (undef)
+     o Plack::Middleware::ReverseProxy..ok (v0.16)
+     o Plack::Middleware::Rewrite.......ok (v2.101)
+     o SOAP::Transport::HTTP::Plack.....ok (v0.03)
 
-   Checking for External Programs:
-     o GnuPG............................ok (v2.2.8)
-     o npm..............................ok (v5.8.0)
-       o Node.js........................ok (v8.11.4)
-     o OpenSSL..........................ok (v1.1.1/OpenSSL)
+   Recommended features for setups using apache:
+     o ModPerl::Util....................ok (v2.000011)
+
+   Database support (installing one is required):
+     o DBD::mysql.......................ok (v4.050)
+
+   Various features for additional functionality:
+     o Encode::HanExtra.................ok (v0.23)
+     o Net::LDAP........................ok (v0.66)
+     o Crypt::Eksblowfish::Bcrypt.......ok (v0.009)
+     o XML::LibXSLT.....................ok (v1.99)
+     o XML::Parser......................ok (v2.46)
+
+   Features enabling communication with a mail-server:
+     o Net::SMTP........................ok (v3.11)
+     o Mail::IMAPClient.................ok (v3.42)
+     o Authen::SASL.....................ok (v2.16)
+     o Authen::NTLM.....................ok (v1.09)
+     o IO::Socket::SSL..................ok (v2.067)
+
+   Optional features which can increase performance:
+     o JSON::XS.........................ok (v4.02)
+     o Text::CSV_XS.....................ok (v1.41)
+
+   Required packages if you want to use PSGI/Plack (experimental and advanced):
+     o Gazelle..........................ok (v0.49)
+     o Linux::Inotify2..................ok (v2.2)
+     o Plack::App::File.................ok (undef)
 
 
 Hardware Requirements
@@ -94,18 +123,15 @@ We recommend using a machine for production purpose with **at least**:
 
    Hardware requirements depend on the usage of OTOBO. Please contact your OTOBO consultant before deploying any hardware.
 
-
 Software requirements
 ---------------------
 
 Perl
    - Perl 5.24.0 or higher
-   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl`` console command
+   - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl --list`` console command
 
-Web Servers
-   - Apache2
-   - nginx
-   - Any other web server that can be used as a reverse proxy
+Web Server
+   - Apache HTTP Server Version 2.4
 
 Databases
    - MySQL 5.6 or higher
@@ -115,7 +141,8 @@ Databases
 
 Optional
    - Elasticsearch 7.x (fast search function for live previews)
-   - Node.js 8.9 or higher (only for development)
+   - Redis (fast caching)
+   - nginx or any other web server that can be used as a reverse proxy (SSL support and load distribution)
 
 Web browsers
    - Apple Safari
