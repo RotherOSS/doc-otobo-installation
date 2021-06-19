@@ -92,7 +92,7 @@ We strongly recommend to read the chapter :doc:`installation`. For Docker-based 
     Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server.
     These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure
     that the applications use their own dedicated Perl interpreter. Please check your Apache config files in
-    the directory */etc/apache2/sites-enabled* and add the setting in case it is missing.
+    the directory */etc/apache2/sites-available* and add the setting in case it is missing.
 
 After finishing the installation tutorial, please log in to the OTOBO Admin Area ``Admin -> Packages``
 and install all required OTOBO OPM packages.

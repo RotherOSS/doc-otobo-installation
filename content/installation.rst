@@ -143,7 +143,36 @@ Below you'll find the commands needed to set up Apache on the most popular Linux
    # Debian/Ubuntu:
    root> apt-get install apache2 libapache2-mod-perl2
 
-OTOBO requires a few Apache modules to be active for optimal operation. On most platforms you can make sure they are active via the tool a2enmod.
+A critical setting of the Apache web server is the choice of the multi-processing module.
+For running OTOBO, the recommended choice is the module **mpm_prefork**.
+Like other Apache modules the multi-processing module can be managed with the tools a2dismod and a2enmod.
+
+.. code-block:: bash
+
+   root> # check which MPM is active
+   root> apache2ctl -M | grep mpm_
+
+All is fine whem mpm_prefork already is enabled.
+
+Disable mpm_event when it is currently active
+
+.. code-block:: bash
+
+   root> a2dismod mpm_event
+
+Disable mpm_worker in case that MPM is enabled.
+
+.. code-block:: bash
+
+   root> a2dismod mpm_worker
+
+Finally activate mpm_prefork.
+
+.. code-block:: bash
+
+   root> a2enmod mpm_prefork
+
+OTOBO requires a few more Apache modules to be active for optimal operation. Again, on most platforms you can make sure they are active via the tool a2enmod.
 
 .. code-block:: bash
 
@@ -161,13 +190,15 @@ Most Apache installations have a ``conf.d`` directory included. On Linux systems
 Configure Apache without SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Copy the appropriate template in ``/opt/otobo/scripts/apache2-httpd.include.conf`` to a file called
-``zzz_otobo.conf`` in the Apache configuration directory (to make sure it is loaded after the other configurations).
+Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to
+the apache ``sites-available`` directory. In most cases no further editing of the template
+is required. Then enable the new configuration.
 
 .. code-block:: bash
 
    # Debian/Ubuntu:
-   root> cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otobo.conf
+   root> cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-available/zzz_otobo.conf
+   root> a2ensite zzz_otobo.conf
    root> systemctl restart apache2
 
 
@@ -175,7 +206,7 @@ Configure Apache **with** SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to
-the apache ``sites-available`` directory`.
+the apache ``sites-available`` directory.
 
 .. code-block:: bash
 
