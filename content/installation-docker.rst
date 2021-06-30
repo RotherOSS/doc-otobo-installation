@@ -383,7 +383,7 @@ However the second hurdle is that the default entrypoint script */opt/otobo_inst
 exits immediately when it is called as *root*. The reasoning behind that design decision is that
 running inadvertently as *root* should be discouraged. So, the second part of the solution is to specify
 a different entrypoint script that does not care who the caller is.
-This leaves us with following example commands, where we add furtune cookies to otobo:
+This leaves us with following example commands, where we add fortune cookies to otobo:
 
 Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:
 
