@@ -91,10 +91,10 @@ In this step the volume *otobo_opt_otobo* is updated and the following OTOBO con
     docker_admin> docker-compose ps
 
     # complete the update, with running database
-    docker_admin> docker exec -t otobo_web_1 /opt/otobo_install/entrypoint.sh do_update_tasks
+    docker_admin> docker-compose exec web /opt/otobo_install/entrypoint.sh do_update_tasks
 
     # inspect the update log
-    docker_admin> docker exec -t otobo_web_1  cat /opt/otobo/var/log/update.log
+    docker_admin> docker-compose exec web cat /opt/otobo/var/log/update.log
 
 .. note::
 
