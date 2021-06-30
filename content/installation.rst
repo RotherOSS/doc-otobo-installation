@@ -154,7 +154,7 @@ Like other Apache modules the multi-processing module can be managed with the to
 
 All is fine whem mpm_prefork already is enabled.
 
-Disable mpm_event when it is currently active
+Disable mpm_event when it is currently active.
 
 .. code-block:: bash
 
