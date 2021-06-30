@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2021-06-30 00:34+0200\n"
-"PO-Revision-Date: 2021-05-12 20:17+0000\n"
+"PO-Revision-Date: 2021-06-30 22:35+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
@@ -506,32 +506,38 @@ msgid ""
 "**mpm_prefork**. Like other Apache modules the multi-processing module can "
 "be managed with the tools a2dismod and a2enmod."
 msgstr ""
+"Zentrale Bedeutung hat die Auswahl des Multi-Processing-Modules (MPM). Für "
+"den OTOBO-Betrieb empfehlen wir das Modul **mpm_prefork**. Wie andere Apache-"
+"Module kann auch das MPM-Modul mit den Tools a2dismod und a2enmod verwaltet "
+"werden."
 
 #: ../../content/installation.rst:165
 msgid "All is fine whem mpm_prefork already is enabled."
 msgstr ""
+"Möglicherweise ist mpm_prefork bereits vorausgewählt. Dann kann dieser "
+"Schritt übersprungen werden."
 
 #: ../../content/installation.rst:167
 msgid "Disable mpm_event when it is currently active"
-msgstr ""
+msgstr "Deaktivieren Sie mpm_event, falls das Modul aktiv ist"
 
 #: ../../content/installation.rst:173
 msgid "Disable mpm_worker in case that MPM is enabled."
-msgstr ""
+msgstr "Deaktivieren Sie mpm.worker, falls dieses MPM aktiv ist."
 
 #: ../../content/installation.rst:179
 msgid "Finally activate mpm_prefork."
-msgstr ""
+msgstr "Und aktivieren Sie schließlich mpm_prefork."
 
 #: ../../content/installation.rst:185
-#, fuzzy
 msgid ""
 "OTOBO requires a few more Apache modules to be active for optimal operation. "
 "Again, on most platforms you can make sure they are active via the tool "
 "a2enmod."
 msgstr ""
-"Damit OTOBO optimal funktioniert, müssen einige Apache-Module aktiv sein. "
-"Deren Status können Sie auf den meisten Systemen mit dem Tool a2enmod prüfen."
+"Damit OTOBO optimal funktioniert, müssen weitere Apache-Module aktiv sein. "
+"Auch deren Status können Sie auf den meisten Systemen mit dem Tool a2enmod "
+"prüfen."
 
 #: ../../content/installation.rst:196
 msgid ""
@@ -559,31 +565,29 @@ msgid "Configure Apache without SSL support"
 msgstr "Apache ohne SSL-Unterstützung konfigurieren"
 
 #: ../../content/installation.rst:203
-#, fuzzy
 msgid ""
 "Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to "
 "the apache ``sites-available`` directory. In most cases no further editing "
 "of the template is required. Then enable the new configuration."
 msgstr ""
-"Kopieren Sie die passende Vorlage aus ``/opt/otobo/scripts/apache2-httpd."
-"include.conf`` als Datei ``zzz_otobo.conf`` in das Apache-"
-"Konfigurationsverzeichnis (zzz_ um sicherzustellen, dass die Datei nach "
-"allen anderen Konfigurationsdateien geladen wird)."
+"Kopieren Sie die Vorlage ``/opt/otobo/scripts/apache2-httpd.include.conf`` "
+"in das Apache-Verzeichnis ``sites-available``. In den meisten Fällen muss "
+"die Vorlage nicht weiter angepasst werden. Aktivieren Sie die neue "
+"Konfiguration."
 
 #: ../../content/installation.rst:216
 msgid "Configure Apache **with** SSL support"
 msgstr "Apache **mit** SSL-Unterstützung kofigurieren"
 
 #: ../../content/installation.rst:218
-#, fuzzy
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
 "the apache ``sites-available`` directory."
 msgstr ""
-"Kopieren Sie die Vorlagen ``/opt/otobo/scripts/apache2-httpd-vhost-80."
-"include.conf`` und ``/opt/otobo/scripts/apache2-httpd-vhost-443.include."
-"conf`` in das Apache-Verzeichnis ``sites-availible`` ."
+"Kopieren Sie die Vorlagen ``/opt/otobo/scripts/apache2-httpd-vhost-80.include"
+".conf`` und ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` in "
+"das Apache-Verzeichnis ``sites-availible``."
 
 #: ../../content/installation.rst:227
 msgid ""
@@ -1716,9 +1720,8 @@ msgstr ""
 "Ports definieren."
 
 #: ../../content/installation-docker.rst:378
-#, fuzzy
 msgid "Customizing the OTOBO Docker image"
-msgstr "Docker Images abrufen"
+msgstr "Docker Image individualisieren"
 
 #: ../../content/installation-docker.rst:380
 msgid ""
@@ -1728,6 +1731,11 @@ msgid ""
 "local*. The advantage of this approach is that the image itself does not "
 "have to be modified."
 msgstr ""
+"Viele Anpassungen können im externen Volume *otobo_opt_otobo* vorgenommen "
+"werden, das dem Verzeichnis */opt/otobo* im Docker Image entspricht. So "
+"können Sie z. B. lokale Perl-Module in */opt/otobo/local* installieren. Der "
+"Vorteil dieser Vorgehensweise besteht darin, dass das Image selbst dabei "
+"nicht verändert wird."
 
 #: ../../content/installation-docker.rst:384
 msgid ""
@@ -1739,6 +1747,13 @@ msgid ""
 "process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-"
 "docker-image."
 msgstr ""
+"Zusätzliche Debian-Pakete zu installieren ist etwas aufwändiger. Sie können "
+"dazu entweder ein individuelles *Dockerfile* auf Grundlage des OTOBO Image "
+"erzeugen. Oder Sie erstellen das angepasste Image direkt aus einem laufenden "
+"Container heraus. Nutzen Sie dazu den Befehl `docker commit` – mehr dazu "
+"unter https://docs.docker.com/engine/reference/commandline/commit/. Eine "
+"gute Anleitung mit Beispielen (auf Englisch) finden Sie auch unter "
+"https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 
 #: ../../content/installation-docker.rst:389
 msgid ""
@@ -1754,34 +1769,54 @@ msgid ""
 "care who the caller is. This leaves us with following example commands, "
 "where we add furtune cookies to otobo:"
 msgstr ""
+"Die zweite Vorgehensweise birgt zwei Probleme: Erstens wird das Image *otobo*"
+" standardmäßig mit dem Benutzer *otobo* und der UID 1000 ausgeführt. Der "
+"User *otobo* ist aber nicht berechtigt, Systempakete zu installieren. Der "
+"erste Schritt zur Lösung besteht deshalb darin, beim Ausführen des Images "
+"die Option`--user root` zu übergeben. Zweitens bricht das Standard-Skript "
+"zur Definition des Einstiegspunktes */opt/otobo_install/entrypoint.sh* "
+"sofort ab, wenn es als *root* aufgerufen wird. Das wurde so angelegt, um zu "
+"verhindern, dass der Vorgang unbeabsichtigt als *root* ausgeführt wird. Der "
+"zweite Schritt zur Lösung besteht deshalb darin, ein anderes Entrypoint-"
+"Skript anzugeben, dem egal ist, von wem es aufgerufen wird. Wir nutzen "
+"folgende Beispielbefehle, um Fortune Cookies für OTOBO zu setzen:"
 
 #: ../../content/installation-docker.rst:398
 msgid ""
 "Pull a tagged OTOBO image, if we don't have it yet, and check whether the "
 "image already provides fortune cookies:"
 msgstr ""
+"Pullen Sie ein getaggtes OTOBO Image (sofern nicht bereits vorhanden), und "
+"prüfen Sie, ob im Image schon Fortune Cookies bereitgestellt werden:"
 
 #: ../../content/installation-docker.rst:405
 msgid ""
 "Add fortune cookies to a named container running the original OTOBO image. "
 "This is done in an interactive session as the user *root*:"
 msgstr ""
+"Ergänzen Sie die Fortune Cookies in einem benannten Container im originalen "
+"OTOBO Image. Dazu nutzen wir eine interaktive Session und den User *root*:"
 
 #: ../../content/installation-docker.rst:416
 msgid ""
 "Create an image from the stopped container and give it a name. Take into "
 "account that the default user and entrypoint script must be restored:"
 msgstr ""
+"Erzeugen Sie ein Image auf Basis des gestoppten Containers und vergeben Sie "
+"einen Namen. Beachten Sie, dass der Standardbenutzer und das Entrypoint-"
+"Skript wiederhergestellt werden müssen:"
 
 #: ../../content/installation-docker.rst:423
 msgid "Finally we can doublecheck:"
-msgstr ""
+msgstr "Schließlich prüfen wir, ob alles funktioniert hat:"
 
 #: ../../content/installation-docker.rst:432
 msgid ""
 "The modified image can be specified in your *.env* file and then be used for "
 "fun and profit."
 msgstr ""
+"Das modifizierte Image kann in Ihrer *.env*-Datei angegeben und frei "
+"verwendet werden."
 
 #: ../../content/installation-docker.rst:435
 msgid "Building local images"
@@ -2412,7 +2447,6 @@ msgstr ""
 "docker` relevant für Sie."
 
 #: ../../content/migration-from-otrs-6.rst:89
-#, fuzzy
 msgid ""
 "Under Apache, there are pitfalls with running two independent applications "
 "under mod_perl on the same server. These pitfalls can be alleviated with the "
@@ -2421,12 +2455,13 @@ msgid ""
 "Apache config files in the directory */etc/apache2/sites-available* and add "
 "the setting in case it is missing."
 msgstr ""
-"Unter Apache kann es zu Problemen kommen, wenn zwei Anwendungen zeitgleich "
-"unter mod_perl auf demselben Server laufen. Abhilfe schafft hier die "
-"mod_perl-Einstellung ``PerlOptions +Parent``. Sie sorgt dafür, dass die "
-"Anwendungen jeweils eigene Perl-Interpreter verwenden. Bitte prüfen Sie die "
-"Apache-Konfigurationsdateien im Verzeichnis */etc/apache2/sites-enabled* und "
-"ergänzen Sie die Einstellung, falls sie noch nicht gesetzt ist."
+"Unter Apache kann es zu Problemen kommen, wenn zwei voneinander unabhängige "
+"Anwendungen zeitgleich unter mod_perl auf demselben Server laufen. Abhilfe "
+"schafft hier die mod_perl-Einstellung ``PerlOptions +Parent``. Sie sorgt "
+"dafür, dass die Anwendungen jeweils eigene Perl-Interpreter verwenden. Bitte "
+"prüfen Sie Ihre Apache-Konfigurationsdateien im Verzeichnis */etc/apache2/"
+"sites-available* und ergänzen Sie die Einstellung, falls sie noch nicht "
+"gesetzt ist."
 
 #: ../../content/migration-from-otrs-6.rst:94
 msgid ""
@@ -2509,9 +2544,8 @@ msgid "OTRSSystemConfigurationHistory"
 msgstr "OTRSSystemConfigurationHistory"
 
 #: ../../content/migration-from-otrs-6.rst:113
-#, fuzzy
 msgid "Znuny4OTRS-PasswordPolicy"
-msgstr "Regel Passwortrichtlinie"
+msgstr "Znuny4OTRS-PasswordPolicy"
 
 #: ../../content/migration-from-otrs-6.rst:117
 msgid "Step 2: Preparing the new OTOBO system and server"
@@ -3879,15 +3913,14 @@ msgid "Hardware and Software Requirements"
 msgstr "Hardware- und Software-Anforderungen"
 
 #: ../../content/requirements.rst:14
-#, fuzzy
 msgid ""
 "The OTOBO web application can be installed on Linux and other Unix "
 "derivates, e.g. OpenBSD or FreeBSD. Running OTOBO on Microsoft Windows is "
 "not supported."
 msgstr ""
-"OTRS kann unter Linux und anderen Unix-Derivaten (z. B. OpenBSD oder "
-"FreeBSD) installiert werden. Das Ausführen von OTOBO unter Microsoft Windows "
-"ist nicht möglich."
+"OTOBO kann als Webanwendung unter Linux und anderen Unix-Derivaten wie "
+"OpenBSD oder FreeBSD installiert werden. Das Ausführen von OTOBO unter "
+"Microsoft Windows wird nicht unterstützt."
 
 #: ../../content/requirements.rst:17
 msgid ""
@@ -3896,6 +3929,10 @@ msgid ""
 "server and the database server may be installed either on the same or on "
 "different hosts."
 msgstr ""
+"Die Webanwendung nutzt eine relationale Datenbank als Backend. Um OTOBO "
+"ausführen zu können, benötigen Sie also mindestens einen Webserver und einen "
+"Datenbankserver. Diese können wahlweise beide auf einem Server oder auf "
+"unterschiedlichen Hosts installiert werden."
 
 #: ../../content/requirements.rst:20
 msgid ""
@@ -3903,27 +3940,29 @@ msgid ""
 "the web and the database server are already included in the setup. Support "
 "for deployment with Kubernetes is under development."
 msgstr ""
+"Alternativ kann OTOBO unter Docker ausgeführt werden. In diesem Fall sind "
+"Web- und Datenbankserver bereits im Setup enthalten. Die Bereitstellung mit "
+"Kubernetes wird derzeit gerade entwickelt."
 
 #: ../../content/requirements.rst:23
-#, fuzzy
 msgid ""
 "The OTOBO web application requires Perl along with additional Perl modules "
 "from CPAN. The modules can be installed either with a Perl package manager "
 "or via the package manager of your operating system (rpm, yast, apt-get). "
 "There is console command for checking the module dependencies."
 msgstr ""
-"Für Perl benötigen Sie einige zusätzliche Module, die entweder über die Perl-"
-"Shell und CPAN oder über den Paketmanager Ihres Betriebssystems (rpm, yast, "
-"apt-get) installiert werden können."
+"OTOBO benötigt Perl mit einigen weiteren CPAN-Modulen. Sie können diese "
+"zusätzlichen Perl-Module über eine Perl-Paketverwaltung oder den "
+"Paketmanager Ihres Betriebssystems (rpm, yast, apt-get) installieren. Ein "
+"Konsolebefehl prüft die Modulabhängigkeiten."
 
 #: ../../content/requirements.rst:32
-#, fuzzy
 msgid ""
 "If some packages are missing, you can get an install command for your "
 "operating system by running the script with the ``--list`` option."
 msgstr ""
 "Falls Pakete fehlen, erhalten Sie einen Installationsbefehl für Ihr "
-"Betriebssystem, wenn Sie das Skript mit der Option ``--list`` ausführen."
+"Betriebssystem, indem Sie das Skript mit der Option ``--list`` ausführen."
 
 #: ../../content/requirements.rst:38
 msgid "The listed commands should then be executed with root privileges."
@@ -4010,22 +4049,20 @@ msgid "Perl 5.24.0 or higher"
 msgstr "Perl 5.24.0 oder höher"
 
 #: ../../content/requirements.rst:141
-#, fuzzy
 msgid ""
 "Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl --list`` "
 "console command"
 msgstr ""
 "Alle Perl-Pakete, die vom Konsolebefehl ``/opt/otobo/bin/otobo.CheckModules."
-"pl`` aufgeführt werden"
+"pl`` ausgegeben werden"
 
 #: ../../content/requirements.rst:144
-#, fuzzy
 msgid "Web Server"
 msgstr "Webserver"
 
 #: ../../content/requirements.rst:144
 msgid "Apache HTTP Server Version 2.4"
-msgstr ""
+msgstr "Apache HTTP Server Version 2.4"
 
 #: ../../content/requirements.rst:150
 msgid "Databases"
@@ -4056,16 +4093,16 @@ msgid "Elasticsearch 7.x (fast search function for live previews)"
 msgstr "Elasticsearch 7.x (Schnellsuche mit Live-Preview)"
 
 #: ../../content/requirements.rst:154
-#, fuzzy
 msgid "Redis (fast caching)"
-msgstr "Redis sorgt für schnelles Caching."
+msgstr "Redis (schnelles Caching)"
 
 #: ../../content/requirements.rst:155
-#, fuzzy
 msgid ""
 "nginx or any other web server that can be used as a reverse proxy (SSL "
 "support and load distribution)"
-msgstr "Jeder andere Webserver, der als Reverseproxy eingesetzt werden kann"
+msgstr ""
+"nginx oder jeder andere Webserver, der als Reverseproxy eingesetzt werden "
+"kann (SSL-Unterstützung und Lastverteilung)"
 
 #: ../../content/requirements.rst:162
 msgid "Web browsers"
