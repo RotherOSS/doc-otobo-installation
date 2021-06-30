@@ -13,7 +13,7 @@ Support for deployment with Kubernetes is under development.
 The OTOBO web application requires Perl along with additional Perl modules from CPAN.
 The modules can be installed either with a Perl package manager
 or via the package manager of your operating system (rpm, yast, apt-get).
-There is console command for checking the module dependencies.
+There is a console command for checking the module dependencies:
 
 .. code-block:: bash
 
