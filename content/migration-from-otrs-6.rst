@@ -22,22 +22,22 @@ Migration Possibilities
 
 With the OTOBO Migration Interface it is possible to employ the following migration strategies:
 
-1. The general strategy where many combinations are possible.
+1. The general strategy support many different combinations:
 
     1. Change server: Migrate and simultaneously move to a new application server.
 
     2. Separate application and web servers: It's your choice whether you want to run application and database server on
     the same host or each on a dedictated host. This choice is regardless of the previous setup in OTRS / ((OTRS)) Community Edition.
 
-    3. Different databases: Migrate from any of the supported databases to any other one.
+    3. Different databases: Migrate from any of the supported databases to any other supported database.
 
-    4. Different operating system: Switch from any supported operating system to any other supported operating system during migration.
+    4. Different operating system: Switch from any supported operating system to any other supported operating system.
 
     5. Docker: Migrate to a Docker-based installation of OTOBO 10.
 
 2. A variant of the general strategy where the database migration is streamlined.
 The relevant OTRS database tables are exported, transformed, and then imported into the OTOBO database.
-This ETL-like migration is recommended when the source database mustn't have to suffer increased load
+This ETL-like migration is recommended when the source database mustn't suffer from increased load
 or when access to the source database is a bottleneck.
 
 3. Migration from an Oracle based OTRS 6 installation to Oracle based OTOBO installation
@@ -49,7 +49,7 @@ But for Docker-based installations some peculiarities have to be considered.
 .. note::
 
 It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration.
-This can speed up the generic migration.
+This can speed up the general migration.
 
 Migration Requirements
 ----------------------
@@ -60,8 +60,8 @@ and that you want to transfer both configuration and data to OTOBO.
 .. warning::
 
     Please consider carefully whether you really need the data and configuration.
-    Experience shows that quite often a new start is the better option, as in many cases
-    the previously used installation and configuration was rather suboptimal anyway.
+    Experience shows that quite often a new start is the better option. This is because in many cases
+    the previously used installation and configuration was rather suboptimal anyways.
     It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
     We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
@@ -84,7 +84,7 @@ If access is not possible, or when the speed of the migration should be optimise
 Step 1: Install the new OTOBO System
 ------------------------------------
 
-Please start with installing the new OTOBO system to which your OTRS / ((OTRS)) Community Edition instance will then be migrated.
+Please start with installing a new OTOBO system. Your old OTRS / ((OTRS)) Community Edition installation will be migrated to that new system.
 We strongly recommend to read the chapter :doc:`installation`. For Docker-based installations we refer to the chapter :doc:`installation-docker`.
 
 .. warning::
@@ -260,7 +260,7 @@ This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* with
 Optional step: Streamlined migration of the database
 ----------------------------------------------------
 
-In the generic migration strategy, all data in the database tables is copied row by row from the OTRS database
+In the general migration strategy, all data in the database tables is copied row by row from the OTRS database
 into the OTOBO database.
 Exporting the data from the OTRS database and importing it into the OTOBO database might save time and is more
 stable in some circumstances.
@@ -309,8 +309,8 @@ Native installation:
     otobo> cd <dump_dir>
     otobo> mysql -u root -p<root_secret> otobo < otrs_pre.sql
     otobo> mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
     otobo> mysql -u root -p<root_secret> otobo < otrs_data.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
 
 Docker-based installation:
 
