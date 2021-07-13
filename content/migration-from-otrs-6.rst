@@ -309,8 +309,8 @@ Native installation:
     otobo> cd <dump_dir>
     otobo> mysql -u root -p<root_secret> otobo < otrs_pre.sql
     otobo> mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
     otobo> mysql -u root -p<root_secret> otobo < otrs_data.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
 
 Docker-based installation:
 
