@@ -427,30 +427,35 @@ Building local images
 .. note::
 
     Building Docker images locally is usually only needed during development.
+    Another use case is when more current base imagags should be used for an installation.
 
-The files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:
+The Docker files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:
 
 * *otobo.web.dockerfile*
 * *otobo.nginx.dockerfile*
 * *otobo.elasticsearch.dockerfile*
-* *bin/docker/build_docker_images.sh*
+
+The script for the actual creation of the images is *bin/docker/build_docker_images.sh*.
 
 .. code-block:: bash
 
    docker_admin> cd /opt
    docker_admin> git clone https://github.com/RotherOSS/otobo.git
+   docker_admin> # checkout the wanted branch. e.g. git checkout rel-10_0_11
    docker_admin> cd otobo
+   docker_admin> # modify the docker files if necessary
    docker_admin> bin/docker/build_docker_images.sh
    docker_admin> docker image ls
 
-The locally built images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*.
-After building the local images, one can specify the images to be used by setting
+The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*.
+
+After building the local images, one can return to the *docker-compose* directory. The local images are declared by setting
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
 Automatic Installation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is mostly useful for
+Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is useful for
 running the test suite on a fresh installation.
 
 .. warning::
@@ -496,7 +501,7 @@ List of useful commands
 * ``docker-compose ps`` show the running containers
 
 Resources
-~~~~~~~~~
+----------------------------------
 
 * `Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_
 * `Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_
