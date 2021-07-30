@@ -366,13 +366,15 @@ First comes generation of the new volume. In these sample commands, we use the e
     adapted nginx configuration. So for version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO 10.0.4 listen
     to the ports 8080 and 8443.
 
-After setting up the volume, the adapted configuration must be activated.
+After setting up the volume, the adapted configuration must be activated. The new volume is set up in
+*docker-compose/otobo-nginx-custom-config.yml*. Therefore this file must be added to **COMPOSE_FILE**.
+Then Nginx must be directed to use the new config. This is done by setting **NGINX_ENVSUBST_TEMPLATE_DIR** in the environment.
 In order to achieve this, uncomment or add the following lines in your *.env* file:
 
 .. code-block:: text
 
-    NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom
     COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-https.yml:docker-compose/otobo-nginx-custom-config.yml
+    NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom
 
 The changed Docker Compose configuration can be inspected with:
 
