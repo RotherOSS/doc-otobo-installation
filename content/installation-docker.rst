@@ -308,17 +308,21 @@ Advanced topics
 Custom configuration of the nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default Docker-based OTOBO installation provides the container `otobo_nginx_1`. This container
-provides HTTPS support for the HTTP-based OTOBO web application.
-The default config template for nginx can be found within the Docker image,
-specifically in the file */etc/nginx/template/otobo_nginx.conf.template*.
-When the container is started, the actually used configuration file is generated from the template.
-This is done by replacing each macro in the template with the corresponding environment variable.
-In the default template file, only the following macros are used:
+The default Docker-based OTOBO installation includes the container `otobo_nginx_1`. This container
+provides HTTPS support for the HTTP-based OTOBO web application by running Nginx as a reverse proxy.
+The base image used for this container is the official Nginx Docker image, https://hub.docker.com/_/nginx.
+The OTOBO layer only adds some tools and a default configuration for OTOBO.
+
+The default OTOBO specific configuration can be found within the Docker image at
+*/etc/nginx/template/otobo_nginx.conf.template*. Actually, this is only a template for the final configuration.
+There is a process, provided by the Nginx base image, that replaces
+the macros in the template with the corresponding environment variable. This process runs when the container starts up.
+In the default template file, the following macros are used:
 * `${OTOBO_NGINX_SSL_CERTIFICATE}`
 * `${OTOBO_NGINX_SSL_CERTIFICATE_KEY}
 * `${OTOBO_NGINX_WEB_HOST}`
 * `${OTOBO_NGINX_WEB_PORT}`
+This means for example the HTTPS port can be changed from 8443 to 8444 by setting `OTOBO_WEB_HTTPS_PORT=8444` in *.env*.
 
 There are various possibilities for customizing the nginx configuration. One way is to use a locally built
 image that is derived from the image `otobo-nginx-webproxy`. In such a local image, nginx can be configured in a
@@ -328,16 +332,28 @@ very flexible way.
 
     The following approach is only supported in OTOBO 10.0.4 or later.
 
-Another supported approach is to only override the default config template with a customized version.
-In this case, we have to create a volume that contains the adapted nginx config template, first.
+When the standard macros are not sufficient, then the custumisation can go further.
+This can be done by replacing the default config template with a customized version. It is best practice to
+not simple change the configuration in the running container. Instead we first create a persistent volume that contains
+the custom config. Then we tell the *otobo_nginx_1* to mount the new volume and to use the customized configuration.
+
+First comes generation of the new volume. In these sample commands, we use the existing template as a starting point.
 
 .. code-block:: bash
 
+    # stop the possibly running containers
     docker_admin> cd /opt/otobo-docker
     docker_admin> docker-compose down
+
+    # create a volume that is initially not connected to otobo_nginx_1
     docker_admin> docker volume create otobo_nginx_custom_config
+
+    # find out where the new volume is located on the Docker host
     docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
     docker_admin> echo $otobo_nginx_custom_config_mp  # just a sanity check
+    docker_admin> ls $otobo_nginx_custom_config_mp    # another sanity check
+
+    # copy the default config into the new volume
     docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest  # use the appropriate label
     docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
