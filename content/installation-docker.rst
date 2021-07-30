@@ -324,9 +324,6 @@ In the default template file, the following macros are used:
 * `${OTOBO_NGINX_WEB_PORT}`
 This means for example the HTTPS port can be changed from 8443 to 8444 by setting `OTOBO_WEB_HTTPS_PORT=8444` in *.env*.
 
-There are various possibilities for customizing the nginx configuration. One way is to use a locally built
-image that is derived from the image `otobo-nginx-webproxy`. In such a local image, nginx can be configured in a
-very flexible way.
 
 .. warning::
 
