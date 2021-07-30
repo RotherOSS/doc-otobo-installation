@@ -239,7 +239,8 @@ Docker environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the instructions we did only minimal configuration. But the file *.env* allows to set
-more variables. Here is a list of all supported environment variables:
+more variables. Here is a short list of the most important environment variables.
+Note that more environment variables are supported by the base images.
 
 **MariaDB settings**
 
