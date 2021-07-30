@@ -322,8 +322,7 @@ In the default template file, the following macros are used:
 * `${OTOBO_NGINX_SSL_CERTIFICATE_KEY}
 * `${OTOBO_NGINX_WEB_HOST}`
 * `${OTOBO_NGINX_WEB_PORT}`
-This means for example the HTTPS port can be changed from 8443 to 8444 by setting `OTOBO_WEB_HTTPS_PORT=8444` in *.env*.
-
+See step `4.` for how this configuration possibility was used for setting up the SSL certificate.
 
 .. warning::
 
