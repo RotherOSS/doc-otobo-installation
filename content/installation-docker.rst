@@ -355,8 +355,9 @@ First comes generation of the new volume. In these sample commands, we use the e
     docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
-    docker_admin> # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
-    docker_admin> docker-compose up --detach
+
+    # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
+    docker_admin> vim $otobo_nginx_custom_config_mp/otobo_nginx.conf.template
 
 .. warning::
 
