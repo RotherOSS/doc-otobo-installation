@@ -66,15 +66,31 @@ For example, when *OTOBO 10.0.11* is the current version then please use the bra
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Docker Compose configuration file *.env* allows you to manage your installation of OTOBO.
+The Docker Compose configuration file *.env* is your primary interface for managing your installation of OTOBO.
 This file must first be created and then be adapted by yourself. In order to simplify the task there
-are two example files that should be used as starting point. If the OTOBO web application is planned to
-be accessed via HTTPS, then please use *.docker_compose_env_https*. Access via HTTPS is the recommended
-mode of operation. If HTTPS is not required then use *.docker_compose_env_http* as the starting point.
+are several example files that should be used as starting point.
+Which sample file it the best fit depends on your use case. In most cases the decision is between
+*.docker_compose_env_https* and *.docker_compose_env_https*, depending on whether TLS must be supported or not.
+The other files are for more specialised use cases.
+
+.docker_compose_env_http
+    The OTOBO web app provides HTTP.
+
+.docker_compose_env_https
+    The OTOBO web app provides HTTPS by runnning Nginx as a reverse proxy webserver.
+
+.docker_compose_env_https_custom_nginx
+    Like *.docker_compose_env_https* but with support for a custom Ninx configuration.
+
+.docker_compose_env_https_kerberos
+    Like *.docker_compose_env_https* but with sample setup for single sign on.
+
+.docker_compose_env_http_selenium and .docker_compose_env_https_selenium
+    These are used only for development when Selenium testing is activated.
 
 .. note::
 
-    Use ``ls -a`` for listing the hidden template files.
+    Use ``ls -a`` for listing the hidden sample files.
 
 Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP.
 When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support
