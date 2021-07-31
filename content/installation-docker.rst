@@ -468,7 +468,8 @@ Building local images
 .. note::
 
     Building Docker images locally is usually only needed during development.
-    Another use case is when more current base imagags should be used for an installation.
+    Other use cases are when more current base images should be used for an installation
+    or when extra functionality must be added to the images.
 
 The Docker files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:
 
