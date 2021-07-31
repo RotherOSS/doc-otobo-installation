@@ -318,10 +318,19 @@ The default OTOBO specific configuration can be found within the Docker image at
 There is a process, provided by the Nginx base image, that replaces
 the macros in the template with the corresponding environment variable. This process runs when the container starts up.
 In the default template file, the following macros are used:
-* `${OTOBO_NGINX_SSL_CERTIFICATE}`
-* `${OTOBO_NGINX_SSL_CERTIFICATE_KEY}
-* `${OTOBO_NGINX_WEB_HOST}`
-* `${OTOBO_NGINX_WEB_PORT}`
+
+OTOBO_NGINX_SSL_CERTIFICATE
+    For configuring SSL.
+
+OTOBO_NGINX_SSL_CERTIFICATE_KEY
+    For configuring SSL.
+
+OTOBO_NGINX_WEB_HOST
+    The internally used HTTP host.
+
+OTOBO_NGINX_WEB_PORT
+    The internally used HTTP port.
+
 See step `4.` for how this configuration possibility was used for setting up the SSL certificate.
 
 .. warning::
