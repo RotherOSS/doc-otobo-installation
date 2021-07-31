@@ -308,10 +308,10 @@ Advanced topics
 Custom configuration of the nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default Docker-based OTOBO installation includes the container `otobo_nginx_1`. This container
-provides HTTPS support for the HTTP-based OTOBO web application by running Nginx as a reverse proxy.
-The base image used for this container is the official Nginx Docker image, https://hub.docker.com/_/nginx.
-The OTOBO layer only adds some tools and a default configuration for OTOBO.
+The container ``otobo_nginx_1`` provides HTTPS support by running Nginx as a reverse proxy.
+The Docker image that runs in the container
+is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with
+a OTOBO specific configuration of Nginx.
 
 The default OTOBO specific configuration can be found within the Docker image at
 */etc/nginx/template/otobo_nginx.conf.template*. Actually, this is only a template for the final configuration.
@@ -328,8 +328,8 @@ See step `4.` for how this configuration possibility was used for setting up the
 
     The following approach is only supported in OTOBO 10.0.4 or later.
 
-When the standard macros are not sufficient, then the custumisation can go further.
-This can be done by replacing the default config template with a customized version. It is best practice to
+When the standard macros are not sufficient, then the customisation can go further.
+This can be achieved by replacing the default config template with a customized version. It is best practice to
 not simple change the configuration in the running container. Instead we first create a persistent volume that contains
 the custom config. Then we tell the *otobo_nginx_1* to mount the new volume and to use the customized configuration.
 
