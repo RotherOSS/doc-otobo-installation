@@ -90,7 +90,7 @@ The other files are for more specialised use cases.
 
 .. note::
 
-    Use `ls -a` for listing the hidden sample files.
+    Use ``ls -a`` for listing the hidden sample files.
 
 Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP.
 When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support
@@ -108,7 +108,7 @@ For the following commands we assume that HTTPS should be supported.
 
 Change the following setting inside your *.env* file:
 
-`OTOBO_DB_ROOT_PASSWORD=<your_secret_password>`
+``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``
 
 The password for the database admin user may be chosen freely. The database admin user is needed to
 create the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated
@@ -146,15 +146,15 @@ In any case the volume needs to be generated manually, and we need to copy the c
 
 The names of the copied files need to be set in our newly created *.env* file. E.g.
 
-`OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt` and
-`OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key`
+``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and
+``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``
 
 Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image.
 
 5. Start the Docker containers with Docker Compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now we start the Docker containers using `docker-compose`. Per default the Docker images will be
+Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be
 fetched from https://hub.docker.com/u/rotheross.
 
 .. code-block:: bash
@@ -177,15 +177,15 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 
     Please configure OTOBO inside the installer with a new MySQL database.
     As MySQL database root password please use the password you configured
-    in the variable `OTOBO_DB_ROOT_PASSWORD` of your *.env* file.
-    Please leave the value `db` for the MySQL hostname untouched.
+    in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your *.env* file.
+    Please leave the value ``db`` for the MySQL hostname untouched.
 
 **Have fun with OTOBO!**
 
 .. note::
 
     To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command:
-    `docker exec -it otobo_web_1 bash`.
+    ``docker exec -it otobo_web_1 bash``.
 
 Additional technical information
 ----------------------------------
@@ -221,13 +221,13 @@ These allow starting and stopping the services without losing data. Keep in mind
 containers are temporary and only data in the volumes is permanent.
 
 otobo_opt_otobo
-    contains */opt/otobo* in the container `web` and `daemon`.
+    contains */opt/otobo* in the container **web** and **daemon**.
 
 otobo_mariadb_data
-    contains */var/lib/mysql* in the container `db`.
+    contains */var/lib/mysql* in the container **db**.
 
 otobo_elasticsearch_data
-    contains */usr/share/elasticsearch/datal* in the container `elastic`.
+    contains */usr/share/elasticsearch/datal* in the container **elastic**.
 
 otobo_redis_data
     contains data for the container `redis`.
@@ -308,28 +308,37 @@ Advanced topics
 Custom configuration of the nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The default Docker-based OTOBO installation includes the container `otobo_nginx_1`. This container
-provides HTTPS support for the HTTP-based OTOBO web application by running Nginx as a reverse proxy.
-The base image used for this container is the official Nginx Docker image, https://hub.docker.com/_/nginx.
-The OTOBO layer only adds some tools and a default configuration for OTOBO.
+The container ``otobo_nginx_1`` provides HTTPS support by running Nginx as a reverse proxy.
+The Docker image that runs in the container
+is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with
+a OTOBO specific configuration of Nginx.
 
 The default OTOBO specific configuration can be found within the Docker image at
 */etc/nginx/template/otobo_nginx.conf.template*. Actually, this is only a template for the final configuration.
 There is a process, provided by the Nginx base image, that replaces
 the macros in the template with the corresponding environment variable. This process runs when the container starts up.
 In the default template file, the following macros are used:
-* `${OTOBO_NGINX_SSL_CERTIFICATE}`
-* `${OTOBO_NGINX_SSL_CERTIFICATE_KEY}
-* `${OTOBO_NGINX_WEB_HOST}`
-* `${OTOBO_NGINX_WEB_PORT}`
+
+OTOBO_NGINX_SSL_CERTIFICATE
+    For configuring SSL.
+
+OTOBO_NGINX_SSL_CERTIFICATE_KEY
+    For configuring SSL.
+
+OTOBO_NGINX_WEB_HOST
+    The internally used HTTP host.
+
+OTOBO_NGINX_WEB_PORT
+    The internally used HTTP port.
+
 See step `4.` for how this configuration possibility was used for setting up the SSL certificate.
 
 .. warning::
 
     The following approach is only supported in OTOBO 10.0.4 or later.
 
-When the standard macros are not sufficient, then the custumisation can go further.
-This can be done by replacing the default config template with a customized version. It is best practice to
+When the standard macros are not sufficient, then the customisation can go further.
+This can be achieved by replacing the default config template with a customized version. It is best practice to
 not simple change the configuration in the running container. Instead we first create a persistent volume that contains
 the custom config. Then we tell the *otobo_nginx_1* to mount the new volume and to use the customized configuration.
 
@@ -459,7 +468,8 @@ Building local images
 .. note::
 
     Building Docker images locally is usually only needed during development.
-    Another use case is when more current base imagags should be used for an installation.
+    Other use cases are when more current base images should be used for an installation
+    or when extra functionality must be added to the images.
 
 The Docker files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:
 
@@ -479,10 +489,10 @@ The script for the actual creation of the images is *bin/docker/build_docker_ima
    docker_admin> bin/docker/build_docker_images.sh
    docker_admin> docker image ls
 
-The locally built Docker images are tagged as `local-<OTOBO_VERSION>` using the version set up the file *RELEASE*.
+The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*.
 
 After building the local images, one can return to the *docker-compose* directory. The local images are declared by setting
-`OTOBO_IMAGE_OTOBO`, `OTOBO_IMAGE_OTOBO_ELASTICSEARCH`, `OTOBO_IMAGE_OTOBO_NGINX` in *.env*.
+``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
 Automatic Installation
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -511,26 +521,26 @@ List of useful commands
 
 **Docker**
 
-* `docker system prune -a` system clean-up (removes all unused images, containers, volumes, networks)
-* `docker version` show version
-* `docker build --tag otobo --file=otobo.web.Dockerfile .` build an image
-* `docker run --publish 80:5000 otobo` run the new image
-* `docker run -it -v opt_otobo:/opt/otobo otobo bash` log into the new image
-* `docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo` try that in case entrypoint.sh is broken
-* `docker ps` show running images
-* `docker images` show available images
-* `docker volume ls` list volumes
-* `docker volume inspect otobo_opt_otobo` inspect a volume
-* `docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl` get volume mountpoint
-* `docker volume rm tmp_volume` remove a volume
-* `docker inspect <container>` inspect a container
-* `docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar` list files in an image
-* `docker exec -it nginx-server nginx -s reload` reload nginx
+* ``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)
+* ``docker version`` show version
+* ``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image
+* ``docker run --publish 80:5000 otobo`` run the new image
+* ``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image
+* ``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that in case entrypoint.sh is broken
+* ``docker ps`` show running images
+* ``docker images`` show available images
+* ``docker volume ls`` list volumes
+* ``docker volume inspect otobo_opt_otobo`` inspect a volume
+* ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
+* ``docker volume rm tmp_volume`` remove a volume
+* ``docker inspect <container>`` inspect a container
+* ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
+* ``docker exec -it nginx-server nginx -s reload`` reload nginx
 
 **Docker Compose**
 
-* `docker-compose config` check and show the configuration
-* `docker-compose ps` show the running containers
+* ``docker-compose config`` check and show the configuration
+* ``docker-compose ps`` show the running containers
 
 Resources
 ----------------------------------
