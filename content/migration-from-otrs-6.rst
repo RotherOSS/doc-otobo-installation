@@ -92,9 +92,11 @@ We strongly recommend to read the chapter :doc:`installation`. For Docker-based 
 .. warning::
 
     Under Apache, there are pitfalls with running two independent applications under mod_perl on the same server.
-    These pitfalls can be alleviated with the mod_perl setting ``PerlOptions +Parent``. This setting makes sure
-    that the applications use their own dedicated Perl interpreter. Please check your Apache config files in
-    the directory */etc/apache2/sites-available* and add the setting in case it is missing.
+    These pitfalls can be alleviated by having separate virtual hosts for OTRS and OTOBO.
+    Then the setting ``PerlOptions +Parent`` can be used for making sure that each application
+    uses their own dedicated Perl interpreter.
+    But in most cases it is more simple to run separate webservers or to remove the OTRS configuration before startin up OTOBO.
+    Check the directory */etc/apache2/sites-available* for what configurations are currently active.
 
 After finishing the installation tutorial, please log in to the OTOBO Admin Area ``Admin -> Packages``
 and install all required OTOBO OPM packages.
