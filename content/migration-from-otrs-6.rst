@@ -279,9 +279,11 @@ stable in some circumstances.
 
 First of all, we need a dump of the needed OTRS database tables.
 Then we need to perform a couple of transformations:
-  - convert the character set to *utf8mb4*
-  - rename a couple of tables
-  - shorten some table columns
+
+    - convert the character set to *utf8mb4*
+    - rename a couple of tables
+    - shorten some table columns
+
 After the transfomation we can overwrite the tables in the OTOBO schema with the transformed data from OTRS.
 Effectively we need not a single dump file, but several SQL scripts.
 
