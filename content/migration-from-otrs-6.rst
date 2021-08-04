@@ -50,8 +50,8 @@ This use case is not supported by the general strategy. This means that a varian
 
 .. note::
 
-It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration.
-This can speed up the general migration.
+    It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration.
+    This can speed up the general migration.
 
 Migration Requirements
 ----------------------
