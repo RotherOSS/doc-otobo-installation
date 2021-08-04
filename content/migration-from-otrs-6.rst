@@ -43,8 +43,10 @@ or when access to the source database is a bottleneck.
 3. Migration from an Oracle based OTRS 6 installation to Oracle based OTOBO installation
 This use case is not supported by the general strategy. This means that a variant of the streamlined strategy must be used.
 
-All strategies work for both Docker-based and for native installations.
-But for Docker-based installations some peculiarities have to be considered.
+.. warning::
+
+    All strategies work for both Docker-based and for native installations.
+    But for Docker-based installations some peculiarities have to be considered. See steṕ 3b. for details.
 
 .. note::
 
