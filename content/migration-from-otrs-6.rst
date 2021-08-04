@@ -130,7 +130,7 @@ Then log in on the server as user ``root`` and execute the following commands:
     root> su - otobo
     otobo>
     otobo> /opt/otobo/bin/Cron.sh stop
-    otobo> /opt/otobo/bin/otobo.Daemon stop --force
+    otobo> /opt/otobo/bin/otobo.Daemon.pl stop --force
 
 When OTOBO is running in Docker, you just need to stop the Docker container ``otobo_daemon_1``:
 
