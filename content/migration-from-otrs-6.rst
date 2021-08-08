@@ -107,8 +107,6 @@ We strongly recommend to read the chapter :doc:`installation`. For Docker-based 
     Check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for which configurations are currently
     available and which are enabled.
 
-    Running two Perl interpreters on different virtual hosts should be possible, but this approach hasn't been thoroughly tested yet.
-
 After finishing the installation please log in as *root@localhost*. Navigate to the OTOBO Admin Area ``Admin -> Packages``
 and install all required OTOBO OPM packages.
 
