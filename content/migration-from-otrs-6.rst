@@ -7,10 +7,8 @@ OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible i
 
 Please take your time for the migration and follow these instructions step by step.
 
-If you have any problem or question, please do not give up :) Call our support line, write an email, or post your query
-in the OTOBO Community forum at https://forum.otobo.org/.
-
-We will find a way to help you.
+If you have any problem or question, please do not despair. Call our support line, write an email, or post your query
+in the OTOBO Community forum at https://forum.otobo.org/. We will find a way to help you!
 
 .. note::
 
@@ -22,7 +20,7 @@ Overview over the Supported Migration Szenarios
 
 With the OTOBO Migration Interface it is possible to employ the following migration strategies:
 
-1.  The general strategy.
+1.  The general migration strategy.
 
     This is the regular way to perform a migration. Many different different combinations are supported:
 
@@ -47,7 +45,7 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
     Use the ETL-like migration when the source database mustn't suffer from increased load
     or when access to the source database is a bottleneck. In the general strategy the data is first read row by row
     from the OTRS database and then inserted into the OTOBO database.
-    In the variant, the relevant OTRS database tables are exported, transformed, and then imported into the OTOBO database.
+    In this variant, the relevant OTRS database tables are first exported, then transformed, and then imported into the OTOBO database.
 
 3.  Migration from an Oracle based OTRS 6 installation to an Oracle based OTOBO installation.
 
@@ -104,7 +102,7 @@ We strongly recommend to read the chapter :doc:`installation`. For Docker-based 
 .. warning::
 
     Under Apache, there are pitfalls with running two independent *mod_perl* applications under on the same webserver.
-    Therefore, it is advised to run OTRS and OTOBE on separate webservers. Alternatively remove the OTRS configuration
+    Therefore, it is advised to run OTRS and OTOBO on separate webservers. Alternatively remove the OTRS configuration
     from Apache before installing OTOBO.
     Check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for which configurations are currently
     available and which are enabled.
