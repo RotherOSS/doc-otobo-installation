@@ -52,15 +52,15 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
     This is a special case that is not supported by the general strategy.
     This means that a variant of the streamlined strategy must be used.
 
-    .. warning::
+.. warning::
 
-        All strategies work for both Docker-based and for native installations.
-        But for Docker-based installations some peculiarities have to be considered. See e.g. steṕ 4b for details.
+All strategies work for both Docker-based and native installations.
+But for Docker-based installations some peculiarities have to be considered. These peculiarities are handled in the optional steps.
 
-    .. note::
+.. note::
 
-        It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration.
-        This can speed up the general migration.
+It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration.
+This can speed up the general migration strategy.
 
 Migration Requirements
 ----------------------
