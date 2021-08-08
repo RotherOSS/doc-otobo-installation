@@ -385,6 +385,10 @@ The application then guides you through the migration process.
 
     .. code-block:: bash
 
+        # native installation
+        root> service apache2 restart
+
+        # Docker-based installation
         docker_admin> cd /opt/otobo-docker
         docker_admin> docker-compose restart web
         docker_admin> docker-compose ps     # otobo_web_1 should be running again
