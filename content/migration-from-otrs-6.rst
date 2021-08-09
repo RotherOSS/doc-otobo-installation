@@ -12,7 +12,7 @@ in the OTOBO Community forum at https://forum.otobo.org/. We will find a way to 
 
 .. note::
 
-    After the migration all data previously available in OTRS 6 will be available in OTOBO.
+    After the migration all data previously available in OTRS 6 will be available in OTOBO 10.
     We do not modify any data of the OTRS 6 installation during the migration.
 
 Overview over the Supported Migration Szenarios
