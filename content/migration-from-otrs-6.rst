@@ -104,8 +104,8 @@ We strongly recommend to read the chapter :doc:`installation`. For Docker-based 
     Under Apache, there are pitfalls with running two independent *mod_perl* applications under on the same webserver.
     Therefore, it is advised to run OTRS and OTOBO on separate webservers. Alternatively remove the OTRS configuration
     from Apache before installing OTOBO.
-    Check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for which configurations are currently
-    available and which are enabled.
+    Use the command ``a2query -s`` and check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for
+    inspecting which configurations are currently available and which are enabled.
 
 After finishing the installation please log in as *root@localhost*. Navigate to the OTOBO Admin Area ``Admin -> Packages``
 and install all required OTOBO OPM packages.
