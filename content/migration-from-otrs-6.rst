@@ -467,6 +467,22 @@ When that happens, please check the settings in *Kernel/Config.pm* and revert th
 On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors
 in the tables *ticket* and *ticket_history* (NULL). These have to be manually resolved before you can resume the migration.
 
+4. Errors in Step 4 when migrating to PostgresQL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In these cases the not so helpful message "System was unable to complete data transfer." is shown by *migration.pl*. The Apache logfile,
+and the OTOBO logfile, show a more meaningful message:
+"Message: ERROR:  permission denied to set parameter "session_replication_role", SQL: 'set session_replication_role to replica;'".
+In order to give the database user **otobo** the needed superuser privileges,
+run the following statement as the PostgreSQL admin: ``ALTER USER otobo WITH SUPERUSER;``.
+Then retry running http://localhost/otobo/migration.pl.
+After the migration, return to the normal state by running ``ALTER USER otobo WITH NOSUPERUSER``.
+
+It is not clear yet, wheter the extended privileges have to be granted in every setup.
+
+.. seealso::
+
+    The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
