@@ -464,7 +464,8 @@ When that happens, please check the settings in *Kernel/Config.pm* and revert th
 3. Migration stops due to MySQL errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors in Table ticket and Table ticket_history (NULL). These have to be manually resolved before you can resume the migration. 
+On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors
+in the tables *ticket* and *ticket_history* (NULL). These have to be manually resolved before you can resume the migration.
 
 
 Step 7: Manual Migration Tasks and Changes
