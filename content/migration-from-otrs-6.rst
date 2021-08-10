@@ -12,7 +12,7 @@ in the OTOBO Community forum at https://forum.otobo.org/. We will find a way to 
 
 .. note::
 
-    After the migration all data previously available in OTRS 6 will be available in OTOBO.
+    After the migration all data previously available in OTRS 6 will be available in OTOBO 10.
     We do not modify any data of the OTRS 6 installation during the migration.
 
 Overview over the Supported Migration Szenarios
@@ -104,8 +104,8 @@ We strongly recommend to read the chapter :doc:`installation`. For Docker-based 
     Under Apache, there are pitfalls with running two independent *mod_perl* applications under on the same webserver.
     Therefore, it is advised to run OTRS and OTOBO on separate webservers. Alternatively remove the OTRS configuration
     from Apache before installing OTOBO.
-    Check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for which configurations are currently
-    available and which are enabled.
+    Use the command ``a2query -s`` and check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for
+    inspecting which configurations are currently available and which are enabled.
 
 After finishing the installation please log in as *root@localhost*. Navigate to the OTOBO Admin Area ``Admin -> Packages``
 and install all required OTOBO OPM packages.
@@ -464,8 +464,25 @@ When that happens, please check the settings in *Kernel/Config.pm* and revert th
 3. Migration stops due to MySQL errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors in Table ticket and Table ticket_history (NULL). These have to be manually resolved before you can resume the migration. 
+On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors
+in the tables *ticket* and *ticket_history* (NULL). These have to be manually resolved before you can resume the migration.
 
+4. Errors in Step 4 when migrating to PostgresQL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In these cases the not so helpful message "System was unable to complete data transfer." is shown by *migration.pl*. The Apache logfile,
+and the OTOBO logfile, show a more meaningful message:
+"Message: ERROR:  permission denied to set parameter "session_replication_role", SQL: 'set session_replication_role to replica;'".
+In order to give the database user **otobo** the needed superuser privileges,
+run the following statement as the PostgreSQL admin: ``ALTER USER otobo WITH SUPERUSER;``.
+Then retry running http://localhost/otobo/migration.pl.
+After the migration, return to the normal state by running ``ALTER USER otobo WITH NOSUPERUSER``.
+
+It is not clear yet, wheter the extended privileges have to be granted in every setup.
+
+.. seealso::
+
+    The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
