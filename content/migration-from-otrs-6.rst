@@ -12,7 +12,7 @@ in the OTOBO Community forum at https://forum.otobo.org/. We will find a way to 
 
 .. note::
 
-    After the migration all data previously available in OTRS 6 will be available in OTOBO 10.
+    After the migration the data previously available in OTRS 6 will be available in OTOBO 10.
     We do not modify any data of the OTRS 6 installation during the migration.
 
 Overview over the Supported Migration Szenarios
@@ -43,13 +43,14 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
 2.  A variant of the general strategy where the database migration is streamlined.
 
     Use the ETL-like migration when the source database mustn't suffer from increased load
-    or when access to the source database is a bottleneck. In the general strategy the data is first read row by row
-    from the OTRS database and then inserted into the OTOBO database.
-    In this variant, the relevant OTRS database tables are first exported, then transformed, and then imported into the OTOBO database.
+    or when access to the source database is a bottleneck. In the general strategy, the data is row by row
+    first read from the *otrs* database and then inserted into the OTOBO database.
+    In this variant, the complete *otrs* database tables are first exported, then transformed,
+    and then imported into the *otobo* database.
 
 3.  Migration from an Oracle based OTRS 6 installation to an Oracle based OTOBO installation.
 
-    This is a special case that is not supported by the general strategy.
+    This is a special case that is not supported by the general migration strategy.
     This means that a variant of the streamlined strategy must be used.
 
 .. warning::
