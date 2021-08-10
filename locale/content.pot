@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-10 00:34+0200\n"
+"POT-Creation-Date: 2021-08-11 00:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1342,7 +1342,7 @@ msgid "If you have any problem or question, please do not despair. Call our supp
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:25
-msgid "After the migration all data previously available in OTRS 6 will be available in OTOBO. We do not modify any data of the OTRS 6 installation during the migration."
+msgid "After the migration the data previously available in OTRS 6 will be available in OTOBO 10. We do not modify any data of the OTRS 6 installation during the migration."
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:29
@@ -1406,552 +1406,568 @@ msgid "A variant of the general strategy where the database migration is streaml
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:55
-msgid "Use the ETL-like migration when the source database mustn't suffer from increased load or when access to the source database is a bottleneck. In the general strategy the data is first read row by row from the OTRS database and then inserted into the OTOBO database. In this variant, the relevant OTRS database tables are first exported, then transformed, and then imported into the OTOBO database."
+msgid "Use the ETL-like migration when the source database mustn't suffer from increased load or when access to the source database is a bottleneck. In the general strategy, the data is row by row first read from the *otrs* database and then inserted into the OTOBO database. In this variant, the complete *otrs* database tables are first exported, then transformed, and then imported into the *otobo* database."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:60
+#: ../../content/migration-from-otrs-6.rst:61
 msgid "Migration from an Oracle based OTRS 6 installation to an Oracle based OTOBO installation."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:62
-msgid "This is a special case that is not supported by the general strategy. This means that a variant of the streamlined strategy must be used."
+#: ../../content/migration-from-otrs-6.rst:63
+msgid "This is a special case that is not supported by the general migration strategy. This means that a variant of the streamlined strategy must be used."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:67
+#: ../../content/migration-from-otrs-6.rst:68
 msgid "All strategies work for both Docker-based and native installations. But for Docker-based installations some peculiarities have to be considered. These peculiarities are handled in the optional steps."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:72
+#: ../../content/migration-from-otrs-6.rst:73
 msgid "It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration. This can speed up the general migration strategy."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:76
+#: ../../content/migration-from-otrs-6.rst:77
 msgid "Migration Requirements"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:78
+#: ../../content/migration-from-otrs-6.rst:79
 msgid "Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\\* running, and that you want to transfer both configuration and data to OTOBO."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:83
+#: ../../content/migration-from-otrs-6.rst:84
 msgid "Please consider carefully whether you really need the data and configuration. Experience shows that quite often a new start is the better option. This is because in many cases the previously used installation and configuration was rather suboptimal anyways. It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice. We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:89
+#: ../../content/migration-from-otrs-6.rst:90
 msgid "You need a running OTOBO installation to start the migration from there!"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:91
+#: ../../content/migration-from-otrs-6.rst:92
 msgid "This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:93
+#: ../../content/migration-from-otrs-6.rst:94
 msgid "If you are planning to migrate to another server, then the OTOBO webserver must be able to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed. In most cases, this is the directory */opt/otrs* on the server running OTRS. The read access can be effected via SSH or via file system mounts."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:98
+#: ../../content/migration-from-otrs-6.rst:99
 msgid "The *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts. If access is not possible, or when the speed of the migration should be optimised, then a dump of the database is sufficient."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:103
+#: ../../content/migration-from-otrs-6.rst:104
 msgid "If SSH and database access between the servers is not possible, please migrate OTRS to OTOBO on the same server and only then move the new installation."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:107
+#: ../../content/migration-from-otrs-6.rst:108
 msgid "Step 1: Install the new OTOBO System"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:109
+#: ../../content/migration-from-otrs-6.rst:110
 msgid "Please start with installing a new OTOBO system. Your old OTRS / ((OTRS)) Community Edition installation will be migrated to that new system. We strongly recommend to read the chapter :doc:`installation`. For Docker-based installations we refer to the chapter :doc:`installation-docker`."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:114
-msgid "Under Apache, there are pitfalls with running two independent *mod_perl* applications under on the same webserver. Therefore, it is advised to run OTRS and OTOBO on separate webservers. Alternatively remove the OTRS configuration from Apache before installing OTOBO. Check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for which configurations are currently available and which are enabled."
+#: ../../content/migration-from-otrs-6.rst:115
+msgid "Under Apache, there are pitfalls with running two independent *mod_perl* applications under on the same webserver. Therefore, it is advised to run OTRS and OTOBO on separate webservers. Alternatively remove the OTRS configuration from Apache before installing OTOBO. Use the command ``a2query -s`` and check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for inspecting which configurations are currently available and which are enabled."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:120
+#: ../../content/migration-from-otrs-6.rst:121
 msgid "After finishing the installation please log in as *root@localhost*. Navigate to the OTOBO Admin Area ``Admin -> Packages`` and install all required OTOBO OPM packages."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:139
+#: ../../content/migration-from-otrs-6.rst:140
 msgid "The following OPM packages and OTRS \"Feature Addons\" need NOT and should NOT be installed, as these features are already available in the OTOBO standard:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:124
+#: ../../content/migration-from-otrs-6.rst:125
 msgid "OTRSHideShowDynamicField"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:125
+#: ../../content/migration-from-otrs-6.rst:126
 msgid "RotherOSSHideShowDynamicField"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:126
+#: ../../content/migration-from-otrs-6.rst:127
 msgid "TicketForms"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:127
+#: ../../content/migration-from-otrs-6.rst:128
 msgid "RotherOSS-LongEscalationPerformanceBoost"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:128
+#: ../../content/migration-from-otrs-6.rst:129
 msgid "Znuny4OTRS-AdvancedDynamicFields"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:129
+#: ../../content/migration-from-otrs-6.rst:130
 msgid "Znuny4OTRS-AutoSelect"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:130
+#: ../../content/migration-from-otrs-6.rst:131
 msgid "Znuny4OTRS-EscalationSuspend"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:131
+#: ../../content/migration-from-otrs-6.rst:132
 msgid "OTRSEscalationSuspend"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:132
+#: ../../content/migration-from-otrs-6.rst:133
 msgid "OTRSDynamicFieldDatabase"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:133
+#: ../../content/migration-from-otrs-6.rst:134
 msgid "OTRSDynamicFieldWebService"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:134
+#: ../../content/migration-from-otrs-6.rst:135
 msgid "OTRSBruteForceAttackProtection"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:135
+#: ../../content/migration-from-otrs-6.rst:136
 msgid "Znuny4OTRS-ExternalURLJump"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:136
+#: ../../content/migration-from-otrs-6.rst:137
 msgid "Znuny4OTRS-QuickClose"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:137
+#: ../../content/migration-from-otrs-6.rst:138
 msgid "Znuny4OTRS-AutoCheckbox"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:138
+#: ../../content/migration-from-otrs-6.rst:139
 msgid "OTRSSystemConfigurationHistory"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:139
+#: ../../content/migration-from-otrs-6.rst:140
 msgid "Znuny4OTRS-PasswordPolicy"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:142
+#: ../../content/migration-from-otrs-6.rst:143
 msgid "Step 2: Deactivate ``SecureMode`` on OTOBO"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:144
+#: ../../content/migration-from-otrs-6.rst:145
 msgid "After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:148
+#: ../../content/migration-from-otrs-6.rst:149
 msgid "Do not forget to actually deploy the changed setting."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:151
+#: ../../content/migration-from-otrs-6.rst:152
 msgid "Step 3: Stop the OTOBO Daemon"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:153
+#: ../../content/migration-from-otrs-6.rst:154
 msgid "This is necessary when the OTOBO Daemon is actually running. Stopping the Daemon is different between Docker-based and non-Docker-based installations."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:156
+#: ../../content/migration-from-otrs-6.rst:157
 msgid "In the non-Docker case execute the following commands as the user *otobo*:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:166
+#: ../../content/migration-from-otrs-6.rst:167
 msgid "When OTOBO is running in Docker, you just need to stop the service ``daemon``:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:176
+#: ../../content/migration-from-otrs-6.rst:177
 msgid "It is recommended to run a backup of the whole OTOBO system at this point. If something goes wrong during migration, you will then not have to repeat the entire installation process, but can instead import the backup for a new migration."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:181
+#: ../../content/migration-from-otrs-6.rst:182
 msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:185
+#: ../../content/migration-from-otrs-6.rst:186
 msgid "Optional Step: Install sshpass and rsysnc"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:187
+#: ../../content/migration-from-otrs-6.rst:188
 msgid "This step is only necessary when you want to migrate OTRS from another server and when */opt/otrs* from the remote server hasn't been mounted on the server running OTOBO."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:190
+#: ../../content/migration-from-otrs-6.rst:191
 msgid "The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh. For installing ``sshpass``, please log in on the server as user ``root`` and execute one of the following commands:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:214
+#: ../../content/migration-from-otrs-6.rst:215
 msgid "The same thing must be done for *rsync* when it isn't available yet."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:217
+#: ../../content/migration-from-otrs-6.rst:218
 msgid "Step 4: Preparing the OTRS / ((OTRS)) Community Edition system"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:221
+#: ../../content/migration-from-otrs-6.rst:222
 msgid "Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too. Yes, we do not touch any OTRS data during the migration, but at times a wrong entry is enough to cause trouble."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:224
+#: ../../content/migration-from-otrs-6.rst:225
 msgid "Now we are ready for the migration. First of all we need to make sure that no more tickets are processed and no users log on to OTRS:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:227
+#: ../../content/migration-from-otrs-6.rst:228
 msgid "Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours. After that, delete all agent and user sessions (``Admin ->  Sessions``) and log out."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:231
+#: ../../content/migration-from-otrs-6.rst:232
 msgid "Stop All Relevant Services and the OTRS Daemon"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:233
+#: ../../content/migration-from-otrs-6.rst:234
 msgid "Please make sure there are no running services or cron jobs."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:248
+#: ../../content/migration-from-otrs-6.rst:249
 msgid "Optional Step for Docker: make required data available inside container"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:250
+#: ../../content/migration-from-otrs-6.rst:251
 msgid "There are some specifics to be considered when your OTOBO installation is running under Docker. The most relevant: processes running in a Docker container generally cannot access directories outside the container. There is an exception though: directories mounted as volumes into the container can be accessed. Also, note that the MariaDB database running in ``otobo_db_1`` is not directly accessible from outside the container network."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:257
+#: ../../content/migration-from-otrs-6.rst:258
 msgid "In the sample commands, we assume that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:261
+#: ../../content/migration-from-otrs-6.rst:262
 msgid "Copy */opt/otrs* into the volume *otobo_opt_otobo*"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:263
+#: ../../content/migration-from-otrs-6.rst:264
 msgid "In this section, we assume that the OTRS home directory */opt/otrs* is available on the Docker host."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:266
+#: ../../content/migration-from-otrs-6.rst:267
 msgid "There are at least two viable possibilities:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:268
+#: ../../content/migration-from-otrs-6.rst:269
 msgid "copy */opt/otrs* into the existing volume *otobo_opt_otobo*"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:269
+#: ../../content/migration-from-otrs-6.rst:270
 msgid "mount */opt/otrs* as an additional volume"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:271
+#: ../../content/migration-from-otrs-6.rst:272
 msgid "Let's concentrate on option **a.** here."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:273
+#: ../../content/migration-from-otrs-6.rst:274
 msgid "First we need to find out where the volume *otobo_opt_otobo* is available on the Docker host."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:280
+#: ../../content/migration-from-otrs-6.rst:281
 msgid "For safe copying, we use ``rsync``. Depending on your Docker setup, the command ``rsync`` might need to be run with ``sudo``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:293
+#: ../../content/migration-from-otrs-6.rst:294
 msgid "This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:296
+#: ../../content/migration-from-otrs-6.rst:297
 msgid "Optional Step: Streamlined migration of the database"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:298
+#: ../../content/migration-from-otrs-6.rst:299
 msgid "In the general migration strategy, all data in the database tables is copied row by row from the OTRS database into the OTOBO database. Exporting the data from the OTRS database and importing it into the OTOBO database might save time and is more stable in some circumstances."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:305
+#: ../../content/migration-from-otrs-6.rst:306
 msgid "This variant works for both Docker-based and native installations."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:309
+#: ../../content/migration-from-otrs-6.rst:310
 msgid "These instructions assume that OTRS is using MySQL as its backend."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:311
+#: ../../content/migration-from-otrs-6.rst:312
 msgid "First of all, we need a dump of the needed OTRS database tables. Then we need to perform a couple of transformations:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:314
+#: ../../content/migration-from-otrs-6.rst:315
 msgid "convert the character set to *utf8mb4*"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:315
+#: ../../content/migration-from-otrs-6.rst:316
 msgid "rename a couple of tables"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:316
+#: ../../content/migration-from-otrs-6.rst:317
 msgid "shorten some table columns"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:318
+#: ../../content/migration-from-otrs-6.rst:319
 msgid "After the transfomation we can overwrite the tables in the OTOBO schema with the transformed data from OTRS. Effectively we need not a single dump file, but several SQL scripts."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:321
+#: ../../content/migration-from-otrs-6.rst:322
 msgid "When ``mysqldump`` is installed and a connection to the OTRS database is possible, you can create the database dump directly on the Docker host. This case is supported by the script *bin/backup.pl*."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:327
+#: ../../content/migration-from-otrs-6.rst:328
 msgid "This requires that an OTOBO installation is available on the Docker host."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:336
+#: ../../content/migration-from-otrs-6.rst:337
 msgid "Alternatively, the database can be dumped on another server and then be transferred to the Docker host afterwards. An easy way to do this is to copy */opt/otobo* to the server running OTRS and perform the same command as above."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:339
+#: ../../content/migration-from-otrs-6.rst:340
 msgid "The script *bin/backup.pl* generates four SQL scripts in a dump directory, e.g. in *2021-04-13_12-13-04* In order to execute the SQL scripts, we need to run the command ``mysql``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:342
+#: ../../content/migration-from-otrs-6.rst:343
 msgid "Native installation:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:352
+#: ../../content/migration-from-otrs-6.rst:353
 msgid "Docker-based installation:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:354
+#: ../../content/migration-from-otrs-6.rst:355
 msgid "Run ``mysql`` within the MariaDB container. Note that the password for the database root is now the password that has been set up in *.env*."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:365
+#: ../../content/migration-from-otrs-6.rst:366
 msgid "For a quick check whether the import worked, you can run the following commands."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:373
+#: ../../content/migration-from-otrs-6.rst:374
 msgid "or"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:381
+#: ../../content/migration-from-otrs-6.rst:382
 msgid "The database is now migrated. This means that during the next step we can skip the database migration. Watch out for the relevant checkbox."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:385
+#: ../../content/migration-from-otrs-6.rst:386
 msgid "Step 5: Perform the Migration!"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:387
+#: ../../content/migration-from-otrs-6.rst:388
 msgid "Please use the web migration tool at http://localhost/otobo/migration.pl. Be aware that you might have to replace \"localhost\" with your OTOBO hostname and you might have to add your non-standard port. The application then guides you through the migration process."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:393
+#: ../../content/migration-from-otrs-6.rst:394
 msgid "Sometimes, a warning is shown that the deactivation of **SecureMode** has not been detected. Please restart the webserver in this case. This forces the webserver to read in the current configuration."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:408
+#: ../../content/migration-from-otrs-6.rst:409
 msgid "If OTOBO runs inside a Docker container, keep the default settings *localhost* for the OTRS server and */opt/otobo/var/tmp/copied_otrs* for the OTRS home directory. This is the path of the data that was copied in the optional step."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:414
+#: ../../content/migration-from-otrs-6.rst:415
 msgid "The default values for OTRS database user and password are taken from *Kernel/Config.pm* in the OTRS home directory. Change the proposed settings if you are using a dedicated database user for the migration. Also change the settings when you work with a database that was copied into the *otobo_db_1* Docker container."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:420
+#: ../../content/migration-from-otrs-6.rst:421
 msgid "In the Docker case, a database running on the Docker host won't be reachable via ``127.0.0.1`` from within the Docker container. This means that the setting ``127.0.0.1`` won't be valid for the input field ``OTRS Server``. In that case, enter one of the alternative IP-addresses reported by the command ``hostname --all-ip-addresses`` for ``OTRS Server``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:426
+#: ../../content/migration-from-otrs-6.rst:427
 msgid "When migrating to a new application server, or to a Docker-based installation, quite often the database cannot be accessed from the target installation. This is usually due to the fact that the otobo database user can only connect from the host the database runs on. In order to allow access anyways it is recommended to create a dedicated database user for the migration. E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';`` and ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``. This user can be dropped again after the migration: ``DROP USER 'otrs_migration'@'%'``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:433
+#: ../../content/migration-from-otrs-6.rst:434
 msgid "When the migration is complete, please take your time and test the entire system. Once you have decided that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:443
+#: ../../content/migration-from-otrs-6.rst:444
 msgid "In the Docker case:"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:451
+#: ../../content/migration-from-otrs-6.rst:452
 msgid "Step 6: After Successful Migration!"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:453
+#: ../../content/migration-from-otrs-6.rst:454
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:454
+#: ../../content/migration-from-otrs-6.rst:455
 msgid "Drop the databases and database users dedicated to the migration if you created any."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:455
+#: ../../content/migration-from-otrs-6.rst:456
 msgid "Have fun with OTOBO!"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:459
+#: ../../content/migration-from-otrs-6.rst:460
 msgid "Known Migration Problems"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:462
+#: ../../content/migration-from-otrs-6.rst:463
 msgid "1. Login after migration not possible"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:464
+#: ../../content/migration-from-otrs-6.rst:465
 msgid "During our migration tests, the browser used for the migration sometimes had problems. After restarting the browser, this problem usually was solved. With Safari it was sometimes necessary to manually delete the old OTRS session."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:468
+#: ../../content/migration-from-otrs-6.rst:469
 msgid "2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:470
+#: ../../content/migration-from-otrs-6.rst:471
 msgid "This can happen when the setting ScriptAlias has a non-standard value. The migration simply substitutes otrs for otobo. This might lead to the effect that the CSS and JavaScript can no longer be retrieved in OTOBO. When that happens, please check the settings in *Kernel/Config.pm* and revert them to sane values."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:475
+#: ../../content/migration-from-otrs-6.rst:476
 msgid "3. Migration stops due to MySQL errors"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:477
-msgid "On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors in Table ticket and Table ticket_history (NULL). These have to be manually resolved before you can resume the migration."
+#: ../../content/migration-from-otrs-6.rst:478
+msgid "On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors in the tables *ticket* and *ticket_history* (NULL). These have to be manually resolved before you can resume the migration."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:481
-msgid "Step 7: Manual Migration Tasks and Changes"
+#: ../../content/migration-from-otrs-6.rst:482
+msgid "4. Errors in Step 4 when migrating to PostgresQL"
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:484
+msgid "In these cases the not so helpful message \"System was unable to complete data transfer.\" is shown by *migration.pl*. The Apache logfile, and the OTOBO logfile, show a more meaningful message: \"Message: ERROR:  permission denied to set parameter \"session_replication_role\", SQL: 'set session_replication_role to replica;'\". In order to give the database user **otobo** the needed superuser privileges, run the following statement as the PostgreSQL admin: ``ALTER USER otobo WITH SUPERUSER;``. Then retry running http://localhost/otobo/migration.pl. After the migration, return to the normal state by running ``ALTER USER otobo WITH NOSUPERUSER``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:492
+msgid "It is not clear yet, wheter the extended privileges have to be granted in every setup."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:496
+msgid "The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:499
+msgid "Step 7: Manual Migration Tasks and Changes"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:502
 msgid "1. Password policy rules"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:486
+#: ../../content/migration-from-otrs-6.rst:504
 msgid "With OTOBO 10 a new default password policy for agent and customer users is in effect, if local authentication is used. The password policy rules can be changed in the system configuration (``PreferencesGroups###Password`` and ``CustomerPersonalPreference###Password``)."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:489
+#: ../../content/migration-from-otrs-6.rst:507
 msgid "Password Policy Rule"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:489
+#: ../../content/migration-from-otrs-6.rst:507
 msgid "Default"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:491
+#: ../../content/migration-from-otrs-6.rst:509
 msgid "``PasswordMinSize``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:491
+#: ../../content/migration-from-otrs-6.rst:509
 msgid "8"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:493
+#: ../../content/migration-from-otrs-6.rst:511
 msgid "``PasswordMin2Lower2UpperCharacters``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:493
-#: ../../content/migration-from-otrs-6.rst:495
-#: ../../content/migration-from-otrs-6.rst:503
+#: ../../content/migration-from-otrs-6.rst:511
+#: ../../content/migration-from-otrs-6.rst:513
+#: ../../content/migration-from-otrs-6.rst:521
 msgid "Yes"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:495
+#: ../../content/migration-from-otrs-6.rst:513
 msgid "``PasswordNeedDigit``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:497
+#: ../../content/migration-from-otrs-6.rst:515
 msgid "``PasswordHistory``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:497
+#: ../../content/migration-from-otrs-6.rst:515
 msgid "10"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:499
+#: ../../content/migration-from-otrs-6.rst:517
 msgid "``PasswordTTL``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:499
+#: ../../content/migration-from-otrs-6.rst:517
 msgid "30 days"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:501
+#: ../../content/migration-from-otrs-6.rst:519
 msgid "``PasswordWarnBeforeExpiry``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:501
+#: ../../content/migration-from-otrs-6.rst:519
 msgid "5 days"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:503
+#: ../../content/migration-from-otrs-6.rst:521
 msgid "``PasswordChangeAfterFirstLogin``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:507
+#: ../../content/migration-from-otrs-6.rst:525
 msgid "2. Under Docker: Manually migrate cron jobs"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:509
+#: ../../content/migration-from-otrs-6.rst:527
 msgid "In a non-Docker installation of OTOBO, there is at least one cron job which checks the health of the Daemon. Under Docker, this cron job no longer exists. Furthermore, there is no cron daemon running in any of the Docker containers. This means that you have to look for an individual solution for OTRS systems with customer-specific cron jobs (e. g. backing up the database)."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:516
+#: ../../content/migration-from-otrs-6.rst:534
 msgid "Special topics"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:519
+#: ../../content/migration-from-otrs-6.rst:537
 msgid "Migration from Oracle to Oracle"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:521
+#: ../../content/migration-from-otrs-6.rst:539
 msgid "For migration to Oracle the ETL-like strategy must be employed. This is because Oracle provides no easy way to temporarily turn off foreign key checks."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:524
+#: ../../content/migration-from-otrs-6.rst:542
 msgid "On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must be installed."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:528
+#: ../../content/migration-from-otrs-6.rst:546
 msgid "When using the Oracle instant client, then the optional SDK is also needed for installing DBD::Oracle."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:530
+#: ../../content/migration-from-otrs-6.rst:548
 msgid "There are many ways of cloning a schema. In the sample commands we use ``expdb`` and ``impdb`` which use Data Pump under the hood."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:535
+#: ../../content/migration-from-otrs-6.rst:553
 msgid "The connect strings shown in this documentation refer to the case when both source and target database run in a Docker container. See also https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md ."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:539
+#: ../../content/migration-from-otrs-6.rst:557
 msgid "Clear out otobo"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:541
+#: ../../content/migration-from-otrs-6.rst:559
 msgid "Stop the webserver for otobo, so that the DB connection for otobo is closed."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:548
+#: ../../content/migration-from-otrs-6.rst:566
 msgid "Export the complete OTRS schema."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:564
+#: ../../content/migration-from-otrs-6.rst:582
 msgid "Import the OTRS schema, renaming the schema to 'otobo'."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:579
+#: ../../content/migration-from-otrs-6.rst:597
 msgid "Adapt the cloned schema otobo"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:588
+#: ../../content/migration-from-otrs-6.rst:606
 msgid "Start the web server for otobo again"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:590
+#: ../../content/migration-from-otrs-6.rst:608
 msgid "Proceed with step 5, that is with running ``migration.pl``."
 msgstr ""
 
