@@ -288,9 +288,9 @@ OTOBO_NGINX_SSL_CERTIFICATE_KEY
 These settings are used by Docker Compose directly.
 
 COMPOSE_PROJECT_NAME
-    The project name is used as a prefix for the generated volumes and containers.
-    Must be set because the compose file is located in *scripts/docker-compose* and thus **docker-compose**
-    would be used per default as the project name.
+    The project name is used as the prefix for the volumes and containers. Per default this prefix is set to
+    `otobo`, resulting in container names like `otobo_web_1` and `otobo_db_1`. Change this name when you want to run
+    more then one instance of OTOBO on the same server.
 
 COMPOSE_PATH_SEPARATOR
     Separator for the value of COMPOSE_FILE
