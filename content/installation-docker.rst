@@ -2,7 +2,7 @@ Installing using Docker and Docker Compose
 ==========================================
 
 With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
-All of OTOBO´s dependencies are already included in the collection of Docker images.
+All of OTOBO´s dependencies are already included in the provided collection of Docker images.
 
 - MariaDB is set up as the default database.
 - Elasticsearch is set up for the OTOBO power search.
@@ -10,7 +10,7 @@ All of OTOBO´s dependencies are already included in the collection of Docker im
 - Gazelle is used as fast Perl webserver.
 - nginx is used as optional reverse proxy for HTTPS support.
 
-We think that this will become the perfect environment for an OTOBO installation.
+We think that this setup will become the perfect environment for an OTOBO installation.
 
 Requirements
 ------------
@@ -47,10 +47,10 @@ the **root** user of the Docker host or a dedicated user with the required permi
 1. Clone the otobo-docker repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Docker images will eventually be fetched from the image repository https://hub.docker.com.
+The Docker images will eventually be fetched from the repository https://hub.docker.com.
 But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository.
 Make sure that you specify the branch that corresponds to the current version of OTOBO.
-For example, when *OTOBO 10.0.11* is the current version then please use the branch *rel-10_0*.
+For example, when *OTOBO 10.0.12* is the current version then please use the branch *rel-10_0*.
 
 .. note::
 
@@ -299,8 +299,8 @@ COMPOSE_FILE
     Use *docker-compose/otobo-base.yml* as the base and add the wanted extension files.
     E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*.
 
-OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX
-    Used for specifying alternative Docker images. Useful for testing local builds.
+OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, ...
+    Used for specifying alternative Docker images. Useful for testing local builds or for using updated versions of the images.
 
 Advanced topics
 ----------------------------------
