@@ -505,10 +505,9 @@ The problem must be alleviated manually using OTOBO console commands.
   ``bin/otobo.Console.pl Admin::Config::ListInvalid``
 - Interactively fix the invalid values with
   ``bin/otobo.Console.pl Admin::Config::FixInvalid``
-- Finally manually deploy the system configuration with
-  ``bin/otobo.Console.pl Maint::Config::Rebuild``
 
-After these manual steps you should be able to run *migration.pl* again and continue where the error occurred.
+After these manual steps you should be able to run *migration.pl* again. The migration will continue with the step
+where the error occurred.
 
 Step 7: Manual Migration Tasks and Changes
 ------------------------------------------
