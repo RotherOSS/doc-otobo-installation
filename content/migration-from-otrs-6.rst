@@ -429,7 +429,7 @@ that the migration was successful and that you want to use OTOBO from now on, st
     root> su - otobo
     otobo>
     otobo> /opt/otobo/bin/Cron.sh start
-    otobo> /opt/otobo/bin/otobo.Daemon start
+    otobo> /opt/otobo/bin/otobo.Daemon.pl start
 
 In the Docker case:
 
