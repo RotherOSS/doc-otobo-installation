@@ -36,6 +36,9 @@ The directory ``/opt/otobo/local`` within the volume **otobo_opt_otobo** can be 
 Modules that are installed in ``/opt/otobo/local`` will be picked up by Perl because the environment variables ``PERL5LIB`` and ``PATH``
 are preset accordingly.
 
+The installed Perl modules will also be available after an upgrade of OTOBO. There is the general rule that files added to ``/opt/otobo``
+won't be removed by an upgrade.
+
 For installing Perl modules in a specific location we need to modify our install command. Specicifically, we need to add
 the option ``--local-lib``. Here is a sample session in the container **web**.
 
