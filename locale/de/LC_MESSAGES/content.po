@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 00:34+0200\n"
+"POT-Creation-Date: 2021-10-01 00:34+0200\n"
 "PO-Revision-Date: 2021-06-30 22:35+0000\n"
 "Last-Translator: Grit Rother <mr@otobo.de>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
@@ -2215,14 +2215,16 @@ msgstr ""
 "debugging-docker-build/>`_"
 
 #: ../../content/installing-perl-modules.rst:12
-msgid "Installing Perl modules"
+#, fuzzy
+msgid "Installing Perl Modules from CPAN"
 msgstr "Perlmodule installieren"
 
 #: ../../content/installing-perl-modules.rst:14
+#, fuzzy
 msgid ""
 "When there are special requirements then the need for additional Perl "
-"modules may arise. Fortunately Perl has an excellent package repository that "
-"can satisfy almost all needs. That repository is called CPAN and is "
+"modules may arise. Fortunately, Perl has an excellent package repository "
+"that can satisfy almost all needs. That repository is called CPAN and is "
 "available at https://metacpan.org/."
 msgstr ""
 "In Systemen mit besonderen Anforderungen kann es nötig sein, weitere "
@@ -2231,20 +2233,10 @@ msgstr ""
 "finden es unter der Bezeichnung CPAN unter https://metacpan.org/."
 
 #: ../../content/installing-perl-modules.rst:18
+#, fuzzy
 msgid ""
-"It is recommended that modules from CPAN are installed with the command line "
-"client ``cpanm``. Alternatively, many Perl modules are also available as "
-"packages for your operating system. These packages can be installed via your "
-"systems regular package manager."
-msgstr ""
-"Es wird empfohlen, CPAN-Module mit dem Befehlszeilenclient ``cpanm`` zu "
-"installieren. Alternativ sind viele Perl-Module auch als Pakete für Ihr "
-"Betriebssystem verfügbar. Diese Pakete können über den regulären "
-"Paketmanager Ihres Systems installiert werden."
-
-#: ../../content/installing-perl-modules.rst:22
-msgid ""
-"The utility ``cpanm`` is often already installed on your system. Please see "
+"It is recommended to use the command line client ``cpanm`` for installing "
+"modules. ``cpanm`` is often already installed on your system. Please see "
 "https://metacpan.org/pod/App::cpanminus for what to do when is isn't already "
 "available."
 msgstr ""
@@ -2252,9 +2244,22 @@ msgstr ""
 "dies bei Ihnen nicht der Fall sein, finden Sie weitere Informationen unter "
 "https://metacpan.org/pod/App::cpanminus."
 
-#: ../../content/installing-perl-modules.rst:25
+#: ../../content/installing-perl-modules.rst:22
+#, fuzzy
 msgid ""
-"Per default ``cpanm`` installs module into a systemwide location. In this "
+"Alternatively, many Perl modules are also available as packages for your "
+"operating system. These packages can be installed with your systems regular "
+"package manager."
+msgstr ""
+"Es wird empfohlen, CPAN-Module mit dem Befehlszeilenclient ``cpanm`` zu "
+"installieren. Alternativ sind viele Perl-Module auch als Pakete für Ihr "
+"Betriebssystem verfügbar. Diese Pakete können über den regulären "
+"Paketmanager Ihres Systems installiert werden."
+
+#: ../../content/installing-perl-modules.rst:25
+#, fuzzy
+msgid ""
+"Per default ``cpanm`` installs modules into a systemwide location. In this "
 "case modules must be installed as the root user. For example, the command"
 msgstr ""
 "Standardmäßig wird das Modul durch ``cpanm`` in einem systemweiten "
@@ -2265,16 +2270,22 @@ msgstr ""
 msgid "results in:"
 msgstr "ergibt z. B.:"
 
-#: ../../content/installing-perl-modules.rst:39
+#: ../../content/installing-perl-modules.rst:40
+#, fuzzy
+msgid "Docker-based installations"
+msgstr "Aktualisieren einer Docker-basierte OTOBO-Installation"
+
+#: ../../content/installing-perl-modules.rst:42
+#, fuzzy
 msgid ""
-"Special care must be taken when OTOBO runs within Docker. In this case, it "
-"seems an easy option to install the wanted module into the system Perl. "
-"However, due to how Docker works, this change would be lost when the "
-"container is restarted. Therefore the modules must be installed into a "
-"location that survives a restart. The local install location can be "
-"specified with the option ``--local-lib``. Installed modules will be found "
-"by Perl because of the environment variables ``PERL5LIB`` and ``PATH``, "
-"which are set-up accordingly in the Docker image."
+"Special care must be taken when OTOBO runs under Docker. In this case an "
+"installation into a systemwide location would initially work as well. "
+"However, due to how Docker works, this installed modules would be lost when "
+"the container is restarted. Therefore the modules must be installed into a "
+"location that does survive a restart. The directory ``/opt/otobo/local`` "
+"within the volume **otobo_opt_otobo** can be used for that. Modules that are "
+"installed in ``/opt/otobo/local`` will be picked up by Perl because the "
+"environment variables ``PERL5LIB`` and ``PATH`` are preset accordingly."
 msgstr ""
 "Besondere Vorsicht ist geboten, wenn OTOBO in Docker ausgeführt wird. In "
 "diesem Fall scheint es die einfachste Lösung, das gewünschte Modul einfach "
@@ -2286,6 +2297,20 @@ msgstr ""
 "installierten Module werden von Perl auf Basis der Umgebungsvariablen "
 "``PERL5LIB`` und ``PATH`` gefunden, die im Docker Image entsprechend gesetzt "
 "werden."
+
+#: ../../content/installing-perl-modules.rst:49
+msgid ""
+"The installed Perl modules will also be available after an upgrade of OTOBO. "
+"There is the general rule that files added to ``/opt/otobo`` won't be "
+"removed by an upgrade."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:52
+msgid ""
+"For installing Perl modules in a specific location we need to modify our "
+"install command. Specicifically, we need to add the option ``--local-lib``. "
+"Here is a sample session in the container **web**."
+msgstr ""
 
 #: ../../content/introduction.rst:12
 msgid "Introduction"

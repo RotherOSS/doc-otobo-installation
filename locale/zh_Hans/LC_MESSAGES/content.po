@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 00:34+0200\n"
+"POT-Creation-Date: 2021-10-01 00:34+0200\n"
 "PO-Revision-Date: 2021-01-06 03:17+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -1985,41 +1985,46 @@ msgstr ""
 "`检查失败的创建 <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 
 #: ../../content/installing-perl-modules.rst:12
-msgid "Installing Perl modules"
+#, fuzzy
+msgid "Installing Perl Modules from CPAN"
 msgstr "安装Perl模块"
 
 #: ../../content/installing-perl-modules.rst:14
+#, fuzzy
 msgid ""
 "When there are special requirements then the need for additional Perl "
-"modules may arise. Fortunately Perl has an excellent package repository that "
-"can satisfy almost all needs. That repository is called CPAN and is "
+"modules may arise. Fortunately, Perl has an excellent package repository "
+"that can satisfy almost all needs. That repository is called CPAN and is "
 "available at https://metacpan.org/."
 msgstr ""
 "如果有特殊要求，则可能需要其他Perl模块。幸运的是，Perl具有出色的软件包存储"
 "库，可以满足几乎所有需求。该存储库称为CPAN，可从https://metacpan.org/获得。"
 
 #: ../../content/installing-perl-modules.rst:18
+#, fuzzy
 msgid ""
-"It is recommended that modules from CPAN are installed with the command line "
-"client ``cpanm``. Alternatively, many Perl modules are also available as "
-"packages for your operating system. These packages can be installed via your "
-"systems regular package manager."
-msgstr ""
-"建议将CPAN中的模块与命令行客户端``cpanm''一起安装。另外，许多Perl模块也可以作"
-"为操作系统的软件包使用。可以通过您的系统常规软件包管理器来安装这些软件包。"
-
-#: ../../content/installing-perl-modules.rst:22
-msgid ""
-"The utility ``cpanm`` is often already installed on your system. Please see "
+"It is recommended to use the command line client ``cpanm`` for installing "
+"modules. ``cpanm`` is often already installed on your system. Please see "
 "https://metacpan.org/pod/App::cpanminus for what to do when is isn't already "
 "available."
 msgstr ""
 "应用程序``cpanm''通常已经安装在您的系统上，如果没有，请参阅https://metacpan."
 "org/pod/App::cpanminus的处理方法。"
 
-#: ../../content/installing-perl-modules.rst:25
+#: ../../content/installing-perl-modules.rst:22
+#, fuzzy
 msgid ""
-"Per default ``cpanm`` installs module into a systemwide location. In this "
+"Alternatively, many Perl modules are also available as packages for your "
+"operating system. These packages can be installed with your systems regular "
+"package manager."
+msgstr ""
+"建议将CPAN中的模块与命令行客户端``cpanm''一起安装。另外，许多Perl模块也可以作"
+"为操作系统的软件包使用。可以通过您的系统常规软件包管理器来安装这些软件包。"
+
+#: ../../content/installing-perl-modules.rst:25
+#, fuzzy
+msgid ""
+"Per default ``cpanm`` installs modules into a systemwide location. In this "
 "case modules must be installed as the root user. For example, the command"
 msgstr ""
 "默认情况下，“ cpanm”会将模块安装到系统范围内的位置。在这种情况下，必须以root"
@@ -2029,22 +2034,42 @@ msgstr ""
 msgid "results in:"
 msgstr "结果是："
 
-#: ../../content/installing-perl-modules.rst:39
+#: ../../content/installing-perl-modules.rst:40
+#, fuzzy
+msgid "Docker-based installations"
+msgstr "可以迁移到基于Docker的OTOBO 10"
+
+#: ../../content/installing-perl-modules.rst:42
+#, fuzzy
 msgid ""
-"Special care must be taken when OTOBO runs within Docker. In this case, it "
-"seems an easy option to install the wanted module into the system Perl. "
-"However, due to how Docker works, this change would be lost when the "
-"container is restarted. Therefore the modules must be installed into a "
-"location that survives a restart. The local install location can be "
-"specified with the option ``--local-lib``. Installed modules will be found "
-"by Perl because of the environment variables ``PERL5LIB`` and ``PATH``, "
-"which are set-up accordingly in the Docker image."
+"Special care must be taken when OTOBO runs under Docker. In this case an "
+"installation into a systemwide location would initially work as well. "
+"However, due to how Docker works, this installed modules would be lost when "
+"the container is restarted. Therefore the modules must be installed into a "
+"location that does survive a restart. The directory ``/opt/otobo/local`` "
+"within the volume **otobo_opt_otobo** can be used for that. Modules that are "
+"installed in ``/opt/otobo/local`` will be picked up by Perl because the "
+"environment variables ``PERL5LIB`` and ``PATH`` are preset accordingly."
 msgstr ""
 "当OTOBO在Docker下运行时，必须格外小心。在这种情况下，所需的模块可以轻松地安装"
 "到系统Perl中。但是，由于Docker的工作方式，重新启动容器后，此更改将丢失。因"
 "此，必须将模块安装到可以重新启动的位置。本地安装位置可以使用选项--local-lib来"
 "指定。 Perl将找到已安装的模块，因为在Docker映像中已相应设置了环境变量“ "
 "PERL5LIB”和“ PATH”。"
+
+#: ../../content/installing-perl-modules.rst:49
+msgid ""
+"The installed Perl modules will also be available after an upgrade of OTOBO. "
+"There is the general rule that files added to ``/opt/otobo`` won't be "
+"removed by an upgrade."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:52
+msgid ""
+"For installing Perl modules in a specific location we need to modify our "
+"install command. Specicifically, we need to add the option ``--local-lib``. "
+"Here is a sample session in the container **web**."
+msgstr ""
 
 #: ../../content/introduction.rst:12
 msgid "Introduction"
