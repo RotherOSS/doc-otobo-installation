@@ -70,7 +70,7 @@ The Docker Compose configuration file *.env* is your primary interface for manag
 This file must first be created and then be adapted by yourself. In order to simplify the task there
 are several example files that should be used as starting point.
 Which sample file it the best fit depends on your use case. In most cases the decision is between
-*.docker_compose_env_https* and *.docker_compose_env_https*, depending on whether TLS must be supported or not.
+*.docker_compose_env_http* and *.docker_compose_env_https*, depending on whether TLS must be supported or not.
 The other files are for more specialised use cases.
 
 .docker_compose_env_http
