@@ -148,7 +148,7 @@ In the non-Docker case execute the following commands as the user *otobo*:
 
 .. code-block:: bash
 
-    # in case you aer logged in as root
+    # in case you are logged in as root
     root> su - otobo
 
     otobo> /opt/otobo/bin/Cron.sh stop
