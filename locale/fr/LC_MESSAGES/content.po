@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-06 00:34+0200\n"
+"POT-Creation-Date: 2021-10-07 00:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2558,21 +2558,22 @@ msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:508
 msgid ""
-"The system configuration is migrated after the migration of the database "
-"tables. In this context, migration means the merging the default settings of "
-"OTOBO 10 with the system configuration of the source system. Inconsistencies "
-"can arise in this step. An real life example is the setting ``Ticket::"
-"Frontend::AgentTicketQuickClose###State``. This setting is new in OTOBO 10 "
-"and the default value is the state ``closed successful``. But this setting "
-"is invalid when the state ``closed successful`` has been dropped or renamed "
-"in the source system. This inconsistency is detected as an error in the "
-"migration step **Migrate configuration settings**. Actually, the merged "
+"The system configuration is migrated after the database tables were "
+"migrated. In this context, migration means merging the default settings of "
+"OTOBO with the system configuration of the source OTRS system. "
+"Inconsistencies can arise in this step. An real life example is the setting "
+"``Ticket::Frontend::AgentTicketQuickClose###State``. This setting is new in "
+"OTOBO 10 and the default value is the state ``closed successful``. But this "
+"setting is invalid when the state ``closed successful`` has been dropped or "
+"renamed in the source system. This inconsistency is detected as an error in "
+"the migration step **Migrate configuration settings**. Actually, the merged "
 "system configuration is stored in the database, but additional validity "
 "checks are performed during deployment."
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:516
-msgid "The problem must be alleviated manually using OTOBO console commands."
+msgid ""
+"The problem must be alleviated manually by using OTOBO console commands."
 msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:518
@@ -2587,21 +2588,27 @@ msgid ""
 "Config::FixInvalid``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:523
+#: ../../content/migration-from-otrs-6.rst:522
+msgid ""
+"Deploy the collected changes from migration.pl, including the deactivated "
+"**SecureMode** with ``bin/otobo.Console.pl Maint::Config::Rebuild``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:525
 msgid ""
 "After these manual steps you should be able to run *migration.pl* again. The "
 "migration will continue with the step where the error occurred."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:527
+#: ../../content/migration-from-otrs-6.rst:529
 msgid "Step 7: Manual Migration Tasks and Changes"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:530
+#: ../../content/migration-from-otrs-6.rst:532
 msgid "1. Password policy rules"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:532
+#: ../../content/migration-from-otrs-6.rst:534
 msgid ""
 "With OTOBO 10 a new default password policy for agent and customer users is "
 "in effect, if local authentication is used. The password policy rules can be "
@@ -2609,69 +2616,69 @@ msgid ""
 "``CustomerPersonalPreference###Password``)."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:535
+#: ../../content/migration-from-otrs-6.rst:537
 msgid "Password Policy Rule"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:535
+#: ../../content/migration-from-otrs-6.rst:537
 msgid "Default"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:537
+#: ../../content/migration-from-otrs-6.rst:539
 msgid "``PasswordMinSize``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:537
+#: ../../content/migration-from-otrs-6.rst:539
 msgid "8"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:539
+#: ../../content/migration-from-otrs-6.rst:541
 msgid "``PasswordMin2Lower2UpperCharacters``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:539
 #: ../../content/migration-from-otrs-6.rst:541
-#: ../../content/migration-from-otrs-6.rst:549
+#: ../../content/migration-from-otrs-6.rst:543
+#: ../../content/migration-from-otrs-6.rst:551
 msgid "Yes"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:541
+#: ../../content/migration-from-otrs-6.rst:543
 msgid "``PasswordNeedDigit``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:543
+#: ../../content/migration-from-otrs-6.rst:545
 msgid "``PasswordHistory``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:543
+#: ../../content/migration-from-otrs-6.rst:545
 msgid "10"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:545
+#: ../../content/migration-from-otrs-6.rst:547
 msgid "``PasswordTTL``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:545
+#: ../../content/migration-from-otrs-6.rst:547
 msgid "30 days"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:547
+#: ../../content/migration-from-otrs-6.rst:549
 msgid "``PasswordWarnBeforeExpiry``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:547
+#: ../../content/migration-from-otrs-6.rst:549
 msgid "5 days"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:549
+#: ../../content/migration-from-otrs-6.rst:551
 msgid "``PasswordChangeAfterFirstLogin``"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:553
+#: ../../content/migration-from-otrs-6.rst:555
 msgid "2. Under Docker: Manually migrate cron jobs"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:555
+#: ../../content/migration-from-otrs-6.rst:557
 msgid ""
 "In a non-Docker installation of OTOBO, there is at least one cron job which "
 "checks the health of the Daemon. Under Docker, this cron job no longer "
@@ -2681,72 +2688,72 @@ msgid ""
 "database)."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:562
+#: ../../content/migration-from-otrs-6.rst:564
 msgid "Special topics"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:565
+#: ../../content/migration-from-otrs-6.rst:567
 msgid "Migration from Oracle to Oracle"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:567
+#: ../../content/migration-from-otrs-6.rst:569
 msgid ""
 "For migration to Oracle the ETL-like strategy must be employed. This is "
 "because Oracle provides no easy way to temporarily turn off foreign key "
 "checks."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:570
+#: ../../content/migration-from-otrs-6.rst:572
 msgid ""
 "On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must "
 "be installed."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:574
+#: ../../content/migration-from-otrs-6.rst:576
 msgid ""
 "When using the Oracle instant client, then the optional SDK is also needed "
 "for installing DBD::Oracle."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:576
+#: ../../content/migration-from-otrs-6.rst:578
 msgid ""
 "There are many ways of cloning a schema. In the sample commands we use "
 "``expdb`` and ``impdb`` which use Data Pump under the hood."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:581
+#: ../../content/migration-from-otrs-6.rst:583
 msgid ""
 "The connect strings shown in this documentation refer to the case when both "
 "source and target database run in a Docker container. See also https://"
 "github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md ."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:585
+#: ../../content/migration-from-otrs-6.rst:587
 msgid "Clear out otobo"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:587
+#: ../../content/migration-from-otrs-6.rst:589
 msgid ""
 "Stop the webserver for otobo, so that the DB connection for otobo is closed."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:594
+#: ../../content/migration-from-otrs-6.rst:596
 msgid "Export the complete OTRS schema."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:610
+#: ../../content/migration-from-otrs-6.rst:612
 msgid "Import the OTRS schema, renaming the schema to 'otobo'."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:625
+#: ../../content/migration-from-otrs-6.rst:627
 msgid "Adapt the cloned schema otobo"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:634
+#: ../../content/migration-from-otrs-6.rst:636
 msgid "Start the web server for otobo again"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:636
+#: ../../content/migration-from-otrs-6.rst:638
 msgid "Proceed with step 5, that is with running ``migration.pl``."
 msgstr ""
 
