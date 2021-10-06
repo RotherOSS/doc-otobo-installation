@@ -495,20 +495,22 @@ It is not clear yet, whether the extended privileges have to be granted in every
 5. Problems with the Deployment the Merged System Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The system configuration is migrated after the migration of the database tables. In this context, migration means the merging
-the default settings of OTOBO 10 with the system configuration of the source system.
+The system configuration is migrated after the database tables were migrated. In this context, migration means merging
+the default settings of OTOBO with the system configuration of the source OTRS system.
 Inconsistencies can arise in this step. An real life example is the setting ``Ticket::Frontend::AgentTicketQuickClose###State``.
 This setting is new in OTOBO 10 and the default value is the state ``closed successful``. But this setting is invalid
 when the state ``closed successful`` has been dropped or renamed in the source system.
 This inconsistency is detected as an error in the migration step **Migrate configuration settings**. Actually,
 the merged system configuration is stored in the database, but additional validity checks are performed during deployment.
 
-The problem must be alleviated manually using OTOBO console commands.
+The problem must be alleviated manually by using OTOBO console commands.
 
 - List the inconsistencies with the command
   ``bin/otobo.Console.pl Admin::Config::ListInvalid``
 - Interactively fix the invalid values with
   ``bin/otobo.Console.pl Admin::Config::FixInvalid``
+- Deploy the collected changes from migration.pl, including the deactivated **SecureMode** with
+  ``bin/otobo.Console.pl Maint::Config::Rebuild``
 
 After these manual steps you should be able to run *migration.pl* again. The migration will continue with the step
 where the error occurred.
