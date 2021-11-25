@@ -171,14 +171,20 @@ When OTOBO is running in Docker, you just need to stop the service ``daemon``:
 
         We advise you to read the OTOBO :doc:`backup-restore` chapter.
 
+Optional Step: Mount /opt/otrs for Convenient Access
+----------------------------------------------------
 
-Optional Step: Install sshpass and rsync
--------------------------------------------------------
+Often OTOBO should be running on a new server where */opt/otrs* isn't available initially.
+In these cases the directory */opt/otrs* on the OTRS server can be mounted into the file system
+of the OTOBO server. When a regular network mount is not possible, then using ``sshfs`` might be an option.
+
+Optional Step: Install ``sshpass`` and ``rsync`` when */opt/otrs* Should be Copied via ssh
+------------------------------------------------------------------------------------------
 
 This step is only necessary when you want to migrate OTRS from another server and when
 */opt/otrs* from the remote server hasn't been mounted on the server running OTOBO.
 
-The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh.
+The tools ``sshpass`` and ``rsync`` are needed so that *migration.pl* can copy files via ssh.
 For installing ``sshpass``, please log in on the server as user ``root``
 and execute one of the following commands:
 
