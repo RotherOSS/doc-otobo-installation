@@ -347,11 +347,12 @@ Note that the password for the database root is now the password that has been s
 
 .. code-block:: bash
 
+    docker_admin> cd /opt/otobo-docker
     docker_admin> cd <dump_dir>
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_pre.sql
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_post.sql
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo < otrs_data.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_pre.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_schema_for_otobo.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_post.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_data.sql
 
 For a quick check whether the import worked, you can run the following commands.
 
@@ -365,9 +366,9 @@ or
 
 .. code-block:: bash
 
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    docker_admin> docker exec -i otobo_db_1 mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 The database is now migrated. This means that during the next step we can skip the database migration.
 Watch out for the relevant checkbox.
