@@ -80,7 +80,7 @@ The other files are for more specialised use cases.
     The OTOBO web app provides HTTPS by runnning Nginx as a reverse proxy webserver.
 
 .docker_compose_env_https_custom_nginx
-    Like *.docker_compose_env_https* but with support for a custom Ninx configuration.
+    Like *.docker_compose_env_https* but with support for a custom Nginx configuration.
 
 .docker_compose_env_https_kerberos
     Like *.docker_compose_env_https* but with sample setup for single sign on.
