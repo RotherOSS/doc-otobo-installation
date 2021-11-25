@@ -70,7 +70,7 @@ master_doc = 'content/index'
 
 # General information about the project.
 project = 'OTOBO Installation Guide'
-copyright = '2019-2020 Rother OSS GmbH, https://otobo.de/'
+copyright = '2019-2022 Rother OSS GmbH, https://otobo.de/'
 author = 'Rother OSS GmbH'
 
 # The version info for the project you're documenting, acts as replacement for
