@@ -51,12 +51,19 @@ This means that the webserver and the OTOBO daemon may, but don't have to, be st
    To restore the database make sure that the database ``otobo`` exists and contains no tables.
 
 To drop an existing otobo database and create a new one you can use the following commands.
+First, you have to connect to the mysql CLI of the db container.
 
 .. code-block:: bash
+   docker_admin>cd /opt/otobo-docker
+   docker_admin>docker-compose exec db bash
+   mysql@4f7783595190:/$>mysql -u root -p${MYSQL_ROOT_PASSWORD}
 
-   docker_admin>docker exec -i otobo_db_1 mysql -u root -p<your_secret_password> -e "DROP DATABASE otobo"
-   docker_admin>docker exec -i otobo_db_1 mysql -u root -p<your_secret_password> -e 'CREATE DATABASE otobo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci'
-   docker_admin>docker exec -i otobo_db_1 mysql -u root -p<your_secret_password> -e "GRANT ALL PRIVILEGES ON otobo.* TO 'otobo'@'%'"
+As soon as you are connected to the MySQL server, you can drop and recreate the otobo database.
+.. code-block:: bash
+
+   mysql@4f7783595190:/$>DROP DATABASE otobo;
+   mysql@4f7783595190:/$>CREATE DATABASE otobo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   mysql@4f7783595190:/$>GRANT ALL PRIVILEGES ON otobo.* TO 'otobo'@'%';
 
 For restoring the backup we also need to specify which backup should be restored.
 The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``.
