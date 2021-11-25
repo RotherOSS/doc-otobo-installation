@@ -51,14 +51,15 @@ This means that the webserver and the OTOBO daemon may, but don't have to, be st
    To restore the database make sure that the database ``otobo`` exists and contains no tables.
 
 To drop an existing otobo database and create a new one you can use the following commands.
-First, you have to connect to the mysql CLI of the db container.
+First, you have to connect to the MySQL CLI of the `db` container.
 
 .. code-block:: bash
    docker_admin>cd /opt/otobo-docker
    docker_admin>docker-compose exec db bash
    mysql@4f7783595190:/$>mysql -u root -p${MYSQL_ROOT_PASSWORD}
 
-As soon as you are connected to the MySQL server, you can drop and recreate the otobo database.
+As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database.
+
 .. code-block:: bash
 
    mysql@4f7783595190:/$>DROP DATABASE otobo;
