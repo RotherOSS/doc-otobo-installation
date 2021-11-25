@@ -46,6 +46,18 @@ This means that the webserver and the OTOBO daemon may, but don't have to, be st
     # check the backup file
     docker_admin>tree otobo_backup
 
+.. note::
+
+   To restore the database make sure that the database ``otobo`` exists and contains no tables.
+
+To drop an existing otobo database and create a new one you can use the following commands.
+
+.. code-block:: bash
+
+   docker_admin>docker exec -i otobo_db_1 mysql -u root -p<your_secret_password> -e "DROP DATABASE otobo"
+   docker_admin>docker exec -i otobo_db_1 mysql -u root -p<your_secret_password> -e 'CREATE DATABASE otobo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci'
+   docker_admin>docker exec -i otobo_db_1 mysql -u root -p<your_secret_password> -e "GRANT ALL PRIVILEGES ON otobo.* TO 'otobo'@'%'"
+
 For restoring the backup we also need to specify which backup should be restored.
 The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``.
 
