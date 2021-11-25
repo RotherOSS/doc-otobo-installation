@@ -185,7 +185,7 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 .. note::
 
     To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command:
-    ``docker exec -it otobo_web_1 bash``.
+    ``docker-compose exec web bash``.
 
 Additional technical information
 ----------------------------------
@@ -508,13 +508,13 @@ running the test suite on a fresh installation.
 
    docker_admin> docker-compose down -v
    docker_admin> docker-compose up --detach
-   docker_admin> docker stop otobo_daemon_1
-   docker_admin> docker exec -t --user otobo otobo_web_1 bash\
+   docker_admin> docker-compose stop daemon
+   docker_admin> docker-compose exec web bash\
    -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
-   docker_admin> docker exec -t --user otobo otobo_web_1 bash\
+   docker_admin> docker-compose exec web bash\
    -c "bin/docker/run_test_suite.sh"
    .......
-   docker_admin> docker start otobo_daemon_1
+   docker_admin> docker-compose start daemon
 
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -541,6 +541,7 @@ List of useful commands
 
 * ``docker-compose config`` check and show the configuration
 * ``docker-compose ps`` show the running containers
+* ``docker-compose exec nginx nginx -s reload`` reload nginx
 
 Resources
 ----------------------------------
