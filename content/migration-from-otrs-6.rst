@@ -172,7 +172,7 @@ When OTOBO is running in Docker, you just need to stop the service ``daemon``:
         We advise you to read the OTOBO :doc:`backup-restore` chapter.
 
 
-Optional Step: Install sshpass and rsysnc
+Optional Step: Install sshpass and rsync
 -------------------------------------------------------
 
 This step is only necessary when you want to migrate OTRS from another server and when
