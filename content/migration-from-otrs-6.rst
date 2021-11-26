@@ -430,7 +430,7 @@ The application then guides you through the migration process.
     This user can be dropped again after the migration: ``DROP USER 'otrs_migration'@'%'``.
 
 Custom settings in *Kernel/Config.pm* are carried over from the old OTRS installation to the new OTOBO installation.
-When you habe custom setting, then please take a look at the migrated file */opt/otobo/Kernel/Config.pm*.
+When you have custom settings, then please take a look at the migrated file */opt/otobo/Kernel/Config.pm*.
 You might want to adapt custom pathes or LDAP settings. In the best case you might find that some custom setting are longer needed.
 
 When the migration is complete, please take your time and test the entire system. Once you have decided

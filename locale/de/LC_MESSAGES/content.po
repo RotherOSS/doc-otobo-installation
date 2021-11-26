@@ -4,13 +4,14 @@
 # Grit Rother <mr@otobo.de>, 2020, 2021.
 # sr <sr@otrs.ch>, 2020.
 # Bernhard Schmalhofer <Bernhard.Schmalhofer@gmx.de>, 2020, 2021.
+# Andreas Erhard <erhard@wor.net>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-25 00:34+0100\n"
-"PO-Revision-Date: 2021-06-30 22:35+0000\n"
-"Last-Translator: Grit Rother <mr@otobo.de>\n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
+"POT-Creation-Date: 2021-11-26 00:34+0100\n"
+"PO-Revision-Date: 2021-11-26 10:14+0000\n"
+"Last-Translator: Andreas Erhard <erhard@wor.net>\n"
 "Language-Team: German <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/de/>\n"
 "Language: de\n"
@@ -53,6 +54,7 @@ msgid "Restore"
 msgstr "Wiederherstellen"
 
 #: ../../content/backup-restore.rst:74
+#: ../../content/backup-restore-docker.rst:61
 msgid ""
 "To restore the database make sure that the database ``otobo`` exists and "
 "contains no tables."
@@ -111,7 +113,7 @@ msgstr ""
 "und Daemon können, müssen aber nicht gestoppt werden."
 
 #: ../../content/backup-restore.rst:130
-#: ../../content/backup-restore-docker.rst:59
+#: ../../content/backup-restore-docker.rst:79
 msgid ""
 "For restoring the backup we also need to specify which backup should be "
 "restored. The placeholder ``<TIMESTAMP>`` is something like "
@@ -184,6 +186,24 @@ msgstr ""
 "Um das Backup zu erstellen, benötigen wir eine laufende Datenbank und die "
 "Volumes ``otobo_opt_otobo`` sowie ``otobo_backup``. Das bedeutet, Webserver "
 "und OTOBO Daemon können, müssen aber nicht, gestoppt werden."
+
+#: ../../content/backup-restore-docker.rst:63
+msgid ""
+"To drop an existing otobo database and create a new one you can use the "
+"following commands. First, you have to connect to the MySQL CLI of the `db` "
+"container."
+msgstr ""
+"Um eine bestehende otobo Datenbank zu löschen und eine neue zu erstellen "
+"können folgende Befehle verwendet werden. Zuerst müssen Sie sich hierzu mit "
+"der MySQL CLI des `db` Containers verbinden."
+
+#: ../../content/backup-restore-docker.rst:71
+msgid ""
+"As soon as you are connected to the MySQL server, you can drop and recreate "
+"the `otobo` database."
+msgstr ""
+"Sobald man mit dem MySQL Server verbunden ist, kann die `otobo` Datenbank "
+"gelöscht und neu erstellt werden."
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
@@ -518,9 +538,8 @@ msgstr ""
 "Schritt übersprungen werden."
 
 #: ../../content/installation.rst:167
-#, fuzzy
 msgid "Disable mpm_event when it is currently active."
-msgstr "Deaktivieren Sie mpm_event, falls das Modul aktiv ist"
+msgstr "Deaktivieren Sie mpm_event, falls das Modul aktiv ist."
 
 #: ../../content/installation.rst:173
 msgid "Disable mpm_worker in case that MPM is enabled."
@@ -952,7 +971,6 @@ msgid "Installing using Docker and Docker Compose"
 msgstr "Installation mit Docker und Docker Compose"
 
 #: ../../content/installation-docker.rst:14
-#, fuzzy
 msgid ""
 "With the dockerized OTOBO deployment you can get your personal OTOBO "
 "instance up and running within minutes. All of OTOBO´s dependencies are "
@@ -985,7 +1003,6 @@ msgstr ""
 "eingesetzt."
 
 #: ../../content/installation-docker.rst:23
-#, fuzzy
 msgid ""
 "We think that this setup will become the perfect environment for an OTOBO "
 "installation."
@@ -1068,7 +1085,6 @@ msgid "1. Clone the otobo-docker repo"
 msgstr "1. OTOBO-Docker-Repo klonen"
 
 #: ../../content/installation-docker.rst:60
-#, fuzzy
 msgid ""
 "The Docker images will eventually be fetched from the repository https://hub."
 "docker.com. But there are some setup and command files that need to be "
@@ -1097,7 +1113,6 @@ msgid "2. Create an initial *.env* file"
 msgstr "2. Initiale *.env*-Datei anlegen"
 
 #: ../../content/installation-docker.rst:79
-#, fuzzy
 msgid ""
 "The Docker Compose configuration file *.env* is your primary interface for "
 "managing your installation of OTOBO. This file must first be created and "
@@ -1118,57 +1133,60 @@ msgstr ""
 "docker_compose_env_http* als Ausgangspunkt."
 
 #: ../../content/installation-docker.rst:87
-#, fuzzy
 msgid ".docker_compose_env_http"
-msgstr "*.docker_compose_env_http*"
+msgstr ".docker_compose_env_http"
 
 #: ../../content/installation-docker.rst:87
 msgid "The OTOBO web app provides HTTP."
-msgstr ""
+msgstr "Die OTOBO Oberfläche ist über HTTP erreichbar."
 
 #: ../../content/installation-docker.rst:90
-#, fuzzy
 msgid ".docker_compose_env_https"
-msgstr "*.docker_compose_env_https*"
+msgstr ".docker_compose_env_https"
 
 #: ../../content/installation-docker.rst:90
 msgid ""
 "The OTOBO web app provides HTTPS by runnning Nginx as a reverse proxy "
 "webserver."
 msgstr ""
+"Die OTOBO Oberfläche ist über Nginx als Reverse-Proxy per HTTPS erreichbar."
 
 #: ../../content/installation-docker.rst:93
-#, fuzzy
 msgid ".docker_compose_env_https_custom_nginx"
-msgstr "*.docker_compose_env_https*"
+msgstr ".docker_compose_env_https_custom_nginx"
 
 #: ../../content/installation-docker.rst:93
 msgid ""
-"Like *.docker_compose_env_https* but with support for a custom Ninx "
+"Like *.docker_compose_env_https* but with support for a custom Nginx "
 "configuration."
 msgstr ""
+"Ähnlich zu *.docker_compose_env_https*, aber mit Unterstützung einer "
+"individuellen Nginx Konfiguration."
 
 #: ../../content/installation-docker.rst:96
-#, fuzzy
 msgid ".docker_compose_env_https_kerberos"
-msgstr "*.docker_compose_env_https*"
+msgstr ".docker_compose_env_https_kerberos"
 
 #: ../../content/installation-docker.rst:96
 msgid ""
 "Like *.docker_compose_env_https* but with sample setup for single sign on."
 msgstr ""
+"Ähnlich zu *.docker_compose_env_https*, aber mit Beispiel Konfiguration für "
+"Single-Sign-On."
 
 #: ../../content/installation-docker.rst:99
 msgid ""
 ".docker_compose_env_http_selenium and .docker_compose_env_https_selenium"
 msgstr ""
+".docker_compose_env_http_selenium und .docker_compose_env_https_selenium"
 
 #: ../../content/installation-docker.rst:99
 msgid "These are used only for development when Selenium testing is activated."
 msgstr ""
+"Diese werden nur für Entwicklungszwecke genutzt, wenn Selenium Tests "
+"aktiviert sind."
 
 #: ../../content/installation-docker.rst:103
-#, fuzzy
 msgid "Use ``ls -a`` for listing the hidden sample files."
 msgstr "``ls -a`` zeigt die ausgeblendete Template-Dateien an."
 
@@ -1200,7 +1218,6 @@ msgid "Change the following setting inside your *.env* file:"
 msgstr "Ändern Sie folgenden Wert in der *.env*-Datei:"
 
 #: ../../content/installation-docker.rst:121
-#, fuzzy
 msgid "``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``"
 msgstr "``OTOBO_DB_ROOT_PASSWORD=<Ihr_geheimes_Passwort>``"
 
@@ -1279,12 +1296,11 @@ msgstr ""
 "eingegeben werden. Beispiel:"
 
 #: ../../content/installation-docker.rst:159
-#, fuzzy
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 msgstr ""
-"``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
+"``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` und "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 
 #: ../../content/installation-docker.rst:162
@@ -1300,7 +1316,6 @@ msgid "5. Start the Docker containers with Docker Compose"
 msgstr "5. Installation mit Docker und Docker Compose"
 
 #: ../../content/installation-docker.rst:167
-#, fuzzy
 msgid ""
 "Now we start the Docker containers using ``docker-compose``. Per default the "
 "Docker images will be fetched from https://hub.docker.com/u/rotheross."
@@ -1329,7 +1344,6 @@ msgstr ""
 "aus."
 
 #: ../../content/installation-docker.rst:188
-#, fuzzy
 msgid ""
 "Please configure OTOBO inside the installer with a new MySQL database. As "
 "MySQL database root password please use the password you configured in the "
@@ -1337,7 +1351,7 @@ msgid ""
 "value ``db`` for the MySQL hostname untouched."
 msgstr ""
 "Konfigurieren Sie OTOBO im Installer mit einer neuen MySQL-Datenbank. Geben "
-"Sie als Root-Passwort für die MySQL-Datenbank das Passwort ein, dass Sie für "
+"Sie als Root-Passwort für die MySQL-Datenbank das Passwort ein, das Sie für "
 "die Variable ``OTOBO_DB_ROOT_PASSWORD`` in die *.env*-Datei eingegeben "
 "haben. Bitte behalten Sie den Wert ``db`` für den MySQL-Hostnamen "
 "unverändert bei."
@@ -1347,15 +1361,14 @@ msgid "**Have fun with OTOBO!**"
 msgstr "**Viel Vergnügen mit OTOBO!**"
 
 #: ../../content/installation-docker.rst:197
-#, fuzzy
 msgid ""
 "To change to the OTOBO directory, inside the running container, to work on "
-"command line as usual, you can use the following Docker command: ``docker "
-"exec -it otobo_web_1 bash``."
+"command line as usual, you can use the following Docker command: ``docker-"
+"compose exec web bash``."
 msgstr ""
 "Um im laufenden Container in das OTOBO-Verzeichnis zu wechseln und wie "
 "gewohnt in der Kommandozeile zu arbeiten, können Sie folgenden Docker-Befehl "
-"nutzen: ``docker exec -it otobo_web_1 bash``."
+"nutzen: ``docker-compose exec web bash``."
 
 #: ../../content/installation-docker.rst:201
 msgid "Additional technical information"
@@ -1441,27 +1454,24 @@ msgid "otobo_opt_otobo"
 msgstr "otobo_opt_otobo"
 
 #: ../../content/installation-docker.rst:234
-#, fuzzy
 msgid "contains */opt/otobo* in the container **web** and **daemon**."
-msgstr "enthält `/opt/otobo` in den Containern `web` und `daemon`."
+msgstr "enthält */opt/otobo* in den Containern **web** and **daemon**."
 
 #: ../../content/installation-docker.rst:237
 msgid "otobo_mariadb_data"
 msgstr "otobo_mariadb_data"
 
 #: ../../content/installation-docker.rst:237
-#, fuzzy
 msgid "contains */var/lib/mysql* in the container **db**."
-msgstr "beinhaltet `/var/lib/mysql` im Container `db`."
+msgstr "beinhaltet */var/lib/mysql* im Container *db*."
 
 #: ../../content/installation-docker.rst:240
 msgid "otobo_elasticsearch_data"
 msgstr "otobo_elasticsearch_data"
 
 #: ../../content/installation-docker.rst:240
-#, fuzzy
 msgid "contains */usr/share/elasticsearch/datal* in the container **elastic**."
-msgstr "enthält `/usr/share/elasticsearch/datal` im Container `elastic`."
+msgstr "enthält */usr/share/elasticsearch/datal* im Container **elastic**."
 
 #: ../../content/installation-docker.rst:243
 msgid "otobo_redis_data"
@@ -1488,7 +1498,6 @@ msgid "Docker environment variables"
 msgstr "Docker-Umgebungsvariablen"
 
 #: ../../content/installation-docker.rst:251
-#, fuzzy
 msgid ""
 "In the instructions we did only minimal configuration. But the file *.env* "
 "allows to set more variables. Here is a short list of the most important "
@@ -1496,17 +1505,16 @@ msgid ""
 "the base images."
 msgstr ""
 "Bisher haben wir nur das Nötigste konfiguriert. In der *.env*-Datei können "
-"weitere Konfigurationen vorgenommen werden. Folgende Umgebungsvariablen "
-"werden unterstützt:"
+"weitere Konfigurationen vorgenommen werden. Im Folgenden finden Sie eine "
+"Auswahl der wichtigsten Umgebungsvariablen."
 
 #: ../../content/installation-docker.rst:255
 msgid "**MariaDB settings**"
 msgstr "**MariaDB Einstellungen**"
 
 #: ../../content/installation-docker.rst:258
-#, fuzzy
 msgid "OTOBO_DB_ROOT_PASSWORD"
-msgstr "``OTOBO_DB_ROOT_PASSWORD``"
+msgstr "OTOBO_DB_ROOT_PASSWORD"
 
 #: ../../content/installation-docker.rst:258
 msgid "The root password for MySQL. Must be set for running otobo db."
@@ -1530,9 +1538,8 @@ msgstr ""
 "elasticsearch/reference/7.8/docker.html#docker-prod-prerequisites."
 
 #: ../../content/installation-docker.rst:269
-#, fuzzy
 msgid "OTOBO_Elasticsearch_ES_JAVA_OPTS"
-msgstr "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
+msgstr "OTOBO_Elasticsearch_ES_JAVA_OPTS"
 
 #: ../../content/installation-docker.rst:267
 msgid ""
@@ -1548,9 +1555,8 @@ msgstr "**Webserver Einstellungen**"
 
 #: ../../content/installation-docker.rst:275
 #: ../../content/installation-docker.rst:283
-#, fuzzy
 msgid "OTOBO_WEB_HTTP_PORT"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "OTOBO_WEB_HTTP_PORT"
 
 #: ../../content/installation-docker.rst:274
 msgid ""
@@ -1576,9 +1582,8 @@ msgstr ""
 "Hier sind Angaben nötig, falls der HTTP-Port vom Standardport 80 abweicht."
 
 #: ../../content/installation-docker.rst:286
-#, fuzzy
 msgid "OTOBO_WEB_HTTPS_PORT"
-msgstr "``OTOBO_WEB_HTTPS_PORT``"
+msgstr "OTOBO_WEB_HTTPS_PORT"
 
 #: ../../content/installation-docker.rst:286
 msgid "Set in case the HTTPS port should deviate from the standard port 443."
@@ -1586,9 +1591,8 @@ msgstr "Bitte anpassen, falls der HTTPS-Port vom Standardport 443 abweicht."
 
 #: ../../content/installation-docker.rst:290
 #: ../../content/installation-docker.rst:333
-#, fuzzy
 msgid "OTOBO_NGINX_SSL_CERTIFICATE"
-msgstr "``OTOBO_NGINX_SSL_CERTIFICATE``"
+msgstr "OTOBO_NGINX_SSL_CERTIFICATE"
 
 #: ../../content/installation-docker.rst:289
 msgid ""
@@ -1600,9 +1604,8 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:294
 #: ../../content/installation-docker.rst:336
-#, fuzzy
 msgid "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
-msgstr "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
+msgstr "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
 
 #: ../../content/installation-docker.rst:293
 msgid ""
@@ -1621,9 +1624,8 @@ msgid "These settings are used by Docker Compose directly."
 msgstr "Diese Einstellungen werden direkt von Docker Compose verwendet."
 
 #: ../../content/installation-docker.rst:303
-#, fuzzy
 msgid "COMPOSE_PROJECT_NAME"
-msgstr "``COMPOSE_PROJECT_NAME``"
+msgstr "COMPOSE_PROJECT_NAME"
 
 #: ../../content/installation-docker.rst:301
 msgid ""
@@ -1632,20 +1634,23 @@ msgid ""
 "`otobo_web_1` and `otobo_db_1`. Change this name when you want to run more "
 "then one instance of OTOBO on the same server."
 msgstr ""
+"Der Projektname wird als Präfix für die Docker Volumes und Container "
+"verwendet. Als Standardwert wird `otobo` verwendet, sodass die Container z."
+"B. `otobo_web_1` und `otobo_db_1` heißen. Wenn Sie mehrere OTOBO Instanzen "
+"auf dem selben Server betreiben, passen Sie den Projektnamen bitte jeweils "
+"individuell an."
 
 #: ../../content/installation-docker.rst:306
-#, fuzzy
 msgid "COMPOSE_PATH_SEPARATOR"
-msgstr "``COMPOSE_PATH_SEPARATOR``"
+msgstr "COMPOSE_PATH_SEPARATOR"
 
 #: ../../content/installation-docker.rst:306
 msgid "Separator for the value of COMPOSE_FILE"
 msgstr "Separator für die Werte im COMPOSE_FILE"
 
 #: ../../content/installation-docker.rst:310
-#, fuzzy
 msgid "COMPOSE_FILE"
-msgstr "``COMPOSE_FILE``"
+msgstr "COMPOSE_FILE"
 
 #: ../../content/installation-docker.rst:309
 msgid ""
@@ -1658,22 +1663,20 @@ msgstr ""
 "yml* oder *docker-compose/otobo-override-https.yml*."
 
 #: ../../content/installation-docker.rst:313
-#, fuzzy
 msgid ""
 "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, "
 "OTOBO_IMAGE_OTOBO_NGINX, ..."
 msgstr ""
-"``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
-"``OTOBO_IMAGE_OTOBO_NGINX``"
+"OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, "
+"OTOBO_IMAGE_OTOBO_NGINX, ..."
 
 #: ../../content/installation-docker.rst:313
-#, fuzzy
 msgid ""
 "Used for specifying alternative Docker images. Useful for testing local "
 "builds or for using updated versions of the images."
 msgstr ""
 "Werden verwendet, um alternative Docker Images zu deklarieren. Nützlich zum "
-"Testen lokaler Builds."
+"Testen lokaler Builds oder aktuellerer Versionen der Images."
 
 #: ../../content/installation-docker.rst:316
 msgid "Advanced topics"
@@ -1690,6 +1693,10 @@ msgid ""
 "the official Nginx Docker image, https://hub.docker.com/_/nginx, along with "
 "a OTOBO specific configuration of Nginx."
 msgstr ""
+"Der Container ``otobo_nginx_1`` bietet HTTPS Unterstützung über einen Nginx "
+"als Reverse Proxy. Das Docker Image des Containers besteht aus dem "
+"offiziellen Nginx Image, https://hub.docker.com/_/nginx, zusammen mit einer "
+"OTOBO spezifischen Nginx Konfiguration."
 
 #: ../../content/installation-docker.rst:326
 #, fuzzy
@@ -1715,31 +1722,31 @@ msgstr ""
 #: ../../content/installation-docker.rst:333
 #: ../../content/installation-docker.rst:336
 msgid "For configuring SSL."
-msgstr ""
+msgstr "Um SSL zu konfigurieren."
 
 #: ../../content/installation-docker.rst:339
-#, fuzzy
 msgid "OTOBO_NGINX_WEB_HOST"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "OTOBO_NGINX_WEB_HOST"
 
 #: ../../content/installation-docker.rst:339
 msgid "The internally used HTTP host."
-msgstr ""
+msgstr "Der intern benutzte HTTP Hostname."
 
 #: ../../content/installation-docker.rst:342
-#, fuzzy
 msgid "OTOBO_NGINX_WEB_PORT"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "OTOBO_NGINX_WEB_PORT"
 
 #: ../../content/installation-docker.rst:342
 msgid "The internally used HTTP port."
-msgstr ""
+msgstr "Der intern benutzte HTTP Port."
 
 #: ../../content/installation-docker.rst:344
 msgid ""
 "See step `4.` for how this configuration possibility was used for setting up "
 "the SSL certificate."
 msgstr ""
+"Wie diese Konfigurationsmöglichkeit genutzt werden kann, um ein SSL-"
+"Zertifikat zu installieren, lesen Sie in Schritt `4.`."
 
 #: ../../content/installation-docker.rst:348
 msgid "The following approach is only supported in OTOBO 10.0.4 or later."
@@ -1761,6 +1768,8 @@ msgid ""
 "First comes generation of the new volume. In these sample commands, we use "
 "the existing template as a starting point."
 msgstr ""
+"Zuerst muss ein neues Volume erstellt werden. In den Beispielbefehlen "
+"benutzen wir das bestehende Template als Ausgangspunkt."
 
 #: ../../content/installation-docker.rst:382
 msgid ""
@@ -1928,15 +1937,17 @@ msgid "Building local images"
 msgstr "Lokale Images erstellen"
 
 #: ../../content/installation-docker.rst:480
-#, fuzzy
 msgid ""
 "Building Docker images locally is usually only needed during development. "
 "Other use cases are when more current base images should be used for an "
 "installation or when extra functionality must be added to the images."
-msgstr "Lokale Docker Images werden in der Regel nur zur Entwicklung erstellt."
+msgstr ""
+"Lokale Docker Images werden in der Regel nur zur Entwicklung erstellt. "
+"Weitere Anwendungsfälle sind z.B. wenn aktuellere Basis Images benötigt "
+"werden oder wenn Images um zusätzliche Funktionalität erweitert werden "
+"sollen."
 
 #: ../../content/installation-docker.rst:484
-#, fuzzy
 msgid ""
 "The Docker files needed for creating Docker images locally are part of the "
 "the git repository https://github.com/RotherOSS/otobo:"
@@ -1961,24 +1972,26 @@ msgid ""
 "The script for the actual creation of the images is *bin/docker/"
 "build_docker_images.sh*."
 msgstr ""
+"Das Script zum Erstellen der Images finden Sie unter *bin/docker/"
+"build_docker_images.sh*."
 
 #: ../../content/installation-docker.rst:502
 msgid ""
 "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` "
 "using the version set up the file *RELEASE*."
 msgstr ""
+"Lokal erstellte Images werden auf Basis der in der Datei *RELEASE* "
+"angegebenen Versionsdaten als ``local-<OTOBO_VERSION>`` getaggt."
 
 #: ../../content/installation-docker.rst:504
-#, fuzzy
 msgid ""
 "After building the local images, one can return to the *docker-compose* "
 "directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, "
 "``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*."
 msgstr ""
-"Lokal erstellte Images werden auf Basis der in der Datei *RELEASE* "
-"angegebenen Versionsdaten als ``local-<OTOBO_VERSION>`` getaggt. Neu "
-"erstellte Images können mit den entsprechenden Vorgaben in "
-"``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
+"Nach dem Erstellen der lokalen Images können Sie in das *docker-compose* "
+"Verzeichnis zurückkehren. Neu erstellte Images können mit den entsprechenden "
+"Vorgaben in ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX`` in *.env* ausgewählt werden."
 
 #: ../../content/installation-docker.rst:508
@@ -1986,16 +1999,14 @@ msgid "Automatic Installation"
 msgstr "Automatische Installation"
 
 #: ../../content/installation-docker.rst:510
-#, fuzzy
 msgid ""
 "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can "
 "take a short cut. This is useful for running the test suite on a fresh "
 "installation."
 msgstr ""
 "Anstatt die URL http://yourIPorFQDN/otobo/installer.pl zu verwenden, können "
-"Sie auch eine schnelle Lösung wählen. Diese Möglichkeit eignet sich "
-"besonders, um die Testsuite auf einem frisch installierten System laufen zu "
-"lassen."
+"Sie auch eine Abkürzung wählen. Diese Möglichkeit eignet sich besonders, um "
+"die Testsuite auf einem frisch installierten System laufen zu lassen."
 
 #: ../../content/installation-docker.rst:515
 msgid "``docker-compose down -v`` will remove all previous setup and data."
@@ -2011,7 +2022,6 @@ msgid "**Docker**"
 msgstr "**Docker**"
 
 #: ../../content/installation-docker.rst:534
-#, fuzzy
 msgid ""
 "``docker system prune -a`` system clean-up (removes all unused images, "
 "containers, volumes, networks)"
@@ -2020,31 +2030,26 @@ msgstr ""
 "Images, Container, Volumes, Netzwerke)"
 
 #: ../../content/installation-docker.rst:535
-#, fuzzy
 msgid "``docker version`` show version"
 msgstr "``docker version`` Version anzeigen"
 
 #: ../../content/installation-docker.rst:536
-#, fuzzy
 msgid ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` Image erstellen"
 
 #: ../../content/installation-docker.rst:537
-#, fuzzy
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``docker run --publish 80:5000 otobo`` Neues Image ausführen"
 
 #: ../../content/installation-docker.rst:538
-#, fuzzy
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` Login auf neuem Image"
 
 #: ../../content/installation-docker.rst:539
-#, fuzzy
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that "
 "in case entrypoint.sh is broken"
@@ -2053,29 +2058,24 @@ msgstr ""
 "Skript entrypoint.sh nicht funktioniert"
 
 #: ../../content/installation-docker.rst:540
-#, fuzzy
 msgid "``docker ps`` show running images"
 msgstr "``docker ps`` Laufende Images anzeigen"
 
 #: ../../content/installation-docker.rst:541
-#, fuzzy
 msgid "``docker images`` show available images"
 msgstr "``docker images`` Verfügbare Images anzeigen"
 
 #: ../../content/installation-docker.rst:542
-#, fuzzy
 msgid "``docker volume ls`` list volumes"
 msgstr "``docker volume ls`` Volumes auflisten"
 
 #: ../../content/installation-docker.rst:543
-#, fuzzy
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr ""
 "``docker volume inspect otobo_opt_otobo`` Informationen über ein Volume "
 "ausgeben"
 
 #: ../../content/installation-docker.rst:544
-#, fuzzy
 msgid ""
 "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get "
 "volume mountpoint"
@@ -2084,18 +2084,15 @@ msgstr ""
 "Volume Mountpoint ausgeben"
 
 #: ../../content/installation-docker.rst:545
-#, fuzzy
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``docker volume rm tmp_volume`` Volume entfernen"
 
 #: ../../content/installation-docker.rst:546
-#, fuzzy
 msgid "``docker inspect <container>`` inspect a container"
 msgstr ""
 "``docker inspect <container>`` Informationen zu einem Container anzeigen"
 
 #: ../../content/installation-docker.rst:547
-#, fuzzy
 msgid ""
 "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list "
 "files in an image"
@@ -2104,7 +2101,6 @@ msgstr ""
 "aller Dateien in einem Image anzeigen"
 
 #: ../../content/installation-docker.rst:548
-#, fuzzy
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` nginx-Reload"
 
@@ -2113,26 +2109,28 @@ msgid "**Docker Compose**"
 msgstr "**Docker Compose**"
 
 #: ../../content/installation-docker.rst:552
-#, fuzzy
 msgid "``docker-compose config`` check and show the configuration"
 msgstr "``docker-compose config`` Informationen zur Konfiguration anzeigen"
 
 #: ../../content/installation-docker.rst:553
-#, fuzzy
 msgid "``docker-compose ps`` show the running containers"
 msgstr "``docker-compose ps`` Informationen zu laufenden Containern anzeigen"
 
-#: ../../content/installation-docker.rst:556
+#: ../../content/installation-docker.rst:554
+msgid "``docker-compose exec nginx nginx -s reload`` reload nginx"
+msgstr "``docker-compose exec nginx nginx -s reload`` nginx-Reload"
+
+#: ../../content/installation-docker.rst:557
 msgid "Resources"
 msgstr "Ressourcen"
 
-#: ../../content/installation-docker.rst:558
+#: ../../content/installation-docker.rst:559
 msgid ""
 "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 msgstr ""
 "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
-#: ../../content/installation-docker.rst:559
+#: ../../content/installation-docker.rst:560
 msgid ""
 "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
@@ -2140,7 +2138,7 @@ msgstr ""
 "`Docker Compose-Schnellstart <http://mfg.fhstp.ac.at/development/"
 "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
 
-#: ../../content/installation-docker.rst:560
+#: ../../content/installation-docker.rst:561
 msgid ""
 "`Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www."
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
@@ -2150,7 +2148,7 @@ msgstr ""
 "www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
 "ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:561
+#: ../../content/installation-docker.rst:562
 msgid ""
 "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
@@ -2159,17 +2157,17 @@ msgstr ""
 "digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-"
 "ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:562
+#: ../../content/installation-docker.rst:563
 msgid "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
 msgstr "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
 
-#: ../../content/installation-docker.rst:563
+#: ../../content/installation-docker.rst:564
 msgid ""
 "`cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 msgstr ""
 "`Cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
-#: ../../content/installation-docker.rst:564
+#: ../../content/installation-docker.rst:565
 msgid ""
 "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
@@ -2177,7 +2175,7 @@ msgstr ""
 "`Dockerfile Best Practices <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
 
-#: ../../content/installation-docker.rst:565
+#: ../../content/installation-docker.rst:566
 msgid ""
 "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/"
 "when-does-docker-image-cache-invalidation-occur>`_"
@@ -2185,7 +2183,7 @@ msgstr ""
 "`Docker Cache Entwertung <https://stackoverflow.com/questions/34814669/when-"
 "does-docker-image-cache-invalidation-occur>`_"
 
-#: ../../content/installation-docker.rst:566
+#: ../../content/installation-docker.rst:567
 msgid ""
 "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
@@ -2193,11 +2191,11 @@ msgstr ""
 "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
 
-#: ../../content/installation-docker.rst:567
+#: ../../content/installation-docker.rst:568
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`Umgebung <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
-#: ../../content/installation-docker.rst:568
+#: ../../content/installation-docker.rst:569
 msgid ""
 "`Self signed certificate <https://www.digitalocean.com/community/tutorials/"
 "how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
@@ -2206,7 +2204,7 @@ msgstr ""
 "community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-"
 "ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:569
+#: ../../content/installation-docker.rst:570
 msgid ""
 "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-"
 "build/>`_"
@@ -2215,12 +2213,10 @@ msgstr ""
 "debugging-docker-build/>`_"
 
 #: ../../content/installing-perl-modules.rst:12
-#, fuzzy
 msgid "Installing Perl Modules from CPAN"
 msgstr "Perlmodule installieren"
 
 #: ../../content/installing-perl-modules.rst:14
-#, fuzzy
 msgid ""
 "When there are special requirements then the need for additional Perl "
 "modules may arise. Fortunately, Perl has an excellent package repository "
@@ -2233,31 +2229,28 @@ msgstr ""
 "finden es unter der Bezeichnung CPAN unter https://metacpan.org/."
 
 #: ../../content/installing-perl-modules.rst:18
-#, fuzzy
 msgid ""
 "It is recommended to use the command line client ``cpanm`` for installing "
 "modules. ``cpanm`` is often already installed on your system. Please see "
 "https://metacpan.org/pod/App::cpanminus for what to do when is isn't already "
 "available."
 msgstr ""
-"Die Utility ``cpanm`` ist auf vielen Systemen bereits installiert. Sollte "
+"Es wird empfohlen, CPAN-Module mit dem Befehlszeilenclient ``cpanm`` zu "
+"installieren. ``cpanm`` ist auf vielen Systemen bereits installiert. Sollte "
 "dies bei Ihnen nicht der Fall sein, finden Sie weitere Informationen unter "
 "https://metacpan.org/pod/App::cpanminus."
 
 #: ../../content/installing-perl-modules.rst:22
-#, fuzzy
 msgid ""
 "Alternatively, many Perl modules are also available as packages for your "
 "operating system. These packages can be installed with your systems regular "
 "package manager."
 msgstr ""
-"Es wird empfohlen, CPAN-Module mit dem Befehlszeilenclient ``cpanm`` zu "
-"installieren. Alternativ sind viele Perl-Module auch als Pakete für Ihr "
-"Betriebssystem verfügbar. Diese Pakete können über den regulären "
-"Paketmanager Ihres Systems installiert werden."
+"Alternativ sind viele Perl-Module auch als Pakete für Ihr Betriebssystem "
+"verfügbar. Diese Pakete können über den regulären Paketmanager Ihres Systems "
+"installiert werden."
 
 #: ../../content/installing-perl-modules.rst:25
-#, fuzzy
 msgid ""
 "Per default ``cpanm`` installs modules into a systemwide location. In this "
 "case modules must be installed as the root user. For example, the command"
@@ -2271,9 +2264,8 @@ msgid "results in:"
 msgstr "ergibt z. B.:"
 
 #: ../../content/installing-perl-modules.rst:40
-#, fuzzy
 msgid "Docker-based installations"
-msgstr "Aktualisieren einer Docker-basierte OTOBO-Installation"
+msgstr "Docker-basierte OTOBO Installationen"
 
 #: ../../content/installing-perl-modules.rst:42
 #, fuzzy
@@ -2304,6 +2296,9 @@ msgid ""
 "There is the general rule that files added to ``/opt/otobo`` won't be "
 "removed by an upgrade."
 msgstr ""
+"Die installierten Perl Module sind auch nach einem OTOBO Upgrade verfügbar. "
+"Die Grundsatzregel lautet, dass unter ``/opt/otobo`` hinzugefügte Dateien "
+"bei einem Upgrade nicht gelöscht werden."
 
 #: ../../content/installing-perl-modules.rst:52
 msgid ""
@@ -2311,6 +2306,10 @@ msgid ""
 "install command. Specicifically, we need to add the option ``--local-lib``. "
 "Here is a sample session in the container **web**."
 msgstr ""
+"Um Perl Module in einem bestimmten Verzeichnis zu installieren, muss der "
+"Installationsbefehl angepasst werden. Konkret wird in diesem Fall die Option "
+"``--local-lib`` angefügt. Im Folgenden ein Beispiel aus dem Container "
+"**web**."
 
 #: ../../content/introduction.rst:12
 msgid "Introduction"
@@ -2412,7 +2411,6 @@ msgstr ""
 "Anleitung Schritt für Schritt."
 
 #: ../../content/migration-from-otrs-6.rst:20
-#, fuzzy
 msgid ""
 "If you have any problem or question, please do not despair. Call our support "
 "line, write an email, or post your query in the OTOBO Community forum at "
@@ -2420,26 +2418,24 @@ msgid ""
 msgstr ""
 "Probleme oder Fragen? Kein Grund zu Verzweifeln :) Rufen Sie unsere Support-"
 "Hotline an, schreiben Sie uns eine E-Mail oder bitten Sie im OTOBO Community "
-"Forum unter https://forum.otobo.org/ um Unterstützung."
+"Forum unter https://forum.otobo.org/ um Unterstützung. Wir werden einen Weg "
+"finden, Ihnen zu helfen!"
 
 #: ../../content/migration-from-otrs-6.rst:25
-#, fuzzy
 msgid ""
 "After the migration the data previously available in OTRS 6 will be "
 "available in OTOBO 10. We do not modify any data of the OTRS 6 installation "
 "during the migration."
 msgstr ""
 "Nach der Migration werden alle bisher in OTRS 6 verfügbaren Daten in OTOBO "
-"verfügbar sein. Die Daten in Ihrem OTRS-Ursprungssystem werden während der "
-"Migration nicht verändert."
+"10 verfügbar sein. Die Daten in Ihrem OTRS-Ursprungssystem werden während "
+"der Migration nicht verändert."
 
 #: ../../content/migration-from-otrs-6.rst:29
-#, fuzzy
 msgid "Overview over the Supported Migration Szenarios"
-msgstr "Übersicht über die Docker Volumes"
+msgstr "Übersicht über die unterstützen Migrationsmöglichkeiten"
 
 #: ../../content/migration-from-otrs-6.rst:31
-#, fuzzy
 msgid ""
 "With the OTOBO Migration Interface it is possible to employ the following "
 "migration strategies:"
@@ -2448,84 +2444,80 @@ msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:33
 msgid "The general migration strategy."
-msgstr ""
+msgstr "Die grundsätzliche Migrationsstrategie."
 
 #: ../../content/migration-from-otrs-6.rst:35
 msgid ""
 "This is the regular way to perform a migration. Many different different "
 "combinations are supported:"
 msgstr ""
+"Dies ist der reguläre Weg, um eine Migration durchzuführen. Viele weitere "
+"Varianten sind möglich:"
 
 #: ../../content/migration-from-otrs-6.rst:38
 msgid "Change server:"
-msgstr ""
+msgstr "Wechsel des Servers:"
 
 #: ../../content/migration-from-otrs-6.rst:38
-#, fuzzy
 msgid "Migrate and simultaneously move to a new application server."
 msgstr ""
-"Serverwechsel: Eine Migration mit gleichzeitigem Wechsel zu einem neuen "
-"Applikationsserver."
+"Eine Migration mit gleichzeitigem Wechsel zu einem neuen Applikationsserver."
 
 #: ../../content/migration-from-otrs-6.rst:42
 msgid "Separate application and web servers:"
-msgstr ""
+msgstr "Trennung von Applikation und Webserver:"
 
 #: ../../content/migration-from-otrs-6.rst:41
-#, fuzzy
 msgid ""
 "It's your choice whether you want to run application and database server on "
 "the same host or each on a dedictated host. This choice is regardless of the "
 "previous setup in OTRS / ((OTRS)) Community Edition."
 msgstr ""
-"2. Verschiedene Anwendungs- und Webserver: Sie haben die Möglichkeit, den "
-"Anwendungs- und Datenbankserver auf einem gemeinsamen oder zwei "
-"verschiedenen Servern laufen lassen – unabhängig davon, wie das beim OTRS- / "
-"((OTRS)) Community Edition-Vorgängersystem war."
+"Sie haben die Möglichkeit, den Anwendungs- und Datenbankserver auf einem "
+"gemeinsamen oder zwei verschiedenen Servern laufen lassen – unabhängig "
+"davon, wie das beim OTRS- / ((OTRS)) Community Edition-Vorgängersystem war."
 
 #: ../../content/migration-from-otrs-6.rst:45
-#, fuzzy
 msgid "Different databases:"
-msgstr "Datenbanken"
+msgstr "Verschiedene Datenbanken:"
 
 #: ../../content/migration-from-otrs-6.rst:45
-#, fuzzy
 msgid ""
 "Migrate from any of the supported databases to any other supported database."
 msgstr ""
-"Verschiedene Datenbanken: Sie können von jeder der unterstützten Datenbanken "
-"zu jeder anderen migrieren."
+"Sie können von jeder der unterstützten Datenbanken zu einer anderen "
+"migrieren."
 
 #: ../../content/migration-from-otrs-6.rst:48
 msgid "Different operating system:"
-msgstr ""
+msgstr "Wechsel des Betriebssystems:"
 
 #: ../../content/migration-from-otrs-6.rst:48
-#, fuzzy
 msgid ""
 "Switch from any supported operating system to any other supported operating "
 "system."
 msgstr ""
-"Verschiedene Betriebssysteme: Sie können während der Migration von jedem "
-"unterstützten Betriebssystem zu jedem anderen unterstützten BS wechseln."
+"Sie können während der Migration von jedem unterstützten Betriebssystem zu "
+"jedem anderen unterstützten Betriebssystem wechseln."
 
 #: ../../content/migration-from-otrs-6.rst:51
-#, fuzzy
 msgid "Docker:"
-msgstr "**Docker**"
+msgstr "Docker:"
 
 #: ../../content/migration-from-otrs-6.rst:51
-#, fuzzy
 msgid "Migrate to a Docker-based installation of OTOBO 10."
 msgstr ""
-"Docker: Auch die Migration zu einer Docker-basierten OTOBO 10-Installation "
-"ist möglich."
+"Auch die Migration zu einer Docker-basierten OTOBO 10-Installation ist "
+"möglich."
 
 #: ../../content/migration-from-otrs-6.rst:53
+#, fuzzy
 msgid ""
 "A variant of the general strategy where the database migration is "
 "streamlined."
 msgstr ""
+"Eine Variante der allgemeinen Strategie, bei der die Datenbankmigration "
+"streamlined durchgeführt wird."
 
 #: ../../content/migration-from-otrs-6.rst:55
 msgid ""
@@ -2542,6 +2534,8 @@ msgid ""
 "Migration from an Oracle based OTRS 6 installation to an Oracle based OTOBO "
 "installation."
 msgstr ""
+"Migration von einer Oracle-basierten OTRS 6 Installation zu einer Oracle-"
+"basierten OTOBO Installation."
 
 #: ../../content/migration-from-otrs-6.rst:63
 msgid ""
@@ -2555,6 +2549,9 @@ msgid ""
 "Docker-based installations some peculiarities have to be considered. These "
 "peculiarities are handled in the optional steps."
 msgstr ""
+"Alle Strategien funktionieren sowohl für Docker-basierte als auch für native "
+"Installationen. Bei der Docker-basierten Installation gibt es einige "
+"Besonderheiten zu beachten. Sie werden in den optionalen Schritten behandelt."
 
 #: ../../content/migration-from-otrs-6.rst:73
 msgid ""
@@ -2562,19 +2559,21 @@ msgid ""
 "before the actual migration. This can speed up the general migration "
 "strategy."
 msgstr ""
+"Es ist auch möglich, die OTRS Datenbank vor der Migration auf den OTOBO "
+"Datenbankserver zu klonen. Auf diese Weise kann die allgemeine "
+"Migrationsstrategie beschleunigt werden."
 
 #: ../../content/migration-from-otrs-6.rst:77
 msgid "Migration Requirements"
 msgstr "Migrationsvoraussetzungen"
 
 #: ../../content/migration-from-otrs-6.rst:79
-#, fuzzy
 msgid ""
 "Basic requirement for a migration is that you already have an ((OTRS)) "
 "Community Edition or OTRS 6.0.\\* running, and that you want to transfer "
 "both configuration and data to OTOBO."
 msgstr ""
-"1. Grundvoraussetzung für eine Migration ist, dass Sie bereits eine laufende "
+"Grundvoraussetzung für eine Migration ist, dass Sie bereits eine laufende "
 "((OTRS)) Community Edition oder OTRS 6.0.\\* haben und dass deren "
 "Konfiguration und Daten in OTOBO übernommen werden sollen."
 
@@ -2615,7 +2614,6 @@ msgstr ""
 "bisher in Ihrem OTRS nutzen und künftig in OTOBO nutzen möchten."
 
 #: ../../content/migration-from-otrs-6.rst:94
-#, fuzzy
 msgid ""
 "If you are planning to migrate to another server, then the OTOBO webserver "
 "must be able to access the location where your ((OTRS)) Community Edition or "
@@ -2623,24 +2621,23 @@ msgid ""
 "the server running OTRS. The read access can be effected via SSH or via file "
 "system mounts."
 msgstr ""
-"4. Wenn Sie auf einen anderen Server migrieren möchten, muss der OTOBO-"
+"Wenn Sie auf einen anderen Server migrieren möchten, muss der OTOBO-"
 "Webserver in der Lage sein, auf das Verzeichnis zuzugreifen, in dem die "
 "((OTRS)) Community Edition oder OTRS 6.0.* installiert sind. Meist ist dies "
 "das Verzeichnis */opt/otrs* auf dem Server, auf dem das OTRS läuft. Der "
 "Lesezugriff erfolgt über SSH oder Dateisystem-Mounts."
 
 #: ../../content/migration-from-otrs-6.rst:99
-#, fuzzy
 msgid ""
 "The *otrs* database must be accessible from the server running OTOBO. "
 "Readonly access must be granted for external hosts. If access is not "
 "possible, or when the speed of the migration should be optimised, then a "
 "dump of the database is sufficient."
 msgstr ""
-"5. Die *otrs*-Datenbank muss von dem Server aus erreichbar sein, auf dem "
-"OTOBO läuft. Externe Hosts müssen Lesezugriff haben. Wo kein Zugriff möglich "
-"ist oder die Migration beschleunigt werden soll, kann auch mit einem "
-"Datenbank-Dump gearbeitet werden."
+"Die *otrs*-Datenbank muss von dem Server aus erreichbar sein, auf dem OTOBO "
+"läuft. Externe Hosts müssen Lesezugriff haben. Wo kein Zugriff möglich ist "
+"oder die Migration beschleunigt werden soll, kann auch mit einem Datenbank-"
+"Dump gearbeitet werden."
 
 #: ../../content/migration-from-otrs-6.rst:104
 msgid ""
@@ -2657,7 +2654,6 @@ msgid "Step 1: Install the new OTOBO System"
 msgstr "Schritt 1: Neues OTOBO-System installieren"
 
 #: ../../content/migration-from-otrs-6.rst:110
-#, fuzzy
 msgid ""
 "Please start with installing a new OTOBO system. Your old OTRS / ((OTRS)) "
 "Community Edition installation will be migrated to that new system. We "
@@ -2690,16 +2686,15 @@ msgstr ""
 "gesetzt ist."
 
 #: ../../content/migration-from-otrs-6.rst:121
-#, fuzzy
 msgid ""
 "After finishing the installation please log in as *root@localhost*. Navigate "
 "to the OTOBO Admin Area ``Admin -> Packages`` and install all required OTOBO "
 "OPM packages."
 msgstr ""
-"Sobald die Installation abgeschlossen ist, melden Sie sich bitte in OTOBO an "
-"und öffnen im Admin-Bereich die Paketverwaltung (``Administration -> "
-"Paketverwaltung``). Dort können Sie alle benötigten OTOBO OPM-Pakete "
-"installieren."
+"Sobald die Installation abgeschlossen ist, melden Sie sich bitte in OTOBO "
+"als *root@localhost* an und öffnen im Admin-Bereich die Paketverwaltung (``"
+"Administration -> Paketverwaltung``). Dort können Sie alle benötigten OTOBO "
+"OPM-Pakete installieren."
 
 #: ../../content/migration-from-otrs-6.rst:140
 msgid ""
@@ -2777,47 +2772,48 @@ msgstr "Znuny4OTRS-PasswordPolicy"
 
 #: ../../content/migration-from-otrs-6.rst:143
 msgid "Step 2: Deactivate ``SecureMode`` on OTOBO"
-msgstr ""
+msgstr "Schritt 2: ``SecureMode`` in OTOBO deaktivieren"
 
 #: ../../content/migration-from-otrs-6.rst:145
-#, fuzzy
 msgid ""
 "After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -"
 "> System Configuration`` and deactivate the config option ``SecureMode``."
 msgstr ""
 "Bitte rufen Sie nach Abschluss der Installation erneut den OTOBO-Admin-"
 "Bereich auf, navigieren Sie zu ``Administration -> Systemkonfiguration`` und "
-"deaktivieren Sie die Konfig-Option ``SecureMode``. Melden Sie sich nun als "
-"``root``-Benutzer am Server an und führen Sie folgende Befehle aus:"
+"deaktivieren Sie die Konfig-Option ``SecureMode``."
 
 #: ../../content/migration-from-otrs-6.rst:149
 msgid "Do not forget to actually deploy the changed setting."
 msgstr ""
+"Bitte vergessen Sie nicht, die geänderte Einstellung anschließend in Betrieb "
+"zu nehmen."
 
 #: ../../content/migration-from-otrs-6.rst:152
-#, fuzzy
 msgid "Step 3: Stop the OTOBO Daemon"
-msgstr "Schritt 10: OTOBO Daemon starten"
+msgstr "Schritt 3: OTOBO Daemon stoppen"
 
 #: ../../content/migration-from-otrs-6.rst:154
 msgid ""
 "This is necessary when the OTOBO Daemon is actually running. Stopping the "
 "Daemon is different between Docker-based and non-Docker-based installations."
 msgstr ""
+"Dies ist nötig, wenn der OTOBO Daemon aktuell läuft. Das Vorgehen, um den "
+"OTOBO Daemon zu stoppen unterscheidet sich bei Docker-basierten und nicht-"
+"Docker-basierten (nativen) Installationen."
 
 #: ../../content/migration-from-otrs-6.rst:157
 msgid ""
 "In the non-Docker case execute the following commands as the user *otobo*:"
 msgstr ""
+"Bei nicht-Docker-basierten Installationen führen Sie die folgenden Befehle "
+"als User *otobo* aus:"
 
 #: ../../content/migration-from-otrs-6.rst:167
-#, fuzzy
 msgid ""
 "When OTOBO is running in Docker, you just need to stop the service "
 "``daemon``:"
-msgstr ""
-"Läuft OTOBO in Docker, genügt es, den Docker-Container ``otobo_daemon_1`` zu "
-"stoppen:"
+msgstr "Läuft OTOBO in Docker, genügt es, den Dienst ``daemon`` zu stoppen:"
 
 #: ../../content/migration-from-otrs-6.rst:177
 msgid ""
@@ -2836,40 +2832,62 @@ msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
 msgstr ""
 "Hierzu empfehlen wir die Lektüre des Kapitels OTOBO :doc:`backup-restore`."
 
-#: ../../content/migration-from-otrs-6.rst:186
-msgid "Optional Step: Install sshpass and rsysnc"
+#: ../../content/migration-from-otrs-6.rst:185
+msgid "Optional Step: Mount /opt/otrs for Convenient Access"
 msgstr ""
+"Optionaler Schritt: Einhängen von /opt/otrs für einen leichteren Zugriff"
 
-#: ../../content/migration-from-otrs-6.rst:188
+#: ../../content/migration-from-otrs-6.rst:187
+msgid ""
+"Often OTOBO should be running on a new server where */opt/otrs* isn't "
+"available initially. In these cases the directory */opt/otrs* on the OTRS "
+"server can be mounted into the file system of the OTOBO server. When a "
+"regular network mount is not possible, then using ``sshfs`` might be an "
+"option."
+msgstr ""
+"In vielen Fällen soll OTOBO auf einem neuen Server laufen, auf dem */opt/"
+"otrs* noch nicht zur Verfügung steht. In diesen Fällen kann das */opt/otrs* "
+"Verzeichnis des OTRS Servers in das Dateisystem auf dem OTOBO Server "
+"eingehängt werden. Falls ein normales Einhängen über das Netzwerk nicht "
+"möglich ist, kann beispielsweise auf ``sshfs`` zurückgegriffen werden."
+
+#: ../../content/migration-from-otrs-6.rst:192
+msgid ""
+"Optional Step: Install ``sshpass`` and ``rsync`` when */opt/otrs* Should be "
+"Copied via ssh"
+msgstr ""
+"Optionaler Schritt: Installation von ``sshpass`` und ``rsync`` wenn */opt/"
+"otrs* über SSH kopiert werden soll"
+
+#: ../../content/migration-from-otrs-6.rst:194
 msgid ""
 "This step is only necessary when you want to migrate OTRS from another "
 "server and when */opt/otrs* from the remote server hasn't been mounted on "
 "the server running OTOBO."
 msgstr ""
+"Dieser Schritt ist nur dann nötig, wenn Sie OTRS von einem anderen Server "
+"migrieren möchten und */opt/otrs* des OTRS Servers nicht auf dem OTOBO "
+"Server eingehängt wurde."
 
-#: ../../content/migration-from-otrs-6.rst:191
+#: ../../content/migration-from-otrs-6.rst:197
 msgid ""
-"The tools ``sshpass`` and ``rsync`` are needed so we can copy files via ssh. "
-"For installing ``sshpass``, please log in on the server as user ``root`` and "
-"execute one of the following commands:"
+"The tools ``sshpass`` and ``rsync`` are needed so that *migration.pl* can "
+"copy files via ssh. For installing ``sshpass``, please log in on the server "
+"as user ``root`` and execute one of the following commands:"
 msgstr ""
 "Wir verwenden die Tools ``sshpass`` und ``rsync``, um Dateien über eine SSH-"
 "Verbindung zu kopieren. Bitte melden Sie sich als ``root``-Benutzer am "
-"Server an und führen Sie einen der folgenden Befehle aus, um ``sshpass`` zu "
-"installieren:"
+"Server an und führen Sie einen der folgenden Befehle aus:"
 
-#: ../../content/migration-from-otrs-6.rst:215
+#: ../../content/migration-from-otrs-6.rst:221
 msgid "The same thing must be done for *rsync* when it isn't available yet."
 msgstr "Gehen Sie analog vor, wenn *rsync* noch nicht verfügbar ist."
 
-#: ../../content/migration-from-otrs-6.rst:218
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:224
 msgid "Step 4: Preparing the OTRS / ((OTRS)) Community Edition system"
-msgstr ""
-"Schritt 3a ohne Docker: OTRS / ((OTRS)) Community Edition Quellsystem "
-"vorbereiten"
+msgstr "Schritt 4: OTRS / ((OTRS)) Community Edition Quellsystem vorbereiten"
 
-#: ../../content/migration-from-otrs-6.rst:222
+#: ../../content/migration-from-otrs-6.rst:228
 msgid ""
 "Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition "
 "system, too. Yes, we do not touch any OTRS data during the migration, but at "
@@ -2880,7 +2898,7 @@ msgstr ""
 "Quellsystem während der Migration nicht angetastet werden, kann unter "
 "Umständen schon ein einziger falscher Eintrag Probleme bereiten."
 
-#: ../../content/migration-from-otrs-6.rst:225
+#: ../../content/migration-from-otrs-6.rst:231
 msgid ""
 "Now we are ready for the migration. First of all we need to make sure that "
 "no more tickets are processed and no users log on to OTRS:"
@@ -2889,7 +2907,7 @@ msgstr ""
 "Stellen Sie nun sicher, dass keine Tickets mehr bearbeitet werden und sich "
 "Benutzer nicht mehr in OTRS anmelden können:"
 
-#: ../../content/migration-from-otrs-6.rst:228
+#: ../../content/migration-from-otrs-6.rst:234
 msgid ""
 "Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and "
 "add a new system maintenance slot for a few hours. After that, delete all "
@@ -2900,22 +2918,23 @@ msgstr ""
 "Löschen Sie anschließend alle Agenten- und User-Sitzungen (``Administration -"
 ">  Sitzungsverwaltung``) und melden Sie sich ab."
 
-#: ../../content/migration-from-otrs-6.rst:232
+#: ../../content/migration-from-otrs-6.rst:238
 msgid "Stop All Relevant Services and the OTRS Daemon"
 msgstr "Alle relevanten Services und den OTRS Daemon stoppen"
 
-#: ../../content/migration-from-otrs-6.rst:234
+#: ../../content/migration-from-otrs-6.rst:240
 msgid "Please make sure there are no running services or cron jobs."
 msgstr ""
 "Versichern Sie sich, dass keine Dienste oder Crons Jobs mehr ausgeführt "
 "werden."
 
-#: ../../content/migration-from-otrs-6.rst:249
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:255
 msgid "Optional Step for Docker: make required data available inside container"
-msgstr "Schritt 3b Docker: Erforderliche Daten im Container verfügbar machen"
+msgstr ""
+"Optionaler Schritt für Docker: Erforderliche Daten im Container verfügbar "
+"machen"
 
-#: ../../content/migration-from-otrs-6.rst:251
+#: ../../content/migration-from-otrs-6.rst:257
 msgid ""
 "There are some specifics to be considered when your OTOBO installation is "
 "running under Docker. The most relevant: processes running in a Docker "
@@ -2932,7 +2951,7 @@ msgstr ""
 "``otobo_db_1``laufende MariaDB-Datenbank ist von außerhalb des Container-"
 "Netzwerks nicht direkt erreichbar."
 
-#: ../../content/migration-from-otrs-6.rst:258
+#: ../../content/migration-from-otrs-6.rst:264
 msgid ""
 "In the sample commands, we assume that the user **docker_admin** is used for "
 "interacting with Docker. The Docker admin may be either the **root** user of "
@@ -2943,11 +2962,11 @@ msgstr ""
 "**root**-Benutzer des Docker-Host oder ein spezieller Benutzer mit den "
 "erforderlichen Berechtigungen sein."
 
-#: ../../content/migration-from-otrs-6.rst:262
+#: ../../content/migration-from-otrs-6.rst:268
 msgid "Copy */opt/otrs* into the volume *otobo_opt_otobo*"
 msgstr "*/opt/otrs* in das Volume *otobo_opt_otobo* kopieren"
 
-#: ../../content/migration-from-otrs-6.rst:264
+#: ../../content/migration-from-otrs-6.rst:270
 msgid ""
 "In this section, we assume that the OTRS home directory */opt/otrs* is "
 "available on the Docker host."
@@ -2955,23 +2974,23 @@ msgstr ""
 "Wir gehen in diesem Abschnitt davon aus, dass das OTRS Home-Verzeichnis */"
 "opt/otrs* auf dem Docker-Host verfügbar ist."
 
-#: ../../content/migration-from-otrs-6.rst:267
+#: ../../content/migration-from-otrs-6.rst:273
 msgid "There are at least two viable possibilities:"
 msgstr "Sie haben mindestens zwei Möglichkeiten:"
 
-#: ../../content/migration-from-otrs-6.rst:269
+#: ../../content/migration-from-otrs-6.rst:275
 msgid "copy */opt/otrs* into the existing volume *otobo_opt_otobo*"
 msgstr "*/opt/otrs* in das bestehende Volume *otobo_opt_otobo* kopieren"
 
-#: ../../content/migration-from-otrs-6.rst:270
+#: ../../content/migration-from-otrs-6.rst:276
 msgid "mount */opt/otrs* as an additional volume"
 msgstr "*/opt/otrs* als zusätzliches Volume mounten"
 
-#: ../../content/migration-from-otrs-6.rst:272
+#: ../../content/migration-from-otrs-6.rst:278
 msgid "Let's concentrate on option **a.** here."
 msgstr "Konzentrieren wir uns hier auf Option **a.**."
 
-#: ../../content/migration-from-otrs-6.rst:274
+#: ../../content/migration-from-otrs-6.rst:280
 msgid ""
 "First we need to find out where the volume *otobo_opt_otobo* is available on "
 "the Docker host."
@@ -2979,7 +2998,7 @@ msgstr ""
 "Als erstes müssen wir herausfinden, wo das Volume *otobo_opt_otobo* auf dem "
 "Docker-Host bereitsteht."
 
-#: ../../content/migration-from-otrs-6.rst:281
+#: ../../content/migration-from-otrs-6.rst:287
 msgid ""
 "For safe copying, we use ``rsync``. Depending on your Docker setup, the "
 "command ``rsync`` might need to be run with ``sudo``."
@@ -2988,7 +3007,7 @@ msgstr ""
 "Dockerumgebung muss ``rsync`` möglicherweise mit ``sudo``-Rechten ausgeführt "
 "werden."
 
-#: ../../content/migration-from-otrs-6.rst:294
+#: ../../content/migration-from-otrs-6.rst:300
 msgid ""
 "This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* "
 "within the container."
@@ -2996,70 +3015,78 @@ msgstr ""
 "Das kopierte Verzeichnis wird im Container als */opt/otobo/var/tmp/"
 "copied_otrs* verfügbar sein."
 
-#: ../../content/migration-from-otrs-6.rst:297
+#: ../../content/migration-from-otrs-6.rst:303
 msgid "Optional Step: Streamlined migration of the database"
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:299
+#: ../../content/migration-from-otrs-6.rst:305
 msgid ""
 "In the general migration strategy, all data in the database tables is copied "
 "row by row from the OTRS database into the OTOBO database. Exporting the "
 "data from the OTRS database and importing it into the OTOBO database might "
 "save time and is more stable in some circumstances."
 msgstr ""
+"Bei der allgemeinen Migrationsstrategie werden alle Daten der "
+"Datenbanktabellen Zeile für Zeile von der OTRS Datenbank in die OTOBO "
+"Datenbank kopiert. In manchen Fällen kann ein Export der OTRS Datenbank und "
+"der anschließende Import in die OTOBO Datenbank schneller und zuverlässiger "
+"sein."
 
-#: ../../content/migration-from-otrs-6.rst:306
+#: ../../content/migration-from-otrs-6.rst:312
 msgid "This variant works for both Docker-based and native installations."
 msgstr ""
+"Diese Variante funktioniert sowohl bei Docker-basierten als auch bei nativen "
+"Installationen."
 
-#: ../../content/migration-from-otrs-6.rst:310
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:316
 msgid "These instructions assume that OTRS is using MySQL as its backend."
 msgstr "Diese Anleitung setzt voraus, dass OTRS MySQL als Backend nutzt."
 
-#: ../../content/migration-from-otrs-6.rst:312
+#: ../../content/migration-from-otrs-6.rst:318
 msgid ""
 "First of all, we need a dump of the needed OTRS database tables. Then we "
 "need to perform a couple of transformations:"
 msgstr ""
+"Zuerst muss ein Datenbank-Dump der OTRS Tabellem erstellt werden. "
+"Anschließend führen wir ein paar Transformationen durch:"
 
-#: ../../content/migration-from-otrs-6.rst:315
+#: ../../content/migration-from-otrs-6.rst:321
 msgid "convert the character set to *utf8mb4*"
-msgstr ""
+msgstr "Konvertierung des Zeichensatzes auf *utf8mb4*"
 
-#: ../../content/migration-from-otrs-6.rst:316
+#: ../../content/migration-from-otrs-6.rst:322
 msgid "rename a couple of tables"
-msgstr ""
+msgstr "umbenennen einiger Tabellen"
 
-#: ../../content/migration-from-otrs-6.rst:317
+#: ../../content/migration-from-otrs-6.rst:323
 msgid "shorten some table columns"
-msgstr ""
+msgstr "Kürzung bestimmter Tabellenspalten"
 
-#: ../../content/migration-from-otrs-6.rst:319
+#: ../../content/migration-from-otrs-6.rst:325
 msgid ""
 "After the transfomation we can overwrite the tables in the OTOBO schema with "
 "the transformed data from OTRS. Effectively we need not a single dump file, "
 "but several SQL scripts."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:322
+#: ../../content/migration-from-otrs-6.rst:328
 msgid ""
 "When ``mysqldump`` is installed and a connection to the OTRS database is "
 "possible, you can create the database dump directly on the Docker host. This "
 "case is supported by the script *bin/backup.pl*."
 msgstr ""
-"Ist ``mysqldump``installiert und kann eine Verbindung zur OTRS-Datenbank "
+"Ist ``mysqldump`` installiert und kann eine Verbindung zur OTRS-Datenbank "
 "hergestellt werden, können Sie den Datenbankdump direkt auf dem Docker-Host "
 "erstellen. Hierzu können Sie das Skript *bin/backup.pl* verwenden."
 
-#: ../../content/migration-from-otrs-6.rst:328
+#: ../../content/migration-from-otrs-6.rst:334
 msgid ""
 "This requires that an OTOBO installation is available on the Docker host."
 msgstr ""
 "Dies setzt voraus, dass eine OTRS-Installation auf dem Docker-Host verfügbar "
 "ist."
 
-#: ../../content/migration-from-otrs-6.rst:337
+#: ../../content/migration-from-otrs-6.rst:343
 #, fuzzy
 msgid ""
 "Alternatively, the database can be dumped on another server and then be "
@@ -3071,34 +3098,34 @@ msgstr ""
 "anschließend auf den Docker-Host verschieben. Dazu können Sie folgende "
 "Beispielbefehle verwenden."
 
-#: ../../content/migration-from-otrs-6.rst:340
+#: ../../content/migration-from-otrs-6.rst:346
 msgid ""
 "The script *bin/backup.pl* generates four SQL scripts in a dump directory, e."
 "g. in *2021-04-13_12-13-04* In order to execute the SQL scripts, we need to "
 "run the command ``mysql``."
 msgstr ""
+"Das Script *bin/backup.pl* generiert vier SQL Dateien in einem Dump "
+"Verzeichnis, z.B. in *2021-04-13_12-13-04*. Um diese SQL Dateien "
+"auszuführen, wird der Kommandozeilenbefehl ``mysql`` genutzt."
 
-#: ../../content/migration-from-otrs-6.rst:343
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:349
 msgid "Native installation:"
-msgstr "Automatische Installation"
+msgstr "Native Installation:"
 
-#: ../../content/migration-from-otrs-6.rst:353
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:359
 msgid "Docker-based installation:"
-msgstr "Aktualisieren einer Docker-basierte OTOBO-Installation"
+msgstr "Docker-basierte OTOBO Installation:"
 
-#: ../../content/migration-from-otrs-6.rst:355
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:361
 msgid ""
 "Run ``mysql`` within the MariaDB container. Note that the password for the "
 "database root is now the password that has been set up in *.env*."
 msgstr ""
 "Zum Importieren des Datenbankdumps nutzen wir ``mysql`` im Docker-Container "
-"*otobo_db_1*. Achtung: Das Passwort für den Datenbank-Root ist jetzt das in "
-"_.env_ definierte Passwort."
+"*otobo_db_1*. Achtung: Das Passwort für den Datenbank-Root ist jetzt das in *"
+".env*. definierte Passwort."
 
-#: ../../content/migration-from-otrs-6.rst:366
+#: ../../content/migration-from-otrs-6.rst:373
 msgid ""
 "For a quick check whether the import worked, you can run the following "
 "commands."
@@ -3106,23 +3133,24 @@ msgstr ""
 "Nutzen Sie die folgenden Befehlen, um zu überprüfen, ob der Import "
 "erfolgreich war."
 
-#: ../../content/migration-from-otrs-6.rst:374
+#: ../../content/migration-from-otrs-6.rst:381
 msgid "or"
-msgstr ""
+msgstr "oder"
 
-#: ../../content/migration-from-otrs-6.rst:382
+#: ../../content/migration-from-otrs-6.rst:389
 msgid ""
 "The database is now migrated. This means that during the next step we can "
 "skip the database migration. Watch out for the relevant checkbox."
 msgstr ""
+"Die Datenbank wurde nun migriert. Das bedeutet, dass Sie im nächsten Schritt "
+"die Datenbankmigration überspringen können. Beachten Sie hierzu die "
+"entsprechende Checkbox."
 
-#: ../../content/migration-from-otrs-6.rst:386
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:393
 msgid "Step 5: Perform the Migration!"
-msgstr "Schritt 4: Migration durchführen!"
+msgstr "Schritt 5: Migration durchführen!"
 
-#: ../../content/migration-from-otrs-6.rst:388
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:395
 msgid ""
 "Please use the web migration tool at http://localhost/otobo/migration.pl. Be "
 "aware that you might have to replace \"localhost\" with your OTOBO hostname "
@@ -3134,7 +3162,7 @@ msgstr ""
 "und ergänzen Sie ggf. den Port). Es führt Sie Schritt für Schritt durch den "
 "Prozess."
 
-#: ../../content/migration-from-otrs-6.rst:394
+#: ../../content/migration-from-otrs-6.rst:401
 msgid ""
 "Sometimes, a warning is shown that the deactivation of **SecureMode** has "
 "not been detected. Please restart the webserver in this case. This forces "
@@ -3144,8 +3172,7 @@ msgstr ""
 "**SecureMode** nicht erkannt wurde. Bitte starten Sie in diesem Fall den "
 "Webserver neu. So wird die aktuelle Konfiguration eingelesen."
 
-#: ../../content/migration-from-otrs-6.rst:409
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:416
 msgid ""
 "If OTOBO runs inside a Docker container, keep the default settings "
 "*localhost* for the OTRS server and */opt/otobo/var/tmp/copied_otrs* for the "
@@ -3155,9 +3182,9 @@ msgstr ""
 "Wird OTOBO in einem Docker Container ausgeführt, behalten Sie die "
 "Standardeinstellungen *localhost* für den OTRS-Server und */opt/otobo/var/"
 "tmp/copied_otrs* für das OTRS-Home-Verzeichnis bei. Dieser Pfad führt zu den "
-"in Schritt 3b kopierten Daten."
+"im optionalen Schritt kopierten Daten."
 
-#: ../../content/migration-from-otrs-6.rst:415
+#: ../../content/migration-from-otrs-6.rst:422
 msgid ""
 "The default values for OTRS database user and password are taken from "
 "*Kernel/Config.pm* in the OTRS home directory. Change the proposed settings "
@@ -3172,7 +3199,7 @@ msgstr ""
 "an, wenn Sie mit einer Datenbank arbeiten, die in den *otobo_db_1* Docker "
 "Container kopiert wurde."
 
-#: ../../content/migration-from-otrs-6.rst:421
+#: ../../content/migration-from-otrs-6.rst:428
 msgid ""
 "In the Docker case, a database running on the Docker host won't be reachable "
 "via ``127.0.0.1`` from within the Docker container. This means that the "
@@ -3186,7 +3213,7 @@ msgstr ""
 "eine der alternativen IP-Adressen an, die Sie mit ``hostname --all-ip-"
 "addresses`` für ``OTRS Server`` ermittelt haben."
 
-#: ../../content/migration-from-otrs-6.rst:427
+#: ../../content/migration-from-otrs-6.rst:434
 msgid ""
 "When migrating to a new application server, or to a Docker-based "
 "installation, quite often the database cannot be accessed from the target "
@@ -3208,7 +3235,7 @@ msgstr ""
 "SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``. Dieser Benutzer kann nach "
 "der Migration wieder gelöscht werden: ``DROP USER 'otrs_migration'@'%'``."
 
-#: ../../content/migration-from-otrs-6.rst:434
+#: ../../content/migration-from-otrs-6.rst:441
 msgid ""
 "Custom settings in *Kernel/Config.pm* are carried over from the old OTRS "
 "installation to the new OTOBO installation. When you habe custom setting, "
@@ -3217,7 +3244,7 @@ msgid ""
 "might find that some custom setting are longer needed."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:438
+#: ../../content/migration-from-otrs-6.rst:445
 msgid ""
 "When the migration is complete, please take your time and test the entire "
 "system. Once you have decided that the migration was successful and that you "
@@ -3228,41 +3255,38 @@ msgstr ""
 "erfolgreich durchgeführt wurde und dass Sie von nun an mit OTOBO arbeiten "
 "möchten, starten Sie den OTOBO Daemon:"
 
-#: ../../content/migration-from-otrs-6.rst:448
+#: ../../content/migration-from-otrs-6.rst:455
 msgid "In the Docker case:"
 msgstr "In der Docker-Umgebung:"
 
-#: ../../content/migration-from-otrs-6.rst:456
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:463
 msgid "Step 6: After Successful Migration!"
-msgstr "Schritt 5: Nach der Migration!"
+msgstr "Schritt 6: Nach der erfolgreichen Migration!"
 
-#: ../../content/migration-from-otrs-6.rst:458
+#: ../../content/migration-from-otrs-6.rst:465
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
 msgstr "Deinstallieren Sie ``sshpass``, wenn Sie es nicht mehr benötigen."
 
-#: ../../content/migration-from-otrs-6.rst:459
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:466
 msgid ""
 "Drop the databases and database users dedicated to the migration if you "
 "created any."
 msgstr ""
 "Löschen Sie ggf. den speziell für die Migration angelegten Datenbankbenutzer."
 
-#: ../../content/migration-from-otrs-6.rst:460
+#: ../../content/migration-from-otrs-6.rst:467
 msgid "Have fun with OTOBO!"
 msgstr "Viel Vergnügen mit OTOBO!"
 
-#: ../../content/migration-from-otrs-6.rst:464
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:471
 msgid "Known Migration Problems"
-msgstr "Schritt 6: Bekannte Probleme bei der Migration"
+msgstr "Bekannte Probleme bei der Migration"
 
-#: ../../content/migration-from-otrs-6.rst:467
+#: ../../content/migration-from-otrs-6.rst:474
 msgid "1. Login after migration not possible"
 msgstr "1. Anmelden nach der Migration nicht möglich"
 
-#: ../../content/migration-from-otrs-6.rst:469
+#: ../../content/migration-from-otrs-6.rst:476
 msgid ""
 "During our migration tests, the browser used for the migration sometimes had "
 "problems. After restarting the browser, this problem usually was solved. "
@@ -3274,14 +3298,14 @@ msgstr ""
 "Browser-Neustart gelöst. In Safari kann es erforderlich sein, die alte OTRS-"
 "Sitzung manuell zu löschen."
 
-#: ../../content/migration-from-otrs-6.rst:473
+#: ../../content/migration-from-otrs-6.rst:480
 msgid ""
 "2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr ""
 "2. Fehlende CSS-Dateien führen zu Layoutfehlern auf der letzte Seite der "
 "Migration"
 
-#: ../../content/migration-from-otrs-6.rst:475
+#: ../../content/migration-from-otrs-6.rst:482
 msgid ""
 "This can happen when the setting ScriptAlias has a non-standard value. The "
 "migration simply substitutes otrs for otobo. This might lead to the effect "
@@ -3295,12 +3319,11 @@ msgstr ""
 "kann. Bitte überprüfen Sie in diesem Fall die Einstellungen in *Kernel/"
 "Config.pm* und korrigieren Sie diese auf geeignete Werte."
 
-#: ../../content/migration-from-otrs-6.rst:480
+#: ../../content/migration-from-otrs-6.rst:487
 msgid "3. Migration stops due to MySQL errors"
 msgstr "3. Migration stoppt aufgrund von MySQL-Fehlern"
 
-#: ../../content/migration-from-otrs-6.rst:482
-#, fuzzy
+#: ../../content/migration-from-otrs-6.rst:489
 msgid ""
 "On systems that experienced problems with an upgrade in the past, the "
 "migration process may stop due to MySQL errors in the tables *ticket* and "
@@ -3309,22 +3332,27 @@ msgid ""
 "manually resolved before you can resume the migration."
 msgstr ""
 "Auf Systemen, bei denen es in der Vergangenheit Probleme mit Upgrades gab, "
-"wird der Migrationsprozess unter Umständen wegen MySQL-Fehlern in Table "
-"ticket und Table ticket_history (NULL) unterbrochen. Diese müssen manuell "
-"behoben werden, bevor die Migration fortgesetzt werden kann."
+"wird der Migrationsprozess unter Umständen wegen MySQL-Fehlern in den "
+"Tabellen *ticket* und *ticket_history* unterbrochen. Typischerweise stammen "
+"diese Fehler von NULL Werten in der Quell-Tabelle, die in der Ziel-Tabelle "
+"nicht mehr erlaubt sind. Diese Konflikte müssen manuell behoben werden, "
+"bevor die Migration fortgesetzt werden kann."
 
-#: ../../content/migration-from-otrs-6.rst:486
+#: ../../content/migration-from-otrs-6.rst:493
 msgid ""
 "As of OTOBO 10.0.12 there is a check in *migration.pl* that checks for NULL "
 "values before the data transfer is done. Note, that the resolution still "
 "needs to be performed manually."
 msgstr ""
+"Seit OTOBO 10.0.12 gibt es in *migration.pl* eine Überprüfung auf NULL "
+"Werte, bevor die Daten übertragen werden. Bitte beachten Sie, dass die "
+"Behebung trotzdem manuell durchgeführt werden muss."
 
-#: ../../content/migration-from-otrs-6.rst:489
+#: ../../content/migration-from-otrs-6.rst:496
 msgid "4. Errors in Step 5 when migrating to PostgreSQL"
-msgstr ""
+msgstr "4. Fehler in Schritt 5 bei der Migration zu PostgreSQL"
 
-#: ../../content/migration-from-otrs-6.rst:491
+#: ../../content/migration-from-otrs-6.rst:498
 msgid ""
 "In these cases the not so helpful message \"System was unable to complete "
 "data transfer.\" is shown by *migration.pl*. The Apache logfile, and the "
@@ -3337,23 +3365,28 @@ msgid ""
 "the normal state by running ``ALTER USER otobo WITH NOSUPERUSER``."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:499
+#: ../../content/migration-from-otrs-6.rst:506
 msgid ""
 "It is not clear yet, whether the extended privileges have to be granted in "
 "every setup."
 msgstr ""
+"Es ist bisher nicht geklärt, ob die erweiterten Berechtigungen in jedem "
+"Setup gewährt werden müssen."
 
-#: ../../content/migration-from-otrs-6.rst:503
+#: ../../content/migration-from-otrs-6.rst:510
 msgid ""
 "The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-"
 "otobo-postgresql/."
 msgstr ""
+"Die Diskussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-"
+"otobo-postgresql/."
 
-#: ../../content/migration-from-otrs-6.rst:506
+#: ../../content/migration-from-otrs-6.rst:513
 msgid "5. Problems with the Deployment the Merged System Configuration"
 msgstr ""
+"5. Probleme bei der Inbetriebnahme der zusammengeführten System Konfiguration"
 
-#: ../../content/migration-from-otrs-6.rst:508
+#: ../../content/migration-from-otrs-6.rst:515
 msgid ""
 "The system configuration is migrated after the database tables were "
 "migrated. In this context, migration means merging the default settings of "
@@ -3368,44 +3401,55 @@ msgid ""
 "checks are performed during deployment."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:516
+#: ../../content/migration-from-otrs-6.rst:523
 msgid ""
 "The problem must be alleviated manually by using OTOBO console commands."
 msgstr ""
+"Das Problem muss manuell mit Hilfe der OTOBO Konsolenbefehle gelöst werden."
 
-#: ../../content/migration-from-otrs-6.rst:518
+#: ../../content/migration-from-otrs-6.rst:525
 msgid ""
 "List the inconsistencies with the command ``bin/otobo.Console.pl Admin::"
 "Config::ListInvalid``"
 msgstr ""
+"Auflistung der Inkonsistenzen mit Hilfe des Befehls ``bin/otobo.Console.pl "
+"Admin::Config::ListInvalid``"
 
-#: ../../content/migration-from-otrs-6.rst:520
+#: ../../content/migration-from-otrs-6.rst:527
 msgid ""
 "Interactively fix the invalid values with ``bin/otobo.Console.pl Admin::"
 "Config::FixInvalid``"
 msgstr ""
+"Ungültige Werte können mit Hilfe des Befehls ``bin/otobo.Console.pl Admin::"
+"Config::FixInvalid`` interaktiv behoben werden"
 
-#: ../../content/migration-from-otrs-6.rst:522
+#: ../../content/migration-from-otrs-6.rst:529
 msgid ""
 "Deploy the collected changes from migration.pl, including the deactivated "
 "**SecureMode** with ``bin/otobo.Console.pl Maint::Config::Rebuild``"
 msgstr ""
+"Nehmen Sie die gesammelten Änderungen durch migration.pl inklusive des "
+"deaktivierten **SecureMode** mit ``bin/otobo.Console.pl "
+"Maint::Config::Rebuild`` in Betrieb"
 
-#: ../../content/migration-from-otrs-6.rst:525
+#: ../../content/migration-from-otrs-6.rst:532
 msgid ""
 "After these manual steps you should be able to run *migration.pl* again. The "
 "migration will continue with the step where the error occurred."
 msgstr ""
+"Nach diesen manuellen Schritten sollten Sie *migration.pl* erneut ausführen "
+"können. Die Migration setzt dann an dem Schritt fort, bei dem der Fehler "
+"aufgetreten ist."
 
-#: ../../content/migration-from-otrs-6.rst:529
+#: ../../content/migration-from-otrs-6.rst:536
 msgid "Step 7: Manual Migration Tasks and Changes"
 msgstr "Schritt 7: Manuelle Aufgaben und Anpassungen"
 
-#: ../../content/migration-from-otrs-6.rst:532
+#: ../../content/migration-from-otrs-6.rst:539
 msgid "1. Password policy rules"
 msgstr "1. Regeln für die Passwortrichtlinie"
 
-#: ../../content/migration-from-otrs-6.rst:534
+#: ../../content/migration-from-otrs-6.rst:541
 msgid ""
 "With OTOBO 10 a new default password policy for agent and customer users is "
 "in effect, if local authentication is used. The password policy rules can be "
@@ -3418,69 +3462,69 @@ msgstr ""
 "(``PreferencesGroups###Password`` und "
 "``CustomerPersonalPreference###Password``)."
 
-#: ../../content/migration-from-otrs-6.rst:537
+#: ../../content/migration-from-otrs-6.rst:544
 msgid "Password Policy Rule"
 msgstr "Regel Passwortrichtlinie"
 
-#: ../../content/migration-from-otrs-6.rst:537
+#: ../../content/migration-from-otrs-6.rst:544
 msgid "Default"
 msgstr "Standard"
 
-#: ../../content/migration-from-otrs-6.rst:539
+#: ../../content/migration-from-otrs-6.rst:546
 msgid "``PasswordMinSize``"
 msgstr "``PasswordMinSize``"
 
-#: ../../content/migration-from-otrs-6.rst:539
+#: ../../content/migration-from-otrs-6.rst:546
 msgid "8"
 msgstr "8"
 
-#: ../../content/migration-from-otrs-6.rst:541
+#: ../../content/migration-from-otrs-6.rst:548
 msgid "``PasswordMin2Lower2UpperCharacters``"
 msgstr "``PasswordMin2Lower2UpperCharacters``"
 
-#: ../../content/migration-from-otrs-6.rst:541
-#: ../../content/migration-from-otrs-6.rst:543
-#: ../../content/migration-from-otrs-6.rst:551
+#: ../../content/migration-from-otrs-6.rst:548
+#: ../../content/migration-from-otrs-6.rst:550
+#: ../../content/migration-from-otrs-6.rst:558
 msgid "Yes"
 msgstr "Ja"
 
-#: ../../content/migration-from-otrs-6.rst:543
+#: ../../content/migration-from-otrs-6.rst:550
 msgid "``PasswordNeedDigit``"
 msgstr "``PasswordNeedDigit``"
 
-#: ../../content/migration-from-otrs-6.rst:545
+#: ../../content/migration-from-otrs-6.rst:552
 msgid "``PasswordHistory``"
 msgstr "``PasswordHistory``"
 
-#: ../../content/migration-from-otrs-6.rst:545
+#: ../../content/migration-from-otrs-6.rst:552
 msgid "10"
 msgstr "10"
 
-#: ../../content/migration-from-otrs-6.rst:547
+#: ../../content/migration-from-otrs-6.rst:554
 msgid "``PasswordTTL``"
 msgstr "``PasswordTTL``"
 
-#: ../../content/migration-from-otrs-6.rst:547
+#: ../../content/migration-from-otrs-6.rst:554
 msgid "30 days"
 msgstr "30 Tage"
 
-#: ../../content/migration-from-otrs-6.rst:549
+#: ../../content/migration-from-otrs-6.rst:556
 msgid "``PasswordWarnBeforeExpiry``"
 msgstr "``PasswordWarnBeforeExpiry``"
 
-#: ../../content/migration-from-otrs-6.rst:549
+#: ../../content/migration-from-otrs-6.rst:556
 msgid "5 days"
 msgstr "5 Tage"
 
-#: ../../content/migration-from-otrs-6.rst:551
+#: ../../content/migration-from-otrs-6.rst:558
 msgid "``PasswordChangeAfterFirstLogin``"
 msgstr "``PasswordChangeAfterFirstLogin``"
 
-#: ../../content/migration-from-otrs-6.rst:555
+#: ../../content/migration-from-otrs-6.rst:562
 msgid "2. Under Docker: Manually migrate cron jobs"
 msgstr "2. In der Docker-Umgebung: cron-Jobs manuell migrieren"
 
-#: ../../content/migration-from-otrs-6.rst:557
+#: ../../content/migration-from-otrs-6.rst:564
 msgid ""
 "In a non-Docker installation of OTOBO, there is at least one cron job which "
 "checks the health of the Daemon. Under Docker, this cron job no longer "
@@ -3495,74 +3539,83 @@ msgstr ""
 "Daemon. Für OTRS-Systeme mit kundenspezifischen Cron-Jobs (z. B. Datenbank-"
 "Backups) müssen deshalb individuelle Lösungen gefunden werden."
 
-#: ../../content/migration-from-otrs-6.rst:564
+#: ../../content/migration-from-otrs-6.rst:571
 msgid "Special topics"
-msgstr ""
+msgstr "Spezielle Themen"
 
-#: ../../content/migration-from-otrs-6.rst:567
+#: ../../content/migration-from-otrs-6.rst:574
 msgid "Migration from Oracle to Oracle"
-msgstr ""
+msgstr "Migration von Oracle zu Oracle"
 
-#: ../../content/migration-from-otrs-6.rst:569
+#: ../../content/migration-from-otrs-6.rst:576
 msgid ""
 "For migration to Oracle the ETL-like strategy must be employed. This is "
 "because Oracle provides no easy way to temporarily turn off foreign key "
 "checks."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:572
+#: ../../content/migration-from-otrs-6.rst:579
 msgid ""
 "On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must "
 "be installed."
 msgstr ""
+"Auf dem OTOBO Server müssen ein Oracle Client und das Perl Modul ``DBD::"
+"Oracle`` installiert sein."
 
-#: ../../content/migration-from-otrs-6.rst:576
+#: ../../content/migration-from-otrs-6.rst:583
 msgid ""
 "When using the Oracle instant client, then the optional SDK is also needed "
 "for installing DBD::Oracle."
 msgstr ""
+"Falls der Oracle Instant Client genutzt wird, ist zusätzlich das optionale "
+"SDK nötig, um DBD::Oracle zu installieren."
 
-#: ../../content/migration-from-otrs-6.rst:578
+#: ../../content/migration-from-otrs-6.rst:585
 msgid ""
 "There are many ways of cloning a schema. In the sample commands we use "
 "``expdb`` and ``impdb`` which use Data Pump under the hood."
 msgstr ""
 
-#: ../../content/migration-from-otrs-6.rst:583
+#: ../../content/migration-from-otrs-6.rst:590
 msgid ""
 "The connect strings shown in this documentation refer to the case when both "
 "source and target database run in a Docker container. See also https://"
 "github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md ."
 msgstr ""
+"Die Verbindungseinstellungen in dieser Dokumentation gehen davon aus, dass "
+"die Quell- und Ziel-Datenbank in einem Docker Container laufen. Mehr dazu "
+"unter https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md."
 
-#: ../../content/migration-from-otrs-6.rst:587
+#: ../../content/migration-from-otrs-6.rst:594
 msgid "Clear out otobo"
-msgstr ""
+msgstr "Stoppen Sie otobo"
 
-#: ../../content/migration-from-otrs-6.rst:589
+#: ../../content/migration-from-otrs-6.rst:596
 msgid ""
 "Stop the webserver for otobo, so that the DB connection for otobo is closed."
 msgstr ""
+"Stoppen Sie den OTOBO Webserver, damit die Verbindung zur otobo Datenbank "
+"geschlossen wird."
 
-#: ../../content/migration-from-otrs-6.rst:596
+#: ../../content/migration-from-otrs-6.rst:603
 msgid "Export the complete OTRS schema."
-msgstr ""
+msgstr "Export des kompletten OTRS Schemas."
 
-#: ../../content/migration-from-otrs-6.rst:612
+#: ../../content/migration-from-otrs-6.rst:619
 msgid "Import the OTRS schema, renaming the schema to 'otobo'."
-msgstr ""
+msgstr "Import des OTRS Schemas und Umbenennung zu 'otobo'."
 
-#: ../../content/migration-from-otrs-6.rst:627
+#: ../../content/migration-from-otrs-6.rst:634
 msgid "Adapt the cloned schema otobo"
-msgstr ""
+msgstr "Anpassung des geklonten otobo Schemas"
 
-#: ../../content/migration-from-otrs-6.rst:636
+#: ../../content/migration-from-otrs-6.rst:643
 msgid "Start the web server for otobo again"
-msgstr ""
+msgstr "Starten Sie den Webserver für otobo wieder"
 
-#: ../../content/migration-from-otrs-6.rst:638
+#: ../../content/migration-from-otrs-6.rst:645
 msgid "Proceed with step 5, that is with running ``migration.pl``."
-msgstr ""
+msgstr "Fahren Sie mit Schritt 5 ``migration.pl`` fort."
 
 #: ../../content/performance-tuning.rst:12
 msgid "Performance Tuning"
@@ -4348,7 +4401,6 @@ msgstr ""
 "Kubernetes wird derzeit gerade entwickelt."
 
 #: ../../content/requirements.rst:23
-#, fuzzy
 msgid ""
 "The OTOBO web application requires Perl along with additional Perl modules "
 "from CPAN. The modules can be installed either with a Perl package manager "
@@ -4357,8 +4409,8 @@ msgid ""
 msgstr ""
 "OTOBO benötigt Perl mit einigen weiteren CPAN-Modulen. Sie können diese "
 "zusätzlichen Perl-Module über eine Perl-Paketverwaltung oder den "
-"Paketmanager Ihres Betriebssystems (rpm, yast, apt-get) installieren. Ein "
-"Konsolebefehl prüft die Modulabhängigkeiten."
+"Paketmanager Ihres Betriebssystems (rpm, yast, apt-get) installieren. "
+"Folgender Konsolenbefehl prüft die Modulabhängigkeiten:"
 
 #: ../../content/requirements.rst:32
 msgid ""
