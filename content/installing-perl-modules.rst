@@ -39,7 +39,7 @@ are preset accordingly.
 The installed Perl modules will also be available after an upgrade of OTOBO. There is the general rule that files added to ``/opt/otobo``
 won't be removed by an upgrade.
 
-For installing Perl modules in a specific location we need to modify our install command. Specicifically, we need to add
+For installing Perl modules in a specific location we need to modify our install command. Specifically, we need to add
 the option ``--local-lib``. Here is a sample session in the container **web**.
 
 
