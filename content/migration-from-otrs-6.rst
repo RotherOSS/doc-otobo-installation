@@ -348,7 +348,7 @@ Native installation:
 
 Docker-based installation:
 
-Run ``mysql`` within the MariaDB container for importing the database dump files.
+Run the command ``mysql`` within the Docker container *db* for importing the database dump files.
 Note that the password for the database root is now the password
 that has been set up in the file *.env* on the Docker host.
 
