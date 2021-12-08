@@ -6,7 +6,7 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2021-12-07'
+doc_datestamp = '2021-12-08'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
@@ -70,7 +70,7 @@ master_doc = 'content/index'
 
 # General information about the project.
 project = 'OTOBO Installation Guide'
-copyright = '2019-2020 Rother OSS GmbH, https://otobo.de/'
+copyright = '2019-2022 Rother OSS GmbH, https://otobo.de/'
 author = 'Rother OSS GmbH'
 
 # The version info for the project you're documenting, acts as replacement for
