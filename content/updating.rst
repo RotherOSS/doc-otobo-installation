@@ -117,8 +117,15 @@ You can use the command below to update all installed packages. This works for a
     otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
     otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
 
+Step 5: Only for minor or major release upgrades (for example to upgrade from 10.0 to 10.1)
+---------------------------------
 
-Step 5: Start your Services
+.. code-block:: bash
+
+    root> su - otobo
+    otobo> /opt/otobo/scripts/DBUpdate-to-10.1.pl
+
+Step 6: Start your Services
 ---------------------------
 
 Now the services can be started. This will depend on your service configuration, here is an example:
