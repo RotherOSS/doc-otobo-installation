@@ -6,7 +6,7 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2022-01-03'
+doc_datestamp = '2022-01-04'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
@@ -182,6 +182,14 @@ latex_elements = {
 \setsansfont{TeX Gyre Heros}
 \setmonofont{TeX Gyre Cursor}
 ''',
+
+# TODO: beautify the whole thing - suggestions:
+#% use the Quicksand font instead of TeX Gyre Heros (has to be installed; e.g. present in /usr/share/fonts/truetype/quicksand/)
+#\setmainfont{Quicksand}
+#\setsansfont{Quicksand}
+#% for package docs the "Chapter" style is a bit much; instead of usepackage[Sonny]{fncychap} try overwriting this sphinx-default(?) by adding
+#\usepackage{titlesec}
+#\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter}{0.8em}{\Huge\bfseries}
 
 #\usepackage[fallback]{xeCJK}
 # Rother OSS / TODO: Do not need vietnam chars, bug
