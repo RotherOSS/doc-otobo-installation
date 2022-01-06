@@ -6,7 +6,7 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2022-01-05'
+doc_datestamp = '2022-01-06'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
@@ -178,9 +178,9 @@ latex_elements = {
 \usepackage{tgtermes}
 \usepackage{tgheros}
 \usepackage{tgcursor}
-\setmainfont{TeX Gyre Heros}
-\setsansfont{TeX Gyre Heros}
 \setmonofont{TeX Gyre Cursor}
+\setmainfont{Quicksand}
+\setsansfont{Quicksand}
 ''',
 
 # TODO: beautify the whole thing - suggestions:
