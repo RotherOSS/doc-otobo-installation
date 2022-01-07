@@ -368,7 +368,7 @@ For a quick check whether the import worked, you can run the following commands.
     otobo> mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
     otobo> mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
-or
+or when running under Docker
 
 .. code-block:: bash
 
