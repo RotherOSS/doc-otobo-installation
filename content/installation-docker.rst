@@ -359,7 +359,7 @@ First comes generation of the new volume. In these sample commands, we use the e
     docker_admin> ls $otobo_nginx_custom_config_mp    # another sanity check
 
     # copy the default config into the new volume
-    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest  # use the appropriate label
+    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest-10_0  # or latest-10_1, use the appropriate label
     docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
@@ -534,7 +534,7 @@ List of useful commands
 * ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
 * ``docker volume rm tmp_volume`` remove a volume
 * ``docker inspect <container>`` inspect a container
-* ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
+* ``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` list files in an image
 * ``docker exec -it nginx-server nginx -s reload`` reload nginx
 
 **Docker Compose**

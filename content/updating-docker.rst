@@ -63,7 +63,7 @@ Docker compose can be used for fetching the wanted images from https://hub.docke
     # Change to the otobo docker directory
     docker_admin> cd /opt/otobo-docker
 
-    # fetch the new images, either 'latest' or the specific version declared in .env
+    # fetch the new images, either 'latest-10_0' or 'latest-10_1' or the specific version declared in .env
     docker_admin> docker-compose pull
 
 Update OTOBO
