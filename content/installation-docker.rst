@@ -4,13 +4,13 @@ Installing using Docker and Docker Compose
 With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
 All of OTOBO´s dependencies are already included in the provided collection of Docker images.
 
-- MariaDB is set up as the default database.
-- Elasticsearch is set up for the OTOBO power search.
-- Redis is enabled for fast caching.
-- Gazelle is used as fast Perl webserver.
-- nginx is used as optional reverse proxy for HTTPS support.
+- Service *db*: MariaDB is set up as the default database.
+- Service *elastic*: Elasticsearch is set up for the OTOBO power search.
+- Service *redis*: Redis is enabled for fast caching.
+- Service *web*: Gazelle is used as fast Perl webserver.
+- Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support.
 
-We think that this setup will become the perfect environment for an OTOBO installation.
+We think that this setup is the perfect environment for an OTOBO installation.
 
 Requirements
 ------------
@@ -245,7 +245,7 @@ Note that more environment variables are supported by the base images.
 **MariaDB settings**
 
 OTOBO_DB_ROOT_PASSWORD
-    The root password for MySQL. Must be set for running otobo db.
+    The root password for MariaDB. This setting is required for running the service *db*.
 
 **Elasticsearch settings**
 
