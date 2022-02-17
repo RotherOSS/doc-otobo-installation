@@ -4,13 +4,13 @@ Installing using Docker and Docker Compose
 With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
 All of OTOBO´s dependencies are already included in the provided collection of Docker images.
 
-- MariaDB is set up as the default database.
-- Elasticsearch is set up for the OTOBO power search.
-- Redis is enabled for fast caching.
-- Gazelle is used as fast Perl webserver.
-- nginx is used as optional reverse proxy for HTTPS support.
+- Service *db*: MariaDB is set up as the default database.
+- Service *elastic*: Elasticsearch is set up for the OTOBO power search.
+- Service *redis*: Redis is enabled for fast caching.
+- Service *web*: Gazelle is used as fast Perl webserver.
+- Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support.
 
-We think that this setup will become the perfect environment for an OTOBO installation.
+We think that this setup is the perfect environment for an OTOBO installation.
 
 Requirements
 ------------
@@ -245,7 +245,7 @@ Note that more environment variables are supported by the base images.
 **MariaDB settings**
 
 OTOBO_DB_ROOT_PASSWORD
-    The root password for MySQL. Must be set for running otobo db.
+    The root password for MariaDB. This setting is required for running the service *db*.
 
 **Elasticsearch settings**
 
@@ -264,7 +264,7 @@ OTOBO_WEB_HTTP_PORT
     Set in case the HTTP port should deviate from the standard port 80.
     When HTTPS is enabled, the HTTP port will redirect to HTTPS.
 
-**nginx webproxy settings**
+**Nginx webproxy settings**
 
 These setting are used when HTTPS is enabled.
 
@@ -404,6 +404,22 @@ Choosing non-standard ports
 Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports
 are already used by other services. In these cases the default ports can be overridden by specifying
 `OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
+
+Skip startup of specific services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The current Docker compose setup start five, six when HTTTPS is activated, services. But there are valid use cases
+where one or more of these services are not needed. The prime example is when the database should not run as a Docker service,
+but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services.
+But the option `--scale` can be abused for this purpose. So for an installation with an external database
+the following command can be used:
+
+.. code-block:: bash
+
+    docker_admin> docker-compose up --detach --scale db=0
+
+Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml* and removing the relevant
+service definitions.
 
 Customizing the OTOBO Docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
