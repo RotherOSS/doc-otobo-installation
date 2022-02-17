@@ -264,7 +264,7 @@ OTOBO_WEB_HTTP_PORT
     Set in case the HTTP port should deviate from the standard port 80.
     When HTTPS is enabled, the HTTP port will redirect to HTTPS.
 
-**nginx webproxy settings**
+**Nginx webproxy settings**
 
 These setting are used when HTTPS is enabled.
 
