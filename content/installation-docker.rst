@@ -405,6 +405,22 @@ Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be
 are already used by other services. In these cases the default ports can be overridden by specifying
 `OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
 
+Skip startup of specific services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The current Docker compose setup start five, six when HTTTPS is activated, services. But there are valid use cases
+where one or more of these services are not needed. The prime example is when the database should not run as a Docker service,
+but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services.
+But the option `--scale` can be abused for this purpose. So for an installation with an external database
+the following command can be used:
+
+.. code-block:: bash
+
+    docker_admin> docker-compose up --detach --scale db=0
+
+Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml* and removing the relevant
+service definitions.
+
 Customizing the OTOBO Docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
