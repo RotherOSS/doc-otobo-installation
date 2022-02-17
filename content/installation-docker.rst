@@ -50,7 +50,7 @@ the **root** user of the Docker host or a dedicated user with the required permi
 The Docker images will eventually be fetched from the repository https://hub.docker.com.
 But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository.
 Make sure that you specify the branch that corresponds to the current version of OTOBO.
-For example, when *OTOBO 10.0.12* is the current version then please use the branch *rel-10_0*.
+For example, when *OTOBO 10.0.15* is the current version then please use the branch *rel-10_0*.
 
 .. note::
 
@@ -83,7 +83,7 @@ The other files are for more specialised use cases.
     Like *.docker_compose_env_https* but with support for a custom Nginx configuration.
 
 .docker_compose_env_https_kerberos
-    Like *.docker_compose_env_https* but with sample setup for single sign on.
+    Like *.docker_compose_env_https* but with sample setup for single sign on. Note that Kerberos support is still experimental.
 
 .docker_compose_env_http_selenium and .docker_compose_env_https_selenium
     These are used only for development when Selenium testing is activated.
@@ -283,6 +283,35 @@ OTOBO_NGINX_SSL_CERTIFICATE_KEY
     SSL key for the nginx webproxy.
     Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*
 
+**Nginx webproxy settings for Kerberos**
+
+This settings are used by Nginx when Kerberos is used for single sign on.
+Note that Kerberos support is still experimental.
+
+OTOBO_NGINX_KERBEROS_KEYTAB
+    Kerberos keytab file. The default is */etc/krb5.keytab*.
+
+OTOBO_NGINX_KERBEROS_CONFIG
+    Kerberos config file. The default is */etc/krb5.conf*, usually generated from *krb5.conf.template*
+
+OTOBO_NGINX_KERBEROS_SERVICE_NAME
+    Kerberos Service Name. It is not clear where this setting is actually used anywhere.
+
+OTOBO_NGINX_KERBEROS_REALM
+    Kerberos REALM. Used in */etc/krb5.conf*.
+
+OTOBO_NGINX_KERBEROS_KDC
+    Kerberos kdc / AD Controller. Used in */etc/krb5.conf*.
+
+OTOBO_NGINX_KERBEROS_ADMIN_SERVER
+    Kerberos Admin Server. Used in */etc/krb5.conf*.
+
+OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN
+    Kerberos Default Domain. Used in */etc/krb5.conf*.
+
+NGINX_ENVSUBST_TEMPLATE_DIR
+    Provide a custom Nginx config template dir. Gives extra flexibility.
+
 **Docker Compose settings**
 
 These settings are used by Docker Compose directly.
@@ -397,6 +426,28 @@ Finally, the containers can be started again:
     docker_admin> docker-compose up --detach
 
 See also the section "Using environment variables in nginx configuration (new in 1.19)" in https://hub.docker.com/_/nginx.
+
+Single Sign On Using the Kerberos Support in Nginx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+    Support for Kerberos is stull experimental.
+
+For enabling authentication with Kerberos please base you *.env file* on the sample file *.docker_compose_env_https_kerberos*.
+This activates the special configuration in *docker-compose/otobo-override-https-kerberos.yml*.
+This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings
+as environment values to the running Nginx container. These settings are listed above.
+
+As usual, the values for these setting can be specified in the *.env* file. Most of ghese setting will be used
+as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container.
+In the running container the adapted config will be available in */etc/krb5.conf*.
+
+Providing an user specific */etc/krb5.conf* file is still possible. This can be done by mounting a volume
+that overrides */etc/krb5.conf* in the container. This can be achieved by setting OTOBO_NGINX_KERBEROS_CONFIG
+in the *.env* file and by activating the mount directove in *docker-compose/otobo-override-https-kerberos.yml*.
+
+*/etc/krb5.keytab* is always installation specific and must therefore always be mounted from the host system.
 
 Choosing non-standard ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
