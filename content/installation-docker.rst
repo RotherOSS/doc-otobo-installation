@@ -83,7 +83,7 @@ The other files are for more specialised use cases.
     Like *.docker_compose_env_https* but with support for a custom Nginx configuration.
 
 .docker_compose_env_https_kerberos
-    Like *.docker_compose_env_https* but with sample setup for single sign on. Note that Kerberos support is still experimental.
+    Like *.docker_compose_env_https* but with sample setup for single sign on. Note that Kerberos support is still **experimental**.
 
 .docker_compose_env_http_selenium and .docker_compose_env_https_selenium
     These are used only for development when Selenium testing is activated.
@@ -286,7 +286,11 @@ OTOBO_NGINX_SSL_CERTIFICATE_KEY
 **Nginx webproxy settings for Kerberos**
 
 This settings are used by Nginx when Kerberos is used for single sign on.
-Note that Kerberos support is still experimental.
+
+.. warning::
+
+    Support for Kerberos is still experimental.
+
 
 OTOBO_NGINX_KERBEROS_KEYTAB
     Kerberos keytab file. The default is */etc/krb5.keytab*.
@@ -432,7 +436,7 @@ Single Sign On Using the Kerberos Support in Nginx
 
 .. warning::
 
-    Support for Kerberos is stull experimental.
+    Support for Kerberos is still experimental.
 
 For enabling authentication with Kerberos please base you *.env file* on the sample file *.docker_compose_env_https_kerberos*.
 This activates the special configuration in *docker-compose/otobo-override-https-kerberos.yml*.
