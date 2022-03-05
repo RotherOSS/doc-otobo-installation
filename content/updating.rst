@@ -106,7 +106,7 @@ Please execute the following command to set the file and directory permissions f
    root> /opt/otobo/bin/otobo.SetPermissions.pl
 
 
-Step 4: Update Installed Packages
+Step 4: Update Installed Packages and reconfigure config 
 ---------------------------------
 
 You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon).
@@ -116,6 +116,7 @@ You can use the command below to update all installed packages. This works for a
     root> su - otobo
     otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
     otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
+    otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
 
 Step 5: Only for minor or major release upgrades (for example to upgrade from 10.0 to 10.1)
 ---------------------------------
