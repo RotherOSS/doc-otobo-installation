@@ -58,9 +58,9 @@ and unpack the source archive (for example, using ``tar``) into the directory ``
 .. code-block:: bash
 
     root> cd /root/otobo-update                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
-    root> tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-10.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.1.tar.gz     # Download he latest OTOBO 10.1 release
+    root> tar -xzf otobo-latest-10.1.tar.gz                                 # Unzip OTOBO
+    root> cp -r otobo-10.1.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Restore Old Configuration Files
@@ -106,7 +106,18 @@ Please execute the following command to set the file and directory permissions f
    root> /opt/otobo/bin/otobo.SetPermissions.pl
 
 
-Step 4: Update Installed Packages and reconfigure config 
+Step 4: Check for new needed perl modules 
+---------------------------------
+
+OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary.
+
+.. code-block:: bash
+
+    root> su - otobo
+    otobo> perl /opt/otobo/bin/otobo.CheckModules.pl --list
+
+
+Step 5: Update Installed Packages and reconfigure config 
 ---------------------------------
 
 You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon).
@@ -118,7 +129,7 @@ You can use the command below to update all installed packages. This works for a
     otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
     otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
 
-Step 5: Only for minor or major release upgrades (for example to upgrade from 10.0 to 10.1)
+Step 6: Only for minor or major release upgrades (for example to upgrade from 10.0 to 10.1)
 ---------------------------------
 
 .. code-block:: bash
@@ -126,7 +137,7 @@ Step 5: Only for minor or major release upgrades (for example to upgrade from 10
     root> su - otobo
     otobo> /opt/otobo/scripts/DBUpdate-to-10.1.pl
 
-Step 6: Start your Services
+Step 7: Start your Services
 ---------------------------
 
 Now the services can be started. This will depend on your service configuration, here is an example:
