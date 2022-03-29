@@ -11,7 +11,7 @@ Follow the detailed steps in this chapter to install OTOBO on your server. You c
     By using the provided Docker images, all recommended dependencies (such as Elasticsearch, Redis Cache, etc.)
     are installed and configured automatically. Updates are thus greatly simplified and the performance has been improved.
     You can find the instructions for Docker-based installation at
-    https://doc.otobo.org/manual/installation/stable/en/content/installation-docker.html .
+    https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html .
 
 
 Preparation: Disable SELinux when it is installed and enabled
