@@ -53,6 +53,8 @@ Here's how to disable SELinux for RHEL/CentOS/Fedora.
       Disabled
 
 
+
+
 Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
@@ -61,17 +63,25 @@ Unpack the source archive (for example, using ``tar``) into the directory ``/opt
 
 .. code-block:: bash
 
-    root> mkdir /opt/otobo-install                                          # Create a temporary install directory
+    root> mkdir /opt/otobo-install && mkdir /opt/otobo                      # Create a temporary install directory
     root> cd /opt/otobo-install                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
-    root> tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-10.x.x /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
+    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.1.tar.gz     # Download he latest OTOBO 10 release
+    root> tar -xzf otobo-latest-10.1.tar.gz                                 # Unzip OTOBO
+    root> cp -r otobo-10.x.x/* /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
 ----------------------------------------------------
 
 Use the following script to get an overview of all installed and required CPAN modules and other external dependencies.
+
+.. note::
+
+   On Debian systems you may need to manually install some perl packages:
+
+.. code-block:: bash
+   
+      apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
 .. code-block:: text
 
