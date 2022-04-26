@@ -290,6 +290,7 @@ If this command not work, please try the following commands:
 .. code-block:: bash
 
    root> mysql -u root
+   root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password USING PASSWORD('NewRootPassword');
    root> UPDATE mysql.user SET password = PASSWORD('NewRootPassword') WHERE user = 'root';
    root> UPDATE mysql.user SET authentication_string = '' WHERE user = 'root';
    root> UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root';
