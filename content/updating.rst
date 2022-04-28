@@ -8,7 +8,7 @@ Updating
 .. note::
 
    On Debian systems you may need to manually install some perl packages before upgrading from 10.0 to 10.1
-
+   
 .. code-block:: bash
    
       apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
@@ -122,6 +122,8 @@ OTOBO needs new cpan packages for some version jumps. Please check if new packag
 
 .. note::
    On Debian systems you may need to manually install some packages:
+
+.. code-block:: bash
    apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
 
@@ -154,6 +156,15 @@ Step 6: Only for minor or major release upgrades (for example to upgrade from 10
 
 Step 7: Start your Services
 ---------------------------
+
+Start OTOBO cron jobs and the daemon (in this order):
+
+.. code-block:: bash
+
+    root> su - otobo
+    otobo> cd /opt/otobo/
+    otobo> bin/otobo.Daemon.pl start
+    otobo> bin/Cron.sh start
 
 Now the services can be started. This will depend on your service configuration, here is an example:
 
