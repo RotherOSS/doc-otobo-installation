@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 00:40+0200\n"
+"POT-Creation-Date: 2022-04-28 00:40+0200\n"
 "PO-Revision-Date: 2021-08-02 02:15+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
@@ -392,11 +392,11 @@ msgstr ""
 "Reinicie seu sistema. Após reiniciar, confirme que o comando``getenforce`` "
 "retorne *Disabled*:"
 
-#: ../../content/installation.rst:67
+#: ../../content/installation.rst:69
 msgid "Step 1: Unpack and Install OTOBO"
 msgstr "Passo 1: Desempacotar e Instalar o OTOBO"
 
-#: ../../content/installation.rst:69
+#: ../../content/installation.rst:71
 msgid ""
 "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. "
 "Unpack the source archive (for example, using ``tar``) into the directory ``/"
@@ -406,11 +406,11 @@ msgstr ""
 "Descompacte o arquivo fonte (por exemplo, usando``tar``) dentro do diretório "
 "``/opt/otobo-install``:"
 
-#: ../../content/installation.rst:82
+#: ../../content/installation.rst:84
 msgid "Step 2: Install Additional Programs and Perl Modules"
 msgstr "Passo 2: Instale Programas Adicionais e Módulos Perl"
 
-#: ../../content/installation.rst:84
+#: ../../content/installation.rst:86
 msgid ""
 "Use the following script to get an overview of all installed and required "
 "CPAN modules and other external dependencies."
@@ -418,7 +418,11 @@ msgstr ""
 "Use o seguinte script para obter uma visão geral de todos os módulos CPAN "
 "instalados e requeridos e outros dependências externas."
 
-#: ../../content/installation.rst:97
+#: ../../content/installation.rst:90
+msgid "On Debian systems you may need to manually install some perl packages:"
+msgstr ""
+
+#: ../../content/installation.rst:107
 msgid ""
 "Please note that OTOBO requires a working Perl installation with all *core* "
 "modules such as the module ``version``. These modules are not explicitly "
@@ -431,7 +435,7 @@ msgstr ""
 "pacote ``perl-core`` em alguns sistemas como o RHEL que não instalam os "
 "pacotes principais do Perl por padrão."
 
-#: ../../content/installation.rst:99
+#: ../../content/installation.rst:109
 msgid ""
 "To install the required and optional packages, you can use either CPAN or "
 "the package manager of your Linux distribution."
@@ -439,7 +443,7 @@ msgstr ""
 "Para instalar os pacotes obrigatórios e opcionais, você pode usar o CPAN ou "
 "o gerenciador de pacotes da sua distribuição Linux."
 
-#: ../../content/installation.rst:101
+#: ../../content/installation.rst:111
 msgid ""
 "Execute this command to get an install command to install the missing "
 "dependencies:"
@@ -447,7 +451,7 @@ msgstr ""
 "Execute este comando para obter um comando de instalação para instalar as "
 "dependências ausentes:"
 
-#: ../../content/installation.rst:109
+#: ../../content/installation.rst:119
 msgid ""
 "There are a number of optional or alternative modules which can be "
 "installed, mostly for more customized versions of OTOBO. Calling "
@@ -457,15 +461,15 @@ msgstr ""
 "principalmente para versões mais personalizadas do OTOBO. Chamar "
 "CheckModules.pl sem nenhum argumento listará sua funcionalidade completa."
 
-#: ../../content/installation.rst:113
+#: ../../content/installation.rst:123
 msgid "Step 3: Create the OTOBO User"
 msgstr "Passo 3: Crie o usuário OTOBO"
 
-#: ../../content/installation.rst:115
+#: ../../content/installation.rst:125
 msgid "Create a dedicated user for OTOBO within its own group:"
 msgstr "Crie um usuário dedicado para OTOBO dentro de seu próprio grupo:"
 
-#: ../../content/installation.rst:121
+#: ../../content/installation.rst:131
 msgid ""
 "Add the user to web server group (if the web server is not running as otobo "
 "user):"
@@ -473,11 +477,11 @@ msgstr ""
 "Adicione o usuário no grupo do seu servidor web (se o seu servidor web não "
 "estiver rodando com o usuário otobo):"
 
-#: ../../content/installation.rst:130
+#: ../../content/installation.rst:140
 msgid "Step 4: Activate the Default Configuration File"
 msgstr "Passo 4: Ative o arquivo de configuração padrão"
 
-#: ../../content/installation.rst:132
+#: ../../content/installation.rst:142
 msgid ""
 "There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config."
 "pm.dist``. You must activate it by copying it without the ``.dist`` file "
@@ -487,11 +491,11 @@ msgstr ""
 "pm.dist``. Você deve ativa-lo copiando o arquivo sem a extensão do arquivo "
 "``.dist``."
 
-#: ../../content/installation.rst:140
+#: ../../content/installation.rst:150
 msgid "Step 5: Configure the Apache Web Server"
 msgstr "Passo 5: Configure seu servidor Web Apache"
 
-#: ../../content/installation.rst:142
+#: ../../content/installation.rst:152
 msgid ""
 "First of all, you should install the Apache2 web server and mod_perl; you'd "
 "typically do this from your system's package manager. Below you'll find the "
@@ -502,7 +506,7 @@ msgstr ""
 "você encontrará os comandos necessários para configurar o Apache nas "
 "distribuições Linux mais populares."
 
-#: ../../content/installation.rst:156
+#: ../../content/installation.rst:166
 msgid ""
 "A critical setting of the Apache web server is the choice of the multi-"
 "processing module. For running OTOBO, the recommended choice is the module "
@@ -510,23 +514,23 @@ msgid ""
 "be managed with the tools a2dismod and a2enmod."
 msgstr ""
 
-#: ../../content/installation.rst:165
+#: ../../content/installation.rst:175
 msgid "All is fine whem mpm_prefork already is enabled."
 msgstr "Tudo está bem quando mpm_prefork já foi habilitado."
 
-#: ../../content/installation.rst:167
+#: ../../content/installation.rst:177
 msgid "Disable mpm_event when it is currently active."
 msgstr "Desative mpm_event quando estiver ativo no momento."
 
-#: ../../content/installation.rst:173
+#: ../../content/installation.rst:183
 msgid "Disable mpm_worker in case that MPM is enabled."
 msgstr "Desative mpm_worker caso o MPM esteja ativo."
 
-#: ../../content/installation.rst:179
+#: ../../content/installation.rst:189
 msgid "Finally activate mpm_prefork."
 msgstr "Finalmente ative mpm_prefork."
 
-#: ../../content/installation.rst:185
+#: ../../content/installation.rst:195
 msgid ""
 "OTOBO requires a few more Apache modules to be active for optimal operation. "
 "Again, on most platforms you can make sure they are active via the tool "
@@ -536,7 +540,7 @@ msgstr ""
 "operação ideal. Novamente, na maioria das plataformas, você pode ter certeza "
 "de que estão ativas por meio da ferramenta a2enmod."
 
-#: ../../content/installation.rst:196
+#: ../../content/installation.rst:206
 msgid ""
 "On some platforms not all Apache modules exist and an error is displayed "
 "when installing. Do not worry and finish the installation, in most cases the "
@@ -546,7 +550,7 @@ msgstr ""
 "exibido durante a instalação. Não se preocupe e termine a instalação, na "
 "maioria dos casos o módulo não será necessário."
 
-#: ../../content/installation.rst:198
+#: ../../content/installation.rst:208
 msgid ""
 "Most Apache installations have a ``conf.d`` directory included. On Linux "
 "systems you can usually find this directory under ``/etc/apache`` or ``/etc/"
@@ -556,11 +560,11 @@ msgstr ""
 "sistemas Linux, você geralmente pode encontrar este diretório em ``/etc/"
 "apache`` ou``/etc/apache2``."
 
-#: ../../content/installation.rst:201
+#: ../../content/installation.rst:211
 msgid "Configure Apache without SSL support"
 msgstr "Configurar Apache sem suporte SSL"
 
-#: ../../content/installation.rst:203
+#: ../../content/installation.rst:213
 msgid ""
 "Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to "
 "the apache ``sites-available`` directory. In most cases no further editing "
@@ -571,11 +575,11 @@ msgstr ""
 "nenhuma edição adicional do modelo é necessária. Em seguida, ative a nova "
 "configuração."
 
-#: ../../content/installation.rst:216
+#: ../../content/installation.rst:226
 msgid "Configure Apache **with** SSL support"
 msgstr "Configure o Apache **com** suporte SSL"
 
-#: ../../content/installation.rst:218
+#: ../../content/installation.rst:228
 msgid ""
 "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include."
 "conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to "
@@ -585,7 +589,7 @@ msgstr ""
 "include.conf`` e ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` "
 "para o diretório ``sites-availible``."
 
-#: ../../content/installation.rst:227
+#: ../../content/installation.rst:237
 msgid ""
 "Please edit the files and add the required information like SSL certificate "
 "storage path. After that, enable the OTOBO Apache configuration:"
@@ -594,7 +598,7 @@ msgstr ""
 "armazenamento do certificado SSL. Depois disso, ative a configuração do "
 "OTOBO Apache:"
 
-#: ../../content/installation.rst:234
+#: ../../content/installation.rst:244
 msgid ""
 "Now you can restart your web server to load the new configuration settings. "
 "On most systems you can use the following command to do so:"
@@ -603,11 +607,11 @@ msgstr ""
 "definições de configuração. Na maioria dos sistemas, você pode usar o "
 "seguinte comando para fazer isso:"
 
-#: ../../content/installation.rst:242
+#: ../../content/installation.rst:252
 msgid "Step 6: Set File Permissions"
 msgstr "Passo 6: Configurando Permissões de Arquivos"
 
-#: ../../content/installation.rst:244 ../../content/updating.rst:112
+#: ../../content/installation.rst:254 ../../content/updating.rst:121
 msgid ""
 "Please execute the following command to set the file and directory "
 "permissions for OTOBO. It will try to detect the correct user and group "
@@ -617,11 +621,11 @@ msgstr ""
 "e diretório para o OTOBO. Ele tentará detectar as configurações corretas de "
 "usuário e grupo necessárias para sua configuração."
 
-#: ../../content/installation.rst:252
+#: ../../content/installation.rst:262
 msgid "Step 7: Setup the Database"
 msgstr "Passo 7: Configurando o Banco de Dados"
 
-#: ../../content/installation.rst:254
+#: ../../content/installation.rst:264
 msgid ""
 "First of all, you should install the database package. It is recommended to "
 "use the MySQL or MariaDB package, which will be delivered with your Linux "
@@ -631,7 +635,7 @@ msgstr ""
 "recomendável usar o pacote MySQL ou MariaDB, que será entregue com o sistema "
 "Linux, mas é possível usar o PostgreSQL ou Oracle também."
 
-#: ../../content/installation.rst:257
+#: ../../content/installation.rst:267
 msgid ""
 "You'd typically do this from your systems package manager. Below you'll find "
 "the commands needed to set up MySQL on the most popular Linux distributions."
@@ -640,11 +644,11 @@ msgstr ""
 "você encontrará os comandos necessários para configurar o MySQL nas "
 "distribuições Linux mais populares."
 
-#: ../../content/installation.rst:271
+#: ../../content/installation.rst:281
 msgid "After installing the MySQL server you need configure it."
 msgstr "Depois de instalar o servidor MySQL, você precisa configurá-lo."
 
-#: ../../content/installation.rst:273
+#: ../../content/installation.rst:283
 msgid ""
 "In MySQL higher or equal version 5.7  a new authentication module is active, "
 "and it is not possible to use the OTOBO web installer for database creation. "
@@ -656,15 +660,15 @@ msgstr ""
 "de dados. Por favor, faça login no console do mysql e defina um módulo de "
 "autenticação e senha diferentes para o usuário ``root``, se este for o caso:"
 
-#: ../../content/installation.rst:281
+#: ../../content/installation.rst:291
 msgid "For MariaDB > 10.1 use instead the following command:"
 msgstr "Para MariaDB > 10.1, use o seguinte comando:"
 
-#: ../../content/installation.rst:288
+#: ../../content/installation.rst:298
 msgid "If this command not work, please try the following commands:"
 msgstr "Se este comando não funcionar, tente os seguintes comandos:"
 
-#: ../../content/installation.rst:297
+#: ../../content/installation.rst:307
 msgid ""
 "After OTOBO installation it is possible to change the authentication module "
 "again, if needed."
@@ -672,7 +676,7 @@ msgstr ""
 "Após a instalação do OTOBO, é possível alterar o módulo de autenticação "
 "novamente, se necessário."
 
-#: ../../content/installation.rst:301
+#: ../../content/installation.rst:311
 msgid ""
 "The following configuration settings are minimum requirements for MySQL "
 "setups. Please add the following lines to the MySQL Server configuration "
@@ -684,13 +688,13 @@ msgstr ""
 "de configuração do MySQL Server ``/etc/my.cnf``,``/etc/mysql/my.cnf`` ou ``/"
 "etc/mysql/mysql.conf.d/mysqld.cnf`` abaixo da seção ``[mysqld]``:"
 
-#: ../../content/installation.rst:308
+#: ../../content/installation.rst:318
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
 msgstr ""
 "Para o MySQL anterior ao MySQL 8.0, o tamanho do cache da consulta também "
 "deve ser definido:"
 
-#: ../../content/installation.rst:314
+#: ../../content/installation.rst:324
 msgid ""
 "Also add the following lines to the MySQL Server configuration file ``/etc/"
 "my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` "
@@ -700,7 +704,7 @@ msgstr ""
 "servidor MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` ou ``/etc/mysql/mysql."
 "conf.d/mysqldump.cnf`` debaixo da seção ``[mysqldump]``:"
 
-#: ../../content/installation.rst:321
+#: ../../content/installation.rst:331
 msgid ""
 "For production purposes we recommend to use the tool ``mysqltuner`` to find "
 "the perfect setup. You can download the script from github ``https://github."
@@ -712,15 +716,15 @@ msgstr ""
 "github ``https://github.com/major/MySQLTuner-perl`` ou instalá-lo nos "
 "sistemas Debian ou Ubuntu através do gerenciador de pacotes:"
 
-#: ../../content/installation.rst:328
+#: ../../content/installation.rst:338
 msgid "After installing execute the script:"
 msgstr "Após a instalação execute o script:"
 
-#: ../../content/installation.rst:336
+#: ../../content/installation.rst:346
 msgid "Step 8: Setup Elasticsearch"
 msgstr "Passo 8: Configurar Elasticsearch"
 
-#: ../../content/installation.rst:338
+#: ../../content/installation.rst:348
 msgid ""
 "OTOBO recommends an active installation of Elasticsearch for quick search. "
 "The easiest way is to setup Elasticsearch on the same host as OTOBO and "
@@ -730,23 +734,23 @@ msgstr ""
 "rápida. A maneira mais fácil é configurar o Elasticsearch no mesmo host que "
 "o OTOBO e vinculá-lo à sua porta padrão."
 
-#: ../../content/installation.rst:341
+#: ../../content/installation.rst:351
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "Exemplo de instalação do Elasticsearch baseado no Ubuntu 18.04 LTS"
 
-#: ../../content/installation.rst:343
+#: ../../content/installation.rst:353
 msgid "JDK Installation"
 msgstr "Instalação do JDK"
 
-#: ../../content/installation.rst:350
+#: ../../content/installation.rst:360
 msgid "Elasticsearch Installation"
 msgstr "Instalação do ElasticSearch"
 
-#: ../../content/installation.rst:360
+#: ../../content/installation.rst:370
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "Instalação do ElasticSearch em outra distribuição Linux"
 
-#: ../../content/installation.rst:362
+#: ../../content/installation.rst:372
 msgid ""
 "Please follow the installation tutorial found at https://www.elastic.co/"
 "guide/en/elasticsearch/reference/current/setup.html."
@@ -754,26 +758,26 @@ msgstr ""
 "Siga o tutorial de instalação encontrado em https://www.elastic.co/guide/en/"
 "elasticsearch/reference/current/setup.html."
 
-#: ../../content/installation.rst:365
+#: ../../content/installation.rst:375
 msgid "Elasticsearch Module Installation"
 msgstr "Instalação do Módulo do ElasticSearch"
 
-#: ../../content/installation.rst:366
+#: ../../content/installation.rst:376
 msgid ""
 "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "Além disso, o OTOBO exige a instalação de plug-ins no Elasticsearch:"
 
-#: ../../content/installation.rst:375
+#: ../../content/installation.rst:385
 msgid "Elasticsearch Configuration"
 msgstr "Configuração do Elasticsearch"
 
-#: ../../content/installation.rst:377
+#: ../../content/installation.rst:387
 msgid ""
 "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr ""
 "O Elasticsearch possui diversas opções e possibilidades de configuração."
 
-#: ../../content/installation.rst:379
+#: ../../content/installation.rst:389
 msgid ""
 "In order to ensure error-free operation, you should adjust the jvm heap "
 "space for larger OTOBO systems. Please adjust the settings in the file ``/"
@@ -786,7 +790,7 @@ msgstr ""
 "tamanho mínimo e máximo do heap da JVM para o mesmo valor. Por exemplo, para "
 "definir o heap como 4 GB, defina:"
 
-#: ../../content/installation.rst:387
+#: ../../content/installation.rst:397
 msgid ""
 "In our tests, a value between 4 and 10 GB for medium-sized installations has "
 "proven to be the best."
@@ -794,7 +798,7 @@ msgstr ""
 "Em nossos testes, um valor entre 4 e 10 GB para instalações de tamanho médio "
 "provou ser o melhor."
 
-#: ../../content/installation.rst:391
+#: ../../content/installation.rst:401
 msgid ""
 "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
 "size.html`` for more information."
@@ -802,7 +806,7 @@ msgstr ""
 "Veja ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-"
 "size.html`` para mais informações."
 
-#: ../../content/installation.rst:393
+#: ../../content/installation.rst:403
 msgid ""
 "Now you can restart your Elasticsearch server to load the new configuration "
 "settings. On most systems you can use the following command to do so:"
@@ -811,11 +815,11 @@ msgstr ""
 "definições de configuração. Na maioria dos sistemas, você pode usar o "
 "seguinte comando para fazer isso:"
 
-#: ../../content/installation.rst:401
+#: ../../content/installation.rst:411
 msgid "Step 8: Basic System Configuration"
 msgstr "Passo 8: Configurações de Sistema básicas"
 
-#: ../../content/installation.rst:403
+#: ../../content/installation.rst:413
 msgid ""
 "Please use the web installer at http://localhost/otobo/installer.pl (replace "
 "\"localhost\" with your OTOBO hostname) to set up your database and basic "
@@ -825,11 +829,11 @@ msgstr ""
 "(substitua \"localhost\" pelo seu nome de host OTOBO) para configurar seu "
 "banco de dados e configurações básicas do sistema, como contas de email."
 
-#: ../../content/installation.rst:407
+#: ../../content/installation.rst:417
 msgid "Step 9: First Login"
 msgstr "Passo 9: Primeiro Login"
 
-#: ../../content/installation.rst:409
+#: ../../content/installation.rst:419
 msgid ""
 "Now you are ready to login to your system at http://localhost/otobo/index.pl "
 "as user ``root@localhost`` with the password that was generated (see above)."
@@ -838,11 +842,11 @@ msgstr ""
 "index.pl com o usuário ``root@localhost`` com a senha que foi gerada (veja "
 "acima)."
 
-#: ../../content/installation.rst:413
+#: ../../content/installation.rst:423
 msgid "Step 10: Start the OTOBO Daemon"
 msgstr "Passo 10: Inicie o Daemon do OTOBO"
 
-#: ../../content/installation.rst:415
+#: ../../content/installation.rst:425
 msgid ""
 "OTOBO daemon is responsible for handling any asynchronous and recurring "
 "tasks in OTOBO. What has been in cron file definitions previously is now "
@@ -855,11 +859,11 @@ msgstr ""
 "daemon também manipula todas as tarefas GenericAgent e deve ser iniciado a "
 "partir do usuário OTOBO."
 
-#: ../../content/installation.rst:422
+#: ../../content/installation.rst:432
 msgid "Step 11: Cron jobs for the OTOBO user"
 msgstr "Passo 11: Tarefas Cron para o usuário OTOBO"
 
-#: ../../content/installation.rst:424
+#: ../../content/installation.rst:434
 msgid ""
 "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, "
 "and their purpose is to make sure that the OTOBO Daemon is running. They "
@@ -870,15 +874,15 @@ msgstr ""
 "seu objetivo é garantir que o Daemon OTOBO esteja em execução. Eles precisam "
 "ser ativados, copiando-os sem a extensão de arquivo \".dist\"."
 
-#: ../../content/installation.rst:434
+#: ../../content/installation.rst:444
 msgid "With this step, the basic system setup is finished."
 msgstr "Com esta etapa, a configuração básica do sistema está concluída."
 
-#: ../../content/installation.rst:438
+#: ../../content/installation.rst:448
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
 msgstr "Passo 12: Configurar o auto completar do bash (opcional)"
 
-#: ../../content/installation.rst:440
+#: ../../content/installation.rst:450
 msgid ""
 "All regular OTOBO command line operations happen via the OTOBO console "
 "interface. This provides an auto-completion for the bash shell which makes "
@@ -888,7 +892,7 @@ msgstr ""
 "interface do console OTOBO. Isso fornece um preenchimento automático para o "
 "shell bash, o que facilita a localização do comando e das opções corretas."
 
-#: ../../content/installation.rst:442
+#: ../../content/installation.rst:452
 msgid ""
 "You can activate the bash auto-completion by installing the package ``bash-"
 "completion``. It will automatically detect and load the file ``/opt/otobo/."
@@ -898,7 +902,7 @@ msgstr ""
 "completion``. Ele detectará e carregará o arquivo automaticamente ``/opt/"
 "otobo/.bash_completion`` para o usuário ``otobo``."
 
-#: ../../content/installation.rst:444
+#: ../../content/installation.rst:454
 msgid ""
 "After restarting your shell, you can just type this command followed by TAB, "
 "and it will list all available commands:"
@@ -906,7 +910,7 @@ msgstr ""
 "Após reiniciar seu shell, você pode apenas digitar este comando, seguido de "
 "TAB, e ele listará todos os comandos disponíveis:"
 
-#: ../../content/installation.rst:450
+#: ../../content/installation.rst:460
 msgid ""
 "If you type a few characters of the command name, TAB will show all matching "
 "commands. After typing a complete command, all possible options and "
@@ -916,7 +920,7 @@ msgstr ""
 "comandos correspondentes. Após digitar um comando completo, todas as opções "
 "e argumentos possíveis serão mostrados pressionando TAB."
 
-#: ../../content/installation.rst:454
+#: ../../content/installation.rst:464
 msgid ""
 "If you have problems, you can execute the following line as user ``otobo`` "
 "and add it to your ``~/.bashrc`` to execute the commands from the file."
@@ -925,11 +929,11 @@ msgstr ""
 "``otobo`` e adicioná-la ao seu ``~/ .bashrc`` para executar os comandos do "
 "arquivo."
 
-#: ../../content/installation.rst:462
+#: ../../content/installation.rst:472
 msgid "Step 13: Further Information"
 msgstr "Passo 13: Informações adicionais"
 
-#: ../../content/installation.rst:464
+#: ../../content/installation.rst:474
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr "Recomendamos que você leia o capítulo OTOBO :doc:`performance-tuning`."
 
@@ -4641,10 +4645,16 @@ msgstr ""
 "teste separada primeiro."
 
 #: ../../content/updating.rst:20
+msgid ""
+"On Debian systems you may need to manually install some perl packages before "
+"upgrading from 10.0 to 10.1"
+msgstr ""
+
+#: ../../content/updating.rst:29
 msgid "Step 1: Stop All Relevant Services and the OTOBO Daemon"
 msgstr "Etapa 1: interromper todos os serviços relevantes e o OTOBO Daemon"
 
-#: ../../content/updating.rst:22
+#: ../../content/updating.rst:31
 msgid ""
 "Please make sure there are no more running services or cron jobs that try to "
 "access OTOBO. This will depend on your service configuration."
@@ -4652,23 +4662,23 @@ msgstr ""
 "Certifique-se de que não haja mais serviços em execução ou tarefas cron que "
 "tentem acessar o OTOBO. Isso dependerá da configuração do seu serviço."
 
-#: ../../content/updating.rst:30
+#: ../../content/updating.rst:39
 msgid "Stop OTOBO cron jobs and the daemon (in this order):"
 msgstr "Pare os cron jobs do OTOBO e o daemon (nesta ordem):"
 
-#: ../../content/updating.rst:41
+#: ../../content/updating.rst:50
 msgid "Step 2: Backup Files and Database"
 msgstr "Etapa 2: Arquivos de backup e banco de dados"
 
-#: ../../content/updating.rst:43
+#: ../../content/updating.rst:52
 msgid "Create a backup of the hole ``/opt/otobo`` directory and the database."
 msgstr "Crie um backup do diretório ``/opt/otobo`` e do banco de dados."
 
-#: ../../content/updating.rst:46
+#: ../../content/updating.rst:55
 msgid "Example for a standard installation with Ubuntu and MySQL"
 msgstr "Exemplo de instalação padrão com Ubuntu e MySQL"
 
-#: ../../content/updating.rst:55
+#: ../../content/updating.rst:64
 msgid ""
 "Please check if all files are valid. Now we have a backup with all required "
 "data."
@@ -4676,7 +4686,7 @@ msgstr ""
 "Verifique se todos os arquivos são válidos. Agora temos um backup com todos "
 "os dados necessários."
 
-#: ../../content/updating.rst:59
+#: ../../content/updating.rst:68
 msgid ""
 "Don't proceed without a complete backup of your system. You can use also "
 "the :ref:`backup-restore` script for this."
@@ -4684,11 +4694,11 @@ msgstr ""
 "Não continue sem um backup completo do seu sistema. Você também pode usar o "
 "script: :ref:`backup-restore` para isso."
 
-#: ../../content/updating.rst:63
+#: ../../content/updating.rst:72
 msgid "Step 3: Install the New Release"
 msgstr "Etapa 3: instalar a nova versão"
 
-#: ../../content/updating.rst:65
+#: ../../content/updating.rst:74
 msgid ""
 "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and "
 "unpack the source archive (for example, using ``tar``) into the directory ``/"
@@ -4698,19 +4708,19 @@ msgstr ""
 "descompacte o arquivo fonte (por exemplo, usando``tar``) dentro do diretório "
 "``/root/otobo-update``:"
 
-#: ../../content/updating.rst:77
+#: ../../content/updating.rst:86
 msgid "Restore Old Configuration Files"
 msgstr "Restaurar arquivos de configuração antigos"
 
-#: ../../content/updating.rst:79
+#: ../../content/updating.rst:88
 msgid "We need only copy the file ``Kernel/Config.pm`` in OTOBO 10."
 msgstr "Precisamos apenas copiar o arquivo ``Kernel/Config.pm` no OTOBO 10."
 
-#: ../../content/updating.rst:88
+#: ../../content/updating.rst:97
 msgid "Restore Article Data"
 msgstr "Restaurar dados do artigo"
 
-#: ../../content/updating.rst:90
+#: ../../content/updating.rst:99
 msgid ""
 "If you configured OTOBO to store article data in the file system you have to "
 "restore the ``article`` folder to ``/opt/otobo/var/`` or the folder "
@@ -4720,11 +4730,11 @@ msgstr ""
 "arquivos, você deve restaurar a pasta ``article`` para ``/opt/otobo/var/`` "
 "ou a pasta especificada na configuração do sistema."
 
-#: ../../content/updating.rst:99
+#: ../../content/updating.rst:108
 msgid "Restore Already Installed Default Statistics"
 msgstr "Restaurar estatísticas padrão já instaladas"
 
-#: ../../content/updating.rst:101
+#: ../../content/updating.rst:110
 msgid ""
 "If you have additional packages with default statistics you have to restore "
 "the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/"
@@ -4734,26 +4744,43 @@ msgstr ""
 "restaurar os arquivos XML de estatísticas com o sufixo ``*.installed`` para "
 "``/opt/otobo/var/stats``."
 
-#: ../../content/updating.rst:110
+#: ../../content/updating.rst:119
 msgid "Set File Permissions"
 msgstr "Definir permissões de arquivo"
 
-#: ../../content/updating.rst:120
+#: ../../content/updating.rst:129
 msgid "Step 4: Check for new needed perl modules"
 msgstr ""
 
-#: ../../content/updating.rst:122
+#: ../../content/updating.rst:131
 msgid ""
 "OTOBO needs new cpan packages for some version jumps. Please check if new "
 "packages are needed and install them if necessary."
 msgstr ""
 
-#: ../../content/updating.rst:131
+#: ../../content/updating.rst:134
+msgid ""
+"On Debian systems you may need to manually install some packages: .. code-"
+"block:: bash apt-get install -y libarchive-zip-perl libtimedate-perl "
+"libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-"
+"connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl "
+"libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-"
+"class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-"
+"trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-"
+"mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl "
+"libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl "
+"libplack-perl libplack-middleware-header-perl libplack-perl libplack-"
+"middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl "
+"libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-"
+"perl libconst-fast-perl"
+msgstr ""
+
+#: ../../content/updating.rst:147
 #, fuzzy
 msgid "Step 5: Update Installed Packages and reconfigure config"
 msgstr "Etapa 4: Atualizar os pacotes instalados"
 
-#: ../../content/updating.rst:133
+#: ../../content/updating.rst:149
 msgid ""
 "You can use the command below to update all installed packages. This works "
 "for all packages that are available from online repositories. You can update "
@@ -4765,18 +4792,18 @@ msgstr ""
 "pode atualizar outros pacotes mais tarde através do gerenciador de pacotes "
 "(isso requer um daemon OTOBO em execução)."
 
-#: ../../content/updating.rst:143
+#: ../../content/updating.rst:159
 msgid ""
 "Step 6: Only for minor or major release upgrades (for example to upgrade "
 "from 10.0 to 10.1)"
 msgstr ""
 
-#: ../../content/updating.rst:151
+#: ../../content/updating.rst:167
 #, fuzzy
 msgid "Step 7: Start your Services"
 msgstr "Etapa 5: Inicie seus serviços"
 
-#: ../../content/updating.rst:153
+#: ../../content/updating.rst:169
 msgid ""
 "Now the services can be started. This will depend on your service "
 "configuration, here is an example:"
@@ -4784,7 +4811,7 @@ msgstr ""
 "Agora os serviços podem ser iniciados. Isso vai depender da configuração do "
 "seu serviço, aqui está um exemplo:"
 
-#: ../../content/updating.rst:161
+#: ../../content/updating.rst:177
 msgid "Now you can log into your system."
 msgstr "Agora você pode entrar em seu sistema."
 
