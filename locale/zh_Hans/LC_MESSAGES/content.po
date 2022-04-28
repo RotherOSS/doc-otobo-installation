@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 00:40+0200\n"
+"POT-Creation-Date: 2022-04-29 00:40+0200\n"
 "PO-Revision-Date: 2021-01-06 03:17+0000\n"
 "Last-Translator: Paul Yang <paul.yang@itservice.com.cn>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/"
@@ -551,7 +551,7 @@ msgstr ""
 msgid "Step 6: Set File Permissions"
 msgstr "步骤6：设置文件许可"
 
-#: ../../content/installation.rst:254 ../../content/updating.rst:121
+#: ../../content/installation.rst:254 ../../content/updating.rst:126
 msgid ""
 "Please execute the following command to set the file and directory "
 "permissions for OTOBO. It will try to detect the correct user and group "
@@ -4275,11 +4275,35 @@ msgid ""
 "upgrading from 10.0 to 10.1"
 msgstr ""
 
-#: ../../content/updating.rst:29
+#: ../../content/updating.rst:21 ../../content/updating.rst:140
+msgid "<<<<<<< HEAD"
+msgstr ""
+
+#: ../../content/updating.rst:27
+msgid ">>>>>>> 1efdbb1cfa178576a5160c52d9b21da767191085"
+msgstr ""
+
+#: ../../content/updating.rst:29 ../../content/updating.rst:146
+msgid ""
+"apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl "
+"libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl "
+"libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-"
+"perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-"
+"perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl "
+"libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-"
+"perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl "
+"libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl "
+"libplack-middleware-header-perl libplack-perl libplack-middleware-"
+"reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-"
+"perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl "
+"libconst-fast-perl"
+msgstr ""
+
+#: ../../content/updating.rst:34
 msgid "Step 1: Stop All Relevant Services and the OTOBO Daemon"
 msgstr "步骤 1：停用所有相关服务和OTOBO守护程序"
 
-#: ../../content/updating.rst:31
+#: ../../content/updating.rst:36
 msgid ""
 "Please make sure there are no more running services or cron jobs that try to "
 "access OTOBO. This will depend on your service configuration."
@@ -4287,39 +4311,39 @@ msgstr ""
 "请确保没有其他正在运行的服务或cron作业，会尝试访问OTOBO的，当然这将取决于你对"
 "服务的配置。"
 
-#: ../../content/updating.rst:39
+#: ../../content/updating.rst:44
 msgid "Stop OTOBO cron jobs and the daemon (in this order):"
 msgstr "停用OTOBO cron作业和守护程序（按照这个顺序）："
 
-#: ../../content/updating.rst:50
+#: ../../content/updating.rst:55
 msgid "Step 2: Backup Files and Database"
 msgstr "步骤 2：备份文件和数据库"
 
-#: ../../content/updating.rst:52
+#: ../../content/updating.rst:57
 msgid "Create a backup of the hole ``/opt/otobo`` directory and the database."
 msgstr "为整个``/opt/otobo``目录和数据库创建备份。"
 
-#: ../../content/updating.rst:55
+#: ../../content/updating.rst:60
 msgid "Example for a standard installation with Ubuntu and MySQL"
 msgstr "一个标准的 Ubuntu 和 MySQL 的安装案例"
 
-#: ../../content/updating.rst:64
+#: ../../content/updating.rst:69
 msgid ""
 "Please check if all files are valid. Now we have a backup with all required "
 "data."
 msgstr "请检查是否所有文件都有效。现在我们已经拥有了所有需要的数据的备份。"
 
-#: ../../content/updating.rst:68
+#: ../../content/updating.rst:73
 msgid ""
 "Don't proceed without a complete backup of your system. You can use also "
 "the :ref:`backup-restore` script for this."
 msgstr "没有完整的系统备份，请勿继续。你也可以参考：`backup-restore`脚本。"
 
-#: ../../content/updating.rst:72
+#: ../../content/updating.rst:77
 msgid "Step 3: Install the New Release"
 msgstr "步骤 3：安装新的版本"
 
-#: ../../content/updating.rst:74
+#: ../../content/updating.rst:79
 msgid ""
 "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and "
 "unpack the source archive (for example, using ``tar``) into the directory ``/"
@@ -4328,19 +4352,19 @@ msgstr ""
 "从https://ftp.otobo.org/pub/otobo/下载最新的OTOBO版本软件，打开封装文档（例如"
 "使用``tar``命令），并存到目录``/root/otobo-update``："
 
-#: ../../content/updating.rst:86
+#: ../../content/updating.rst:91
 msgid "Restore Old Configuration Files"
 msgstr "恢复旧配置文件"
 
-#: ../../content/updating.rst:88
+#: ../../content/updating.rst:93
 msgid "We need only copy the file ``Kernel/Config.pm`` in OTOBO 10."
 msgstr "在OTOBO 10中，我们只需要拷贝文件``Kernel/Config.pm`` 。"
 
-#: ../../content/updating.rst:97
+#: ../../content/updating.rst:102
 msgid "Restore Article Data"
 msgstr "恢复物品数据"
 
-#: ../../content/updating.rst:99
+#: ../../content/updating.rst:104
 msgid ""
 "If you configured OTOBO to store article data in the file system you have to "
 "restore the ``article`` folder to ``/opt/otobo/var/`` or the folder "
@@ -4349,11 +4373,11 @@ msgstr ""
 "如果你对OTOBO配置，是将物品数据存储在文件系统中，则必须将``article`` 文件夹还"
 "原到``/ opt / otobo / var /``或系统配置中指定的文件夹。"
 
-#: ../../content/updating.rst:108
+#: ../../content/updating.rst:113
 msgid "Restore Already Installed Default Statistics"
 msgstr "恢复已经安装的默认统计信息"
 
-#: ../../content/updating.rst:110
+#: ../../content/updating.rst:115
 msgid ""
 "If you have additional packages with default statistics you have to restore "
 "the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/"
@@ -4362,43 +4386,30 @@ msgstr ""
 "如果你还有其他带有默认统计信息的软件包，则必须将后缀为``*.installed`` 的XML统"
 "计数据文件恢复到/ opt / otobo / var / stats。"
 
-#: ../../content/updating.rst:119
+#: ../../content/updating.rst:124
 msgid "Set File Permissions"
 msgstr "设置文件许可"
 
-#: ../../content/updating.rst:129
+#: ../../content/updating.rst:134
 msgid "Step 4: Check for new needed perl modules"
 msgstr ""
 
-#: ../../content/updating.rst:131
+#: ../../content/updating.rst:136
 msgid ""
 "OTOBO needs new cpan packages for some version jumps. Please check if new "
 "packages are needed and install them if necessary."
 msgstr ""
 
-#: ../../content/updating.rst:134
-msgid ""
-"On Debian systems you may need to manually install some packages: .. code-"
-"block:: bash apt-get install -y libarchive-zip-perl libtimedate-perl "
-"libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-"
-"connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl "
-"libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-"
-"class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-"
-"trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-"
-"mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl "
-"libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl "
-"libplack-perl libplack-middleware-header-perl libplack-perl libplack-"
-"middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl "
-"libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-"
-"perl libconst-fast-perl"
+#: ../../content/updating.rst:139
+msgid "On Debian systems you may need to manually install some packages:"
 msgstr ""
 
-#: ../../content/updating.rst:147
+#: ../../content/updating.rst:157
 #, fuzzy
 msgid "Step 5: Update Installed Packages and reconfigure config"
 msgstr "步骤 4：更新安装软件包"
 
-#: ../../content/updating.rst:149
+#: ../../content/updating.rst:159
 msgid ""
 "You can use the command below to update all installed packages. This works "
 "for all packages that are available from online repositories. You can update "
@@ -4409,24 +4420,29 @@ msgstr ""
 "软件包。你也可以稍后通过操作系统中的软件包管理器更新其他程序包（这需要运行的"
 "OTOBO守护程序）。"
 
-#: ../../content/updating.rst:159
+#: ../../content/updating.rst:169
 msgid ""
 "Step 6: Only for minor or major release upgrades (for example to upgrade "
 "from 10.0 to 10.1)"
 msgstr ""
 
-#: ../../content/updating.rst:167
+#: ../../content/updating.rst:177
 #, fuzzy
 msgid "Step 7: Start your Services"
 msgstr "步骤 5：开始你的服务"
 
-#: ../../content/updating.rst:169
+#: ../../content/updating.rst:179
+#, fuzzy
+msgid "Start OTOBO cron jobs and the daemon (in this order):"
+msgstr "停用OTOBO cron作业和守护程序（按照这个顺序）："
+
+#: ../../content/updating.rst:188
 msgid ""
 "Now the services can be started. This will depend on your service "
 "configuration, here is an example:"
 msgstr "现在可以启动服务。这将取决于您的服务配置，下面是一个示例："
 
-#: ../../content/updating.rst:177
+#: ../../content/updating.rst:196
 msgid "Now you can log into your system."
 msgstr "现在你可以登陆到你的系统。"
 
