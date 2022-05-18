@@ -40,7 +40,7 @@ made sure that the correct setup is used.
     docker_admin> cd /opt/otobo-docker
 
     # Get the latest tags
-    docker-admin> git pull --tags
+    docker-admin> git fetch --tags
 
     # Update OTOBO docker-compose repository to version 10.x.y.
     docker-admin> git checkout rel-10_x_y
