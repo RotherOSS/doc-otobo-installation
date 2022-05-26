@@ -5,232 +5,351 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2022-05-26 00:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-27 03:10+0000\n"
+"Last-Translator: Philipp Kesler <philipp.kesler@hein.de>\n"
+"Language-Team: Russian <https://translate.otobo.org/projects/otobo10/"
+"installation-manual/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: ../../content/backup-restore.rst:12
 msgid "Backup and Restore"
-msgstr ""
+msgstr "Резервное копирование и восстановление"
 
 #: ../../content/backup-restore.rst:14
 msgid "OTOBO has built in scripts for backup and restore. Execute the scripts with the option ``-h`` for more information."
 msgstr ""
+"OTOBO имеет встроенные скрипты для резервного копирования и восстановления. "
+"Для получения дополнительной информации выполните скрипты с опцией ``-h``."
 
 #: ../../content/backup-restore.rst:17
 msgid "Backup"
-msgstr ""
+msgstr "Резервное копирование"
 
 #: ../../content/backup-restore.rst:21
 msgid "To create a new backup, write permission for the destination directory is needed for the user ``otobo``."
 msgstr ""
+"Для создания новой резервной копии необходимо разрешение на запись в каталог "
+"назначения для пользователя ``otobo''."
 
 #: ../../content/backup-restore.rst:27
 #: ../../content/backup-restore.rst:80
 msgid "The output of the script:"
-msgstr ""
+msgstr "Вывод скрипта:"
 
 #: ../../content/backup-restore.rst:70
 msgid "Restore"
-msgstr ""
+msgstr "Восстановление"
 
 #: ../../content/backup-restore.rst:74
 #: ../../content/backup-restore-docker.rst:61
 msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
 msgstr ""
+"Для восстановления базы данных убедитесь, что база данных ``otobo'' "
+"существует и не содержит таблиц."
 
 #: ../../content/backup-restore.rst:96
 #: ../../content/backup-restore-docker.rst:17
 msgid "Considerations for running OTOBO under Docker"
-msgstr ""
+msgstr "Соображения по запуску OTOBO в докере"
 
 #: ../../content/backup-restore.rst:98
 msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered."
 msgstr ""
+"Те же сценарии могут быть использованы с OTOBO, работающим в докере. Однако "
+"следует учитывать некоторые специфические ограничения для докера ."
 
 #: ../../content/backup-restore.rst:100
 msgid "First we need to make sure that the backup files are not created in the file system that is internal to the container. Because in that case all data would be lost when the container is stopped. Therefore the backup directory must be in a volume. For now we only consider the most simple case, where the backup dir is a local dir on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host, and ``/otobo_backup`` as the location in the container."
 msgstr ""
+"Сначала нам нужно убедиться, что файлы резервных копий не создаются в "
+"файловой системе, которая является внутренней для контейнера. Потому что в "
+"этом случае все данные будут потеряны, когда контейнер будет остановлен. "
+"Поэтому каталог резервного копирования должен находиться в томе. Пока мы "
+"рассмотрим только самый простой случай, когда каталог резервного копирования "
+"- это локальный каталог на хосте докера. Расположение резервного каталога в "
+"контейнере может быть выбрано произвольно. В этом примере мы выбрали "
+"локальный каталог ``otobo_backup`` в качестве местоположения на хосте и "
+"``/otobo_backup`` в качестве местоположения в контейнере."
 
 #: ../../content/backup-restore.rst:106
 #: ../../content/backup-restore-docker.rst:32
 msgid "First we need to create the volume."
-msgstr ""
+msgstr "Сначала нужно создать том."
 
 #: ../../content/backup-restore.rst:119
 msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the Daemon may, but don't have to, be stopped."
 msgstr ""
+"Для создания резервной копии нам нужна работающая база данных и тома "
+"``otobo_opt_otobo`` и ``otobo_backup``. Это означает, что веб-сервер и демон "
+"могут, но не обязаны быть остановлены."
 
 #: ../../content/backup-restore.rst:130
 #: ../../content/backup-restore-docker.rst:79
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr ""
+"Для восстановления резервной копии нам также необходимо указать, какая "
+"именно резервная копия должна быть восстановлена. Место для "
+"размещения``<TIMESTAMP>`` имеет вид ``2020-09-07_09-38``."
 
 #: ../../content/backup-restore-docker.rst:12
 msgid "Backup and Restore using Docker"
-msgstr ""
+msgstr "Резервное копирование и восстановление с помощью Докера"
 
 #: ../../content/backup-restore-docker.rst:14
 msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
 msgstr ""
+"Пожалуйста, ознакомьтесь с главой :doc:`backup-restore` для получения "
+"основной информации о сценариях резервного копирования и восстановления."
 
 #: ../../content/backup-restore-docker.rst:19
 msgid "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
 msgstr ""
+"Стандартные скрипты ``backup.pl`` и ``restore.pl`` также могут быть "
+"использованы с OTOBO, запущенным под Докером. Однако следует учитывать "
+"некоторые специфические ограничения для Докера ."
 
 #: ../../content/backup-restore-docker.rst:22
 msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
 msgstr ""
+"Во-первых, нам нужно убедиться, что файлы резервных копий не создаются в "
+"файловой системе, которая является внутренней для контейнера Докера. Потому "
+"что в этом случае созданные файлы будут потеряны при остановке контейнера. "
+"Это означает, что каталог резервного копирования должен находиться внутри "
+"тома. В данном руководстве мы рассмотрим только самый простой случай, когда "
+"каталог резервного копирования является локальным каталогом на хосте Docker. "
+"Расположение резервной директории в контейнере может быть выбрано "
+"произвольно. В данном примере мы выбрали локальный каталог ``otobo_backup`` "
+"в качестве расположения на хосте и ``/otobo_backup`` в качестве расположения "
+"в контейнере."
 
 #: ../../content/backup-restore-docker.rst:29
 msgid "Secondly, commands in the Docker container usually run as the user `otobo` with the user id 1000 and the group id 1000. It must be made sure, that this user can write in the backup directory."
 msgstr ""
+"Во-вторых, команды в контейнере Докера обычно выполняются от имени "
+"пользователя `otobo` с идентификатором пользователя 1000 и идентификатором "
+"группы 1000. Необходимо убедиться, что этот пользователь может писать в "
+"каталог резервного копирования."
 
 #: ../../content/backup-restore-docker.rst:48
 msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
 msgstr ""
+"Для создания резервной копии нам нужна работающая база данных и тома "
+"``otobo_opt_otobo`` и ``otobo_backup``. Это означает, что веб-сервер и демон "
+"OTOBO могут быть остановлены, но не обязаны."
 
 #: ../../content/backup-restore-docker.rst:63
 msgid "To drop an existing otobo database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the `db` container."
 msgstr ""
+"Чтобы удалить существующую базу данных otobo и создать новую, вы можете "
+"использовать следующие команды. Сначала необходимо подключиться к MySQL CLI "
+"контейнера `db`."
 
 #: ../../content/backup-restore-docker.rst:71
 msgid "As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database."
 msgstr ""
+"Как только вы подключитесь к серверу MySQL, вы можете сбросить и заново "
+"создать базу данных `otobo`."
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
-msgstr ""
+msgstr "История создания документации"
 
 #: ../../content/history.rst:15
 msgid "2019 - OTRS Installation Guide - OTRS AG (https://otrs.com)"
-msgstr ""
+msgstr "2019 - Руководство по установке OTRS - OTRS AG (https://otrs.com)"
 
 #: ../../content/history.rst:16
 msgid "2020 - OTOBO Installation Tutorial - Rother OSS GmbH (https://otobo.de)"
-msgstr ""
+msgstr "2020 - Учебник по установке OTOBO - Rother OSS GmbH (https://otobo.de)"
 
 #: ../../content/history.rst:18
 msgid "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany. Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de)"
 msgstr ""
+"Опубликовано: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 "
+"Leiblfing, Germany. Авторы: OTRS AG (оригинальная версия), Rother OSS GmbH "
+"(https://otobo.de)."
 
 #: ../../content/history.rst:21
 msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license can be found on the `GNU website <https://www.gnu.org/licenses/fdl-1.3.txt>`__."
 msgstr ""
+"Разрешается копировать, распространять и/или изменять этот документ на "
+"условиях Лицензии свободной документации GNU, версия 1.3 или любой более "
+"поздней версии, опубликованной Фондом свободного программного обеспечения; "
+"без неизменяемых разделов, без текстов на передней и задней обложках. Копию "
+"лицензии можно найти на веб-сайте GNU <https://www.gnu.org/licenses/fdl-1.3."
+"txt>`__."
 
 #: ../../content/index.rst:17
 msgid "OTOBO Installation Tutorial"
-msgstr ""
+msgstr "Руководство по установке OTOBO"
 
 #: ../../content/index.rst:19
 msgid "This work is copyrighted by OTRS AG (https://otrs.com), Zimmersmühlenweg 11, 61440 Oberursel, Germany."
 msgstr ""
+"Авторские права на данную работу принадлежат компании OTRS AG (https://otrs."
+"com), Zimmersmühlenweg 11, 61440 Oberursel, Германия."
 
 #: ../../content/index.rst:22
 msgid "Copyright © for modifications and amendments 2019-2022 ROTHER OSS GmbH (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
 msgstr ""
+"Авторское право © с изменениями и дополнениями 2019-2022 ROTHER OSS GmbH "
+"(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
 
 #: ../../content/index.rst:25
 msgid "Terms and Conditions OTRS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license can be found on the GNU website."
 msgstr ""
+"Условия и положения OTRS: Разрешается копировать, распространять и/или "
+"изменять этот документ на условиях лицензии GNU Free Documentation License, "
+"версия 1.3 или любой более поздней версии, опубликованной Фондом свободного "
+"программного обеспечения; без неизменяемых разделов, без текстов на передней "
+"и задней обложках. Копию лицензии можно найти на веб-сайте GNU."
 
 #: ../../content/index.rst:32
 msgid "Terms and Conditions Rother OSS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"COPYING\"."
 msgstr ""
+"Условия и положения Rother OSS: Разрешается копировать, распространять и/или "
+"изменять этот документ на условиях лицензии GNU Free Documentation License, "
+"версия 1.3 или любой более поздней версии, опубликованной Фондом свободного "
+"программного обеспечения; без неизменяемых разделов, без текстов на передней "
+"и задней обложках. Копия лицензии включена в раздел \"КОПИРОВАНИЕ\"."
 
 #: ../../content/index.rst:39
 msgid "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany."
 msgstr ""
+"Опубликовано: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 "
+"Leiblfing, Germany."
 
 #: ../../content/index.rst:42
 msgid "Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de)."
 msgstr ""
+"Авторы: OTRS AG (оригинальная версия), Rother OSS GmbH (https://otobo.de)."
 
 #: ../../content/index.rst:44
 msgid "Contents"
-msgstr ""
+msgstr "Содержание"
 
 #: ../../content/installation.rst:12
 msgid "OTOBO Installation"
-msgstr ""
+msgstr "Установка OTOBO"
 
 #: ../../content/installation.rst:14
 msgid "This chapter describes the installation and basic configuration of the central OTOBO framework."
 msgstr ""
+"В этой главе описывается установка и базовая конфигурация центрального "
+"фреймворка OTOBO."
 
 #: ../../content/installation.rst:16
 msgid "Follow the detailed steps in this chapter to install OTOBO on your server. You can then use its web interface to login and administer the system."
 msgstr ""
+"Следуйте указанным в этой главе подробным шагам, чтобы установить OTOBO на "
+"ваш сервер. Затем вы сможете использовать его веб-интерфейс для входа и "
+"администрирования системы."
 
 #: ../../content/installation.rst:20
 msgid "As of OTOBO version 10.0.7, we recommend Docker and Docker Compose for the OTOBO installation. By using the provided Docker images, all recommended dependencies (such as Elasticsearch, Redis Cache, etc.) are installed and configured automatically. Updates are thus greatly simplified and the performance has been improved. You can find the instructions for Docker-based installation at https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html ."
 msgstr ""
+"Начиная с версии OTOBO 10.0.7, мы рекомендуем использовать Docker и Docker "
+"Compose для установки OTOBO. При использовании предоставленных образов "
+"Docker все рекомендуемые зависимости (такие как Elasticsearch, Redis Cache и "
+"т.д.) устанавливаются и настраиваются автоматически. Обновления, таким "
+"образом, значительно упрощаются, а производительность повышается. Инструкции "
+"по установке на основе Docker можно найти на сайте https://doc.otobo.org/"
+"manual/installation/10.1/en/content/installation-docker.html ."
 
 #: ../../content/installation.rst:28
 msgid "Preparation: Disable SELinux when it is installed and enabled"
-msgstr ""
+msgstr "Подготовка: Выключите SELinux, когда он установлен и включен"
 
 #: ../../content/installation.rst:32
 msgid "If your system uses SELinux, you should disable it, otherwise OTOBO will not work correctly."
 msgstr ""
+"Если ваша система использует SELinux, вам следует отключить его, иначе OTOBO "
+"будет работать некорректно."
 
 #: ../../content/installation.rst:34
 msgid "Try the command ``sestatus`` and ``getenforce`` when you are not sure whether SELinux is installed and enabled on your system."
 msgstr ""
+"Попробуйте выполнить команды ``estatus`` и ``getenforce``, если вы не "
+"уверены, что SELinux установлен и включен в вашей системе."
 
 #: ../../content/installation.rst:36
 msgid "The ``sestatus`` command returns the SELinux status and the SELinux policy being used. SELinux status: enabled is returned when SELinux is enabled. Current mode: enforcing is returned when SELinux is running in enforcing mode. Policy from config file: targeted is returned when the SELinux targeted policy is used."
 msgstr ""
+"Команда ``estatus`` возвращает статус SELinux и используемую политику "
+"SELinux. Статус SELinux: enabled возвращается, если SELinux включен. Текущий "
+"режим: enforcing возвращается, если SELinux работает в режиме принуждения. "
+"Политика из конфигурационного файла: targeted возвращается, если "
+"используется политика SELinux targeted."
 
 #: ../../content/installation.rst:41
 msgid "Here's how to disable SELinux for RHEL/CentOS/Fedora."
-msgstr ""
+msgstr "Вот как отключить SELinux для RHEL/CentOS/Fedora."
 
 #: ../../content/installation.rst:43
 msgid "Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:"
-msgstr ""
+msgstr "Настройте ``SELINUX=disabled`` в файле ``/etc/selinux/config``:"
 
 #: ../../content/installation.rst:58
 msgid "Reboot your system. After reboot, confirm that the ``getenforce`` command returns *Disabled*:"
 msgstr ""
+"Перезагрузите систему. После перезагрузки убедитесь, что команда ``"
+"getenforce'' возвращает значение *Disabled*:"
 
 #: ../../content/installation.rst:69
 msgid "Step 1: Unpack and Install OTOBO"
-msgstr ""
+msgstr "Шаг 1: Распаковка и установка OTOBO"
 
 #: ../../content/installation.rst:71
 msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
 msgstr ""
+"Скачайте последний релиз otobo с сайта https://ftp.otobo.org/pub/otobo/. "
+"Распакуйте исходный архив (например, с помощью ``tar``) в каталог ``/opt/"
+"otobo-install``:"
 
 #: ../../content/installation.rst:84
 msgid "Step 2: Install Additional Programs and Perl Modules"
-msgstr ""
+msgstr "Шаг 2: Установка дополнительных программ и модулей Perl"
 
 #: ../../content/installation.rst:86
 msgid "Use the following script to get an overview of all installed and required CPAN modules and other external dependencies."
 msgstr ""
+"Используйте следующий скрипт, чтобы получить обзор всех установленных и "
+"необходимых модулей CPAN и других внешних зависимостей."
 
 #: ../../content/installation.rst:90
 msgid "On Debian systems you may need to manually install some perl packages:"
 msgstr ""
+"На системах Debian вам может потребоваться вручную установить некоторые "
+"пакеты perl:"
 
 #: ../../content/installation.rst:107
 msgid "Please note that OTOBO requires a working Perl installation with all *core* modules such as the module ``version``. These modules are not explicitly checked by the script. You may need to install a ``perl-core`` package on some systems like RHEL that do not install the Perl core packages by default."
 msgstr ""
+"Обратите внимание, что OTOBO требует рабочей установки Perl со всеми *core* "
+"модулями, такими как модуль ``version``. Эти модули не проверяются скриптом "
+"в явном виде. Вам может потребоваться установить пакет ``perl-core`` на "
+"некоторых системах, таких как RHEL, которые не устанавливают пакеты ядра "
+"Perl по умолчанию."
 
 #: ../../content/installation.rst:109
 msgid "To install the required and optional packages, you can use either CPAN or the package manager of your Linux distribution."
 msgstr ""
+"Для установки необходимых и дополнительных пакетов вы можете использовать "
+"CPAN или менеджер пакетов вашего дистрибутива Linux."
 
 #: ../../content/installation.rst:111
 msgid "Execute this command to get an install command to install the missing dependencies:"
 msgstr ""
+"Выполните эту команду, чтобы получить команду установки для установки "
+"недостающих зависимостей:"
 
 #: ../../content/installation.rst:119
 msgid "There are a number of optional or alternative modules which can be installed, mostly for more customized versions of OTOBO. Calling CheckModules.pl without any argument will list its full functionality."
