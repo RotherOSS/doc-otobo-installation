@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2022-05-26 00:40+0200\n"
-"PO-Revision-Date: 2022-05-27 08:11+0000\n"
+"PO-Revision-Date: 2022-05-27 17:13+0000\n"
 "Last-Translator: Philipp Kesler <philipp.kesler@hein.de>\n"
 "Language-Team: Russian <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/ru/>\n"
@@ -405,104 +405,146 @@ msgstr ""
 
 #: ../../content/installation.rst:175
 msgid "All is fine whem mpm_prefork already is enabled."
-msgstr ""
+msgstr "Eсли функция mpm_prefork уже включена, этот шаг можно пропустить."
 
 #: ../../content/installation.rst:177
 msgid "Disable mpm_event when it is currently active."
-msgstr ""
+msgstr "Отключите mpm_event, если он в данный момент активен."
 
 #: ../../content/installation.rst:183
 msgid "Disable mpm_worker in case that MPM is enabled."
-msgstr ""
+msgstr "Отключите mpm_worker в случае, если MPM разрешен."
 
 #: ../../content/installation.rst:189
 msgid "Finally activate mpm_prefork."
-msgstr ""
+msgstr "В заключение активируйте mpm_prefork."
 
 #: ../../content/installation.rst:195
 msgid "OTOBO requires a few more Apache modules to be active for optimal operation. Again, on most platforms you can make sure they are active via the tool a2enmod."
 msgstr ""
+"Для оптимальной работы OTOBO требуется, чтобы еще несколько модулей Apache "
+"были активны. Опять же, на большинстве платформ вы можете убедиться в их "
+"активности с помощью a2enmod."
 
 #: ../../content/installation.rst:206
 msgid "On some platforms not all Apache modules exist and an error is displayed when installing. Do not worry and finish the installation, in most cases the module will not be needed."
 msgstr ""
+"Для оптимальной работы OTOBO требуется, чтобы еще несколько модулей Apache "
+"были активны. Опять же, на большинстве платформ вы можете убедиться в их "
+"активности с помощью a2enmod."
 
 #: ../../content/installation.rst:208
 msgid "Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``."
 msgstr ""
+"Большинство инсталляций Apache содержат каталог ``conf.d``. В системах Linux "
+"вы обычно можете найти этот каталог в ``/etc/apache`` или ``/etc/apache2``."
 
 #: ../../content/installation.rst:211
 msgid "Configure Apache without SSL support"
-msgstr ""
+msgstr "Настройка Apache без поддержки SSL"
 
 #: ../../content/installation.rst:213
 msgid "Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to the apache ``sites-available`` directory. In most cases no further editing of the template is required. Then enable the new configuration."
 msgstr ""
+"Скопируйте файл шаблона ``/opt/otobo/scripts/apache2-httpd.include.conf`` в "
+"каталог apache ``sites-available``. В большинстве случаев дальнейшее "
+"редактирование шаблона не требуется. Затем обновите новую конфигурацию."
 
 #: ../../content/installation.rst:226
 msgid "Configure Apache **with** SSL support"
-msgstr ""
+msgstr "Настройка Apache **с** поддержкой SSL"
 
 #: ../../content/installation.rst:228
 msgid "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to the apache ``sites-available`` directory."
 msgstr ""
+"Скопируйте файлы шаблонов ``/opt/otobo/scripts/apache2-httpd-vhost-80.include"
+".conf`` и ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` в "
+"каталог apache ``sites-available``."
 
 #: ../../content/installation.rst:237
 msgid "Please edit the files and add the required information like SSL certificate storage path. After that, enable the OTOBO Apache configuration:"
 msgstr ""
+"Пожалуйста, отредактируйте файлы и добавьте необходимую информацию, "
+"например, путь хранения SSL-сертификата. После этого обновите конфигурацию "
+"OTOBO Apache:"
 
 #: ../../content/installation.rst:244
 msgid "Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr ""
+"Теперь вы можете перезапустить свой веб-сервер, чтобы загрузить новые "
+"параметры конфигурации. На большинстве систем для этого можно использовать "
+"следующую команду:"
 
 #: ../../content/installation.rst:252
 msgid "Step 6: Set File Permissions"
-msgstr ""
+msgstr "Шаг 6: Установите права доступа к файлам"
 
 #: ../../content/installation.rst:254
 #: ../../content/updating.rst:121
 msgid "Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup."
 msgstr ""
+"Пожалуйста, выполните следующую команду, чтобы установить разрешения на "
+"файлы и каталоги для OTOBO. Она попытается определить правильные настройки "
+"пользователей и групп, необходимые для вашей установки."
 
 #: ../../content/installation.rst:262
 msgid "Step 7: Setup the Database"
-msgstr ""
+msgstr "Шаг 7: Установка базы данных"
 
 #: ../../content/installation.rst:264
 msgid "First of all, you should install the database package. It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system, but it is possible to use PostgreSQL or Oracle as well."
 msgstr ""
+"Прежде всего, необходимо установить пакет базы данных. Рекомендуется "
+"использовать пакет MySQL или MariaDB, который поставляется с вашей системой "
+"Linux, но можно также использовать PostgreSQL или Oracle."
 
 #: ../../content/installation.rst:267
 msgid "You'd typically do this from your systems package manager. Below you'll find the commands needed to set up MySQL on the most popular Linux distributions."
 msgstr ""
+"Обычно это делается из менеджера пакетов вашей системы. Ниже приведены "
+"команды, необходимые для установки MySQL в наиболее популярных дистрибутивах "
+"Linux."
 
 #: ../../content/installation.rst:281
 msgid "After installing the MySQL server you need configure it."
-msgstr ""
+msgstr "После установки сервера MySQL вам необходимо его настроить."
 
 #: ../../content/installation.rst:283
 msgid "In MySQL higher or equal version 5.7  a new authentication module is active, and it is not possible to use the OTOBO web installer for database creation. Please login to the mysql console and set a different authentication module and password for the user ``root`` if this is the case:"
 msgstr ""
+"В MySQL в версии 5.7 или выше активен новый модуль аутентификации, и "
+"использовать веб-установщик OTOBO для создания базы данных не представляется "
+"возможным. Пожалуйста, войдите в консоль mysql и установите другой модуль "
+"аутентификации и пароль для пользователя ``root'', если это так:"
 
 #: ../../content/installation.rst:291
 msgid "For MariaDB > 10.1 use instead the following command:"
-msgstr ""
+msgstr "Для MariaDB > 10.1 вместо этого используйте следующую команду:"
 
 #: ../../content/installation.rst:298
 msgid "If this command not work, please try the following commands:"
 msgstr ""
+"Если эта команда не выполнилась, попробуйте выполнить следующие команды:"
 
 #: ../../content/installation.rst:307
 msgid "After OTOBO installation it is possible to change the authentication module again, if needed."
 msgstr ""
+"После установки OTOBO можно снова изменить модуль аутентификации, если это "
+"необходимо."
 
 #: ../../content/installation.rst:311
 msgid "The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqld.cnf`` under the ``[mysqld]`` section:"
 msgstr ""
+"Следующие параметры конфигурации являются минимальными требованиями для "
+"установки MySQL. Пожалуйста, добавьте следующие строки в файл конфигурации "
+"сервера MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` или ``/etc/mysql/mysql."
+"conf.d/mysqld.cnf`` в разделе ``[mysqld]``:"
 
 #: ../../content/installation.rst:318
 msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
 msgstr ""
+"Для MySQL до версии MySQL 8.0 размер кэша запросов также должен быть "
+"установлен:"
 
 #: ../../content/installation.rst:324
 msgid "Also add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
@@ -511,454 +553,597 @@ msgstr ""
 #: ../../content/installation.rst:331
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr ""
+"Для продуктивных применений мы рекомендуем использовать инструмент ``"
+"mysqltuner'', чтобы найти идеальную настройку. Вы можете скачать скрипт с "
+"github ``https://github.com/major/MySQLTuner-perl`` или установить его на "
+"системы Debian или Ubuntu через менеджер пакетов:"
 
 #: ../../content/installation.rst:338
 msgid "After installing execute the script:"
-msgstr ""
+msgstr "После установки выполните скрипт:"
 
 #: ../../content/installation.rst:346
 msgid "Step 8: Setup Elasticsearch"
-msgstr ""
+msgstr "Шаг 8: Установка Elasticsearch"
 
 #: ../../content/installation.rst:348
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr ""
+"OTOBO рекомендует активную установку Elasticsearch для быстрого поиска. "
+"Самый простой способ - установить Elasticsearch на том же хосте, что и "
+"OTOBO, и привязать его к порту по умолчанию."
 
 #: ../../content/installation.rst:351
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
-msgstr ""
+msgstr "Пример установки Elasticsearch на базе Ubuntu 18.04 LTS"
 
 #: ../../content/installation.rst:353
 msgid "JDK Installation"
-msgstr ""
+msgstr "Установка JDK"
 
 #: ../../content/installation.rst:360
 msgid "Elasticsearch Installation"
-msgstr ""
+msgstr "Установка Elasticsearch"
 
 #: ../../content/installation.rst:370
 msgid "Elasticsearch Installation on another Linux distribution"
-msgstr ""
+msgstr "Установка Elasticsearch на другой дистрибутив Linux"
 
 #: ../../content/installation.rst:372
 msgid "Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 msgstr ""
+"Пожалуйста, следуйте руководству по установке, которое находится на сайте "
+"https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 
 #: ../../content/installation.rst:375
 msgid "Elasticsearch Module Installation"
-msgstr ""
+msgstr "Установка модуля Elasticsearch"
 
 #: ../../content/installation.rst:376
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
-msgstr ""
+msgstr "Кроме того, OTOBO требует установки плагинов в Elasticsearch:"
 
 #: ../../content/installation.rst:385
 msgid "Elasticsearch Configuration"
-msgstr ""
+msgstr "Конфигурация Elasticsearch"
 
 #: ../../content/installation.rst:387
 msgid "Elasticsearch has a multitude of configuration options and possibilities."
-msgstr ""
+msgstr "Elasticsearch имеет множество вариантов конфигурации и возможностей."
 
 #: ../../content/installation.rst:389
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 4 GB, set:"
 msgstr ""
+"Для обеспечения безошибочной работы следует настроить пространство кучи jvm "
+"для больших систем OTOBO. Пожалуйста, измените настройки в файле ``/etc/"
+"elasticsearch/jvm.options``. Вы всегда должны устанавливать минимальный и "
+"максимальный размер кучи JVM на одно и то же значение. Например, чтобы "
+"установить размер кучи в 4 ГБ, задайте:"
 
 #: ../../content/installation.rst:397
 msgid "In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best."
 msgstr ""
+"В наших тестах значение между 4 и 10 ГБ для систем среднего размера показало "
+"себя наилучшим образом."
 
 #: ../../content/installation.rst:401
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr ""
+"Дополнительную информацию см. в разделе ``https://www.elastic.co/guide/en/"
+"elasticsearch/reference/current/heap-size.html``."
 
 #: ../../content/installation.rst:403
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr ""
+"Теперь вы можете перезапустить ваш сервер Elasticsearch, чтобы загрузить "
+"новые параметры конфигурации. На большинстве систем для этого можно "
+"использовать следующую команду:"
 
 #: ../../content/installation.rst:411
 msgid "Step 8: Basic System Configuration"
-msgstr ""
+msgstr "Шаг 8: Базовая конфигурация системы"
 
 #: ../../content/installation.rst:413
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr ""
+"Пожалуйста, используйте веб-инсталлятор по адресу http://localhost/otobo/"
+"installer.pl (замените \"localhost\" на имя вашего хоста OTOBO) для "
+"настройки базы данных и основных параметров системы, таких как учетные "
+"записи электронной почты."
 
 #: ../../content/installation.rst:417
 msgid "Step 9: First Login"
-msgstr ""
+msgstr "Шаг 9: Первый вход в систему"
 
 #: ../../content/installation.rst:419
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr ""
+"Теперь вы готовы войти в свою систему по адресу http://localhost/otobo/"
+"index.pl как пользователь ``root@localhost`` с паролем, который был "
+"сгенерирован (см. выше)."
 
 #: ../../content/installation.rst:423
 msgid "Step 10: Start the OTOBO Daemon"
-msgstr ""
+msgstr "Шаг 10: Запустите демон OTOBO"
 
 #: ../../content/installation.rst:425
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr ""
+"Демон OTOBO отвечает за обработку любых асинхронных и повторяющихся задач в "
+"OTOBO. То, что раньше было в определениях файлов cron, теперь обрабатывается "
+"демоном OTOBO, который необходим для работы OTOBO. Демон также обрабатывает "
+"все задания GenericAgent и должен быть запущен от пользователя OTOBO."
 
 #: ../../content/installation.rst:432
 msgid "Step 11: Cron jobs for the OTOBO user"
-msgstr ""
+msgstr "Шаг 11: Задания Cron для пользователя OTOBO"
 
 #: ../../content/installation.rst:434
 msgid "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the \".dist\" filename extension."
 msgstr ""
+"В ``/opt/otobo/var/cron/\\*.dist`` находятся два стандартных файла OTOBO "
+"cron, цель которых - убедиться, что демон OTOBO запущен. Их нужно "
+"активировать, скопировав без расширения имени файла \".dist\"."
 
 #: ../../content/installation.rst:444
 msgid "With this step, the basic system setup is finished."
-msgstr ""
+msgstr "На этом этапе базовая настройка системы завершена."
 
 #: ../../content/installation.rst:448
 msgid "Step 12: Setup Bash Auto-Completion (optional)"
-msgstr ""
+msgstr "Шаг 12: Настройка авто-завершения Bash (необязательно)"
 
 #: ../../content/installation.rst:450
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier."
 msgstr ""
+"Все обычные операции командной строки OTOBO выполняются через консольный "
+"интерфейс OTOBO. Это обеспечивает автозавершение для оболочки bash, что "
+"значительно облегчает поиск нужной команды и опций."
 
 #: ../../content/installation.rst:452
 msgid "You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user."
 msgstr ""
+"Вы можете активировать автодополнение bash, установив пакет ``bash-"
+"completion``. Он автоматически определит и загрузит файл ``/opt/otobo/."
+"bash_completion`` для пользователя ``otobo``."
 
 #: ../../content/installation.rst:454
 msgid "After restarting your shell, you can just type this command followed by TAB, and it will list all available commands:"
 msgstr ""
+"После перезапуска оболочки вы можете просто набрать эту команду с "
+"последующим TAB, и она выведет список всех доступных команд:"
 
 #: ../../content/installation.rst:460
 msgid "If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB."
 msgstr ""
+"Если вы наберете несколько символов названия команды, TAB покажет все "
+"подходящие команды. После ввода полной команды все возможные опции и "
+"аргументы будут показаны при нажатии клавиши TAB."
 
 #: ../../content/installation.rst:464
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr ""
+"Если у вас возникли проблемы, вы можете выполнить следующую строку от имени "
+"пользователя ``otobo`` и добавить ее в ваш ``~/.bashrc`` для выполнения "
+"команд из этого файла."
 
 #: ../../content/installation.rst:472
 msgid "Step 13: Further Information"
-msgstr ""
+msgstr "Шаг 13: Дополнительная информация"
 
 #: ../../content/installation.rst:474
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
-msgstr ""
+msgstr "Мы советуем вам прочитать главу OTOBO :doc:`performance-tuning`."
 
 #: ../../content/installation-docker.rst:12
 msgid "Installing using Docker and Docker Compose"
-msgstr ""
+msgstr "Установка с помощью Docker и Docker Compose"
 
 #: ../../content/installation-docker.rst:14
 msgid "With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes. All of OTOBO´s dependencies are already included in the provided collection of Docker images."
 msgstr ""
+"Установка OTOBO с помощью технологии Docker позволяет запустить ваш личный "
+"экземпляр OTOBO в течение нескольких минут. Все зависимости OTOBO уже "
+"включены в предоставляемую коллекцию образов Docker."
 
 #: ../../content/installation-docker.rst:17
 msgid "Service *db*: MariaDB is set up as the default database."
-msgstr ""
+msgstr "Сервис *db*: MariaDB установлена в качестве базы данных по умолчанию."
 
 #: ../../content/installation-docker.rst:18
 msgid "Service *elastic*: Elasticsearch is set up for the OTOBO power search."
 msgstr ""
+"Сервис *elastic*: Elasticsearch настроен для улучшенного поиска в OTOBO."
 
 #: ../../content/installation-docker.rst:19
 msgid "Service *redis*: Redis is enabled for fast caching."
-msgstr ""
+msgstr "Сервис *redis*: Redis включен для быстрого кэширования."
 
 #: ../../content/installation-docker.rst:20
 msgid "Service *web*: Gazelle is used as fast Perl webserver."
-msgstr ""
+msgstr "Сервис *web*: Gazelle используется как быстрый Perl веб-сервер."
 
 #: ../../content/installation-docker.rst:21
 msgid "Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support."
 msgstr ""
+"Сервис *nginx*: Nginx используется в качестве дополнительного обратного "
+"прокси для поддержки HTTPS."
 
 #: ../../content/installation-docker.rst:23
 msgid "We think that this setup is the perfect environment for an OTOBO installation."
-msgstr ""
+msgstr "Мы считаем, что это идеальная среда для установки OTOBO."
 
 #: ../../content/installation-docker.rst:26
 msgid "Requirements"
-msgstr ""
+msgstr "Требования"
 
 #: ../../content/installation-docker.rst:28
 msgid "The minimal versions of required software, that have been tested, are listed here:"
 msgstr ""
+"Минимальные версии необходимого программного обеспечения, которые были "
+"протестированы, перечислены здесь:"
 
 #: ../../content/installation-docker.rst:30
 msgid "Docker 19.03.13"
-msgstr ""
+msgstr "Docker 19.03.13"
 
 #: ../../content/installation-docker.rst:31
 msgid "Docker Compose 1.25.0"
-msgstr ""
+msgstr "Docker Compose 1.25.0"
 
 #: ../../content/installation-docker.rst:32
 msgid "Git 2.17.1"
-msgstr ""
+msgstr "Git 2.17.1"
 
 #: ../../content/installation-docker.rst:36
 msgid "To get the required minimal versions on Ubuntu 18.04 follow the instructions in https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04 and https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04."
 msgstr ""
+"Чтобы получить необходимые минимальные версии на Ubuntu 18.04, следуйте "
+"инструкциям в https://www.digitalocean.com/community/tutorials/how-to-"
+"install-docker-compose-on-ubuntu-18-04 и https://www.digitalocean.com/"
+"community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04."
 
 #: ../../content/installation-docker.rst:40
 msgid "git, Docker, and Docker Compose can be installed with the standard system tools. Here is an example for installation on Ubuntu 20.04:"
 msgstr ""
+"git, Docker и Docker Compose можно установить с помощью стандартных "
+"системных инструментов. Ниже приведен пример установки на Ubuntu 20.04:"
 
 #: ../../content/installation-docker.rst:48
 msgid "Please check the Git and the Docker documentation for instructions on further setup."
 msgstr ""
+"Пожалуйста, ознакомьтесь с документацией по Git и Docker для получения "
+"инструкций по дальнейшей настройке."
 
 #: ../../content/installation-docker.rst:51
 msgid "Installation"
-msgstr ""
+msgstr "Установка"
 
 #: ../../content/installation-docker.rst:53
 msgid "The following instructions assume that all requirements are met, that you have a working Docker environment. We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions."
 msgstr ""
+"Следующие инструкции предполагают, что все требования выполнены, что у вас "
+"есть рабочая среда Docker. Здесь предполагается, что для взаимодействия с "
+"Docker используется пользователь **docker_admin**. Администратор Docker "
+"может быть либо пользователем **root** хоста Docker, либо выделенным "
+"пользователем с необходимыми правами."
 
 #: ../../content/installation-docker.rst:58
 msgid "1. Clone the otobo-docker repo"
-msgstr ""
+msgstr "1. Клонируйте репозиторий otobo-docker"
 
 #: ../../content/installation-docker.rst:60
 msgid "The Docker images will eventually be fetched from the repository https://hub.docker.com. But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository. Make sure that you specify the branch that corresponds to the current version of OTOBO. For example, when *OTOBO 10.0.15* is the current version then please use the branch *rel-10_0*."
 msgstr ""
+"Образы Docker в конечном итоге будут получены из репозитория https://"
+"hub.docker.com. Но есть некоторые установочные и командные файлы, которые "
+"необходимо клонировать из репозитория *otobo-docker* на Github. Убедитесь, "
+"что вы указали ветку, соответствующую текущей версии OTOBO. Например, если "
+"текущая версия *OTOBO 10.0.15*, то используйте ветку *rel-10_0*."
 
 #: ../../content/installation-docker.rst:67
 msgid "The location of the cloned repository does not matter. For these instructions we chose */opt/otobo-docker* as the working dir."
 msgstr ""
+"Расположение клонированного хранилища не имеет значения. В данной инструкции "
+"мы выбрали */opt/otobo-docker* в качестве рабочего каталога."
 
 #: ../../content/installation-docker.rst:77
 msgid "2. Create an initial *.env* file"
-msgstr ""
+msgstr "2. Создайте начальный файл *.env*"
 
 #: ../../content/installation-docker.rst:79
 msgid "The Docker Compose configuration file *.env* is your primary interface for managing your installation of OTOBO. This file must first be created and then be adapted by yourself. In order to simplify the task there are several example files that should be used as starting point. Which sample file it the best fit depends on your use case. In most cases the decision is between *.docker_compose_env_http* and *.docker_compose_env_https*, depending on whether TLS must be supported or not. The other files are for more specialised use cases."
 msgstr ""
+"Конфигурационный файл Docker Compose *.env* - это ваш основной интерфейс для "
+"управления установкой OTOBO. Этот файл должен быть сначала создан, а затем "
+"адаптирован самостоятельно. Для упрощения задачи есть несколько примеров "
+"файлов, которые следует использовать в качестве отправной точки. Какой файл "
+"примера лучше всего подходит, зависит от вашего случая использования. В "
+"большинстве случаев решение принимается между *.docker_compose_env_http* и *."
+"docker_compose_env_https*, в зависимости от того, нужно ли поддерживать TLS "
+"или нет. Остальные файлы предназначены для более специализированных случаев "
+"использования."
 
 #: ../../content/installation-docker.rst:87
 msgid ".docker_compose_env_http"
-msgstr ""
+msgstr ".docker_compose_env_http"
 
 #: ../../content/installation-docker.rst:87
 msgid "The OTOBO web app provides HTTP."
-msgstr ""
+msgstr "Веб-приложение OTOBO предоставляет HTTP."
 
 #: ../../content/installation-docker.rst:90
 msgid ".docker_compose_env_https"
-msgstr ""
+msgstr ".docker_compose_env_https"
 
 #: ../../content/installation-docker.rst:90
 msgid "The OTOBO web app provides HTTPS by runnning Nginx as a reverse proxy webserver."
 msgstr ""
+"Веб-приложение OTOBO обеспечивает HTTPS, запуская Nginx в качестве веб-"
+"сервера с обратным прокси."
 
 #: ../../content/installation-docker.rst:93
 msgid ".docker_compose_env_https_custom_nginx"
-msgstr ""
+msgstr ".docker_compose_env_https_custom_nginx"
 
 #: ../../content/installation-docker.rst:93
 msgid "Like *.docker_compose_env_https* but with support for a custom Nginx configuration."
 msgstr ""
+"Подобно *.docker_compose_env_https*, но с поддержкой пользовательской "
+"конфигурации Nginx."
 
 #: ../../content/installation-docker.rst:96
 msgid ".docker_compose_env_https_kerberos"
-msgstr ""
+msgstr ".docker_compose_env_https_kerberos"
 
 #: ../../content/installation-docker.rst:96
 msgid "Like *.docker_compose_env_https* but with sample setup for single sign on. Note that Kerberos support is still **experimental**."
 msgstr ""
+"Подобно *.docker_compose_env_https*, но с примером настройки для единого "
+"входа. Обратите внимание, что поддержка Kerberos все еще "
+"**экспериментальная**."
 
 #: ../../content/installation-docker.rst:99
 msgid ".docker_compose_env_http_selenium and .docker_compose_env_https_selenium"
 msgstr ""
+".docker_compose_env_http_selenium and .docker_compose_env_https_selenium"
 
 #: ../../content/installation-docker.rst:99
 msgid "These are used only for development when Selenium testing is activated."
 msgstr ""
+"Они используются только для разработки, когда активировано тестирование "
+"Selenium."
 
 #: ../../content/installation-docker.rst:103
 msgid "Use ``ls -a`` for listing the hidden sample files."
-msgstr ""
+msgstr "Используйте ``ls -a`` для вывода списка скрытых файлов образца."
 
 #: ../../content/installation-docker.rst:105
 msgid "Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP. When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support is achieved by an additional reverse proxy, which is implemented as a nginx service."
 msgstr ""
+"По умолчанию OTOBO обслуживается через стандартные порты. Порт 443 для HTTPS "
+"и порт 80 для HTTP. Когда HTTPS активирован, веб-приложение OTOBO фактически "
+"все еще работает с HTTP. Поддержка HTTPS достигается за счет дополнительного "
+"обратного прокси, который реализован в виде службы nginx."
 
 #: ../../content/installation-docker.rst:109
 msgid "For the following commands we assume that HTTPS should be supported."
-msgstr ""
+msgstr "Для следующих команд мы предполагаем, что HTTPS должен поддерживаться."
 
 #: ../../content/installation-docker.rst:117
 msgid "3. Configure the password for the database admin user"
-msgstr ""
+msgstr "3. Настройте пароль для пользователя администратора базы данных"
 
 #: ../../content/installation-docker.rst:119
 msgid "Change the following setting inside your *.env* file:"
-msgstr ""
+msgstr "Измените следующие настройки в вашем файле *.env*:"
 
 #: ../../content/installation-docker.rst:121
 msgid "``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``"
-msgstr ""
+msgstr "``OTOBO_DB_ROOT_PASSWORD=<ваш_пароль>``"
 
 #: ../../content/installation-docker.rst:123
 msgid "The password for the database admin user may be chosen freely. The database admin user is needed to create the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated database user **otobo**."
 msgstr ""
+"Пароль для пользователя-администратора базы данных может быть выбран "
+"произвольно. Администратор базы данных необходим для создания пользователя "
+"базы данных **otobo** и схемы базы данных **otobo**. На самом деле OTOBO "
+"будет использовать выделенного пользователя базы данных **otobo**."
 
 #: ../../content/installation-docker.rst:128
 msgid "4. Set up a volume with SSL configuration for the nginx webproxy (optional)"
 msgstr ""
+"4. Установите том с конфигурацией SSL для веб-прокси nginx (необязательно)"
 
 #: ../../content/installation-docker.rst:130
 msgid "This step can be skipped when OTOBO should be available only via HTTP."
 msgstr ""
+"Этот шаг можно пропустить, если OTOBO должен быть доступен только через HTTP."
 
 #: ../../content/installation-docker.rst:132
 msgid "nginx needs for SSL encryption a certificate and a private key."
-msgstr ""
+msgstr "Для SSL-шифрования nginx необходим сертификат и закрытый ключ."
 
 #: ../../content/installation-docker.rst:136
 msgid "For testing and development a self-signed certificate can be used. However for productive use you should work with regular registered certificates."
 msgstr ""
+"Для тестирования и разработки можно использовать самоподписанный сертификат. "
+"Однако для продуктивного использования вы должны работать с обычными "
+"зарегистрированными сертификатами."
 
 #: ../../content/installation-docker.rst:139
 msgid "See e.g. https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04 on how to create self-signed certificates."
 msgstr ""
+"См. например, https://www.digitalocean.com/community/tutorials/how-to-"
+"create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04 о том, как "
+"создавать самоподписанные сертификаты."
 
 #: ../../content/installation-docker.rst:144
 msgid "To specify a CA chain with a certificate in nginx, it is necessary to copy the CA chain file with the actual certificate into a file."
 msgstr ""
+"Чтобы указать цепочку CA с сертификатом в nginx, необходимо скопировать файл "
+"цепочки CA с действительным сертификатом в файл."
 
 #: ../../content/installation-docker.rst:147
 msgid "The certificate and the private key are stored in a volume, so that they can be used by nginx later on. In any case the volume needs to be generated manually, and we need to copy the certificate and key to the volume:"
 msgstr ""
+"Сертификат и закрытый ключ хранятся в томе, чтобы впоследствии их мог "
+"использовать nginx. В любом случае том должен быть создан вручную, и нам "
+"нужно скопировать сертификат и ключ в том:"
 
 #: ../../content/installation-docker.rst:157
 msgid "The names of the copied files need to be set in our newly created *.env* file. E.g."
 msgstr ""
+"Имена скопированных файлов должны быть заданы во вновь созданном файле *.env*"
+". Например:"
 
 #: ../../content/installation-docker.rst:159
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 msgstr ""
+"``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` и "
+"``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 
 #: ../../content/installation-docker.rst:162
 msgid "Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image."
 msgstr ""
+"Пожалуйста, адаптируйте только имена файлов, так как путь */etc/nginx/ssl/* "
+"жестко прописан в образе Docker."
 
 #: ../../content/installation-docker.rst:165
 msgid "5. Start the Docker containers with Docker Compose"
-msgstr ""
+msgstr "5. Запустите контейнеры Docker с помощью Docker Compose"
 
 #: ../../content/installation-docker.rst:167
 msgid "Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be fetched from https://hub.docker.com/u/rotheross."
 msgstr ""
+"Теперь мы запускаем контейнеры Docker с помощью ``docker-compose``. По "
+"умолчанию образы Docker будут получены с сайта https://hub.docker.com/u/"
+"rotheross."
 
 #: ../../content/installation-docker.rst:174
 msgid "To verify that the six required services (five in the case of HTTP only) are actually running, type:"
 msgstr ""
+"Чтобы проверить, что шесть необходимых служб (пять в случае только HTTP) "
+"действительно запущены, введите:"
 
 #: ../../content/installation-docker.rst:182
 msgid "6. Install and start OTOBO"
-msgstr ""
+msgstr "6. Установите и запустите OTOBO"
 
 #: ../../content/installation-docker.rst:184
 msgid "Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl."
 msgstr ""
+"Запустите программу установки OTOBO по адресу http://yourIPorFQDN/otobo/"
+"installer.pl."
 
 #: ../../content/installation-docker.rst:188
 msgid "Please configure OTOBO inside the installer with a new MySQL database. As MySQL database root password please use the password you configured in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your *.env* file. Please leave the value ``db`` for the MySQL hostname untouched."
 msgstr ""
+"Пожалуйста, настройте OTOBO внутри программы установки с новой базой данных "
+"MySQL. В качестве пароля корня базы данных MySQL используйте пароль, который "
+"вы указали в переменной ``OTOBO_DB_ROOT_PASSWORD`` вашего файла *.env*. "
+"Пожалуйста, оставьте значение ``db`` для имени хоста MySQL нетронутым."
 
 #: ../../content/installation-docker.rst:193
 msgid "**Have fun with OTOBO!**"
-msgstr ""
+msgstr "**Have fun with OTOBO!**"
 
 #: ../../content/installation-docker.rst:197
 msgid "To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command: ``docker-compose exec web bash``."
 msgstr ""
+"Чтобы перейти в каталог OTOBO внутри запущенного контейнера и работать в "
+"командной строке как обычно, можно использовать следующую команду Docker: "
+"``docker-compose exec web bash``."
 
 #: ../../content/installation-docker.rst:201
 msgid "Additional technical information"
-msgstr ""
+msgstr "Дополнительная техническая информация"
 
 #: ../../content/installation-docker.rst:203
 msgid "This section gives some more technical insight into what is happing under the hood."
 msgstr ""
+"Этот раздел дает более подробную техническую информацию о том, что "
+"происходит под капотом."
 
 #: ../../content/installation-docker.rst:206
 msgid "List of Docker containers"
-msgstr ""
+msgstr "Список контейнеров Docker"
 
 #: ../../content/installation-docker.rst:209
 msgid "Container otobo_web_1"
-msgstr ""
+msgstr "Container otobo_web_1"
 
 #: ../../content/installation-docker.rst:209
 msgid "OTOBO webserver on internal port 5000."
-msgstr ""
+msgstr "Веб-сервер OTOBO на внутреннем порту 5000."
 
 #: ../../content/installation-docker.rst:212
 msgid "Container otobo_daemon_1"
-msgstr ""
+msgstr "Контейнер otobo_daemon_1"
 
 #: ../../content/installation-docker.rst:212
 msgid "OTOBO daemon. The OTOBO daemon is started and periodically checked."
-msgstr ""
+msgstr "Демон OTOBO. Демон OTOBO запускается и периодически проверяется."
 
 #: ../../content/installation-docker.rst:215
 msgid "Container otobo_db_1"
-msgstr ""
+msgstr "Контейнер otobo_db_1"
 
 #: ../../content/installation-docker.rst:215
 msgid "Run the database MariaDB on internal port 3306."
-msgstr ""
+msgstr "Запустите базу данных MariaDB на внутреннем порту 3306."
 
 #: ../../content/installation-docker.rst:218
 msgid "Container otobo_elastic_1"
-msgstr ""
+msgstr "Контейнер otobo_elastic_1"
 
 #: ../../content/installation-docker.rst:218
 msgid "Elasticsearch on the internal ports 9200 and 9300."
-msgstr ""
+msgstr "Elasticsearch на внутренних портах 9200 и 9300."
 
 #: ../../content/installation-docker.rst:221
 msgid "Container otobo_redis_1"
-msgstr ""
+msgstr "Контейнер otobo_redis_1"
 
 #: ../../content/installation-docker.rst:221
 msgid "Run Redis as caching service."
-msgstr ""
+msgstr "Запустите Redis в качестве службы кэширования."
 
 #: ../../content/installation-docker.rst:224
 msgid "Optional container otobo_nginx_1"
-msgstr ""
+msgstr "Необязательный контейнер otobo_nginx_1"
 
 #: ../../content/installation-docker.rst:224
 msgid "Run nginx as reverse proxy for providing HTTPS support."
 msgstr ""
+"Запустите nginx в качестве обратного прокси для обеспечения поддержки HTTPS."
 
 #: ../../content/installation-docker.rst:227
 msgid "Overview over the Docker volumes"
-msgstr ""
+msgstr "Обзор томов Docker"
 
 #: ../../content/installation-docker.rst:229
 msgid "The Docker volumes are created on the host for persistent data. These allow starting and stopping the services without losing data. Keep in mind that containers are temporary and only data in the volumes is permanent."
 msgstr ""
+"Тома Docker создаются на хосте для постоянных данных. Они позволяют "
+"запускать и останавливать службы без потери данных. Помните, что контейнеры "
+"являются временными, а постоянными являются только данные в томах."
 
 #: ../../content/installation-docker.rst:234
 msgid "otobo_opt_otobo"
-msgstr ""
+msgstr "otobo_opt_otobo"
 
 #: ../../content/installation-docker.rst:234
 msgid "contains */opt/otobo* in the container **web** and **daemon**."
-msgstr ""
+msgstr "содержит */opt/otobo* в контейнере **web** и **daemon**."
 
 #: ../../content/installation-docker.rst:237
 msgid "otobo_mariadb_data"
-msgstr ""
+msgstr "otobo_mariadb_data"
 
 #: ../../content/installation-docker.rst:237
 msgid "contains */var/lib/mysql* in the container **db**."
-msgstr ""
+msgstr "содержит */var/lib/mysql* в контейнере **db**."
 
 #: ../../content/installation-docker.rst:240
 msgid "otobo_elasticsearch_data"
