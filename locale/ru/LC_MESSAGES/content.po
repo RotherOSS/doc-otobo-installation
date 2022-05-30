@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2022-05-30 00:40+0200\n"
-"PO-Revision-Date: 2022-05-27 17:13+0000\n"
+"PO-Revision-Date: 2022-05-30 11:48+0000\n"
 "Last-Translator: Philipp Kesler <philipp.kesler@hein.de>\n"
 "Language-Team: Russian <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/ru/>\n"
@@ -1441,33 +1441,35 @@ msgstr "содержит */var/lib/mysql* в контейнере **db**."
 
 #: ../../content/installation-docker.rst:240
 msgid "otobo_elasticsearch_data"
-msgstr ""
+msgstr "otobo_elasticsearch_data"
 
 #: ../../content/installation-docker.rst:240
 msgid "contains */usr/share/elasticsearch/datal* in the container **elastic**."
-msgstr ""
+msgstr "содержит */usr/share/elasticsearch/datal* в контейнере **elastic**."
 
 #: ../../content/installation-docker.rst:243
 msgid "otobo_redis_data"
-msgstr ""
+msgstr "otobo_redis_data"
 
 #: ../../content/installation-docker.rst:243
 msgid "contains data for the container `redis`."
-msgstr ""
+msgstr "содержит данные для контейнера `redis`."
 
 #: ../../content/installation-docker.rst:246
 msgid "otobo_nginx_ssl"
-msgstr ""
+msgstr "otobo_nginx_ssl"
 
 #: ../../content/installation-docker.rst:246
 msgid ""
 "contains the TLS files, certificate and private key, must be initialized "
 "manually."
 msgstr ""
+"содержит файлы TLS, сертификат и закрытый ключ, должны быть инициализированы "
+"вручную."
 
 #: ../../content/installation-docker.rst:249
 msgid "Docker environment variables"
-msgstr ""
+msgstr "Переменные окружения Docker"
 
 #: ../../content/installation-docker.rst:251
 msgid ""
@@ -1476,24 +1478,29 @@ msgid ""
 "environment variables. Note that more environment variables are supported by "
 "the base images."
 msgstr ""
+"В инструкции мы выполнили только минимальную настройку. Но файл *.env* "
+"позволяет настроить больше переменных. Ниже приведен краткий список наиболее "
+"важных переменных окружения. Обратите внимание, что большее количество "
+"переменных окружения поддерживается базовыми образами."
 
 #: ../../content/installation-docker.rst:255
 msgid "**MariaDB settings**"
-msgstr ""
+msgstr "**MariaDB settings**"
 
 #: ../../content/installation-docker.rst:258
 msgid "OTOBO_DB_ROOT_PASSWORD"
-msgstr ""
+msgstr "OTOBO_DB_ROOT_PASSWORD"
 
 #: ../../content/installation-docker.rst:258
 msgid ""
 "The root password for MariaDB. This setting is required for running the "
 "service *db*."
 msgstr ""
+"Пароль root для MariaDB. Этот параметр необходим для запуска службы *db*."
 
 #: ../../content/installation-docker.rst:260
 msgid "**Elasticsearch settings**"
-msgstr ""
+msgstr "**Elasticsearch settings**"
 
 #: ../../content/installation-docker.rst:262
 msgid ""
@@ -1501,169 +1508,192 @@ msgid ""
 "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker."
 "html#docker-prod-prerequisites for detailed information."
 msgstr ""
+"Elasticsearch нуждается в некоторых настройках для продуктивной среды. "
+"Пожалуйста, прочитайте https://www.elastic.co/guide/en/elasticsearch/"
+"reference/7.8/docker.html#docker-prod-prerequisites для получения подробной "
+"информации."
 
 #: ../../content/installation-docker.rst:269
 msgid "OTOBO_Elasticsearch_ES_JAVA_OPTS"
-msgstr ""
+msgstr "OTOBO_Elasticsearch_ES_JAVA_OPTS"
 
 #: ../../content/installation-docker.rst:267
 msgid ""
 "Example setting: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* Please "
 "adjust this value for production env to a value up to 4g."
 msgstr ""
+"Пример настройки: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* "
+"Пожалуйста, настройте это значение для производственного применения на "
+"значение до 4g."
 
 #: ../../content/installation-docker.rst:271
 msgid "**Webserver settings**"
-msgstr ""
+msgstr "**Настройки веб-сервера**"
 
 #: ../../content/installation-docker.rst:275
 #: ../../content/installation-docker.rst:283
 msgid "OTOBO_WEB_HTTP_PORT"
-msgstr ""
+msgstr "OTOBO_WEB_HTTP_PORT"
 
 #: ../../content/installation-docker.rst:274
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. When "
 "HTTPS is enabled, the HTTP port will redirect to HTTPS."
 msgstr ""
+"Устанавливается в случае, если HTTP-порт должен отличаться от стандартного "
+"порта 80. Когда HTTPS включен, порт HTTP будет перенаправляться на HTTPS."
 
 #: ../../content/installation-docker.rst:277
 msgid "**Nginx webproxy settings**"
-msgstr ""
+msgstr "**Настройки веб-прокси Nginx**"
 
 #: ../../content/installation-docker.rst:279
 msgid "These setting are used when HTTPS is enabled."
-msgstr ""
+msgstr "Эти настройки используются, когда включен HTTPS."
 
 #: ../../content/installation-docker.rst:282
 msgid ""
 "Set in case the HTTP port should deviate from the standard port 80. Will "
 "redirect to HTTPS."
 msgstr ""
+"Устанавливается в случае, если порт HTTP должен отклоняться от стандартного "
+"порта 80. Произойдет перенаправление на HTTPS."
 
 #: ../../content/installation-docker.rst:286
 msgid "OTOBO_WEB_HTTPS_PORT"
-msgstr ""
+msgstr "OTOBO_WEB_HTTPS_PORT"
 
 #: ../../content/installation-docker.rst:286
 msgid "Set in case the HTTPS port should deviate from the standard port 443."
 msgstr ""
+"Устанавливается в случае, если порт HTTPS должен отличаться от стандартного "
+"порта 443."
 
 #: ../../content/installation-docker.rst:290
 #: ../../content/installation-docker.rst:366
 msgid "OTOBO_NGINX_SSL_CERTIFICATE"
-msgstr ""
+msgstr "OTOBO_NGINX_SSL_CERTIFICATE"
 
 #: ../../content/installation-docker.rst:289
 msgid ""
 "SSL cert for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/"
 "nginx/ssl/acme.crt*"
 msgstr ""
+"SSL-сертификат для веб-прокси nginx. Пример: *OTOBO_NGINX_SSL_CERTIFICATE=/"
+"etc/nginx/ssl/acme.crt*"
 
 #: ../../content/installation-docker.rst:294
 #: ../../content/installation-docker.rst:369
 msgid "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
-msgstr ""
+msgstr "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
 
 #: ../../content/installation-docker.rst:293
 msgid ""
 "SSL key for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/"
 "etc/nginx/ssl/acme.key*"
 msgstr ""
+"SSL-ключ для веб-прокси nginx. Пример: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/"
+"nginx/ssl/acme.key*"
 
 #: ../../content/installation-docker.rst:296
 msgid "**Nginx webproxy settings for Kerberos**"
-msgstr ""
+msgstr "**Настройки веб-прокси Nginx для Kerberos**"
 
 #: ../../content/installation-docker.rst:298
 msgid ""
 "This settings are used by Nginx when Kerberos is used for single sign on."
 msgstr ""
+"Эти настройки используются Nginx, когда Kerberos используется для технологии "
+"единого входа."
 
 #: ../../content/installation-docker.rst:302
 #: ../../content/installation-docker.rst:449
 msgid "Support for Kerberos is still experimental."
-msgstr ""
+msgstr "Поддержка Kerberos все еще является экспериментальной."
 
 #: ../../content/installation-docker.rst:306
 msgid "OTOBO_NGINX_KERBEROS_KEYTAB"
-msgstr ""
+msgstr "OTOBO_NGINX_KERBEROS_KEYTAB"
 
 #: ../../content/installation-docker.rst:306
 msgid "Kerberos keytab file. The default is */etc/krb5.keytab*."
-msgstr ""
+msgstr "Файл ключевой таблицы Kerberos. По умолчанию это */etc/krb5.keytab*."
 
 #: ../../content/installation-docker.rst:309
 msgid "OTOBO_NGINX_KERBEROS_CONFIG"
-msgstr ""
+msgstr "OTOBO_NGINX_KERBEROS_CONFIG"
 
 #: ../../content/installation-docker.rst:309
 msgid ""
 "Kerberos config file. The default is */etc/krb5.conf*, usually generated "
 "from *krb5.conf.template*"
 msgstr ""
+"Конфигурационный файл Kerberos. По умолчанию это */etc/krb5.conf*, обычно "
+"генерируется из *krb5.conf.template*"
 
 #: ../../content/installation-docker.rst:312
 msgid "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
-msgstr ""
+msgstr "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
 
 #: ../../content/installation-docker.rst:312
 msgid ""
 "Kerberos Service Name. It is not clear where this setting is actually used "
 "anywhere."
-msgstr ""
+msgstr "Имя службы Kerberos. Неясно, где именно используется этот параметр."
 
 #: ../../content/installation-docker.rst:315
 msgid "OTOBO_NGINX_KERBEROS_REALM"
-msgstr ""
+msgstr "OTOBO_NGINX_KERBEROS_REALM"
 
 #: ../../content/installation-docker.rst:315
 msgid "Kerberos REALM. Used in */etc/krb5.conf*."
-msgstr ""
+msgstr "Kerberos REALM. Используется в */etc/krb5.conf*."
 
 #: ../../content/installation-docker.rst:318
 msgid "OTOBO_NGINX_KERBEROS_KDC"
-msgstr ""
+msgstr "OTOBO_NGINX_KERBEROS_KDC"
 
 #: ../../content/installation-docker.rst:318
 msgid "Kerberos kdc / AD Controller. Used in */etc/krb5.conf*."
-msgstr ""
+msgstr "Kerberos kdc / AD DC. Используется в */etc/krb5.conf*."
 
 #: ../../content/installation-docker.rst:321
 msgid "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
-msgstr ""
+msgstr "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
 
 #: ../../content/installation-docker.rst:321
 msgid "Kerberos Admin Server. Used in */etc/krb5.conf*."
-msgstr ""
+msgstr "Сервер администратора Kerberos. Используется в */etc/krb5.conf*."
 
 #: ../../content/installation-docker.rst:324
 msgid "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
-msgstr ""
+msgstr "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
 
 #: ../../content/installation-docker.rst:324
 msgid "Kerberos Default Domain. Used in */etc/krb5.conf*."
-msgstr ""
+msgstr "Домен Kerberos по умолчанию. Используется в */etc/krb5.conf*."
 
 #: ../../content/installation-docker.rst:327
 msgid "NGINX_ENVSUBST_TEMPLATE_DIR"
-msgstr ""
+msgstr "NGINX_ENVSUBST_TEMPLATE_DIR"
 
 #: ../../content/installation-docker.rst:327
 msgid "Provide a custom Nginx config template dir. Gives extra flexibility."
 msgstr ""
+"Предоставьте пользовательский каталог шаблонов конфигурации Nginx. "
+"Обеспечивает дополнительную гибкость."
 
 #: ../../content/installation-docker.rst:329
 msgid "**Docker Compose settings**"
-msgstr ""
+msgstr "**Настройки Docker Compose**"
 
 #: ../../content/installation-docker.rst:331
 msgid "These settings are used by Docker Compose directly."
-msgstr ""
+msgstr "Эти настройки используются непосредственно Docker Compose."
 
 #: ../../content/installation-docker.rst:336
 msgid "COMPOSE_PROJECT_NAME"
-msgstr ""
+msgstr "COMPOSE_PROJECT_NAME"
 
 #: ../../content/installation-docker.rst:334
 msgid ""
@@ -1672,18 +1702,22 @@ msgid ""
 "`otobo_web_1` and `otobo_db_1`. Change this name when you want to run more "
 "then one instance of OTOBO on the same server."
 msgstr ""
+"Имя проекта используется в качестве префикса для томов и контейнеров. По "
+"умолчанию этот префикс имеет значение `otobo`, что приводит к появлению "
+"таких имен контейнеров, как `otobo_web_1` и `otobo_db_1`. Измените это имя, "
+"если вы хотите запустить несколько экземпляров OTOBO на одном сервере."
 
 #: ../../content/installation-docker.rst:339
 msgid "COMPOSE_PATH_SEPARATOR"
-msgstr ""
+msgstr "COMPOSE_PATH_SEPARATOR"
 
 #: ../../content/installation-docker.rst:339
 msgid "Separator for the value of COMPOSE_FILE"
-msgstr ""
+msgstr "Разделитель для значения параметра COMPOSE_FILE"
 
 #: ../../content/installation-docker.rst:343
 msgid "COMPOSE_FILE"
-msgstr ""
+msgstr "COMPOSE_FILE"
 
 #: ../../content/installation-docker.rst:342
 msgid ""
@@ -1691,26 +1725,34 @@ msgid ""
 "files. E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-"
 "override-https.yml*."
 msgstr ""
+"Используйте *docker-compose/otobo-base.yml* в качестве основы и добавьте "
+"нужные файлы расширения. Например, *docker-compose/otobo-override-http.yml* "
+"или *docker-compose/otobo-override-https.yml*."
 
 #: ../../content/installation-docker.rst:346
 msgid ""
 "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, "
 "OTOBO_IMAGE_OTOBO_NGINX, ..."
 msgstr ""
+"OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, "
+"..."
 
 #: ../../content/installation-docker.rst:346
 msgid ""
 "Used for specifying alternative Docker images. Useful for testing local "
 "builds or for using updated versions of the images."
 msgstr ""
+"Используется для указания альтернативных образов Docker. Полезно для "
+"тестирования локальных сборок или для использования обновленных версий "
+"образов."
 
 #: ../../content/installation-docker.rst:349
 msgid "Advanced topics"
-msgstr ""
+msgstr "Дополнительные темы"
 
 #: ../../content/installation-docker.rst:352
 msgid "Custom configuration of the nginx webproxy"
-msgstr ""
+msgstr "Пользовательская конфигурация веб-прокси nginx"
 
 #: ../../content/installation-docker.rst:354
 msgid ""
@@ -1719,6 +1761,10 @@ msgid ""
 "the official Nginx Docker image, https://hub.docker.com/_/nginx, along with "
 "a OTOBO specific configuration of Nginx."
 msgstr ""
+"Контейнер ``otobo_nginx_1`` обеспечивает поддержку HTTPS, запуская Nginx в "
+"качестве обратного прокси. Образ Docker, запускаемый в контейнере, состоит "
+"из официального образа Nginx Docker, https://hub.docker.com/_/nginx, а также "
+"специфической для OTOBO конфигурации Nginx."
 
 #: ../../content/installation-docker.rst:359
 msgid ""
@@ -1729,37 +1775,47 @@ msgid ""
 "corresponding environment variable. This process runs when the container "
 "starts up. In the default template file, the following macros are used:"
 msgstr ""
+"Конфигурация OTOBO по умолчанию находится внутри образа Docker по адресу */"
+"etc/nginx/template/otobo_nginx.conf.template*. На самом деле, это только "
+"шаблон для окончательной конфигурации. Существует процесс, предоставляемый "
+"базовым образом Nginx, который заменяет макросы в шаблоне на соответствующие "
+"переменные окружения. Этот процесс запускается при старте контейнера. В "
+"файле шаблона по умолчанию используются следующие макросы:"
 
 #: ../../content/installation-docker.rst:366
 #: ../../content/installation-docker.rst:369
 msgid "For configuring SSL."
-msgstr ""
+msgstr "Для настройки SSL."
 
 #: ../../content/installation-docker.rst:372
 msgid "OTOBO_NGINX_WEB_HOST"
-msgstr ""
+msgstr "OTOBO_NGINX_WEB_HOST"
 
 #: ../../content/installation-docker.rst:372
 msgid "The internally used HTTP host."
-msgstr ""
+msgstr "Внутренне используемый HTTP-хост."
 
 #: ../../content/installation-docker.rst:375
 msgid "OTOBO_NGINX_WEB_PORT"
-msgstr ""
+msgstr "OTOBO_NGINX_WEB_PORT"
 
 #: ../../content/installation-docker.rst:375
 msgid "The internally used HTTP port."
-msgstr ""
+msgstr "Внутренне используемый HTTP-порт."
 
 #: ../../content/installation-docker.rst:377
 msgid ""
 "See step `4.` for how this configuration possibility was used for setting up "
 "the SSL certificate."
 msgstr ""
+"Смотрите шаг `4.` о том, как эта возможность конфигурации была использована "
+"для установки SSL-сертификата."
 
 #: ../../content/installation-docker.rst:381
 msgid "The following approach is only supported in OTOBO 10.0.4 or later."
 msgstr ""
+"Следующий метод поддерживается только в OTOBO 10.0.4 или более поздней "
+"версии."
 
 #: ../../content/installation-docker.rst:383
 msgid ""
@@ -1770,12 +1826,21 @@ msgid ""
 "volume that contains the custom config. Then we tell the *otobo_nginx_1* to "
 "mount the new volume and to use the customized configuration."
 msgstr ""
+"Если стандартных макросов недостаточно, то можно пойти дальше в настройке. "
+"Этого можно достичь, заменив шаблон конфигурации по умолчанию на "
+"адаптированную версию. Наилучшей практикой является не простое изменение "
+"конфигурации в работающем контейнере. Вместо этого мы сначала создаем "
+"постоянный том, содержащий пользовательскую конфигурацию. Затем мы говорим "
+"*otobo_nginx_1* смонтировать новый том и использовать настроенную "
+"конфигурацию."
 
 #: ../../content/installation-docker.rst:388
 msgid ""
 "First comes generation of the new volume. In these sample commands, we use "
 "the existing template as a starting point."
 msgstr ""
+"Сначала создается новый том. В этих примерах команд мы используем "
+"существующий шаблон в качестве отправной точки."
 
 #: ../../content/installation-docker.rst:415
 msgid ""
@@ -1785,6 +1850,11 @@ msgid ""
 "in the adapted nginx configuration. So for version 10.0.3 or earlier listen "
 "to the ports 80 and 443. For OTOBO 10.0.4 listen to the ports 8080 and 8443."
 msgstr ""
+"Ваша адаптированная конфигурация nginx обычно содержит директиву **listen**, "
+"которая объявляет порты веб-сервера. Внутренне используемые порты изменились "
+"между OTOBO 10.0.3 и OTOBO 10.0.4. Эти изменения должны быть отражены в "
+"адаптированной конфигурации nginx. Так, для версии 10.0.3 или более ранней "
+"версии слушайте порты 80 и 443. Для OTOBO 10.0.4 слушайте порты 8080 и 8443."
 
 #: ../../content/installation-docker.rst:420
 msgid ""
@@ -1795,24 +1865,32 @@ msgid ""
 "**NGINX_ENVSUBST_TEMPLATE_DIR** in the environment. In order to achieve "
 "this, uncomment or add the following lines in your *.env* file:"
 msgstr ""
+"После настройки тома адаптированная конфигурация должна быть активирована. "
+"Новый том настраивается в *docker-compose/otobo-nginx-custom-config.yml*. "
+"Поэтому этот файл должен быть добавлен в **COMPOSE_FILE**. Затем необходимо "
+"направить Nginx на использование новой конфигурации. Это делается путем "
+"установки **NGINX_ENVSUBST_TEMPLATE_DIR** в окружении. Чтобы добиться этого, "
+"откомментируйте или добавьте следующие строки в файл *.env*:"
 
 #: ../../content/installation-docker.rst:430
 msgid "The changed Docker Compose configuration can be inspected with:"
-msgstr ""
+msgstr "Измененную конфигурацию Docker Compose можно проверить с помощью:"
 
 #: ../../content/installation-docker.rst:436
 msgid "Finally, the containers can be started again:"
-msgstr ""
+msgstr "Наконец, контейнеры можно снова запустить:"
 
 #: ../../content/installation-docker.rst:442
 msgid ""
 "See also the section \"Using environment variables in nginx configuration "
 "(new in 1.19)\" in https://hub.docker.com/_/nginx."
 msgstr ""
+"См. также раздел \"Использование переменных окружения в конфигурации nginx ("
+"новое в версии 1.19)\" на сайте https://hub.docker.com/_/nginx."
 
 #: ../../content/installation-docker.rst:445
 msgid "Single Sign On Using the Kerberos Support in Nginx"
-msgstr ""
+msgstr "Технология единого входа с использованием поддержки Kerberos в Nginx"
 
 #: ../../content/installation-docker.rst:451
 msgid ""
@@ -1823,6 +1901,13 @@ msgid ""
 "Kerberos. It also passes some Kerberos specific settings as environment "
 "values to the running Nginx container. These settings are listed above."
 msgstr ""
+"Для включения аутентификации с помощью Kerberos, пожалуйста, возьмите за "
+"основу *.env файл* из примера *.docker_compose_env_https_kerberos*. Это "
+"активирует специальную конфигурацию в *docker-compose/otobo-override-https-"
+"kerberos.yml*. Этот файл конфигурации Docker compose выбирает образ Nginx, "
+"который поддерживает Kerberos. Он также передает некоторые специфические для "
+"Kerberos настройки в качестве значений окружения запущенному контейнеру "
+"Nginx. Эти параметры перечислены выше."
 
 #: ../../content/installation-docker.rst:456
 msgid ""
@@ -1833,6 +1918,12 @@ msgid ""
 "startup of the container. In the running container the adapted config will "
 "be available in */etc/krb5.conf*."
 msgstr ""
+"Обычно, значения этих настроек могут быть указаны в файле *.env*. "
+"Большинство из этих настроек будут использоваться как значения замены для "
+"шаблона https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/"
+"kerberos/templates/krb5.conf.template . Замена происходит во время запуска "
+"контейнера. В запущенном контейнере адаптированный конфиг будет доступен в */"
+"etc/krb5.conf*."
 
 #: ../../content/installation-docker.rst:460
 msgid ""
@@ -1842,16 +1933,23 @@ msgid ""
 "the *.env* file and by activating the mount directove in *docker-compose/"
 "otobo-override-https-kerberos.yml*."
 msgstr ""
+"Предоставление файла */etc/krb5.conf* для конкретного пользователя также "
+"возможно. Это можно сделать, смонтировав том, который переопределяет */etc/"
+"krb5.conf* в контейнере. Этого можно достичь, установив "
+"OTOBO_NGINX_KERBEROS_CONFIG в файле *.env* и активировав директиву "
+"монтирования в *docker-compose/otobo-override-https-kerberos.yml*."
 
 #: ../../content/installation-docker.rst:464
 msgid ""
 "*/etc/krb5.keytab* is always installation specific and must therefore always "
 "be mounted from the host system."
 msgstr ""
+"*/etc/krb5.keytab* всегда зависит от установки и поэтому всегда должен "
+"монтироваться из хост-системы."
 
 #: ../../content/installation-docker.rst:467
 msgid "Choosing non-standard ports"
-msgstr ""
+msgstr "Выбор нестандартных портов"
 
 #: ../../content/installation-docker.rst:469
 msgid ""
@@ -1860,10 +1958,14 @@ msgid ""
 "services. In these cases the default ports can be overridden by specifying "
 "`OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file."
 msgstr ""
+"По умолчанию порты 443 и 80 обслуживают HTTPS и HTTP соответственно. "
+"Возможны случаи, когда один или оба этих порта уже используются другими "
+"службами. В этих случаях порты по умолчанию можно переопределить, указав "
+"`OTOBO_WEB_HTTP_PORT` и `OTOBO_WEB_HTTPS_PORT` в файле *.env*."
 
 #: ../../content/installation-docker.rst:474
 msgid "Skip startup of specific services"
-msgstr ""
+msgstr "Пропустить запуск определенных услуг"
 
 #: ../../content/installation-docker.rst:476
 msgid ""
@@ -1875,16 +1977,25 @@ msgid ""
 "option `--scale` can be abused for this purpose. So for an installation with "
 "an external database the following command can be used:"
 msgstr ""
+"Текущая установка Docker compose запускает пять или шесть, если активирован "
+"HTTTPS, сервисов. Но существуют обоснованные случаи использования, когда "
+"одна или несколько из этих служб не нужны. Наглядный пример - когда база "
+"данных должна запускаться не как служба Docker, а как внешняя база данных. К "
+"сожалению, в Docker compose нет специальной опции для пропуска определенных "
+"сервисов. Но опция `--scale` может быть использована для этой цели. Поэтому "
+"для установки с внешней базой данных можно использовать следующую команду:"
 
 #: ../../content/installation-docker.rst:486
 msgid ""
 "Of course the same goal can also be achieved by editing the file *docker-"
 "compose/otobo-base.yml* and removing the relevant service definitions."
 msgstr ""
+"Конечно, той же цели можно достичь, отредактировав файл *docker-compose/"
+"otobo-base.yml* и удалив соответствующие определения сервисов."
 
 #: ../../content/installation-docker.rst:490
 msgid "Customizing the OTOBO Docker image"
-msgstr ""
+msgstr "Настройка образа OTOBO Docker"
 
 #: ../../content/installation-docker.rst:492
 msgid ""
@@ -1894,6 +2005,11 @@ msgid ""
 "local*. The advantage of this approach is that the image itself does not "
 "have to be modified."
 msgstr ""
+"Многие настройки могут быть выполнены во внешнем томе *otobo_opt_otobo*, "
+"который соответствует директории */opt/otobo* в образе Docker. Это работает, "
+"например, для локальных модулей Perl, которые могут быть установлены в */opt/"
+"otobo/local*. Преимущество этого подхода в том, что сам образ не нужно "
+"модифицировать."
 
 #: ../../content/installation-docker.rst:496
 msgid ""
@@ -1905,6 +2021,13 @@ msgid ""
 "process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-"
 "docker-image."
 msgstr ""
+"Установка дополнительных пакетов Debian немного сложнее. Один из подходов - "
+"создать собственный *Dockerfile* и использовать образ OTOBO в качестве "
+"базового образа. Другой подход заключается в создании модифицированного "
+"образа непосредственно из запущенного контейнера. Это можно сделать с "
+"помощью команды `docker commit`, https://docs.docker.com/engine/reference/"
+"commandline/commit/. Хорошее описание этого процесса доступно по адресу "
+"https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 
 #: ../../content/installation-docker.rst:501
 msgid ""
@@ -1920,38 +2043,60 @@ msgid ""
 "care who the caller is. This leaves us with following example commands, "
 "where we add fortune cookies to otobo:"
 msgstr ""
+"Но для последнего подхода необходимо преодолеть два препятствия. Во-первых, "
+"образ *otobo* по умолчанию запускается от имени пользователя *otobo* с UID "
+"1000. Проблема в том, что пользователю *otobo* не разрешено устанавливать "
+"системные пакеты. Таким образом, первой частью решения является передача "
+"опции `--user root` при запуске образа. Однако второе препятствие "
+"заключается в том, что стандартный скрипт точки входа */opt/otobo_install/"
+"entrypoint.sh* немедленно завершается при вызове от имени *root*. Это "
+"решение объясняется тем, что случайный запуск от имени *root* не должен "
+"поощряться. Таким образом, вторая часть решения заключается в том, чтобы "
+"указать другой сценарий точки входа, которому не важно, кто является "
+"вызывающей стороной. В результате у нас остается следующий пример команды, в "
+"которой мы добавляем fortune cookies в otobo:"
 
 #: ../../content/installation-docker.rst:510
 msgid ""
 "Pull a tagged OTOBO image, if we don't have it yet, and check whether the "
 "image already provides fortune cookies:"
 msgstr ""
+"Извлеките отмеченное тегом образ OTOBO, если у нас его еще нет, и проверьте, "
+"содержит ли этот образ fortune cookies:"
 
 #: ../../content/installation-docker.rst:517
 msgid ""
 "Add fortune cookies to a named container running the original OTOBO image. "
 "This is done in an interactive session as the user *root*:"
 msgstr ""
+"Добавьте fortune cookies в именованный контейнер, в котором запущен исходный "
+"образ OTOBO. Это делается в интерактивном сеансе от имени пользователя "
+"*root*:"
 
 #: ../../content/installation-docker.rst:528
 msgid ""
 "Create an image from the stopped container and give it a name. Take into "
 "account that the default user and entrypoint script must be restored:"
 msgstr ""
+"Создайте образ из остановленного контейнера и дайте ему имя. Примите во "
+"внимание, что пользователь по умолчанию и сценарий точки входа должны быть "
+"восстановлены:"
 
 #: ../../content/installation-docker.rst:535
 msgid "Finally we can doublecheck:"
-msgstr ""
+msgstr "Наконец, мы можем провести двойную проверку:"
 
 #: ../../content/installation-docker.rst:544
 msgid ""
 "The modified image can be specified in your *.env* file and then be used for "
 "fun and profit."
 msgstr ""
+"Измененное изображение можно указать в файле *.env* и затем использовать для "
+"развлечения и получения прибыли."
 
 #: ../../content/installation-docker.rst:547
 msgid "Building local images"
-msgstr ""
+msgstr "Создание локальных изображений"
 
 #: ../../content/installation-docker.rst:551
 msgid ""
@@ -1959,36 +2104,46 @@ msgid ""
 "Other use cases are when more current base images should be used for an "
 "installation or when extra functionality must be added to the images."
 msgstr ""
+"Локальная сборка образов Docker обычно необходима только во время "
+"разработки. Другие случаи использования - когда для установки необходимо "
+"использовать более актуальные базовые образы или когда в образы необходимо "
+"добавить дополнительную функциональность."
 
 #: ../../content/installation-docker.rst:555
 msgid ""
 "The Docker files needed for creating Docker images locally are part of the "
 "the git repository https://github.com/RotherOSS/otobo:"
 msgstr ""
+"Файлы Docker, необходимые для создания образов Docker локально, являются "
+"частью git-репозитория https://github.com/RotherOSS/otobo:"
 
 #: ../../content/installation-docker.rst:557
 msgid "*otobo.web.dockerfile*"
-msgstr ""
+msgstr "*otobo.web.dockerfile*"
 
 #: ../../content/installation-docker.rst:558
 msgid "*otobo.nginx.dockerfile*"
-msgstr ""
+msgstr "*otobo.nginx.dockerfile*"
 
 #: ../../content/installation-docker.rst:559
 msgid "*otobo.elasticsearch.dockerfile*"
-msgstr ""
+msgstr "*otobo.elasticsearch.dockerfile*"
 
 #: ../../content/installation-docker.rst:561
 msgid ""
 "The script for the actual creation of the images is *bin/docker/"
 "build_docker_images.sh*."
 msgstr ""
+"Сценарий для фактического создания образов - *bin/docker/build_docker_images."
+"sh*."
 
 #: ../../content/installation-docker.rst:573
 msgid ""
 "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` "
 "using the version set up the file *RELEASE*."
 msgstr ""
+"Локально собранные образы Docker помечаются как ``local-<OTOBO_VERSION>``, "
+"используя версию, установленную в файле *RELEASE*."
 
 #: ../../content/installation-docker.rst:575
 msgid ""
@@ -1996,10 +2151,13 @@ msgid ""
 "directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, "
 "``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*."
 msgstr ""
+"После создания локальных образов можно вернуться в каталог *docker-compose*. "
+"Локальные образы объявляются путем установки ``OTOBO_IMAGE_OTOBO``, "
+"``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` в *.env*."
 
 #: ../../content/installation-docker.rst:579
 msgid "Automatic Installation"
-msgstr ""
+msgstr "Автоматическая установка"
 
 #: ../../content/installation-docker.rst:581
 msgid ""
@@ -2007,56 +2165,66 @@ msgid ""
 "take a short cut. This is useful for running the test suite on a fresh "
 "installation."
 msgstr ""
+"Вместо того чтобы проходить через http://yourIPorFQDN/otobo/installer.pl, "
+"можно воспользоваться коротким путем. Это полезно для запуска набора тестов "
+"на новой установке."
 
 #: ../../content/installation-docker.rst:586
 msgid "``docker-compose down -v`` will remove all previous setup and data."
-msgstr ""
+msgstr "``docker-compose down -v`` удалит все предыдущие настройки и данные."
 
 #: ../../content/installation-docker.rst:601
 msgid "List of useful commands"
-msgstr ""
+msgstr "Перечень полезных команд"
 
 #: ../../content/installation-docker.rst:603
 msgid "**Docker**"
-msgstr ""
+msgstr "**Docker**"
 
 #: ../../content/installation-docker.rst:605
 msgid ""
 "``docker system prune -a`` system clean-up (removes all unused images, "
 "containers, volumes, networks)"
 msgstr ""
+"``docker system prune -a`` очистка системы (удаляет все неиспользуемые "
+"образы, контейнеры, тома, сети)"
 
 #: ../../content/installation-docker.rst:606
 msgid "``docker version`` show version"
-msgstr ""
+msgstr "``docker version`` показать версию"
 
 #: ../../content/installation-docker.rst:607
 msgid ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr ""
+"``docker build --tag otobo --file=otobo.web.Dockerfile .`` создать образ"
 
 #: ../../content/installation-docker.rst:608
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
-msgstr ""
+msgstr "``docker run --publish 80:5000 otobo`` запустить новый образ"
 
 #: ../../content/installation-docker.rst:609
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr ""
+"``docker run -it -v opt_otobo:/opt/otobo otobo bash`` регистрация в новом "
+"образе"
 
 #: ../../content/installation-docker.rst:610
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that "
 "in case entrypoint.sh is broken"
 msgstr ""
+"``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` "
+"попробуйте это на случай, если файл entrypoint.sh не работает"
 
 #: ../../content/installation-docker.rst:611
 msgid "``docker ps`` show running images"
-msgstr ""
+msgstr "``docker ps`` показывает запущенные образы"
 
 #: ../../content/installation-docker.rst:612
 msgid "``docker images`` show available images"
-msgstr ""
+msgstr "``docker images`` показывает доступные образы"
 
 #: ../../content/installation-docker.rst:613
 msgid "``docker volume ls`` list volumes"
