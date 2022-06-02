@@ -102,7 +102,7 @@ Execute this command to get an install command to install the missing dependenci
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.CheckModules.pl -inst
+   root> /opt/otobo/bin/otobo.CheckModules.pl --inst
 
 .. note::
 
