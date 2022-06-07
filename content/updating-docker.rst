@@ -56,7 +56,7 @@ If you want to use a specific version, then please set these variables according
 Fetch the new Docker images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Docker compose can be used for fetching the wanted images from Docker Hub, https://hub.docker.com/u/rotheross.
+Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/.
 
 .. code-block:: bash
 
