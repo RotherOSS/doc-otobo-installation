@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2022-06-02 00:40+0200\n"
-"PO-Revision-Date: 2022-06-09 09:26+0000\n"
+"PO-Revision-Date: 2022-06-09 11:38+0000\n"
 "Last-Translator: Philipp Kesler <philipp.kesler@hein.de>\n"
 "Language-Team: Russian <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/ru/>\n"
@@ -3096,54 +3096,69 @@ msgid ""
 "interacting with Docker. The Docker admin may be either the **root** user of "
 "the Docker host or a dedicated user with the required permissions."
 msgstr ""
+"Есть некоторые особенности, которые необходимо учитывать, когда ваша "
+"установка OTOBO работает под Docker. Самая важная: процессы, запущенные в "
+"контейнере Docker, обычно не могут получить доступ к каталогам за пределами "
+"контейнера. Однако есть исключение: доступ к каталогам, смонтированным как "
+"тома в контейнер, возможен. Также обратите внимание, что база данных "
+"MariaDB, запущенная в ``otobo_db_1``, не имеет прямого доступа извне "
+"контейнерной сети."
 
 #: ../../content/migration-from-otrs-6.rst:268
 msgid "Copy */opt/otrs* into the volume *otobo_opt_otobo*"
-msgstr ""
+msgstr "Скопируйте */opt/otrs* в том *otobo_opt_otobo*"
 
 #: ../../content/migration-from-otrs-6.rst:270
 msgid ""
 "In this section, we assume that the OTRS home directory */opt/otrs* is "
 "available on the Docker host."
 msgstr ""
+"В этом разделе мы предполагаем, что домашний каталог OTRS */opt/otrs* "
+"доступен на хосте Docker."
 
 #: ../../content/migration-from-otrs-6.rst:273
 msgid "There are at least two viable possibilities:"
-msgstr ""
+msgstr "Есть по крайней мере две жизнеспособные возможности:"
 
 #: ../../content/migration-from-otrs-6.rst:275
 msgid "copy */opt/otrs* into the existing volume *otobo_opt_otobo*"
-msgstr ""
+msgstr "скопируйте */opt/otrs* в существующий том *otobo_opt_otobo*"
 
 #: ../../content/migration-from-otrs-6.rst:276
 msgid "mount */opt/otrs* as an additional volume"
-msgstr ""
+msgstr "смонтируйте */opt/otrs* как дополнительный том"
 
 #: ../../content/migration-from-otrs-6.rst:278
 msgid "Let's concentrate on option **a.** here."
-msgstr ""
+msgstr "Давайте сосредоточимся на варианте **а.**."
 
 #: ../../content/migration-from-otrs-6.rst:280
 msgid ""
 "First we need to find out where the volume *otobo_opt_otobo* is available on "
 "the Docker host."
 msgstr ""
+"Сначала нам нужно выяснить, где на хосте Docker доступен том "
+"*otobo_opt_otobo*."
 
 #: ../../content/migration-from-otrs-6.rst:287
 msgid ""
 "For safe copying, we use ``rsync``. Depending on your Docker setup, the "
 "command ``rsync`` might need to be run with ``sudo``."
 msgstr ""
+"Для безопасного копирования мы используем ``rsync``. В зависимости от "
+"настройки Docker, команду ``rsync``, возможно, придется запускать с ``sudo``."
 
 #: ../../content/migration-from-otrs-6.rst:300
 msgid ""
 "This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* "
 "within the container."
 msgstr ""
+"Этот скопированный каталог будет доступен как */opt/otobo/var/tmp/"
+"copied_otrs* внутри контейнера."
 
 #: ../../content/migration-from-otrs-6.rst:303
 msgid "Optional Step: Streamlined migration of the database"
-msgstr ""
+msgstr "Необязательный шаг: Оптимизированная миграция базы данных"
 
 #: ../../content/migration-from-otrs-6.rst:305
 msgid ""
@@ -3152,32 +3167,41 @@ msgid ""
 "data from the OTRS database and importing it into the OTOBO database might "
 "save time and is more stable in some circumstances."
 msgstr ""
+"В общей стратегии миграции все данные в таблицах базы данных копируются "
+"строка за строкой из базы данных OTRS в базу данных OTOBO. Экспорт данных из "
+"базы данных OTRS и импорт их в базу данных OTOBO может сэкономить время и в "
+"некоторых обстоятельствах является более стабильным."
 
 #: ../../content/migration-from-otrs-6.rst:312
 msgid "This variant works for both Docker-based and native installations."
 msgstr ""
+"Этот вариант подходит как для установки на базе Docker, так и для установки "
+"на родном компьютере."
 
 #: ../../content/migration-from-otrs-6.rst:316
 msgid "These instructions assume that OTRS is using MySQL as its backend."
 msgstr ""
+"Эти инструкции предполагают, что OTRS использует MySQL в качестве бэкенда."
 
 #: ../../content/migration-from-otrs-6.rst:318
 msgid ""
 "First of all, we need a dump of the needed OTRS database tables. Then we "
 "need to perform a couple of transformations:"
 msgstr ""
+"Прежде всего, нам нужен дамп нужных таблиц базы данных OTRS. Затем нам нужно "
+"выполнить несколько преобразований:"
 
 #: ../../content/migration-from-otrs-6.rst:321
 msgid "convert the character set to *utf8mb4*"
-msgstr ""
+msgstr "преобразовать набор символов в *utf8mb4*"
 
 #: ../../content/migration-from-otrs-6.rst:322
 msgid "rename a couple of tables"
-msgstr ""
+msgstr "Переименование нескольких таблиц"
 
 #: ../../content/migration-from-otrs-6.rst:323
 msgid "shorten some table columns"
-msgstr ""
+msgstr "сокращение некоторых столбцов таблицы"
 
 #: ../../content/migration-from-otrs-6.rst:325
 msgid ""
@@ -3185,6 +3209,9 @@ msgid ""
 "the transformed data from OTRS. Effectively we need not a single dump file, "
 "but several SQL scripts."
 msgstr ""
+"После преобразования мы можем перезаписать таблицы в схеме OTOBO "
+"преобразованными данными из OTRS. В результате нам понадобится не один файл "
+"дампа, а несколько SQL-скриптов."
 
 #: ../../content/migration-from-otrs-6.rst:328
 msgid ""
@@ -3192,11 +3219,15 @@ msgid ""
 "possible, you can create the database dump directly on the Docker host. This "
 "case is supported by the script *bin/backup.pl*."
 msgstr ""
+"Если установлен ``mysqldump`` и возможно подключение к базе данных OTRS, вы "
+"можете создать дамп базы данных непосредственно на хосте Docker. Этот случай "
+"поддерживается скриптом *bin/backup.pl*."
 
 #: ../../content/migration-from-otrs-6.rst:334
 msgid ""
 "This requires that an OTOBO installation is available on the Docker host."
 msgstr ""
+"Для этого необходимо, чтобы на хосте Docker была доступна установка OTOBO."
 
 #: ../../content/migration-from-otrs-6.rst:343
 msgid ""
@@ -3205,6 +3236,10 @@ msgid ""
 "*/opt/otobo* to the server running OTRS and perform the same command as "
 "above."
 msgstr ""
+"В качестве альтернативы можно сделать дамп базы данных на другом сервере, а "
+"затем перенести его на хост Docker. Простой способ сделать это - скопировать "
+"*/opt/otobo* на сервер, на котором запущен OTRS, и выполнить ту же команду, "
+"что и выше."
 
 #: ../../content/migration-from-otrs-6.rst:346
 msgid ""
@@ -3212,14 +3247,17 @@ msgid ""
 "g. in *2021-04-13_12-13-04* In order to execute the SQL scripts, we need to "
 "run the command ``mysql``."
 msgstr ""
+"Скрипт *bin/backup.pl* создает четыре SQL-скрипта в каталоге дампа, "
+"например, в *2021-04-13_12-13-04* Чтобы выполнить SQL-скрипты, нам нужно "
+"выполнить команду ``mysql``."
 
 #: ../../content/migration-from-otrs-6.rst:349
 msgid "Native installation:"
-msgstr ""
+msgstr "Встроенная установка:"
 
 #: ../../content/migration-from-otrs-6.rst:359
 msgid "Docker-based installation:"
-msgstr ""
+msgstr "Установка на основе Docker:"
 
 #: ../../content/migration-from-otrs-6.rst:361
 msgid ""
@@ -3227,26 +3265,34 @@ msgid ""
 "database dump files. Note that the password for the database root is now the "
 "password that has been set up in the file *.env* on the Docker host."
 msgstr ""
+"Выполните команду ``mysql`` в контейнере Docker *db* для импорта файлов "
+"дампа базы данных. Обратите внимание, что пароль для корня базы данных "
+"теперь является паролем, который был установлен в файле *.env* на хосте "
+"Docker."
 
 #: ../../content/migration-from-otrs-6.rst:373
 msgid ""
 "For a quick check whether the import worked, you can run the following "
 "commands."
 msgstr ""
+"Чтобы быстро проверить, сработал ли импорт, можно выполнить следующие "
+"команды."
 
 #: ../../content/migration-from-otrs-6.rst:381
 msgid "or when running under Docker"
-msgstr ""
+msgstr "или при выполнении под Docker"
 
 #: ../../content/migration-from-otrs-6.rst:389
 msgid ""
 "The database is now migrated. This means that during the next step we can "
 "skip the database migration. Watch out for the relevant checkbox."
 msgstr ""
+"Теперь база данных перенесена. Это означает, что на следующем этапе мы можем "
+"пропустить миграцию базы данных. Следите за соответствующим чекбоксом."
 
 #: ../../content/migration-from-otrs-6.rst:393
 msgid "Step 5: Perform the Migration!"
-msgstr ""
+msgstr "Шаг 5: Осуществить миграцию!"
 
 #: ../../content/migration-from-otrs-6.rst:395
 msgid ""
@@ -3255,6 +3301,10 @@ msgid ""
 "and you might have to add your non-standard port. The application then "
 "guides you through the migration process."
 msgstr ""
+"Пожалуйста, используйте веб-инструмент миграции на сайте http://localhost/"
+"otobo/migration.pl. Имейте в виду, что вам, возможно, придется заменить "
+"\"localhost\" на имя хоста OTOBO и добавить нестандартный порт. Затем "
+"приложение проведет вас через весь процесс миграции."
 
 #: ../../content/migration-from-otrs-6.rst:401
 msgid ""
@@ -3262,6 +3312,9 @@ msgid ""
 "not been detected. Please restart the webserver in this case. This forces "
 "the webserver to read in the current configuration."
 msgstr ""
+"Иногда появляется предупреждение о том, что деактивация **SecureMode** не "
+"была обнаружена. В этом случае перезапустите веб-сервер. Это заставит веб-"
+"сервер считать текущую конфигурацию."
 
 #: ../../content/migration-from-otrs-6.rst:416
 msgid ""
@@ -3270,6 +3323,10 @@ msgid ""
 "OTRS home directory. This is the path of the data that was copied in the "
 "optional step."
 msgstr ""
+"Если OTOBO работает внутри контейнера Docker, сохраните настройки по "
+"умолчанию *localhost* для сервера OTRS и */opt/otobo/var/tmp/copied_otrs* "
+"для домашнего каталога OTRS. Это путь к данным, которые были скопированы на "
+"дополнительном шаге."
 
 #: ../../content/migration-from-otrs-6.rst:422
 msgid ""
@@ -3279,6 +3336,11 @@ msgid ""
 "the settings when you work with a database that was copied into the "
 "*otobo_db_1* Docker container."
 msgstr ""
+"Значения по умолчанию для пользователя и пароля базы данных OTRS взяты из *"
+"Kernel/Config.pm* в домашнем каталоге OTRS. Измените предложенные настройки, "
+"если вы используете выделенного пользователя базы данных для миграции. Также "
+"измените настройки, если вы работаете с базой данных, которая была "
+"скопирована в Docker-контейнер *otobo_db_1*."
 
 #: ../../content/migration-from-otrs-6.rst:428
 msgid ""
@@ -3288,6 +3350,11 @@ msgid ""
 "that case, enter one of the alternative IP-addresses reported by the command "
 "``hostname --all-ip-addresses`` for ``OTRS Server``."
 msgstr ""
+"В случае с Docker база данных, запущенная на хосте Docker, не будет доступна "
+"по ``127.0.0.1`` из контейнера Docker. Это означает, что параметр ``127.0.0."
+"1`` не будет действителен для поля ввода ``OTRS Server``. В этом случае "
+"введите один из альтернативных IP-адресов, сообщенных командой ``hostname "
+"--all-ip-addresses`` для ``OTRS Server``."
 
 #: ../../content/migration-from-otrs-6.rst:434
 msgid ""
@@ -3301,6 +3368,15 @@ msgid ""
 "'otrs_migration'@'%';``. This user can be dropped again after the migration: "
 "``DROP USER 'otrs_migration'@'%'``."
 msgstr ""
+"При миграции на новый сервер приложений или на установку на базе Docker "
+"довольно часто база данных не может быть доступна из целевой установки. "
+"Обычно это связано с тем, что пользователь базы данных otobo может "
+"подключаться только с хоста, на котором работает база данных. Чтобы все "
+"равно разрешить доступ, рекомендуется создать выделенного пользователя базы "
+"данных для миграции. Например, ``CREATE USER 'otrs_migration'@'%' IDENTIFIED "
+"BY 'otrs_migration';`` и ``GRANT SELECT, SHOW VIEW ON otrs.* TO "
+"'otrs_migration'@'%';``. Этот пользователь может быть удален после миграции: "
+"``DROP USER 'otrs_migration'@'%'``."
 
 #: ../../content/migration-from-otrs-6.rst:441
 msgid ""
@@ -3310,6 +3386,12 @@ msgid ""
 "You might want to adapt custom pathes or LDAP settings. In the best case you "
 "might find that some custom setting are longer needed."
 msgstr ""
+"Пользовательские настройки в *Kernel/Config.pm* переносятся из старой "
+"установки OTRS в новую установку OTOBO. Если у вас есть пользовательские "
+"настройки, посмотрите на перенесенный файл */opt/otobo/Kernel/Config.pm*. "
+"Возможно, вам потребуется адаптировать пользовательские патчи или настройки "
+"LDAP. В лучшем случае вы можете обнаружить, что некоторые пользовательские "
+"настройки больше не нужны."
 
 #: ../../content/migration-from-otrs-6.rst:445
 msgid ""
@@ -3317,36 +3399,41 @@ msgid ""
 "system. Once you have decided that the migration was successful and that you "
 "want to use OTOBO from now on, start the OTOBO Daemon:"
 msgstr ""
+"Когда миграция будет завершена, пожалуйста, не торопитесь и протестируйте "
+"всю систему. Как только вы решите, что миграция прошла успешно и что вы "
+"хотите использовать OTOBO с этого момента, запустите демон OTOBO Daemon:"
 
 #: ../../content/migration-from-otrs-6.rst:455
 msgid "In the Docker case:"
-msgstr ""
+msgstr "В случае с Docker:"
 
 #: ../../content/migration-from-otrs-6.rst:463
 msgid "Step 6: After Successful Migration!"
-msgstr ""
+msgstr "Шаг 6: После успешной миграции!"
 
 #: ../../content/migration-from-otrs-6.rst:465
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
-msgstr ""
+msgstr "Удалите ``shpass``, если он вам больше не нужен."
 
 #: ../../content/migration-from-otrs-6.rst:466
 msgid ""
 "Drop the databases and database users dedicated to the migration if you "
 "created any."
 msgstr ""
+"Удалите базы данных и пользователей баз данных, выделенных для миграции, "
+"если вы их создали."
 
 #: ../../content/migration-from-otrs-6.rst:467
 msgid "Have fun with OTOBO!"
-msgstr ""
+msgstr "Получите удовольствие от работы с OTOBO!"
 
 #: ../../content/migration-from-otrs-6.rst:471
 msgid "Known Migration Problems"
-msgstr ""
+msgstr "Известные проблемы с миграцией"
 
 #: ../../content/migration-from-otrs-6.rst:474
 msgid "1. Login after migration not possible"
-msgstr ""
+msgstr "1. Вход в систему после миграции невозможен"
 
 #: ../../content/migration-from-otrs-6.rst:476
 msgid ""
@@ -3355,11 +3442,16 @@ msgid ""
 "With Safari it was sometimes necessary to manually delete the old OTRS "
 "session."
 msgstr ""
+"Во время наших тестов миграции иногда возникали проблемы с браузером, "
+"используемым для миграции. После перезапуска браузера эта проблема обычно "
+"решалась. В Safari иногда приходилось вручную удалять старую сессию OTRS."
 
 #: ../../content/migration-from-otrs-6.rst:480
 msgid ""
 "2. Final page of the migration has a strange layout due to missing CSS files"
 msgstr ""
+"2. Последняя страница миграции имеет странный дизайн из-за отсутствующих "
+"файлов CSS"
 
 #: ../../content/migration-from-otrs-6.rst:482
 msgid ""
@@ -3369,10 +3461,15 @@ msgid ""
 "happens, please check the settings in *Kernel/Config.pm* and revert them to "
 "sane values."
 msgstr ""
+"Это может произойти, если параметр ScriptAlias имеет нестандартное значение. "
+"При миграции просто заменяется otrs на otobo. Это может привести к тому, что "
+"CSS и JavaScript больше не могут быть получены в OTOBO. Когда это "
+"происходит, пожалуйста, проверьте настройки в *Kernel/Config.pm* и верните "
+"их к нормальным значениям."
 
 #: ../../content/migration-from-otrs-6.rst:487
 msgid "3. Migration stops due to MySQL errors"
-msgstr ""
+msgstr "3. Миграция останавливается из-за ошибок MySQL"
 
 #: ../../content/migration-from-otrs-6.rst:489
 msgid ""
@@ -3382,6 +3479,11 @@ msgid ""
 "that are no longer allowed in the target table. These conflicts have to be "
 "manually resolved before you can resume the migration."
 msgstr ""
+"В системах, в которых в прошлом возникали проблемы с обновлением, процесс "
+"миграции может остановиться из-за ошибок MySQL в таблицах *ticket* и "
+"*ticket_history*. Обычно эти ошибки связаны со значениями NULL в исходной "
+"таблице, которые больше не допускаются в целевой таблице. Эти конфликты "
+"необходимо устранить вручную, прежде чем возобновлять миграцию."
 
 #: ../../content/migration-from-otrs-6.rst:493
 msgid ""
@@ -3389,10 +3491,13 @@ msgid ""
 "values before the data transfer is done. Note, that the resolution still "
 "needs to be performed manually."
 msgstr ""
+"Начиная с версии OTOBO 10.0.12 в *migration.pl* появилась проверка на "
+"наличие NULL-значений перед переносом данных. Обратите внимание, что "
+"разрешение по-прежнему необходимо выполнять вручную."
 
 #: ../../content/migration-from-otrs-6.rst:496
 msgid "4. Errors in Step 5 when migrating to PostgreSQL"
-msgstr ""
+msgstr "4. Ошибки на шаге 5 при миграции на PostgreSQL"
 
 #: ../../content/migration-from-otrs-6.rst:498
 msgid ""
@@ -3406,22 +3511,36 @@ msgid ""
 "running http://localhost/otobo/migration.pl. After the migration, return to "
 "the normal state by running ``ALTER USER otobo WITH NOSUPERUSER``."
 msgstr ""
+"В этих случаях *migration.pl* показывает не очень полезное сообщение \"System"
+" was unable to complete data transfer.\". В журнале Apache и в журнале OTOBO "
+"появляется более содержательное сообщение: \"Сообщение: ERROR: permission "
+"denied to set parameter \"session_replication_role\", SQL: 'set "
+"session_replication_role to replica;'\". Для того чтобы предоставить "
+"пользователю базы данных **otobo** необходимые привилегии суперпользователя, "
+"выполните следующий оператор от имени администратора PostgreSQL: ``ALTER "
+"USER otobo WITH SUPERUSER;``. Затем повторите попытку запуска http://"
+"localhost/otobo/migration.pl. После миграции вернитесь к нормальному "
+"состоянию, выполнив команду ``ALTER USER otobo WITH NOSUPERUSER``."
 
 #: ../../content/migration-from-otrs-6.rst:506
 msgid ""
 "It is not clear yet, whether the extended privileges have to be granted in "
 "every setup."
 msgstr ""
+"Пока неясно, нужно ли предоставлять расширенные привилегии в каждой "
+"настройке."
 
 #: ../../content/migration-from-otrs-6.rst:510
 msgid ""
 "The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-"
 "otobo-postgresql/."
 msgstr ""
+"Обсуждение на сайте https://otobo.de/de/forums/topic/"
+"otrs-6-mysql-migration-to-otobo-postgresql/."
 
 #: ../../content/migration-from-otrs-6.rst:513
 msgid "5. Problems with the Deployment the Merged System Configuration"
-msgstr ""
+msgstr "5. Проблемы с развертыванием конфигурации объединенной системы"
 
 #: ../../content/migration-from-otrs-6.rst:515
 msgid ""
@@ -3437,43 +3556,64 @@ msgid ""
 "system configuration is stored in the database, but additional validity "
 "checks are performed during deployment."
 msgstr ""
+"Системная конфигурация переносится после переноса таблиц базы данных. В "
+"данном контексте миграция означает объединение настроек по умолчанию OTOBO с "
+"системной конфигурацией исходной системы OTRS. На этом этапе могут "
+"возникнуть несоответствия. Реальным примером является настройка "
+"``Ticket::Frontend::AgentTicketQuickClose###State``. Эта настройка является "
+"новой в OTOBO 10, и ее значением по умолчанию является состояние ``закрыто "
+"успешно''. Но эта настройка недействительна, если состояние ``закрыто "
+"успешно'' было удалено или переименовано в исходной системе. Это "
+"несоответствие обнаруживается как ошибка на шаге миграции **Мигрировать "
+"параметры конфигурации**. На самом деле, объединенная конфигурация системы "
+"хранится в базе данных, но при развертывании выполняются дополнительные "
+"проверки на валидность."
 
 #: ../../content/migration-from-otrs-6.rst:523
 msgid ""
 "The problem must be alleviated manually by using OTOBO console commands."
-msgstr ""
+msgstr "Проблема должна быть решена вручную с помощью команд консоли OTOBO."
 
 #: ../../content/migration-from-otrs-6.rst:525
 msgid ""
 "List the inconsistencies with the command ``bin/otobo.Console.pl Admin::"
 "Config::ListInvalid``"
 msgstr ""
+"Составьте список несоответствий с помощью команды ``bin/otobo.Console.pl "
+"Admin::Config::ListInvalid``"
 
 #: ../../content/migration-from-otrs-6.rst:527
 msgid ""
 "Interactively fix the invalid values with ``bin/otobo.Console.pl Admin::"
 "Config::FixInvalid``"
 msgstr ""
+"Интерактивно исправьте недопустимые значения с помощью ``bin/"
+"otobo.Console.pl Admin::Config::FixInvalid``"
 
 #: ../../content/migration-from-otrs-6.rst:529
 msgid ""
 "Deploy the collected changes from migration.pl, including the deactivated "
 "**SecureMode** with ``bin/otobo.Console.pl Maint::Config::Rebuild``"
 msgstr ""
+"Разверните собранные изменения из migration.pl, включая деактивированный "
+"**SecureMode** с помощью ``bin/otobo.Console.pl Maint::Config::Rebuild``"
 
 #: ../../content/migration-from-otrs-6.rst:532
 msgid ""
 "After these manual steps you should be able to run *migration.pl* again. The "
 "migration will continue with the step where the error occurred."
 msgstr ""
+"После этих ручных действий вы должны иметь возможность снова запустить "
+"*migration.pl*. Миграция продолжится с того шага, на котором произошла "
+"ошибка."
 
 #: ../../content/migration-from-otrs-6.rst:536
 msgid "Step 7: Manual Migration Tasks and Changes"
-msgstr ""
+msgstr "Шаг 7: Руководство по миграции: Задачи и изменения"
 
 #: ../../content/migration-from-otrs-6.rst:539
 msgid "1. Password policy rules"
-msgstr ""
+msgstr "1. Правила политики паролей"
 
 #: ../../content/migration-from-otrs-6.rst:541
 msgid ""
@@ -3482,6 +3622,11 @@ msgid ""
 "changed in the system configuration (``PreferencesGroups###Password`` and "
 "``CustomerPersonalPreference###Password``)."
 msgstr ""
+"В OTOBO 10 действует новая политика паролей по умолчанию для пользователей "
+"агентов и клиентов, если используется локальная аутентификация. Правила "
+"политики паролей могут быть изменены в конфигурации системы "
+"(``PreferencesGroups###Password`` и "
+"``CustomerPersonalPreference###Password``)."
 
 #: ../../content/migration-from-otrs-6.rst:544
 msgid "Password Policy Rule"
