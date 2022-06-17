@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2022-06-02 00:40+0200\n"
-"PO-Revision-Date: 2022-06-09 11:38+0000\n"
+"PO-Revision-Date: 2022-06-17 20:49+0000\n"
 "Last-Translator: Philipp Kesler <philipp.kesler@hein.de>\n"
 "Language-Team: Russian <https://translate.otobo.org/projects/otobo10/"
 "installation-manual/ru/>\n"
@@ -3630,15 +3630,15 @@ msgstr ""
 
 #: ../../content/migration-from-otrs-6.rst:544
 msgid "Password Policy Rule"
-msgstr ""
+msgstr "Правило политики паролей"
 
 #: ../../content/migration-from-otrs-6.rst:544
 msgid "Default"
-msgstr ""
+msgstr "По умолчанию"
 
 #: ../../content/migration-from-otrs-6.rst:546
 msgid "``PasswordMinSize``"
-msgstr ""
+msgstr "``Минимальный размер пароля``"
 
 #: ../../content/migration-from-otrs-6.rst:546
 msgid "8"
@@ -3699,6 +3699,12 @@ msgid ""
 "OTRS systems with customer-specific cron jobs (e. g. backing up the "
 "database)."
 msgstr ""
+"При установке OTOBO без Docker существует по крайней мере одно задание cron, "
+"которое проверяет работоспособность демона. В Docker этого задания больше не "
+"существует. Более того, ни в одном из контейнеров Docker не запущен демон "
+"cron. Это означает, что вам придется искать индивидуальное решение для "
+"систем OTRS с заданиями cron для конкретного клиента (например, резервное "
+"копирование базы данных)."
 
 #: ../../content/migration-from-otrs-6.rst:571
 msgid "Special topics"
@@ -3714,24 +3720,33 @@ msgid ""
 "because Oracle provides no easy way to temporarily turn off foreign key "
 "checks."
 msgstr ""
+"Для миграции на Oracle необходимо использовать стратегию, подобную ETL. Это "
+"связано с тем, что Oracle не предоставляет простого способа временно "
+"отключить проверку внешних ключей."
 
 #: ../../content/migration-from-otrs-6.rst:579
 msgid ""
 "On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must "
 "be installed."
 msgstr ""
+"На хосте OTOBO должен быть установлен клиент Oracle и модуль Perl "
+"``DBD::Oracle``."
 
 #: ../../content/migration-from-otrs-6.rst:583
 msgid ""
 "When using the Oracle instant client, then the optional SDK is also needed "
 "for installing DBD::Oracle."
 msgstr ""
+"Если используется мгновенный клиент Oracle, то для установки DBD::Oracle "
+"также необходим дополнительный SDK."
 
 #: ../../content/migration-from-otrs-6.rst:585
 msgid ""
 "There are many ways of cloning a schema. In the sample commands we use "
 "``expdb`` and ``impdb`` which use Data Pump under the hood."
 msgstr ""
+"Существует множество способов клонирования схемы. В примерах команд мы "
+"используем ``expdb`` и ``impdb``, которые используют Data Pump под капотом."
 
 #: ../../content/migration-from-otrs-6.rst:590
 msgid ""
@@ -3739,6 +3754,9 @@ msgid ""
 "source and target database run in a Docker container. See also https://"
 "github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md ."
 msgstr ""
+"Строки подключения, показанные в этой документации, относятся к случаю, "
+"когда и исходная, и целевая база данных работают в контейнере Docker. См. "
+"также https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md ."
 
 #: ../../content/migration-from-otrs-6.rst:594
 msgid "Clear out otobo"
