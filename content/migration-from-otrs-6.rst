@@ -232,14 +232,23 @@ Please make sure there are no running services or cron jobs.
 .. code-block:: bash
 
     root> su - otrs
-    otrs>
     otrs> /opt/otrs/bin/Cron.sh stop
     otrs> /opt/otrs/bin/otrs.Daemon.pl stop --force
+
+Clear the Caches and the Operational Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The cached data and the operational data doesn't have to be migrated.
+The mail queue should at this point already be empty.
+
+.. code-block:: bash
+
+    root> su - otrs
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
-
+    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
 
 Optional Step for Docker: make required data available inside container
 ------------------------------------------------------------------------
