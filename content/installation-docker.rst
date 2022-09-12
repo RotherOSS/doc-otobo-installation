@@ -615,17 +615,26 @@ List of useful commands
 * ``docker-compose exec nginx nginx -s reload`` reload nginx
 
 Resources
-----------------------------------
+---------
 
-* `Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_
-* `Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_
+Finally, here is a highly subjective collection of links.
+
+**General info and tutorials**
+
+* `Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/getting-started-with-perl-on-docker>`_
+* `Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_
+* `Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_
+
+**Tips and hints**
+
 * `Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04>`_
 * `Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_
-* `docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_
-* `cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
-* `Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_
-* `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
+* `Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
 * `Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_
-* `Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_
 * `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_
+
+**Troubleshooting**
+
+* `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
+* `Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_
 * `Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_
