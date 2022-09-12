@@ -232,14 +232,23 @@ Please make sure there are no running services or cron jobs.
 .. code-block:: bash
 
     root> su - otrs
-    otrs>
     otrs> /opt/otrs/bin/Cron.sh stop
     otrs> /opt/otrs/bin/otrs.Daemon.pl stop --force
+
+Clear the Caches and the Operational Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The cached data and the operational data doesn't have to be migrated.
+The mail queue should at this point already be empty.
+
+.. code-block:: bash
+
+    root> su - otrs
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
     otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
-
+    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
 
 Optional Step for Docker: make required data available inside container
 ------------------------------------------------------------------------
@@ -633,3 +642,7 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 5. Start the web server for otobo again
 
 6. Proceed with step 5, that is with running ``migration.pl``.
+
+.. note::
+
+    If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` has to be executed, to create the tables ``stats_report`` & ``data_storage``, which were newly added in version 10.1.
