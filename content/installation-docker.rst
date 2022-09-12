@@ -636,4 +636,5 @@ Finally, here is a highly subjective collection of links.
 **Troubleshooting**
 
 * `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
+* `Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_
 * `Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_
