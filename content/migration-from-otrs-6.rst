@@ -559,7 +559,7 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
     
 
 Optional Step: Streamlined migration of the database (only for experts and spezial scenarios)
-----------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the general migration strategy, all data in the database tables is copied row by row from the OTRS database
 into the OTOBO database.
