@@ -298,96 +298,6 @@ Depending on your Docker setup, the command ``rsync`` might need to be run with 
 
 This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container.
 
-Optional Step: Streamlined migration of the database
-----------------------------------------------------
-
-In the general migration strategy, all data in the database tables is copied row by row from the OTRS database
-into the OTOBO database.
-Exporting the data from the OTRS database and importing it into the OTOBO database might save time and is more
-stable in some circumstances.
-
-.. note::
-
-    This variant works for both Docker-based and native installations.
-
-.. note::
-
-    These instructions assume that OTRS is using MySQL as its backend.
-
-First of all, we need a dump of the needed OTRS database tables.
-Then we need to perform a couple of transformations:
-
-    - convert the character set to *utf8mb4*
-    - rename a couple of tables
-    - shorten some table columns
-
-After the transfomation we can overwrite the tables in the OTOBO schema with the transformed data from OTRS.
-Effectively we need not a single dump file, but several SQL scripts.
-
-When ``mysqldump`` is installed and a connection to the OTRS database is possible,
-you can create the database dump directly on the Docker host. This case is supported
-by the script *bin/backup.pl*.
-
-.. warning::
-
-    This requires that an OTOBO installation is available on the Docker host.
-
-.. code-block:: bash
-
-    otobo> cd /opt/otobo
-    otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
-
-.. note::
-
-    Alternatively, the database can be dumped on another server and then be transferred to the Docker host afterwards.
-    An easy way to do this is to copy */opt/otobo* to the server running OTRS and perform the same command as above.
-
-The script *bin/backup.pl* generates four SQL scripts in a dump directory, e.g. in *2021-04-13_12-13-04*
-In order to execute the SQL scripts, we need to run the command ``mysql``.
-
-Native installation:
-
-.. code-block:: bash
-
-    otobo> cd <dump_dir>
-    otobo> mysql -u root -p<root_secret> otobo < otrs_pre.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_data.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
-
-Docker-based installation:
-
-Run the command ``mysql`` within the Docker container *db* for importing the database dump files.
-Note that the password for the database root is now the password
-that has been set up in the file *.env* on the Docker host.
-
-.. code-block:: bash
-
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_pre.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_schema_for_otobo.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_data.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_post.sql
-
-For a quick check whether the import worked, you can run the following commands.
-
-.. code-block:: bash
-
-    otobo> mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
-
-or when running under Docker
-
-.. code-block:: bash
-
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
-
-The database is now migrated. This means that during the next step we can skip the database migration.
-Watch out for the relevant checkbox.
-
 Step 5: Perform the Migration!
 ---------------------------------
 
@@ -646,3 +556,94 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 .. note::
 
     If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` has to be executed, to create the tables ``stats_report`` & ``data_storage``, which were newly added in version 10.1.
+    
+
+Optional Step: Streamlined migration of the database (only for experts and spezial scenarios)
+----------------------------------------------------
+
+In the general migration strategy, all data in the database tables is copied row by row from the OTRS database
+into the OTOBO database.
+Exporting the data from the OTRS database and importing it into the OTOBO database might save time and is more
+stable in some circumstances.
+
+.. note::
+
+    This variant works for both Docker-based and native installations.
+
+.. note::
+
+    These instructions assume that OTRS is using MySQL as its backend.
+
+First of all, we need a dump of the needed OTRS database tables.
+Then we need to perform a couple of transformations:
+
+    - convert the character set to *utf8mb4*
+    - rename a couple of tables
+    - shorten some table columns
+
+After the transfomation we can overwrite the tables in the OTOBO schema with the transformed data from OTRS.
+Effectively we need not a single dump file, but several SQL scripts.
+
+When ``mysqldump`` is installed and a connection to the OTRS database is possible,
+you can create the database dump directly on the Docker host. This case is supported
+by the script *bin/backup.pl*.
+
+.. warning::
+
+    This requires that an OTOBO installation is available on the Docker host.
+
+.. code-block:: bash
+
+    otobo> cd /opt/otobo
+    otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
+
+.. note::
+
+    Alternatively, the database can be dumped on another server and then be transferred to the Docker host afterwards.
+    An easy way to do this is to copy */opt/otobo* to the server running OTRS and perform the same command as above.
+
+The script *bin/backup.pl* generates four SQL scripts in a dump directory, e.g. in *2021-04-13_12-13-04*
+In order to execute the SQL scripts, we need to run the command ``mysql``.
+
+Native installation:
+
+.. code-block:: bash
+
+    otobo> cd <dump_dir>
+    otobo> mysql -u root -p<root_secret> otobo < otrs_pre.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_data.sql
+    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
+
+Docker-based installation:
+
+Run the command ``mysql`` within the Docker container *db* for importing the database dump files.
+Note that the password for the database root is now the password
+that has been set up in the file *.env* on the Docker host.
+
+.. code-block:: bash
+
+    docker_admin> cd /opt/otobo-docker
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_pre.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_schema_for_otobo.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_data.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_post.sql
+
+For a quick check whether the import worked, you can run the following commands.
+
+.. code-block:: bash
+
+    otobo> mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+
+or when running under Docker
+
+.. code-block:: bash
+
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+
+The database is now migrated. This means that during the next step we can skip the database migration.
+Watch out for the relevant checkbox.
