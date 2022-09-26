@@ -1,7 +1,7 @@
 Kerberos Single Sign On in OTOBO Docker installation
 ================================
 
-Please read to the chapter :doc:`backup-restore` for basic information about installing and configure OTOBO.
+Please read to the chapter :doc:`installation-docker` for basic information about installing and configure OTOBO.
 This tutorial assumes that OTOBO has been installed and configured using Docker.
 
 .. note::
