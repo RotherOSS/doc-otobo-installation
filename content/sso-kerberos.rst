@@ -18,8 +18,7 @@ Please create a new Active Directory User with the following settings and save t
    Please use as Username only this syntax: `HTTP/fqdn.from.your.otobo.de`. `fqdn.from.your.otobo.de` needs to be a A-Record DNS entry, not a CNAME!
    In the next step, it is also possible to use other URLs for OTOBO, they must then point as CNAME to our A-record defined above.
 
-.. image:: ../images/kerberos-1-ad.png
-   :align: left
+.. figure:: ../images/kerberos-1-ad.png
    
    
 Generate Active Directory Keytab file
