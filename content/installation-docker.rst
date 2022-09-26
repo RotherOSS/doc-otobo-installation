@@ -434,9 +434,7 @@ See also the section "Using environment variables in nginx configuration (new in
 Single Sign On Using the Kerberos Support in Nginx
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. warning::
-
-    Support for Kerberos is still experimental.
+**Short Description**
 
 For enabling authentication with Kerberos please base you *.env file* on the sample file *.docker_compose_env_https_kerberos*.
 This activates the special configuration in *docker-compose/otobo-override-https-kerberos.yml*.
@@ -452,6 +450,11 @@ that overrides */etc/krb5.conf* in the container. This can be achieved by settin
 in the *.env* file and by activating the mount directove in *docker-compose/otobo-override-https-kerberos.yml*.
 
 */etc/krb5.keytab* is always installation specific and must therefore always be mounted from the host system.
+
+**Kerberos SSO Installation Tutorial**
+
+.. doc:: ../sso-kerberos.rst
+
 
 Choosing non-standard ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
