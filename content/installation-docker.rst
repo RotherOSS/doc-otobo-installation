@@ -287,11 +287,6 @@ OTOBO_NGINX_SSL_CERTIFICATE_KEY
 
 This settings are used by Nginx when Kerberos is used for single sign on.
 
-.. warning::
-
-    Support for Kerberos is still experimental.
-
-
 OTOBO_NGINX_KERBEROS_KEYTAB
     Kerberos keytab file. The default is */etc/krb5.keytab*.
 
@@ -453,7 +448,7 @@ in the *.env* file and by activating the mount directove in *docker-compose/otob
 
 **Kerberos SSO Installation Tutorial**
 
-.. doc:: ../sso-kerberos.rst
+:doc:`sso-kerberos`
 
 
 Choosing non-standard ports
