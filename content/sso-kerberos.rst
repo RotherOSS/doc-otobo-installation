@@ -8,6 +8,7 @@ This tutorial assumes that OTOBO has been installed and configured using Docker.
 
    In the following, we will refer from AD (Active Directory), of course the Kerberos configuration is also possible under LDAP.
 
+
 Generate Active Directory User
 ----------------------------------------------
 
@@ -18,9 +19,10 @@ Please create a new Active Directory User with the following settings and save t
    Please use as Username only this syntax: `HTTP/fqdn.from.your.otobo.de`. `fqdn.from.your.otobo.de` needs to be a A-Record DNS entry, not a CNAME!
    In the next step, it is also possible to use other URLs for OTOBO, they must then point as CNAME to our A-record defined above.
 
-.. figure:: ../images/kerberos-1-ad.png
-   
-   
+.. figure:: images/kerberos-1-ad.png
+   :alt: Active Directory User configuration
+
+
 Generate Active Directory Keytab file
 -------------------------------------
 
@@ -32,10 +34,11 @@ Now we use the tool `ktpass.exe`to generate the needed keytab file:
     ktpass.exe -princ HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -mapuser OTRS\otrs32-centos6 -crypto All -pass Password -ptype KRB5_NT_PRINCIPAL -out c:\krb5.keytab
 
 
--princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@+Picture Number 2
--mapuser = OTRS\otrs32-centos6  (Username prä Win 2000) ->  -> Picture Number 3+\+Picture Number 4
--pass = Password from user otrs32-centos6 (Active Directory User)
--out = c:/krb5.keytab
+* `-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@+Picture Number 2`
+* `-mapuser = OTRS\otrs32-centos6  (Username prä Win 2000) ->  -> Picture Number 3+\+Picture Number`
+* `-pass = Password from user otrs32-centos6 (Active Directory User)`
+* `-out = c:/krb5.keytab`
+
 
 In the next step please move the krb5.keytab file to the OTOBO Server:
 
@@ -47,10 +50,11 @@ In the next step please move the krb5.keytab file to the OTOBO Server:
     # Move the file krb5.conf to the new directory (Attention, depending on where you have placed the krb5.conf file, the command below will change.)
     docker_admin> mv ?/krb5.conf /opt/otobo-docker/nginx-conf/krb5.keytab
 
+
 Create new OTOBO .env file
 --------------------------
 
-First of all we need to move the old file /opt/otobo-docker/.env to .env.tmp and create a new .env file including the kerberos settings.
+First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.tmp`` and create a new ``.env file including the kerberos settings.
 
 .. code-block:: bash
 
@@ -116,8 +120,8 @@ Enter "about:config" in the firefox address line
 
 and change the following settings:
 
-network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)
-network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)
+* network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)
+* network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)
 
 Debugging and Problems
 ----------------------
@@ -153,6 +157,7 @@ If NGINX is running, please login into the NGINX Container and check all needed 
     
     # If not, please quit from the container and copy the file again using docker
     docker_admin> docker cp /opt/otobo-docker/nginx-conf/krb5.keytab otobo_nginx_1:/etc/krb5.keytab
+   
    
    
 Kerberos debugging
