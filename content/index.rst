@@ -39,6 +39,7 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de).
    requirements
    installation
    installation-docker
+   sso-kerberos
    migration-from-otrs-6
    updating
    updating-docker
