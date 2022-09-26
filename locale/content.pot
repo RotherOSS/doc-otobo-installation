@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-26 13:40+0200\n"
+"POT-Creation-Date: 2022-09-27 00:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2780,135 +2780,151 @@ msgstr ""
 msgid "In the following, we will refer from AD (Active Directory), of course the Kerberos configuration is also possible under LDAP."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:22
+#: ../../content/sso-kerberos.rst:23
 msgid "Generate Active Directory User"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:24
+#: ../../content/sso-kerberos.rst:25
 msgid "Please create a new Active Directory User with the following settings and save the marked settings:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:28
+#: ../../content/sso-kerberos.rst:29
 msgid "Please use as Username only this syntax: `HTTP/fqdn.from.your.otobo.de`. `fqdn.from.your.otobo.de` needs to be a A-Record DNS entry, not a CNAME! In the next step, it is also possible to use other URLs for OTOBO, they must then point as CNAME to our A-record defined above."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:35
+#: ../../content/sso-kerberos.rst:37
 msgid "Generate Active Directory Keytab file"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:37
+#: ../../content/sso-kerberos.rst:39
 msgid "In the next step, we connect to a domain controller of the Active Directory and open a console (cmd) there with administrator privileges. Now we use the tool `ktpass.exe`to generate the needed keytab file:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:45
-msgid "-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@+Picture Number 2 -mapuser = OTRS\\otrs32-centos6  (Username prä Win 2000) ->  -> Picture Number 3+\\+Picture Number 4 -pass = Password from user otrs32-centos6 (Active Directory User) -out = c:/krb5.keytab"
+#: ../../content/sso-kerberos.rst:47
+msgid "`-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@+Picture Number 2`"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:48
+msgid "`-mapuser = OTRS\\otrs32-centos6  (Username prä Win 2000) ->  -> Picture Number 3+\\+Picture Number`"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:49
+msgid "`-pass = Password from user otrs32-centos6 (Active Directory User)`"
 msgstr ""
 
 #: ../../content/sso-kerberos.rst:50
+msgid "`-out = c:/krb5.keytab`"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:53
 msgid "In the next step please move the krb5.keytab file to the OTOBO Server:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:61
+#: ../../content/sso-kerberos.rst:65
 msgid "Create new OTOBO .env file"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:63
-msgid "First of all we need to move the old file /opt/otobo-docker/.env to .env.tmp and create a new .env file including the kerberos settings."
+#: ../../content/sso-kerberos.rst:67
+msgid "First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.tmp`` and create a new ``.env file including the kerberos settings."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:77
+#: ../../content/sso-kerberos.rst:81
 msgid "Now copy your existing configuration options to the new .env file (at least OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY) and insert the following Kerberos settings:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:80
+#: ../../content/sso-kerberos.rst:84
 msgid "# Kerberos keytab OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:83
+#: ../../content/sso-kerberos.rst:87
 msgid "# Kerberos config (Important, please comment out this option like here!) # In default configuration the krb5.conf file is generated automatically # OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:87
+#: ../../content/sso-kerberos.rst:91
 msgid "# Kerberos Service Name OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-centos6.otrs.local # -> Picture Number 1"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:90
+#: ../../content/sso-kerberos.rst:94
 msgid "# Kerberos REALM OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> Picture Number 2"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:93
+#: ../../content/sso-kerberos.rst:97
 msgid "# Active Directory Domain Controller / Kerberos kdc OTOBO_NGINX_KERBEROS_KDC="
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:96
+#: ../../content/sso-kerberos.rst:100
 msgid "# Active Directory Domain Controller / Kerberos Admin Server OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:99
+#: ../../content/sso-kerberos.rst:103
 msgid "# Kerberos Default Domain OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:104
+#: ../../content/sso-kerberos.rst:108
 msgid "Start OTOBO"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:106
+#: ../../content/sso-kerberos.rst:110
 msgid "After the initial Kerberos configuration we start OTOBO again:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:115
+#: ../../content/sso-kerberos.rst:119
 msgid "Configure Browser to understand Kerberos SSO"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:117
+#: ../../content/sso-kerberos.rst:121
 msgid "For SSO to work, the browser must be configured accordingly."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:119
+#: ../../content/sso-kerberos.rst:123
 msgid "**Chrome, Edge, Internet Explorer, etc.**"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:121
+#: ../../content/sso-kerberos.rst:125
 msgid "Add page under local or trusted pages and activate 'Integrated Windows Authentication' (Internet Options)."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:123
+#: ../../content/sso-kerberos.rst:127
 msgid "**Firefox**"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:125
+#: ../../content/sso-kerberos.rst:129
 msgid "Enter \"about:config\" in the firefox address line"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:127
+#: ../../content/sso-kerberos.rst:131
 msgid "and change the following settings:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:129
-msgid "network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn) network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)"
+#: ../../content/sso-kerberos.rst:133
+msgid "network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:133
+#: ../../content/sso-kerberos.rst:134
+msgid "network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:137
 msgid "Debugging and Problems"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:135
+#: ../../content/sso-kerberos.rst:139
 msgid "If the Kerberos SSO does not work, please check first if the NGINX container is started:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:143
+#: ../../content/sso-kerberos.rst:147
 msgid "In the next step please check the NGINX logs for more information:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:151
+#: ../../content/sso-kerberos.rst:155
 msgid "If NGINX is running, please login into the NGINX Container and check all needed files:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:169
+#: ../../content/sso-kerberos.rst:174
 msgid "Kerberos debugging"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:176
+#: ../../content/sso-kerberos.rst:181
 msgid "Now you are able to debug the Kerberos settings. Examples:"
 msgstr ""
 
