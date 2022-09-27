@@ -32,10 +32,10 @@ In the next step copy the Logo into the OTOBO Home directory:
 
 .. code-block:: bash
     
-    *# Using OTOBO Docker Installation*
+    **# Using OTOBO Docker Installation**
     otobo_admin> docker cp /tmp/Logos.png otobo_web_1:/opt/otobo/var/httpd/htdocs/skins/Customer/default/img/ 
 
-    *# Nativ installation in /opt/otobo/*
+    **# Nativ installation in /opt/otobo/**
     otobo_admin> cp /tmp/Logos.png /opt/otobo/var/httpd/htdocs/skins/Customer/default/img/ 
 
 
@@ -54,7 +54,8 @@ Change Customer Login Pictures and Text
 Change Customer Dashboard tiles and options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To change the colours on the Customer Dashboard, please go to ``Admin -> System Configuration`` and search for CustomerDashboard. 
+To change the colours on the Customer Dashboard, please go to ``Admin -> System Configuration`` and search for **CustomerDashboard**. 
+
 In the search result you will find all the options you need with colour definitions.
 
 
