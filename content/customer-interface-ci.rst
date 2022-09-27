@@ -58,6 +58,11 @@ To change the colours on the Customer Dashboard, please go to ``Admin -> System 
 
 In the search result you will find all the options you need with colour definitions.
 
+.. figure:: images/customerdashboard.png
+   :alt: Customer Dashboard Configuration
+
+* 1 - To change the picture, link and text please use the System Configuration Option **CustomerDashboard::Tiles###FeaturedLink-01**
+* 2 - To change the toplevel text please use the System Configuration Option **CustomerDashboard::Configuration::Text**
 
 .. note::
 
