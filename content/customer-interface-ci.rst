@@ -79,7 +79,7 @@ To remove the watermark, please remove the following line inside the file:
     <!-- start login -->
     <div id="oooLoginBG">
         <div class="oooBG" style="background-image: url([% Data.Background | html %]);">
-#            <div id="oooBGSignet" style="background-image: url([% Config("Frontend::WebPath") %]common/img/otobo-signet_border.svg);"></div>
+    # remove this line ->        <div id="oooBGSignet" style="background-image: url([% Config("Frontend::WebPath") %]common/img/otobo-signet_border.svg);"></div>
         </div>
         <h1>[% Translate(Data.LoginText) | html %]</h1>
     </div>
