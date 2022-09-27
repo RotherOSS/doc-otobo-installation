@@ -58,7 +58,7 @@ To remove the opacity, please adjust the option **#oooLoginBG > .oooBG** in the 
 
 ``var/httpd/htdocs/skins/Customer/default/css/Core.Login.css``
 
-.. bash::
+.. code-block:: bash
 
      #oooLoginBG > .oooBG {
         position: relative;
@@ -74,7 +74,7 @@ To remove the watermark, please remove the following line inside the file:
 ``Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt``
 
 
-.. bash::
+.. code-block:: bash
     
     <!-- start login -->
     <div id="oooLoginBG">
