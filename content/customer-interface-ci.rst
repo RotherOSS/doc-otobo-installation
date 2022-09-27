@@ -50,6 +50,45 @@ Change Customer Login Pictures and Text
 
 * 1 and 2 - System Configuration Option **CustomerLogin::Settings**
 
+**Remove Opacity and Watermark**
+    
+At the moment it is not possible to remove the overlay and watermark used in the image on the right by system configuration. 
+
+To remove the opacity, please adjust the option **#oooLoginBG > .oooBG** in the file 
+
+``var/httpd/htdocs/skins/Customer/default/css/Core.Login.css``
+
+.. bash::
+
+     #oooLoginBG > .oooBG {
+        position: relative;
+        width: 100%;
+        height: 100%;
+     /*   opacity: 0.45; Disable opacity */
+        background-size: cover;
+        overflow: hidden;
+    }
+
+To remove the watermark, please remove the following line inside the file:
+
+``Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt``
+
+
+.. bash::
+    
+    <!-- start login -->
+    <div id="oooLoginBG">
+        <div class="oooBG" style="background-image: url([% Data.Background | html %]);">
+#            <div id="oooBGSignet" style="background-image: url([% Config("Frontend::WebPath") %]common/img/otobo-signet_border.svg);"></div>
+        </div>
+        <h1>[% Translate(Data.LoginText) | html %]</h1>
+    </div>
+    
+
+.. note::
+
+    Please add the files to a opm package in the next step, so that the changes remain persistent. You can find instructions on how to do this in our    
+    Admin Manual: https://doc.otobo.org/manual/developer/10.1/en/content/how-to-publish-otobo-extensions.html
 
 Change Customer Dashboard tiles and options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
