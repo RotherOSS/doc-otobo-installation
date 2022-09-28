@@ -1,4 +1,4 @@
-.. image:: ../images/otobo-logo.png
+.. image:: ../images/otrs-logo.png
    :align: center
 |
 
