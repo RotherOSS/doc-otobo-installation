@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 00:40+0200\n"
+"POT-Creation-Date: 2022-10-01 00:40+0200\n"
 "PO-Revision-Date: 2022-06-09 11:38+0000\n"
 "Last-Translator: Gieanjalad <andy.fw88@gmail.com>\n"
 "Language-Team: French <https://translate.otobo.org/projects/otobo10/"
@@ -3923,171 +3923,235 @@ msgid ""
 "then point as CNAME to our A-record defined above."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:37
+#: ../../content/sso-kerberos.rst:32
+msgid ""
+"The username should be written in capital letters, as Kerberos expects it "
+"that way."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:34
+msgid ""
+"The password doesn't work properly with some special characters (e.g. '&')."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:36
+msgid ""
+"You have to create a seperate AD-user. You can not use the one that you "
+"already use for your LDAP/AD sync."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:43
 msgid "Generate Active Directory Keytab file"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:39
+#: ../../content/sso-kerberos.rst:45
 msgid ""
 "In the next step, we connect to a domain controller of the Active Directory "
 "and open a console (cmd) there with administrator privileges. Now we use the "
 "tool `ktpass.exe`to generate the needed keytab file:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:47
+#: ../../content/sso-kerberos.rst:53
 msgid ""
 "`-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@"
 "+Picture Number 2`"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:48
+#: ../../content/sso-kerberos.rst:54
 msgid ""
 "`-mapuser = OTRS\\otrs32-centos6  (Username prä Win 2000) ->  -> Picture "
 "Number 3+\\+Picture Number`"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:49
+#: ../../content/sso-kerberos.rst:55
 msgid "`-pass = Password from user otrs32-centos6 (Active Directory User)`"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:50
+#: ../../content/sso-kerberos.rst:56
 msgid "`-out = c:/krb5.keytab`"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:53
+#: ../../content/sso-kerberos.rst:60
+msgid ""
+"Please write the username in capital letters. The password must not contain "
+"some special characters."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:63
 msgid "In the next step please move the krb5.keytab file to the OTOBO Server:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:65
+#: ../../content/sso-kerberos.rst:74
+msgid "Create a new volume for your custom nginx configuration"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:94
 msgid "Create new OTOBO .env file"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:67
+#: ../../content/sso-kerberos.rst:96
 msgid ""
 "First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``."
 "env.tmp`` and create a new ``.env file including the kerberos settings."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:81
+#: ../../content/sso-kerberos.rst:110
 msgid ""
 "Now copy your existing configuration options to the new .env file (at least "
 "OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, "
 "OTOBO_NGINX_SSL_CERTIFICATE_KEY) and insert the following Kerberos settings:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:84
+#: ../../content/sso-kerberos.rst:113
 msgid ""
 "# Kerberos keytab OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/"
 "krb5.keytab"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:87
+#: ../../content/sso-kerberos.rst:116
 msgid ""
 "# Kerberos config (Important, please comment out this option like here!) # "
 "In default configuration the krb5.conf file is generated automatically # "
 "OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:91
+#: ../../content/sso-kerberos.rst:120
 msgid ""
 "# Kerberos Service Name OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-"
 "centos6.otrs.local # -> Picture Number 1"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:94
+#: ../../content/sso-kerberos.rst:123
 msgid ""
 "# Kerberos REALM OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -"
 "> Picture Number 2"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:97
+#: ../../content/sso-kerberos.rst:126
 msgid ""
 "# Active Directory Domain Controller / Kerberos kdc OTOBO_NGINX_KERBEROS_KDC="
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:100
+#: ../../content/sso-kerberos.rst:129
 msgid ""
 "# Active Directory Domain Controller / Kerberos Admin Server "
 "OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:103
+#: ../../content/sso-kerberos.rst:132
 msgid ""
 "# Kerberos Default Domain OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:108
+#: ../../content/sso-kerberos.rst:137
 msgid "Start OTOBO"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:110
+#: ../../content/sso-kerberos.rst:139
 msgid "After the initial Kerberos configuration we start OTOBO again:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:119
+#: ../../content/sso-kerberos.rst:148
+msgid "Tell OTOBO to use the Kerberos-Authentication"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:150
+msgid ""
+"In case you have configured AD-Authentication, de-activate it (e.g. by "
+"commenting out the respective lines from your Kernel/Config.pm). The "
+"authentication will not take place via LDAP anymore."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:153
+msgid ""
+"To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/"
+"Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:166
 msgid "Configure Browser to understand Kerberos SSO"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:121
+#: ../../content/sso-kerberos.rst:168
 msgid "For SSO to work, the browser must be configured accordingly."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:123
+#: ../../content/sso-kerberos.rst:170
 msgid "**Chrome, Edge, Internet Explorer, etc.**"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:125
+#: ../../content/sso-kerberos.rst:172
 msgid ""
 "Add page under local or trusted pages and activate 'Integrated Windows "
 "Authentication' (Internet Options)."
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:127
+#: ../../content/sso-kerberos.rst:174
 msgid "**Firefox**"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:129
+#: ../../content/sso-kerberos.rst:176
 msgid "Enter \"about:config\" in the firefox address line"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:131
+#: ../../content/sso-kerberos.rst:178
 msgid "and change the following settings:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:133
+#: ../../content/sso-kerberos.rst:180
 msgid "network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:134
+#: ../../content/sso-kerberos.rst:181
 msgid "network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:137
+#: ../../content/sso-kerberos.rst:185
 msgid "Debugging and Problems"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:139
+#: ../../content/sso-kerberos.rst:187
 msgid ""
 "If the Kerberos SSO does not work, please check first if the NGINX container "
 "is started:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:147
+#: ../../content/sso-kerberos.rst:195
 msgid "In the next step please check the NGINX logs for more information:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:155
+#: ../../content/sso-kerberos.rst:203
 msgid ""
 "If NGINX is running, please login into the NGINX Container and check all "
 "needed files:"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:174
+#: ../../content/sso-kerberos.rst:221
 msgid "Kerberos debugging"
 msgstr ""
 
-#: ../../content/sso-kerberos.rst:181
+#: ../../content/sso-kerberos.rst:228
 msgid "Now you are able to debug the Kerberos settings. Examples:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:242
+msgid ""
+"In case you stumble upon the issue that apparently the authentication works "
+"but the agent is not yet in the database, then your sync (if implemented) "
+"might not work. An error 52e (First bind failed) indicates that something is "
+"wrong with your Search User. This happens if you use the same user for the "
+"AD sync and as a SSO user. Please use seperate AD users for that. In order "
+"to not have to create a new keytab and having to repeat the steps mentioned "
+"above, it could be easier to create a new user to use in your AD sync "
+"(probably in your Kernel/Config.pm)."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:244
+msgid ""
+"In case SSO is not working properly, make sure: * the user for which it is "
+"not working is in Active Directory * the system has to be in the domain * it "
+"is properly stated as a trusted page (see 'Configure Browser to understand "
+"Kerberos SSO')"
 msgstr ""
 
 #: ../../content/updating.rst:12
