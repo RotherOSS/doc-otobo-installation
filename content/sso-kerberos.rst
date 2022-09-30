@@ -18,6 +18,12 @@ Please create a new Active Directory User with the following settings and save t
 
    Please use as Username only this syntax: `HTTP/fqdn.from.your.otobo.de`. `fqdn.from.your.otobo.de` needs to be a A-Record DNS entry, not a CNAME!
    In the next step, it is also possible to use other URLs for OTOBO, they must then point as CNAME to our A-record defined above.
+   
+   The username should be written in capital letters, as Kerberos expects it that way.
+   
+   The password doesn't work properly with some special characters (e.g. '&').
+   
+   You have to create a seperate AD-user. You can not use the one that you already use for your LDAP/AD sync.
 
 .. figure:: images/kerberos-1-ad.png
    :alt: Active Directory User configuration
@@ -39,7 +45,11 @@ Now we use the tool `ktpass.exe`to generate the needed keytab file:
 * `-pass = Password from user otrs32-centos6 (Active Directory User)`
 * `-out = c:/krb5.keytab`
 
+.. note::
 
+   Please write the username in capital letters.
+   The password must not contain some special characters.
+   
 In the next step please move the krb5.keytab file to the OTOBO Server:
 
 .. code-block:: bash
@@ -49,6 +59,25 @@ In the next step please move the krb5.keytab file to the OTOBO Server:
     
     # Move the file krb5.conf to the new directory (Attention, depending on where you have placed the krb5.conf file, the command below will change.)
     docker_admin> mv ?/krb5.conf /opt/otobo-docker/nginx-conf/krb5.keytab
+
+Create a new volume for your custom nginx configuration
+-------------------------------------------------------
+
+.. code-block:: bash
+
+    docker volume create otobo_nginx_custom_config
+    otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
+    docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest-10_1 (achtung: Versionsnummer)
+    docker cp tmp-nginx-container:/etc/nginx/templates /tmp
+    docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx-kerberos.conf.template.hidden $otobo_nginx_custom_config_mp/otobo_nginx.conf.template
+    docker rm tmp-nginx-container
+    vim docker-compose/otobo-nginx-custom-config.yml
+    
+.. code-block:: bash    
+    
+    COMPOSE_FILE => 
+    docker-compose/otobo-nginx-custom-config.yml
+    NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom
 
 
 Create new OTOBO .env file
@@ -103,7 +132,25 @@ After the initial Kerberos configuration we start OTOBO again:
 
     # Start OTOBO using docker-compose
     docker_admin> docker-compose up -d
- 
+    
+    
+Tell OTOBO to use the Kerberos-Authentication
+---------------------------------------------
+
+In case you have configured AD-Authentication, de-activate it (e.g. by commenting out the respective lines from your Kernel/Config.pm).
+The authentication will not take place via LDAP anymore.
+
+To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm
+E.g. these lines could work:
+
+.. code-block:: bash
+
+    $Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth';
+
+    # In case you need to replace some part of the REMOTE_USER, you can
+    # use the following RegExp ($1 will be new login).
+    $Self->{'AuthModule::HTTPBasicAuth::ReplaceRegExp'} = '^(.+?)@.+?$';
+
 
 Configure Browser to understand Kerberos SSO
 ---------------------------------------------
@@ -122,6 +169,7 @@ and change the following settings:
 
 * network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)
 * network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)
+
 
 Debugging and Problems
 ----------------------
@@ -157,8 +205,7 @@ If NGINX is running, please login into the NGINX Container and check all needed 
     
     # If not, please quit from the container and copy the file again using docker
     docker_admin> docker cp /opt/otobo-docker/nginx-conf/krb5.keytab otobo_nginx_1:/etc/krb5.keytab
-   
-   
+
    
 Kerberos debugging
 ~~~~~~~~~~~~~~~~~~
@@ -181,3 +228,14 @@ Now you are able to debug the Kerberos settings. Examples:
 
 .. code-block:: bash
     kinit username@OTRS.LOCAL
+
+.. note::
+
+    In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use seperate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your Kernel/Config.pm).
+
+.. note::
+
+    In case SSO is not working properly, make sure:
+    * the user for which it is not working is in Active Directory
+    * the system has to be in the domain
+    * it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO'
