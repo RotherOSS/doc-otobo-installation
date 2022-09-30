@@ -232,6 +232,6 @@ Now you are able to debug the Kerberos settings. Examples:
 In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use seperate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your Kernel/Config.pm).
 
 In case SSO is not working properly, make sure:
-* the user for which it is not working is in Active Directory`
-* the system has to be in the domain`
-* it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO'`
+* the user for which it is not working is in Active Directory
+* the system has to be in the domain
+* it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO')
