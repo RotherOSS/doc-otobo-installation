@@ -83,7 +83,7 @@ Create a new volume for your custom nginx configuration
 Create new OTOBO .env file
 --------------------------
 
-First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.tmp`` and create a new ``.env file including the kerberos settings.
+First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.tmp`` and create a new ``.env`` file including the kerberos settings.
 
 .. code-block:: bash
 
