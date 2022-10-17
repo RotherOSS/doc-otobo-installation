@@ -478,8 +478,24 @@ Customizing the OTOBO Docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Many customizations can be done in the external volume *otobo_opt_otobo* which corresponds to the directory */opt/otobo*
-in the Docker image. This works e.g. for local Perl modules, which can be installed into */opt/otobo/local*.
-The advantage of this approach is that the image itself does not have to be modified.
+in the Docker image. This works e.g. for local Perl modules which can be installed into */opt/otobo/local*. Here is an
+example that installs the not very useful CPAN module `Acme::123`.
+
+.. code-block:: bash
+
+    $ docker exec -it ${COMPOSE_PROJECT_NAME:=otobo}_web_1 bash
+    otobo@ce36ff89e637:~$ pwd
+    /opt/otobo
+    otobo@ce36ff89e637:~$ cpanm -l local Acme::123
+    --> Working on Acme::123
+    Fetching http://www.cpan.org/authors/id/N/NA/NATHANM/Acme-123-0.04.zip ... OK
+    Configuring Acme-123-0.04 ... OK
+    Building and testing Acme-123-0.04 ... OK
+    Successfully installed Acme-123-0.04
+    1 distribution installed
+    otobo@ce36ff89e637:~$
+
+The nice thing of this approach is that the Docker image itself does not have to be modified.
 
 Installing extra Debian packages is a little bit trickier. One approach is to create a custom *Dockerfile*
 and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running
