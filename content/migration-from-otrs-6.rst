@@ -1,4 +1,4 @@
-Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10
+Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10.1
 ==================================================================================
 
 Welcome and thank you for choosing OTOBO!
