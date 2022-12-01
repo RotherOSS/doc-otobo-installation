@@ -601,8 +601,61 @@ running the test suite on a fresh installation.
    .......
    docker_admin> docker-compose start daemon
 
+Add a catch all email with postfix and send to otobo container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A catch-all account can be created by adding a virtual aliases to the postfix server. To add an alias edit ``/etc/postfix/virtual`` configuration file:
+
+.. code-block:: bash
+
+   nano /etc/postfix/virtual
+
+Then add a catch-all address like below:
+
+.. code-block:: bash
+
+   @example.com catch_all_user
+
+You may also have some actual email accounts on your domain and you need to forward emails of that accounts to the correct mailbox. Then you can also create virtual alias for that email address and forward it to specific user’s mailboxes. Use the below configuration, which will send all emails to user ``catch_all_user`` except emails of info@example.com and support@example.com.
+
+.. code-block:: bash
+
+   @example.com catch_all_user
+   info@example.com  info
+   support@example.com support
+
+Save and close configuration file, then execute the following command to create or update hash file.
+
+.. code-block:: bash
+
+   postmap /etc/postfix/virtual
+
+The above command will create ``/etc/postfix/virtual.db`` file in your system. Which will be used by the Postfix server.
+
+Now, you need to add virtual_alias_maps to the Postfix main configuration file. Just edit Postfix configuration file ``/etc/postfix/main.cf`` in your favorite text editor:
+
+.. code-block:: bash
+
+   nano /etc/postfix/main.cf
+
+Add the following entry to the end of the file
+
+.. code-block:: bash
+
+   virtual_alias_maps = hash:/etc/postfix/virtual
+
+Save the file and close it.
+
+After making all the changes, reload the postfix service to apply all settings. Use the following command to reload the postfix configuration.
+
+.. code-block:: bash
+
+   systemctl reload postfix
+
+TODO - pipe to OTOBO
+
 List of useful commands
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 **Docker**
 
