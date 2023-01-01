@@ -6,14 +6,14 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2022-12-31'
+doc_datestamp = '2023-01-01'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
 doc_url = 'https://otobo.de'
 doc_vendor = 'Rother OSS GmbH'
 doc_version = '10.1'
-doc_yearstamp = '2022'
+doc_yearstamp = '2023'
 
 rst_prolog = """
 .. |doc-datestamp| replace:: {0}
