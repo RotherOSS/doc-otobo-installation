@@ -32,7 +32,7 @@ Here is an example for installation on Ubuntu 20.04:
 
 .. code-block:: bash
 
-   root> apt-get install git docker docker-compose
+   root> apt-get install git docker docker-compose curl
    root> systemctl enable docker
 
 Please check the Git and the Docker documentation for instructions on further setup.
