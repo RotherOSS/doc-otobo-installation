@@ -461,7 +461,7 @@ are already used by other services. In these cases the default ports can be over
 Skip startup of specific services
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The current Docker compose setup start five, six when HTTTPS is activated, services. But there are valid use cases
+The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases
 where one or more of these services are not needed. The prime example is when the database should not run as a Docker service,
 but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services.
 But the option `--scale` can be abused for this purpose. So for an installation with an external database
