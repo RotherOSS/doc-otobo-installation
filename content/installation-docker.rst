@@ -493,11 +493,11 @@ For this you could create an extra docker compose file thats look like:
           - "0.0.0.0:3306:3306"
 
 Now we have to tell *docker-compose* to include our new file.
-For this we need to add the following line in the *.env* file:
+For this you have to add your YAML file to the *COMPOSE_FILE* variable in the *.env* file, for example:
 
 .. code-block:: bash
 
-    COMPOSE_FILE=$COMPOSE_FILE:custom_db.yml
+   COMPOSE_FILE=docker-compose/otobo-base.yml:docker-compose/otobo-override-http.yml:custom_db.yml
 
 Now we can use *docker-compose* to recreate our container
 
