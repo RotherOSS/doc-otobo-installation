@@ -474,6 +474,40 @@ the following command can be used:
 Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml* and removing the relevant
 service definitions.
 
+Customizing OTOBO Docker Compose
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Instead of editing the files under *docker-compose/* and risking to overwrite your own options with the `next update
+<https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the otobo-docker folder,
+it is advisable to create an extra YAML file where the specific services are overwritten with additional options.
+
+A common example would be to make the database container accessible from the outside via port 3306. 
+For this you could create an extra docker compose file thats look like:
+
+.. code-block:: bash
+
+    $ cat custom_db.yml
+    services:
+      db:
+        ports:
+          - "0.0.0.0:3306:3306"
+
+Now we have to tell *docker-compose* to include our new file.
+For this we need to add the following line in the *.env* file:
+
+.. code-block:: bash
+
+    COMPOSE_FILE=$COMPOSE_FILE:custom_db.yml
+
+Now we can use *docker-compose* to recreate our container
+
+.. code-block:: bash
+
+    $ docker-compose stop # if otobo is running
+    $ docker-compose up -d 
+
+With this procedure you can customize any service or volumes.
+
 Customizing the OTOBO Docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
