@@ -397,19 +397,19 @@ Now you can restart your Elasticsearch server to load the new configuration sett
    root> systemctl restart elasticsearch
 
 
-Step 8: Basic System Configuration
+Step 9: Basic System Configuration
 -------------------------------------
 
 Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
 
 
-Step 9: First Login
+Step 10: First Login
 --------------------
 
 Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above).
 
 
-Step 10: Start the OTOBO Daemon
+Step 11: Start the OTOBO Daemon
 --------------------------------------------
 
 OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
@@ -418,7 +418,7 @@ OTOBO daemon is responsible for handling any asynchronous and recurring tasks in
 
    otobo> /opt/otobo/bin/otobo.Daemon.pl start
 
-Step 11: Cron jobs for the OTOBO user
+Step 12: Cron jobs for the OTOBO user
 -----------------------------------------------
 
 There are two default OTOBO cron files in ``/opt/otobo/var/cron/\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the ".dist" filename extension.
@@ -434,7 +434,7 @@ There are two default OTOBO cron files in ``/opt/otobo/var/cron/\*.dist``, and t
 With this step, the basic system setup is finished.
 
 
-Step 12: Setup Bash Auto-Completion (optional)
+Step 13: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
 
 All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier.
@@ -458,7 +458,7 @@ If you type a few characters of the command name, TAB will show all matching com
       source /opt/otobo/.bash_completion
 
 
-Step 13: Further Information
+Step 14: Further Information
 ----------------------------
 
 We advise you to read the OTOBO :doc:`performance-tuning` chapter.
