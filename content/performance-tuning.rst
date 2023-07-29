@@ -234,7 +234,7 @@ Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl
+   otobo> /opt/otobo/bin/otobo.CheckModules.pl --all
 
 3. Configure OTOBO for Redis
 

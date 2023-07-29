@@ -474,6 +474,34 @@ the following command can be used:
 Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml* and removing the relevant
 service definitions.
 
+Prepare offline installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please download `the latest version of otobo-docker
+<https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__
+on a system that has internet access and where docker is installed. Then navigate to
+the following folder *otobo-docker/docker-compose*.
+
+.. code-block:: bash
+
+   cd otobo-docker/docker-compose
+
+Now you can run the following command to download all Docker images from a specific file, in my example I use the *otobo-base.yml*.
+
+.. code-block:: bash
+
+   for i in $(cat otobo-base.yml| grep image:| cut -d":" -f3,4 | sed -e "s/-//1" -e"s/\}//g"); do docker pull $i; docker save $i -o $(echo $i|sed "s/\//-/g").docker; done
+
+After that, the images (.docker) are located in the docker-compose folder and can be uploaded to the target system via e.g `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__.
+
+On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one.
+
+In the following example I import the mariadb image:
+
+.. code-block:: bash
+
+   docker load --input mariadb:10.5.docker
+
 Customizing OTOBO Docker Compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
