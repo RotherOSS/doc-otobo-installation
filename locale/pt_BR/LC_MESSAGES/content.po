@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-24 00:40+0100\n"
+"POT-Creation-Date: 2023-08-02 00:40+0200\n"
 "PO-Revision-Date: 2021-08-02 02:15+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.otobo.org/projects/"
@@ -2118,10 +2118,47 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:488
 #, fuzzy
+msgid "Prepare offline installation"
+msgstr "Instalação automática"
+
+#: ../../content/installation-docker.rst:490
+msgid ""
+"Please download `the latest version of otobo-docker <https://doc.otobo.org/"
+"manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-"
+"docker-repo>`__ on a system that has internet access and where docker is "
+"installed. Then navigate to the following folder *otobo-docker/docker-"
+"compose*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:499
+msgid ""
+"Now you can run the following command to download all Docker images from a "
+"specific file, in my example I use the *otobo-base.yml*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:505
+msgid ""
+"After that, the images (.docker) are located in the docker-compose folder "
+"and can be uploaded to the target system via e.g `SCP <https://en.wikipedia."
+"org/wiki/Secure_copy_protocol>`__."
+msgstr ""
+
+#: ../../content/installation-docker.rst:507
+msgid ""
+"On the offline target system, go to the folder where the docker images are "
+"stored. And enter the following command to import them one by one."
+msgstr ""
+
+#: ../../content/installation-docker.rst:509
+msgid "In the following example I import the mariadb image:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:516
+#, fuzzy
 msgid "Customizing OTOBO Docker Compose"
 msgstr "Personalizando a imagem do OTOBO Docker"
 
-#: ../../content/installation-docker.rst:490
+#: ../../content/installation-docker.rst:518
 msgid ""
 "Instead of editing the files under *docker-compose/* and risking to "
 "overwrite your own options with the `next update <https://doc.otobo.org/"
@@ -2131,34 +2168,34 @@ msgid ""
 "options."
 msgstr ""
 
-#: ../../content/installation-docker.rst:494
+#: ../../content/installation-docker.rst:522
 msgid ""
 "A common example would be to make the database container accessible from the "
 "outside via port 3306. For this you could create an extra docker compose "
 "file thats look like:"
 msgstr ""
 
-#: ../../content/installation-docker.rst:505
+#: ../../content/installation-docker.rst:533
 msgid ""
 "Now we have to tell *docker-compose* to include our new file. For this you "
 "have to add your YAML file to the *COMPOSE_FILE* variable in the *.env* "
 "file, for example:"
 msgstr ""
 
-#: ../../content/installation-docker.rst:512
+#: ../../content/installation-docker.rst:540
 #, fuzzy
 msgid "Now we can use *docker-compose* to recreate our container"
 msgstr "Agora iniciaremos a imagem docker-compose com um simples"
 
-#: ../../content/installation-docker.rst:519
+#: ../../content/installation-docker.rst:547
 msgid "With this procedure you can customize any service or volumes."
 msgstr ""
 
-#: ../../content/installation-docker.rst:522
+#: ../../content/installation-docker.rst:550
 msgid "Customizing the OTOBO Docker image"
 msgstr "Personalizando a imagem do OTOBO Docker"
 
-#: ../../content/installation-docker.rst:524
+#: ../../content/installation-docker.rst:552
 #, fuzzy
 msgid ""
 "Many customizations can be done in the external volume *otobo_opt_otobo* "
@@ -2173,13 +2210,13 @@ msgstr ""
 "otobo/local*. A vantagem dessa abordagem é que a própria imagem não precisa "
 "ser modificada."
 
-#: ../../content/installation-docker.rst:542
+#: ../../content/installation-docker.rst:570
 msgid ""
 "The nice thing of this approach is that the Docker image itself does not "
 "have to be modified."
 msgstr ""
 
-#: ../../content/installation-docker.rst:544
+#: ../../content/installation-docker.rst:572
 msgid ""
 "Installing extra Debian packages is a little bit trickier. One approach is "
 "to create a custom *Dockerfile* and use the OTOBO image as the base image. "
@@ -2190,7 +2227,7 @@ msgid ""
 "docker-image."
 msgstr ""
 
-#: ../../content/installation-docker.rst:549
+#: ../../content/installation-docker.rst:577
 msgid ""
 "But for the latter approach there are two hurdles to overcome. First, the "
 "image *otobo* runs per default as the user *otobo* with the UID 1000. The "
@@ -2205,39 +2242,39 @@ msgid ""
 "where we add fortune cookies to otobo:"
 msgstr ""
 
-#: ../../content/installation-docker.rst:558
+#: ../../content/installation-docker.rst:586
 msgid ""
 "Pull a tagged OTOBO image, if we don't have it yet, and check whether the "
 "image already provides fortune cookies:"
 msgstr ""
 
-#: ../../content/installation-docker.rst:565
+#: ../../content/installation-docker.rst:593
 msgid ""
 "Add fortune cookies to a named container running the original OTOBO image. "
 "This is done in an interactive session as the user *root*:"
 msgstr ""
 
-#: ../../content/installation-docker.rst:576
+#: ../../content/installation-docker.rst:604
 msgid ""
 "Create an image from the stopped container and give it a name. Take into "
 "account that the default user and entrypoint script must be restored:"
 msgstr ""
 
-#: ../../content/installation-docker.rst:583
+#: ../../content/installation-docker.rst:611
 msgid "Finally we can doublecheck:"
 msgstr ""
 
-#: ../../content/installation-docker.rst:592
+#: ../../content/installation-docker.rst:620
 msgid ""
 "The modified image can be specified in your *.env* file and then be used for "
 "fun and profit."
 msgstr ""
 
-#: ../../content/installation-docker.rst:595
+#: ../../content/installation-docker.rst:623
 msgid "Building local images"
 msgstr "Construindo imagens locais"
 
-#: ../../content/installation-docker.rst:599
+#: ../../content/installation-docker.rst:627
 #, fuzzy
 msgid ""
 "Building Docker images locally is usually only needed during development. "
@@ -2247,7 +2284,7 @@ msgstr ""
 "A construção de imagens Docker localmente geralmente só é necessária durante "
 "o desenvolvimento."
 
-#: ../../content/installation-docker.rst:603
+#: ../../content/installation-docker.rst:631
 #, fuzzy
 msgid ""
 "The Docker files needed for creating Docker images locally are part of the "
@@ -2256,31 +2293,31 @@ msgstr ""
 "Os arquivos necessários para criar imagens Docker localmente fazem parte do "
 "repositório git https://github.com/RotherOSS/otobo:"
 
-#: ../../content/installation-docker.rst:605
+#: ../../content/installation-docker.rst:633
 msgid "*otobo.web.dockerfile*"
 msgstr "*otobo.web.dockerfile*"
 
-#: ../../content/installation-docker.rst:606
+#: ../../content/installation-docker.rst:634
 msgid "*otobo.nginx.dockerfile*"
 msgstr "*otobo.nginx.dockerfile*"
 
-#: ../../content/installation-docker.rst:607
+#: ../../content/installation-docker.rst:635
 msgid "*otobo.elasticsearch.dockerfile*"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
-#: ../../content/installation-docker.rst:609
+#: ../../content/installation-docker.rst:637
 msgid ""
 "The script for the actual creation of the images is *bin/docker/"
 "build_docker_images.sh*."
 msgstr ""
 
-#: ../../content/installation-docker.rst:621
+#: ../../content/installation-docker.rst:649
 msgid ""
 "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` "
 "using the version set up the file *RELEASE*."
 msgstr ""
 
-#: ../../content/installation-docker.rst:623
+#: ../../content/installation-docker.rst:651
 #, fuzzy
 msgid ""
 "After building the local images, one can return to the *docker-compose* "
@@ -2293,11 +2330,11 @@ msgstr ""
 "configurando ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
 "``OTOBO_IMAGE_OTOBO_NGINX`` em *.env*."
 
-#: ../../content/installation-docker.rst:627
+#: ../../content/installation-docker.rst:655
 msgid "Automatic Installation"
 msgstr "Instalação automática"
 
-#: ../../content/installation-docker.rst:629
+#: ../../content/installation-docker.rst:657
 #, fuzzy
 msgid ""
 "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can "
@@ -2308,21 +2345,21 @@ msgstr ""
 "atalho. Isso é útil principalmente para executar o conjunto de testes em uma "
 "instalação nova."
 
-#: ../../content/installation-docker.rst:634
+#: ../../content/installation-docker.rst:662
 msgid "``docker-compose down -v`` will remove all previous setup and data."
 msgstr ""
 "``docker-compose down -v`` irá remover todas as configurações e dados "
 "anteriores."
 
-#: ../../content/installation-docker.rst:649
+#: ../../content/installation-docker.rst:677
 msgid "List of useful commands"
 msgstr "Lista de comandos úteis"
 
-#: ../../content/installation-docker.rst:651
+#: ../../content/installation-docker.rst:679
 msgid "**Docker**"
 msgstr "**Docker**"
 
-#: ../../content/installation-docker.rst:653
+#: ../../content/installation-docker.rst:681
 #, fuzzy
 msgid ""
 "``docker system prune -a`` system clean-up (removes all unused images, "
@@ -2331,12 +2368,12 @@ msgstr ""
 "``docker system prune -a`` limpeza do sistema (remove todas as imagens, "
 "contêineres, volumes e redes não utilizados)"
 
-#: ../../content/installation-docker.rst:654
+#: ../../content/installation-docker.rst:682
 #, fuzzy
 msgid "``docker version`` show version"
 msgstr "Mostrar versão ``docker version``"
 
-#: ../../content/installation-docker.rst:655
+#: ../../content/installation-docker.rst:683
 #, fuzzy
 msgid ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
@@ -2344,12 +2381,12 @@ msgstr ""
 "``docker build --tag otobo --file=otobo.web.Dockerfile .`` constrói uma "
 "imagem"
 
-#: ../../content/installation-docker.rst:656
+#: ../../content/installation-docker.rst:684
 #, fuzzy
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``docker run --publish 80:5000 otobo`` executa a nova imagem"
 
-#: ../../content/installation-docker.rst:657
+#: ../../content/installation-docker.rst:685
 #, fuzzy
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
@@ -2357,7 +2394,7 @@ msgstr ""
 "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` faça login na nova "
 "imagem"
 
-#: ../../content/installation-docker.rst:658
+#: ../../content/installation-docker.rst:686
 #, fuzzy
 msgid ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that "
@@ -2366,27 +2403,27 @@ msgstr ""
 "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` tente "
 "isso caso o entrypoint.sh esteja quebrado"
 
-#: ../../content/installation-docker.rst:659
+#: ../../content/installation-docker.rst:687
 #, fuzzy
 msgid "``docker ps`` show running images"
 msgstr "``docker ps`` mostra imagens em execução"
 
-#: ../../content/installation-docker.rst:660
+#: ../../content/installation-docker.rst:688
 #, fuzzy
 msgid "``docker images`` show available images"
 msgstr "mostrar imagens disponíveis ``docker images``"
 
-#: ../../content/installation-docker.rst:661
+#: ../../content/installation-docker.rst:689
 #, fuzzy
 msgid "``docker volume ls`` list volumes"
 msgstr "lista volumes ``docker volume ls``"
 
-#: ../../content/installation-docker.rst:662
+#: ../../content/installation-docker.rst:690
 #, fuzzy
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr "``docker volume inspect otobo_opt_otobo`` inspecionar um volume"
 
-#: ../../content/installation-docker.rst:663
+#: ../../content/installation-docker.rst:691
 #, fuzzy
 msgid ""
 "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get "
@@ -2395,17 +2432,17 @@ msgstr ""
 "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` obter "
 "ponto de montagem de volume"
 
-#: ../../content/installation-docker.rst:664
+#: ../../content/installation-docker.rst:692
 #, fuzzy
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``docker volume rm tmp_volume`` remove um volume"
 
-#: ../../content/installation-docker.rst:665
+#: ../../content/installation-docker.rst:693
 #, fuzzy
 msgid "``docker inspect <container>`` inspect a container"
 msgstr "``docker inspect <container>`` inspecionar um contêiner"
 
-#: ../../content/installation-docker.rst:666
+#: ../../content/installation-docker.rst:694
 #, fuzzy
 msgid ""
 "``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` "
@@ -2414,43 +2451,43 @@ msgstr ""
 "``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` lista "
 "os arquivos em uma imagem"
 
-#: ../../content/installation-docker.rst:667
+#: ../../content/installation-docker.rst:695
 #, fuzzy
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` recarrega o nginx"
 
-#: ../../content/installation-docker.rst:669
+#: ../../content/installation-docker.rst:697
 msgid "**Docker Compose**"
 msgstr "**Docker Compose**"
 
-#: ../../content/installation-docker.rst:671
+#: ../../content/installation-docker.rst:699
 #, fuzzy
 msgid "``docker-compose config`` check and show the configuration"
 msgstr "``docker-compose config`` verifique e mostre a configuração"
 
-#: ../../content/installation-docker.rst:672
+#: ../../content/installation-docker.rst:700
 #, fuzzy
 msgid "``docker-compose ps`` show the running containers"
 msgstr "``docker-compose ps`` mostrar os contêineres em execução"
 
-#: ../../content/installation-docker.rst:673
+#: ../../content/installation-docker.rst:701
 #, fuzzy
 msgid "``docker-compose exec nginx nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` recarrega o nginx"
 
-#: ../../content/installation-docker.rst:676
+#: ../../content/installation-docker.rst:704
 msgid "Resources"
 msgstr "Recursos"
 
-#: ../../content/installation-docker.rst:678
+#: ../../content/installation-docker.rst:706
 msgid "Finally, here is a highly subjective collection of links."
 msgstr ""
 
-#: ../../content/installation-docker.rst:680
+#: ../../content/installation-docker.rst:708
 msgid "**General info and tutorials**"
 msgstr ""
 
-#: ../../content/installation-docker.rst:682
+#: ../../content/installation-docker.rst:710
 #, fuzzy
 msgid ""
 "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/"
@@ -2458,7 +2495,7 @@ msgid ""
 msgstr ""
 "`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
-#: ../../content/installation-docker.rst:683
+#: ../../content/installation-docker.rst:711
 msgid ""
 "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
@@ -2466,15 +2503,15 @@ msgstr ""
 "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-"
 "dockerfile-best-practices/>`_"
 
-#: ../../content/installation-docker.rst:684
+#: ../../content/installation-docker.rst:712
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
-#: ../../content/installation-docker.rst:686
+#: ../../content/installation-docker.rst:714
 msgid "**Tips and hints**"
 msgstr ""
 
-#: ../../content/installation-docker.rst:688
+#: ../../content/installation-docker.rst:716
 msgid ""
 "`Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www."
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
@@ -2484,7 +2521,7 @@ msgstr ""
 "digitalocean.com/community/tutorials/how-to-install-docker-compose-on-"
 "ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:689
+#: ../../content/installation-docker.rst:717
 msgid ""
 "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
@@ -2492,7 +2529,7 @@ msgstr ""
 "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/"
 "community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:690
+#: ../../content/installation-docker.rst:718
 #, fuzzy
 msgid ""
 "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-"
@@ -2500,7 +2537,7 @@ msgid ""
 msgstr ""
 "`cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
-#: ../../content/installation-docker.rst:691
+#: ../../content/installation-docker.rst:719
 msgid ""
 "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
@@ -2508,7 +2545,7 @@ msgstr ""
 "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-"
 "docker-hosts-ip-address-from-in-a-container>`_"
 
-#: ../../content/installation-docker.rst:692
+#: ../../content/installation-docker.rst:720
 msgid ""
 "`Self signed certificate <https://www.digitalocean.com/community/tutorials/"
 "how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
@@ -2516,11 +2553,11 @@ msgstr ""
 "`Self signed certificate <https://www.digitalocean.com/community/tutorials/"
 "how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 
-#: ../../content/installation-docker.rst:694
+#: ../../content/installation-docker.rst:722
 msgid "**Troubleshooting**"
 msgstr ""
 
-#: ../../content/installation-docker.rst:696
+#: ../../content/installation-docker.rst:724
 msgid ""
 "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/"
 "when-does-docker-image-cache-invalidation-occur>`_"
@@ -2528,12 +2565,12 @@ msgstr ""
 "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/"
 "when-does-docker-image-cache-invalidation-occur>`_"
 
-#: ../../content/installation-docker.rst:697
+#: ../../content/installation-docker.rst:725
 msgid ""
 "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 msgstr ""
 
-#: ../../content/installation-docker.rst:698
+#: ../../content/installation-docker.rst:726
 msgid ""
 "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-"
 "build/>`_"
