@@ -19,7 +19,7 @@ Please create a new Active Directory User with the following settings and save t
    Please use as Username only this syntax: `HTTP/fqdn.from.your.otobo.de`. `fqdn.from.your.otobo.de` needs to be a A-Record DNS entry, not a CNAME!
    In the next step, it is also possible to use other URLs for OTOBO, they must then point as CNAME to our A-record defined above.
    
-   The username should be written in capital letters, as Kerberos expects it that way.
+   The username part "HTTP/" should be written in capital letters, as Kerberos expects it that way.
    
    The password doesn't work properly with some special characters (e.g. '&').
    
@@ -47,7 +47,7 @@ Now we use the tool `ktpass.exe`to generate the needed keytab file:
 
 .. note::
 
-   Please write the username in capital letters.
+   Please write the domain (@OTRS.LOCAL) always in capital letters.
    The password must not contain some special characters.
    
 In the next step please move the krb5.keytab file to the OTOBO Server:
@@ -57,8 +57,8 @@ In the next step please move the krb5.keytab file to the OTOBO Server:
     # Create new directory
     docker_admin> mkdir /opt/otobo-docker/nginx-conf
     
-    # Move the file krb5.conf to the new directory (Attention, depending on where you have placed the krb5.conf file, the command below will change.)
-    docker_admin> mv ?/krb5.conf /opt/otobo-docker/nginx-conf/krb5.keytab
+    # Move the file krb5.keytab to the new directory (Attention, depending on where you have placed the krb5.conf file, the command below will change.)
+    docker_admin> mv ?/krb5.keytab /opt/otobo-docker/nginx-conf/krb5.keytab
 
 Create a new volume for your custom nginx configuration
 -------------------------------------------------------
