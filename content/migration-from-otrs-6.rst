@@ -129,6 +129,10 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
     - OTRSSystemConfigurationHistory
     - Znuny4OTRS-PasswordPolicy
 
+The following OTOBO packages have been integrated into OTOBO 11.0. This means that they should not be installed
+in the target system when the target system is OTOBO 11.
+    - ImportExport
+
 Step 2: Deactivate ``SecureMode`` on OTOBO
 -------------------------------------------------------
 
