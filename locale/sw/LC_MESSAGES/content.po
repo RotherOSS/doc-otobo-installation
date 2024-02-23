@@ -1,0 +1,3348 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2022 Rother OSS GmbH, https://otobo.de/
+# This file is distributed under the same license as the OTOBO Installation Guide package.
+# Languages add-on <noreply-addon-languages@weblate.org>, 2024.
+msgid ""
+msgstr ""
+"Project-Id-Version: OTOBO Installation Guide 10.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-31 00:40+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../content/backup-restore.rst:12
+msgid "Backup and Restore"
+msgstr ""
+
+#: ../../content/backup-restore.rst:14
+msgid "OTOBO has built in scripts for backup and restore. Execute the scripts with the option ``-h`` for more information."
+msgstr ""
+
+#: ../../content/backup-restore.rst:17
+msgid "Backup"
+msgstr ""
+
+#: ../../content/backup-restore.rst:21
+msgid "To create a new backup, write permission for the destination directory is needed for the user ``otobo``."
+msgstr ""
+
+#: ../../content/backup-restore.rst:27
+#: ../../content/backup-restore.rst:80
+msgid "The output of the script:"
+msgstr ""
+
+#: ../../content/backup-restore.rst:70
+msgid "Restore"
+msgstr ""
+
+#: ../../content/backup-restore.rst:74
+#: ../../content/backup-restore-docker.rst:65
+msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
+msgstr ""
+
+#: ../../content/backup-restore.rst:96
+#: ../../content/backup-restore-docker.rst:17
+msgid "Considerations for running OTOBO under Docker"
+msgstr ""
+
+#: ../../content/backup-restore.rst:98
+msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered."
+msgstr ""
+
+#: ../../content/backup-restore.rst:100
+msgid "First we need to make sure that the backup files are not created in the file system that is internal to the container. Because in that case all data would be lost when the container is stopped. Therefore the backup directory must be in a volume. For now we only consider the most simple case, where the backup dir is a local dir on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host, and ``/otobo_backup`` as the location in the container."
+msgstr ""
+
+#: ../../content/backup-restore.rst:106
+#: ../../content/backup-restore-docker.rst:32
+msgid "First we need to create the volume."
+msgstr ""
+
+#: ../../content/backup-restore.rst:119
+msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the Daemon may, but don't have to, be stopped."
+msgstr ""
+
+#: ../../content/backup-restore.rst:130
+#: ../../content/backup-restore-docker.rst:83
+msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:12
+msgid "Backup and Restore using Docker"
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:14
+msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:19
+msgid "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:22
+msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:29
+msgid "Secondly, commands in the Docker container usually run as the user `otobo` with the user id 1000 and the group id 1000. It must be made sure, that this user can write in the backup directory."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:48
+msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:67
+msgid "To drop an existing otobo database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the `db` container."
+msgstr ""
+
+#: ../../content/backup-restore-docker.rst:75
+msgid "As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:12
+msgid "Adapt customer interface with corporate identity"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:14
+msgid "In OTOBO it is very easy to adapt the customer area to your own corporate identity. Follow this tutorial step by step and OTOBO will shine in your own design in a short time."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:20
+msgid "Currently, it is not so easy to adapt the agent area to one's own CI. Changes in the OTOBO .css files would be necessary here. One exception is the logo on the agent login page and the agent header. The logos can be easily exchanged by copying the logos to the server and then adjusting the options ``AgentLoginLogo`` and ``AgentLogo`` under ``Admin -> System Configuration``."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:26
+msgid "Change colors in Customer Area"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:28
+msgid "To change the colors for the OTOBO customer interface, please go to ``Admin -> System Configuration`` and change the following settings:"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:30
+msgid "CustomerColorDefinitions"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:31
+msgid "To change the colours on the Customer Dashboard, please go to `Admin -> System Configuration`` and search for CustomerDashboard. In the search result you will find all the options you need with colour definitions."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:35
+msgid "Change Logos and Pictures"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:37
+msgid "In the first step please copy your Logos and Pictures to the OTOBO Server. Please use an SCP client (WinSCP) for this purpose. Often you do not have the permissions to copy the logos to the right place. In this case, it is best to use the folder /tmp/."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:41
+msgid "In the next step copy the Logo into the OTOBO Home directory:"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:52
+msgid "Now change inside the OTOBO Agent Interface to ``Admin -> System Configuration`` and change the following settings:"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:56
+msgid "Change Customer Login Pictures and Text"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:61
+msgid "1 and 2 - System Configuration Option **CustomerLogin::Settings**"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:63
+msgid "**Remove Opacity and Watermark**"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:65
+msgid "At the moment it is not possible to remove the overlay and watermark used in the image on the right by system configuration."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:67
+msgid "To remove the opacity, please adjust the option **#oooLoginBG > .oooBG** in the file"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:69
+msgid "``var/httpd/htdocs/skins/Customer/default/css/Core.Login.css``"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:82
+msgid "To remove the watermark, please remove the following line inside the file:"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:84
+msgid "``Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt``"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:100
+msgid "Please add the files to a opm package in the next step, so that the changes remain persistent. You can find instructions on how to do this in our Admin Manual: https://doc.otobo.org/manual/developer/10.1/en/content/how-to-publish-otobo-extensions.html"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:104
+msgid "Change Customer Dashboard tiles and options"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:106
+msgid "To change the colours on the Customer Dashboard, please go to ``Admin -> System Configuration`` and search for **CustomerDashboard**."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:108
+msgid "In the search result you will find all the options you need with colour definitions."
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:113
+msgid "1 - To change the picture, link and text please use the System Configuration Option **CustomerDashboard::Tiles###FeaturedLink-01**"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:114
+msgid "2 - To change the toplevel text please use the System Configuration Option **CustomerDashboard::Configuration::Text**"
+msgstr ""
+
+#: ../../content/customer-interface-ci.rst:118
+msgid "Please disable the config options from not needed tiles."
+msgstr ""
+
+#: ../../content/history.rst:13
+msgid "Documentation History"
+msgstr ""
+
+#: ../../content/history.rst:15
+msgid "2019 - OTRS Installation Guide - OTRS AG (https://otrs.com)"
+msgstr ""
+
+#: ../../content/history.rst:16
+msgid "2020 - OTOBO Installation Tutorial - Rother OSS GmbH (https://otobo.de)"
+msgstr ""
+
+#: ../../content/history.rst:18
+msgid "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany. Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de)"
+msgstr ""
+
+#: ../../content/history.rst:21
+msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license can be found on the `GNU website <https://www.gnu.org/licenses/fdl-1.3.txt>`__."
+msgstr ""
+
+#: ../../content/index.rst:17
+msgid "OTOBO Installation Tutorial"
+msgstr ""
+
+#: ../../content/index.rst:19
+msgid "This work is copyrighted by OTRS AG (https://otrs.com), Zimmersmühlenweg 11, 61440 Oberursel, Germany."
+msgstr ""
+
+#: ../../content/index.rst:22
+msgid "Copyright © for modifications and amendments 2019-2022 ROTHER OSS GmbH (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
+msgstr ""
+
+#: ../../content/index.rst:25
+msgid "Terms and Conditions OTRS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license can be found on the GNU website."
+msgstr ""
+
+#: ../../content/index.rst:32
+msgid "Terms and Conditions Rother OSS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"COPYING\"."
+msgstr ""
+
+#: ../../content/index.rst:39
+msgid "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany."
+msgstr ""
+
+#: ../../content/index.rst:42
+msgid "Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de)."
+msgstr ""
+
+#: ../../content/index.rst:44
+msgid "Contents"
+msgstr ""
+
+#: ../../content/installation.rst:12
+msgid "OTOBO Installation"
+msgstr ""
+
+#: ../../content/installation.rst:14
+msgid "This chapter describes the installation and basic configuration of the central OTOBO framework."
+msgstr ""
+
+#: ../../content/installation.rst:16
+msgid "Follow the detailed steps in this chapter to install OTOBO on your server. You can then use its web interface to login and administer the system."
+msgstr ""
+
+#: ../../content/installation.rst:20
+msgid "As of OTOBO version 10.0.7, we recommend Docker and Docker Compose for the OTOBO installation. By using the provided Docker images, all recommended dependencies (such as Elasticsearch, Redis Cache, etc.) are installed and configured automatically. Updates are thus greatly simplified and the performance has been improved. You can find the instructions for Docker-based installation at https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html ."
+msgstr ""
+
+#: ../../content/installation.rst:28
+msgid "Preparation: Disable SELinux when it is installed and enabled"
+msgstr ""
+
+#: ../../content/installation.rst:32
+msgid "If your system uses SELinux, you should disable it, otherwise OTOBO will not work correctly."
+msgstr ""
+
+#: ../../content/installation.rst:34
+msgid "Try the command ``sestatus`` and ``getenforce`` when you are not sure whether SELinux is installed and enabled on your system."
+msgstr ""
+
+#: ../../content/installation.rst:36
+msgid "The ``sestatus`` command returns the SELinux status and the SELinux policy being used. SELinux status: enabled is returned when SELinux is enabled. Current mode: enforcing is returned when SELinux is running in enforcing mode. Policy from config file: targeted is returned when the SELinux targeted policy is used."
+msgstr ""
+
+#: ../../content/installation.rst:41
+msgid "Here's how to disable SELinux for RHEL/CentOS/Fedora."
+msgstr ""
+
+#: ../../content/installation.rst:43
+msgid "Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:"
+msgstr ""
+
+#: ../../content/installation.rst:58
+msgid "Reboot your system. After reboot, confirm that the ``getenforce`` command returns *Disabled*:"
+msgstr ""
+
+#: ../../content/installation.rst:69
+msgid "Step 1: Unpack and Install OTOBO"
+msgstr ""
+
+#: ../../content/installation.rst:71
+msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
+msgstr ""
+
+#: ../../content/installation.rst:84
+msgid "Step 2: Install Additional Programs and Perl Modules"
+msgstr ""
+
+#: ../../content/installation.rst:86
+msgid "Use the following script to get an overview of all installed and required CPAN modules and other external dependencies."
+msgstr ""
+
+#: ../../content/installation.rst:90
+msgid "On Debian systems you may need to manually install some perl packages:"
+msgstr ""
+
+#: ../../content/installation.rst:107
+msgid "Please note that OTOBO requires a working Perl installation with all *core* modules such as the module ``version``. These modules are not explicitly checked by the script. You may need to install a ``perl-core`` package on some systems like RHEL that do not install the Perl core packages by default."
+msgstr ""
+
+#: ../../content/installation.rst:109
+msgid "To install the required and optional packages, you can use either CPAN or the package manager of your Linux distribution."
+msgstr ""
+
+#: ../../content/installation.rst:111
+msgid "Execute this command to get an install command to install the missing dependencies:"
+msgstr ""
+
+#: ../../content/installation.rst:119
+msgid "There are a number of optional or alternative modules which can be installed, mostly for more customized versions of OTOBO. Calling CheckModules.pl without any argument will list its full functionality."
+msgstr ""
+
+#: ../../content/installation.rst:123
+msgid "Step 3: Create the OTOBO User"
+msgstr ""
+
+#: ../../content/installation.rst:125
+msgid "Create a dedicated user for OTOBO within its own group:"
+msgstr ""
+
+#: ../../content/installation.rst:131
+msgid "Add the user to web server group (if the web server is not running as otobo user):"
+msgstr ""
+
+#: ../../content/installation.rst:140
+msgid "Step 4: Activate the Default Configuration File"
+msgstr ""
+
+#: ../../content/installation.rst:142
+msgid "There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.dist``. You must activate it by copying it without the ``.dist`` file name extension."
+msgstr ""
+
+#: ../../content/installation.rst:150
+msgid "Step 5: Configure the Apache Web Server"
+msgstr ""
+
+#: ../../content/installation.rst:152
+msgid "First of all, you should install the Apache2 web server and mod_perl; you'd typically do this from your system's package manager. Below you'll find the commands needed to set up Apache on the most popular Linux distributions."
+msgstr ""
+
+#: ../../content/installation.rst:166
+msgid "A critical setting of the Apache web server is the choice of the multi-processing module. For running OTOBO, the recommended choice is the module **mpm_prefork**. Like other Apache modules the multi-processing module can be managed with the tools a2dismod and a2enmod."
+msgstr ""
+
+#: ../../content/installation.rst:175
+msgid "All is fine whem mpm_prefork already is enabled."
+msgstr ""
+
+#: ../../content/installation.rst:177
+msgid "Disable mpm_event when it is currently active."
+msgstr ""
+
+#: ../../content/installation.rst:183
+msgid "Disable mpm_worker in case that MPM is enabled."
+msgstr ""
+
+#: ../../content/installation.rst:189
+msgid "Finally activate mpm_prefork."
+msgstr ""
+
+#: ../../content/installation.rst:195
+msgid "OTOBO requires a few more Apache modules to be active for optimal operation. Again, on most platforms you can make sure they are active via the tool a2enmod."
+msgstr ""
+
+#: ../../content/installation.rst:206
+msgid "On some platforms not all Apache modules exist and an error is displayed when installing. Do not worry and finish the installation, in most cases the module will not be needed."
+msgstr ""
+
+#: ../../content/installation.rst:208
+msgid "Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``."
+msgstr ""
+
+#: ../../content/installation.rst:211
+msgid "Configure Apache without SSL support"
+msgstr ""
+
+#: ../../content/installation.rst:213
+msgid "Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to the apache ``sites-available`` directory. In most cases no further editing of the template is required. Then enable the new configuration."
+msgstr ""
+
+#: ../../content/installation.rst:226
+msgid "Configure Apache **with** SSL support"
+msgstr ""
+
+#: ../../content/installation.rst:228
+msgid "Copy the template files ``/opt/otobo/scripts/apache2-httpd-vhost-80.include.conf`` and ``/opt/otobo/scripts/apache2-httpd-vhost-443.include.conf`` to the apache ``sites-available`` directory."
+msgstr ""
+
+#: ../../content/installation.rst:237
+msgid "Please edit the files and add the required information like SSL certificate storage path. After that, enable the OTOBO Apache configuration:"
+msgstr ""
+
+#: ../../content/installation.rst:244
+msgid "Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:"
+msgstr ""
+
+#: ../../content/installation.rst:252
+msgid "Step 6: Set File Permissions"
+msgstr ""
+
+#: ../../content/installation.rst:254
+#: ../../content/updating.rst:121
+msgid "Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup."
+msgstr ""
+
+#: ../../content/installation.rst:262
+msgid "Step 7: Setup the Database"
+msgstr ""
+
+#: ../../content/installation.rst:264
+msgid "First of all, you should install the database package. It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system, but it is possible to use PostgreSQL or Oracle as well."
+msgstr ""
+
+#: ../../content/installation.rst:267
+msgid "You'd typically do this from your systems package manager. Below you'll find the commands needed to set up MySQL on the most popular Linux distributions."
+msgstr ""
+
+#: ../../content/installation.rst:281
+msgid "After installing the MySQL server you need configure it."
+msgstr ""
+
+#: ../../content/installation.rst:283
+msgid "In MySQL higher or equal version 5.7  a new authentication module is active, and it is not possible to use the OTOBO web installer for database creation. Please login to the mysql console and set a different authentication module and password for the user ``root`` if this is the case:"
+msgstr ""
+
+#: ../../content/installation.rst:291
+msgid "For MariaDB > 10.1 use instead the following command:"
+msgstr ""
+
+#: ../../content/installation.rst:298
+msgid "If this command not work, please try the following commands:"
+msgstr ""
+
+#: ../../content/installation.rst:307
+msgid "After OTOBO installation it is possible to change the authentication module again, if needed."
+msgstr ""
+
+#: ../../content/installation.rst:311
+msgid "The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqld.cnf`` under the ``[mysqld]`` section:"
+msgstr ""
+
+#: ../../content/installation.rst:318
+msgid "For MySQL prior to MySQL 8.0 the query cache size should also be set:"
+msgstr ""
+
+#: ../../content/installation.rst:324
+msgid "Also add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
+msgstr ""
+
+#: ../../content/installation.rst:331
+msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
+msgstr ""
+
+#: ../../content/installation.rst:338
+msgid "After installing execute the script:"
+msgstr ""
+
+#: ../../content/installation.rst:346
+msgid "Step 8: Setup Elasticsearch"
+msgstr ""
+
+#: ../../content/installation.rst:348
+msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
+msgstr ""
+
+#: ../../content/installation.rst:351
+msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
+msgstr ""
+
+#: ../../content/installation.rst:353
+msgid "JDK Installation"
+msgstr ""
+
+#: ../../content/installation.rst:360
+msgid "Elasticsearch Installation"
+msgstr ""
+
+#: ../../content/installation.rst:370
+msgid "Elasticsearch Installation on another Linux distribution"
+msgstr ""
+
+#: ../../content/installation.rst:372
+msgid "Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
+msgstr ""
+
+#: ../../content/installation.rst:375
+msgid "Elasticsearch Module Installation"
+msgstr ""
+
+#: ../../content/installation.rst:376
+msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
+msgstr ""
+
+#: ../../content/installation.rst:385
+msgid "Elasticsearch Configuration"
+msgstr ""
+
+#: ../../content/installation.rst:387
+msgid "Elasticsearch has a multitude of configuration options and possibilities."
+msgstr ""
+
+#: ../../content/installation.rst:389
+msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 4 GB, set:"
+msgstr ""
+
+#: ../../content/installation.rst:397
+msgid "In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best."
+msgstr ""
+
+#: ../../content/installation.rst:401
+msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
+msgstr ""
+
+#: ../../content/installation.rst:403
+msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
+msgstr ""
+
+#: ../../content/installation.rst:411
+msgid "Step 9: Basic System Configuration"
+msgstr ""
+
+#: ../../content/installation.rst:413
+msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
+msgstr ""
+
+#: ../../content/installation.rst:417
+msgid "Step 10: First Login"
+msgstr ""
+
+#: ../../content/installation.rst:419
+msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
+msgstr ""
+
+#: ../../content/installation.rst:423
+msgid "Step 11: Start the OTOBO Daemon"
+msgstr ""
+
+#: ../../content/installation.rst:425
+msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
+msgstr ""
+
+#: ../../content/installation.rst:432
+msgid "Step 12: Cron jobs for the OTOBO user"
+msgstr ""
+
+#: ../../content/installation.rst:434
+msgid "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the \".dist\" filename extension."
+msgstr ""
+
+#: ../../content/installation.rst:444
+msgid "With this step, the basic system setup is finished."
+msgstr ""
+
+#: ../../content/installation.rst:448
+msgid "Step 13: Setup Bash Auto-Completion (optional)"
+msgstr ""
+
+#: ../../content/installation.rst:450
+msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier."
+msgstr ""
+
+#: ../../content/installation.rst:452
+msgid "You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user."
+msgstr ""
+
+#: ../../content/installation.rst:454
+msgid "After restarting your shell, you can just type this command followed by TAB, and it will list all available commands:"
+msgstr ""
+
+#: ../../content/installation.rst:460
+msgid "If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB."
+msgstr ""
+
+#: ../../content/installation.rst:464
+msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
+msgstr ""
+
+#: ../../content/installation.rst:472
+msgid "Step 14: Further Information"
+msgstr ""
+
+#: ../../content/installation.rst:474
+msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
+msgstr ""
+
+#: ../../content/installation-docker.rst:12
+msgid "Installing using Docker and Docker Compose"
+msgstr ""
+
+#: ../../content/installation-docker.rst:14
+msgid "With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes. All of OTOBO´s dependencies are already included in the provided collection of Docker images."
+msgstr ""
+
+#: ../../content/installation-docker.rst:17
+msgid "Service *db*: MariaDB is set up as the default database."
+msgstr ""
+
+#: ../../content/installation-docker.rst:18
+msgid "Service *elastic*: Elasticsearch is set up for the OTOBO power search."
+msgstr ""
+
+#: ../../content/installation-docker.rst:19
+msgid "Service *redis*: Redis is enabled for fast caching."
+msgstr ""
+
+#: ../../content/installation-docker.rst:20
+msgid "Service *web*: Gazelle is used as fast Perl webserver."
+msgstr ""
+
+#: ../../content/installation-docker.rst:21
+msgid "Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support."
+msgstr ""
+
+#: ../../content/installation-docker.rst:23
+msgid "We think that this setup is the perfect environment for an OTOBO installation."
+msgstr ""
+
+#: ../../content/installation-docker.rst:26
+msgid "Requirements"
+msgstr ""
+
+#: ../../content/installation-docker.rst:28
+msgid "The minimal versions of required software, that have been tested, are listed here:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:30
+msgid "Docker 19.03.13"
+msgstr ""
+
+#: ../../content/installation-docker.rst:31
+msgid "Docker Compose 1.25.0"
+msgstr ""
+
+#: ../../content/installation-docker.rst:32
+msgid "Git 2.17.1"
+msgstr ""
+
+#: ../../content/installation-docker.rst:36
+msgid "To get the required minimal versions on Ubuntu 18.04 follow the instructions in https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04 and https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04."
+msgstr ""
+
+#: ../../content/installation-docker.rst:40
+msgid "git, Docker, and Docker Compose can be installed with the standard system tools. Here is an example for installation on Ubuntu 20.04:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:48
+msgid "Please check the Git and the Docker documentation for instructions on further setup."
+msgstr ""
+
+#: ../../content/installation-docker.rst:51
+msgid "Installation"
+msgstr ""
+
+#: ../../content/installation-docker.rst:53
+msgid "The following instructions assume that all requirements are met, that you have a working Docker environment. We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions."
+msgstr ""
+
+#: ../../content/installation-docker.rst:58
+msgid "1. Clone the otobo-docker repo"
+msgstr ""
+
+#: ../../content/installation-docker.rst:60
+msgid "The Docker images will eventually be fetched from the repository https://hub.docker.com. But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository. Make sure that you specify the branch that corresponds to the current version of OTOBO. For example, when *OTOBO 10.0.15* is the current version then please use the branch *rel-10_0*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:67
+msgid "The location of the cloned repository does not matter. For these instructions we chose */opt/otobo-docker* as the working dir."
+msgstr ""
+
+#: ../../content/installation-docker.rst:77
+msgid "2. Create an initial *.env* file"
+msgstr ""
+
+#: ../../content/installation-docker.rst:79
+msgid "The Docker Compose configuration file *.env* is your primary interface for managing your installation of OTOBO. This file must first be created and then be adapted by yourself. In order to simplify the task there are several example files that should be used as starting point. Which sample file it the best fit depends on your use case. In most cases the decision is between *.docker_compose_env_http* and *.docker_compose_env_https*, depending on whether TLS must be supported or not. The other files are for more specialised use cases."
+msgstr ""
+
+#: ../../content/installation-docker.rst:87
+msgid ".docker_compose_env_http"
+msgstr ""
+
+#: ../../content/installation-docker.rst:87
+msgid "The OTOBO web app provides HTTP."
+msgstr ""
+
+#: ../../content/installation-docker.rst:90
+msgid ".docker_compose_env_https"
+msgstr ""
+
+#: ../../content/installation-docker.rst:90
+msgid "The OTOBO web app provides HTTPS by runnning Nginx as a reverse proxy webserver."
+msgstr ""
+
+#: ../../content/installation-docker.rst:93
+msgid ".docker_compose_env_https_custom_nginx"
+msgstr ""
+
+#: ../../content/installation-docker.rst:93
+msgid "Like *.docker_compose_env_https* but with support for a custom Nginx configuration."
+msgstr ""
+
+#: ../../content/installation-docker.rst:96
+msgid ".docker_compose_env_https_kerberos"
+msgstr ""
+
+#: ../../content/installation-docker.rst:96
+msgid "Like *.docker_compose_env_https* but with sample setup for single sign on. Note that Kerberos support is still **experimental**."
+msgstr ""
+
+#: ../../content/installation-docker.rst:99
+msgid ".docker_compose_env_http_selenium and .docker_compose_env_https_selenium"
+msgstr ""
+
+#: ../../content/installation-docker.rst:99
+msgid "These are used only for development when Selenium testing is activated."
+msgstr ""
+
+#: ../../content/installation-docker.rst:103
+msgid "Use ``ls -a`` for listing the hidden sample files."
+msgstr ""
+
+#: ../../content/installation-docker.rst:105
+msgid "Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP. When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support is achieved by an additional reverse proxy, which is implemented as a nginx service."
+msgstr ""
+
+#: ../../content/installation-docker.rst:109
+msgid "For the following commands we assume that HTTPS should be supported."
+msgstr ""
+
+#: ../../content/installation-docker.rst:117
+msgid "3. Configure the password for the database admin user"
+msgstr ""
+
+#: ../../content/installation-docker.rst:119
+msgid "Change the following setting inside your *.env* file:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:121
+msgid "``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``"
+msgstr ""
+
+#: ../../content/installation-docker.rst:123
+msgid "The password for the database admin user may be chosen freely. The database admin user is needed to create the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated database user **otobo**."
+msgstr ""
+
+#: ../../content/installation-docker.rst:128
+msgid "4. Set up a volume with SSL configuration for the nginx webproxy (optional)"
+msgstr ""
+
+#: ../../content/installation-docker.rst:130
+msgid "This step can be skipped when OTOBO should be available only via HTTP."
+msgstr ""
+
+#: ../../content/installation-docker.rst:132
+msgid "nginx needs for SSL encryption a certificate and a private key."
+msgstr ""
+
+#: ../../content/installation-docker.rst:136
+msgid "For testing and development a self-signed certificate can be used. However for productive use you should work with regular registered certificates."
+msgstr ""
+
+#: ../../content/installation-docker.rst:139
+msgid "See e.g. https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04 on how to create self-signed certificates."
+msgstr ""
+
+#: ../../content/installation-docker.rst:144
+msgid "To specify a CA chain with a certificate in nginx, it is necessary to copy the CA chain file with the actual certificate into a file."
+msgstr ""
+
+#: ../../content/installation-docker.rst:147
+msgid "The certificate and the private key are stored in a volume, so that they can be used by nginx later on. In any case the volume needs to be generated manually, and we need to copy the certificate and key to the volume:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:157
+msgid "The names of the copied files need to be set in our newly created *.env* file. E.g."
+msgstr ""
+
+#: ../../content/installation-docker.rst:159
+msgid "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
+msgstr ""
+
+#: ../../content/installation-docker.rst:162
+msgid "Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image."
+msgstr ""
+
+#: ../../content/installation-docker.rst:165
+msgid "5. Start the Docker containers with Docker Compose"
+msgstr ""
+
+#: ../../content/installation-docker.rst:167
+msgid "Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be fetched from https://hub.docker.com/u/rotheross."
+msgstr ""
+
+#: ../../content/installation-docker.rst:174
+msgid "To verify that the six required services (five in the case of HTTP only) are actually running, type:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:182
+msgid "6. Install and start OTOBO"
+msgstr ""
+
+#: ../../content/installation-docker.rst:184
+msgid "Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl."
+msgstr ""
+
+#: ../../content/installation-docker.rst:188
+msgid "Please configure OTOBO inside the installer with a new MySQL database. As MySQL database root password please use the password you configured in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your *.env* file. Please leave the value ``db`` for the MySQL hostname untouched."
+msgstr ""
+
+#: ../../content/installation-docker.rst:193
+msgid "**Have fun with OTOBO!**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:197
+msgid "To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command: ``docker-compose exec web bash``."
+msgstr ""
+
+#: ../../content/installation-docker.rst:201
+msgid "Additional technical information"
+msgstr ""
+
+#: ../../content/installation-docker.rst:203
+msgid "This section gives some more technical insight into what is happing under the hood."
+msgstr ""
+
+#: ../../content/installation-docker.rst:206
+msgid "List of Docker containers"
+msgstr ""
+
+#: ../../content/installation-docker.rst:209
+msgid "Container otobo_web_1"
+msgstr ""
+
+#: ../../content/installation-docker.rst:209
+msgid "OTOBO webserver on internal port 5000."
+msgstr ""
+
+#: ../../content/installation-docker.rst:212
+msgid "Container otobo_daemon_1"
+msgstr ""
+
+#: ../../content/installation-docker.rst:212
+msgid "OTOBO daemon. The OTOBO daemon is started and periodically checked."
+msgstr ""
+
+#: ../../content/installation-docker.rst:215
+msgid "Container otobo_db_1"
+msgstr ""
+
+#: ../../content/installation-docker.rst:215
+msgid "Run the database MariaDB on internal port 3306."
+msgstr ""
+
+#: ../../content/installation-docker.rst:218
+msgid "Container otobo_elastic_1"
+msgstr ""
+
+#: ../../content/installation-docker.rst:218
+msgid "Elasticsearch on the internal ports 9200 and 9300."
+msgstr ""
+
+#: ../../content/installation-docker.rst:221
+msgid "Container otobo_redis_1"
+msgstr ""
+
+#: ../../content/installation-docker.rst:221
+msgid "Run Redis as caching service."
+msgstr ""
+
+#: ../../content/installation-docker.rst:224
+msgid "Optional container otobo_nginx_1"
+msgstr ""
+
+#: ../../content/installation-docker.rst:224
+msgid "Run nginx as reverse proxy for providing HTTPS support."
+msgstr ""
+
+#: ../../content/installation-docker.rst:227
+msgid "Overview over the Docker volumes"
+msgstr ""
+
+#: ../../content/installation-docker.rst:229
+msgid "The Docker volumes are created on the host for persistent data. These allow starting and stopping the services without losing data. Keep in mind that containers are temporary and only data in the volumes is permanent."
+msgstr ""
+
+#: ../../content/installation-docker.rst:234
+msgid "otobo_opt_otobo"
+msgstr ""
+
+#: ../../content/installation-docker.rst:234
+msgid "contains */opt/otobo* in the container **web** and **daemon**."
+msgstr ""
+
+#: ../../content/installation-docker.rst:237
+msgid "otobo_mariadb_data"
+msgstr ""
+
+#: ../../content/installation-docker.rst:237
+msgid "contains */var/lib/mysql* in the container **db**."
+msgstr ""
+
+#: ../../content/installation-docker.rst:240
+msgid "otobo_elasticsearch_data"
+msgstr ""
+
+#: ../../content/installation-docker.rst:240
+msgid "contains */usr/share/elasticsearch/datal* in the container **elastic**."
+msgstr ""
+
+#: ../../content/installation-docker.rst:243
+msgid "otobo_redis_data"
+msgstr ""
+
+#: ../../content/installation-docker.rst:243
+msgid "contains data for the container `redis`."
+msgstr ""
+
+#: ../../content/installation-docker.rst:246
+msgid "otobo_nginx_ssl"
+msgstr ""
+
+#: ../../content/installation-docker.rst:246
+msgid "contains the TLS files, certificate and private key, must be initialized manually."
+msgstr ""
+
+#: ../../content/installation-docker.rst:249
+msgid "Docker environment variables"
+msgstr ""
+
+#: ../../content/installation-docker.rst:251
+msgid "In the instructions we did only minimal configuration. But the file *.env* allows to set more variables. Here is a short list of the most important environment variables. Note that more environment variables are supported by the base images."
+msgstr ""
+
+#: ../../content/installation-docker.rst:255
+msgid "**MariaDB settings**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:258
+msgid "OTOBO_DB_ROOT_PASSWORD"
+msgstr ""
+
+#: ../../content/installation-docker.rst:258
+msgid "The root password for MariaDB. This setting is required for running the service *db*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:260
+msgid "**Elasticsearch settings**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:262
+msgid "Elasticsearch needs some settings for productive environments. Please read https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker.html#docker-prod-prerequisites for detailed information."
+msgstr ""
+
+#: ../../content/installation-docker.rst:269
+msgid "OTOBO_Elasticsearch_ES_JAVA_OPTS"
+msgstr ""
+
+#: ../../content/installation-docker.rst:267
+msgid "Example setting: *OTOBO_Elasticsearch_ES_JAVA_OPTS=-Xms512m -Xmx512m* Please adjust this value for production env to a value up to 4g."
+msgstr ""
+
+#: ../../content/installation-docker.rst:271
+msgid "**Webserver settings**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:275
+#: ../../content/installation-docker.rst:283
+msgid "OTOBO_WEB_HTTP_PORT"
+msgstr ""
+
+#: ../../content/installation-docker.rst:274
+msgid "Set in case the HTTP port should deviate from the standard port 80. When HTTPS is enabled, the HTTP port will redirect to HTTPS."
+msgstr ""
+
+#: ../../content/installation-docker.rst:277
+msgid "**Nginx webproxy settings**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:279
+msgid "These setting are used when HTTPS is enabled."
+msgstr ""
+
+#: ../../content/installation-docker.rst:282
+msgid "Set in case the HTTP port should deviate from the standard port 80. Will redirect to HTTPS."
+msgstr ""
+
+#: ../../content/installation-docker.rst:286
+msgid "OTOBO_WEB_HTTPS_PORT"
+msgstr ""
+
+#: ../../content/installation-docker.rst:286
+msgid "Set in case the HTTPS port should deviate from the standard port 443."
+msgstr ""
+
+#: ../../content/installation-docker.rst:290
+#: ../../content/installation-docker.rst:361
+msgid "OTOBO_NGINX_SSL_CERTIFICATE"
+msgstr ""
+
+#: ../../content/installation-docker.rst:289
+msgid "SSL cert for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
+msgstr ""
+
+#: ../../content/installation-docker.rst:294
+#: ../../content/installation-docker.rst:364
+msgid "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
+msgstr ""
+
+#: ../../content/installation-docker.rst:293
+msgid "SSL key for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
+msgstr ""
+
+#: ../../content/installation-docker.rst:296
+msgid "**Nginx webproxy settings for Kerberos**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:298
+msgid "This settings are used by Nginx when Kerberos is used for single sign on."
+msgstr ""
+
+#: ../../content/installation-docker.rst:301
+msgid "OTOBO_NGINX_KERBEROS_KEYTAB"
+msgstr ""
+
+#: ../../content/installation-docker.rst:301
+msgid "Kerberos keytab file. The default is */etc/krb5.keytab*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:304
+msgid "OTOBO_NGINX_KERBEROS_CONFIG"
+msgstr ""
+
+#: ../../content/installation-docker.rst:304
+msgid "Kerberos config file. The default is */etc/krb5.conf*, usually generated from *krb5.conf.template*"
+msgstr ""
+
+#: ../../content/installation-docker.rst:307
+msgid "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
+msgstr ""
+
+#: ../../content/installation-docker.rst:307
+msgid "Kerberos Service Name. It is not clear where this setting is actually used anywhere."
+msgstr ""
+
+#: ../../content/installation-docker.rst:310
+msgid "OTOBO_NGINX_KERBEROS_REALM"
+msgstr ""
+
+#: ../../content/installation-docker.rst:310
+msgid "Kerberos REALM. Used in */etc/krb5.conf*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:313
+msgid "OTOBO_NGINX_KERBEROS_KDC"
+msgstr ""
+
+#: ../../content/installation-docker.rst:313
+msgid "Kerberos kdc / AD Controller. Used in */etc/krb5.conf*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:316
+msgid "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
+msgstr ""
+
+#: ../../content/installation-docker.rst:316
+msgid "Kerberos Admin Server. Used in */etc/krb5.conf*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:319
+msgid "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
+msgstr ""
+
+#: ../../content/installation-docker.rst:319
+msgid "Kerberos Default Domain. Used in */etc/krb5.conf*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:322
+msgid "NGINX_ENVSUBST_TEMPLATE_DIR"
+msgstr ""
+
+#: ../../content/installation-docker.rst:322
+msgid "Provide a custom Nginx config template dir. Gives extra flexibility."
+msgstr ""
+
+#: ../../content/installation-docker.rst:324
+msgid "**Docker Compose settings**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:326
+msgid "These settings are used by Docker Compose directly."
+msgstr ""
+
+#: ../../content/installation-docker.rst:331
+msgid "COMPOSE_PROJECT_NAME"
+msgstr ""
+
+#: ../../content/installation-docker.rst:329
+msgid "The project name is used as the prefix for the volumes and containers. Per default this prefix is set to `otobo`, resulting in container names like `otobo_web_1` and `otobo_db_1`. Change this name when you want to run more then one instance of OTOBO on the same server."
+msgstr ""
+
+#: ../../content/installation-docker.rst:334
+msgid "COMPOSE_PATH_SEPARATOR"
+msgstr ""
+
+#: ../../content/installation-docker.rst:334
+msgid "Separator for the value of COMPOSE_FILE"
+msgstr ""
+
+#: ../../content/installation-docker.rst:338
+msgid "COMPOSE_FILE"
+msgstr ""
+
+#: ../../content/installation-docker.rst:337
+msgid "Use *docker-compose/otobo-base.yml* as the base and add the wanted extension files. E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:341
+msgid "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, ..."
+msgstr ""
+
+#: ../../content/installation-docker.rst:341
+msgid "Used for specifying alternative Docker images. Useful for testing local builds or for using updated versions of the images."
+msgstr ""
+
+#: ../../content/installation-docker.rst:344
+msgid "Advanced topics"
+msgstr ""
+
+#: ../../content/installation-docker.rst:347
+msgid "Custom configuration of the nginx webproxy"
+msgstr ""
+
+#: ../../content/installation-docker.rst:349
+msgid "The container ``otobo_nginx_1`` provides HTTPS support by running Nginx as a reverse proxy. The Docker image that runs in the container is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with a OTOBO specific configuration of Nginx."
+msgstr ""
+
+#: ../../content/installation-docker.rst:354
+msgid "The default OTOBO specific configuration can be found within the Docker image at */etc/nginx/template/otobo_nginx.conf.template*. Actually, this is only a template for the final configuration. There is a process, provided by the Nginx base image, that replaces the macros in the template with the corresponding environment variable. This process runs when the container starts up. In the default template file, the following macros are used:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:361
+#: ../../content/installation-docker.rst:364
+msgid "For configuring SSL."
+msgstr ""
+
+#: ../../content/installation-docker.rst:367
+msgid "OTOBO_NGINX_WEB_HOST"
+msgstr ""
+
+#: ../../content/installation-docker.rst:367
+msgid "The internally used HTTP host."
+msgstr ""
+
+#: ../../content/installation-docker.rst:370
+msgid "OTOBO_NGINX_WEB_PORT"
+msgstr ""
+
+#: ../../content/installation-docker.rst:370
+msgid "The internally used HTTP port."
+msgstr ""
+
+#: ../../content/installation-docker.rst:372
+msgid "See step `4.` for how this configuration possibility was used for setting up the SSL certificate."
+msgstr ""
+
+#: ../../content/installation-docker.rst:376
+msgid "The following approach is only supported in OTOBO 10.0.4 or later."
+msgstr ""
+
+#: ../../content/installation-docker.rst:378
+msgid "When the standard macros are not sufficient, then the customisation can go further. This can be achieved by replacing the default config template with a customized version. It is best practice to not simple change the configuration in the running container. Instead we first create a persistent volume that contains the custom config. Then we tell the *otobo_nginx_1* to mount the new volume and to use the customized configuration."
+msgstr ""
+
+#: ../../content/installation-docker.rst:383
+msgid "First comes generation of the new volume. In these sample commands, we use the existing template as a starting point."
+msgstr ""
+
+#: ../../content/installation-docker.rst:410
+msgid "Your adapted nginx configuration usually contains the directive **listen**, which declares the ports of the webserver. The internally used ports have changed between OTOBO 10.0.3 and OTOBO 10.0.4. This change must be reflected in the adapted nginx configuration. So for version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO 10.0.4 listen to the ports 8080 and 8443."
+msgstr ""
+
+#: ../../content/installation-docker.rst:415
+msgid "After setting up the volume, the adapted configuration must be activated. The new volume is set up in *docker-compose/otobo-nginx-custom-config.yml*. Therefore this file must be added to **COMPOSE_FILE**. Then Nginx must be directed to use the new config. This is done by setting **NGINX_ENVSUBST_TEMPLATE_DIR** in the environment. In order to achieve this, uncomment or add the following lines in your *.env* file:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:425
+msgid "The changed Docker Compose configuration can be inspected with:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:431
+msgid "Finally, the containers can be started again:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:437
+msgid "See also the section \"Using environment variables in nginx configuration (new in 1.19)\" in https://hub.docker.com/_/nginx."
+msgstr ""
+
+#: ../../content/installation-docker.rst:440
+msgid "Single Sign On Using the Kerberos Support in Nginx"
+msgstr ""
+
+#: ../../content/installation-docker.rst:442
+msgid "**Short Description**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:444
+msgid "For enabling authentication with Kerberos please base you *.env file* on the sample file *.docker_compose_env_https_kerberos*. This activates the special configuration in *docker-compose/otobo-override-https-kerberos.yml*. This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings as environment values to the running Nginx container. These settings are listed above."
+msgstr ""
+
+#: ../../content/installation-docker.rst:449
+msgid "As usual, the values for these setting can be specified in the *.env* file. Most of ghese setting will be used as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container. In the running container the adapted config will be available in */etc/krb5.conf*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:453
+msgid "Providing an user specific */etc/krb5.conf* file is still possible. This can be done by mounting a volume that overrides */etc/krb5.conf* in the container. This can be achieved by setting OTOBO_NGINX_KERBEROS_CONFIG in the *.env* file and by activating the mount directove in *docker-compose/otobo-override-https-kerberos.yml*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:457
+msgid "*/etc/krb5.keytab* is always installation specific and must therefore always be mounted from the host system."
+msgstr ""
+
+#: ../../content/installation-docker.rst:459
+msgid "**Kerberos SSO Installation Tutorial**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:461
+msgid ":doc:`sso-kerberos`"
+msgstr ""
+
+#: ../../content/installation-docker.rst:465
+msgid "Choosing non-standard ports"
+msgstr ""
+
+#: ../../content/installation-docker.rst:467
+msgid "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports are already used by other services. In these cases the default ports can be overridden by specifying `OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file."
+msgstr ""
+
+#: ../../content/installation-docker.rst:472
+msgid "Skip startup of specific services"
+msgstr ""
+
+#: ../../content/installation-docker.rst:474
+msgid "The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases where one or more of these services are not needed. The prime example is when the database should not run as a Docker service, but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services. But the option `--scale` can be abused for this purpose. So for an installation with an external database the following command can be used:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:484
+msgid "Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml* and removing the relevant service definitions."
+msgstr ""
+
+#: ../../content/installation-docker.rst:488
+msgid "Prepare offline installation"
+msgstr ""
+
+#: ../../content/installation-docker.rst:490
+msgid "Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__ on a system that has internet access and where docker is installed. Then navigate to the following folder *otobo-docker/docker-compose*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:499
+msgid "Now you can run the following command to download all Docker images from a specific file, in my example I use the *otobo-base.yml*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:505
+msgid "After that, the images (.docker) are located in the docker-compose folder and can be uploaded to the target system via e.g `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
+msgstr ""
+
+#: ../../content/installation-docker.rst:507
+msgid "On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one."
+msgstr ""
+
+#: ../../content/installation-docker.rst:509
+msgid "In the following example I import the mariadb image:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:516
+msgid "Customizing OTOBO Docker Compose"
+msgstr ""
+
+#: ../../content/installation-docker.rst:518
+msgid "Instead of editing the files under *docker-compose/* and risking to overwrite your own options with the `next update <https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the otobo-docker folder, it is advisable to create an extra YAML file where the specific services are overwritten with additional options."
+msgstr ""
+
+#: ../../content/installation-docker.rst:522
+msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create an extra docker compose file thats look like:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:533
+msgid "Now we have to tell *docker-compose* to include our new file. For this you have to add your YAML file to the *COMPOSE_FILE* variable in the *.env* file, for example:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:540
+msgid "Now we can use *docker-compose* to recreate our container"
+msgstr ""
+
+#: ../../content/installation-docker.rst:547
+msgid "With this procedure you can customize any service or volumes."
+msgstr ""
+
+#: ../../content/installation-docker.rst:550
+msgid "Customizing the OTOBO Docker image"
+msgstr ""
+
+#: ../../content/installation-docker.rst:552
+msgid "Many customizations can be done in the external volume *otobo_opt_otobo* which corresponds to the directory */opt/otobo* in the Docker image. This works e.g. for local Perl modules which can be installed into */opt/otobo/local*. Here is an example that installs the not very useful CPAN module `Acme::123`."
+msgstr ""
+
+#: ../../content/installation-docker.rst:570
+msgid "The nice thing of this approach is that the Docker image itself does not have to be modified."
+msgstr ""
+
+#: ../../content/installation-docker.rst:572
+msgid "Installing extra Debian packages is a little bit trickier. One approach is to create a custom *Dockerfile* and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice writeup of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
+msgstr ""
+
+#: ../../content/installation-docker.rst:577
+msgid "But for the latter approach there are two hurdles to overcome. First, the image *otobo* runs per default as the user *otobo* with the UID 1000. The problem is that the user *otobo* is not allowed to install system packages. Thus, the first part of the solution is to pass the option `--user root` when running the image. However the second hurdle is that the default entrypoint script */opt/otobo_install/entrypoint.sh* exits immediately when it is called as *root*. The reasoning behind that design decision is that running inadvertently as *root* should be discouraged. So, the second part of the solution is to specify a different entrypoint script that does not care who the caller is. This leaves us with following example commands, where we add fortune cookies to otobo:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:586
+msgid "Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:593
+msgid "Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive session as the user *root*:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:604
+msgid "Create an image from the stopped container and give it a name. Take into account that the default user and entrypoint script must be restored:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:611
+msgid "Finally we can doublecheck:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:620
+msgid "The modified image can be specified in your *.env* file and then be used for fun and profit."
+msgstr ""
+
+#: ../../content/installation-docker.rst:623
+msgid "Building local images"
+msgstr ""
+
+#: ../../content/installation-docker.rst:627
+msgid "Building Docker images locally is usually only needed during development. Other use cases are when more current base images should be used for an installation or when extra functionality must be added to the images."
+msgstr ""
+
+#: ../../content/installation-docker.rst:631
+msgid "The Docker files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:"
+msgstr ""
+
+#: ../../content/installation-docker.rst:633
+msgid "*otobo.web.dockerfile*"
+msgstr ""
+
+#: ../../content/installation-docker.rst:634
+msgid "*otobo.nginx.dockerfile*"
+msgstr ""
+
+#: ../../content/installation-docker.rst:635
+msgid "*otobo.elasticsearch.dockerfile*"
+msgstr ""
+
+#: ../../content/installation-docker.rst:637
+msgid "The script for the actual creation of the images is *bin/docker/build_docker_images.sh*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:649
+msgid "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:651
+msgid "After building the local images, one can return to the *docker-compose* directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*."
+msgstr ""
+
+#: ../../content/installation-docker.rst:655
+msgid "Automatic Installation"
+msgstr ""
+
+#: ../../content/installation-docker.rst:657
+msgid "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is useful for running the test suite on a fresh installation."
+msgstr ""
+
+#: ../../content/installation-docker.rst:662
+msgid "``docker-compose down -v`` will remove all previous setup and data."
+msgstr ""
+
+#: ../../content/installation-docker.rst:677
+msgid "List of useful commands"
+msgstr ""
+
+#: ../../content/installation-docker.rst:679
+msgid "**Docker**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:681
+msgid "``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)"
+msgstr ""
+
+#: ../../content/installation-docker.rst:682
+msgid "``docker version`` show version"
+msgstr ""
+
+#: ../../content/installation-docker.rst:683
+msgid "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
+msgstr ""
+
+#: ../../content/installation-docker.rst:684
+msgid "``docker run --publish 80:5000 otobo`` run the new image"
+msgstr ""
+
+#: ../../content/installation-docker.rst:685
+msgid "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
+msgstr ""
+
+#: ../../content/installation-docker.rst:686
+msgid "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that in case entrypoint.sh is broken"
+msgstr ""
+
+#: ../../content/installation-docker.rst:687
+msgid "``docker ps`` show running images"
+msgstr ""
+
+#: ../../content/installation-docker.rst:688
+msgid "``docker images`` show available images"
+msgstr ""
+
+#: ../../content/installation-docker.rst:689
+msgid "``docker volume ls`` list volumes"
+msgstr ""
+
+#: ../../content/installation-docker.rst:690
+msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
+msgstr ""
+
+#: ../../content/installation-docker.rst:691
+msgid "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
+msgstr ""
+
+#: ../../content/installation-docker.rst:692
+msgid "``docker volume rm tmp_volume`` remove a volume"
+msgstr ""
+
+#: ../../content/installation-docker.rst:693
+msgid "``docker inspect <container>`` inspect a container"
+msgstr ""
+
+#: ../../content/installation-docker.rst:694
+msgid "``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` list files in an image"
+msgstr ""
+
+#: ../../content/installation-docker.rst:695
+msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
+msgstr ""
+
+#: ../../content/installation-docker.rst:697
+msgid "**Docker Compose**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:699
+msgid "``docker-compose config`` check and show the configuration"
+msgstr ""
+
+#: ../../content/installation-docker.rst:700
+msgid "``docker-compose ps`` show the running containers"
+msgstr ""
+
+#: ../../content/installation-docker.rst:701
+msgid "``docker-compose exec nginx nginx -s reload`` reload nginx"
+msgstr ""
+
+#: ../../content/installation-docker.rst:704
+msgid "Resources"
+msgstr ""
+
+#: ../../content/installation-docker.rst:706
+msgid "Finally, here is a highly subjective collection of links."
+msgstr ""
+
+#: ../../content/installation-docker.rst:708
+msgid "**General info and tutorials**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:710
+msgid "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:711
+msgid "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:712
+msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:714
+msgid "**Tips and hints**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:716
+msgid "`Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:717
+msgid "`Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:718
+msgid "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:719
+msgid "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:720
+msgid "`Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:722
+msgid "**Troubleshooting**"
+msgstr ""
+
+#: ../../content/installation-docker.rst:724
+msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:725
+msgid "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
+msgstr ""
+
+#: ../../content/installation-docker.rst:726
+msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:12
+msgid "Installing Perl Modules from CPAN"
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:14
+msgid "When there are special requirements then the need for additional Perl modules may arise. Fortunately, Perl has an excellent package repository that can satisfy almost all needs. That repository is called CPAN and is available at https://metacpan.org/."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:18
+msgid "It is recommended to use the command line client ``cpanm`` for installing modules. ``cpanm`` is often already installed on your system. Please see https://metacpan.org/pod/App::cpanminus for what to do when is isn't already available."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:22
+msgid "Alternatively, many Perl modules are also available as packages for your operating system. These packages can be installed with your systems regular package manager."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:25
+msgid "Per default ``cpanm`` installs modules into a systemwide location. In this case modules must be installed as the root user. For example, the command"
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:32
+msgid "results in:"
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:40
+msgid "Docker-based installations"
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:42
+msgid "Special care must be taken when OTOBO runs under Docker. In this case an installation into a systemwide location would initially work as well. However, due to how Docker works, this installed modules would be lost when the container is restarted. Therefore the modules must be installed into a location that does survive a restart. The directory ``/opt/otobo/local`` within the volume **otobo_opt_otobo** can be used for that. Modules that are installed in ``/opt/otobo/local`` will be picked up by Perl because the environment variables ``PERL5LIB`` and ``PATH`` are preset accordingly."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:49
+msgid "The installed Perl modules will also be available after an upgrade of OTOBO. There is the general rule that files added to ``/opt/otobo`` won't be removed by an upgrade."
+msgstr ""
+
+#: ../../content/installing-perl-modules.rst:52
+msgid "For installing Perl modules in a specific location we need to modify our install command. Specifically, we need to add the option ``--local-lib``. Here is a sample session in the container **web**."
+msgstr ""
+
+#: ../../content/introduction.rst:12
+msgid "Introduction"
+msgstr ""
+
+#: ../../content/introduction.rst:14
+msgid "OTOBO is an open source ticket request system with many features to manage customer telephone calls and emails. It is distributed under the GNU General Public License (GPL) and is tested on various Linux platforms."
+msgstr ""
+
+#: ../../content/introduction.rst:18
+msgid "About This Manual"
+msgstr ""
+
+#: ../../content/introduction.rst:20
+msgid "This manual is intended for use by system administrators. The chapters describe the installation and updating of the OTOBO software."
+msgstr ""
+
+#: ../../content/introduction.rst:22
+msgid "There is no graphical user interface for installation and updating. System administrators have to follow the steps described in the following chapters."
+msgstr ""
+
+#: ../../content/introduction.rst:24
+msgid "All console commands look like ``username> command-to-execute``. Username indicates the user account of the operating system, which need to use to execute the command. If a command starts with ``root>``, you have to execute the command as a user with root permissions. If a command starts with ``otobo>``, you have to execute the command as the user created for OTOBO."
+msgstr ""
+
+#: ../../content/introduction.rst:28
+msgid "Do not select ``username>`` when you copy the command and paste it to the shell. Otherwise you will get an error."
+msgstr ""
+
+#: ../../content/introduction.rst:30
+msgid "We assume that OTOBO will be installed to the directory ``/opt/otobo``. If you want to install OTOBO to a different location, then you have to change the path in the commands or create a symbolic link to this directory."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:12
+msgid "Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10.1"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:14
+msgid "Welcome and thank you for choosing OTOBO!"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:16
+msgid "OTRS, ((OTRS)) Community Edition and OTOBO are very comprehensive and flexible in their application. Thus, every migration to OTOBO requires thorough preparation and possibly some rework, too."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:18
+msgid "Please take your time for the migration and follow these instructions step by step."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:20
+msgid "If you have any problem or question, please do not despair. Call our support line, write an email, or post your query in the OTOBO Community forum at https://forum.otobo.org/. We will find a way to help you!"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:25
+msgid "After the migration the data previously available in OTRS 6 will be available in OTOBO 10. We do not modify any data of the OTRS 6 installation during the migration."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:29
+msgid "Overview over the Supported Migration Szenarios"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:31
+msgid "With the OTOBO Migration Interface it is possible to employ the following migration strategies:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:33
+msgid "The general migration strategy."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:35
+msgid "This is the regular way to perform a migration. Many different different combinations are supported:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:38
+msgid "Change server:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:38
+msgid "Migrate and simultaneously move to a new application server."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:42
+msgid "Separate application and web servers:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:41
+msgid "It's your choice whether you want to run application and database server on the same host or each on a dedictated host. This choice is regardless of the previous setup in OTRS / ((OTRS)) Community Edition."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:45
+msgid "Different databases:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:45
+msgid "Migrate from any of the supported databases to any other supported database."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:48
+msgid "Different operating system:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:48
+msgid "Switch from any supported operating system to any other supported operating system."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:51
+msgid "Docker:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:51
+msgid "Migrate to a Docker-based installation of OTOBO 10."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:53
+msgid "A variant of the general strategy where the database migration is streamlined."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:55
+msgid "Use the ETL-like migration when the source database mustn't suffer from increased load or when access to the source database is a bottleneck. In the general strategy, the data is row by row first read from the *otrs* database and then inserted into the OTOBO database. In this variant, the complete *otrs* database tables are first exported, then transformed, and then imported into the *otobo* database."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:61
+msgid "Migration from an Oracle based OTRS 6 installation to an Oracle based OTOBO installation."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:63
+msgid "This is a special case that is not supported by the general migration strategy. This means that a variant of the streamlined strategy must be used."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:68
+msgid "All strategies work for both Docker-based and native installations. But for Docker-based installations some peculiarities have to be considered. These peculiarities are handled in the optional steps."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:73
+msgid "It is also feasible to clone the OTRS datase to the OTOBO database server before the actual migration. This can speed up the general migration strategy."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:77
+msgid "Migration Requirements"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:79
+msgid "Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\\* running, and that you want to transfer both configuration and data to OTOBO."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:84
+msgid "Please consider carefully whether you really need the data and configuration. Experience shows that quite often a new start is the better option. This is because in many cases the previously used installation and configuration was rather suboptimal anyways. It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice. We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:90
+msgid "You need a running OTOBO installation to start the migration from there!"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:92
+msgid "This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:94
+msgid "If you are planning to migrate to another server, then the OTOBO webserver must be able to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed. In most cases, this is the directory */opt/otrs* on the server running OTRS. The read access can be effected via SSH or via file system mounts."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:99
+msgid "The *otrs* database must be accessible from the server running OTOBO. Readonly access must be granted for external hosts. If access is not possible, or when the speed of the migration should be optimised, then a dump of the database is sufficient."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:104
+msgid "If SSH and database access between the servers is not possible, please migrate OTRS to OTOBO on the same server and only then move the new installation."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:108
+msgid "Step 1: Install the new OTOBO System"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:110
+msgid "Please start with installing a new OTOBO system. Your old OTRS / ((OTRS)) Community Edition installation will be migrated to that new system. We strongly recommend to read the chapter :doc:`installation`. For Docker-based installations we refer to the chapter :doc:`installation-docker`."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:115
+msgid "Under Apache, there are pitfalls with running two independent *mod_perl* applications under on the same webserver. Therefore, it is advised to run OTRS and OTOBO on separate webservers. Alternatively remove the OTRS configuration from Apache before installing OTOBO. Use the command ``a2query -s`` and check the directories */etc/apache2/sites-available* and */etc/apache2/sites-enabled* for inspecting which configurations are currently available and which are enabled."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:121
+msgid "After finishing the installation please log in as *root@localhost*. Navigate to the OTOBO Admin Area ``Admin -> Packages`` and install all required OTOBO OPM packages."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:140
+msgid "The following OPM packages and OTRS \"Feature Addons\" need NOT and should NOT be installed, as these features are already available in the OTOBO standard:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:125
+msgid "OTRSHideShowDynamicField"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:126
+msgid "RotherOSSHideShowDynamicField"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:127
+msgid "TicketForms"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:128
+msgid "RotherOSS-LongEscalationPerformanceBoost"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:129
+msgid "Znuny4OTRS-AdvancedDynamicFields"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:130
+msgid "Znuny4OTRS-AutoSelect"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:131
+msgid "Znuny4OTRS-EscalationSuspend"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:132
+msgid "OTRSEscalationSuspend"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:133
+msgid "OTRSDynamicFieldDatabase"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:134
+msgid "OTRSDynamicFieldWebService"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:135
+msgid "OTRSBruteForceAttackProtection"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:136
+msgid "Znuny4OTRS-ExternalURLJump"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:137
+msgid "Znuny4OTRS-QuickClose"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:138
+msgid "Znuny4OTRS-AutoCheckbox"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:139
+msgid "OTRSSystemConfigurationHistory"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:140
+msgid "Znuny4OTRS-PasswordPolicy"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:143
+msgid "Step 2: Deactivate ``SecureMode`` on OTOBO"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:145
+msgid "After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -> System Configuration`` and deactivate the config option ``SecureMode``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:149
+msgid "Do not forget to actually deploy the changed setting."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:152
+msgid "Step 3: Stop the OTOBO Daemon"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:154
+msgid "This is necessary when the OTOBO Daemon is actually running. Stopping the Daemon is different between Docker-based and non-Docker-based installations."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:157
+msgid "In the non-Docker case execute the following commands as the user *otobo*:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:167
+msgid "When OTOBO is running in Docker, you just need to stop the service ``daemon``:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:177
+msgid "It is recommended to run a backup of the whole OTOBO system at this point. If something goes wrong during migration, you will then not have to repeat the entire installation process, but can instead import the backup for a new migration."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:182
+msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:185
+msgid "Optional Step: Mount /opt/otrs for Convenient Access"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:187
+msgid "Often OTOBO should be running on a new server where */opt/otrs* isn't available initially. In these cases the directory */opt/otrs* on the OTRS server can be mounted into the file system of the OTOBO server. When a regular network mount is not possible, then using ``sshfs`` might be an option."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:192
+msgid "Optional Step: Install ``sshpass`` and ``rsync`` when */opt/otrs* Should be Copied via ssh"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:194
+msgid "This step is only necessary when you want to migrate OTRS from another server and when */opt/otrs* from the remote server hasn't been mounted on the server running OTOBO."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:197
+msgid "The tools ``sshpass`` and ``rsync`` are needed so that *migration.pl* can copy files via ssh. For installing ``sshpass``, please log in on the server as user ``root`` and execute one of the following commands:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:221
+msgid "The same thing must be done for *rsync* when it isn't available yet."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:224
+msgid "Step 4: Preparing the OTRS / ((OTRS)) Community Edition system"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:228
+msgid "Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too. Yes, we do not touch any OTRS data during the migration, but at times a wrong entry is enough to cause trouble."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:231
+msgid "Now we are ready for the migration. First of all we need to make sure that no more tickets are processed and no users log on to OTRS:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:234
+msgid "Please log in to the OTRS Admin Area ``Admin ->  System Maintenance`` and add a new system maintenance slot for a few hours. After that, delete all agent and user sessions (``Admin ->  Sessions``) and log out."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:238
+msgid "Stop All Relevant Services and the OTRS Daemon"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:240
+msgid "Please make sure there are no running services or cron jobs."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:249
+msgid "Clear the Caches and the Operational Data"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:251
+msgid "The cached data and the operational data doesn't have to be migrated. The mail queue should at this point already be empty."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:264
+msgid "Optional Step for Docker: make required data available inside container"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:266
+msgid "There are some specifics to be considered when your OTOBO installation is running under Docker. The most relevant: processes running in a Docker container generally cannot access directories outside the container. There is an exception though: directories mounted as volumes into the container can be accessed. Also, note that the MariaDB database running in ``otobo_db_1`` is not directly accessible from outside the container network."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:273
+msgid "In the sample commands, we assume that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:277
+msgid "Copy */opt/otrs* into the volume *otobo_opt_otobo*"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:279
+msgid "In this section, we assume that the OTRS home directory */opt/otrs* is available on the Docker host."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:282
+msgid "There are at least two viable possibilities:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:284
+msgid "copy */opt/otrs* into the existing volume *otobo_opt_otobo*"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:285
+msgid "mount */opt/otrs* as an additional volume"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:287
+msgid "Let's concentrate on option **a.** here."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:289
+msgid "First we need to find out where the volume *otobo_opt_otobo* is available on the Docker host."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:296
+msgid "For safe copying, we use ``rsync``. Depending on your Docker setup, the command ``rsync`` might need to be run with ``sudo``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:309
+msgid "This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:312
+msgid "Step 5: Perform the Migration!"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:314
+msgid "Please use the web migration tool at http://localhost/otobo/migration.pl. Be aware that you might have to replace \"localhost\" with your OTOBO hostname and you might have to add your non-standard port. The application then guides you through the migration process."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:320
+msgid "Sometimes, a warning is shown that the deactivation of **SecureMode** has not been detected. Please restart the webserver in this case. This forces the webserver to read in the current configuration."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:335
+msgid "If OTOBO runs inside a Docker container, keep the default settings *localhost* for the OTRS server and */opt/otobo/var/tmp/copied_otrs* for the OTRS home directory. This is the path of the data that was copied in the optional step."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:341
+msgid "The default values for OTRS database user and password are taken from *Kernel/Config.pm* in the OTRS home directory. Change the proposed settings if you are using a dedicated database user for the migration. Also change the settings when you work with a database that was copied into the *otobo_db_1* Docker container."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:347
+msgid "In the Docker case, a database running on the Docker host won't be reachable via ``127.0.0.1`` from within the Docker container. This means that the setting ``127.0.0.1`` won't be valid for the input field ``OTRS Server``. In that case, enter one of the alternative IP-addresses reported by the command ``hostname --all-ip-addresses`` for ``OTRS Server``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:353
+msgid "When migrating to a new application server, or to a Docker-based installation, quite often the database cannot be accessed from the target installation. This is usually due to the fact that the otobo database user can only connect from the host the database runs on. In order to allow access anyways it is recommended to create a dedicated database user for the migration. E.g. ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';`` and ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``. This user can be dropped again after the migration: ``DROP USER 'otrs_migration'@'%'``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:360
+msgid "Custom settings in *Kernel/Config.pm* are carried over from the old OTRS installation to the new OTOBO installation. When you have custom settings, then please take a look at the migrated file */opt/otobo/Kernel/Config.pm*. You might want to adapt custom pathes or LDAP settings. In the best case you might find that some custom setting are longer needed."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:364
+msgid "When the migration is complete, please take your time and test the entire system. Once you have decided that the migration was successful and that you want to use OTOBO from now on, start the OTOBO Daemon:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:374
+msgid "In the Docker case:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:382
+msgid "Step 6: After Successful Migration!"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:384
+msgid "Uninstall ``sshpass`` if you do not need it anymore."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:385
+msgid "Drop the databases and database users dedicated to the migration if you created any."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:386
+msgid "Have fun with OTOBO!"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:390
+msgid "Known Migration Problems"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:393
+msgid "1. Login after migration not possible"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:395
+msgid "During our migration tests, the browser used for the migration sometimes had problems. After restarting the browser, this problem usually was solved. With Safari it was sometimes necessary to manually delete the old OTRS session."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:399
+msgid "2. Final page of the migration has a strange layout due to missing CSS files"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:401
+msgid "This can happen when the setting ScriptAlias has a non-standard value. The migration simply substitutes otrs for otobo. This might lead to the effect that the CSS and JavaScript can no longer be retrieved in OTOBO. When that happens, please check the settings in *Kernel/Config.pm* and revert them to sane values."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:406
+msgid "3. Migration stops due to MySQL errors"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:408
+msgid "On systems that experienced problems with an upgrade in the past, the migration process may stop due to MySQL errors in the tables *ticket* and *ticket_history*. Usually these errors are NULL values in the source table that are no longer allowed in the target table. These conflicts have to be manually resolved before you can resume the migration."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:412
+msgid "As of OTOBO 10.0.12 there is a check in *migration.pl* that checks for NULL values before the data transfer is done. Note, that the resolution still needs to be performed manually."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:415
+msgid "4. Errors in Step 5 when migrating to PostgreSQL"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:417
+msgid "In these cases the not so helpful message \"System was unable to complete data transfer.\" is shown by *migration.pl*. The Apache logfile, and the OTOBO logfile, show a more meaningful message: \"Message: ERROR:  permission denied to set parameter \"session_replication_role\", SQL: 'set session_replication_role to replica;'\". In order to give the database user **otobo** the needed superuser privileges, run the following statement as the PostgreSQL admin: ``ALTER USER otobo WITH SUPERUSER;``. Then retry running http://localhost/otobo/migration.pl. After the migration, return to the normal state by running ``ALTER USER otobo WITH NOSUPERUSER``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:425
+msgid "It is not clear yet, whether the extended privileges have to be granted in every setup."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:429
+msgid "The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:432
+msgid "5. Problems with the Deployment the Merged System Configuration"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:434
+msgid "The system configuration is migrated after the database tables were migrated. In this context, migration means merging the default settings of OTOBO with the system configuration of the source OTRS system. Inconsistencies can arise in this step. An real life example is the setting ``Ticket::Frontend::AgentTicketQuickClose###State``. This setting is new in OTOBO 10 and the default value is the state ``closed successful``. But this setting is invalid when the state ``closed successful`` has been dropped or renamed in the source system. This inconsistency is detected as an error in the migration step **Migrate configuration settings**. Actually, the merged system configuration is stored in the database, but additional validity checks are performed during deployment."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:442
+msgid "The problem must be alleviated manually by using OTOBO console commands."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:444
+msgid "List the inconsistencies with the command ``bin/otobo.Console.pl Admin::Config::ListInvalid``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:446
+msgid "Interactively fix the invalid values with ``bin/otobo.Console.pl Admin::Config::FixInvalid``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:448
+msgid "Deploy the collected changes from migration.pl, including the deactivated **SecureMode** with ``bin/otobo.Console.pl Maint::Config::Rebuild``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:451
+msgid "After these manual steps you should be able to run *migration.pl* again. The migration will continue with the step where the error occurred."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:455
+msgid "Step 7: Manual Migration Tasks and Changes"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:458
+msgid "1. Password policy rules"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:460
+msgid "With OTOBO 10 a new default password policy for agent and customer users is in effect, if local authentication is used. The password policy rules can be changed in the system configuration (``PreferencesGroups###Password`` and ``CustomerPersonalPreference###Password``)."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:463
+msgid "Password Policy Rule"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:463
+msgid "Default"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:465
+msgid "``PasswordMinSize``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:465
+msgid "8"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:467
+msgid "``PasswordMin2Lower2UpperCharacters``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:467
+#: ../../content/migration-from-otrs-6.rst:469
+#: ../../content/migration-from-otrs-6.rst:477
+msgid "Yes"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:469
+msgid "``PasswordNeedDigit``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:471
+msgid "``PasswordHistory``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:471
+msgid "10"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:473
+msgid "``PasswordTTL``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:473
+msgid "30 days"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:475
+msgid "``PasswordWarnBeforeExpiry``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:475
+msgid "5 days"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:477
+msgid "``PasswordChangeAfterFirstLogin``"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:481
+msgid "2. Under Docker: Manually migrate cron jobs"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:483
+msgid "In a non-Docker installation of OTOBO, there is at least one cron job which checks the health of the Daemon. Under Docker, this cron job no longer exists. Furthermore, there is no cron daemon running in any of the Docker containers. This means that you have to look for an individual solution for OTRS systems with customer-specific cron jobs (e. g. backing up the database)."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:490
+msgid "Special topics"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:493
+msgid "Migration from Oracle to Oracle"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:495
+msgid "For migration to Oracle the ETL-like strategy must be employed. This is because Oracle provides no easy way to temporarily turn off foreign key checks."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:498
+msgid "On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must be installed."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:502
+msgid "When using the Oracle instant client, then the optional SDK is also needed for installing DBD::Oracle."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:504
+msgid "There are many ways of cloning a schema. In the sample commands we use ``expdb`` and ``impdb`` which use Data Pump under the hood."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:509
+msgid "The connect strings shown in this documentation refer to the case when both source and target database run in a Docker container. See also https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md ."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:513
+msgid "Clear out otobo"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:515
+msgid "Stop the webserver for otobo, so that the DB connection for otobo is closed."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:522
+msgid "Export the complete OTRS schema."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:538
+msgid "Import the OTRS schema, renaming the schema to 'otobo'."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:553
+msgid "Adapt the cloned schema otobo"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:562
+msgid "Start the web server for otobo again"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:564
+msgid "Proceed with step 5, that is with running ``migration.pl``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:568
+msgid "If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` has to be executed, to create the tables ``stats_report`` & ``data_storage``, which were newly added in version 10.1."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:572
+msgid "Optional Step: Streamlined migration of the database (only for experts and spezial scenarios)"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:574
+msgid "In the general migration strategy, all data in the database tables is copied row by row from the OTRS database into the OTOBO database. Exporting the data from the OTRS database and importing it into the OTOBO database might save time and is more stable in some circumstances."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:581
+msgid "This variant works for both Docker-based and native installations."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:585
+msgid "These instructions assume that OTRS is using MySQL as its backend."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:587
+msgid "First of all, we need a dump of the needed OTRS database tables. Then we need to perform a couple of transformations:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:590
+msgid "convert the character set to *utf8mb4*"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:591
+msgid "rename a couple of tables"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:592
+msgid "shorten some table columns"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:594
+msgid "After the transfomation we can overwrite the tables in the OTOBO schema with the transformed data from OTRS. Effectively we need not a single dump file, but several SQL scripts."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:597
+msgid "When ``mysqldump`` is installed and a connection to the OTRS database is possible, you can create the database dump directly on the Docker host. This case is supported by the script *bin/backup.pl*."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:603
+msgid "This requires that an OTOBO installation is available on the Docker host."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:612
+msgid "Alternatively, the database can be dumped on another server and then be transferred to the Docker host afterwards. An easy way to do this is to copy */opt/otobo* to the server running OTRS and perform the same command as above."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:615
+msgid "The script *bin/backup.pl* generates four SQL scripts in a dump directory, e.g. in *2021-04-13_12-13-04* In order to execute the SQL scripts, we need to run the command ``mysql``."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:618
+msgid "Native installation:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:628
+msgid "Docker-based installation:"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:630
+msgid "Run the command ``mysql`` within the Docker container *db* for importing the database dump files. Note that the password for the database root is now the password that has been set up in the file *.env* on the Docker host."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:642
+msgid "For a quick check whether the import worked, you can run the following commands."
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:650
+msgid "or when running under Docker"
+msgstr ""
+
+#: ../../content/migration-from-otrs-6.rst:658
+msgid "The database is now migrated. This means that during the next step we can skip the database migration. Watch out for the relevant checkbox."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:12
+msgid "Performance Tuning"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:14
+msgid "This is a list of performance enhancing techniques for your OTOBO installation. The topics include configuration, coding, memory use, and more."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:18
+msgid "Ticket Index Module"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:20
+msgid "Ticket index module can be set via system configuration setting ``Ticket::IndexModule``. There are two back end modules building the index for the ticket queue view:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:23
+msgid "``Kernel::System::Ticket::IndexAccelerator::RuntimeDB``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:23
+msgid "This is the default option, which will generate each queue view on the fly from the ticket table. You will not have performance trouble until you have about 60,000 open tickets in your system."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:31
+msgid "``Kernel::System::Ticket::IndexAccelerator::StaticDB``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:26
+msgid "The most powerful module, should be used when you have above 80,000 open tickets. It uses an extra ``ticket_index`` table, which will be populated with keywords based on ticket data. Use the following command for generating an initial index after switching back ends:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:34
+msgid "Ticket Search Index"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:36
+msgid "OTOBO uses a special search index to perform full-text searches across fields in articles from different communication channels."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:38
+msgid "To create an initial index, use this command:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:46
+msgid "Actual article indexing happens via an OTOBO daemon job in the background. While articles which were just added in the system are marked for indexing immediately, it could happen their index is available only after a few minutes."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:48
+msgid "There are some options available for fine-tuning the search index:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:51
+msgid "``Ticket::SearchIndex::IndexArchivedTickets``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:51
+msgid "Defines if archived tickets will be included in the search index (disabled by default). This is advisable to keep the index small on large systems with archived tickets. If this is enabled, archived tickets will be found by full-text searches."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:73
+msgid "``Ticket::SearchIndex::Attribute``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:54
+msgid "Basic full-text index settings."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:59
+msgid "``Ticket::SearchIndex::Attribute`` Setting"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:63
+msgid "Run the following command in order to generate a new index:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:70
+msgid "``WordCountMax``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:70
+msgid "Defines the maximum number of words which will be processed to build up the index. For example only the first 1000 words of an article body are stored in the article search index."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:73
+msgid "``WordLengthMin`` and ``WordLengthMax``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:73
+msgid "Used as word length boundaries. Only words with a length between these two values are stored in the article search index."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:87
+msgid "``Ticket::SearchIndex::Filters``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:76
+msgid "Filters based on regular expressions exclude parts of the original text from the full-text index."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:81
+msgid "``Ticket::SearchIndex::Filters`` Setting"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:83
+msgid "There are three default filters defined:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:85
+msgid "The first filter strips out special chars like: , & < > ? \" ! * | ; [ ] ( ) + $ ^ ="
+msgstr ""
+
+#: ../../content/performance-tuning.rst:86
+msgid "The second filter strips out words which begin or end with one of following chars: ' : ."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:87
+msgid "The third filter strips out words which do not contain a word character: a-z, A-Z, 0-9, _"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:103
+msgid "``Ticket::SearchIndex::StopWords``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:90
+msgid "English stop words for full-text index. These words will be removed from the search index."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:95
+msgid "``Ticket::SearchIndex::StopWords###en`` Setting"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:97
+msgid "There are so-called stop-words defined for some languages. These stop-words will be skipped while creating the search index."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:100
+msgid "If your language is not in the system configuration settings or you want to add more words, you can add them to this setting:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:102
+msgid "``Ticket::SearchIndex::StopWords###Custom``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:106
+msgid "Document Search"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:108
+msgid "OTOBO uses Elasticsearch for its document search functionality. For a good introduction into the concepts, installation and usage of Elasticsearch, please follow the `Getting Started guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html>`__."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:112
+msgid "Heap Size"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:114
+msgid "Elasticsearch is written in Java and therefore runs in a Java Virtual Machine (JVM) on any cluster node. Such a JVM uses a part of the memory, called *heap*, which size can be configured in configuration file ``jvm.options``."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:116
+msgid "The heap minimum and maximum configurations are by default set to a value of 1 GB and can be modified with the following options:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:118
+msgid "``Xms1g``: minimum heap size."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:119
+msgid "``Xmx1g``: maximum heap size."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:121
+msgid "If the ``Xms`` has a lower value than ``Xmx``, the JVM will resize the used heap anytime the current limit is exceeded, until the value of ``Xmx`` is reached. Such a resizing causes the service to pause until it is finished, which may decrease the speed and reactivity of the search or indexing actions. Therefore it is highly recommended to set those configurations to an equal value."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:125
+msgid "If the maximum heap size is exceeded, the related cluster node stops working and might even shutdown the service."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:127
+msgid "The higher the heap maximum value is set, the more memory can be used by Elasticsearch, which also increases the possible pauses for garbage collection, done by the JVM. Therefore it is recommended to set a value for ``Xmx``, that is not higher than 50% of the physical memory."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:129
+msgid "For more information and good rules of thumb about the heap size, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html>`__."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:133
+msgid "Disk Allocation"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:135
+msgid "While running the service, Elasticsearch inspects the available disk space. Based on the result, it decides whether to allocate new shards to a cluster node. In some cases it even relocates shards away from a node. This behavior is determined by the current disk capacity. It can be configured by settings in the configuration file *elasticsearch.yml*. Here are some relevant configuration settings. They come with good default values, but might be important in trouble shooting."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:142
+msgid "``cluster.routing.allocation.disk.watermark.low``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:141
+msgid "Default value of 85%. When this limit is exceeded, Elasticsearch will no longer allocate more shards to the related cluster node. The operation of that node is not influenced and data can still be indexed and searched."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:145
+msgid "``cluster.routing.allocation.disk.watermark.high``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:145
+msgid "Default value of 90%. When this limit is exceeded, Elasticsearch will try to relocate existing shards to other nodes that have enough space available."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:149
+msgid "``cluster.routing.allocation.disk.watermark.flood_stage``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:148
+msgid "Default value of 95%. When this limit is exceeded, Elasticsearch will update the configuration of all indices, that have at least one shard allocated to the related cluster node, to read-only index blocks. Specifically, they are flagged with ``index.blocks.read_only_allow_delete``."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:149
+msgid "After that update, it is no longer possible to index new data to such indices. The indexes are restricted to searches and to delete actions only."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:153
+msgid "If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch. If the related disks contain enough free space again due to manual actions, it is needed to change the configuration back to normal mode manually."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:155
+msgid "For more information about disk watermarks and disk-based shard allocation, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:159
+msgid "Article Storage"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:161
+msgid "There are two different back end modules for the article storage of phone, email and internal articles. The used article storage can be configured in the setting ``Ticket::Article::Backend::MIMEBase::ArticleStorage``."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:168
+msgid "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:164
+msgid "This default module will store attachments in the database. It also works with multiple front end servers, but requires much storage space in the database."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:168
+msgid "Don't use this with large setups."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:175
+msgid "``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS``"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:171
+msgid "Use this module to store attachments on the local file system. It is fast, but if you have multiple front end servers, you must make sure the file system is shared between the servers. Place it on an NFS share or preferably a SAN or similar solution."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:175
+msgid "Recommended for large setups."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:177
+msgid "You can switch from one back end to the other on the fly. You can switch the back end in the system configuration, and then run this command line utility to put the articles from the database onto the file system or the other way around:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:183
+msgid "You can use the ``--target`` option to specify the target back end."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:187
+msgid "The entire process can take considerable time to run, depending on the number of articles you have and the available CPU power and/or network capacity."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:189
+msgid "If you want to keep old attachments in the database, you can activate the system configuration option ``Ticket::Article::Backend::MIMEBase::CheckAllStorageBackends`` to make sure OTOBO will still find them."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:193
+msgid "Archiving Tickets"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:195
+msgid "As OTOBO can be used as an audit-proof system, deleting closed tickets may not be a good idea. Therefore there is a feature that allows you to archive tickets."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:197
+msgid "Tickets that match certain criteria can be marked as archived. These tickets are not accessed if you do a regular ticket search or run a generic agent job. The system itself does not have to deal with a huge amount of tickets any longer as only the latest tickets are taken into consideration when using OTOBO. This can result in a huge performance gain on large systems."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:199
+msgid "To use the archive feature:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:201
+msgid "Activate the ``Ticket::ArchiveSystem`` setting in the system configuration."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:202
+msgid "Define a generic agent job:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:204
+msgid "Click on the *Add Job* button in the *Generic Agent* screen."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:205
+msgid "*Job Settings*: provide a name for the archiving job."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:206
+msgid "*Automatic Execution*: select proper options to schedule this job."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:207
+msgid "*Select Tickets*: it might be a good idea to only archive those tickets in a closed state that have been closed a few months before."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:208
+msgid "*Update/Add Ticket Attributes*: set the field *Archive selected tickets* to *archive tickets*."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:209
+msgid "Save the job at the end of the page."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:210
+msgid "Click on the *Run this task* link in the overview table to see the affected tickets."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:211
+msgid "Click on the *Run Job* button."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:215
+msgid "Up to 5000 tickets can be modified by running this job manually."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:217
+msgid "When you search for tickets, the system default is to search tickets which are not archived."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:219
+msgid "To search for archived tickets:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:221
+msgid "Open the ticket search screen."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:222
+msgid "Set *Archive search* to *Unarchived tickets* or *All tickets*."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:223
+msgid "Perform the search."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:227
+msgid "Caching"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:229
+msgid "A fast cache module is a great help in terms of performance. We recommend to use a Redis Cache server or to create a ramdisk."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:232
+msgid "Install a Redis Cache Server"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:234
+msgid "Install Redis Server"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:236
+msgid "First of all you need to install the newest Redis Server. The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as OTOBO and binding it to its default port."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:240
+msgid "Install Perl module Redis or Redis::Fast"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:242
+msgid "You can choose which Redis module to use: `Redis` or `Redis::Fast` (which is compatible with `Redis` but **~2x faster**). Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:249
+msgid "Configure OTOBO for Redis"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:251
+msgid "Please use the OTOBO `SysConfig` (Admin -> System Configuration) to configure OTOBO properly:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:264
+msgid "RamDisk Caching"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:266
+msgid "OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make sure that this uses a high performance file system and storage. If you have enough RAM, you can also try to put this directory on a ramdisk like this:"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:276
+msgid "Add persistent mount point in ``/etc/fstab``."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:280
+msgid "This will be a non-permanent storage that will be lost on server reboot. All your sessions (if you store them in the file system) and your cache data will be lost."
+msgstr ""
+
+#: ../../content/performance-tuning.rst:283
+msgid "Clustering"
+msgstr ""
+
+#: ../../content/performance-tuning.rst:285
+msgid "For very high loads, it can be required to operate OTOBO on a cluster of multiple front end servers. This is a complex task with many pitfalls. We strongly advise to get in touch with our experts before trying to implement this on your own."
+msgstr ""
+
+#: ../../content/requirements.rst:12
+msgid "Hardware and Software Requirements"
+msgstr ""
+
+#: ../../content/requirements.rst:14
+msgid "The OTOBO web application can be installed on Linux and other Unix derivates, e.g. OpenBSD or FreeBSD. Running OTOBO on Microsoft Windows is not supported."
+msgstr ""
+
+#: ../../content/requirements.rst:17
+msgid "The web application uses a relational database as backend. So, to run OTOBO, you'll need to run at least a web server and a database server. The web server and the database server may be installed either on the same or on different hosts."
+msgstr ""
+
+#: ../../content/requirements.rst:20
+msgid "Alternatively, OTOBO can also run under Docker. When running under Docker, the web and the database server are already included in the setup. Support for deployment with Kubernetes is under development."
+msgstr ""
+
+#: ../../content/requirements.rst:23
+msgid "The OTOBO web application requires Perl along with additional Perl modules from CPAN. The modules can be installed either with a Perl package manager or via the package manager of your operating system (rpm, yast, apt-get). There is a console command for checking the module dependencies:"
+msgstr ""
+
+#: ../../content/requirements.rst:32
+msgid "If some packages are missing, you can get an install command for your operating system by running the script with the ``--list`` option."
+msgstr ""
+
+#: ../../content/requirements.rst:38
+msgid "The listed commands should then be executed with root privileges."
+msgstr ""
+
+#: ../../content/requirements.rst:40
+msgid "The output of the module check script shows the installed packages and the version numbers. Missing modules are marked with a comment."
+msgstr ""
+
+#: ../../content/requirements.rst:116
+msgid "Hardware Requirements"
+msgstr ""
+
+#: ../../content/requirements.rst:118
+msgid "Hardware requirements highly depend on the usage of OTOBO. OTOBO can be used to process a few tickets per month or to process hundreds of tickets per day. The storage requirement also depends on the number of tickets and size of attachments."
+msgstr ""
+
+#: ../../content/requirements.rst:120
+msgid "We recommend using a machine for testing purposes with **at least**:"
+msgstr ""
+
+#: ../../content/requirements.rst:122
+msgid "small CPU"
+msgstr ""
+
+#: ../../content/requirements.rst:123
+msgid "4 GB RAM"
+msgstr ""
+
+#: ../../content/requirements.rst:124
+msgid "10 GB storage"
+msgstr ""
+
+#: ../../content/requirements.rst:126
+msgid "We recommend using a machine for production purpose with **at least**:"
+msgstr ""
+
+#: ../../content/requirements.rst:128
+msgid "3 GHz Xeon or comparable CPU"
+msgstr ""
+
+#: ../../content/requirements.rst:129
+msgid "8 GB RAM (16 GB recommend)"
+msgstr ""
+
+#: ../../content/requirements.rst:130
+msgid "40 GB storage"
+msgstr ""
+
+#: ../../content/requirements.rst:134
+msgid "Hardware requirements depend on the usage of OTOBO. Please contact your OTOBO consultant before deploying any hardware."
+msgstr ""
+
+#: ../../content/requirements.rst:137
+msgid "Software requirements"
+msgstr ""
+
+#: ../../content/requirements.rst:141
+msgid "Perl"
+msgstr ""
+
+#: ../../content/requirements.rst:140
+msgid "Perl 5.24.0 or higher"
+msgstr ""
+
+#: ../../content/requirements.rst:141
+msgid "Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl --list`` console command"
+msgstr ""
+
+#: ../../content/requirements.rst:144
+msgid "Web Server"
+msgstr ""
+
+#: ../../content/requirements.rst:144
+msgid "Apache HTTP Server Version 2.4"
+msgstr ""
+
+#: ../../content/requirements.rst:150
+msgid "Databases"
+msgstr ""
+
+#: ../../content/requirements.rst:147
+msgid "MySQL 5.6 or higher"
+msgstr ""
+
+#: ../../content/requirements.rst:148
+msgid "MariaDB"
+msgstr ""
+
+#: ../../content/requirements.rst:149
+msgid "PostgreSQL 9.2 or higher"
+msgstr ""
+
+#: ../../content/requirements.rst:150
+msgid "Oracle 10g or higher"
+msgstr ""
+
+#: ../../content/requirements.rst:155
+msgid "Optional"
+msgstr ""
+
+#: ../../content/requirements.rst:153
+msgid "Elasticsearch 7.x (fast search function for live previews)"
+msgstr ""
+
+#: ../../content/requirements.rst:154
+msgid "Redis (fast caching)"
+msgstr ""
+
+#: ../../content/requirements.rst:155
+msgid "nginx or any other web server that can be used as a reverse proxy (SSL support and load distribution)"
+msgstr ""
+
+#: ../../content/requirements.rst:162
+msgid "Web browsers"
+msgstr ""
+
+#: ../../content/requirements.rst:158
+msgid "Apple Safari"
+msgstr ""
+
+#: ../../content/requirements.rst:159
+msgid "Google Chrome"
+msgstr ""
+
+#: ../../content/requirements.rst:160
+msgid "Microsoft Internet Explorer 11"
+msgstr ""
+
+#: ../../content/requirements.rst:161
+msgid "Microsoft Edge"
+msgstr ""
+
+#: ../../content/requirements.rst:162
+msgid "Mozilla Firefox"
+msgstr ""
+
+#: ../../content/requirements.rst:163
+msgid "Any other modern web browser with JavaScript support"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:12
+msgid "Kerberos Single Sign On in OTOBO Docker installation"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:14
+msgid "Please read to the chapter :doc:`installation-docker` for basic information about installing and configure OTOBO. This tutorial assumes that OTOBO has been installed and configured using Docker."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:19
+msgid "In the following, we will refer from AD (Active Directory), of course the Kerberos configuration is also possible under LDAP."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:23
+msgid "Generate Active Directory User"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:25
+msgid "Please create a new Active Directory User with the following settings and save the marked settings:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:29
+msgid "Please use as Username only this syntax: `HTTP/fqdn.from.your.otobo.de`. `fqdn.from.your.otobo.de` needs to be a A-Record DNS entry, not a CNAME! In the next step, it is also possible to use other URLs for OTOBO, they must then point as CNAME to our A-record defined above."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:32
+msgid "The username part \"HTTP/\" should be written in capital letters, as Kerberos expects it that way."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:34
+msgid "The password doesn't work properly with some special characters (e.g. '&')."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:36
+msgid "You have to create a seperate AD-user. You can not use the one that you already use for your LDAP/AD sync."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:43
+msgid "Generate Active Directory Keytab file"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:45
+msgid "In the next step, we connect to a domain controller of the Active Directory and open a console (cmd) there with administrator privileges. Now we use the tool `ktpass.exe`to generate the needed keytab file:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:53
+msgid "`-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@+Picture Number 2`"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:54
+msgid "`-mapuser = OTRS\\otrs32-centos6  (Username prä Win 2000) ->  -> Picture Number 3+\\+Picture Number`"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:55
+msgid "`-pass = Password from user otrs32-centos6 (Active Directory User)`"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:56
+msgid "`-out = c:/krb5.keytab`"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:60
+msgid "Please write the domain (@OTRS.LOCAL) always in capital letters. The password must not contain some special characters."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:63
+msgid "In the next step please move the krb5.keytab file to the OTOBO Server:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:74
+msgid "Create a new volume for your custom nginx configuration"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:94
+msgid "Create new OTOBO .env file"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:96
+msgid "First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.tmp`` and create a new ``.env`` file including the kerberos settings."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:110
+msgid "Now copy your existing configuration options to the new .env file (at least OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY) and insert the following Kerberos settings:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:113
+msgid "# Kerberos keytab OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:116
+msgid "# Kerberos config (Important, please comment out this option like here!) # In default configuration the krb5.conf file is generated automatically # OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:120
+msgid "# Kerberos Service Name OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-centos6.otrs.local # -> Picture Number 1"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:123
+msgid "# Kerberos REALM OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> Picture Number 2"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:126
+msgid "# Active Directory Domain Controller / Kerberos kdc OTOBO_NGINX_KERBEROS_KDC="
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:129
+msgid "# Active Directory Domain Controller / Kerberos Admin Server OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:132
+msgid "# Kerberos Default Domain OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:137
+msgid "Start OTOBO"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:139
+msgid "After the initial Kerberos configuration we start OTOBO again:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:148
+msgid "Tell OTOBO to use the Kerberos-Authentication"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:150
+msgid "In case you have configured AD-Authentication, de-activate it (e.g. by commenting out the respective lines from your Kernel/Config.pm). The authentication will not take place via LDAP anymore."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:153
+msgid "To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:166
+msgid "Configure Browser to understand Kerberos SSO"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:168
+msgid "For SSO to work, the browser must be configured accordingly."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:170
+msgid "**Chrome, Edge, Internet Explorer, etc.**"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:172
+msgid "Add page under local or trusted pages and activate 'Integrated Windows Authentication' (Internet Options)."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:174
+msgid "**Firefox**"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:176
+msgid "Enter \"about:config\" in the firefox address line"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:178
+msgid "and change the following settings:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:180
+msgid "network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:181
+msgid "network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:185
+msgid "Debugging and Problems"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:187
+msgid "If the Kerberos SSO does not work, please check first if the NGINX container is started:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:195
+msgid "In the next step please check the NGINX logs for more information:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:203
+msgid "If NGINX is running, please login into the NGINX Container and check all needed files:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:221
+msgid "Kerberos debugging"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:228
+msgid "Now you are able to debug the Kerberos settings. Examples:"
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:242
+msgid "In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use seperate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your Kernel/Config.pm)."
+msgstr ""
+
+#: ../../content/sso-kerberos.rst:244
+msgid "In case SSO is not working properly, make sure: * the user for which it is not working is in Active Directory * the system has to be in the domain * it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO')"
+msgstr ""
+
+#: ../../content/updating.rst:12
+msgid "Updating"
+msgstr ""
+
+#: ../../content/updating.rst:16
+msgid "It is highly recommended to perform a test update on a separate testing machine first."
+msgstr ""
+
+#: ../../content/updating.rst:20
+msgid "On Debian systems you may need to manually install some perl packages before upgrading from 10.0 to 10.1"
+msgstr ""
+
+#: ../../content/updating.rst:29
+msgid "Step 1: Stop All Relevant Services and the OTOBO Daemon"
+msgstr ""
+
+#: ../../content/updating.rst:31
+msgid "Please make sure there are no more running services or cron jobs that try to access OTOBO. This will depend on your service configuration."
+msgstr ""
+
+#: ../../content/updating.rst:39
+msgid "Stop OTOBO cron jobs and the daemon (in this order):"
+msgstr ""
+
+#: ../../content/updating.rst:50
+msgid "Step 2: Backup Files and Database"
+msgstr ""
+
+#: ../../content/updating.rst:52
+msgid "Create a backup of the hole ``/opt/otobo`` directory and the database."
+msgstr ""
+
+#: ../../content/updating.rst:55
+msgid "Example for a standard installation with Ubuntu and MySQL"
+msgstr ""
+
+#: ../../content/updating.rst:64
+msgid "Please check if all files are valid. Now we have a backup with all required data."
+msgstr ""
+
+#: ../../content/updating.rst:68
+msgid "Don't proceed without a complete backup of your system. You can use also the :ref:`backup-restore` script for this."
+msgstr ""
+
+#: ../../content/updating.rst:72
+msgid "Step 3: Install the New Release"
+msgstr ""
+
+#: ../../content/updating.rst:74
+msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:"
+msgstr ""
+
+#: ../../content/updating.rst:86
+msgid "Restore Old Configuration Files"
+msgstr ""
+
+#: ../../content/updating.rst:88
+msgid "We need only copy the file ``Kernel/Config.pm`` in OTOBO 10."
+msgstr ""
+
+#: ../../content/updating.rst:97
+msgid "Restore Article Data"
+msgstr ""
+
+#: ../../content/updating.rst:99
+msgid "If you configured OTOBO to store article data in the file system you have to restore the ``article`` folder to ``/opt/otobo/var/`` or the folder specified in the system configuration."
+msgstr ""
+
+#: ../../content/updating.rst:108
+msgid "Restore Already Installed Default Statistics"
+msgstr ""
+
+#: ../../content/updating.rst:110
+msgid "If you have additional packages with default statistics you have to restore the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/stats``."
+msgstr ""
+
+#: ../../content/updating.rst:119
+msgid "Set File Permissions"
+msgstr ""
+
+#: ../../content/updating.rst:128
+msgid "Check Apache configuration files"
+msgstr ""
+
+#: ../../content/updating.rst:130
+msgid "Newer versions of OTOBO may need you to adjust the apache configuration. From version 10.1 and onwards we moved from CGI to PSGI. Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs to be adjusted/added."
+msgstr ""
+
+#: ../../content/updating.rst:135
+msgid "Step 4: Check for new needed perl modules"
+msgstr ""
+
+#: ../../content/updating.rst:137
+msgid "OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary."
+msgstr ""
+
+#: ../../content/updating.rst:140
+msgid "On Debian systems you may need to manually install some packages:"
+msgstr ""
+
+#: ../../content/updating.rst:155
+msgid "Step 5: Update Installed Packages and reconfigure config"
+msgstr ""
+
+#: ../../content/updating.rst:157
+msgid "You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon)."
+msgstr ""
+
+#: ../../content/updating.rst:167
+msgid "Step 6: Only for minor or major release upgrades (for example to upgrade from 10.0 to 10.1)"
+msgstr ""
+
+#: ../../content/updating.rst:175
+msgid "Step 7: Start your Services"
+msgstr ""
+
+#: ../../content/updating.rst:177
+msgid "Start OTOBO cron jobs and the daemon (in this order):"
+msgstr ""
+
+#: ../../content/updating.rst:186
+msgid "Now the services can be started. This will depend on your service configuration, here is an example:"
+msgstr ""
+
+#: ../../content/updating.rst:194
+msgid "Now you can log into your system."
+msgstr ""
+
+#: ../../content/updating-docker.rst:12
+msgid "Updating a Docker-based Installation of OTOBO"
+msgstr ""
+
+#: ../../content/updating-docker.rst:14
+msgid "For running OTOBO under Docker we need the OTOBO software itself and an environment in which OTOBO can run. The OTOBO Docker image provides the environment and a copy of the OTOBO software. The software itself is installed in the volume *otobo_opt_otobo*. A named volume is used because run time data, e.g. configuration files and installed packages, is stored in the same directory tree."
+msgstr ""
+
+#: ../../content/updating-docker.rst:20
+msgid "When updating to a new version of OTOBO several things have to happen."
+msgstr ""
+
+#: ../../content/updating-docker.rst:22
+msgid "The Docker Compose files have to be updated."
+msgstr ""
+
+#: ../../content/updating-docker.rst:23
+msgid "The Docker Compose config file *.env* has to be checked."
+msgstr ""
+
+#: ../../content/updating-docker.rst:24
+msgid "The new Docker image has to be fetched."
+msgstr ""
+
+#: ../../content/updating-docker.rst:25
+msgid "The volume *otobo_opt_otobo* must be updated."
+msgstr ""
+
+#: ../../content/updating-docker.rst:26
+msgid "Some maintainance tasks must be executed."
+msgstr ""
+
+#: ../../content/updating-docker.rst:30
+msgid "In the sample commands below, the version **10.x.y**, corresponding to the tag **10_x_y**, is used as the example version. Please substitute it with the real version, e.g. **10.0.7**."
+msgstr ""
+
+#: ../../content/updating-docker.rst:35
+msgid "These instructions apply only to OTOBO 10.0.6 or later."
+msgstr ""
+
+#: ../../content/updating-docker.rst:38
+msgid "Updating the Docker Compose files"
+msgstr ""
+
+#: ../../content/updating-docker.rst:40
+msgid "The OTOBO Docker Compose files can change between releases. Therefore is must be made sure that the correct setup is used."
+msgstr ""
+
+#: ../../content/updating-docker.rst:45
+msgid "See https://hub.docker.com/r/rotheross/otobo/tags for the available releases."
+msgstr ""
+
+#: ../../content/updating-docker.rst:59
+msgid "Checking the Docker Compose .env file"
+msgstr ""
+
+#: ../../content/updating-docker.rst:61
+msgid "The file *.env* controls the OTOBO Docker container. Within that file, the variables *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and *OTOBO_IMAGE_OTOBO_NGINX* declare which images are used. The latest images are used when these variables are not set. If you want to use a specific version, then please set these variables accordingly."
+msgstr ""
+
+#: ../../content/updating-docker.rst:67
+msgid "Fetch the new Docker images"
+msgstr ""
+
+#: ../../content/updating-docker.rst:69
+msgid "Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/."
+msgstr ""
+
+#: ../../content/updating-docker.rst:80
+msgid "Update OTOBO"
+msgstr ""
+
+#: ../../content/updating-docker.rst:82
+msgid "In this step the volume *otobo_opt_otobo* is updated and the following OTOBO console commands are performed:"
+msgstr ""
+
+#: ../../content/updating-docker.rst:84
+msgid "Admin::Package::ReinstallAll"
+msgstr ""
+
+#: ../../content/updating-docker.rst:85
+msgid "Admin::Package::UpgradeAll"
+msgstr ""
+
+#: ../../content/updating-docker.rst:86
+msgid "Maint::Config::Rebuild"
+msgstr ""
+
+#: ../../content/updating-docker.rst:87
+msgid "Maint::Cache::Delete"
+msgstr ""
+
+#: ../../content/updating-docker.rst:114
+msgid "The above listed commands can be automated. For that purpose the script *scripts/update.sh* will be made available in OTOBO 10.0.8. This script runs the commands, starting with the **docker-compose pull** command."
+msgstr ""
