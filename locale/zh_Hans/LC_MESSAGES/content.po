@@ -4,13 +4,14 @@
 # Grit Rother <mr@otobo.de>, 2020.
 # Paul Yang <paul.yang@itservice.com.cn>, 2020, 2021.
 # OpenAI <noreply-mt-openai@weblate.org>, 2024.
+# DeepL <noreply-mt-deepl@weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2023-10-31 00:40+0100\n"
-"PO-Revision-Date: 2024-02-23 23:28+0000\n"
-"Last-Translator: OpenAI <noreply-mt-openai@weblate.org>\n"
+"PO-Revision-Date: 2024-02-25 11:45+0000\n"
+"Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://translate.otobo.org/projects/otobo-11/installation-manual/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
@@ -113,24 +114,19 @@ msgid "Backup and Restore using Docker"
 msgstr "备份和恢复"
 
 #: ../../content/backup-restore-docker.rst:14
-#, fuzzy
 msgid ""
 "Please read to the chapter :doc:`backup-restore` for basic information about "
 "the backup and restore scripts."
-msgstr ""
-"请阅读备份和恢复的介绍文档：`backup-restore` 了解备份和恢复脚本的基本信息。"
+msgstr "有关备份和还原脚本的基本信息，请阅读 :doc:`backup-restore` 一章。"
 
 #: ../../content/backup-restore-docker.rst:19
-#, fuzzy
 msgid ""
 "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with "
 "OTOBO running under Docker. However some Docker specific limitations have to "
 "be considered."
-msgstr ""
-"相同的脚本可以用于OTOBO在Docker下的运行，不过要考虑一些Docker特定的限制。"
+msgstr "标准脚本 ``backup.pl`` 和 ``restore.pl`` 也可用于在 Docker 下运行的 OTOBO。不过，必须考虑一些 Docker 特有的限制。"
 
 #: ../../content/backup-restore-docker.rst:22
-#, fuzzy
 msgid ""
 "First, we need to make sure that the backup files are not created in the "
 "file system that is internal to a Docker container. Because in that case the "
@@ -141,20 +137,14 @@ msgid ""
 "container can be arbitrarily chosen. In this example we choose the local dir "
 "``otobo_backup`` as the location on the host and ``/otobo_backup`` as the "
 "location in the container."
-msgstr ""
-"首先我们要确认备份文件创建时所在的文件系统，不是一个容器内部的文件系统。因为"
-"在那种情况下，当容器被停止后，所有的数据都会丢失。所以，备份目录必须在一个"
-"卷。现在我们先考虑最简单的一种情况，备份目录是Docker主机的一个本地目录。备份"
-"目录在容器中的位置可以随意选择。在本例中我们选择本地目录``otobo_backup``作为"
-"备份目录在主机的位置， 而在容器中的位置就是``/otobo_backup`` 。"
+msgstr "首先，我们需要确保备份文件不是在 Docker 容器内部的文件系统中创建的。因为在这种情况下，创建的文件会在容器停止时丢失。这意味着备份目录必须位于卷中。在本手册中，我们只考虑最简单的情况，即备份目录是 Docker 主机上的本地目录。备份目录在容器中的位置可以任意选择。在本例中，我们选择本地目录 ``otobo_backup`` 作为主机上的位置，而 ``/otobo_backup`` 作为容器中的位置。"
 
 #: ../../content/backup-restore-docker.rst:29
-#, fuzzy
 msgid ""
 "Secondly, commands in the Docker container usually run as the user `otobo` "
 "with the user id 1000 and the group id 1000. It must be made sure, that this "
 "user can write in the backup directory."
-msgstr "其次，在 Docker 容器中运行的命令通常以用户 `otobo` 身份运行，用户 ID 为 1000，组 ID 为 1000。必须确保此用户可以在备份目录中写入。"
+msgstr "其次，Docker 容器中的命令通常以用户 `otobo` 的身份运行，用户 ID 1000，组 ID 1000。必须确保该用户可以在备份目录中写入内容。"
 
 #: ../../content/backup-restore-docker.rst:48
 #, fuzzy
@@ -167,35 +157,30 @@ msgstr ""
 "``otobo_backup``，这意味着网站服务器和Daemon可能，不是必须，被停掉。"
 
 #: ../../content/backup-restore-docker.rst:67
-#, fuzzy
 msgid ""
 "To drop an existing otobo database and create a new one you can use the "
 "following commands. First, you have to connect to the MySQL CLI of the `db` "
 "container."
-msgstr "要删除现有的otobo数据库并创建一个新的，您可以使用以下命令。首先，您必须连接到`db`容器的MySQL CLI。"
+msgstr "要删除现有的 otobo 数据库并创建一个新数据库，可以使用以下命令。首先，你必须连接到 `db` 容器的 MySQL CLI。"
 
 #: ../../content/backup-restore-docker.rst:75
-#, fuzzy
 msgid ""
 "As soon as you are connected to the MySQL server, you can drop and recreate "
 "the `otobo` database."
-msgstr "一旦连接到MySQL服务器，您就可以删除并重新创建`otobo`数据库。"
+msgstr "一旦连接到 MySQL 服务器，就可以删除并重新创建 `otobo` 数据库。"
 
 #: ../../content/customer-interface-ci.rst:12
-#, fuzzy
 msgid "Adapt customer interface with corporate identity"
 msgstr "根据企业形象调整客户界面"
 
 #: ../../content/customer-interface-ci.rst:14
-#, fuzzy
 msgid ""
 "In OTOBO it is very easy to adapt the customer area to your own corporate "
 "identity. Follow this tutorial step by step and OTOBO will shine in your own "
 "design in a short time."
-msgstr "在OTOBO中，非常容易将客户区域调整为您自己的企业形象。按照本教程一步一步操作，OTOBO将在短时间内以您自己的设计闪耀。"
+msgstr "在 OTOBO 中，将客户区调整为您自己的企业标识非常容易。按照本教程一步一步来，OTOBO 将很快在您的设计中大放异彩。"
 
 #: ../../content/customer-interface-ci.rst:20
-#, fuzzy
 msgid ""
 "Currently, it is not so easy to adapt the agent area to one's own CI. "
 "Changes in the OTOBO .css files would be necessary here. One exception is "
@@ -203,150 +188,127 @@ msgid ""
 "easily exchanged by copying the logos to the server and then adjusting the "
 "options ``AgentLoginLogo`` and ``AgentLogo`` under ``Admin -> System "
 "Configuration``."
-msgstr "目前，要将代理区域适应自己的CI并不容易。这里需要更改OTOBO的.css文件。一个例外是代理登录页面和代理头部的logo。可以通过将logo复制到服务器，然后调整``Admin -> System Configuration``下的``AgentLoginLogo``和``AgentLogo``选项来轻松交换logo。"
+msgstr "目前，将代理区域调整为自己的 CI 并不容易。这里需要修改 OTOBO .css 文件。一个例外是代理登录页面和代理页眉上的徽标。只需将徽标复制到服务器，然后调整 \"Admin -> System Configuration \"下的 \"AgentLoginLogo \"和 \"AgentLogo \"选项，就可以轻松交换徽标。"
 
 #: ../../content/customer-interface-ci.rst:26
-#, fuzzy
 msgid "Change colors in Customer Area"
-msgstr "在客户区域更改颜色"
+msgstr "更改客户区的颜色"
 
 #: ../../content/customer-interface-ci.rst:28
-#, fuzzy
 msgid ""
 "To change the colors for the OTOBO customer interface, please go to ``Admin -"
 "> System Configuration`` and change the following settings:"
-msgstr "要更改 OTOBO 客户界面的颜色，请转到 ``Admin -> System Configuration`` 并更改以下设置："
+msgstr "要更改 OTOBO 客户界面的颜色，请进入 ``Admin -> System Configuration`` 并更改以下设置："
 
 #: ../../content/customer-interface-ci.rst:30
-#, fuzzy
 msgid "CustomerColorDefinitions"
-msgstr "CustomerColorDefinitions"
+msgstr "客户颜色定义"
 
 #: ../../content/customer-interface-ci.rst:31
-#, fuzzy
 msgid ""
 "To change the colours on the Customer Dashboard, please go to `Admin -> "
 "System Configuration`` and search for CustomerDashboard. In the search "
 "result you will find all the options you need with colour definitions."
-msgstr "要更改客户仪表板上的颜色，请前往`管理 -> 系统配置`并搜索CustomerDashboard。在搜索结果中，您将找到所有带有颜色定义的需要的选项。"
+msgstr "要更改 \"客户控制面板 \"上的颜色，请访问 \"管理员 -> 系统配置 \"并搜索 \"客户控制面板\"。在搜索结果中，您将找到所需的所有选项和颜色定义。"
 
 #: ../../content/customer-interface-ci.rst:35
-#, fuzzy
 msgid "Change Logos and Pictures"
-msgstr "更换Logo和图片"
+msgstr "更改徽标和图片"
 
 #: ../../content/customer-interface-ci.rst:37
-#, fuzzy
 msgid ""
 "In the first step please copy your Logos and Pictures to the OTOBO Server. "
 "Please use an SCP client (WinSCP) for this purpose. Often you do not have "
 "the permissions to copy the logos to the right place. In this case, it is "
 "best to use the folder /tmp/."
-msgstr "第一步，请将您的Logo和图片复制到OTOBO服务器。请使用SCP客户端（如WinSCP）来完成此操作。通常您没有权限将logo复制到正确的位置。在这种情况下，最好使用/tmp/文件夹。"
+msgstr "第一步，请将徽标和图片复制到 OTOBO 服务器。为此请使用 SCP 客户端（WinSCP）。通常情况下，您没有将徽标复制到正确位置的权限。在这种情况下，最好使用 /tmp/ 文件夹。"
 
 #: ../../content/customer-interface-ci.rst:41
-#, fuzzy
 msgid "In the next step copy the Logo into the OTOBO Home directory:"
-msgstr "下一步，请将Logo复制到OTOBO的主目录中："
+msgstr "下一步，将 Logo 复制到 OTOBO 主目录："
 
 #: ../../content/customer-interface-ci.rst:52
-#, fuzzy
 msgid ""
 "Now change inside the OTOBO Agent Interface to ``Admin -> System "
 "Configuration`` and change the following settings:"
-msgstr "现在在 OTOBO 代理界面中切换到 ``Admin -> System Configuration`` 并更改以下设置："
+msgstr "现在，在 OTOBO Agent 界面的 \"管理\"->\"系统配置 \"中更改以下设置："
 
 #: ../../content/customer-interface-ci.rst:56
-#, fuzzy
 msgid "Change Customer Login Pictures and Text"
-msgstr "更改客户登录图片和文字"
+msgstr "更改客户登录图片和文本"
 
 #: ../../content/customer-interface-ci.rst:61
-#, fuzzy
 msgid "1 and 2 - System Configuration Option **CustomerLogin::Settings**"
-msgstr "1 和 2 - 系统配置选项 **CustomerLogin::Settings**"
+msgstr "1 和 2 - 系统配置选项 **客户登录::设置**"
 
 #: ../../content/customer-interface-ci.rst:63
-#, fuzzy
 msgid "**Remove Opacity and Watermark**"
-msgstr "**移除不透明度和水印**"
+msgstr "**去除不透明度和水印**"
 
 #: ../../content/customer-interface-ci.rst:65
-#, fuzzy
 msgid ""
 "At the moment it is not possible to remove the overlay and watermark used in "
 "the image on the right by system configuration."
-msgstr "目前，无法通过系统配置移除右侧图片上使用的叠加层和水印。"
+msgstr "目前无法通过系统配置去除右图中使用的叠加和水印。"
 
 #: ../../content/customer-interface-ci.rst:67
-#, fuzzy
 msgid ""
 "To remove the opacity, please adjust the option **#oooLoginBG > .oooBG** in "
 "the file"
-msgstr "要移除不透明度，请调整文件中的选项**#oooLoginBG > .oooBG**"
+msgstr "要移除不透明度，请调整文件中的**#oooLoginBG > .oooBG** 选项"
 
 #: ../../content/customer-interface-ci.rst:69
-#, fuzzy
 msgid "``var/httpd/htdocs/skins/Customer/default/css/Core.Login.css``"
 msgstr "``var/httpd/htdocs/skins/Customer/default/css/Core.Login.css``"
 
 #: ../../content/customer-interface-ci.rst:82
-#, fuzzy
 msgid ""
 "To remove the watermark, please remove the following line inside the file:"
-msgstr "要移除水印，请在文件中删除以下行："
+msgstr "要移除水印，请移除文件中的以下一行："
 
 #: ../../content/customer-interface-ci.rst:84
-#, fuzzy
 msgid "``Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt``"
-msgstr "``Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt``"
+msgstr "内核/Output/HTML/Templates/Standard/CustomerLogin.tt``内核/Output/HTML/Templates/Standard/CustomerLogin.tt`模板"
 
 #: ../../content/customer-interface-ci.rst:100
-#, fuzzy
 msgid ""
 "Please add the files to a opm package in the next step, so that the changes "
 "remain persistent. You can find instructions on how to do this in our Admin "
 "Manual: https://doc.otobo.org/manual/developer/10.1/en/content/how-to-"
 "publish-otobo-extensions.html"
-msgstr "请在下一步将文件添加到opm包中，以便更改保持持久。您可以在我们的管理员手册中找到如何操作的说明：https://doc.otobo.org/manual/developer/10.1/en/content/how-to-publish-otobo-extensions.html"
+msgstr "请在下一步中将文件添加到 opm 软件包中，以便更改保持持久。您可以在我们的《管理员手册》中找到相关说明： https://doc.otobo.org/manual/developer/10.1/en/content/how-to-publish-otobo-extensions.html"
 
 #: ../../content/customer-interface-ci.rst:104
-#, fuzzy
 msgid "Change Customer Dashboard tiles and options"
 msgstr "更改客户仪表板磁贴和选项"
 
 #: ../../content/customer-interface-ci.rst:106
-#, fuzzy
 msgid ""
 "To change the colours on the Customer Dashboard, please go to ``Admin -> "
 "System Configuration`` and search for **CustomerDashboard**."
-msgstr "要更改客户仪表板上的颜色，请转到 ``Admin -> System Configuration`` 并搜索 **CustomerDashboard**。"
+msgstr "要更改客户控制面板上的颜色，请访问 \"管理员 -> 系统配置 \"并搜索**客户控制面板**。"
 
 #: ../../content/customer-interface-ci.rst:108
-#, fuzzy
 msgid ""
 "In the search result you will find all the options you need with colour "
 "definitions."
-msgstr "在搜索结果中，您将找到所有带有颜色定义的需要的选项。"
+msgstr "在搜索结果中，您可以找到所需的所有选项和颜色定义。"
 
 #: ../../content/customer-interface-ci.rst:113
-#, fuzzy
 msgid ""
 "1 - To change the picture, link and text please use the System Configuration "
 "Option **CustomerDashboard::Tiles###FeaturedLink-01**"
-msgstr "1 - 要更改图片、链接和文本，请使用系统配置选项**CustomerDashboard::Tiles###FeaturedLink-01**"
+msgstr "1 - 要更改图片、链接和文本，请使用系统配置选项 **CustomerDashboard::Tiles##FeaturedLink-01**"
 
 #: ../../content/customer-interface-ci.rst:114
-#, fuzzy
 msgid ""
 "2 - To change the toplevel text please use the System Configuration Option "
 "**CustomerDashboard::Configuration::Text**"
-msgstr "2 - 要更改顶级文本，请使用系统配置选项**CustomerDashboard::Configuration::Text**"
+msgstr "2 - 要更改顶层文本，请使用系统配置选项 **CustomerDashboard::Configuration::Text**"
 
 #: ../../content/customer-interface-ci.rst:118
-#, fuzzy
 msgid "Please disable the config options from not needed tiles."
-msgstr "请禁用不需要的磁贴的配置选项。"
+msgstr "请禁用不需要的磁贴配置选项。"
 
 #: ../../content/history.rst:13
 msgid "Documentation History"
@@ -395,13 +357,10 @@ msgstr ""
 "Oberursel, Germany."
 
 #: ../../content/index.rst:22
-#, fuzzy
 msgid ""
 "Copyright © for modifications and amendments 2019-2022 ROTHER OSS GmbH "
 "(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
-msgstr ""
-"2019-2020更改和修订版权：ROTHER OSS GmbH (https://otobo.de), Oberwalting 31, "
-"94339 Leiblfing, Germany"
+msgstr "Copyright © for modifications and amendments 2019-2022 ROTHER OSS GmbH (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
 
 #: ../../content/index.rst:25
 msgid ""
@@ -464,7 +423,6 @@ msgstr ""
 "统了。"
 
 #: ../../content/installation.rst:20
-#, fuzzy
 msgid ""
 "As of OTOBO version 10.0.7, we recommend Docker and Docker Compose for the "
 "OTOBO installation. By using the provided Docker images, all recommended "
@@ -473,7 +431,7 @@ msgid ""
 "performance has been improved. You can find the instructions for Docker-"
 "based installation at https://doc.otobo.org/manual/installation/10.1/en/"
 "content/installation-docker.html ."
-msgstr "从 OTOBO 版本 10.0.7 开始，我们推荐使用 Docker 和 Docker Compose 进行 OTOBO 安装。通过使用提供的 Docker 镜像，所有推荐的依赖项（如 Elasticsearch、Redis 缓存等）都会自动安装和配置。因此，更新变得非常简单，性能也得到了提升。您可以在 https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html 找到基于 Docker 的安装说明。"
+msgstr "从 OTOBO 10.0.7 版开始，我们推荐使用 Docker 和 Docker Compose 来安装 OTOBO。通过使用提供的 Docker 映像，所有推荐的依赖项（如 Elasticsearch、Redis Cache 等）都会自动安装和配置。因此，更新大大简化，性能也得到提高。有关基于 Docker 的安装说明，请访问 https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html 。"
 
 #: ../../content/installation.rst:28
 msgid "Preparation: Disable SELinux when it is installed and enabled"
@@ -545,9 +503,8 @@ msgstr ""
 "通盘的了解。"
 
 #: ../../content/installation.rst:90
-#, fuzzy
 msgid "On Debian systems you may need to manually install some perl packages:"
-msgstr "在 Debian 系统上，您可能需要手动安装一些 perl 包："
+msgstr "在 Debian 系统上，您可能需要手动安装一些 perl 软件包："
 
 #: ../../content/installation.rst:107
 msgid ""
@@ -622,43 +579,35 @@ msgstr ""
 "进行。在下面你看会看到在当前流行的Linux版本上，安装Apache需要的一些命令。"
 
 #: ../../content/installation.rst:166
-#, fuzzy
 msgid ""
 "A critical setting of the Apache web server is the choice of the multi-"
 "processing module. For running OTOBO, the recommended choice is the module "
 "**mpm_prefork**. Like other Apache modules the multi-processing module can "
 "be managed with the tools a2dismod and a2enmod."
-msgstr "Apache网络服务器的一个关键设置是多处理模块的选择。对于运行OTOBO，推荐的选择是模块**mpm_prefork**。像其他Apache模块一样，多处理模块可以用工具a2dismod和a2enmod管理。"
+msgstr "Apache 网络服务器的一个关键设置是选择多进程模块。在运行 OTOBO 时，建议选择 **mpm_prefork** 模块。与其他 Apache 模块一样，可以使用 a2dismod 和 a2enmod 工具管理多进程模块。"
 
 #: ../../content/installation.rst:175
-#, fuzzy
 msgid "All is fine whem mpm_prefork already is enabled."
-msgstr "当mpm_prefork已经启用时，一切正常。"
+msgstr "当 mpm_prefork 已启用时，一切正常。"
 
 #: ../../content/installation.rst:177
-#, fuzzy
 msgid "Disable mpm_event when it is currently active."
-msgstr "禁用当前活动的mpm_event。"
+msgstr "禁用当前处于活动状态的 mpm_event。"
 
 #: ../../content/installation.rst:183
-#, fuzzy
 msgid "Disable mpm_worker in case that MPM is enabled."
-msgstr "如果启用了MPM，请禁用mpm_worker。"
+msgstr "如果已启用 MPM，则禁用 mpm_worker。"
 
 #: ../../content/installation.rst:189
-#, fuzzy
 msgid "Finally activate mpm_prefork."
-msgstr "最后激活mpm_prefork。"
+msgstr "最后激活 mpm_prefork。"
 
 #: ../../content/installation.rst:195
-#, fuzzy
 msgid ""
 "OTOBO requires a few more Apache modules to be active for optimal operation. "
 "Again, on most platforms you can make sure they are active via the tool "
 "a2enmod."
-msgstr ""
-"OTOBO为了实现最优运行，需要一些Apache模块。在大多数平台上，你可以通过a2enmod"
-"工具确认这些模块是否已经激活。"
+msgstr "为了达到最佳运行效果，OTOBO 还需要激活一些 Apache 模块。同样，在大多数平台上，您可以通过工具 a2enmod 确保这些模块处于激活状态。"
 
 #: ../../content/installation.rst:206
 msgid ""
@@ -684,14 +633,11 @@ msgid "Configure Apache without SSL support"
 msgstr "在没有SSL支持的情况下配置Apache"
 
 #: ../../content/installation.rst:213
-#, fuzzy
 msgid ""
 "Copy the template file ``/opt/otobo/scripts/apache2-httpd.include.conf`` to "
 "the apache ``sites-available`` directory. In most cases no further editing "
 "of the template is required. Then enable the new configuration."
-msgstr ""
-"在Apache配置目录中（先确认一下在完成其他配置后是否被加载了），从``/opt/otobo/"
-"scripts/apache2-httpd.include.conf``拷贝合适的模板到文件``zzz_otobo.conf`` 。"
+msgstr "将模板文件 ``/opt/otobo/scripts/apache2-httpd.include.conf`` 复制到 apache ``sites-available`` 目录。大多数情况下无需进一步编辑模板。然后启用新配置。"
 
 #: ../../content/installation.rst:226
 msgid "Configure Apache **with** SSL support"
@@ -915,9 +861,8 @@ msgstr ""
 "用下面的命令实现："
 
 #: ../../content/installation.rst:411
-#, fuzzy
 msgid "Step 9: Basic System Configuration"
-msgstr "步骤8：系统基础配置"
+msgstr "步骤 9：基本系统配置"
 
 #: ../../content/installation.rst:413
 msgid ""
@@ -929,9 +874,8 @@ msgstr ""
 "的网络安装软件，设置你的数据库和基本系统配置，例如电子邮件账户。"
 
 #: ../../content/installation.rst:417
-#, fuzzy
 msgid "Step 10: First Login"
-msgstr "步骤9：首次登陆"
+msgstr "步骤 10：首次登录"
 
 #: ../../content/installation.rst:419
 msgid ""
@@ -942,9 +886,8 @@ msgstr ""
 "``root@localhost`` ，密码是上面生成的（请参考之前描述）。"
 
 #: ../../content/installation.rst:423
-#, fuzzy
 msgid "Step 11: Start the OTOBO Daemon"
-msgstr "步骤10：启动OTOBO Daemon"
+msgstr "步骤 11：启动 OTOBO 守护进程"
 
 #: ../../content/installation.rst:425
 msgid ""
@@ -958,9 +901,8 @@ msgstr ""
 "用户发起的GenericAgent任务。"
 
 #: ../../content/installation.rst:432
-#, fuzzy
 msgid "Step 12: Cron jobs for the OTOBO user"
-msgstr "步骤11：OTOBO用户的cron任务"
+msgstr "步骤 12：OTOBO 用户的 Cron 作业"
 
 #: ../../content/installation.rst:434
 msgid ""
@@ -978,9 +920,8 @@ msgid "With this step, the basic system setup is finished."
 msgstr "到这一步，基本的系统配置就完成了。"
 
 #: ../../content/installation.rst:448
-#, fuzzy
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
-msgstr "步骤12：设置Bash Auto-Completion （可选）"
+msgstr "步骤 13：设置 Bash 自动完成（可选）"
 
 #: ../../content/installation.rst:450
 msgid ""
@@ -1024,9 +965,8 @@ msgstr ""
 "bashrc`` ，执行文件中的命令。"
 
 #: ../../content/installation.rst:472
-#, fuzzy
 msgid "Step 14: Further Information"
-msgstr "步骤13：更多信息"
+msgstr "步骤 14：更多信息"
 
 #: ../../content/installation.rst:474
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
@@ -1037,47 +977,38 @@ msgid "Installing using Docker and Docker Compose"
 msgstr "安装应用 Docker和Docker Compose"
 
 #: ../../content/installation-docker.rst:14
-#, fuzzy
 msgid ""
 "With the dockerized OTOBO deployment you can get your personal OTOBO "
 "instance up and running within minutes. All of OTOBO´s dependencies are "
 "already included in the provided collection of Docker images."
-msgstr ""
-"用容器虚拟化实施你的OTOBO系统，你可以马上建立你的个人OTOBO并在几分钟内开始运"
-"行，因为所有的OTOBO需要的外部环境软件都已经包括在内了。"
+msgstr "通过 Docker 化的 OTOBO 部署，您可以在几分钟内启动并运行您的个人 OTOBO 实例。在提供的 Docker 镜像集合中，已经包含了 OTOBO 的所有依赖项。"
 
 #: ../../content/installation-docker.rst:17
-#, fuzzy
 msgid "Service *db*: MariaDB is set up as the default database."
-msgstr "MariaDB被设置为默认数据库。"
+msgstr "服务 *db*：已将 MariaDB 设置为默认数据库。"
 
 #: ../../content/installation-docker.rst:18
-#, fuzzy
 msgid "Service *elastic*: Elasticsearch is set up for the OTOBO power search."
-msgstr "为OTOBO建立Elasticsearch进行强力搜索。"
+msgstr "服务 *elastic*：为 OTOBO 强力搜索设置了 Elasticsearch。"
 
 #: ../../content/installation-docker.rst:19
-#, fuzzy
 msgid "Service *redis*: Redis is enabled for fast caching."
-msgstr "启用Redis进行快速缓存。"
+msgstr "服务 *redis*：已启用 Redis 进行快速缓存。"
 
 #: ../../content/installation-docker.rst:20
-#, fuzzy
 msgid "Service *web*: Gazelle is used as fast Perl webserver."
-msgstr "Gazelle用来作为快速Perl网站服务器。"
+msgstr "网络*服务：Gazelle 用作快速 Perl 网络服务器。"
 
 #: ../../content/installation-docker.rst:21
-#, fuzzy
 msgid ""
 "Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support."
-msgstr "nginx作为HTTPS支持的可选网络代理。"
+msgstr "服务 *nginx*：Nginx 用作支持 HTTPS 的可选反向代理。"
 
 #: ../../content/installation-docker.rst:23
-#, fuzzy
 msgid ""
 "We think that this setup is the perfect environment for an OTOBO "
 "installation."
-msgstr "我们认为这将成为OTOBO安装的最优环境。"
+msgstr "我们认为，这种设置是安装 OTOBO 的理想环境。"
 
 #: ../../content/installation-docker.rst:26
 msgid "Requirements"
@@ -1173,7 +1104,6 @@ msgid "2. Create an initial *.env* file"
 msgstr "2. 创建初始*.env*文件"
 
 #: ../../content/installation-docker.rst:79
-#, fuzzy
 msgid ""
 "The Docker Compose configuration file *.env* is your primary interface for "
 "managing your installation of OTOBO. This file must first be created and "
@@ -1183,12 +1113,7 @@ msgid ""
 "*.docker_compose_env_http* and *.docker_compose_env_https*, depending on "
 "whether TLS must be supported or not. The other files are for more "
 "specialised use cases."
-msgstr ""
-"Docker Compose配置文件* .env *让你可以管理OTOBO的安装。你必须先创建此文件，然"
-"后根据情况修改。为了简化工作，这里有两个示例文件可以作为起始点。如果要通过"
-"HTTPS访问OTOBO Web应用程序，请使用* .docker_compose_env_https *，我们建议使用"
-"HTTPS进行访问操作。如果不需要HTTPS，可以使用* .docker_compose_env_http *作为"
-"起点。"
+msgstr "Docker Compose 配置文件 *.env* 是您管理 OTOBO 安装的主要界面。首先必须创建该文件，然后自行调整。为了简化这项工作，有几个示例文件可以作为起点。哪个示例文件最合适取决于您的使用情况。在大多数情况下，根据是否支持 TLS，可以在 *.docker_compose_env_http* 和 *.docker_compose_env_https* 之间做出选择。其他文件适用于更特殊的情况。"
 
 #: ../../content/installation-docker.rst:87
 #, fuzzy
@@ -1196,9 +1121,8 @@ msgid ".docker_compose_env_http"
 msgstr "*.docker_compose_env_http*"
 
 #: ../../content/installation-docker.rst:87
-#, fuzzy
 msgid "The OTOBO web app provides HTTP."
-msgstr "OTOBO web应用提供HTTP服务。"
+msgstr "OTOBO 网络应用程序提供 HTTP。"
 
 #: ../../content/installation-docker.rst:90
 #, fuzzy
@@ -1206,51 +1130,43 @@ msgid ".docker_compose_env_https"
 msgstr "*.docker_compose_env_https*"
 
 #: ../../content/installation-docker.rst:90
-#, fuzzy
 msgid ""
 "The OTOBO web app provides HTTPS by runnning Nginx as a reverse proxy "
 "webserver."
-msgstr "OTOBO网页应用通过运行Nginx作为反向代理服务器来提供HTTPS。"
+msgstr "OTOBO 网络应用程序通过运行 Nginx 作为反向代理网络服务器来提供 HTTPS。"
 
 #: ../../content/installation-docker.rst:93
-#, fuzzy
 msgid ".docker_compose_env_https_custom_nginx"
-msgstr "*.docker_compose_env_https*"
+msgstr ".docker_compose_env_https_custom_nginx"
 
 #: ../../content/installation-docker.rst:93
-#, fuzzy
 msgid ""
 "Like *.docker_compose_env_https* but with support for a custom Nginx "
 "configuration."
-msgstr "类似于*.docker_compose_env_https*，但支持自定义Nginx配置。"
+msgstr "与 *.docker_compose_env_https* 类似，但支持自定义 Nginx 配置。"
 
 #: ../../content/installation-docker.rst:96
-#, fuzzy
 msgid ".docker_compose_env_https_kerberos"
-msgstr "*.docker_compose_env_https*"
+msgstr ".docker_compose_env_https_kerberos"
 
 #: ../../content/installation-docker.rst:96
-#, fuzzy
 msgid ""
 "Like *.docker_compose_env_https* but with sample setup for single sign on. "
 "Note that Kerberos support is still **experimental**."
-msgstr "类似 *.docker_compose_env_https*，但提供了单点登录的示例设置。请注意，Kerberos支持仍然是**实验性**的。"
+msgstr "与 *.docker_compose_env_https* 类似，但提供了单点登录的设置示例。请注意，Kerberos 支持仍处于**实验阶段。"
 
 #: ../../content/installation-docker.rst:99
-#, fuzzy
 msgid ""
 ".docker_compose_env_http_selenium and .docker_compose_env_https_selenium"
 msgstr ".docker_compose_env_http_selenium 和 .docker_compose_env_https_selenium"
 
 #: ../../content/installation-docker.rst:99
-#, fuzzy
 msgid "These are used only for development when Selenium testing is activated."
 msgstr "这些仅在激活 Selenium 测试时用于开发。"
 
 #: ../../content/installation-docker.rst:103
-#, fuzzy
 msgid "Use ``ls -a`` for listing the hidden sample files."
-msgstr "用``ls -a`` 列出隐藏的模板文件。"
+msgstr "使用 ``ls -a`` 列出隐藏的样本文件。"
 
 #: ../../content/installation-docker.rst:105
 msgid ""
@@ -1344,13 +1260,10 @@ msgid ""
 msgstr "需要在我们新创建的* .env *文件中设置复制文件的名称，例如。"
 
 #: ../../content/installation-docker.rst:159
-#, fuzzy
 msgid ""
 "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and "
 "``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
-msgstr ""
-"``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` "
-"``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
+msgstr "`OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt``和`OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``。"
 
 #: ../../content/installation-docker.rst:162
 msgid ""
@@ -1403,14 +1316,11 @@ msgid "**Have fun with OTOBO!**"
 msgstr "**与OTOBO玩得开心吧！**"
 
 #: ../../content/installation-docker.rst:197
-#, fuzzy
 msgid ""
 "To change to the OTOBO directory, inside the running container, to work on "
 "command line as usual, you can use the following Docker command: ``docker-"
 "compose exec web bash``."
-msgstr ""
-"要切换到运行容器内的OTOBO目录，以便正常在命令行下工作，可以使用以下Docker命"
-"令：``docker exec -it otobo_web_1 bash``。"
+msgstr "要在运行中的容器内切换到 OTOBO 目录，并像往常一样在命令行上工作，可以使用以下 Docker 命令：docker-compose exec web bash``。"
 
 #: ../../content/installation-docker.rst:201
 msgid "Additional technical information"
@@ -1492,18 +1402,16 @@ msgid "otobo_opt_otobo"
 msgstr "otobo_opt_otobo"
 
 #: ../../content/installation-docker.rst:234
-#, fuzzy
 msgid "contains */opt/otobo* in the container **web** and **daemon**."
-msgstr "容器 `web` 和 `daemon`中包含`/opt/otobo` 。"
+msgstr "包含在 **web** 和 **daemon** 容器中的 */opt/otobo*。"
 
 #: ../../content/installation-docker.rst:237
 msgid "otobo_mariadb_data"
 msgstr "otobo_mariadb_data"
 
 #: ../../content/installation-docker.rst:237
-#, fuzzy
 msgid "contains */var/lib/mysql* in the container **db**."
-msgstr "容器`db`包含`/var/lib/mysql`。"
+msgstr "容器 **db**中包含 */var/lib/mysql*。"
 
 #: ../../content/installation-docker.rst:240
 msgid "otobo_elasticsearch_data"
@@ -1537,31 +1445,26 @@ msgid "Docker environment variables"
 msgstr "Docker环境变量"
 
 #: ../../content/installation-docker.rst:251
-#, fuzzy
 msgid ""
 "In the instructions we did only minimal configuration. But the file *.env* "
 "allows to set more variables. Here is a short list of the most important "
 "environment variables. Note that more environment variables are supported by "
 "the base images."
-msgstr ""
-"在说明中，我们仅进行了最少的配置。但是文件* .env *允许设置更多变量。这是所有"
-"支持的环境变量的列表："
+msgstr "在说明中，我们只做了最基本的配置。但 *.env* 文件允许设置更多变量。以下是最重要的环境变量的简短列表。请注意，基本映像支持更多环境变量。"
 
 #: ../../content/installation-docker.rst:255
 msgid "**MariaDB settings**"
 msgstr "**MariaDB设置**"
 
 #: ../../content/installation-docker.rst:258
-#, fuzzy
 msgid "OTOBO_DB_ROOT_PASSWORD"
-msgstr "``OTOBO_DB_ROOT_PASSWORD``"
+msgstr "otobo_db_root_password"
 
 #: ../../content/installation-docker.rst:258
-#, fuzzy
 msgid ""
 "The root password for MariaDB. This setting is required for running the "
 "service *db*."
-msgstr "MySQL的根密码。必须设置为运行otobo db。"
+msgstr "MariaDB 的根密码。运行服务 *db* 时需要此设置。"
 
 #: ../../content/installation-docker.rst:260
 msgid "**Elasticsearch settings**"
@@ -1578,9 +1481,8 @@ msgstr ""
 "了解详细信息。"
 
 #: ../../content/installation-docker.rst:269
-#, fuzzy
 msgid "OTOBO_Elasticsearch_ES_JAVA_OPTS"
-msgstr "``OTOBO_Elasticsearch_ES_JAVA_OPTS``"
+msgstr "OTOBO_Elasticsearch_ES_JAVA_OPTS"
 
 #: ../../content/installation-docker.rst:267
 msgid ""
@@ -1596,9 +1498,8 @@ msgstr "**Webserver设置**"
 
 #: ../../content/installation-docker.rst:275
 #: ../../content/installation-docker.rst:283
-#, fuzzy
 msgid "OTOBO_WEB_HTTP_PORT"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_web_http_port"
 
 #: ../../content/installation-docker.rst:274
 msgid ""
@@ -1622,9 +1523,8 @@ msgid ""
 msgstr "设置以防HTTP端口偏离标准端口80。将重定向到HTTPS。"
 
 #: ../../content/installation-docker.rst:286
-#, fuzzy
 msgid "OTOBO_WEB_HTTPS_PORT"
-msgstr "``OTOBO_WEB_HTTPS_PORT``"
+msgstr "otobo_web_https_port"
 
 #: ../../content/installation-docker.rst:286
 msgid "Set in case the HTTPS port should deviate from the standard port 443."
@@ -1632,9 +1532,8 @@ msgstr "设置以防HTTPS端口偏离标准端口443。"
 
 #: ../../content/installation-docker.rst:290
 #: ../../content/installation-docker.rst:361
-#, fuzzy
 msgid "OTOBO_NGINX_SSL_CERTIFICATE"
-msgstr "``OTOBO_NGINX_SSL_CERTIFICATE``"
+msgstr "otobo_nginx_ssl_certificate"
 
 #: ../../content/installation-docker.rst:289
 msgid ""
@@ -1646,9 +1545,8 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:294
 #: ../../content/installation-docker.rst:364
-#, fuzzy
 msgid "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
-msgstr "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
+msgstr "otobo_nginx_ssl_certificate_key"
 
 #: ../../content/installation-docker.rst:293
 msgid ""
@@ -1659,99 +1557,81 @@ msgstr ""
 "nginx / ssl / acme.key *"
 
 #: ../../content/installation-docker.rst:296
-#, fuzzy
 msgid "**Nginx webproxy settings for Kerberos**"
-msgstr "**nginx网络代理设置**"
+msgstr "针对 Kerberos 的**Nginx 网络代理设置**"
 
 #: ../../content/installation-docker.rst:298
-#, fuzzy
 msgid ""
 "This settings are used by Nginx when Kerberos is used for single sign on."
-msgstr "当Kerberos用于单点登录时，这些设置被Nginx使用。"
+msgstr "当单点登录使用 Kerberos 时，Nginx 将使用此设置。"
 
 #: ../../content/installation-docker.rst:301
-#, fuzzy
 msgid "OTOBO_NGINX_KERBEROS_KEYTAB"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_kerberos_keytab"
 
 #: ../../content/installation-docker.rst:301
-#, fuzzy
 msgid "Kerberos keytab file. The default is */etc/krb5.keytab*."
-msgstr "Kerberos keytab 文件。默认是 */etc/krb5.keytab*。"
+msgstr "Kerberos keytab 文件。默认值为 */etc/krb5.keytab*。"
 
 #: ../../content/installation-docker.rst:304
-#, fuzzy
 msgid "OTOBO_NGINX_KERBEROS_CONFIG"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_kerberos_config"
 
 #: ../../content/installation-docker.rst:304
-#, fuzzy
 msgid ""
 "Kerberos config file. The default is */etc/krb5.conf*, usually generated "
 "from *krb5.conf.template*"
-msgstr "Kerberos配置文件。默认为*/etc/krb5.conf*，通常由*krb5.conf.template*生成"
+msgstr "Kerberos 配置文件。默认值为 */etc/krb5.conf*，通常由 *krb5.conf.template* 生成"
 
 #: ../../content/installation-docker.rst:307
-#, fuzzy
 msgid "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
-msgstr "``OTOBO_NGINX_SSL_CERTIFICATE``"
+msgstr "otobo_nginx_kerberos_service_name"
 
 #: ../../content/installation-docker.rst:307
-#, fuzzy
 msgid ""
 "Kerberos Service Name. It is not clear where this setting is actually used "
 "anywhere."
-msgstr "Kerberos服务名称。目前还不清楚这个设置实际上在哪里使用。"
+msgstr "Kerberos 服务名称。目前还不清楚该设置实际用于何处。"
 
 #: ../../content/installation-docker.rst:310
-#, fuzzy
 msgid "OTOBO_NGINX_KERBEROS_REALM"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_kerberos_realm"
 
 #: ../../content/installation-docker.rst:310
-#, fuzzy
 msgid "Kerberos REALM. Used in */etc/krb5.conf*."
-msgstr "Kerberos REALM。用于*/etc/krb5.conf*。"
+msgstr "Kerberos REALM。用于 */etc/krb5.conf*。"
 
 #: ../../content/installation-docker.rst:313
-#, fuzzy
 msgid "OTOBO_NGINX_KERBEROS_KDC"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_kerberos_kdc"
 
 #: ../../content/installation-docker.rst:313
-#, fuzzy
 msgid "Kerberos kdc / AD Controller. Used in */etc/krb5.conf*."
-msgstr "Kerberos kdc / AD控制器。用于*/etc/krb5.conf*。"
+msgstr "Kerberos kdc / AD 控制器。用于 */etc/krb5.conf*。"
 
 #: ../../content/installation-docker.rst:316
-#, fuzzy
 msgid "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_kerberos_admin_server"
 
 #: ../../content/installation-docker.rst:316
-#, fuzzy
 msgid "Kerberos Admin Server. Used in */etc/krb5.conf*."
-msgstr "Kerberos管理服务器。在*/etc/krb5.conf*中使用。"
+msgstr "Kerberos 管理服务器。用于 */etc/krb5.conf*。"
 
 #: ../../content/installation-docker.rst:319
-#, fuzzy
 msgid "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_kerberos_default_domain"
 
 #: ../../content/installation-docker.rst:319
-#, fuzzy
 msgid "Kerberos Default Domain. Used in */etc/krb5.conf*."
 msgstr "Kerberos 默认域。用于 */etc/krb5.conf*。"
 
 #: ../../content/installation-docker.rst:322
-#, fuzzy
 msgid "NGINX_ENVSUBST_TEMPLATE_DIR"
-msgstr "NGINX_ENVSUBST_TEMPLATE_DIR"
+msgstr "nginx_envsubst_template_dir"
 
 #: ../../content/installation-docker.rst:322
-#, fuzzy
 msgid "Provide a custom Nginx config template dir. Gives extra flexibility."
-msgstr "提供自定义的Nginx配置模板目录。提供额外的灵活性。"
+msgstr "提供自定义 Nginx 配置模板目录。提供额外的灵活性。"
 
 #: ../../content/installation-docker.rst:324
 msgid "**Docker Compose settings**"
@@ -1762,32 +1642,28 @@ msgid "These settings are used by Docker Compose directly."
 msgstr "这些设置由docker-compose直接使用。"
 
 #: ../../content/installation-docker.rst:331
-#, fuzzy
 msgid "COMPOSE_PROJECT_NAME"
-msgstr "``COMPOSE_PROJECT_NAME``"
+msgstr "撰写项目名称"
 
 #: ../../content/installation-docker.rst:329
-#, fuzzy
 msgid ""
 "The project name is used as the prefix for the volumes and containers. Per "
 "default this prefix is set to `otobo`, resulting in container names like "
 "`otobo_web_1` and `otobo_db_1`. Change this name when you want to run more "
 "then one instance of OTOBO on the same server."
-msgstr "项目名称用作卷和容器的前缀。默认情况下，此前缀设置为 `otobo`，结果产生了像 `otobo_web_1` 和 `otobo_db_1` 这样的容器名称。当您想在同一服务器上运行多个 OTOBO 实例时，请更改此名称。"
+msgstr "项目名称用作卷和容器的前缀。默认情况下，前缀设置为 `otobo`，因此容器名称为 `otobo_web_1` 和 `otobo_db_1`。如果想在同一服务器上运行多个 OTOBO 实例，请更改此名称。"
 
 #: ../../content/installation-docker.rst:334
-#, fuzzy
 msgid "COMPOSE_PATH_SEPARATOR"
-msgstr "``COMPOSE_PATH_SEPARATOR``"
+msgstr "撰写路径分隔符"
 
 #: ../../content/installation-docker.rst:334
 msgid "Separator for the value of COMPOSE_FILE"
 msgstr "COMPOSE_FILE数值的分隔符"
 
 #: ../../content/installation-docker.rst:338
-#, fuzzy
 msgid "COMPOSE_FILE"
-msgstr "``COMPOSE_FILE``"
+msgstr "COMPOSE_FILE"
 
 #: ../../content/installation-docker.rst:337
 msgid ""
@@ -1800,20 +1676,16 @@ msgstr ""
 "override-https.yml *。"
 
 #: ../../content/installation-docker.rst:341
-#, fuzzy
 msgid ""
 "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, "
 "OTOBO_IMAGE_OTOBO_NGINX, ..."
-msgstr ""
-"``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, "
-"``OTOBO_IMAGE_OTOBO_NGINX``"
+msgstr "otobo_image_otobo, otobo_image_otobo_elasticsearch, otobo_image_otobo_nginx, ..."
 
 #: ../../content/installation-docker.rst:341
-#, fuzzy
 msgid ""
 "Used for specifying alternative Docker images. Useful for testing local "
 "builds or for using updated versions of the images."
-msgstr "用于指定备用Docker映像，这对测试本地版本很有用。"
+msgstr "用于指定替代 Docker 映像。用于测试本地构建或使用更新版本的映像。"
 
 #: ../../content/installation-docker.rst:344
 msgid "Advanced topics"
@@ -1824,16 +1696,14 @@ msgid "Custom configuration of the nginx webproxy"
 msgstr "Nginx网络代理的自定义配置"
 
 #: ../../content/installation-docker.rst:349
-#, fuzzy
 msgid ""
 "The container ``otobo_nginx_1`` provides HTTPS support by running Nginx as a "
 "reverse proxy. The Docker image that runs in the container is composed of "
 "the official Nginx Docker image, https://hub.docker.com/_/nginx, along with "
 "a OTOBO specific configuration of Nginx."
-msgstr "容器``otobo_nginx_1``通过运行Nginx作为反向代理来提供HTTPS支持。在容器中运行的Docker镜像由官方Nginx Docker镜像https://hub.docker.com/_/nginx和OTOBO特定的Nginx配置组成。"
+msgstr "容器 ``otobo_nginx_1`` 通过将 Nginx 作为反向代理运行来提供 HTTPS 支持。容器中运行的 Docker 镜像由 Nginx 官方 Docker 镜像 https://hub.docker.com/_/nginx 和 Nginx 的 OTOBO 特定配置组成。"
 
 #: ../../content/installation-docker.rst:354
-#, fuzzy
 msgid ""
 "The default OTOBO specific configuration can be found within the Docker "
 "image at */etc/nginx/template/otobo_nginx.conf.template*. Actually, this is "
@@ -1841,54 +1711,40 @@ msgid ""
 "the Nginx base image, that replaces the macros in the template with the "
 "corresponding environment variable. This process runs when the container "
 "starts up. In the default template file, the following macros are used:"
-msgstr ""
-"基于Docker的默认OTOBO安装提供了容器otobo_nginx_1，为基于HTTP的OTOBO Web应用程"
-"序提供HTTPS支持。 nginx的默认配置模板可以在Docker映像中找到，特别是在文件* / "
-"etc / nginx / template / otobo_nginx.conf.template *中。启动容器后，将从模板"
-"生成实际使用的配置文件。这是通过用相应的环境变量替换模板中的每个宏来完成的。"
-"在默认模板文件中，仅使用以下宏：*`$ {OTOBO_NGINX_SSL_CERTIFICATE}`*`$ "
-"{OTOBO_NGINX_SSL_CERTIFICATE_KEY} *`$ {OTOBO_NGINX_WEB_HOST}`*`$ "
-"{OTOBO_NGINX_WEB_PORT}`"
+msgstr "默认的 OTOBO 特定配置可在 */etc/nginx/template/otobo_nginx.conf.template* 的 Docker 映像中找到。实际上，这只是最终配置的模板。Nginx 基本镜像会提供一个进程，用相应的环境变量替换模板中的宏。该进程在容器启动时运行。在默认模板文件中，使用了以下宏："
 
 #: ../../content/installation-docker.rst:361
 #: ../../content/installation-docker.rst:364
-#, fuzzy
 msgid "For configuring SSL."
-msgstr "用于配置SSL。"
+msgstr "用于配置 SSL。"
 
 #: ../../content/installation-docker.rst:367
-#, fuzzy
 msgid "OTOBO_NGINX_WEB_HOST"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_web_host"
 
 #: ../../content/installation-docker.rst:367
-#, fuzzy
 msgid "The internally used HTTP host."
-msgstr "内部使用的HTTP主机。"
+msgstr "内部使用的 HTTP 主机。"
 
 #: ../../content/installation-docker.rst:370
-#, fuzzy
 msgid "OTOBO_NGINX_WEB_PORT"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "otobo_nginx_web_port"
 
 #: ../../content/installation-docker.rst:370
-#, fuzzy
 msgid "The internally used HTTP port."
-msgstr "内部使用的HTTP端口。"
+msgstr "内部使用的 HTTP 端口。"
 
 #: ../../content/installation-docker.rst:372
-#, fuzzy
 msgid ""
 "See step `4.` for how this configuration possibility was used for setting up "
 "the SSL certificate."
-msgstr "参见步骤`4.`了解如何使用这种配置可能性来设置SSL证书。"
+msgstr "请参见步骤 `4.`，了解如何使用这种配置可能性来设置 SSL 证书。"
 
 #: ../../content/installation-docker.rst:376
 msgid "The following approach is only supported in OTOBO 10.0.4 or later."
 msgstr "只有OTOBO 10.0.4或更高版本支持以下方法。"
 
 #: ../../content/installation-docker.rst:378
-#, fuzzy
 msgid ""
 "When the standard macros are not sufficient, then the customisation can go "
 "further. This can be achieved by replacing the default config template with "
@@ -1896,14 +1752,13 @@ msgid ""
 "configuration in the running container. Instead we first create a persistent "
 "volume that contains the custom config. Then we tell the *otobo_nginx_1* to "
 "mount the new volume and to use the customized configuration."
-msgstr "当标准宏不足以满足需求时，可以进一步定制。这可以通过用定制版本替换默认配置模板来实现。最佳实践是不要简单地更改正在运行的容器中的配置。相反，我们首先创建一个包含自定义配置的持久卷。然后我们告诉*otobo_nginx_1*挂载新的卷并使用自定义配置。"
+msgstr "如果标准宏不够用，还可以进一步定制。这可以通过用定制版本替换默认配置模板来实现。最佳做法是不要在运行的容器中简单更改配置。相反，我们首先要创建一个包含自定义配置的持久卷。然后，我们告诉 *otobo_nginx_1* 挂载新卷并使用自定义配置。"
 
 #: ../../content/installation-docker.rst:383
-#, fuzzy
 msgid ""
 "First comes generation of the new volume. In these sample commands, we use "
 "the existing template as a starting point."
-msgstr "首先是生成新的卷。在这些示例命令中，我们使用现有模板作为起点。"
+msgstr "首先是生成新卷。在这些示例命令中，我们使用现有模板作为起点。"
 
 #: ../../content/installation-docker.rst:410
 msgid ""
@@ -1919,7 +1774,6 @@ msgstr ""
 "10.0.4，请使用端口8080和8443。"
 
 #: ../../content/installation-docker.rst:415
-#, fuzzy
 msgid ""
 "After setting up the volume, the adapted configuration must be activated. "
 "The new volume is set up in *docker-compose/otobo-nginx-custom-config.yml*. "
@@ -1927,7 +1781,7 @@ msgid ""
 "directed to use the new config. This is done by setting "
 "**NGINX_ENVSUBST_TEMPLATE_DIR** in the environment. In order to achieve "
 "this, uncomment or add the following lines in your *.env* file:"
-msgstr "设置卷之后，必须激活调整后的配置。新的卷设置在*docker-compose/otobo-nginx-custom-config.yml*中。因此，必须将此文件添加到**COMPOSE_FILE**。然后必须指示Nginx使用新的配置。这是通过在环境中设置**NGINX_ENVSUBST_TEMPLATE_DIR**来实现的。为此，在*.env*文件中取消注释或添加以下行："
+msgstr "设置卷之后，必须激活调整后的配置。新卷在 *docker-compose/otobo-nginx-custom-config.yml* 中设置。因此，必须将该文件添加到**COMPOSE_FILE**中。然后，必须引导 Nginx 使用新配置。具体方法是在环境中设置**NGINX_ENVSUBST_TEMPLATE_DIR**。为此，在*.env*文件中取消或添加以下行："
 
 #: ../../content/installation-docker.rst:425
 msgid "The changed Docker Compose configuration can be inspected with:"
@@ -1946,17 +1800,14 @@ msgstr ""
 "的新功能）”部分。"
 
 #: ../../content/installation-docker.rst:440
-#, fuzzy
 msgid "Single Sign On Using the Kerberos Support in Nginx"
-msgstr "使用 Nginx 支持的 Kerberos 进行单点登录"
+msgstr "在 Nginx 中使用 Kerberos 支持单点登录"
 
 #: ../../content/installation-docker.rst:442
-#, fuzzy
 msgid "**Short Description**"
-msgstr "**简短描述**"
+msgstr "**简要说明**"
 
 #: ../../content/installation-docker.rst:444
-#, fuzzy
 msgid ""
 "For enabling authentication with Kerberos please base you *.env file* on the "
 "sample file *.docker_compose_env_https_kerberos*. This activates the special "
@@ -1964,10 +1815,9 @@ msgid ""
 "Docker compose configuration file selects a Nginx image that supports "
 "Kerberos. It also passes some Kerberos specific settings as environment "
 "values to the running Nginx container. These settings are listed above."
-msgstr "要启用Kerberos认证，请基于示例文件*.docker_compose_env_https_kerberos*来创建您的*.env文件*。这将激活*docker-compose/otobo-override-https-kerberos.yml*中的特殊配置。这个Docker compose配置文件选择了一个支持Kerberos的Nginx镜像。它还将一些特定于Kerberos的设置作为环境值传递给运行中的Nginx容器。这些设置在上面列出。"
+msgstr "要启用 Kerberos 验证，请将 *.env 文件* 基于示例文件 *.docker_compose_env_https_kerberos*。这将激活 *docker-compose/otobo-override-https-kerberos.yml* 中的特殊配置。这个 Docker compose 配置文件会选择一个支持 Kerberos 的 Nginx 映像。它还会将一些特定于 Kerberos 的设置作为环境值传递给正在运行的 Nginx 容器。上面列出了这些设置。"
 
 #: ../../content/installation-docker.rst:449
-#, fuzzy
 msgid ""
 "As usual, the values for these setting can be specified in the *.env* file. "
 "Most of ghese setting will be used as replacement values for the template  "
@@ -1975,34 +1825,30 @@ msgid ""
 "templates/krb5.conf.template . The replacement takes place during the "
 "startup of the container. In the running container the adapted config will "
 "be available in */etc/krb5.conf*."
-msgstr "像往常一样，这些设置的值可以在*.env*文件中指定。这些设置的大多数将用作模板 https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template 的替换值。替换将在容器启动期间进行。在运行中的容器中，调整后的配置将在*/etc/krb5.conf*中可用。"
+msgstr "通常，这些设置的值可以在 *.env* 文件中指定。这些设置的大部分值将用作模板 https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template 的替换值。替换在启动容器时进行。在运行中的容器中，*/etc/krb5.conf* 文件中将提供调整后的配置。"
 
 #: ../../content/installation-docker.rst:453
-#, fuzzy
 msgid ""
 "Providing an user specific */etc/krb5.conf* file is still possible. This can "
 "be done by mounting a volume that overrides */etc/krb5.conf* in the "
 "container. This can be achieved by setting OTOBO_NGINX_KERBEROS_CONFIG in "
 "the *.env* file and by activating the mount directove in *docker-compose/"
 "otobo-override-https-kerberos.yml*."
-msgstr "仍然可以提供特定用户的*/etc/krb5.conf*文件。这可以通过挂载一个覆盖容器中*/etc/krb5.conf*的卷来完成。这可以通过在*.env*文件中设置OTOBO_NGINX_KERBEROS_CONFIG，并在*docker-compose/otobo-override-https-kerberos.yml*中激活挂载指令来实现。"
+msgstr "仍然可以提供用户专用的 */etc/krb5.conf* 文件。这可以通过在容器中挂载一个覆盖 */etc/krb5.conf* 的卷来实现。这可以通过在 *.env* 文件中设置 OTOBO_NGINX_KERBEROS_CONFIG，并激活 *docker-compose/otobo-override-https-kerberos.yml* 中的挂载指令来实现。"
 
 #: ../../content/installation-docker.rst:457
-#, fuzzy
 msgid ""
 "*/etc/krb5.keytab* is always installation specific and must therefore always "
 "be mounted from the host system."
-msgstr "*/etc/krb5.keytab* 总是特定于安装的，因此必须始终从宿主系统挂载。"
+msgstr "*/etc/krb5.keytab*总是针对特定安装，因此必须始终从主机系统加载。"
 
 #: ../../content/installation-docker.rst:459
-#, fuzzy
 msgid "**Kerberos SSO Installation Tutorial**"
-msgstr "OTOBO安装教程"
+msgstr "** Kerberos SSO 安装教程**"
 
 #: ../../content/installation-docker.rst:461
-#, fuzzy
 msgid ":doc:`sso-kerberos`"
-msgstr ":doc:`sso-kerberos`"
+msgstr "文档：\"so-kerberos"
 
 #: ../../content/installation-docker.rst:465
 msgid "Choosing non-standard ports"
@@ -2020,12 +1866,10 @@ msgstr ""
 "`OTOBO_WEB_HTTP_PORT`和`OTOBO_WEB_HTTPS_PORT`来覆盖默认端口。"
 
 #: ../../content/installation-docker.rst:472
-#, fuzzy
 msgid "Skip startup of specific services"
 msgstr "跳过特定服务的启动"
 
 #: ../../content/installation-docker.rst:474
-#, fuzzy
 msgid ""
 "The current Docker compose setup start five, six when HTTPS is activated, "
 "services. But there are valid use cases where one or more of these services "
@@ -2034,64 +1878,55 @@ msgid ""
 "dedicated Docker compose option for skipping specific services. But the "
 "option `--scale` can be abused for this purpose. So for an installation with "
 "an external database the following command can be used:"
-msgstr "当前的Docker compose设置启动了五个服务，当启用HTTPS时是六个。但在某些有效用例中，可能不需要一个或多个这些服务。最典型的例子是数据库不应作为Docker服务运行，而应作为外部数据库。不幸的是，没有专门的Docker compose选项来跳过特定服务。但是可以滥用`--scale`选项来实现这一目的。因此，对于使用外部数据库的安装，可以使用以下命令："
+msgstr "当前的 Docker compose 设置会启动五个服务，激活 HTTPS 后会启动六个服务。但在一些有效的使用案例中，并不需要其中的一个或多个服务。最典型的例子就是数据库不应作为 Docker 服务运行，而应作为外部数据库运行。遗憾的是，没有专门的 Docker compose 选项用于跳过特定服务。不过，\"-scale \"选项可被滥用于这一目的。因此，在安装外部数据库时，可以使用以下命令："
 
 #: ../../content/installation-docker.rst:484
-#, fuzzy
 msgid ""
 "Of course the same goal can also be achieved by editing the file *docker-"
 "compose/otobo-base.yml* and removing the relevant service definitions."
-msgstr "当然，通过编辑文件*docker-compose/otobo-base.yml*并移除相关服务定义，也可以达到同样的目的。"
+msgstr "当然，也可以通过编辑 *docker-compose/otobo-base.yml* 文件并删除相关服务定义来实现同样的目标。"
 
 #: ../../content/installation-docker.rst:488
-#, fuzzy
 msgid "Prepare offline installation"
-msgstr "自动安装"
+msgstr "准备离线安装"
 
 #: ../../content/installation-docker.rst:490
-#, fuzzy
 msgid ""
 "Please download `the latest version of otobo-docker <https://doc.otobo.org/"
 "manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-"
 "docker-repo>`__ on a system that has internet access and where docker is "
 "installed. Then navigate to the following folder *otobo-docker/docker-"
 "compose*."
-msgstr "请在一个有互联网访问权限且安装了docker的系统上下载`最新版本的otobo-docker <https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__。然后导航到以下文件夹*otobo-docker/docker-compose*。"
+msgstr "请在能上网并安装了 docker 的系统上下载 `最新版本的 otobo-docker <https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`___。然后导航到以下文件夹 *otobo-docker/docker-compose*。"
 
 #: ../../content/installation-docker.rst:499
-#, fuzzy
 msgid ""
 "Now you can run the following command to download all Docker images from a "
 "specific file, in my example I use the *otobo-base.yml*."
-msgstr "现在您可以运行以下命令从特定文件下载所有Docker镜像，在我的例子中我使用*otobo-base.yml*。"
+msgstr "现在，你可以运行以下命令从特定文件下载所有 Docker 镜像，在我的例子中，我使用的是 *otobo-base.yml*。"
 
 #: ../../content/installation-docker.rst:505
-#, fuzzy
 msgid ""
 "After that, the images (.docker) are located in the docker-compose folder "
 "and can be uploaded to the target system via e.g `SCP <https://en.wikipedia."
 "org/wiki/Secure_copy_protocol>`__."
-msgstr "之后，镜像文件(.docker)会位于docker-compose文件夹中，可以通过例如`SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__上传到目标系统。"
+msgstr "之后，镜像（.docker）就会出现在 docker-compose 文件夹中，并可以通过`SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__ 等方式上传到目标系统中。"
 
 #: ../../content/installation-docker.rst:507
-#, fuzzy
 msgid ""
 "On the offline target system, go to the folder where the docker images are "
 "stored. And enter the following command to import them one by one."
-msgstr "在离线目标系统上，转到存储docker镜像的文件夹。然后输入以下命令逐一导入它们。"
+msgstr "在离线目标系统上，进入存放 docker 镜像的文件夹。然后输入以下命令，逐个导入它们。"
 
 #: ../../content/installation-docker.rst:509
-#, fuzzy
 msgid "In the following example I import the mariadb image:"
-msgstr "在以下示例中，我导入了 mariadb 镜像："
+msgstr "在下面的示例中，我导入了 mariadb 映像："
 
 #: ../../content/installation-docker.rst:516
-#, fuzzy
 msgid "Customizing OTOBO Docker Compose"
-msgstr "在Docker情况下"
+msgstr "定制 OTOBO Docker Compose"
 
 #: ../../content/installation-docker.rst:518
-#, fuzzy
 msgid ""
 "Instead of editing the files under *docker-compose/* and risking to "
 "overwrite your own options with the `next update <https://doc.otobo.org/"
@@ -2099,58 +1934,50 @@ msgid ""
 "compose-files>`_ of the otobo-docker folder, it is advisable to create an "
 "extra YAML file where the specific services are overwritten with additional "
 "options."
-msgstr "为了避免编辑位于*docker-compose/*下的文件，并在OTOBO-docker文件夹的`下一次更新 <https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_时覆盖您自己的选项，建议创建一个额外的YAML文件，在其中用额外的选项覆盖特定的服务。"
+msgstr "与其编辑 *docker-compose/* 下的文件并冒着用 otobo-docker 文件夹的 \"下一次更新 <https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_\" 覆盖自己的选项的风险，不如创建一个额外的 YAML 文件，在其中用额外的选项覆盖特定的服务。"
 
 #: ../../content/installation-docker.rst:522
-#, fuzzy
 msgid ""
 "A common example would be to make the database container accessible from the "
 "outside via port 3306. For this you could create an extra docker compose "
 "file thats look like:"
-msgstr "一个常见的例子是通过端口3306从外部访问数据库容器。为此，您可以创建一个额外的docker compose文件，如下所示："
+msgstr "一个常见的例子是通过 3306 端口从外部访问数据库容器。为此，你可以创建一个额外的 docker compose 文件，其内容如下"
 
 #: ../../content/installation-docker.rst:533
-#, fuzzy
 msgid ""
 "Now we have to tell *docker-compose* to include our new file. For this you "
 "have to add your YAML file to the *COMPOSE_FILE* variable in the *.env* "
 "file, for example:"
-msgstr "现在我们必须告诉*docker-compose*包含我们的新文件。为此，您需要在*.env*文件中将您的YAML文件添加到*COMPOSE_FILE*变量中，例如："
+msgstr "现在，我们必须告诉 *docker-compose* 包含我们的新文件。例如，你必须将 YAML 文件添加到 *.env* 文件中的 *COMPOSE_FILE* 变量："
 
 #: ../../content/installation-docker.rst:540
-#, fuzzy
 msgid "Now we can use *docker-compose* to recreate our container"
-msgstr "现在我们可以使用 *docker-compose* 重新创建我们的容器"
+msgstr "现在，我们可以使用 *docker-compose* 来重新创建我们的容器"
 
 #: ../../content/installation-docker.rst:547
-#, fuzzy
 msgid "With this procedure you can customize any service or volumes."
-msgstr "使用此程序，您可以自定义任何服务或卷。"
+msgstr "通过此程序，您可以自定义任何服务或卷。"
 
 #: ../../content/installation-docker.rst:550
-#, fuzzy
 msgid "Customizing the OTOBO Docker image"
-msgstr "在Docker情况下"
+msgstr "定制 OTOBO Docker 映像"
 
 #: ../../content/installation-docker.rst:552
-#, fuzzy
 msgid ""
 "Many customizations can be done in the external volume *otobo_opt_otobo* "
 "which corresponds to the directory */opt/otobo* in the Docker image. This "
 "works e.g. for local Perl modules which can be installed into */opt/otobo/"
 "local*. Here is an example that installs the not very useful CPAN module "
 "`Acme::123`."
-msgstr "许多自定义可以在外部卷*otobo_opt_otobo*中完成，它对应于Docker镜像中的目录*/opt/otobo*。例如，可以将本地Perl模块安装到*/opt/otobo/local*中。这里有一个安装不是很有用的CPAN模块`Acme::123`的例子。"
+msgstr "许多自定义操作都可以在外部卷 *otobo_opt_otobo* 中完成，该卷与 Docker 镜像中的 */opt/otobo* 目录相对应。例如，本地 Perl 模块可以安装到 */opt/otobo/local*。下面是一个安装不太有用的 CPAN 模块 \"Acme::123 \"的示例。"
 
 #: ../../content/installation-docker.rst:570
-#, fuzzy
 msgid ""
 "The nice thing of this approach is that the Docker image itself does not "
 "have to be modified."
-msgstr "这种方法的好处是Docker镜像本身不需要修改。"
+msgstr "这种方法的好处是无需修改 Docker 镜像本身。"
 
 #: ../../content/installation-docker.rst:572
-#, fuzzy
 msgid ""
 "Installing extra Debian packages is a little bit trickier. One approach is "
 "to create a custom *Dockerfile* and use the OTOBO image as the base image. "
@@ -2159,10 +1986,9 @@ msgid ""
 "docker.com/engine/reference/commandline/commit/. A nice writeup of that "
 "process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-"
 "docker-image."
-msgstr "安装额外的Debian包有点棘手。一种方法是创建自定义的*Dockerfile*，并使用OTOBO镜像作为基础镜像。另一种方法是直接从运行中的容器创建修改后的镜像。这可以通过命令`docker commit`完成，https://docs.docker.com/engine/reference/commandline/commit/。有一个关于这个过程的好文章可在https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image查看。"
+msgstr "安装额外的 Debian 软件包比较麻烦。一种方法是创建自定义 *Dockerfile* 并使用 OTOBO 镜像作为基础镜像。另一种方法是直接从运行中的容器创建修改后的镜像。这可以通过 \"docker commit \"命令完成，https://docs.docker.com/engine/reference/commandline/commit/。有关该过程的详细介绍，请访问 https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image。"
 
 #: ../../content/installation-docker.rst:577
-#, fuzzy
 msgid ""
 "But for the latter approach there are two hurdles to overcome. First, the "
 "image *otobo* runs per default as the user *otobo* with the UID 1000. The "
@@ -2175,52 +2001,46 @@ msgid ""
 "of the solution is to specify a different entrypoint script that does not "
 "care who the caller is. This leaves us with following example commands, "
 "where we add fortune cookies to otobo:"
-msgstr "但对于后一种方法，有两个障碍需要克服。首先，默认情况下，镜像*otobo*以UID为1000的用户*otobo*身份运行。问题是用户*otobo*没有权限安装系统包。因此，解决方案的第一部分是在运行镜像时传递选项`--user root`。然而，第二个障碍是默认的入口脚本*/opt/otobo_install/entrypoint.sh*在以*root*身份调用时会立即退出。这样设计决策背后的原因是应该阻止无意中以*root*身份运行。所以，解决方案的第二部分是指定一个不关心调用者是谁的不同入口脚本。这给我们留下了以下示例命令，在其中我们向otobo添加幸运饼干："
+msgstr "但后一种方法需要克服两个障碍。首先，映像 *otobo* 默认以 UID 1000 的用户 *otobo* 运行。问题是用户 *otobo* 不允许安装系统软件包。因此，解决方案的第一部分是在运行映像时通过\"--用户 root \"选项。然而，第二个障碍是默认的入口点脚本 */opt/otobo_install/entrypoint.sh* 在以 *root* 身份调用时会立即退出。这一设计决定背后的原因是，应避免无意中以 *root* 的身份运行。因此，解决方案的第二部分是指定一个不同的入口点脚本，该脚本不关心调用者是谁。下面是一个命令示例，我们在其中为 otobo 添加幸运饼干："
 
 #: ../../content/installation-docker.rst:586
-#, fuzzy
 msgid ""
 "Pull a tagged OTOBO image, if we don't have it yet, and check whether the "
 "image already provides fortune cookies:"
-msgstr "拉取一个标记的OTOBO镜像，如果我们还没有的话，检查镜像是否已经提供了幸运饼干："
+msgstr "如果我们还没有带标签的 OTOBO 图像，则调出该图像，并检查该图像是否已提供幸运饼干："
 
 #: ../../content/installation-docker.rst:593
-#, fuzzy
 msgid ""
 "Add fortune cookies to a named container running the original OTOBO image. "
 "This is done in an interactive session as the user *root*:"
-msgstr "向运行原始OTOBO镜像的命名容器中添加幸运饼干。这是作为用户*root*在交互式会话中完成的："
+msgstr "将幸运饼干添加到运行原始 OTOBO 映像的命名容器中。这是以用户 *root* 的身份在交互会话中完成的："
 
 #: ../../content/installation-docker.rst:604
-#, fuzzy
 msgid ""
 "Create an image from the stopped container and give it a name. Take into "
 "account that the default user and entrypoint script must be restored:"
-msgstr "从停止的容器创建一个镜像，并给它一个名字。请考虑必须恢复默认用户和入口点脚本："
+msgstr "从停止的容器中创建映像并为其命名。注意必须恢复默认用户和入口点脚本："
 
 #: ../../content/installation-docker.rst:611
-#, fuzzy
 msgid "Finally we can doublecheck:"
-msgstr "最后我们可以再次检查："
+msgstr "最后，我们可以再检查一遍："
 
 #: ../../content/installation-docker.rst:620
-#, fuzzy
 msgid ""
 "The modified image can be specified in your *.env* file and then be used for "
 "fun and profit."
-msgstr "修改后的镜像可以在您的*.env*文件中指定，然后用于乐趣和利润。"
+msgstr "修改后的图像可以在 *.env* 文件中指定，然后用于娱乐和盈利。"
 
 #: ../../content/installation-docker.rst:623
 msgid "Building local images"
 msgstr "创建本地镜像"
 
 #: ../../content/installation-docker.rst:627
-#, fuzzy
 msgid ""
 "Building Docker images locally is usually only needed during development. "
 "Other use cases are when more current base images should be used for an "
 "installation or when extra functionality must be added to the images."
-msgstr "通常仅在开发期间才需要在本地构建Docker映像。"
+msgstr "通常只有在开发过程中才需要在本地构建 Docker 镜像。其他用例包括安装时需要使用最新的基础镜像，或者必须在镜像中添加额外功能。"
 
 #: ../../content/installation-docker.rst:631
 #, fuzzy
@@ -2244,44 +2064,34 @@ msgid "*otobo.elasticsearch.dockerfile*"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
 #: ../../content/installation-docker.rst:637
-#, fuzzy
 msgid ""
 "The script for the actual creation of the images is *bin/docker/"
 "build_docker_images.sh*."
-msgstr "实际创建镜像的脚本是*bin/docker/build_docker_images.sh*。"
+msgstr "实际创建图像的脚本是 *bin/docker/build_docker_images.sh*。"
 
 #: ../../content/installation-docker.rst:649
-#, fuzzy
 msgid ""
 "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` "
 "using the version set up the file *RELEASE*."
-msgstr "本地构建的Docker镜像使用*RELEASE*文件中设置的版本标记为``local-<OTOBO_VERSION>``。"
+msgstr "本地构建的 Docker 映像会使用文件 *RELEASE* 中设置的版本标记为 ``local-<OTOBO_VERSION>``。"
 
 #: ../../content/installation-docker.rst:651
-#, fuzzy
 msgid ""
 "After building the local images, one can return to the *docker-compose* "
 "directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, "
 "``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*."
-msgstr ""
-"使用设置文件* RELEASE *中的版本，将创建的本地镜像标记为“ local- "
-"<OTOOB_VERSION>”。建立本地镜像后，可以通过在* .env *中设置"
-"`OTOBO_IMAGE_OTOBO'，`OTOBO_IMAGE_OTOBO_ELASTICSEARCH，"
-"`OTOBO_IMAGE_OTOBO_NGINX'来指定要使用的镜像。"
+msgstr "构建完本地镜像后，可以返回 *docker-compose* 目录。本地镜像是通过在 *.env* 中设置 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``来声明的。"
 
 #: ../../content/installation-docker.rst:655
 msgid "Automatic Installation"
 msgstr "自动安装"
 
 #: ../../content/installation-docker.rst:657
-#, fuzzy
 msgid ""
 "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can "
 "take a short cut. This is useful for running the test suite on a fresh "
 "installation."
-msgstr ""
-"您可以通过捷径来代替http：//yourIPorFQDN/otobo/installer.pl。这对于在全新安装"
-"上运行测试套件非常有用。"
+msgstr "与通过 http://yourIPorFQDN/otobo/installer.pl 相比，我们可以走捷径。这对于在新安装的系统上运行测试套件非常有用。"
 
 #: ../../content/installation-docker.rst:662
 msgid "``docker-compose down -v`` will remove all previous setup and data."
@@ -2375,13 +2185,10 @@ msgid "``docker inspect <container>`` inspect a container"
 msgstr "``docker inspect <container>`` 检查一个容器"
 
 #: ../../content/installation-docker.rst:694
-#, fuzzy
 msgid ""
 "``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` "
 "list files in an image"
-msgstr ""
-"``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar``显示一个"
-"镜像中的文件列表"
+msgstr "docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` 列出映像中的文件"
 
 #: ../../content/installation-docker.rst:695
 #, fuzzy
@@ -2403,31 +2210,26 @@ msgid "``docker-compose ps`` show the running containers"
 msgstr "``docker-compose ps`` 显示正在运行的容器"
 
 #: ../../content/installation-docker.rst:701
-#, fuzzy
 msgid "``docker-compose exec nginx nginx -s reload`` reload nginx"
-msgstr "``docker exec -it nginx-server nginx -s reload`` 重新加载 nginx"
+msgstr "docker-compose exec nginx nginx -s reload`` 重新加载 nginx"
 
 #: ../../content/installation-docker.rst:704
 msgid "Resources"
 msgstr "资源"
 
 #: ../../content/installation-docker.rst:706
-#, fuzzy
 msgid "Finally, here is a highly subjective collection of links."
-msgstr "最后，这里有一些主观挑选的链接。"
+msgstr "最后，这里收集了一些主观性很强的链接。"
 
 #: ../../content/installation-docker.rst:708
-#, fuzzy
 msgid "**General info and tutorials**"
 msgstr "**一般信息和教程**"
 
 #: ../../content/installation-docker.rst:710
-#, fuzzy
 msgid ""
 "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/"
 "getting-started-with-perl-on-docker>`_"
-msgstr ""
-"`Perl Maven： <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
+msgstr "`Perl Maven：Docker 上的 Perl 入门 <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
 #: ../../content/installation-docker.rst:711
 msgid ""
@@ -2442,9 +2244,8 @@ msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`环境： <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
 #: ../../content/installation-docker.rst:714
-#, fuzzy
 msgid "**Tips and hints**"
-msgstr "**提示和建议**"
+msgstr "**小贴士和提示**"
 
 #: ../../content/installation-docker.rst:716
 msgid ""
@@ -2465,12 +2266,10 @@ msgstr ""
 "com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_"
 
 #: ../../content/installation-docker.rst:718
-#, fuzzy
 msgid ""
 "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-"
 "unused-images>`_"
-msgstr ""
-"`清理： <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
+msgstr "清理未使用的图像 <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
 #: ../../content/installation-docker.rst:719
 msgid ""
@@ -2489,7 +2288,6 @@ msgstr ""
 "create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 
 #: ../../content/installation-docker.rst:722
-#, fuzzy
 msgid "**Troubleshooting**"
 msgstr "**故障排除**"
 
@@ -2502,10 +2300,9 @@ msgstr ""
 "docker-image-cache-invalidation-occur>`_"
 
 #: ../../content/installation-docker.rst:725
-#, fuzzy
 msgid ""
 "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
-msgstr "`使用tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
+msgstr "使用 tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 
 #: ../../content/installation-docker.rst:726
 msgid ""
@@ -2515,9 +2312,8 @@ msgstr ""
 "`检查失败的创建 <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 
 #: ../../content/installing-perl-modules.rst:12
-#, fuzzy
 msgid "Installing Perl Modules from CPAN"
-msgstr "安装Perl模块"
+msgstr "从 CPAN 安装 Perl 模块"
 
 #: ../../content/installing-perl-modules.rst:14
 #, fuzzy
@@ -2531,25 +2327,19 @@ msgstr ""
 "库，可以满足几乎所有需求。该存储库称为CPAN，可从https://metacpan.org/获得。"
 
 #: ../../content/installing-perl-modules.rst:18
-#, fuzzy
 msgid ""
 "It is recommended to use the command line client ``cpanm`` for installing "
 "modules. ``cpanm`` is often already installed on your system. Please see "
 "https://metacpan.org/pod/App::cpanminus for what to do when is isn't already "
 "available."
-msgstr ""
-"应用程序``cpanm''通常已经安装在您的系统上，如果没有，请参阅https://metacpan."
-"org/pod/App::cpanminus的处理方法。"
+msgstr "建议使用命令行客户端 ``cpanm`` 安装模块。通常系统上已经安装了 ``cpanm``。如果尚未安装，请参阅 https://metacpan.org/pod/App::cpanminus。"
 
 #: ../../content/installing-perl-modules.rst:22
-#, fuzzy
 msgid ""
 "Alternatively, many Perl modules are also available as packages for your "
 "operating system. These packages can be installed with your systems regular "
 "package manager."
-msgstr ""
-"建议将CPAN中的模块与命令行客户端``cpanm''一起安装。另外，许多Perl模块也可以作"
-"为操作系统的软件包使用。可以通过您的系统常规软件包管理器来安装这些软件包。"
+msgstr "此外，许多 Perl 模块也可以作为操作系统的软件包提供。这些软件包可以通过系统常规的软件包管理器进行安装。"
 
 #: ../../content/installing-perl-modules.rst:25
 #, fuzzy
@@ -2565,12 +2355,10 @@ msgid "results in:"
 msgstr "结果是："
 
 #: ../../content/installing-perl-modules.rst:40
-#, fuzzy
 msgid "Docker-based installations"
-msgstr "可以迁移到基于Docker的OTOBO 10"
+msgstr "基于 Docker 的安装"
 
 #: ../../content/installing-perl-modules.rst:42
-#, fuzzy
 msgid ""
 "Special care must be taken when OTOBO runs under Docker. In this case an "
 "installation into a systemwide location would initially work as well. "
@@ -2580,28 +2368,21 @@ msgid ""
 "within the volume **otobo_opt_otobo** can be used for that. Modules that are "
 "installed in ``/opt/otobo/local`` will be picked up by Perl because the "
 "environment variables ``PERL5LIB`` and ``PATH`` are preset accordingly."
-msgstr ""
-"当OTOBO在Docker下运行时，必须格外小心。在这种情况下，所需的模块可以轻松地安装"
-"到系统Perl中。但是，由于Docker的工作方式，重新启动容器后，此更改将丢失。因"
-"此，必须将模块安装到可以重新启动的位置。本地安装位置可以使用选项--local-lib来"
-"指定。 Perl将找到已安装的模块，因为在Docker映像中已相应设置了环境变量“ "
-"PERL5LIB”和“ PATH”。"
+msgstr "在 Docker 下运行 OTOBO 时必须特别小心。在这种情况下，安装到系统范围内的位置最初也是可行的。但是，由于 Docker 的工作方式，安装的模块会在容器重启时丢失。因此，必须将模块安装到一个能在重启后继续运行的位置。为此，可以使用**otobo_opt_otobo**卷中的`/opt/otobo/local``目录。安装在 ``/opt/otobo/local`` 中的模块将被 Perl 接收，因为环境变量 ``PERL5LIB`` 和 ``PATH`` 已经相应预设。"
 
 #: ../../content/installing-perl-modules.rst:49
-#, fuzzy
 msgid ""
 "The installed Perl modules will also be available after an upgrade of OTOBO. "
 "There is the general rule that files added to ``/opt/otobo`` won't be "
 "removed by an upgrade."
-msgstr "安装的Perl模块在OTOBO升级后也会保留。通常规则是，添加到``/opt/otobo``的文件不会在升级时被移除。"
+msgstr "OTOBO 升级后，已安装的 Perl 模块也将可用。一般来说，添加到 ``/opt/otobo`` 中的文件不会被升级删除。"
 
 #: ../../content/installing-perl-modules.rst:52
-#, fuzzy
 msgid ""
 "For installing Perl modules in a specific location we need to modify our "
 "install command. Specifically, we need to add the option ``--local-lib``. "
 "Here is a sample session in the container **web**."
-msgstr "为了在特定位置安装Perl模块，我们需要修改我们的安装命令。具体来说，我们需要添加选项``--local-lib``。这是在容器**web**中的一个示例会话。"
+msgstr "要在特定位置安装 Perl 模块，我们需要修改 install 命令。具体来说，我们需要添加选项 ``--local-lib``。下面是**web**容器中的一个会话示例。"
 
 #: ../../content/introduction.rst:12
 msgid "Introduction"
@@ -2657,14 +2438,11 @@ msgstr ""
 "误警示。"
 
 #: ../../content/introduction.rst:30
-#, fuzzy
 msgid ""
 "We assume that OTOBO will be installed to the directory ``/opt/otobo``. If "
 "you want to install OTOBO to a different location, then you have to change "
 "the path in the commands or create a symbolic link to this directory."
-msgstr ""
-"我们认为OTOBO将被安装到``/ opt / otobo``。如果要将OTOBO安装到其他目录，则必须"
-"更改命令中的路径或创建指向该目录的符号链接。"
+msgstr "我们假定 OTOBO 将安装到目录 ``/opt/otobo``。如果要将 OTOBO 安装到其他位置，则必须更改命令中的路径或创建指向该目录的符号链接。"
 
 #: ../../content/migration-from-otrs-6.rst:12
 #, fuzzy
@@ -2693,118 +2471,92 @@ msgid ""
 msgstr "请预留时间进行迁移，并逐步按照这些说明进行操作。"
 
 #: ../../content/migration-from-otrs-6.rst:20
-#, fuzzy
 msgid ""
 "If you have any problem or question, please do not despair. Call our support "
 "line, write an email, or post your query in the OTOBO Community forum at "
 "https://forum.otobo.org/. We will find a way to help you!"
-msgstr ""
-"如果您有任何问题，请不要放弃:)致电我们的支持热线，写电子邮件或在OTOBO社区论坛"
-"（https://forum.otobo.org/）上发布您的需求。"
+msgstr "如果您有任何问题或疑问，请不要绝望。请拨打我们的支持热线，写电子邮件，或在 https://forum.otobo.org/ 的 OTOBO 社区论坛上发表您的疑问。我们会想办法帮助您！"
 
 #: ../../content/migration-from-otrs-6.rst:25
-#, fuzzy
 msgid ""
 "After the migration the data previously available in OTRS 6 will be "
 "available in OTOBO 10. We do not modify any data of the OTRS 6 installation "
 "during the migration."
-msgstr ""
-"迁移后，OTOS 6中以前可用的所有数据将在OTOBO中可用。在迁移期间，我们不会修改任"
-"何OTRS的任何数据。"
+msgstr "迁移后，以前在 OTRS 6 中可用的数据将在 OTOBO 10 中可用。在迁移过程中，我们不会修改 OTRS 6 安装中的任何数据。"
 
 #: ../../content/migration-from-otrs-6.rst:29
-#, fuzzy
 msgid "Overview over the Supported Migration Szenarios"
-msgstr "Docker卷概述"
+msgstr "支持的迁移方案概览"
 
 #: ../../content/migration-from-otrs-6.rst:31
-#, fuzzy
 msgid ""
 "With the OTOBO Migration Interface it is possible to employ the following "
 "migration strategies:"
-msgstr "使用OTOBO迁移界面，可以执行以下迁移："
+msgstr "通过 OTOBO 迁移接口，可以采用以下迁移策略："
 
 #: ../../content/migration-from-otrs-6.rst:33
-#, fuzzy
 msgid "The general migration strategy."
 msgstr "一般迁移策略。"
 
 #: ../../content/migration-from-otrs-6.rst:35
-#, fuzzy
 msgid ""
 "This is the regular way to perform a migration. Many different different "
 "combinations are supported:"
-msgstr "这是执行迁移的常规方式。支持许多不同的组合："
+msgstr "这是执行迁移的常规方法。支持多种不同的组合："
 
 #: ../../content/migration-from-otrs-6.rst:38
-#, fuzzy
 msgid "Change server:"
 msgstr "更换服务器："
 
 #: ../../content/migration-from-otrs-6.rst:38
-#, fuzzy
 msgid "Migrate and simultaneously move to a new application server."
-msgstr "迁移并同时迁移到新的应用程序服务器和操作系统。"
+msgstr "迁移并同时迁移到新的应用服务器。"
 
 #: ../../content/migration-from-otrs-6.rst:42
-#, fuzzy
 msgid "Separate application and web servers:"
-msgstr "分离的应用服务器和网页服务器："
+msgstr "独立的应用服务器和网络服务器"
 
 #: ../../content/migration-from-otrs-6.rst:41
-#, fuzzy
 msgid ""
 "It's your choice whether you want to run application and database server on "
 "the same host or each on a dedictated host. This choice is regardless of the "
 "previous setup in OTRS / ((OTRS)) Community Edition."
-msgstr ""
-"2. 分开的应用程序和Web服务器：您是要在同一主机上运行应用程序还是数据库服务器"
-"还是在专用主机上运行数据库服务器，这是您的选择。此选择与OTRS /（（OTRS））"
-"Community Edition中的先前设置无关。"
+msgstr "您可以选择是在同一台主机上运行应用程序服务器和数据库服务器，还是分别在专用主机上运行。这一选择与之前在 OTRS / ((OTRS))社区版。"
 
 #: ../../content/migration-from-otrs-6.rst:45
-#, fuzzy
 msgid "Different databases:"
-msgstr "数据库"
+msgstr "不同的数据库："
 
 #: ../../content/migration-from-otrs-6.rst:45
-#, fuzzy
 msgid ""
 "Migrate from any of the supported databases to any other supported database."
-msgstr "可以从任何系统支持的数据库迁移到任何另一个支持的数据库。"
+msgstr "从任何支持的数据库迁移到任何其他支持的数据库。"
 
 #: ../../content/migration-from-otrs-6.rst:48
-#, fuzzy
 msgid "Different operating system:"
-msgstr "不同的操作系统："
+msgstr "操作系统不同："
 
 #: ../../content/migration-from-otrs-6.rst:48
-#, fuzzy
 msgid ""
 "Switch from any supported operating system to any other supported operating "
 "system."
-msgstr ""
-"在迁移过程中，可以从任何系统支持的操作系统切换到任何另一个支持的操作系统。"
+msgstr "从任何支持的操作系统切换到任何其他支持的操作系统。"
 
 #: ../../content/migration-from-otrs-6.rst:51
-#, fuzzy
 msgid "Docker:"
-msgstr "** Docker **"
+msgstr "Docker："
 
 #: ../../content/migration-from-otrs-6.rst:51
-#, fuzzy
 msgid "Migrate to a Docker-based installation of OTOBO 10."
-msgstr "可以迁移到基于Docker的OTOBO 10。"
+msgstr "迁移到基于 Docker 的 OTOBO 10 安装。"
 
 #: ../../content/migration-from-otrs-6.rst:53
-#, fuzzy
 msgid ""
 "A variant of the general strategy where the database migration is "
 "streamlined."
-msgstr "数据库迁移简化的一种变体策略。"
+msgstr "简化数据库迁移的一般策略变体。"
 
 #: ../../content/migration-from-otrs-6.rst:55
-#, fuzzy
 msgid ""
 "Use the ETL-like migration when the source database mustn't suffer from "
 "increased load or when access to the source database is a bottleneck. In the "
@@ -2812,54 +2564,46 @@ msgid ""
 "and then inserted into the OTOBO database. In this variant, the complete "
 "*otrs* database tables are first exported, then transformed, and then "
 "imported into the *otobo* database."
-msgstr "当源数据库不能承受增加的负载或当访问源数据库是瓶颈时，使用类似ETL的迁移。在一般策略中，数据首先逐行从*otrs*数据库读取，然后插入到OTOBO数据库中。在这个变体中，首先导出完整的*otrs*数据库表，然后进行转换，然后导入到*otobo*数据库中。"
+msgstr "当源数据库不能承受增加的负载或访问源数据库是一个瓶颈时，使用类似 ETL 的迁移。在一般策略中，首先从 *otrs* 数据库逐行读取数据，然后插入 OTOBO 数据库。在此变体中，首先导出完整的 *otrs* 数据库表，然后进行转换，最后导入 *otobo* 数据库。"
 
 #: ../../content/migration-from-otrs-6.rst:61
-#, fuzzy
 msgid ""
 "Migration from an Oracle based OTRS 6 installation to an Oracle based OTOBO "
 "installation."
-msgstr "从基于Oracle的OTRS 6安装迁移到基于Oracle的OTOBO安装。"
+msgstr "从基于 Oracle 的 OTRS 6 安装迁移到基于 Oracle 的 OTOBO 安装。"
 
 #: ../../content/migration-from-otrs-6.rst:63
-#, fuzzy
 msgid ""
 "This is a special case that is not supported by the general migration "
 "strategy. This means that a variant of the streamlined strategy must be used."
-msgstr "这是一个不被通用迁移策略支持的特殊情况。这意味着必须使用简化策略的变体。"
+msgstr "这是一般迁移策略不支持的特殊情况。这意味着必须使用简化策略的变体。"
 
 #: ../../content/migration-from-otrs-6.rst:68
-#, fuzzy
 msgid ""
 "All strategies work for both Docker-based and native installations. But for "
 "Docker-based installations some peculiarities have to be considered. These "
 "peculiarities are handled in the optional steps."
-msgstr "所有策略都适用于基于Docker的安装和本地安装。但是对于基于Docker的安装，必须考虑一些特殊情况。这些特殊情况在可选步骤中处理。"
+msgstr "所有策略都适用于基于 Docker 的安装和本地安装。但对于基于 Docker 的安装，必须考虑一些特殊性。这些特殊性将在可选步骤中处理。"
 
 #: ../../content/migration-from-otrs-6.rst:73
-#, fuzzy
 msgid ""
 "It is also feasible to clone the OTRS datase to the OTOBO database server "
 "before the actual migration. This can speed up the general migration "
 "strategy."
-msgstr "在实际迁移之前，克隆OTRS数据库到OTOBO数据库服务器也是可行的。这可以加快整体迁移策略。"
+msgstr "在实际迁移之前，将 OTRS 数据库克隆到 OTOBO 数据库服务器上也是可行的。这可以加快一般迁移策略的实施。"
 
 #: ../../content/migration-from-otrs-6.rst:77
 msgid "Migration Requirements"
 msgstr "迁移的要求"
 
 #: ../../content/migration-from-otrs-6.rst:79
-#, fuzzy
 msgid ""
 "Basic requirement for a migration is that you already have an ((OTRS)) "
 "Community Edition or OTRS 6.0.\\* running, and that you want to transfer "
 "both configuration and data to OTOBO."
-msgstr ""
-"1.迁移的基本要求是，您已经在运行（（OTRS））Community Edition或OTRS 6.0。\\ "
-"*，并且您希望将配置和数据传输到OTOBO。"
+msgstr "迁移的基本要求是您已经有一个（（OTRS）社区版或 OTRS 6.0.*正在运行，并且您希望将配置和数据转移到 OTOBO。"
 
 #: ../../content/migration-from-otrs-6.rst:84
-#, fuzzy
 msgid ""
 "Please consider carefully whether you really need the data and "
 "configuration. Experience shows that quite often a new start is the better "
@@ -2869,11 +2613,7 @@ msgid ""
 "Best Practice. We are happy to advise you, please get in touch at "
 "hello@otobo.de or ask your question in the OTOBO Community forum at https://"
 "forum.otobo.org/."
-msgstr ""
-"请认真考虑你是否真的需要这些数据和配置。经验表明，以前使用的安装和配置都不理"
-"想，新的开始通常是更好的选择。仅传输工单数据并将基本配置更改为OTOBO Best "
-"Practice也可能有用。我们很乐意为您提供建议，请联系hello@otobo.de或在OTOBO社区"
-"论坛（https://forum.otobo.org/）上提问。"
+msgstr "请仔细考虑您是否真的需要这些数据和配置。经验表明，重新开始往往是更好的选择。这是因为在许多情况下，以前使用的安装和配置无论如何都不是最佳的。此外，只转移票单数据并将基本配置更改为 OTOBO 最佳做法也是有意义的。我们很乐意为您提供建议，请通过 hello@otobo.de 与我们联系，或在 https://forum.otobo.org/ 的 OTOBO 社区论坛上提问。"
 
 #: ../../content/migration-from-otrs-6.rst:90
 msgid ""
@@ -2926,18 +2666,14 @@ msgid "Step 1: Install the new OTOBO System"
 msgstr "步骤 1：安装新的OTOBO系统"
 
 #: ../../content/migration-from-otrs-6.rst:110
-#, fuzzy
 msgid ""
 "Please start with installing a new OTOBO system. Your old OTRS / ((OTRS)) "
 "Community Edition installation will be migrated to that new system. We "
 "strongly recommend to read the chapter :doc:`installation`. For Docker-based "
 "installations we refer to the chapter :doc:`installation-docker`."
-msgstr ""
-"请从安装新的OTOBO系统开始，将你的OTRS /（（OTRS））Community Edition迁移到该"
-"系统。这里我们强烈建议你先阅读：doc：ʻinstallation`。"
+msgstr "请从安装新的 OTOBO 系统开始。您的旧 OTRS / ((OTRS))社区版安装将迁移到新系统。我们强烈建议您阅读 :doc:`installation` 一章。对于基于 Docker 的安装，我们参考 :doc:`installation-docker` 一章。"
 
 #: ../../content/migration-from-otrs-6.rst:115
-#, fuzzy
 msgid ""
 "Under Apache, there are pitfalls with running two independent *mod_perl* "
 "applications under on the same webserver. Therefore, it is advised to run "
@@ -2946,21 +2682,14 @@ msgid ""
 "-s`` and check the directories */etc/apache2/sites-available* and */etc/"
 "apache2/sites-enabled* for inspecting which configurations are currently "
 "available and which are enabled."
-msgstr ""
-"在Apache环境下，在同一服务器上的mod_perl之下运行两个独立的应用程序会有陷阱，"
-"这些陷阱可以通过mod_perl去设置``PerlOptions + Parent''来缓解。此设置可确保应"
-"用程序使用其自己的专用Perl解码器。请检查目录* / etc / apache2 / sites-"
-"enabled *中的Apache配置文件，并添加设置以防丢失。"
+msgstr "在 Apache 下，在同一网络服务器上运行两个独立的 *mod_perl* 应用程序会有隐患。因此，建议在不同的网络服务器上运行 OTRS 和 OTOBO。或者在安装 OTOBO 之前从 Apache 中删除 OTRS 配置。使用命令 ``a2query -s`` 并检查 */etc/apache2/sites-available* 和 */etc/apache2/sites-enabled* 目录，以查看哪些配置当前可用，哪些已启用。"
 
 #: ../../content/migration-from-otrs-6.rst:121
-#, fuzzy
 msgid ""
 "After finishing the installation please log in as *root@localhost*. Navigate "
 "to the OTOBO Admin Area ``Admin -> Packages`` and install all required OTOBO "
 "OPM packages."
-msgstr ""
-"完成安装教程后，请登录到OTOBO管理员区域``Admin -> Packages`` ，安装所有需要的"
-"OTOBO OPM软件包。"
+msgstr "完成安装后，请以*root@localhost*登录。导航至 OTOBO 管理区 ``Admin -> Packages`` 并安装所有需要的 OTOBO OPM 软件包。"
 
 #: ../../content/migration-from-otrs-6.rst:140
 msgid ""
@@ -3032,53 +2761,43 @@ msgid "OTRSSystemConfigurationHistory"
 msgstr "OTRSSystemConfigurationHistory"
 
 #: ../../content/migration-from-otrs-6.rst:140
-#, fuzzy
 msgid "Znuny4OTRS-PasswordPolicy"
-msgstr "密码策略规则"
+msgstr "Znuny4OTRS-PasswordPolicy"
 
 #: ../../content/migration-from-otrs-6.rst:143
-#, fuzzy
 msgid "Step 2: Deactivate ``SecureMode`` on OTOBO"
-msgstr "步骤2：在OTOBO上停用``SecureMode``"
+msgstr "步骤 2：停用 OTOBO 上的 \"安全模式"
 
 #: ../../content/migration-from-otrs-6.rst:145
-#, fuzzy
 msgid ""
 "After installing OTOBO, please log in again to the OTOBO Admin Area ``Admin -"
 "> System Configuration`` and deactivate the config option ``SecureMode``."
-msgstr ""
-"安装OTOBO后，请再次登录到OTOBO管理员区域``Admin -> System Configuration``，然"
-"后停用配置选项“ SecureMode”。现在以``root''用户身份登录服务器并执行以下命令："
+msgstr "安装 OTOBO 后，请重新登录 OTOBO 管理区 ``Admin -> System Configuration`` 并停用配置选项 ``SecureMode``。"
 
 #: ../../content/migration-from-otrs-6.rst:149
-#, fuzzy
 msgid "Do not forget to actually deploy the changed setting."
-msgstr "不要忘记实际部署更改的设置。"
+msgstr "不要忘记实际部署更改后的设置。"
 
 #: ../../content/migration-from-otrs-6.rst:152
-#, fuzzy
 msgid "Step 3: Stop the OTOBO Daemon"
-msgstr "步骤10：启动OTOBO Daemon"
+msgstr "步骤 3：停止 OTOBO 守护进程"
 
 #: ../../content/migration-from-otrs-6.rst:154
-#, fuzzy
 msgid ""
 "This is necessary when the OTOBO Daemon is actually running. Stopping the "
 "Daemon is different between Docker-based and non-Docker-based installations."
-msgstr "当OTOBO守护进程实际运行时，这是必需的。在基于Docker和非基于Docker的安装之间，停止守护进程的方式是不同的。"
+msgstr "这在 OTOBO 守护进程实际运行时是必要的。在基于 Docker 和非基于 Docker 的安装中，停止守护进程是不同的。"
 
 #: ../../content/migration-from-otrs-6.rst:157
-#, fuzzy
 msgid ""
 "In the non-Docker case execute the following commands as the user *otobo*:"
-msgstr "在非Docker情况下，以用户*otobo*身份执行以下命令："
+msgstr "在非 Docker 的情况下，以用户 *otobo* 的身份执行以下命令："
 
 #: ../../content/migration-from-otrs-6.rst:167
-#, fuzzy
 msgid ""
 "When OTOBO is running in Docker, you just need to stop the service "
 "``daemon``:"
-msgstr "当OTOBO在Docker下运行时，就可以停止Docker容器`otobo_daemon_1``："
+msgstr "当 OTOBO 在 Docker 中运行时，只需停止服务 ``daemon``："
 
 #: ../../content/migration-from-otrs-6.rst:177
 msgid ""
@@ -3095,53 +2814,45 @@ msgid "We advise you to read the OTOBO :doc:`backup-restore` chapter."
 msgstr "我们建议你阅读OTOBO：backup-restore`章节。"
 
 #: ../../content/migration-from-otrs-6.rst:185
-#, fuzzy
 msgid "Optional Step: Mount /opt/otrs for Convenient Access"
-msgstr "可选步骤：挂载/opt/otrs以便于访问"
+msgstr "可选步骤：安装 /opt/otrs 以方便访问"
 
 #: ../../content/migration-from-otrs-6.rst:187
-#, fuzzy
 msgid ""
 "Often OTOBO should be running on a new server where */opt/otrs* isn't "
 "available initially. In these cases the directory */opt/otrs* on the OTRS "
 "server can be mounted into the file system of the OTOBO server. When a "
 "regular network mount is not possible, then using ``sshfs`` might be an "
 "option."
-msgstr "通常OTOBO应该在一个初始时没有*/opt/otrs*的新服务器上运行。在这些情况下，可以将OTRS服务器上的目录*/opt/otrs*挂载到OTOBO服务器的文件系统中。当无法进行常规网络挂载时，使用``sshfs``可能是一个选项。"
+msgstr "通常情况下，OTOBO 应在新服务器上运行，而 */opt/otrs* 目录最初并不可用。在这种情况下，可以将 OTRS 服务器上的 */opt/otrs* 目录挂载到 OTOBO 服务器的文件系统中。如果无法进行常规的网络挂载，则可以选择使用 ``sshfs``。"
 
 #: ../../content/migration-from-otrs-6.rst:192
-#, fuzzy
 msgid ""
 "Optional Step: Install ``sshpass`` and ``rsync`` when */opt/otrs* Should be "
 "Copied via ssh"
-msgstr "可选步骤：安装``sshpass``和``rsync``，当*/opt/otrs*需要通过ssh复制时"
+msgstr "可选步骤：安装 ``sshpass`` 和 ``rsync`` 时 */opt/otrs* 应通过 ssh 复制"
 
 #: ../../content/migration-from-otrs-6.rst:194
-#, fuzzy
 msgid ""
 "This step is only necessary when you want to migrate OTRS from another "
 "server and when */opt/otrs* from the remote server hasn't been mounted on "
 "the server running OTOBO."
-msgstr "此步骤仅在您想要从另一台服务器迁移OTRS且远程服务器上的*/opt/otrs*尚未挂载到运行OTOBO的服务器上时才需要。"
+msgstr "只有从其他服务器迁移 OTRS，且远程服务器上的 */opt/otrs* 尚未挂载到运行 OTOBO 的服务器上时，才需要执行此步骤。"
 
 #: ../../content/migration-from-otrs-6.rst:197
-#, fuzzy
 msgid ""
 "The tools ``sshpass`` and ``rsync`` are needed so that *migration.pl* can "
 "copy files via ssh. For installing ``sshpass``, please log in on the server "
 "as user ``root`` and execute one of the following commands:"
-msgstr ""
-"想要通过ssh复制文件，需要``sshpass''和``rsync''工具。要安装sshpass，请以root"
-"用户身份登录服务器并执行以下命令之一："
+msgstr "需要使用``sshpass``和``rsync``这两个工具，以便*migration.pl*能够通过ssh复制文件。安装`sshpass``时，请以用户`root`的身份登录服务器，并执行下列命令之一："
 
 #: ../../content/migration-from-otrs-6.rst:221
 msgid "The same thing must be done for *rsync* when it isn't available yet."
 msgstr "如果* rsysnc *不可用，则必须执行相同的操作。"
 
 #: ../../content/migration-from-otrs-6.rst:224
-#, fuzzy
 msgid "Step 4: Preparing the OTRS / ((OTRS)) Community Edition system"
-msgstr "步骤 3：准备OTRS / ((OTRS)) Community Edition系统"
+msgstr "步骤 4：准备 OTRS / ((OTRS))社区版系统"
 
 #: ../../content/migration-from-otrs-6.rst:228
 msgid ""
@@ -3179,24 +2890,20 @@ msgid "Please make sure there are no running services or cron jobs."
 msgstr "请确保没有正在运行的服务或cron作业。"
 
 #: ../../content/migration-from-otrs-6.rst:249
-#, fuzzy
 msgid "Clear the Caches and the Operational Data"
-msgstr "清除缓存和操作数据"
+msgstr "清除缓存和运行数据"
 
 #: ../../content/migration-from-otrs-6.rst:251
-#, fuzzy
 msgid ""
 "The cached data and the operational data doesn't have to be migrated. The "
 "mail queue should at this point already be empty."
-msgstr "缓存数据和操作数据不需要迁移。此时邮件队列应该已经为空。"
+msgstr "缓存数据和运行数据无需迁移。此时，邮件队列应该已经清空。"
 
 #: ../../content/migration-from-otrs-6.rst:264
-#, fuzzy
 msgid "Optional Step for Docker: make required data available inside container"
-msgstr "3b Docker步骤：在容器中准备好需要的数据"
+msgstr "Docker 可选步骤：在容器内提供所需数据"
 
 #: ../../content/migration-from-otrs-6.rst:266
-#, fuzzy
 msgid ""
 "There are some specifics to be considered when your OTOBO installation is "
 "running under Docker. The most relevant: processes running in a Docker "
@@ -3204,10 +2911,7 @@ msgid ""
 "is an exception though: directories mounted as volumes into the container "
 "can be accessed. Also, note that the MariaDB database running in "
 "``otobo_db_1`` is not directly accessible from outside the container network."
-msgstr ""
-"如果Web应用程序OTOBO在容器“ otobo_web_1”中运行，则OTOBO通常无法访问容器外部的"
-"目录。但是有一个例外：可以访问作为卷装入到容器中的目录。这意味着迁移有两种可"
-"能。"
+msgstr "在 Docker 下运行 OTOBO 安装时，需要考虑一些特殊情况。最相关的是：在 Docker 容器中运行的进程通常无法访问容器外的目录。但有一个例外：可以访问作为卷挂载到容器中的目录。此外，请注意在 ``otobo_db_1`` 中运行的 MariaDB 数据库无法从容器网络外部直接访问。"
 
 #: ../../content/migration-from-otrs-6.rst:273
 msgid ""
@@ -3266,62 +2970,51 @@ msgid ""
 msgstr "该复制的目录应该是容器中的* / opt / otobo / tmp / otrs *。"
 
 #: ../../content/migration-from-otrs-6.rst:312
-#, fuzzy
 msgid "Step 5: Perform the Migration!"
-msgstr "步骤 4：进行迁移！"
+msgstr "步骤 5：执行迁移！"
 
 #: ../../content/migration-from-otrs-6.rst:314
-#, fuzzy
 msgid ""
 "Please use the web migration tool at http://localhost/otobo/migration.pl. Be "
 "aware that you might have to replace \"localhost\" with your OTOBO hostname "
 "and you might have to add your non-standard port. The application then "
 "guides you through the migration process."
-msgstr ""
-"请使用http：//localhost/otobo/migration.pl上的Web迁移工具（用OTOBO主机名替"
-"换“ localhost”），然后按照此过程进行操作。"
+msgstr "请使用 http://localhost/otobo/migration.pl 上的网络迁移工具。请注意，您可能需要用 OTOBO 主机名替换 \"localhost\"，还可能需要添加非标准端口。然后，应用程序会引导您完成迁移过程。"
 
 #: ../../content/migration-from-otrs-6.rst:320
-#, fuzzy
 msgid ""
 "Sometimes, a warning is shown that the deactivation of **SecureMode** has "
 "not been detected. Please restart the webserver in this case. This forces "
 "the webserver to read in the current configuration."
-msgstr "有时会显示一个警告，提示未检测到 **SecureMode** 的停用。这种情况下，请重启 Web 服务器。这会强制 Web 服务器读取当前配置。"
+msgstr "有时会出现未检测到停用**安全模式**的警告。在这种情况下，请重新启动网络服务器。这将强制网络服务器读取当前配置。"
 
 #: ../../content/migration-from-otrs-6.rst:335
-#, fuzzy
 msgid ""
 "If OTOBO runs inside a Docker container, keep the default settings "
 "*localhost* for the OTRS server and */opt/otobo/var/tmp/copied_otrs* for the "
 "OTRS home directory. This is the path of the data that was copied in the "
 "optional step."
-msgstr ""
-"如果OTOBO在Docker容器中运行，请为OTRS服务器指定* localhost *，指定* / opt / "
-"otobo / tmp / otrs *作为OTRS主目录。"
+msgstr "如果 OTOBO 在 Docker 容器内运行，请保留默认设置：*localhost* 作为 OTRS 服务器，*/opt/otobo/var/tmp/copied_otrs* 作为 OTRS 主目录。这是在可选步骤中复制的数据路径。"
 
 #: ../../content/migration-from-otrs-6.rst:341
-#, fuzzy
 msgid ""
 "The default values for OTRS database user and password are taken from "
 "*Kernel/Config.pm* in the OTRS home directory. Change the proposed settings "
 "if you are using a dedicated database user for the migration. Also change "
 "the settings when you work with a database that was copied into the "
 "*otobo_db_1* Docker container."
-msgstr "OTRS数据库用户和密码的默认值取自OTRS主目录中的*Kernel/Config.pm*。如果您使用专用的数据库用户进行迁移，请更改建议的设置。当您使用复制到*otobo_db_1* Docker容器中的数据库时，也请更改设置。"
+msgstr "OTRS 数据库用户和密码的默认值取自 OTRS 主目录中的 *Kernel/Config.pm*。如果使用专用数据库用户进行迁移，请更改建议的设置。在使用复制到 *otobo_db_1* Docker 容器中的数据库时，也要更改设置。"
 
 #: ../../content/migration-from-otrs-6.rst:347
-#, fuzzy
 msgid ""
 "In the Docker case, a database running on the Docker host won't be reachable "
 "via ``127.0.0.1`` from within the Docker container. This means that the "
 "setting ``127.0.0.1`` won't be valid for the input field ``OTRS Server``. In "
 "that case, enter one of the alternative IP-addresses reported by the command "
 "``hostname --all-ip-addresses`` for ``OTRS Server``."
-msgstr "在Docker的情况下，运行在Docker主机上的数据库无法通过``127.0.0.1``从Docker容器内部访问。这意味着``127.0.0.1``的设置对于``OTRS服务器``输入字段是无效的。在这种情况下，请输入命令``hostname --all-ip-addresses``报告的备用IP地址之一，用于``OTRS服务器``。"
+msgstr "在 Docker 情况下，在 Docker 主机上运行的数据库无法通过 Docker 容器内的 `127.0.0.1`` 访问。这意味着`127.0.0.1``设置对输入字段`OTRS 服务器`无效。在这种情况下，请为 `OTRS Server`` 输入命令 ``hostname --all-ip-addresses` 所报告的备选 IP 地址之一。"
 
 #: ../../content/migration-from-otrs-6.rst:353
-#, fuzzy
 msgid ""
 "When migrating to a new application server, or to a Docker-based "
 "installation, quite often the database cannot be accessed from the target "
@@ -3332,17 +3025,16 @@ msgid ""
 "'otrs_migration';`` and ``GRANT SELECT, SHOW VIEW ON otrs.* TO "
 "'otrs_migration'@'%';``. This user can be dropped again after the migration: "
 "``DROP USER 'otrs_migration'@'%'``."
-msgstr "当迁移到新的应用服务器，或者迁移到基于Docker的安装时，通常无法从目标安装访问数据库。这通常是因为otobo数据库用户只能从数据库运行的主机连接。为了无论如何允许访问，建议为迁移创建一个专用的数据库用户。例如``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';``和``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``。迁移后可以再删除这个用户：``DROP USER 'otrs_migration'@'%'``。"
+msgstr "在迁移到新的应用服务器或基于 Docker 的安装时，往往无法从目标安装访问数据库。这通常是由于 otobo 数据库用户只能从数据库运行的主机进行连接。为了允许访问，建议为迁移创建一个专用的数据库用户。例如，``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';``和``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``。迁移后可以再次删除该用户：``DROP USER 'otrs_migration'@'%'``."
 
 #: ../../content/migration-from-otrs-6.rst:360
-#, fuzzy
 msgid ""
 "Custom settings in *Kernel/Config.pm* are carried over from the old OTRS "
 "installation to the new OTOBO installation. When you have custom settings, "
 "then please take a look at the migrated file */opt/otobo/Kernel/Config.pm*. "
 "You might want to adapt custom pathes or LDAP settings. In the best case you "
 "might find that some custom setting are longer needed."
-msgstr "*Kernel/Config.pm*中的自定义设置会从旧的OTRS安装转移到新的OTOBO安装。如果您有自定义设置，请查看迁移后的文件*/opt/otobo/Kernel/Config.pm*。您可能需要调整自定义路径或LDAP设置。在最好的情况下，您可能会发现某些自定义设置不再需要。"
+msgstr "*Kernel/Config.pm* 中的自定义设置会从旧的 OTRS 安装转移到新的 OTOBO 安装。如果您有自定义设置，请查看迁移后的文件 */opt/otobo/Kernel/Config.pm*。您可能需要调整自定义路径或 LDAP 设置。在最好的情况下，您可能会发现不再需要某些自定义设置。"
 
 #: ../../content/migration-from-otrs-6.rst:364
 msgid ""
@@ -3358,29 +3050,26 @@ msgid "In the Docker case:"
 msgstr "在Docker情况下："
 
 #: ../../content/migration-from-otrs-6.rst:382
-#, fuzzy
 msgid "Step 6: After Successful Migration!"
-msgstr "步骤 5：成功迁移后！"
+msgstr "步骤 6：成功迁移后！"
 
 #: ../../content/migration-from-otrs-6.rst:384
 msgid "Uninstall ``sshpass`` if you do not need it anymore."
 msgstr "如果不再需要，卸载 ``sshpass``。"
 
 #: ../../content/migration-from-otrs-6.rst:385
-#, fuzzy
 msgid ""
 "Drop the databases and database users dedicated to the migration if you "
 "created any."
-msgstr "如果你为了迁移，创建了数据库用户，现在删除它。"
+msgstr "如果创建了专用于迁移的数据库和数据库用户，请将其删除。"
 
 #: ../../content/migration-from-otrs-6.rst:386
 msgid "Have fun with OTOBO!"
 msgstr "享受OTOBO带来的快乐吧！"
 
 #: ../../content/migration-from-otrs-6.rst:390
-#, fuzzy
 msgid "Known Migration Problems"
-msgstr "步骤 6：了解迁移的问题"
+msgstr "已知的迁移问题"
 
 #: ../../content/migration-from-otrs-6.rst:393
 msgid "1. Login after migration not possible"
@@ -3414,35 +3103,30 @@ msgstr ""
 "Kernel / Config.pm中的设置并将其恢复为合理的值。"
 
 #: ../../content/migration-from-otrs-6.rst:406
-#, fuzzy
 msgid "3. Migration stops due to MySQL errors"
-msgstr "3. 迁移由于MySQL错误而停止"
+msgstr "3.迁移因 MySQL 错误而停止"
 
 #: ../../content/migration-from-otrs-6.rst:408
-#, fuzzy
 msgid ""
 "On systems that experienced problems with an upgrade in the past, the "
 "migration process may stop due to MySQL errors in the tables *ticket* and "
 "*ticket_history*. Usually these errors are NULL values in the source table "
 "that are no longer allowed in the target table. These conflicts have to be "
 "manually resolved before you can resume the migration."
-msgstr "在过去升级时遇到问题的系统上，由于*ticket*和*ticket_history*表中的MySQL错误，迁移过程可能会停止。通常这些错误是源表中不再允许在目标表中的NULL值。在你能继续迁移之前，必须手动解决这些冲突。"
+msgstr "在过去升级时遇到过问题的系统上，迁移过程可能会因 *ticket* 和 *ticket_history* 表中的 MySQL 错误而停止。这些错误通常是源表中的 NULL 值在目标表中不再允许存在。在继续迁移之前，必须手动解决这些冲突。"
 
 #: ../../content/migration-from-otrs-6.rst:412
-#, fuzzy
 msgid ""
 "As of OTOBO 10.0.12 there is a check in *migration.pl* that checks for NULL "
 "values before the data transfer is done. Note, that the resolution still "
 "needs to be performed manually."
-msgstr "从OTOBO 10.0.12版本开始，在数据传输之前，*migration.pl*中会有一个检查NULL值的步骤。请注意，解决这个问题仍然需要手动进行。"
+msgstr "从 OTOBO 10.0.12 起，*migration.pl* 中有一项检查功能，可在数据传输之前检查是否存在 NULL 值。需要注意的是，仍然需要手动进行解析。"
 
 #: ../../content/migration-from-otrs-6.rst:415
-#, fuzzy
 msgid "4. Errors in Step 5 when migrating to PostgreSQL"
-msgstr "在迁移到PostgreSQL时第5步出现的错误"
+msgstr "4.迁移到 PostgreSQL 时步骤 5 中的错误"
 
 #: ../../content/migration-from-otrs-6.rst:417
-#, fuzzy
 msgid ""
 "In these cases the not so helpful message \"System was unable to complete "
 "data transfer.\" is shown by *migration.pl*. The Apache logfile, and the "
@@ -3453,29 +3137,25 @@ msgid ""
 "the PostgreSQL admin: ``ALTER USER otobo WITH SUPERUSER;``. Then retry "
 "running http://localhost/otobo/migration.pl. After the migration, return to "
 "the normal state by running ``ALTER USER otobo WITH NOSUPERUSER``."
-msgstr "在这些情况下，*migration.pl* 会显示一个不太有帮助的消息：“系统无法完成数据传输。”Apache日志文件和OTOBO日志文件会显示一个更有意义的消息：“消息：错误：权限被拒绝设置参数'session_replication_role'，SQL：'set session_replication_role to replica;'”。为了给数据库用户**otobo**所需的超级用户权限，请以PostgreSQL管理员身份运行以下语句：``ALTER USER otobo WITH SUPERUSER;``。然后重试运行http://localhost/otobo/migration.pl。迁移后，通过运行``ALTER USER otobo WITH NOSUPERUSER``返回到正常状态。"
+msgstr "在这种情况下，*migration.pl*会显示 \"System was unable to complete data transfer.\"（系统无法完成数据传输）这条不太有用的信息。而 Apache 日志文件和 OTOBO 日志文件则显示了一条更有意义的信息：\"Message：ERROR: permission denied to set parameter \"session_replication_role\", SQL: 'set session_replication_role to replica;'\"。为了给数据库用户 **otobo** 所需的超级用户权限，请以 PostgreSQL 管理员身份运行以下语句：`ALTER USER otobo WITH SUPERUSER;``。然后重新运行 http://localhost/otobo/migration.pl。迁移后，运行 ``ALTER USER otobo WITH NOSUPERUSER`` 返回正常状态。"
 
 #: ../../content/migration-from-otrs-6.rst:425
-#, fuzzy
 msgid ""
 "It is not clear yet, whether the extended privileges have to be granted in "
 "every setup."
-msgstr "目前尚不清楚是否在每个设置中都必须授予扩展权限。"
+msgstr "目前还不清楚是否每次设置都必须授予扩展权限。"
 
 #: ../../content/migration-from-otrs-6.rst:429
-#, fuzzy
 msgid ""
 "The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-"
 "otobo-postgresql/."
-msgstr "在 https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/ 的讨论。"
+msgstr "https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/ 中的讨论。"
 
 #: ../../content/migration-from-otrs-6.rst:432
-#, fuzzy
 msgid "5. Problems with the Deployment the Merged System Configuration"
-msgstr "5. 部署合并系统配置时的问题"
+msgstr "5.合并系统配置的部署问题"
 
 #: ../../content/migration-from-otrs-6.rst:434
-#, fuzzy
 msgid ""
 "The system configuration is migrated after the database tables were "
 "migrated. In this context, migration means merging the default settings of "
@@ -3488,41 +3168,36 @@ msgid ""
 "the migration step **Migrate configuration settings**. Actually, the merged "
 "system configuration is stored in the database, but additional validity "
 "checks are performed during deployment."
-msgstr "在迁移了数据库表之后，系统配置会被迁移。在这个上下文中，迁移意味着将OTOBO的默认设置与源OTRS系统的系统配置合并。在这一步骤中可能会出现不一致。一个现实生活中的例子是设置``Ticket::Frontend::AgentTicketQuickClose###State``。这个设置是OTOBO 10中的新功能，默认值是状态``closed successful``。但是，如果源系统中的状态``closed successful``已被删除或重命名，这个设置就无效了。这种不一致在迁移步骤**迁移配置设置**中被检测为错误。实际上，合并的系统配置已经存储在数据库中，但在部署期间会执行额外的有效性检查。"
+msgstr "系统配置是在数据库表迁移后迁移的。在这种情况下，迁移意味着将 OTOBO 的默认设置与源 OTRS 系统的系统配置合并。在这一步骤中可能会出现不一致的情况。一个真实的例子是 \"Ticket::Frontend::AgentTicketQuickClose###State \"设置。该设置是OTOBO 10中的新设置，默认值为``关闭成功``状态。但如果源系统中的状态 \"关闭成功 \"已被删除或重命名，则该设置无效。在迁移步骤**迁移配置设置**中，这种不一致会被检测为错误。实际上，合并后的系统配置存储在数据库中，但在部署过程中会执行额外的有效性检查。"
 
 #: ../../content/migration-from-otrs-6.rst:442
-#, fuzzy
 msgid ""
 "The problem must be alleviated manually by using OTOBO console commands."
-msgstr "问题必须通过使用OTOBO控制台命令手动缓解。"
+msgstr "必须使用 OTOBO 控制台命令手动解决这个问题。"
 
 #: ../../content/migration-from-otrs-6.rst:444
-#, fuzzy
 msgid ""
 "List the inconsistencies with the command ``bin/otobo.Console.pl Admin::"
 "Config::ListInvalid``"
-msgstr "使用命令``bin/otobo.Console.pl Admin::Config::ListInvalid``列出不一致项"
+msgstr "使用``bin/otobo.Console.pl Admin::Config::ListInvalid`` 命令列出不一致之处。"
 
 #: ../../content/migration-from-otrs-6.rst:446
-#, fuzzy
 msgid ""
 "Interactively fix the invalid values with ``bin/otobo.Console.pl Admin::"
 "Config::FixInvalid``"
-msgstr "使用``bin/otobo.Console.pl Admin::Config::FixInvalid``交互式修复无效值"
+msgstr "使用 ``bin/otobo.Console.pl Admin::Config::FixInvalid`` 交互式修复无效值"
 
 #: ../../content/migration-from-otrs-6.rst:448
-#, fuzzy
 msgid ""
 "Deploy the collected changes from migration.pl, including the deactivated "
 "**SecureMode** with ``bin/otobo.Console.pl Maint::Config::Rebuild``"
-msgstr "部署从 migration.pl 收集的更改，包括已停用的 **SecureMode**，使用 ``bin/otobo.Console.pl Maint::Config::Rebuild``"
+msgstr "使用 ``bin/otobo.Console.pl Maint::Config::Rebuild`` 部署从 migration.pl 中收集的更改，包括停用的 **SecureMode**"
 
 #: ../../content/migration-from-otrs-6.rst:451
-#, fuzzy
 msgid ""
 "After these manual steps you should be able to run *migration.pl* again. The "
 "migration will continue with the step where the error occurred."
-msgstr "完成这些手动步骤后，您应该能够再次运行*migration.pl*。迁移将从发生错误的步骤继续。"
+msgstr "完成这些手动步骤后，你就可以再次运行 *migration.pl*。迁移将从发生错误的步骤继续进行。"
 
 #: ../../content/migration-from-otrs-6.rst:455
 msgid "Step 7: Manual Migration Tasks and Changes"
@@ -3602,12 +3277,10 @@ msgid "``PasswordChangeAfterFirstLogin``"
 msgstr "`` PasswordChangeAfterFirstLogin ``"
 
 #: ../../content/migration-from-otrs-6.rst:481
-#, fuzzy
 msgid "2. Under Docker: Manually migrate cron jobs"
-msgstr "2. 在Docker下：手动迁移cron作业"
+msgstr "2.在 Docker 下：手动迁移 cron 作业"
 
 #: ../../content/migration-from-otrs-6.rst:483
-#, fuzzy
 msgid ""
 "In a non-Docker installation of OTOBO, there is at least one cron job which "
 "checks the health of the Daemon. Under Docker, this cron job no longer "
@@ -3615,154 +3288,130 @@ msgid ""
 "containers. This means that you have to look for an individual solution for "
 "OTRS systems with customer-specific cron jobs (e. g. backing up the "
 "database)."
-msgstr "在非Docker安装的OTOBO中，至少有一个cron作业用于检查守护进程的健康状况。在Docker下，这个cron作业不再存在。此外，Docker容器中也没有运行任何cron守护进程。这意味着您需要为具有特定于客户的cron作业的OTRS系统（例如，备份数据库）寻找个别解决方案。"
+msgstr "在 OTOBO 的非 Docker 安装中，至少有一个 cron 作业会检查守护进程的健康状况。在 Docker 环境下，这个 cron 作业已不复存在。此外，任何 Docker 容器中都没有运行 cron 守护进程。这就意味着，您必须为 OTRS 系统的客户特定 cron 作业（如备份数据库）寻找一个单独的解决方案。"
 
 #: ../../content/migration-from-otrs-6.rst:490
-#, fuzzy
 msgid "Special topics"
-msgstr "特殊主题"
+msgstr "专题"
 
 #: ../../content/migration-from-otrs-6.rst:493
-#, fuzzy
 msgid "Migration from Oracle to Oracle"
-msgstr "从Oracle迁移到Oracle"
+msgstr "从 Oracle 迁移到 Oracle"
 
 #: ../../content/migration-from-otrs-6.rst:495
-#, fuzzy
 msgid ""
 "For migration to Oracle the ETL-like strategy must be employed. This is "
 "because Oracle provides no easy way to temporarily turn off foreign key "
 "checks."
-msgstr "迁移到 Oracle 时必须采用类似 ETL 的策略。这是因为 Oracle 没有提供简便的方法临时关闭外键检查。"
+msgstr "要迁移到 Oracle，必须采用类似 ETL 的策略。这是因为 Oracle 没有提供暂时关闭外键检查的简单方法。"
 
 #: ../../content/migration-from-otrs-6.rst:498
-#, fuzzy
 msgid ""
 "On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must "
 "be installed."
-msgstr "在OTOBO主机上必须安装Oracle客户端和Perl模块``DBD::Oracle``。"
+msgstr "在 OTOBO 主机上必须安装 Oracle 客户端和 Perl 模块 ``DBD::Oracle``。"
 
 #: ../../content/migration-from-otrs-6.rst:502
-#, fuzzy
 msgid ""
 "When using the Oracle instant client, then the optional SDK is also needed "
 "for installing DBD::Oracle."
-msgstr "使用Oracle即时客户端时，还需要可选的SDK来安装DBD::Oracle。"
+msgstr "使用 Oracle 即时客户端时，还需要安装可选的 SDK DBD::Oracle。"
 
 #: ../../content/migration-from-otrs-6.rst:504
-#, fuzzy
 msgid ""
 "There are many ways of cloning a schema. In the sample commands we use "
 "``expdb`` and ``impdb`` which use Data Pump under the hood."
-msgstr "克隆模式有很多种方法。在示例命令中，我们使用了``expdb``和``impdb``，它们底层使用的是Data Pump。"
+msgstr "克隆模式的方法有很多种。在示例命令中，我们使用了 ``expdb`` 和 ``impdb``，它们在引擎盖下使用 Data Pump。"
 
 #: ../../content/migration-from-otrs-6.rst:509
-#, fuzzy
 msgid ""
 "The connect strings shown in this documentation refer to the case when both "
 "source and target database run in a Docker container. See also https://"
 "github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md ."
-msgstr "本文档中显示的连接字符串是指源数据库和目标数据库都在 Docker 容器中运行的情况。另见 https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md 。"
+msgstr "本文档中显示的连接字符串指的是源数据库和目标数据库都在 Docker 容器中运行的情况。另请参见 https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md 。"
 
 #: ../../content/migration-from-otrs-6.rst:513
-#, fuzzy
 msgid "Clear out otobo"
-msgstr "清理otobo"
+msgstr "清空奥托博"
 
 #: ../../content/migration-from-otrs-6.rst:515
-#, fuzzy
 msgid ""
 "Stop the webserver for otobo, so that the DB connection for otobo is closed."
-msgstr "停止otobo的web服务器，以便关闭otobo的DB连接。"
+msgstr "停止 otobo 的网络服务器，关闭 otobo 的数据库连接。"
 
 #: ../../content/migration-from-otrs-6.rst:522
-#, fuzzy
 msgid "Export the complete OTRS schema."
-msgstr "导出完整的OTRS架构。"
+msgstr "导出完整的 OTRS 模式。"
 
 #: ../../content/migration-from-otrs-6.rst:538
-#, fuzzy
 msgid "Import the OTRS schema, renaming the schema to 'otobo'."
-msgstr "导入OTRS架构，将架构重命名为'otobo'。"
+msgstr "导入 OTRS 模式，将模式重命名为 \"otobo\"。"
 
 #: ../../content/migration-from-otrs-6.rst:553
-#, fuzzy
 msgid "Adapt the cloned schema otobo"
-msgstr "调整克隆的otobo架构"
+msgstr "调整克隆模式 otobo"
 
 #: ../../content/migration-from-otrs-6.rst:562
-#, fuzzy
 msgid "Start the web server for otobo again"
-msgstr "再次启动 otobo 的 Web 服务器"
+msgstr "再次启动 otobo 的网络服务器"
 
 #: ../../content/migration-from-otrs-6.rst:564
-#, fuzzy
 msgid "Proceed with step 5, that is with running ``migration.pl``."
-msgstr "继续执行步骤5，即运行``migration.pl``。"
+msgstr "继续第 5 步，即运行 ``migration.pl``。"
 
 #: ../../content/migration-from-otrs-6.rst:568
-#, fuzzy
 msgid ""
 "If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/"
 "scripts/DBUpdate-to-10.1.pl`` has to be executed, to create the tables "
 "``stats_report`` & ``data_storage``, which were newly added in version 10.1."
-msgstr "如果迁移到OTOBO版本10.1或更高版本，必须执行脚本``/opt/otobo/scripts/DBUpdate-to-10.1.pl``，以创建在版本10.1中新增加的``stats_report``和``data_storage``表。"
+msgstr "如果迁移到大于或等于 10.1 的 OTOBO 版本，必须执行脚本 ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` 以创建在 10.1 版本中新增的表 `stats_report` 和 `data_storage`。"
 
 #: ../../content/migration-from-otrs-6.rst:572
-#, fuzzy
 msgid ""
 "Optional Step: Streamlined migration of the database (only for experts and "
 "spezial scenarios)"
-msgstr "可选步骤：数据库的简化迁移（仅适用于专家和特殊场景）"
+msgstr "可选步骤：简化数据库迁移（仅适用于专家和特殊情况）"
 
 #: ../../content/migration-from-otrs-6.rst:574
-#, fuzzy
 msgid ""
 "In the general migration strategy, all data in the database tables is copied "
 "row by row from the OTRS database into the OTOBO database. Exporting the "
 "data from the OTRS database and importing it into the OTOBO database might "
 "save time and is more stable in some circumstances."
-msgstr "在一般的迁移策略中，数据库表中的所有数据都会从OTRS数据库逐行复制到OTOBO数据库。从OTRS数据库导出数据并导入到OTOBO数据库可能会节省时间，并且在某些情况下更稳定。"
+msgstr "在一般迁移策略中，数据库表中的所有数据都将从 OTRS 数据库逐行复制到 OTOBO 数据库中。将数据从 OTRS 数据库导出并导入 OTOBO 数据库可能会节省时间，而且在某些情况下更为稳定。"
 
 #: ../../content/migration-from-otrs-6.rst:581
-#, fuzzy
 msgid "This variant works for both Docker-based and native installations."
-msgstr "这种变体适用于基于Docker的安装和本地安装。"
+msgstr "该变体既适用于基于 Docker 的安装，也适用于本机安装。"
 
 #: ../../content/migration-from-otrs-6.rst:585
-#, fuzzy
 msgid "These instructions assume that OTRS is using MySQL as its backend."
-msgstr "这些说明假设OTRS使用MySQL作为其后端。"
+msgstr "这些说明假定 OTRS 使用 MySQL 作为后台。"
 
 #: ../../content/migration-from-otrs-6.rst:587
-#, fuzzy
 msgid ""
 "First of all, we need a dump of the needed OTRS database tables. Then we "
 "need to perform a couple of transformations:"
-msgstr "首先，我们需要导出所需的OTRS数据库表的转储。然后我们需要进行一些转换："
+msgstr "首先，我们需要转储所需的 OTRS 数据库表。然后，我们需要进行一些转换："
 
 #: ../../content/migration-from-otrs-6.rst:590
-#, fuzzy
 msgid "convert the character set to *utf8mb4*"
-msgstr "将字符集转换为*utf8mb4*"
+msgstr "将字符集转换为 *utf8mb4*"
 
 #: ../../content/migration-from-otrs-6.rst:591
-#, fuzzy
 msgid "rename a couple of tables"
-msgstr "重命名几个表"
+msgstr "重命名几个表格"
 
 #: ../../content/migration-from-otrs-6.rst:592
-#, fuzzy
 msgid "shorten some table columns"
-msgstr "缩短一些表格列"
+msgstr "缩短某些表格列"
 
 #: ../../content/migration-from-otrs-6.rst:594
-#, fuzzy
 msgid ""
 "After the transfomation we can overwrite the tables in the OTOBO schema with "
 "the transformed data from OTRS. Effectively we need not a single dump file, "
 "but several SQL scripts."
-msgstr "在转换后，我们可以用OTRS中转换的数据覆盖OTOBO架构中的表。实际上我们不需要单个的转储文件，而是需要几个SQL脚本。"
+msgstr "转换后，我们可以用 OTRS 转换后的数据覆盖 OTOBO 模式中的表。实际上，我们需要的不是一个转储文件，而是几个 SQL 脚本。"
 
 #: ../../content/migration-from-otrs-6.rst:597
 msgid ""
@@ -3779,60 +3428,50 @@ msgid ""
 msgstr "在本节中，我们假设Docker主机上有* / opt / otrs *。"
 
 #: ../../content/migration-from-otrs-6.rst:612
-#, fuzzy
 msgid ""
 "Alternatively, the database can be dumped on another server and then be "
 "transferred to the Docker host afterwards. An easy way to do this is to copy "
 "*/opt/otobo* to the server running OTRS and perform the same command as "
 "above."
-msgstr ""
-"或者，可以将数据库转储到另一台服务器上，然后再转移到Docker主机上。以下是实现"
-"此目标的命令示例。"
+msgstr "或者，也可以将数据库转储到另一台服务器上，然后再传输到 Docker 主机上。一种简单的方法是将 */opt/otobo* 复制到运行 OTRS 的服务器上，然后执行与上述相同的命令。"
 
 #: ../../content/migration-from-otrs-6.rst:615
-#, fuzzy
 msgid ""
 "The script *bin/backup.pl* generates four SQL scripts in a dump directory, e."
 "g. in *2021-04-13_12-13-04* In order to execute the SQL scripts, we need to "
 "run the command ``mysql``."
-msgstr "脚本*bin/backup.pl*会在转储目录中生成四个SQL脚本，例如在*2021-04-13_12-13-04*中。为了执行SQL脚本，我们需要运行命令``mysql``。"
+msgstr "脚本 *bin/backup.pl* 会在转储目录中生成四个 SQL 脚本，例如 *2021-04-13_12-13-04* 为了执行 SQL 脚本，我们需要运行 ``mysql`` 命令。"
 
 #: ../../content/migration-from-otrs-6.rst:618
-#, fuzzy
 msgid "Native installation:"
-msgstr "自动安装"
+msgstr "本地安装："
 
 #: ../../content/migration-from-otrs-6.rst:628
-#, fuzzy
 msgid "Docker-based installation:"
-msgstr "可以迁移到基于Docker的OTOBO 10"
+msgstr "基于 Docker 的安装："
 
 #: ../../content/migration-from-otrs-6.rst:630
-#, fuzzy
 msgid ""
 "Run the command ``mysql`` within the Docker container *db* for importing the "
 "database dump files. Note that the password for the database root is now the "
 "password that has been set up in the file *.env* on the Docker host."
-msgstr "在Docker容器*db*中运行命令``mysql``来导入数据库转储文件。请注意，现在数据库root的密码是在Docker宿主机的*.env*文件中设置的密码。"
+msgstr "在 Docker 容器 *db* 中运行 ``mysql`` 命令，以导入数据库转储文件。请注意，数据库 root 的密码现在是在 Docker 主机上的 *.env* 文件中设置的密码。"
 
 #: ../../content/migration-from-otrs-6.rst:642
-#, fuzzy
 msgid ""
 "For a quick check whether the import worked, you can run the following "
 "commands."
-msgstr "为了快速检查导入是否成功，您可以运行以下命令。"
+msgstr "要快速检查导入是否成功，可以运行以下命令。"
 
 #: ../../content/migration-from-otrs-6.rst:650
-#, fuzzy
 msgid "or when running under Docker"
-msgstr "在Docker下运行OTOBO的考量"
+msgstr "或在 Docker 下运行时"
 
 #: ../../content/migration-from-otrs-6.rst:658
-#, fuzzy
 msgid ""
 "The database is now migrated. This means that during the next step we can "
 "skip the database migration. Watch out for the relevant checkbox."
-msgstr "数据库现在已迁移。这意味着在下一步中我们可以跳过数据库迁移。注意相关的复选框。"
+msgstr "数据库现已迁移。这意味着下一步我们可以跳过数据库迁移。注意相关复选框。"
 
 #: ../../content/performance-tuning.rst:12
 msgid "Performance Tuning"
@@ -3975,11 +3614,10 @@ msgid "``Ticket::SearchIndex::Filters``"
 msgstr "`` Ticket::SearchIndex::Filters ``"
 
 #: ../../content/performance-tuning.rst:76
-#, fuzzy
 msgid ""
 "Filters based on regular expressions exclude parts of the original text from "
 "the full-text index."
-msgstr "基于正则表达式的过滤器会从全文索引中排除原始文本的部分内容。"
+msgstr "基于正则表达式的过滤器可从全文索引中排除部分原文。"
 
 #: ../../content/performance-tuning.rst:81
 msgid "``Ticket::SearchIndex::Filters`` Setting"
@@ -4182,11 +3820,10 @@ msgstr ""
 "从那时起，就不可能将新数据编入此类索引，并且无法进行搜索和删除操作。"
 
 #: ../../content/performance-tuning.rst:149
-#, fuzzy
 msgid ""
 "After that update, it is no longer possible to index new data to such "
 "indices. The indexes are restricted to searches and to delete actions only."
-msgstr "在那次更新之后，就不再可能向这些索引中索引新数据了。索引仅限于搜索和删除操作。"
+msgstr "更新后，就无法再将新数据索引到此类索引中。索引仅限于搜索和删除操作。"
 
 #: ../../content/performance-tuning.rst:153
 msgid ""
@@ -4496,50 +4133,40 @@ msgid "Hardware and Software Requirements"
 msgstr "软硬件要求"
 
 #: ../../content/requirements.rst:14
-#, fuzzy
 msgid ""
 "The OTOBO web application can be installed on Linux and other Unix "
 "derivates, e.g. OpenBSD or FreeBSD. Running OTOBO on Microsoft Windows is "
 "not supported."
-msgstr ""
-"OTOBO可以安装在Linux和其他Unix派生版本（例如OpenBSD或FreeBSD）上，不支持在"
-"Microsoft Windows上运行OTOBO。"
+msgstr "OTOBO 网络应用程序可安装在 Linux 和其他 Unix 衍生系统上，如 OpenBSD 或 FreeBSD。不支持在 Microsoft Windows 上运行 OTOBO。"
 
 #: ../../content/requirements.rst:17
-#, fuzzy
 msgid ""
 "The web application uses a relational database as backend. So, to run OTOBO, "
 "you'll need to run at least a web server and a database server. The web "
 "server and the database server may be installed either on the same or on "
 "different hosts."
-msgstr "Web 应用程序使用关系型数据库作为后端。因此，要运行 OTOBO，您至少需要运行一个 Web 服务器和一个数据库服务器。Web 服务器和数据库服务器可以安装在同一台主机上，也可以安装在不同的主机上。"
+msgstr "网络应用程序使用关系数据库作为后台。因此，要运行 OTOBO，至少需要运行一个网络服务器和一个数据库服务器。网络服务器和数据库服务器可以安装在同一台主机上，也可以安装在不同的主机上。"
 
 #: ../../content/requirements.rst:20
-#, fuzzy
 msgid ""
 "Alternatively, OTOBO can also run under Docker. When running under Docker, "
 "the web and the database server are already included in the setup. Support "
 "for deployment with Kubernetes is under development."
-msgstr "另外，OTOBO 也可以在 Docker 下运行。在 Docker 下运行时，Web 和数据库服务器已经包含在设置中。支持 Kubernetes 部署正在开发中。"
+msgstr "另外，OTOBO 也可以在 Docker 下运行。在 Docker 下运行时，网络和数据库服务器已包含在设置中。对 Kubernetes 部署的支持正在开发中。"
 
 #: ../../content/requirements.rst:23
-#, fuzzy
 msgid ""
 "The OTOBO web application requires Perl along with additional Perl modules "
 "from CPAN. The modules can be installed either with a Perl package manager "
 "or via the package manager of your operating system (rpm, yast, apt-get). "
 "There is a console command for checking the module dependencies:"
-msgstr ""
-"对于Perl，你还需要一些其他模块，这些模块可以与CPAN的Perl一起安装，也可以通过"
-"操作系统的软件包管理器（rpm，yast，apt-get）进行安装。"
+msgstr "OTOBO 网络应用程序需要使用 Perl 以及来自 CPAN 的其他 Perl 模块。这些模块可以通过 Perl 包管理器或操作系统的包管理器（rpm、yast、apt-get）安装。控制台命令可用于检查模块依赖关系："
 
 #: ../../content/requirements.rst:32
-#, fuzzy
 msgid ""
 "If some packages are missing, you can get an install command for your "
 "operating system by running the script with the ``--list`` option."
-msgstr ""
-"如果缺少某些软件包，可以用``--list``选项运行脚本，获取操作系统的安装命令。"
+msgstr "如果缺少某些软件包，可以使用 ``--list`` 选项运行脚本，获取操作系统的安装命令。"
 
 #: ../../content/requirements.rst:38
 msgid "The listed commands should then be executed with root privileges."
@@ -4624,14 +4251,12 @@ msgid ""
 msgstr "控制台命令``/opt/otobo/bin/otobo.CheckModules.pl``会列出Perl软件包"
 
 #: ../../content/requirements.rst:144
-#, fuzzy
 msgid "Web Server"
-msgstr "Web服务器"
+msgstr "网络服务器"
 
 #: ../../content/requirements.rst:144
-#, fuzzy
 msgid "Apache HTTP Server Version 2.4"
-msgstr "Apache HTTP服务器版本2.4"
+msgstr "Apache HTTP 服务器 2.4 版"
 
 #: ../../content/requirements.rst:150
 msgid "Databases"
@@ -4662,16 +4287,14 @@ msgid "Elasticsearch 7.x (fast search function for live previews)"
 msgstr "Elasticsearch 7.x（实时预览的快速搜索功能）"
 
 #: ../../content/requirements.rst:154
-#, fuzzy
 msgid "Redis (fast caching)"
-msgstr "启用Redis进行快速缓存。"
+msgstr "Redis（快速缓存）"
 
 #: ../../content/requirements.rst:155
-#, fuzzy
 msgid ""
 "nginx or any other web server that can be used as a reverse proxy (SSL "
 "support and load distribution)"
-msgstr "任何其他的可以用作反向代理的Web服务器"
+msgstr "nginx 或其他可用作反向代理的网络服务器（支持 SSL 和负载分配）"
 
 #: ../../content/requirements.rst:162
 msgid "Web browsers"
@@ -4702,301 +4325,252 @@ msgid "Any other modern web browser with JavaScript support"
 msgstr "其他任何支持JavaScript的网络浏览器"
 
 #: ../../content/sso-kerberos.rst:12
-#, fuzzy
 msgid "Kerberos Single Sign On in OTOBO Docker installation"
-msgstr "OTOBO Docker安装中的Kerberos单点登录"
+msgstr "OTOBO Docker 安装中的 Kerberos 单点登录"
 
 #: ../../content/sso-kerberos.rst:14
-#, fuzzy
 msgid ""
 "Please read to the chapter :doc:`installation-docker` for basic information "
 "about installing and configure OTOBO. This tutorial assumes that OTOBO has "
 "been installed and configured using Docker."
-msgstr "请阅读章节:doc:`installation-docker`，了解关于使用Docker安装和配置OTOBO的基本信息。本教程假设您已经使用Docker安装并配置了OTOBO。"
+msgstr "请阅读 :doc:`installation-docker` 一章，了解安装和配置 OTOBO 的基本信息。本教程假定已经使用 Docker 安装和配置了 OTOBO。"
 
 #: ../../content/sso-kerberos.rst:19
-#, fuzzy
 msgid ""
 "In the following, we will refer from AD (Active Directory), of course the "
 "Kerberos configuration is also possible under LDAP."
-msgstr "在下文中，我们将提到AD（活动目录），当然Kerberos配置也可以在LDAP下进行。"
+msgstr "在下文中，我们将以 AD（活动目录）为参照，当然在 LDAP 下也可以进行 Kerberos 配置。"
 
 #: ../../content/sso-kerberos.rst:23
-#, fuzzy
 msgid "Generate Active Directory User"
-msgstr "生成Active Directory用户"
+msgstr "生成活动目录用户"
 
 #: ../../content/sso-kerberos.rst:25
-#, fuzzy
 msgid ""
 "Please create a new Active Directory User with the following settings and "
 "save the marked settings:"
-msgstr "请创建一个新的 Active Directory 用户，并保存以下设置："
+msgstr "请使用以下设置创建一个新的 Active Directory 用户，并保存标记的设置："
 
 #: ../../content/sso-kerberos.rst:29
-#, fuzzy
 msgid ""
 "Please use as Username only this syntax: `HTTP/fqdn.from.your.otobo.de`. "
 "`fqdn.from.your.otobo.de` needs to be a A-Record DNS entry, not a CNAME! In "
 "the next step, it is also possible to use other URLs for OTOBO, they must "
 "then point as CNAME to our A-record defined above."
-msgstr "请仅使用此语法作为用户名：`HTTP/fqdn.from.your.otobo.de`。`fqdn.from.your.otobo.de`需要是A记录DNS条目，不能是CNAME！在下一步中，也可以使用其他URL指向OTOBO，它们必须指向我们上面定义的A记录。"
+msgstr "请仅使用以下语法作为用户名：HTTP/fqdn.from.your.otobo.de\"。fqdn.from.your.otobo.de \"必须是 A-Record DNS 条目，而不是 CNAME！在下一步中，也可以为 OTOBO 使用其他 URL，但它们必须以 CNAME 的形式指向我们上面定义的 A-Record。"
 
 #: ../../content/sso-kerberos.rst:32
-#, fuzzy
 msgid ""
 "The username part \"HTTP/\" should be written in capital letters, as "
 "Kerberos expects it that way."
-msgstr "用户名部分\"HTTP/\"应该用大写字母书写，因为Kerberos是这样期望的。"
+msgstr "用户名部分 \"HTTP/\"应使用大写字母，因为 Kerberos 希望这样写。"
 
 #: ../../content/sso-kerberos.rst:34
-#, fuzzy
 msgid ""
 "The password doesn't work properly with some special characters (e.g. '&')."
-msgstr "密码与某些特殊字符（例如'&'）不兼容。"
+msgstr "密码在使用某些特殊字符（如\"&\"）时无法正常工作。"
 
 #: ../../content/sso-kerberos.rst:36
-#, fuzzy
 msgid ""
 "You have to create a seperate AD-user. You can not use the one that you "
 "already use for your LDAP/AD sync."
-msgstr "您必须创建一个单独的AD用户。您不能使用已经用于LDAP/AD同步的那个。"
+msgstr "您必须创建一个单独的 AD 用户。不能使用已用于 LDAP/AD 同步的用户。"
 
 #: ../../content/sso-kerberos.rst:43
-#, fuzzy
 msgid "Generate Active Directory Keytab file"
-msgstr "生成Active Directory Keytab文件"
+msgstr "生成 Active Directory Keytab 文件"
 
 #: ../../content/sso-kerberos.rst:45
-#, fuzzy
 msgid ""
 "In the next step, we connect to a domain controller of the Active Directory "
 "and open a console (cmd) there with administrator privileges. Now we use the "
 "tool `ktpass.exe`to generate the needed keytab file:"
-msgstr "下一步，我们连接到Active Directory的域控制器，并在那里以管理员权限打开控制台（cmd）。现在我们使用工具`ktpass.exe`来生成所需的keytab文件："
+msgstr "下一步，我们连接到 Active Directory 的域控制器，并以管理员权限打开控制台 (cmd)。现在，我们使用工具 `ktpass.exe` 生成所需的密钥表文件："
 
 #: ../../content/sso-kerberos.rst:53
-#, fuzzy
 msgid ""
 "`-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@"
 "+Picture Number 2`"
-msgstr "`-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> 图片编号1+@+图片编号2`"
+msgstr "`-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> 图片编号 1+@+ 图片编号 2``"
 
 #: ../../content/sso-kerberos.rst:54
-#, fuzzy
 msgid ""
 "`-mapuser = OTRS\\otrs32-centos6  (Username prä Win 2000) ->  -> Picture "
 "Number 3+\\+Picture Number`"
-msgstr "`-mapuser = OTRS\\otrs32-centos6  (Windows 2000之前的用户名) ->  -> 图片编号3+\\+图片编号`"
+msgstr "`-mapuser = OTRS\\otrs32-centos6 (Username prä Win 2000) -> -> Picture Number 3+\\+Picture Number`."
 
 #: ../../content/sso-kerberos.rst:55
-#, fuzzy
 msgid "`-pass = Password from user otrs32-centos6 (Active Directory User)`"
-msgstr "`-pass = 用户otrs32-centos6（Active Directory用户）的密码`"
+msgstr "`-pass = 用户 otrs32-centos6 的密码（Active Directory 用户）\"。"
 
 #: ../../content/sso-kerberos.rst:56
-#, fuzzy
 msgid "`-out = c:/krb5.keytab`"
 msgstr "`-out = c:/krb5.keytab`"
 
 #: ../../content/sso-kerberos.rst:60
-#, fuzzy
 msgid ""
 "Please write the domain (@OTRS.LOCAL) always in capital letters. The "
 "password must not contain some special characters."
-msgstr "请始终使用大写字母书写域名（@OTRS.LOCAL）。密码不得包含某些特殊字符。"
+msgstr "请使用大写字母输入域名 (@OTRS.LOCAL)。密码不得包含特殊字符。"
 
 #: ../../content/sso-kerberos.rst:63
-#, fuzzy
 msgid "In the next step please move the krb5.keytab file to the OTOBO Server:"
-msgstr "下一步，请将krb5.keytab文件移动到OTOBO服务器："
+msgstr "下一步，请将 krb5.keytab 文件移至 OTOBO 服务器："
 
 #: ../../content/sso-kerberos.rst:74
-#, fuzzy
 msgid "Create a new volume for your custom nginx configuration"
-msgstr "为您的自定义nginx配置创建一个新的卷"
+msgstr "为自定义 nginx 配置创建新卷"
 
 #: ../../content/sso-kerberos.rst:94
-#, fuzzy
 msgid "Create new OTOBO .env file"
-msgstr "2. 创建初始*.env*文件"
+msgstr "创建新的 OTOBO .env 文件"
 
 #: ../../content/sso-kerberos.rst:96
-#, fuzzy
 msgid ""
 "First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``."
 "env.tmp`` and create a new ``.env`` file including the kerberos settings."
-msgstr "首先我们需要将旧文件 ``/opt/otobo-docker/.env`` 移动到 ``.env.tmp``，并创建一个包含 kerberos 设置的新 ``.env`` 文件。"
+msgstr "首先，我们需要将旧文件 ``/opt/otobo-docker/.env`` 移到 ``.env.tmp`` 并创建一个新的 ``.env`` 文件，其中包括 kerberos 设置。"
 
 #: ../../content/sso-kerberos.rst:110
-#, fuzzy
 msgid ""
 "Now copy your existing configuration options to the new .env file (at least "
 "OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, "
 "OTOBO_NGINX_SSL_CERTIFICATE_KEY) and insert the following Kerberos settings:"
-msgstr "现在将您现有的配置选项复制到新的.env文件中（至少包括OTOBO_DB_ROOT_PASSWORD、OTOBO_NGINX_SSL_CERTIFICATE、OTOBO_NGINX_SSL_CERTIFICATE_KEY），并插入以下Kerberos设置："
+msgstr "现在将现有的配置选项复制到新的 .env 文件中（至少包括 OTOBO_DB_ROOT_PASSWORD、OTOBO_NGINX_SSL_CERTIFICATE、OTOBO_NGINX_SSL_CERTIFICATE_KEY），并插入以下 Kerberos 设置："
 
 #: ../../content/sso-kerberos.rst:113
-#, fuzzy
 msgid ""
 "# Kerberos keytab OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/"
 "krb5.keytab"
-msgstr "# Kerberos keytab OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab"
+msgstr "# Kerberos 密钥表 OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab"
 
 #: ../../content/sso-kerberos.rst:116
-#, fuzzy
 msgid ""
 "# Kerberos config (Important, please comment out this option like here!) # "
 "In default configuration the krb5.conf file is generated automatically # "
 "OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf"
-msgstr "# Kerberos配置（重要，请像这里一样注释掉这个选项！）# 默认配置中krb5.conf文件是自动生成的 # OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf"
+msgstr "# 在默认配置中，krb5.conf 文件会自动生成 # OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf"
 
 #: ../../content/sso-kerberos.rst:120
-#, fuzzy
 msgid ""
 "# Kerberos Service Name OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-"
 "centos6.otrs.local # -> Picture Number 1"
 msgstr "# Kerberos 服务名称 OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-centos6.otrs.local # -> 图片编号 1"
 
 #: ../../content/sso-kerberos.rst:123
-#, fuzzy
 msgid ""
 "# Kerberos REALM OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -"
 "> Picture Number 2"
-msgstr "# Kerberos REALM OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> 图片编号2"
+msgstr "# Kerberos REALM OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> 图片编号 2"
 
 #: ../../content/sso-kerberos.rst:126
-#, fuzzy
 msgid ""
 "# Active Directory Domain Controller / Kerberos kdc OTOBO_NGINX_KERBEROS_KDC="
-msgstr "# Active Directory 域控制器 / Kerberos kdc OTOBO_NGINX_KERBEROS_KDC="
+msgstr "# 活动目录域控制器/Kerberos kdc OTOBO_NGINX_KERBEROS_KDC="
 
 #: ../../content/sso-kerberos.rst:129
-#, fuzzy
 msgid ""
 "# Active Directory Domain Controller / Kerberos Admin Server "
 "OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com"
-msgstr "# Active Directory 域控制器 / Kerberos 管理服务器 OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com"
+msgstr "# 活动目录域控制器/Kerberos 管理服务器 OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com"
 
 #: ../../content/sso-kerberos.rst:132
-#, fuzzy
 msgid ""
 "# Kerberos Default Domain OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local"
-msgstr "``OTOBO_WEB_HTTP_PORT``"
+msgstr "# Kerberos 默认域 OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local"
 
 #: ../../content/sso-kerberos.rst:137
-#, fuzzy
 msgid "Start OTOBO"
-msgstr "启动OTOBO"
+msgstr "启动 OTOBO"
 
 #: ../../content/sso-kerberos.rst:139
-#, fuzzy
 msgid "After the initial Kerberos configuration we start OTOBO again:"
-msgstr "在初始Kerberos配置之后，我们重新启动OTOBO："
+msgstr "初始 Kerberos 配置完成后，我们再次启动 OTOBO："
 
 #: ../../content/sso-kerberos.rst:148
-#, fuzzy
 msgid "Tell OTOBO to use the Kerberos-Authentication"
-msgstr "告诉OTOBO使用Kerberos认证"
+msgstr "告诉 OTOBO 使用 Kerberos 验证"
 
 #: ../../content/sso-kerberos.rst:150
-#, fuzzy
 msgid ""
 "In case you have configured AD-Authentication, de-activate it (e.g. by "
 "commenting out the respective lines from your Kernel/Config.pm). The "
 "authentication will not take place via LDAP anymore."
-msgstr "如果您配置了AD认证，请停用它（例如，通过注释掉Kernel/Config.pm中的相应行）。认证将不再通过LDAP进行。"
+msgstr "如果您配置了 AD 身份验证，请将其停用（例如注释掉 Kernel/Config.pm 中的相应行）。身份验证将不再通过 LDAP 进行。"
 
 #: ../../content/sso-kerberos.rst:153
-#, fuzzy
 msgid ""
 "To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/"
 "Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
-msgstr "要使用 Kerberos 认证，请将 Kernel/Config/Defaults.pm 中的 Kerberos 行复制到您的 Kernel/Config.pm 中。例如，这些行可能会起作用："
+msgstr "要使用 Kerberos 身份验证，请将 Kernel/Config/Defaults.pm 中的 Kerberos 行放到 Kernel/Config.pm 中："
 
 #: ../../content/sso-kerberos.rst:166
-#, fuzzy
 msgid "Configure Browser to understand Kerberos SSO"
-msgstr "配置浏览器以理解Kerberos SSO"
+msgstr "配置浏览器以理解 Kerberos SSO"
 
 #: ../../content/sso-kerberos.rst:168
-#, fuzzy
 msgid "For SSO to work, the browser must be configured accordingly."
-msgstr "为了使 SSO 工作，必须相应地配置浏览器。"
+msgstr "要使 SSO 正常工作，必须对浏览器进行相应配置。"
 
 #: ../../content/sso-kerberos.rst:170
-#, fuzzy
 msgid "**Chrome, Edge, Internet Explorer, etc.**"
-msgstr "**Chrome、Edge、Internet Explorer等**"
+msgstr "**Chrome、Edge、Internet Explorer 等**"
 
 #: ../../content/sso-kerberos.rst:172
-#, fuzzy
 msgid ""
 "Add page under local or trusted pages and activate 'Integrated Windows "
 "Authentication' (Internet Options)."
-msgstr "将页面添加到本地或受信任的页面，并激活“集成Windows认证”（Internet选项）。"
+msgstr "在本地或受信任页面下添加页面，并激活 \"集成 Windows 身份验证\"（Internet 选项）。"
 
 #: ../../content/sso-kerberos.rst:174
-#, fuzzy
 msgid "**Firefox**"
-msgstr "**Firefox**"
+msgstr "**火狐**"
 
 #: ../../content/sso-kerberos.rst:176
-#, fuzzy
 msgid "Enter \"about:config\" in the firefox address line"
-msgstr "在 Firefox 地址栏输入 \"about:config\""
+msgstr "在 firefox 地址栏中输入 \"about:config"
 
 #: ../../content/sso-kerberos.rst:178
-#, fuzzy
 msgid "and change the following settings:"
-msgstr "调整*.env*文件中的以下数值："
+msgstr "并更改以下设置："
 
 #: ../../content/sso-kerberos.rst:180
-#, fuzzy
 msgid "network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)"
-msgstr "network.negotiate-auth.trusted-uris = https:// (或 https://otobofqdn)"
+msgstr "network.negotiate-auth.trusted-uris = https://（或 https://otobofqdn）"
 
 #: ../../content/sso-kerberos.rst:181
-#, fuzzy
 msgid "network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)"
-msgstr "network.negotiate-auth.delegation-uris = http://（或https://otobofqdn）"
+msgstr "network.negotiate-auth.delegation-uris = http://（或 https://otobofqdn）"
 
 #: ../../content/sso-kerberos.rst:185
-#, fuzzy
 msgid "Debugging and Problems"
 msgstr "调试和问题"
 
 #: ../../content/sso-kerberos.rst:187
-#, fuzzy
 msgid ""
 "If the Kerberos SSO does not work, please check first if the NGINX container "
 "is started:"
-msgstr "如果Kerberos SSO不起作用，请首先检查NGINX容器是否已启动："
+msgstr "如果 Kerberos SSO 无法正常工作，请首先检查 NGINX 容器是否已启动："
 
 #: ../../content/sso-kerberos.rst:195
-#, fuzzy
 msgid "In the next step please check the NGINX logs for more information:"
-msgstr "下一步，请检查NGINX日志以获取更多信息："
+msgstr "下一步，请查看 NGINX 日志以获取更多信息："
 
 #: ../../content/sso-kerberos.rst:203
-#, fuzzy
 msgid ""
 "If NGINX is running, please login into the NGINX Container and check all "
 "needed files:"
-msgstr "如果NGINX正在运行，请登录到NGINX容器并检查所有需要的文件："
+msgstr "如果 NGINX 正在运行，请登录 NGINX 容器并检查所有需要的文件："
 
 #: ../../content/sso-kerberos.rst:221
-#, fuzzy
 msgid "Kerberos debugging"
-msgstr "Kerberos调试"
+msgstr "Kerberos 调试"
 
 #: ../../content/sso-kerberos.rst:228
-#, fuzzy
 msgid "Now you are able to debug the Kerberos settings. Examples:"
-msgstr "现在您可以调试 Kerberos 设置了。例如："
+msgstr "现在您可以调试 Kerberos 设置了。示例"
 
 #: ../../content/sso-kerberos.rst:242
-#, fuzzy
 msgid ""
 "In case you stumble upon the issue that apparently the authentication works "
 "but the agent is not yet in the database, then your sync (if implemented) "
@@ -5006,16 +4580,15 @@ msgid ""
 "to not have to create a new keytab and having to repeat the steps mentioned "
 "above, it could be easier to create a new user to use in your AD sync "
 "(probably in your Kernel/Config.pm)."
-msgstr "如果您遇到明显认证成功但代理尚未在数据库中的问题，那么您的同步（如果已实现）可能不起作用。错误52e（首次绑定失败）表明您的搜索用户出了问题。如果您使用同一个用户进行AD同步和作为SSO用户，就会发生这种情况。请为此使用单独的AD用户。为了不必创建新的keytab并重复上述步骤，创建一个新用户用于AD同步（可能在您的Kernel/Config.pm中）可能更容易。"
+msgstr "如果您遇到这样的问题，即身份验证显然有效，但代理尚未进入数据库，那么您的同步（如果已实施）可能无法进行。错误 52e（首次绑定失败）表明搜索用户出了问题。如果在 AD 同步和 SSO 用户中使用同一个用户，就会出现这种情况。请使用不同的 AD 用户。为了避免创建新的 keytab 和重复上述步骤，可以创建一个新用户用于 AD 同步（可能在 Kernel/Config.pm 中）。"
 
 #: ../../content/sso-kerberos.rst:244
-#, fuzzy
 msgid ""
 "In case SSO is not working properly, make sure: * the user for which it is "
 "not working is in Active Directory * the system has to be in the domain * it "
 "is properly stated as a trusted page (see 'Configure Browser to understand "
 "Kerberos SSO')"
-msgstr "如果 SSO 无法正常工作，请确保：* 不工作的用户在 Active Directory 中 * 系统必须在域中 * 它被正确标记为受信任的页面（参见 '配置浏览器以理解 Kerberos SSO'）"
+msgstr "如果 SSO 无法正常工作，请确保* 系统必须位于域中 * 已正确声明为受信任页面（请参阅 \"配置浏览器以了解 Kerberos SSO\"）。"
 
 #: ../../content/updating.rst:12
 msgid "Updating"
@@ -5028,11 +4601,10 @@ msgid ""
 msgstr "强烈建议先在单独的测试计算机上对更新进行测试。"
 
 #: ../../content/updating.rst:20
-#, fuzzy
 msgid ""
 "On Debian systems you may need to manually install some perl packages before "
 "upgrading from 10.0 to 10.1"
-msgstr "在Debian系统上，在从10.0升级到10.1之前，您可能需要手动安装一些perl包。"
+msgstr "在 Debian 系统上，从 10.0 升级到 10.1 之前，您可能需要手动安装一些 perl 软件包"
 
 #: ../../content/updating.rst:29
 msgid "Step 1: Stop All Relevant Services and the OTOBO Daemon"
@@ -5126,40 +4698,34 @@ msgid "Set File Permissions"
 msgstr "设置文件许可"
 
 #: ../../content/updating.rst:128
-#, fuzzy
 msgid "Check Apache configuration files"
-msgstr "恢复旧配置文件"
+msgstr "检查 Apache 配置文件"
 
 #: ../../content/updating.rst:130
-#, fuzzy
 msgid ""
 "Newer versions of OTOBO may need you to adjust the apache configuration. "
 "From version 10.1 and onwards we moved from CGI to PSGI. Take a look at "
 "``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs "
 "to be adjusted/added."
-msgstr "OTOBO的新版本可能需要您调整apache配置。从10.1版本开始，我们从CGI转向了PSGI。查看``scripts/apache2-httpd-vhost-443.include.conf``以了解需要调整/添加的设置。"
+msgstr "较新版本的 OTOBO 可能需要调整 apache 配置。从 10.1 版开始，我们从 CGI 转向了 PSGI。请查看 ``scripts/apache2-httpd-vhost-443.include.conf`` 查看需要调整/添加的设置。"
 
 #: ../../content/updating.rst:135
-#, fuzzy
 msgid "Step 4: Check for new needed perl modules"
-msgstr "第4步：检查新需要的perl模块"
+msgstr "步骤 4：检查是否需要新的 perl 模块"
 
 #: ../../content/updating.rst:137
-#, fuzzy
 msgid ""
 "OTOBO needs new cpan packages for some version jumps. Please check if new "
 "packages are needed and install them if necessary."
-msgstr "OTOBO在某些版本跳跃时需要新的cpan包。请检查是否需要新包，并在必要时安装它们。"
+msgstr "OTOBO 的某些版本跳转需要新的 cpan 软件包。请检查是否需要新软件包，并在必要时进行安装。"
 
 #: ../../content/updating.rst:140
-#, fuzzy
 msgid "On Debian systems you may need to manually install some packages:"
-msgstr "在 Debian 系统上，您可能需要手动安装一些包："
+msgstr "在 Debian 系统上，您可能需要手动安装某些软件包："
 
 #: ../../content/updating.rst:155
-#, fuzzy
 msgid "Step 5: Update Installed Packages and reconfigure config"
-msgstr "步骤 4：更新安装软件包"
+msgstr "第 5 步：更新安装软件包并重新配置配置"
 
 #: ../../content/updating.rst:157
 msgid ""
@@ -5173,21 +4739,18 @@ msgstr ""
 "OTOBO守护程序）。"
 
 #: ../../content/updating.rst:167
-#, fuzzy
 msgid ""
 "Step 6: Only for minor or major release upgrades (for example to upgrade "
 "from 10.0 to 10.1)"
-msgstr "步骤6：仅适用于小版本或主版本升级（例如从10.0升级到10.1）"
+msgstr "步骤 6：仅用于次要或主要版本升级（例如从 10.0 升级到 10.1）"
 
 #: ../../content/updating.rst:175
-#, fuzzy
 msgid "Step 7: Start your Services"
-msgstr "步骤 5：开始你的服务"
+msgstr "第 7 步：启动服务"
 
 #: ../../content/updating.rst:177
-#, fuzzy
 msgid "Start OTOBO cron jobs and the daemon (in this order):"
-msgstr "停用OTOBO cron作业和守护程序（按照这个顺序）："
+msgstr "启动 OTOBO cron 作业和守护进程（按此顺序）："
 
 #: ../../content/updating.rst:186
 msgid ""
@@ -5205,7 +4768,6 @@ msgid "Updating a Docker-based Installation of OTOBO"
 msgstr "可以迁移到基于Docker的OTOBO 10"
 
 #: ../../content/updating-docker.rst:14
-#, fuzzy
 msgid ""
 "For running OTOBO under Docker we need the OTOBO software itself and an "
 "environment in which OTOBO can run. The OTOBO Docker image provides the "
@@ -5213,43 +4775,38 @@ msgid ""
 "installed in the volume *otobo_opt_otobo*. A named volume is used because "
 "run time data, e.g. configuration files and installed packages, is stored in "
 "the same directory tree."
-msgstr "在Docker下运行OTOBO，我们需要OTOBO软件本身和一个OTOBO可以运行的环境。OTOBO Docker镜像提供了环境和OTOBO软件的副本。软件本身安装在卷*otobo_opt_otobo*中。使用命名卷是因为运行时数据，例如配置文件和安装的包，都存储在同一目录树中。"
+msgstr "要在 Docker 下运行 OTOBO，我们需要 OTOBO 软件本身和一个可以运行 OTOBO 的环境。OTOBO Docker 映像提供了环境和 OTOBO 软件的副本。软件本身安装在 *otobo_opt_otobo* 卷中。使用命名卷是因为运行时的数据（如配置文件和已安装的软件包）存储在同一目录树中。"
 
 #: ../../content/updating-docker.rst:20
-#, fuzzy
 msgid "When updating to a new version of OTOBO several things have to happen."
-msgstr "在更新到OTOBO的新版本时，需要发生几件事情。"
+msgstr "在更新到新版本的 OTOBO 时，有几件事必须要做。"
 
 #: ../../content/updating-docker.rst:22
-#, fuzzy
 msgid "The Docker Compose files have to be updated."
-msgstr "需要更新Docker Compose文件。"
+msgstr "必须更新 Docker Compose 文件。"
 
 #: ../../content/updating-docker.rst:23
 msgid "The Docker Compose config file *.env* has to be checked."
 msgstr "更改后的Docker Compose配置可以通过以下方式进行检查。"
 
 #: ../../content/updating-docker.rst:24
-#, fuzzy
 msgid "The new Docker image has to be fetched."
-msgstr "必须获取新的Docker镜像。"
+msgstr "必须获取新的 Docker 镜像。"
 
 #: ../../content/updating-docker.rst:25
 msgid "The volume *otobo_opt_otobo* must be updated."
 msgstr "``docker volume inspect otobo_opt_otobo`` 检查一个卷。"
 
 #: ../../content/updating-docker.rst:26
-#, fuzzy
 msgid "Some maintainance tasks must be executed."
-msgstr "一些维护任务必须执行。"
+msgstr "必须执行一些维护任务。"
 
 #: ../../content/updating-docker.rst:30
-#, fuzzy
 msgid ""
 "In the sample commands below, the version **10.x.y**, corresponding to the "
 "tag **10_x_y**, is used as the example version. Please substitute it with "
 "the real version, e.g. **10.0.7**."
-msgstr "在下面的示例命令中，使用版本**10.x.y**，对应于标签**10_x_y**，作为示例版本。请将其替换为实际版本，例如**10.0.7**。"
+msgstr "在下面的示例命令中，版本 **10.x.y**（对应标签 **10_x_y**）被用作示例版本。请用真实版本代替，如**10.0.7**。"
 
 #: ../../content/updating-docker.rst:35
 msgid "These instructions apply only to OTOBO 10.0.6 or later."
@@ -5260,83 +4817,71 @@ msgid "Updating the Docker Compose files"
 msgstr "5. 启动docker-compose映像"
 
 #: ../../content/updating-docker.rst:40
-#, fuzzy
 msgid ""
 "The OTOBO Docker Compose files can change between releases. Therefore is "
 "must be made sure that the correct setup is used."
-msgstr "OTOBO的Docker Compose文件可能会在不同版本之间发生变化。因此，必须确保使用正确的设置。"
+msgstr "不同版本的 OTOBO Docker Compose 文件可能会有变化。因此，必须确保使用正确的设置。"
 
 #: ../../content/updating-docker.rst:45
-#, fuzzy
 msgid ""
 "See https://hub.docker.com/r/rotheross/otobo/tags for the available releases."
-msgstr "请访问 https://hub.docker.com/r/rotheross/otobo/tags 查看可用的版本。"
+msgstr "有关可用版本，请参见 https://hub.docker.com/r/rotheross/otobo/tags。"
 
 #: ../../content/updating-docker.rst:59
-#, fuzzy
 msgid "Checking the Docker Compose .env file"
-msgstr "5. 启动docker-compose映像"
+msgstr "检查 Docker Compose .env 文件"
 
 #: ../../content/updating-docker.rst:61
-#, fuzzy
 msgid ""
 "The file *.env* controls the OTOBO Docker container. Within that file, the "
 "variables *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and "
 "*OTOBO_IMAGE_OTOBO_NGINX* declare which images are used. The latest images "
 "are used when these variables are not set. If you want to use a specific "
 "version, then please set these variables accordingly."
-msgstr "文件*.env*控制OTOBO Docker容器。在该文件中，变量*OTOBO_IMAGE_OTOBO*、*OTOBO_IMAGE_OTOBO_ELASTICSEARCH*和*OTOBO_IMAGE_OTOBO_NGINX*声明了使用哪些镜像。当这些变量未设置时，将使用最新的镜像。如果您想使用特定版本，请相应地设置这些变量。"
+msgstr "文件 *.env* 控制着 OTOBO Docker 容器。在该文件中，变量 *OTOBO_IMAGE_OTOBO*、*OTOBO_IMAGE_OTOBO_ELASTICSEARCH* 和 *OTOBO_IMAGE_OTOBO_NGINX*声明了要使用的镜像。未设置这些变量时，将使用最新的图像。如果要使用特定的版本，请相应地设置这些变量。"
 
 #: ../../content/updating-docker.rst:67
 msgid "Fetch the new Docker images"
 msgstr "在Docker情况下"
 
 #: ../../content/updating-docker.rst:69
-#, fuzzy
 msgid ""
 "Docker compose can be used for fetching the wanted images from https://hub."
 "docker.com/r/rotheross/otobo/."
-msgstr "Docker compose 可用于从 https://hub.docker.com/r/rotheross/otobo/ 获取所需的镜像。"
+msgstr "Docker compose 可用于从 https://hub.docker.com/r/rotheross/otobo/ 获取所需的映像。"
 
 #: ../../content/updating-docker.rst:80
-#, fuzzy
 msgid "Update OTOBO"
-msgstr "更新OTOBO"
+msgstr "更新 OTOBO"
 
 #: ../../content/updating-docker.rst:82
-#, fuzzy
 msgid ""
 "In this step the volume *otobo_opt_otobo* is updated and the following OTOBO "
 "console commands are performed:"
-msgstr "在这一步中，卷*otobo_opt_otobo*将被更新，并执行以下OTOBO控制台命令："
+msgstr "在此步骤中，将更新 *otobo_opt_otobo* 卷，并执行以下 OTOBO 控制台命令："
 
 #: ../../content/updating-docker.rst:84
-#, fuzzy
 msgid "Admin::Package::ReinstallAll"
 msgstr "Admin::Package::ReinstallAll"
 
 #: ../../content/updating-docker.rst:85
-#, fuzzy
 msgid "Admin::Package::UpgradeAll"
-msgstr "Admin::Package::UpgradeAll"
+msgstr "管理员::软件包::全部升级"
 
 #: ../../content/updating-docker.rst:86
-#, fuzzy
 msgid "Maint::Config::Rebuild"
-msgstr "Maint::Config::Rebuild"
+msgstr "维护::配置::重建"
 
 #: ../../content/updating-docker.rst:87
-#, fuzzy
 msgid "Maint::Cache::Delete"
-msgstr "Maint::Cache::Delete"
+msgstr "维护::缓存::删除"
 
 #: ../../content/updating-docker.rst:114
-#, fuzzy
 msgid ""
 "The above listed commands can be automated. For that purpose the script "
 "*scripts/update.sh* will be made available in OTOBO 10.0.8. This script runs "
 "the commands, starting with the **docker-compose pull** command."
-msgstr "上面列出的命令可以自动化。为此，将在OTOBO 10.0.8中提供脚本*scripts/update.sh*。这个脚本从**docker-compose pull**命令开始运行命令。"
+msgstr "上述命令可以自动执行。为此，OTOBO 10.0.8 将提供脚本 *scripts/update.sh*。该脚本从 **docker-compose pull** 命令开始运行这些命令。"
 
 #~ msgid ""
 #~ "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
