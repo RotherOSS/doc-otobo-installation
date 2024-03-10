@@ -6,7 +6,7 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2023-10-30'
+doc_datestamp = '2024-03-10'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
@@ -50,7 +50,7 @@ extensions = [
 
 extlinks = {
     'sysconfig': (
-        'https://doc.otobo.org/doc/manual/config-reference/10.1/en/content/%s',
+        'https://doc.otobo.org/doc/manual/config-reference/11.0/en/content/%s',
         ''
     )
 }
