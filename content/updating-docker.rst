@@ -17,12 +17,8 @@ When updating to a new version of OTOBO several things have to happen.
 
 .. note::
 
-    In the sample commands below, the version **10.x.y**, corresponding to the tag **10_x_y**, is used as the example version.
-    Please substitute it with the real version, e.g. **10.0.7**.
-
-.. warning::
-
-    These instructions apply only to OTOBO 10.0.6 or later.
+    In the sample commands below, the version **11.x.y**, corresponding to the tag **11_x_y**, is used as the example version.
+    Please substitute it with the real version, e.g. **11.0.7**.
 
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42,8 +38,8 @@ made sure that the correct setup is used.
     # Get the latest tags
     docker-admin> git fetch --tags
 
-    # Update OTOBO docker-compose repository to version 10.x.y.
-    docker-admin> git checkout rel-10_x_y
+    # Update OTOBO docker-compose repository to version 11.x.y.
+    docker-admin> git checkout rel-11_x_y
 
 Checking the Docker Compose .env file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,11 +59,15 @@ Docker compose can be used for fetching the wanted images from https://hub.docke
     # Change to the otobo docker directory
     docker_admin> cd /opt/otobo-docker
 
-    # fetch the new images, either 'latest-10_0' or 'latest-10_1' or the specific version declared in .env
+    # fetch the new images, either 'latest-11_0', 'latest-10_1', 'latest-10_0' or the specific version declared in .env
     docker_admin> docker-compose pull
 
 Update OTOBO
 ~~~~~~~~~~~~~~~
+
+.. warning::
+
+    Please note that minor or major upgrades must always be carried out one after the other. If you would like to upgrade from version 10.0.* to the latest 11.0.*,            please upgrade to 10.1 first and then to 11.0.
 
 In this step the volume *otobo_opt_otobo* is updated and the following OTOBO console commands are performed:
 
@@ -96,8 +96,8 @@ In this step the volume *otobo_opt_otobo* is updated and the following OTOBO con
     # inspect the update log
     docker_admin> docker-compose exec web cat /opt/otobo/var/log/update.log
 
-    **# For minor or major release upgrades, you also have to run the upgrade script (for example to upgrade from 10.0 to 10.1)**
-    root> docker exec -it otobo_web_1 perl scripts/DBUpdate-to-10.1.pl
+    **# For minor or major release upgrades, you also have to run the upgrade script (for example to upgrade from 10.1 to 11.0)**
+    root> docker exec -it otobo_web_1 perl scripts/DBUpdate-to-11.0.pl
 
 .. note::
 
@@ -110,5 +110,5 @@ In this step the volume *otobo_opt_otobo* is updated and the following OTOBO con
         docker_admin> ./scripts/update.sh --help
         docker_admin> ./scripts/update.sh
         
-        **# For minor or major release upgrades, you also have to run the upgrade script (for example to upgrade from 10.0 to 10.1)**
-        docker_admin> docker exec -it otobo_web_1 perl scripts/DBUpdate-to-10.1.pl
+        ** For minor or major release upgrades, you also have to run the upgrade script (for example to upgrade from 10.1 to 11.0)**
+        docker_admin> docker exec -it otobo_web_1 perl scripts/DBUpdate-to-11.0.pl
