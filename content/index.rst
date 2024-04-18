@@ -39,7 +39,7 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de).
    requirements
    installation
    installation-docker
-   migration-from-otrs-6
+   migration-from-otrs
    updating
    updating-docker
    backup-restore
