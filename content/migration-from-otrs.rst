@@ -1,5 +1,5 @@
-Migration from OTRS / ((OTRS)) Community Edition version 6 to OTOBO version 10.1
-==================================================================================
+Migration from OTRS 6 or OTRS 7 / ((OTRS)) Community Edition to OTOBO version 10.1
+================================================================================== 
 
 Welcome and thank you for choosing OTOBO!
 
@@ -12,8 +12,8 @@ in the OTOBO Community forum at https://forum.otobo.org/. We will find a way to 
 
 .. note::
 
-    After the migration the data previously available in OTRS 6 will be available in OTOBO 10.
-    We do not modify any data of the OTRS 6 installation during the migration.
+    After the migration the data previously available in OTRS will be available in OTOBO 10.
+    We do not modify any data of the OTRS installation during the migration.
 
 Overview over the Supported Migration Szenarios
 ------------------------------------------------
@@ -48,7 +48,7 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
     In this variant, the complete *otrs* database tables are first exported, then transformed,
     and then imported into the *otobo* database.
 
-3.  Migration from an Oracle based OTRS 6 installation to an Oracle based OTOBO installation.
+3.  Migration from an Oracle based OTRS 6 / OTRS 7 installation to an Oracle based OTOBO installation.
 
     This is a special case that is not supported by the general migration strategy.
     This means that a variant of the streamlined strategy must be used.
@@ -66,7 +66,7 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
 Migration Requirements
 ----------------------
 
-1.  Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* running,
+1.  Basic requirement for a migration is that you already have an ((OTRS)) Community Edition or OTRS 6.0.\* / OTRS 7.0.\* running,
     and that you want to transfer both configuration and data to OTOBO.
 
 .. warning::
@@ -82,7 +82,7 @@ Migration Requirements
 3.  This OTOBO installation must contain all OPM packages installed in your OTRS that you want to use in OTOBO, too.
 
 4.  If you are planning to migrate to another server, then the OTOBO webserver must be able
-    to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* is installed.
+    to access the location where your ((OTRS)) Community Edition or OTRS 6.0.* / OTRS 7.0.\* is installed.
     In most cases, this is the directory */opt/otrs* on the server running OTRS.
     The read access can be effected via SSH or via file system mounts.
 
@@ -128,6 +128,10 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
     - Znuny4OTRS-AutoCheckbox
     - OTRSSystemConfigurationHistory
     - Znuny4OTRS-PasswordPolicy
+
+The following OTOBO packages have been integrated into OTOBO 11.0. This means that they should not be installed
+in the target system when the target system is OTOBO 11.
+    - ImportExport
 
 Step 2: Deactivate ``SecureMode`` on OTOBO
 -------------------------------------------------------
