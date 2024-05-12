@@ -1,3 +1,7 @@
+.. image:: ../images/otobo-logo.png
+   :align: center
+|
+
 .. image:: ../images/otrs-logo.png
    :align: center
 |
