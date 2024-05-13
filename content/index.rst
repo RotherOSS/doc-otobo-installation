@@ -2,10 +2,6 @@
    :align: center
 |
 
-.. image:: ../images/otrs-logo.png
-   :align: center
-|
-
 ===========================
 OTOBO Installation Tutorial
 ===========================
