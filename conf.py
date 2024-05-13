@@ -142,7 +142,7 @@ html_copy_source = False
 html_context = {
     "display_github": True,
     "github_user": "RotherOSS",
-    "github_repo": "doc-otobo-installation",
+    "github_repo": "doc-otobo-doc-otobo-installation",
     "github_version": "master",
     "conf_py_path": "/",
 }
@@ -151,7 +151,7 @@ html_context = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'doc-otobo-installation'
+htmlhelp_basename = 'doc-otobo-doc-otobo-installation'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -205,7 +205,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'doc-otobo-installation.tex', 'OTOBO Installation Guide',
+    (master_doc, 'doc-otobo-doc-otobo-installation.tex', 'OTOBO Installation Guide',
      'Rother OSS GmbH', 'manual'),
 ]
 
