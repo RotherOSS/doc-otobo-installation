@@ -18,7 +18,7 @@ When updating to a new version of OTOBO several things have to happen.
 .. note::
 
     In the sample commands below, the version **11.x.y**, corresponding to the tag **11_x_y**, is used as the example version.
-    Please substitute it with the real version, e.g. **11.0.7**.
+    Please substitute it with the real version, e.g. **11.0.1**.
 
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,7 +102,7 @@ In this step the volume *otobo_opt_otobo* is updated and the following OTOBO con
 .. note::
 
     The above listed commands can be automated.
-    For that purpose the script *scripts/update.sh* is available in OTOBO 11.0.
+    For that purpose the script *scripts/update.sh* is available in OTOBO 11.0.1.
     This script runs the commands, starting with the **docker-compose pull** command.
 
     .. code-block:: bash
