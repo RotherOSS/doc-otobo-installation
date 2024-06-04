@@ -383,7 +383,7 @@ First comes generation of the new volume. In these sample commands, we use the e
     docker_admin> ls $otobo_nginx_custom_config_mp    # another sanity check
 
     # copy the default config into the new volume
-    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest-10_0  # or latest-10_1, use the appropriate label
+    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest-10_1
     docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
@@ -566,7 +566,7 @@ Pull a tagged OTOBO image, if we don't have it yet, and check whether the image 
 
 .. code-block:: bash
 
-    $ docker run rotheross/otobo:rel-10_0_10 /usr/games/fortune
+    $ docker run rotheross/otobo:rel-10_1_10 /usr/games/fortune
     /opt/otobo_install/entrypoint.sh: line 57: /usr/games/fortune: No such file or directory
 
 Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive
@@ -574,7 +574,7 @@ session as the user *root*:
 
 .. code-block:: bash
 
-    $ docker run -it --user root --entrypoint /bin/bash --name otobo_orig rotheross/otobo:rel-10_0_10
+    $ docker run -it --user root --entrypoint /bin/bash --name otobo_orig rotheross/otobo:rel-10_1_10
     root@50ac203409eb:/opt/otobo# apt update
     root@50ac203409eb:/opt/otobo# apt install fortunes
     root@50ac203409eb:/opt/otobo# exit
@@ -619,8 +619,8 @@ The script for the actual creation of the images is *bin/docker/build_docker_ima
 
    docker_admin> cd /opt
    docker_admin> git clone https://github.com/RotherOSS/otobo.git
-   docker_admin> # checkout the wanted branch. e.g. git checkout rel-10_0_11
    docker_admin> cd otobo
+   docker_admin> # checkout the wanted branch. e.g. git checkout rel-10_1
    docker_admin> # modify the docker files if necessary
    docker_admin> bin/docker/build_docker_images.sh
    docker_admin> docker image ls
@@ -670,7 +670,7 @@ List of useful commands
 * ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
 * ``docker volume rm tmp_volume`` remove a volume
 * ``docker inspect <container>`` inspect a container
-* ``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` list files in an image
+* ``docker save --output otobo.tar otobo:latest-10_1 && tar -tvf otobo.tar`` list files in an image
 * ``docker exec -it nginx-server nginx -s reload`` reload nginx
 
 **Docker Compose**
