@@ -18,11 +18,7 @@ When updating to a new version of OTOBO several things have to happen.
 .. note::
 
     In the sample commands below, the version **10.x.y**, corresponding to the tag **10_x_y**, is used as the example version.
-    Please substitute it with the real version, e.g. **10.0.7**.
-
-.. warning::
-
-    These instructions apply only to OTOBO 10.0.6 or later.
+    Please substitute it with the real version, e.g. **10.1.10**.
 
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,5 +107,5 @@ In this step the volume *otobo_opt_otobo* is updated and the following OTOBO con
         docker_admin> ./scripts/update.sh --help
         docker_admin> ./scripts/update.sh
 
-        **# For minor or major release upgrades, you also have to run the upgrade script (for example to upgrade from 10.0 to 10.1)**
+        #** For minor or major release upgrades, you also have to run the upgrade script (for example to upgrade from 10.0 to 10.1)**
         docker_admin> docker exec -it otobo_web_1 perl scripts/DBUpdate-to-10.1.pl

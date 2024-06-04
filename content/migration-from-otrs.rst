@@ -403,7 +403,8 @@ On systems that experienced problems with an upgrade in the past, the migration 
 in the tables *ticket* and *ticket_history*. Usually these errors are NULL values in the source table that are no longer
 allowed in the target table. These conflicts have to be manually resolved before you can resume the migration.
 
-As of OTOBO 10.0.12 there is a check in *migration.pl* that checks for NULL values before the data transfer is done. Note, that the resolution still needs to be performed manually.
+There is a check in *migration.pl* that checks for NULL values before the data transfer is done.
+Note, that the resolution still needs to be performed manually.
 
 4. Errors in Step 5 when migrating to PostgreSQL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

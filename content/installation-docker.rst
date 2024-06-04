@@ -50,7 +50,7 @@ the **root** user of the Docker host or a dedicated user with the required permi
 The Docker images will eventually be fetched from the repository https://hub.docker.com.
 But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository.
 Make sure that you specify the branch that corresponds to the current version of OTOBO.
-For example, when *OTOBO 10.0.15* is the current version then please use the branch *rel-10_0*.
+For example, when *OTOBO 10.1.10* is the current version then please use the branch *rel-10_1*.
 
 .. note::
 
@@ -361,10 +361,6 @@ OTOBO_NGINX_WEB_PORT
 
 See step `4.` for how this configuration possibility was used for setting up the SSL certificate.
 
-.. warning::
-
-    The following approach is only supported in OTOBO 10.0.4 or later.
-
 When the standard macros are not sufficient, then the customisation can go further.
 This can be achieved by replacing the default config template with a customized version. It is best practice to
 not simple change the configuration in the running container. Instead we first create a persistent volume that contains
@@ -394,13 +390,6 @@ First comes generation of the new volume. In these sample commands, we use the e
 
     # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
     docker_admin> vim $otobo_nginx_custom_config_mp/otobo_nginx.conf.template
-
-.. warning::
-
-    Your adapted nginx configuration usually contains the directive **listen**, which declares the ports of the webserver.
-    The internally used ports have changed between OTOBO 10.0.3 and OTOBO 10.0.4. This change must be reflected in the
-    adapted nginx configuration. So for version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO 10.0.4 listen
-    to the ports 8080 and 8443.
 
 After setting up the volume, the adapted configuration must be activated. The new volume is set up in
 *docker-compose/otobo-nginx-custom-config.yml*. Therefore this file must be added to **COMPOSE_FILE**.
