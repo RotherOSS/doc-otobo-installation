@@ -101,14 +101,15 @@ In this step the volume *otobo_opt_otobo* is updated and the following OTOBO con
 
 .. note::
 
-    The above listed commands can be automated.
-    For that purpose the script *scripts/update.sh* will be made available in OTOBO 10.0.8.
-    This script runs the commands, starting with the **docker-compose pull** command.
+    Running the above mentioned commands can be automated with the help of
+    the script *scripts/update.sh*.
+    This script runs the commands starting with the **docker-compose pull** command. Note that
+    that calling the database upgrade scripts is not included.
 
     .. code-block:: bash
 
         docker_admin> ./scripts/update.sh --help
         docker_admin> ./scripts/update.sh
-        
+
         **# For minor or major release upgrades, you also have to run the upgrade script (for example to upgrade from 10.0 to 10.1)**
         docker_admin> docker exec -it otobo_web_1 perl scripts/DBUpdate-to-10.1.pl
