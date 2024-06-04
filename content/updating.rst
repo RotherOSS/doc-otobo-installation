@@ -55,8 +55,7 @@ Please check if all files are valid. Now we have a backup with all required data
 
 .. warning::
 
-    Don't proceed without a complete backup of your system. You can use also the :ref:`backup-restore` script for this.
-
+    Don't proceed without a complete backup of your system. You can use also the :doc:`backup-restore` script for this.
 
 Step 3: Install the New Release
 -------------------------------
