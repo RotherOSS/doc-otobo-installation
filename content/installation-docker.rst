@@ -4,13 +4,13 @@ Installing using Docker and Docker Compose
 With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
 All of OTOBO´s dependencies are already included in the provided collection of Docker images.
 
-- MariaDB is set up as the default database.
-- Elasticsearch is set up for the OTOBO power search.
-- Redis is enabled for fast caching.
-- Gazelle is used as fast Perl webserver.
-- nginx is used as optional reverse proxy for HTTPS support.
+- Service *db*: MariaDB is set up as the default database.
+- Service *elastic*: Elasticsearch is set up for the OTOBO power search.
+- Service *redis*: Redis is enabled for fast caching.
+- Service *web*: Gazelle is used as fast Perl webserver.
+- Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support.
 
-We think that this setup will become the perfect environment for an OTOBO installation.
+We think that this setup is the perfect environment for an OTOBO installation.
 
 Requirements
 ------------
@@ -32,7 +32,7 @@ Here is an example for installation on Ubuntu 20.04:
 
 .. code-block:: bash
 
-   root> apt-get install git docker docker-compose
+   root> apt-get install git docker docker-compose curl
    root> systemctl enable docker
 
 Please check the Git and the Docker documentation for instructions on further setup.
@@ -245,7 +245,7 @@ Note that more environment variables are supported by the base images.
 **MariaDB settings**
 
 OTOBO_DB_ROOT_PASSWORD
-    The root password for MySQL. Must be set for running otobo db.
+    The root password for MariaDB. This setting is required for running the service *db*.
 
 **Elasticsearch settings**
 
@@ -264,7 +264,7 @@ OTOBO_WEB_HTTP_PORT
     Set in case the HTTP port should deviate from the standard port 80.
     When HTTPS is enabled, the HTTP port will redirect to HTTPS.
 
-**nginx webproxy settings**
+**Nginx webproxy settings**
 
 These setting are used when HTTPS is enabled.
 
@@ -359,7 +359,7 @@ First comes generation of the new volume. In these sample commands, we use the e
     docker_admin> ls $otobo_nginx_custom_config_mp    # another sanity check
 
     # copy the default config into the new volume
-    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest  # use the appropriate label
+    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest-10_0
     docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
     docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
     docker_admin> docker rm tmp-nginx-container
@@ -483,8 +483,8 @@ The script for the actual creation of the images is *bin/docker/build_docker_ima
 
    docker_admin> cd /opt
    docker_admin> git clone https://github.com/RotherOSS/otobo.git
-   docker_admin> # checkout the wanted branch. e.g. git checkout rel-10_0_11
    docker_admin> cd otobo
+   docker_admin> # checkout the wanted branch. e.g. git checkout rel-10_0_11
    docker_admin> # modify the docker files if necessary
    docker_admin> bin/docker/build_docker_images.sh
    docker_admin> docker image ls
@@ -534,7 +534,7 @@ List of useful commands
 * ``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint
 * ``docker volume rm tmp_volume`` remove a volume
 * ``docker inspect <container>`` inspect a container
-* ``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` list files in an image
+* ``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` list files in an image
 * ``docker exec -it nginx-server nginx -s reload`` reload nginx
 
 **Docker Compose**
@@ -544,17 +544,26 @@ List of useful commands
 * ``docker-compose exec nginx nginx -s reload`` reload nginx
 
 Resources
-----------------------------------
+---------
 
-* `Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_
-* `Docker Compose quick start <http://mfg.fhstp.ac.at/development/webdevelopment/docker-compose-ein-quick-start-guide/>`_
+Finally, here is a highly subjective collection of links.
+
+**General info and tutorials**
+
+* `Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/getting-started-with-perl-on-docker>`_
+* `Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_
+* `Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_
+
+**Tips and hints**
+
 * `Newer version of Docker Compose on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04>`_
 * `Newer version of Docker on Ubuntu 18.04 LTS <https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04>`_
-* `docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_
-* `cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
-* `Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_
-* `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
+* `Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
 * `Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_
-* `Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_
 * `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_
+
+**Troubleshooting**
+
+* `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
+* `Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_
 * `Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_
