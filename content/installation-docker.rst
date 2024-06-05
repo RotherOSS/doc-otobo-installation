@@ -49,8 +49,8 @@ the **root** user of the Docker host or a dedicated user with the required permi
 
 The Docker images will eventually be fetched from the repository https://hub.docker.com.
 But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository.
-Make sure that you specify the branch that corresponds to the current version of OTOBO.
-For example, when *OTOBO 10.1.10* is the current version then please use the branch *rel-10_1*.
+Make sure that you specify the tag that corresponds to the current patch level version of OTOBO.
+For example, when *OTOBO 10.1.10* is the current version then please use the tag *rel-10_1_10*.
 
 .. note::
 
@@ -60,8 +60,9 @@ For example, when *OTOBO 10.1.10* is the current version then please use the bra
 .. code-block:: bash
 
    docker_admin> cd /opt
-   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch <BRANCH> --single-branch
-   docker_admin> ls otobo-docker    # just a sanity check, README.md should exist
+   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch <TAG> --single-branch
+   docker_admin> cd otobo-docker    # change into the git sandbox
+   docker_admin> ls                 # just a sanity check, for example the file README.md should exist
 
 2. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
