@@ -54,6 +54,34 @@ The file *.env* controls the OTOBO Docker container. Within that file, the varia
 which images are used. The latest images are used when these variables are not set.
 If you want to use a specific version, then please set these variables accordingly.
 
+An example in an existing .env file for version 10.1 could look like the following:
+
+.. code-block:: text
+
+    ################################################################################
+    # The Docker image for the services 'web' and 'daemon' can be specified explicitly.
+    # The default is rotheross/otobo:latest-10_1
+    ################################################################################
+
+    [...]
+
+    # More examples
+    OTOBO_IMAGE_OTOBO=rotheross/otobo:latest-10_1
+    #OTOBO_IMAGE_OTOBO=rotheross/otobo:rel-10_1_10
+    #OTOBO_IMAGE_OTOBO=rotheross/otobo:devel-rel-10_1
+    #OTOBO_IMAGE_OTOBO=otobo:local-10.1.x
+
+Here, the tag *latest-10_1* is activated. For the update, you would have to change the line:
+
+.. code-block:: diff
+
+    # More examples
+    - OTOBO_IMAGE_OTOBO=rotheross/otobo:latest-10_1
+    + OTOBO_IMAGE_OTOBO=rotheross/otobo:latest-11_0
+    #OTOBO_IMAGE_OTOBO=rotheross/otobo:rel-10_1_10
+    #OTOBO_IMAGE_OTOBO=rotheross/otobo:devel-rel-10_1
+    #OTOBO_IMAGE_OTOBO=otobo:local-10.1.x
+
 Fetch the new Docker images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
