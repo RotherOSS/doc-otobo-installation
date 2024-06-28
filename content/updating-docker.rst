@@ -118,3 +118,11 @@ For minor and major version upgrades, prior to this also update tasks for the co
 
         docker_admin> ./scripts/update.sh --help
         docker_admin> ./scripts/update.sh
+
+.. note::
+
+    When upgrading from 10.1.x to 11.0.x with the ITSM plugin installed, the following command has to be executed additionally:
+
+    .. code-block:: bash
+
+        docker exec -it otobo_web_1 perl bin/otobo.Console.pl Admin::ITSM::Configitem::UpgradeTo11
