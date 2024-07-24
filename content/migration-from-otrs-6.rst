@@ -358,8 +358,8 @@ that has been set up in the file *.env* on the Docker host.
     docker_admin> cd <dump_dir>
     docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_pre.sql
     docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_schema_for_otobo.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_post.sql
     docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_data.sql
+    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_post.sql
 
 For a quick check whether the import worked, you can run the following commands.
 
