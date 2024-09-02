@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-02 00:48+0200\n"
+"POT-Creation-Date: 2024-09-02 15:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -421,7 +421,7 @@ msgstr ""
 msgid "Step 6: Set File Permissions"
 msgstr ""
 
-#: ../../content/installation.rst:254 ../../content/updating.rst:118
+#: ../../content/installation.rst:254 ../../content/updating.rst:127
 msgid "Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup."
 msgstr ""
 
@@ -3160,86 +3160,94 @@ msgid "Don't proceed without a complete backup of your system. You can use also 
 msgstr ""
 
 #: ../../content/updating.rst:69
-msgid "Step 3: Install the New Release"
+msgid "Step 2.1: Delete CPAN-directory if you are upgrading from 10.1"
 msgstr ""
 
 #: ../../content/updating.rst:71
+msgid "If you are upgrading from 10.1 to 11.0 you need to clean the cpan-lib directory, since some of the cpan libraries have changed."
+msgstr ""
+
+#: ../../content/updating.rst:78
+msgid "Step 3: Install the New Release"
+msgstr ""
+
+#: ../../content/updating.rst:80
 msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:"
 msgstr ""
 
-#: ../../content/updating.rst:83
+#: ../../content/updating.rst:92
 msgid "Restore Old Configuration Files"
 msgstr ""
 
-#: ../../content/updating.rst:85
+#: ../../content/updating.rst:94
 msgid "We need only copy the file ``Kernel/Config.pm`` in OTOBO 10."
 msgstr ""
 
-#: ../../content/updating.rst:94
+#: ../../content/updating.rst:103
 msgid "Restore Article Data"
 msgstr ""
 
-#: ../../content/updating.rst:96
+#: ../../content/updating.rst:105
 msgid "If you configured OTOBO to store article data in the file system you have to restore the ``article`` folder to ``/opt/otobo/var/`` or the folder specified in the system configuration."
 msgstr ""
 
-#: ../../content/updating.rst:105
+#: ../../content/updating.rst:114
 msgid "Restore Already Installed Default Statistics"
 msgstr ""
 
-#: ../../content/updating.rst:107
+#: ../../content/updating.rst:116
 msgid "If you have additional packages with default statistics you have to restore the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/stats``."
 msgstr ""
 
-#: ../../content/updating.rst:116
+#: ../../content/updating.rst:125
 msgid "Set File Permissions"
 msgstr ""
 
-#: ../../content/updating.rst:125
+#: ../../content/updating.rst:134
 msgid "Check Apache configuration files"
 msgstr ""
 
-#: ../../content/updating.rst:127
+#: ../../content/updating.rst:136
 msgid "Newer versions of OTOBO may need you to adjust the apache configuration. From version 10.1 and onwards we moved from CGI to PSGI. Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs to be adjusted/added."
 msgstr ""
 
-#: ../../content/updating.rst:132
+#: ../../content/updating.rst:141
 msgid "Step 4: Check for new needed Perl modules"
 msgstr ""
 
-#: ../../content/updating.rst:134
+#: ../../content/updating.rst:143
 msgid "OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary."
 msgstr ""
 
-#: ../../content/updating.rst:137
+#: ../../content/updating.rst:146
 msgid "On Debian systems you may need to manually install some packages:"
 msgstr ""
 
-#: ../../content/updating.rst:152
+#: ../../content/updating.rst:161
 msgid "Step 5: Update Installed Packages and reconfigure config"
 msgstr ""
 
-#: ../../content/updating.rst:154
+#: ../../content/updating.rst:163
 msgid "You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon)."
 msgstr ""
 
-#: ../../content/updating.rst:164
+#: ../../content/updating.rst:173
 msgid "Step 6: Only for minor or major release upgrades (for example to upgrade from 10.1 to 11.0)"
 msgstr ""
 
-#: ../../content/updating.rst:172
+#: ../../content/updating.rst:181
 msgid "Step 7: Start your Services"
 msgstr ""
 
-#: ../../content/updating.rst:174
+#: ../../content/updating.rst:183
 msgid "Start OTOBO cron jobs and the daemon (in this order):"
 msgstr ""
 
-#: ../../content/updating.rst:183
+#: ../../content/updating.rst:192
 msgid "Now the services can be started. This will depend on your service configuration, here is an example:"
 msgstr ""
 
-#: ../../content/updating.rst:191
+#: ../../content/updating.rst:200
 msgid "Now you can log into your system."
 msgstr ""
 
