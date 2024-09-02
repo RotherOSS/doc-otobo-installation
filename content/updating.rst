@@ -55,6 +55,15 @@ Please check if all files are valid. Now we have a backup with all required data
 
     Don't proceed without a complete backup of your system. You can use also the :doc:`backup-restore` script for this.
 
+Step 2.1: Delete CPAN-directory if you are upgrading from 10.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are upgrading from 10.1 to 11.0 you need to clean the cpan-lib directory, since some of the cpan libraries have changed.
+
+.. code-block:: bash
+
+    root> rm -rf /opt/otobo/Kernel/cpan-lib/*
+
 Step 3: Install the New Release
 -------------------------------
 
