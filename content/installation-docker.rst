@@ -68,7 +68,7 @@ For example, when *OTOBO 11.0.2* is the current version then please use the tag 
 .. code-block:: bash
 
    docker_admin> cd /opt
-   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch <TAG> --single-branch
+   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch <TAG>
    docker_admin> cd otobo-docker    # change into the git sandbox
    docker_admin> ls                 # just a sanity check, for example the file README.md should exist
 
