@@ -1,8 +1,8 @@
-Migration from OTRS 6 or OTRS 7 / ((OTRS)) Community Edition to OTOBO version 10.1
-==================================================================================
+Migration from OTRS 6 or OTRS 7 / ((OTRS)) Community Edition to OTOBO
+=====================================================================
 
 .. warning::
-    Please migrate your OTRS to OTOBO version 10.1 first and then upgrade your OTOBO to version 11. 
+    Please migrate your OTRS to OTOBO version 10.1 first and then upgrade your OTOBO to the latest stable release. 
 
 Welcome and thank you for choosing OTOBO!
 
@@ -15,10 +15,10 @@ in the OTOBO Community forum at https://forum.otobo.org/. We will find a way to 
 
 .. note::
 
-    After the migration the data previously available in OTRS will be available in OTOBO 10.
+    After the migration the data previously available in OTRS will be available in OTOBO.
     We do not modify any data of the OTRS installation during the migration.
 
-Overview over the Supported Migration Szenarios
+Overview over the Supported Migration Scenarios
 ------------------------------------------------
 
 With the OTOBO Migration Interface it is possible to employ the following migration strategies:
@@ -41,7 +41,7 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
         Switch from any supported operating system to any other supported operating system.
 
     Docker:
-        Migrate to a Docker-based installation of OTOBO 10.
+        Migrate to a Docker-based installation of OTOBO 10.1.
 
 2.  A variant of the general strategy where the database migration is streamlined.
 
@@ -78,7 +78,7 @@ Migration Requirements
     Experience shows that quite often a new start is the better option. This is because in many cases
     the previously used installation and configuration was rather suboptimal anyways.
     It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
-    We are happy to advise you, please get in touch at hello@otobo.de or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
+    We are happy to advise you, please get in touch at hello@otobo.io or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
 
 2.  You need a running OTOBO installation to start the migration from there!
 
