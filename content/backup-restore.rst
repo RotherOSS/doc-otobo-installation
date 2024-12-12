@@ -81,6 +81,13 @@ The output of the script:
     -d                     - Target OTOBO home directory.
     [-h]                   - Display help for this command.
 
+After successful restore it's advised to clear the OTOBO cache.
+To do this execute the following command:
+
+.. code-block:: bash
+
+   # clear OTOBO cache
+   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
 
 Considerations for running OTOBO under Docker
 ----------------------------------------------
