@@ -9,22 +9,22 @@
 # Stefan Abel <sta@rother-oss.com>, 2022, 2023.
 # Aaron Dewes <einfuehlsamleidenschaftlicherbiber@tonne.to>, 2023.
 # Stefan Rother <sr@rother-oss.com>, 2024.
-# Markus Hlinka <mah@rother-oss.com>, 2024.
+# Markus Hlinka <mah@rother-oss.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2024-10-08 08:46+0200\n"
-"PO-Revision-Date: 2024-06-25 22:44+0000\n"
+"PO-Revision-Date: 2025-01-11 08:21+0000\n"
 "Last-Translator: Markus Hlinka <mah@rother-oss.com>\n"
-"Language-Team: German <http://weblate.otobo.org/projects/manual-otobo-"
-"installation/installation-manual-otobo-10/de/>\n"
+"Language-Team: German <http://translate.otobo.org/projects/"
+"manual-otobo-installation/installation-manual-otobo-10/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.8.4\n"
 "Generated-By: Babel 2.4.0\n"
 
 #: ../../content/backup-restore.rst:12
@@ -74,15 +74,15 @@ msgid "Considerations for running OTOBO under Docker"
 msgstr "Sonderfalll: OTOBO und Docker"
 
 #: ../../content/backup-restore.rst:98
-#, fuzzy
 msgid ""
 "The same scripts can be used with OTOBO running under Docker. However some "
 "Docker specific limitation must be considered. Please read to the chapter :"
 "doc:`backup-restore-docker` for information about that case."
 msgstr ""
-"Auch für Docker-basierte OTOBO-Umgebungen können die OTOBO-Standardskripte "
-"verwendet werden. Beachten Sie jedoch einige Docker-spezifische "
-"Besonderheiten."
+"Die gleichen Skripte können mit OTOBO unter Docker verwendet werden. "
+"Allerdings müssen einige Docker-spezifische Einschränkungen beachtet werden. "
+"Bitte lesen Sie das Kapitel :doc:`backup-restore-docker` für Informationen "
+"zu diesem Fall."
 
 #: ../../content/backup-restore-docker.rst:12
 msgid "Backup and Restore using Docker"
@@ -423,7 +423,7 @@ msgid ""
 "(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany"
 msgstr ""
 "Anpassungen und Ergänzungen unterliegen dem Copyright © der Rother OSS GmbH "
-"(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Deutschland."
+"(https://otobo.de), Oberwalting 31, 94339 Leiblfing, Deutschland"
 
 #: ../../content/index.rst:25
 msgid ""
@@ -506,6 +506,13 @@ msgid ""
 "at https://doc.otobo.org/manual/installation/10.1/en/content/installation-"
 "docker.html ."
 msgstr ""
+"Wir empfehlen Docker und Docker Compose für die OTOBO-Installation. Durch "
+"die Verwendung der bereitgestellten Docker-Images werden alle empfohlenen "
+"Abhängigkeiten (wie Elasticsearch, Redis Cache, etc.) automatisch "
+"installiert und konfiguriert. Updates werden dadurch stark vereinfacht und "
+"die Performance verbessert. Die Anleitung zur Docker-basierten Installation "
+"finden Sie unter https://doc.otobo.org/manual/installation/10.1/en/content/"
+"installation-docker.html."
 
 #: ../../content/installation.rst:28
 msgid "Preparation: Disable SELinux when it is installed and enabled"
@@ -1248,7 +1255,6 @@ msgid "1. Clone the otobo-docker repo"
 msgstr "1. OTOBO-Docker-Repo klonen"
 
 #: ../../content/installation-docker.rst:60
-#, fuzzy
 msgid ""
 "The Docker images will eventually be fetched from the repository https://hub."
 "docker.com. But there are some setup and command files that need to be "
@@ -1257,12 +1263,12 @@ msgid ""
 "example, when *OTOBO 10.1.10* is the current version then please use the tag "
 "*rel-10_1_10*."
 msgstr ""
-"Die Docker Images werden letztlich aus dem Image Repository https://hub."
-"docker.com heruntergeladen. Einige Einstellungs- und Befehlsdateien müssen "
-"jedoch aus dem *otobo-docker*-Github-Repository geklont werden. Achten Sie "
-"hierbei darauf, dass der ausgewählte Branch der aktuellsten OTOBO-Version "
-"entspricht. Ein Beispiel: Ist *OTOBO 10.0.15* die aktuelle Version, "
-"verwenden Sie den Branch *rel-10_0*."
+"Die Docker-Images werden schließlich aus dem Repository https://"
+"hub.docker.com abgerufen. Es gibt jedoch einige Setup- und Befehlsdateien, "
+"die aus dem Github-Repository *otobo-docker* geklont werden müssen. Stellen "
+"Sie sicher, dass Sie das Tag angeben, das der aktuellen Patch-Level-Version "
+"von OTOBO entspricht. Wenn zum Beispiel *OTOBO 10.1.10* die aktuelle Version "
+"ist, verwenden Sie bitte den Tag *rel-10_1_10*."
 
 #: ../../content/installation-docker.rst:67
 msgid ""
@@ -1960,6 +1966,13 @@ msgid ""
 "corresponding environment variable. This process runs when the container "
 "starts up. In the default template file, the following macros are used:"
 msgstr ""
+"Die standardmäßige OTOBO-spezifische Konfiguration finden Sie im Docker-"
+"Image unter */etc/nginx/template/otobo_nginx.conf.template*. Eigentlich ist "
+"dies nur eine Vorlage für die endgültige Konfiguration. Es gibt einen "
+"Prozess, der vom Nginx-Basis-Image bereitgestellt wird und der die Makros in "
+"der Vorlage durch die entsprechenden Umgebungsvariablen ersetzt. Dieser "
+"Prozess wird beim Starten des Containers ausgeführt. In der Standard-"
+"Vorlagendatei werden die folgenden Makros verwendet:"
 
 #: ../../content/installation-docker.rst:362
 #: ../../content/installation-docker.rst:365
@@ -1999,6 +2012,13 @@ msgid ""
 "volume that contains the custom config. Then we tell the *otobo_nginx_1* to "
 "mount the new volume and to use the customized configuration."
 msgstr ""
+"Wenn die Standardmakros nicht ausreichen, kann die Anpassung weiter gehen. "
+"Dies kann erreicht werden, indem die Standardkonfigurationsvorlage durch "
+"eine angepasste Version ersetzt wird. Am besten ist es, die Konfiguration "
+"nicht einfach im laufenden Container zu ändern. Stattdessen erstellen wir "
+"zunächst ein persistentes Volume, das die angepasste Konfiguration enthält. "
+"Dann weisen wir den *otobo_nginx_1* an, das neue Volume zu mounten und die "
+"angepasste Konfiguration zu verwenden."
 
 #: ../../content/installation-docker.rst:380
 msgid ""
@@ -2017,6 +2037,13 @@ msgid ""
 "**NGINX_ENVSUBST_TEMPLATE_DIR** in the environment. In order to achieve "
 "this, uncomment or add the following lines in your *.env* file:"
 msgstr ""
+"Nach dem Einrichten des Volumes muss die angepasste Konfiguration aktiviert "
+"werden. Das neue Volume wird in *docker-compose/otobo-nginx-custom-config."
+"yml* eingerichtet. Dazu muss diese Datei zu **COMPOSE_FILE** hinzugefügt "
+"werden. Dann muss Nginx angewiesen werden, die neue Konfiguration zu "
+"verwenden. Dies geschieht durch Setzen von **NGINX_ENVSUBST_TEMPLATE_DIR** "
+"in der Umgebung. Um dies zu erreichen, müssen Sie die folgenden Zeilen in "
+"Ihrer *.env*-Datei auskommentieren oder hinzufügen:"
 
 #: ../../content/installation-docker.rst:415
 msgid "The changed Docker Compose configuration can be inspected with:"
@@ -2039,7 +2066,7 @@ msgstr ""
 
 #: ../../content/installation-docker.rst:430
 msgid "Single Sign On Using the Kerberos Support in Nginx"
-msgstr ""
+msgstr "Single Sign On mit der Kerberos-Unterstützung in Nginx"
 
 #: ../../content/installation-docker.rst:432
 msgid "**Short Description**"
@@ -2054,6 +2081,13 @@ msgid ""
 "Kerberos. It also passes some Kerberos specific settings as environment "
 "values to the running Nginx container. These settings are listed above."
 msgstr ""
+"Um die Authentifizierung mit Kerberos zu aktivieren, legen Sie Ihrer *.env-"
+"Datei* die Beispieldatei *.docker_compose_env_https_kerberos* zugrunde. "
+"Dadurch wird die spezielle Konfiguration in *docker-compose/otobo-override-"
+"https-kerberos.yml* aktiviert. Diese Docker-Compose-Konfigurationsdatei "
+"wählt ein Nginx-Image aus, das Kerberos unterstützt. Sie übergibt auch "
+"einige Kerberos-spezifische Einstellungen als Umgebungswerte an den "
+"laufenden Nginx-Container. Diese Einstellungen sind oben aufgeführt."
 
 #: ../../content/installation-docker.rst:439
 msgid ""
@@ -2064,6 +2098,12 @@ msgid ""
 "startup of the container. In the running container the adapted config will "
 "be available in */etc/krb5.conf*."
 msgstr ""
+"Wie üblich können die Werte für diese Einstellungen in der *.env*-Datei "
+"angegeben werden. Die meisten dieser Einstellungen werden als Ersatzwerte "
+"für die Vorlage https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/"
+"nginx/kerberos/templates/krb5.conf.template verwendet. Die Ersetzung erfolgt "
+"während des Starts des Containers. Im laufenden Container wird die "
+"angepasste Konfiguration in */etc/krb5.conf* zur Verfügung stehen."
 
 #: ../../content/installation-docker.rst:443
 msgid ""
@@ -2073,6 +2113,12 @@ msgid ""
 "the *.env* file and by activating the mount directove in *docker-compose/"
 "otobo-override-https-kerberos.yml*."
 msgstr ""
+"Die Bereitstellung einer benutzerspezifischen */etc/krb5.conf*-Datei ist "
+"weiterhin möglich. Dies kann durch das Einbinden eines Volumes erreicht "
+"werden, das */etc/krb5.conf* im Container überschreibt. Dies kann durch "
+"Setzen von OTOBO_NGINX_KERBEROS_CONFIG in der *.env*-Datei und durch "
+"Aktivieren des Mount-Directove in *docker-compose/otobo-override-https-"
+"kerberos.yml* erreicht werden."
 
 #: ../../content/installation-docker.rst:447
 msgid ""
@@ -2121,6 +2167,15 @@ msgid ""
 "option `--scale` can be abused for this purpose. So for an installation with "
 "an external database the following command can be used:"
 msgstr ""
+"Bei der aktuellen Einrichtung von Docker Compose werden fünf, bei "
+"aktiviertem HTTPS sechs Dienste gestartet. Es gibt jedoch berechtigte "
+"Anwendungsfälle, in denen einer oder mehrere dieser Dienste nicht benötigt "
+"werden. Das beste Beispiel ist, wenn die Datenbank nicht als Docker-Dienst, "
+"sondern als externe Datenbank ausgeführt werden soll. Leider gibt es keine "
+"spezielle Docker Compose-Option zum Überspringen bestimmter Dienste. Aber "
+"die Option `--scale` kann für diesen Zweck missbraucht werden. So kann für "
+"eine Installation mit einer externen Datenbank der folgende Befehl verwendet "
+"werden:"
 
 #: ../../content/installation-docker.rst:474
 msgid ""
@@ -2143,6 +2198,11 @@ msgid ""
 "installed. Then navigate to the following folder *otobo-docker/docker-"
 "compose*."
 msgstr ""
+"Bitte laden Sie `die neueste Version von otobo-docker <https://doc.otobo.org/"
+"manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-"
+"docker-repo>`__ auf ein System herunter, das über einen Internetzugang "
+"verfügt und auf dem Docker installiert ist. Navigieren Sie dann zum "
+"folgenden Ordner *otobo-docker/docker-compose*."
 
 #: ../../content/installation-docker.rst:489
 msgid ""
@@ -2178,7 +2238,7 @@ msgstr "Im folgenden Beispiel importiere ich das mariadb-Image:"
 
 #: ../../content/installation-docker.rst:506
 msgid "Customizing OTOBO Docker Compose"
-msgstr "Docker Image individualisieren"
+msgstr "OTOBO Docker Compose anpassen"
 
 #: ../../content/installation-docker.rst:508
 msgid ""
@@ -2202,6 +2262,9 @@ msgid ""
 "outside via port 3306. For this you could create an extra docker compose "
 "file thats look like:"
 msgstr ""
+"Ein gängiges Beispiel wäre, den Datenbankcontainer von außen über Port 3306 "
+"zugänglich zu machen. Hierfür könnte man eine zusätzliche Docker-Compose-"
+"Datei erstellen, die wie folgt aussieht:"
 
 #: ../../content/installation-docker.rst:523
 msgid ""
@@ -2209,6 +2272,9 @@ msgid ""
 "have to add your YAML file to the *COMPOSE_FILE* variable in the *.env* "
 "file, for example:"
 msgstr ""
+"Nun müssen wir *docker-compose* mitteilen, dass unsere neue Datei "
+"eingebunden werden soll. Dazu müssen Sie Ihre YAML-Datei z.B. in die "
+"Variable *COMPOSE_FILE* in der *.env*-Datei eintragen:"
 
 #: ../../content/installation-docker.rst:530
 msgid "Now we can use *docker-compose* to recreate our container"
@@ -2219,13 +2285,13 @@ msgstr ""
 #: ../../content/installation-docker.rst:537
 msgid "With this procedure you can customize any service or volumes."
 msgstr ""
+"Mit diesem Verfahren können Sie jeden Dienst oder jedes Volume anpassen."
 
 #: ../../content/installation-docker.rst:540
 msgid "Customizing the OTOBO Docker image"
-msgstr "Docker Image individualisieren"
+msgstr "Anpassen des OTOBO-Docker-Images"
 
 #: ../../content/installation-docker.rst:542
-#, fuzzy
 msgid ""
 "Many customizations can be done in the external volume *otobo_opt_otobo* "
 "which corresponds to the directory */opt/otobo* in the Docker image. This "
@@ -2233,17 +2299,19 @@ msgid ""
 "local*. Here is an example that installs the not very useful CPAN module "
 "`Acme::123`."
 msgstr ""
-"Viele Anpassungen können im externen Volume *otobo_opt_otobo* vorgenommen "
-"werden, das dem Verzeichnis */opt/otobo* im Docker Image entspricht. So "
-"können Sie z. B. lokale Perl-Module in */opt/otobo/local* installieren. Der "
-"Vorteil dieser Vorgehensweise besteht darin, dass das Image selbst dabei "
-"nicht verändert wird."
+"Viele Anpassungen können in dem externen Volume *otobo_opt_otobo* "
+"vorgenommen werden, das dem Verzeichnis */opt/otobo* im Docker-Image "
+"entspricht. Dies funktioniert z.B. für lokale Perl-Module, die in */opt/"
+"otobo/local* installiert werden können. Hier ist ein Beispiel, dass das "
+"nicht sehr nützliche CPAN-Modul `Acme::123` installiert."
 
 #: ../../content/installation-docker.rst:560
 msgid ""
 "The nice thing of this approach is that the Docker image itself does not "
 "have to be modified."
 msgstr ""
+"Das Schöne an diesem Ansatz ist, dass das Docker-Image selbst nicht "
+"verändert werden muss."
 
 #: ../../content/installation-docker.rst:562
 msgid ""
@@ -2264,7 +2332,6 @@ msgstr ""
 "phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 
 #: ../../content/installation-docker.rst:567
-#, fuzzy
 msgid ""
 "But for the latter approach there are two hurdles to overcome. First, the "
 "image *otobo* runs per default as the user *otobo* with the UID 1000. The "
@@ -2278,17 +2345,19 @@ msgid ""
 "care who the caller is. This leaves us with following example commands, "
 "where we add fortune cookies to otobo:"
 msgstr ""
-"Die zweite Vorgehensweise birgt zwei Probleme: Erstens wird das Image "
-"*otobo* standardmäßig mit dem Benutzer *otobo* und der UID 1000 ausgeführt. "
-"Der User *otobo* ist aber nicht berechtigt, Systempakete zu installieren. "
-"Der erste Schritt zur Lösung besteht deshalb darin, beim Ausführen des "
-"Images die Option`--user root` zu übergeben. Zweitens bricht das Standard-"
-"Skript zur Definition des Einstiegspunktes */opt/otobo_install/entrypoint."
-"sh* sofort ab, wenn es als *root* aufgerufen wird. Das wurde so angelegt, um "
-"zu verhindern, dass der Vorgang unbeabsichtigt als *root* ausgeführt wird. "
-"Der zweite Schritt zur Lösung besteht deshalb darin, ein anderes Entrypoint-"
-"Skript anzugeben, dem egal ist, von wem es aufgerufen wird. Wir nutzen "
-"folgende Beispielbefehle, um Fortune Cookies für OTOBO zu setzen:"
+"Für den letzteren Ansatz gibt es jedoch zwei Hürden zu überwinden. Erstens "
+"läuft das Image *otobo* standardmäßig als der Benutzer *otobo* mit der UID "
+"1000. Das Problem ist, dass der Benutzer *otobo* nicht berechtigt ist, "
+"Systempakete zu installieren. Daher besteht der erste Teil der Lösung darin, "
+"beim Ausführen des Images die Option `--user root` zu übergeben. Die zweite "
+"Hürde ist jedoch, dass das Standard-Einstiegspunkt-Skript */opt/"
+"otobo_install/entrypoint.sh* sofort beendet wird, wenn es als *root* "
+"aufgerufen wird. Der Grund für diese Design-Entscheidung ist, dass ein "
+"versehentlicher Aufruf als *root* verhindert werden soll. Der zweite Teil "
+"der Lösung besteht also darin, ein anderes Einstiegspunkt-Skript zu "
+"spezifizieren, das sich nicht darum kümmert, wer der Aufrufer ist. Dies "
+"führt zu den folgenden Beispielbefehlen, mit denen wir Glückskekse zu OTOBO "
+"hinzufügen:"
 
 #: ../../content/installation-docker.rst:576
 msgid ""
@@ -2488,13 +2557,12 @@ msgstr ""
 "``docker inspect <container>`` Informationen zu einem Container anzeigen"
 
 #: ../../content/installation-docker.rst:684
-#, fuzzy
 msgid ""
 "``docker save --output otobo.tar otobo:latest-10_1 && tar -tvf otobo.tar`` "
 "list files in an image"
 msgstr ""
-"``docker save --output otobo.tar otobo:latest && tar -tvf otobo.tar`` Liste "
-"aller Dateien in einem Image anzeigen"
+"``docker save --output otobo.tar otobo:latest-10_1 && tar -tvf otobo.tar`` "
+"Listet Dateien in einem Image auf"
 
 #: ../../content/installation-docker.rst:685
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
@@ -2522,19 +2590,19 @@ msgstr "Ressourcen"
 
 #: ../../content/installation-docker.rst:696
 msgid "Finally, here is a highly subjective collection of links."
-msgstr ""
+msgstr "Zum Schluss noch eine höchst subjektive Linksammlung."
 
 #: ../../content/installation-docker.rst:698
 msgid "**General info and tutorials**"
 msgstr "**Grundsätzliche Informationen und Tutorials**"
 
 #: ../../content/installation-docker.rst:700
-#, fuzzy
 msgid ""
 "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/"
 "getting-started-with-perl-on-docker>`_"
 msgstr ""
-"`Perl Maven <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
+"`Perl Maven: Erste Schritte mit Perl auf Docker <https://perlmaven.com/"
+"getting-started-with-perl-on-docker>`_"
 
 #: ../../content/installation-docker.rst:701
 msgid ""
@@ -2572,12 +2640,12 @@ msgstr ""
 "ubuntu-18-04>`_"
 
 #: ../../content/installation-docker.rst:708
-#, fuzzy
 msgid ""
 "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-"
 "unused-images>`_"
 msgstr ""
-"`Cleanup <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
+"Ungenutzte Images aufräumen <https://forums.docker.com/t/command-to-remove-"
+"all-unused-images>`_"
 
 #: ../../content/installation-docker.rst:709
 msgid ""
@@ -2679,7 +2747,6 @@ msgid "Docker-based installations"
 msgstr "Docker-basierte OTOBO Installationen"
 
 #: ../../content/installing-perl-modules.rst:42
-#, fuzzy
 msgid ""
 "Special care must be taken when OTOBO runs under Docker. In this case an "
 "installation into a systemwide location would initially work as well. "
@@ -2690,16 +2757,16 @@ msgid ""
 "installed in ``/opt/otobo/local`` will be picked up by Perl because the "
 "environment variables ``PERL5LIB`` and ``PATH`` are preset accordingly."
 msgstr ""
-"Besondere Vorsicht ist geboten, wenn OTOBO in Docker ausgeführt wird. In "
-"diesem Fall scheint es die einfachste Lösung, das gewünschte Modul einfach "
-"in das System-Perl zu installieren. Aufgrund der besonderen Arbeitsweise von "
-"Docker geht diese Anpassung aber verloren, sobald der Container neu "
-"gestartet wird. Die Module müssen also an einen Ort ausgelagert werden, der "
-"auch nach einem Neustart noch verfügbar ist. Das lokale Verzeichnis für die "
-"Installation kann mit der Option ``--local-lib`` angegeben werden. Die "
-"installierten Module werden von Perl auf Basis der Umgebungsvariablen "
-"``PERL5LIB`` und ``PATH`` gefunden, die im Docker Image entsprechend gesetzt "
-"werden."
+"Besondere Vorsicht ist geboten, wenn OTOBO unter Docker läuft. In diesem "
+"Fall würde eine Installation an einem systemweiten Speicherort zunächst auch "
+"funktionieren. Aufgrund der Funktionsweise von Docker würden diese "
+"installierten Module jedoch verloren gehen, wenn der Container neu gestartet "
+"wird. Daher müssen die Module an einem Ort installiert werden, der einen "
+"Neustart überlebt. Das Verzeichnis ``/opt/otobo/local`` innerhalb des "
+"Volumes **otobo_opt_otobo** kann dafür verwendet werden. Module, die in ``/"
+"opt/otobo/local`` installiert sind, werden von Perl aufgenommen, da die "
+"Umgebungsvariablen ``PERL5LIB`` und ``PATH`` entsprechend voreingestellt "
+"sind."
 
 #: ../../content/installing-perl-modules.rst:49
 msgid ""
@@ -2712,16 +2779,14 @@ msgstr ""
 "Dateien bei einem Upgrade nicht gelöscht werden."
 
 #: ../../content/installing-perl-modules.rst:52
-#, fuzzy
 msgid ""
 "For installing Perl modules in a specific location we need to modify our "
 "install command. Specifically, we need to add the option ``--local-lib``. "
 "Here is a sample session in the container **web**."
 msgstr ""
-"Um Perl Module in einem bestimmten Verzeichnis zu installieren, muss der "
-"Installationsbefehl angepasst werden. Konkret wird in diesem Fall die Option "
-"``--local-lib`` angefügt. Im Folgenden ein Beispiel aus dem Container "
-"**web**."
+"Um Perl-Module an einem bestimmten Ort zu installieren, müssen wir unseren "
+"Installationsbefehl ändern. Insbesondere müssen wir die Option ``--local-"
+"lib`` hinzufügen. Hier ist eine Beispielsitzung im Container **web**."
 
 #: ../../content/introduction.rst:12
 msgid "Introduction"
@@ -2941,6 +3006,13 @@ msgid ""
 "*otrs* database tables are first exported, then transformed, and then "
 "imported into the *otobo* database."
 msgstr ""
+"Verwenden Sie die ETL-ähnliche Migration, wenn die Quelldatenbank nicht "
+"unter erhöhter Last leiden darf oder wenn der Zugriff auf die Quelldatenbank "
+"einen Engpass darstellt. Bei der allgemeinen Strategie werden die Daten "
+"zunächst zeilenweise aus der *otrs*-Datenbank gelesen und dann in die OTOBO-"
+"Datenbank eingefügt. Bei dieser Variante werden die kompletten *otrs*-"
+"Datenbanktabellen zunächst exportiert, dann transformiert und anschließend "
+"in die *otobo*-Datenbank importiert."
 
 #: ../../content/migration-from-otrs.rst:61
 msgid ""
@@ -3654,15 +3726,14 @@ msgstr ""
 "bevor die Migration fortgesetzt werden kann."
 
 #: ../../content/migration-from-otrs.rst:416
-#, fuzzy
 msgid ""
 "There is a check in *migration.pl* that checks for NULL values before the "
 "data transfer is done. Note, that the resolution still needs to be performed "
 "manually."
 msgstr ""
-"Seit OTOBO 10.0.12 gibt es in *migration.pl* eine Überprüfung auf NULL "
-"Werte, bevor die Daten übertragen werden. Bitte beachten Sie, dass die "
-"Behebung trotzdem manuell durchgeführt werden muss."
+"Es gibt eine Prüfung in *migration.pl*, die auf NULL-Werte prüft, bevor die "
+"Datenübertragung durchgeführt wird. Beachten Sie, dass die Behenung immer "
+"noch manuell durchgeführt werden muss."
 
 #: ../../content/migration-from-otrs.rst:420
 msgid "4. Errors in Step 5 when migrating to PostgreSQL"
@@ -5222,9 +5293,9 @@ msgid ""
 "First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``."
 "env.tmp`` and create a new ``.env`` file including the kerberos settings."
 msgstr ""
-"Zunächst müssen wir die alten Datei ``/opt/otobo-docker/.env`` in ``.env."
-"tmp`` umbenennen und erstellen dann eine neue Datei ``.env`` , die die "
-"Kerberos-Einstellungen beinhaltet."
+"Zunächst müssen wir die alte Datei ``/opt/otobo-docker/.env`` nach ``.env."
+"tmp`` verschieben und eine neue ``.env``-Datei mit den Kerberos-"
+"Einstellungen erstellen."
 
 #: ../../content/sso-kerberos.rst:110
 msgid ""
@@ -5497,13 +5568,12 @@ msgstr ""
 "mit allen benötigten Daten."
 
 #: ../../content/updating.rst:68
-#, fuzzy
 msgid ""
 "Don't proceed without a complete backup of your system. You can use also "
 "the :doc:`backup-restore` script for this."
 msgstr ""
-"Fahren Sie nicht ohne eine vollständige Sicherung Ihres Systems fort. Sie "
-"können dazu auch das Skript :ref:`backup-restore` verwenden."
+"Fahren Sie nicht fort, ohne ein vollständiges Backup Ihres Systems zu "
+"erstellen. Sie können dafür auch das :doc:`backup-restore`-Skript verwenden."
 
 #: ../../content/updating.rst:71
 msgid "Step 3: Install the New Release"
@@ -5645,13 +5715,13 @@ msgid "Updating a Docker-based Installation of OTOBO"
 msgstr "Aktualisieren einer Docker-basierte OTOBO-Installation"
 
 #: ../../content/updating-docker.rst:16
-#, fuzzy
 msgid ""
 "Don't update without a complete backup of your system. You can use the :doc:"
 "`backup-restore-docker` script in your existing Docker installation for that."
 msgstr ""
-"Fahren Sie nicht ohne eine vollständige Sicherung Ihres Systems fort. Sie "
-"können dazu auch das Skript :ref:`backup-restore` verwenden."
+"Aktualisieren Sie nicht ohne eine vollständige Sicherung Ihres Systems. Sie "
+"können dafür das Skript :doc:`backup-restore-docker` in Ihrer bestehenden "
+"Docker-Installation verwenden."
 
 #: ../../content/updating-docker.rst:19
 msgid ""
@@ -5696,15 +5766,14 @@ msgid "Some maintainance tasks must be executed."
 msgstr "Einige Wartungsaufgaben sind auszuführen."
 
 #: ../../content/updating-docker.rst:35
-#, fuzzy
 msgid ""
 "In the sample commands below, the version **10.x.y**, corresponding to the "
 "tag **10_x_y**, is used as the example version. Please substitute it with "
 "the real version, e.g. **10.1.10**."
 msgstr ""
-"In den Beispielbefehlen unten wird beispielhaft die Version **10.x.y** und "
-"damit das Tag **10_x_Y** verwendet. Bitte tragen Sie stattdessen die jeweils "
-"aktuelle Version ein – z. B. **10.0.7**."
+"In den folgenden Beispielbefehlen wird die Version **10.x.y**, die dem Tag "
+"**10_x_y** entspricht, als Beispielversion verwendet. Bitte ersetzen Sie "
+"diese durch die tatsächliche Version, z. B. **10.1.10**."
 
 #: ../../content/updating-docker.rst:39
 msgid "Updating the Docker Compose files"
@@ -5791,6 +5860,10 @@ msgid ""
 "**docker-compose pull** command. Note that that calling the database upgrade "
 "scripts is not included."
 msgstr ""
+"Die Ausführung der oben genannten Befehle kann mit Hilfe des Skripts *"
+"scripts/update.sh* automatisiert werden. Dieses Skript führt die Befehle "
+"beginnend mit dem Befehl **docker-compose pull** aus. Beachten Sie, dass der "
+"Aufruf der Datenbank-Upgrade-Skripte nicht enthalten ist."
 
 #~ msgid "Support for Kerberos is still experimental."
 #~ msgstr "Der Kerberos-Support ist noch experimentell."
