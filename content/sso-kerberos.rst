@@ -72,13 +72,6 @@ Create a new volume for your custom nginx configuration
     docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx-kerberos.conf.template.hidden $otobo_nginx_custom_config_mp/otobo_nginx.conf.template
     docker rm tmp-nginx-container
     vim docker-compose/otobo-nginx-custom-config.yml
-    
-.. code-block:: bash    
-    
-    COMPOSE_FILE => 
-    docker-compose/otobo-nginx-custom-config.yml
-    NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/config/template-custom
-
 
 Create new OTOBO .env file
 --------------------------
