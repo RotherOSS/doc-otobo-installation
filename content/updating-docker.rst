@@ -107,6 +107,9 @@ For minor and major version upgrades, prior to this also update tasks for the co
     # inspect the update log
     docker_admin> docker-compose exec web cat /opt/otobo/var/log/update.log
 
+    # restart all container again
+    docker_admin> docker-compose restart
+
 .. note::
 
     For simple patchlevel updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of
@@ -118,6 +121,7 @@ For minor and major version upgrades, prior to this also update tasks for the co
 
         docker_admin> ./scripts/update.sh --help
         docker_admin> ./scripts/update.sh
+        docker_admin> docker-compose restart
 
 .. note::
 
