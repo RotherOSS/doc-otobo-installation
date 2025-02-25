@@ -23,7 +23,23 @@ When updating to a new version of OTOBO several things have to happen.
 .. note::
 
     In the sample commands below, the version **11.x.y**, corresponding to the tag **11_x_y**, is used as the example version.
-    Please substitute it with the real version, e.g. **11.0.2**.
+    Please substitute it with the real version, e.g. **11.0.7**.
+
+.. note::
+
+    Before upgrading, please check if your installed packages are available for the new version
+
+For OTOBO 11.0, the following packages are being migrated automatically to the framework. This means that no separate packe is necessary and they will be part of OTOBO by default.
+    - Ayte-CustomTranslations
+    - ExtendedCDBInfoTile
+    - ImportExport
+    - LightAdmin
+    - MarkTicketSeenUnseen
+    - QuickDateButtons
+    - ResponseTemplatesStatePreselection
+    - RotherOSS-LightAdmin
+    - RotherOSS-InternalTransitionActions
+    - TicketTimeUnitsMandatoryOnlyWithArticle
 
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
