@@ -63,11 +63,11 @@ Unpack the source archive (for example, using ``tar``) into the directory ``/opt
 
 .. code-block:: bash
 
-    root> mkdir /opt/otobo-install && mkdir /opt/otobo                      # Create a temporary install directory
+    root> mkdir /opt/otobo-install                                          # Create a temporary install directory
     root> cd /opt/otobo-install                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download he latest OTOBO 10 release
+    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download he latest OTOBO 11 release
     root> tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-10.x.x/* /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
+    root> cp -rT otobo-11.x.x /opt/otobo                                    # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -80,7 +80,7 @@ Use the following script to get an overview of all installed and required CPAN m
    On Debian systems you may need to manually install some perl packages:
 
    .. code-block:: bash
-   
+
       apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
 .. code-block:: text
@@ -112,7 +112,9 @@ Execute this command to get an install command to install the missing dependenci
 Step 3: Create the OTOBO User
 -----------------------------
 
-Create a dedicated user for OTOBO within its own group:
+Create a dedicated user for OTOBO within its own group and own its home directory.
+This is the user that will run OTOBO and the web server.
+
 
 .. code-block:: bash
 
@@ -278,27 +280,20 @@ Please login to the mysql console and set a different authentication module and 
    root> mysql -u root
    root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
 
-For MariaDB > 10.1 use instead the following command:
+For MariaDB >= 10.11 use instead the following command:
 
 .. code-block:: bash
 
    root> mysql -u root
-   root> update mysql.user set authentication_string=password('NewRootPassword') plugin='mysql_native_password' where user='root';
-
-If this command not work, please try the following commands:
-
-.. code-block:: bash
-
-   root> mysql -u root
-   root> UPDATE mysql.user SET password = PASSWORD('NewRootPassword') WHERE user = 'root';
-   root> UPDATE mysql.user SET authentication_string = '' WHERE user = 'root';
-   root> UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root';
+   root> ALTER USER root@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD("NewRootPassword");
 
 After OTOBO installation it is possible to change the authentication module again, if needed.
 
 .. note::
 
-   The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqld.cnf`` under the ``[mysqld]`` section:
+   The following configuration settings are minimum requirements for MySQL and MariaDB setups.
+
+   For MySQL, please add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqld.cnf`` under the ``[mysqld]`` section:
 
    .. code-block:: ini
 
@@ -315,7 +310,18 @@ After OTOBO installation it is possible to change the authentication module agai
 
    .. code-block:: ini
 
-      max_allowed_packet   = 64M  
+      max_allowed_packet   = 64M
+
+   For MariaDB you may place the following drop-in configuration file ``/etc/mysql/mariadb.conf.d/51-otobo.cnf``:
+
+   .. code-block:: ini
+
+      [mysqld]
+      max_allowed_packet = 64M
+      innodb_log_file_size = 512M
+
+      [mysqldump]
+      max_allowed_packet = 64M
 
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
@@ -333,26 +339,26 @@ After installing execute the script:
 
 
 Step 8: Setup Elasticsearch
------------------------------------
+---------------------------
 
-OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
+OTOBO recommends an active installation of Elasticsearch for quick search.
+The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
-Elasticsearch installation example based on Ubuntu 18.04 LTS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
 
-JDK Installation
+   Currently only Elasticsearch version 7.x is supported.
+
+
+Elasticsearch installation example based on Debian 12 "Bookworm"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Installation instructions for Elasticsearch version 7.x on Debian 12 "Bookworm":
 
 .. code-block:: bash
 
-   root> apt update
-   root> apt install openjdk-8-jdk
-
-Elasticsearch Installation
-
-.. code-block:: bash
-
-  root> wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-  root> echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+  root> apt install apt-transport-https gpg
+  root> wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+  root> echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-7.x.list
   root> apt update
   root> apt -y install elasticsearch
 
@@ -376,8 +382,10 @@ Elasticsearch Configuration
 
 Elasticsearch has a multitude of configuration options and possibilities.
 
-In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``.
-You should always set the min and max JVM heap size to the same value. For example, to set the heap to 4 GB, set:
+In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems.
+Please create the following drop-in configuration ``/etc/elasticsearch/jvm.options.d/heap-size.options``.
+You should always set the min and max JVM heap size to the same value.
+For example, to set the heap to 4 GB, set:
 
 .. code-block:: bash
 
@@ -425,11 +433,11 @@ There are two default OTOBO cron files in ``/opt/otobo/var/cron/\*.dist``, and t
 
 .. code-block:: bash
 
-   root> cd /opt/otobo/var/cron/
-   root> for foo in *.dist; do cp $foo `basename $foo .dist`; done
+   otobo> cd /opt/otobo/var/cron/
+   otobo> for foo in *.dist; do cp $foo `basename $foo .dist`; done
 
-   root> cd /opt/otobo/
-   root> bin/Cron.sh start
+   otobo> cd /opt/otobo/
+   otobo> bin/Cron.sh start
 
 With this step, the basic system setup is finished.
 
@@ -456,6 +464,7 @@ If you type a few characters of the command name, TAB will show all matching com
    .. code-block:: bash
 
       source /opt/otobo/.bash_completion
+      PATH="$PATH:/opt/otobo/bin"
 
 
 Step 14: Further Information
