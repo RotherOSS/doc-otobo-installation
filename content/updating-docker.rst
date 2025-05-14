@@ -145,4 +145,4 @@ For minor and major version upgrades, prior to this also update tasks for the co
 
     .. code-block:: bash
 
-        docker exec -it otobo_web_1 perl bin/otobo.Console.pl Admin::ITSM::Configitem::UpgradeTo11
+        docker exec -it otobo_web_1 perl bin/otobo.Console.pl Admin::ITSM::ConfigItem::UpgradeTo11
