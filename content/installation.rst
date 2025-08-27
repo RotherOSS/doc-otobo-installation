@@ -67,7 +67,7 @@ Unpack the source archive (for example, using ``tar``) into the directory ``/opt
     root> cd /opt/otobo-install                                             # Change into the update directory
     root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download he latest OTOBO 10 release
     root> tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-10.x.x/* /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
+    root> cp -r otobo-11.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
