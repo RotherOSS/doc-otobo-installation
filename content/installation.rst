@@ -65,7 +65,7 @@ Unpack the source archive (for example, using ``tar``) into the directory ``/opt
 
     root> mkdir /opt/otobo-install && mkdir /opt/otobo                      # Create a temporary install directory
     root> cd /opt/otobo-install                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download he latest OTOBO 10 release
+    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download the latest OTOBO 10 release
     root> tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
     root> cp -r otobo-11.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
