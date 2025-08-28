@@ -147,7 +147,6 @@ Optional
 Web browsers
    - Apple Safari
    - Google Chrome
-   - Microsoft Internet Explorer 11
    - Microsoft Edge
    - Mozilla Firefox
    - Any other modern web browser with JavaScript support
