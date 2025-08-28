@@ -135,7 +135,7 @@ Web Server
 
 Databases
    - MySQL 8.4 or higher
-   - MariaDB 10.6 or higher
+   - MariaDB 10.11 or higher
    - PostgreSQL 13 or higher
    - Oracle 19c or higher
 
