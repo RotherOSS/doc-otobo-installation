@@ -134,10 +134,10 @@ Web Server
    - Apache HTTP Server Version 2.4
 
 Databases
-   - MySQL 5.6 or higher
-   - MariaDB
-   - PostgreSQL 9.2 or higher
-   - Oracle 10g or higher
+   - MySQL 8.4 or higher
+   - MariaDB 10.6 or higher
+   - PostgreSQL 13 or higher
+   - Oracle 19c or higher
 
 Optional
    - Elasticsearch 7.x (fast search function for live previews)
