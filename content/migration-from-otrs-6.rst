@@ -348,7 +348,7 @@ Native installation:
 
 Docker-based installation:
 
-Run the command ``mysql`` within the Docker container *db* for importing the database dump files.
+Run the command ``mariadb`` within the Docker container *db* for importing the database dump files.
 Note that the password for the database root is now the password
 that has been set up in the file *.env* on the Docker host.
 
@@ -356,26 +356,26 @@ that has been set up in the file *.env* on the Docker host.
 
     docker_admin> cd /opt/otobo-docker
     docker_admin> cd <dump_dir>
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_pre.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_schema_for_otobo.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_data.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < <dump_dir>/otrs_post.sql
+    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_pre.sql
+    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_schema_for_otobo.sql
+    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_data.sql
+    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_post.sql
 
 For a quick check whether the import worked, you can run the following commands.
 
 .. code-block:: bash
 
-    otobo> mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+    otobo> mariadb -u root -p<root_secret> -e 'SHOW DATABASES'
+    otobo> mariadb -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    otobo> mariadb -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 or
 
 .. code-block:: bash
 
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> -e 'SHOW DATABASES'
+    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 The database is now migrated. This means that during the next step we can skip the database migration.
 Watch out for the relevant checkbox.

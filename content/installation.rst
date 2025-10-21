@@ -272,7 +272,7 @@ For MariaDB > 10.1 use instead the following command:
 
 .. code-block:: bash
 
-   root> mysql -u root
+   root> mariadb -u root
    root> update mysql.user set authentication_string=password('NewRootPassword') plugin='mysql_native_password' where user='root';
 
 If this command not work, please try the following commands:

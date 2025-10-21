@@ -56,7 +56,7 @@ First, you have to connect to the MySQL CLI of the `db` container.
 .. code-block:: bash
    docker_admin>cd /opt/otobo-docker
    docker_admin>docker-compose exec db bash
-   mysql@4f7783595190:/$>mysql -u root -p${MYSQL_ROOT_PASSWORD}
+   mysql@4f7783595190:/$>mariadb -u root -p${MYSQL_ROOT_PASSWORD}
 
 As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database.
 
