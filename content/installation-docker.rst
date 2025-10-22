@@ -176,10 +176,10 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 
 .. note::
 
-    Please configure OTOBO inside the installer with a new MySQL database.
-    As MySQL database root password please use the password you configured
+    Please configure OTOBO inside the installer with a new MariaDB database.
+    As MariaDB database root password please use the password you configured
     in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your *.env* file.
-    Please leave the value ``db`` for the MySQL hostname untouched.
+    Please leave the value ``db`` for the MariaDB hostname untouched.
 
 **Have fun with OTOBO!**
 
