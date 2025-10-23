@@ -4,7 +4,7 @@ Installing using Docker and Docker Compose
 With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
 All of OTOBO´s dependencies are already included in the provided collection of Docker images.
 
-- Service *db*: MariaDB is set up as the default database.
+- Service *db*: MariaDB, an open fork of MySQL, is set up as the default database. The documentation might reference MySQL because tooling is mostly interchangeable.
 - Service *elastic*: Elasticsearch is set up for the OTOBO power search.
 - Service *redis*: Redis is enabled for fast caching.
 - Service *web*: Gazelle is used as fast Perl webserver.
