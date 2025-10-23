@@ -18,43 +18,74 @@ The output of the script:
 
 .. code-block:: none
 
-    Backup an OTOBO system.
+    Back up an OTOBO system.
 
     Usage:
-     backup.pl -d /data_backup_dir [-c gzip|bzip2] [-r DAYS] [-t fullbackup|nofullbackup|dbonly]
-     backup.pl --backup-dir /data_backup_dir [--compress gzip|bzip2] [--remove-old-backups DAYS] [--backup-type fullbackup|nofullbackup|dbonly]
+
+        # print this help message
+        otobo> cd /opt/otobo
+        otobo> scripts/backup.pl --help
+
+        # for regular backups, can also be used in a cron job
+        otobo> cd /opt/otobo
+        otobo> scripts/backup.pl -d /data_backup_dir [-c gzip|bzip2] [-r DAYS] [-t fullbackup|nofullbackup|dbonly]
+        otobo> scripts/backup.pl --backup-dir /data_backup_dir [--compress gzip|bzip2] [--remove-old-backups DAYS] [--backup-type fullbackup|nofullbackup|dbonly|migratefromotrs]
+
+        # backups for creating a dump for migrating an OTRS database OTOBO
+        otobo> cd /opt/otobo
+        otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host 127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
+
+        # In special cases extra options can be passed to the dump command.
+        # Multiple options are separated by a space. Note the required quotes.
+        otobo> scripts/backup.pl --max-allowed-packet 128M --extra-dump-options "-P 3307 --column-statistics=0"
 
     Short options:
-     [-h]                   - Display help for this command.
-     -d                     - Directory where the backup files should place to.
-     [-c]                   - Select the compression method (gzip|bzip2). Default: gzip.
-     [-r DAYS]              - Remove backups which are more than DAYS days old.
-     [-t]                   - Specify which data will be saved (fullbackup|nofullbackup|dbonly). Default: fullbackup.
-
+    [-h]                   - Display help for this command.
+    [-d]                   - Directory where the backup files should be placed. Defauls to the current dir.
+    [-c]                   - Select the compression method (gzip|bzip2). Defaults to gzip.
+    [-r DAYS]              - Remove backups which are more than DAYS days old.
+    [-t]                   - Specify which data will be saved (fullbackup|nofullbackup|dbonly|migratefromotrs). Default: fullbackup.
 
     Long options:
-     [--help]                     - same as -h
-     --backup-dir                 - same as -d
-     [--compress]                 - same as -c
-     [--remove-old-backups DAYS]  - same as -r
-     [--backup-type]              - same as -t
+    [--help]                     - same as -h
+    --backup-dir                 - same as -d
+    [--compress]                 - same as -c
+    [--remove-old-backups DAYS]  - same as -r
+    [--backup-type]              - same as -t
+    [--dry-run]                  - only print out the database dump command, implies '--backup-type dbonly'
+    [--max-allowed-packet SIZE]  - add the option "--max-allowed-packet=SIZE" to mysqldump. The default setting is 64M.
+    [--db-host]                  - default is the setting 'DatabaseHost' in the OTOBO config
+    [--db-name]                  - default is the setting 'Database' in the OTOBO config
+    [--db-user]                  - default is the setting 'DatabaseUser' in the OTOBO config
+    [--db-password]              - default is the setting 'DatabasePw' in the OTOBO config
+    [--db-type]                  - default is extracted from the setting 'DatabaseDSN' in the OTOBO config
+    [--extra-dump-options]       - extra options that are passed to the dump command
 
     Help:
     Using -t fullbackup saves the database and the whole OTOBO home directory (except /var/tmp and cache directories).
     Using -t nofullbackup saves only the database, /Kernel/Config* and /var directories.
     With -t dbonly only the database will be saved.
+    With -t migratefromotrs only the OTRS database will be saved and prepared for migration.
+    For debugging database dumping pass --dry-run for only printing out the dump commands.
+
+    Output:
+    Config.tar.gz          - Backup of /Kernel/Config* configuration files.
+    Application.tar.gz     - Backup of application file system (in case of full backup).
+    VarDir.tar.gz          - Backup of /var directory (in case of no full backup).
+    DataDir.tar.gz         - Backup of article files.
+    DatabaseBackup.sql.gz  - Database dump.
+
+    Troubleshooting:
 
     Override the max allowed packet size:
     When backing up a MySQL one might run into very large database fields. In this case the backup fails.
-    For making the backup succeed one can explicitly add the parameter --max-allowed-packet=<SIZE IN BYTES>.
-    This setting will be passed on to the command mysqldump.
+    For making the backup succeed one can explicitly add the parameter --max-allowed-packet=<SIZE>.
+    The units K, M, and G are allowed, indicating kilobytes, Megabytes, and Gigabytes.
+    This setting will be passed on to the command mysqldump. The default setting is 64M.
 
-    Output:
-     Config.tar.gz          - Backup of /Kernel/Config* configuration files.
-     Application.tar.gz     - Backup of application file system (in case of full backup).
-     VarDir.tar.gz          - Backup of /var directory (in case of no full backup).
-     DataDir.tar.gz         - Backup of article files.
-     DatabaseBackup.sql.gz  - Database dump.
+    Error when the table information_schema.COLUMN_STATISTICS is missing:
+    This error occures with some versions of mysqldump 8.0.x. The problem can be evaded
+    by passing the option --extra-dump-options="--column-statistics=0"
 
 Restore
 -------
