@@ -7,6 +7,14 @@ Updating
 
 .. note::
 
+   To prepare required perl modules beforehand, you can already download and unzip the new OTOBO version and execute the check modules script, e.g. with the following command (please adjust the file path). This is not necessary in a regular installation and will be part of the later update instruction.
+
+   .. code-block:: bash
+
+      perl /tmp/otobo/bin/otobo.CheckModules.pl --list
+
+.. note::
+
    On Debian systems you may need to manually install some perl packages before upgrading to 11.0.
 
     .. code-block:: bash
@@ -75,6 +83,8 @@ If you are upgrading from 10.1 to 11.0 you need to clean the cpan-lib directory,
 .. code-block:: bash
 
     root> rm -rf /opt/otobo/Kernel/cpan-lib/*
+
+This can also be executed with sudo permissions.
 
 Step 3: Install the New Release
 -------------------------------
