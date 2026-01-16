@@ -56,6 +56,10 @@ The output of the script:
      DataDir.tar.gz         - Backup of article files.
      DatabaseBackup.sql.gz  - Database dump.
 
+.. note::
+
+  --extra-dump-options="--single-transaction" prevents the database tables from being locked, so OTOBO can still be used during the backup.
+
 Restore
 -------
 
