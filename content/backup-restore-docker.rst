@@ -46,9 +46,9 @@ This means that the webserver and the OTOBO daemon may, but don't have to, be st
     # check the backup file
     docker_admin> tree otobo_backup
 
-  .. note::
+.. note::
      
-    --extra-dump-options="--single-transaction" prevents the database tables from being locked, so OTOBO can still be used during the backup.
+   --extra-dump-options="--single-transaction" prevents the database tables from being locked, so OTOBO can still be used during the backup.
 
 .. note::
 
