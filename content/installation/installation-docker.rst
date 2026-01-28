@@ -1,5 +1,5 @@
-Installing using Docker and Docker Compose
-==========================================
+OTOBO Installation Docker
+=========================
 
 With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes.
 All of OTOBO´s dependencies are already included in the provided collection of Docker images.
