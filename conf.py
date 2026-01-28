@@ -6,14 +6,14 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2024-10-08'
+doc_datestamp = '2026-01-28'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
 doc_url = 'https://otobo.de'
 doc_vendor = 'Rother OSS GmbH'
 doc_version = '10.1'
-doc_yearstamp = '2024'
+doc_yearstamp = '2026'
 
 rst_prolog = """
 .. |doc-datestamp| replace:: {0}
@@ -90,7 +90,7 @@ release = '10.1'
 language = None
 
 # Options for localization
-locale_dirs = ['locale/']
+locale_dirs = ['locale/','/opt/otrs/var/sphinx/locale']
 gettext_compact = True
 
 # List of patterns, relative to source directory, that match files and
@@ -107,7 +107,7 @@ todo_include_todos = False
 
 # -- Options for HTML output ----------------------------------------------
 
-html_logo = '/opt/otrs/var/thirdparty/_static/images/otobo-logo.png'
+html_logo = '/opt/otrs/var/sphinx/_static/images/otrs-logo.png'
 html_theme_path = ['/opt/otrs/var/thirdparty/_sphinx-themes']
 html_theme = 'sphinx_rtd_theme'
 html_show_sphinx = False
@@ -121,8 +121,8 @@ html_show_sphinx = False
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['/opt/otrs/var/thirdparty/_static']
-html_style = 'css/otobo.css'
+html_static_path = ['/opt/otrs/var/sphinx/_static']
+html_style = 'css/otrs.css'
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -139,14 +139,22 @@ html_sidebars = {
 # do not add the source folder to the html output
 html_copy_source = False
 
+# A dictionary of values to pass into the template engine's context for all pages.
 html_context = {
+
+    # Whether the current version is considered stable release.
+    "is_stable": True,
+
+    # The stable release link to show in a note on top (only if `is_stable: False`).
+    "stable_link": '',
+    # GitHub link configuration.
     "display_github": True,
     "github_user": "RotherOSS",
     "github_repo": "doc-otobo-doc-otobo-installation",
     "github_version": "master",
     "conf_py_path": "/",
-}
 
+}
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -156,7 +164,7 @@ htmlhelp_basename = 'doc-otobo-doc-otobo-installation'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_logo = '/opt/otrs/var/thirdparty/_static/images/otobo-logo.png'
+latex_logo = '/opt/otrs/var/sphinx/_static/images/otobo-logo.png'
 
 latex_engine = 'xelatex'
 
@@ -173,14 +181,14 @@ latex_elements = {
     #
     # Set postscript to ucs, usage of utf8 and font familiy to helvetica
     'preamble': '''
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\usepackage{tgtermes}
-\usepackage{tgheros}
-\usepackage{tgcursor}
-\setmonofont{TeX Gyre Cursor}
-\setmainfont{Quicksand}
-\setsansfont{Quicksand}
+\\usepackage{ucs}
+\\usepackage[utf8x]{inputenc}
+\\usepackage{tgtermes}
+\\usepackage{tgheros}
+\\usepackage{tgcursor}
+\\setmonofont{TeX Gyre Cursor}
+\\setmainfont{Quicksand}
+\\setsansfont{Quicksand}
 ''',
 
 # TODO: beautify the whole thing - suggestions:
@@ -216,6 +224,6 @@ suppress_warnings = ['epub.unknown_project_files']
 
 epub_author = u'Rother OSS GmbH'
 epub_publisher = u'Rother OSS GmbH'
-epub_cover = ('/opt/otrs/var/thirdparty/_static/images/otobo-logo.png', '')
+epub_cover = ('/opt/otrs/var/sphinx/_static/images/otobo-logo.png', '')
 epub_show_urls = 'no'
 

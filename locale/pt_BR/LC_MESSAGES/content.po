@@ -5475,599 +5475,75 @@ msgid ""
 "scripts is not included."
 msgstr ""
 
-#~ msgid ""
-#~ "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
-#~ "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
-#~ msgstr ""
-#~ "`Docker Compose quick start <http://mfg.fhstp.ac.at/development/"
-#~ "webdevelopment/docker-compose-ein-quick-start-guide/>`_"
-
-#~ msgid "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
-#~ msgstr "`docker-otrs <https://github.com/juanluisbaptiste/docker-otrs/>`_"
-
-#~ msgid ""
-#~ "The project name is used as a prefix for the generated volumes and "
-#~ "containers. Must be set because the compose file is located in *scripts/"
-#~ "docker-compose* and thus **docker-compose** would be used per default as "
-#~ "the project name."
-#~ msgstr ""
-#~ "O nome do projeto é usado como um prefixo para os volumes e contêineres "
-#~ "gerados. Deve ser definido porque o arquivo de composição está localizado "
-#~ "em *scripts/docker-compose* e, portanto, **docker-compose** seria usado "
-#~ "por padrão como o nome do projeto."
-
-#~ msgid "We will find a way to help you."
-#~ msgstr "Nós vamos encontrar uma maneira de ajudá-lo."
-
-#~ msgid "Migration Possibilities"
-#~ msgstr "Possibilidades de migração"
-
-#~ msgid "The general strategy support many different combinations:"
-#~ msgstr "Uma migração geral onde muitas combinações são possíveis."
-
-#~ msgid "Step 2: Preparing the new OTOBO system and server"
-#~ msgstr "Passo 2: Preparando o novo sistema e servidor OTOBO"
-
-#~ msgid ""
-#~ "Install sshpass and rsysnc if you want to migrate OTRS from another server"
-#~ msgstr "Instale sshpass e rsysnc se quiser migrar OTRS de outro servidor"
-
-#~ msgid "Perform the step 3b for migrating to a Docker-based installation."
-#~ msgstr ""
-#~ "Execute a etapa 3b para migrar para uma instalação baseada em Docker."
-
-#~ msgid ""
-#~ "There are various possibilities for customizing the nginx configuration. "
-#~ "One way is to use a locally built image that is derived from the image "
-#~ "`otobo-nginx-webproxy`. In such a local image, nginx can be configured in "
-#~ "a very flexible way."
-#~ msgstr ""
-#~ "Existem várias possibilidades para personalizar a configuração do nginx. "
-#~ "Uma maneira é usar uma imagem construída localmente que é derivada da "
-#~ "imagem `otobo-nginx-webproxy`. Nessa imagem local, o nginx pode ser "
-#~ "configurado de uma forma muito flexível."
-
-#~ msgid ""
-#~ "Another supported approach is to only override the default config "
-#~ "template with a customized version. In this case, we have to create a "
-#~ "volume that contains the adapted nginx config template, first."
-#~ msgstr ""
-#~ "Outra abordagem com suportada é apenas de substituir o modelo de "
-#~ "configuração padrão por uma versão personalizada. Nesse caso, primeiro "
-#~ "temos que criar um volume que contenha o template de configuração nginx "
-#~ "adaptado."
-
-#~ msgid ""
-#~ "After setting up the volume, the adapted configuration must be activated. "
-#~ "In order to achieve this, uncomment or add the following lines in your *."
-#~ "env* file:"
-#~ msgstr ""
-#~ "Após configurar o volume, a configuração adaptada deve ser ativada. Para "
-#~ "fazer isso, descomente ou adicione as seguintes linhas em seu arquivo *."
-#~ "env* :"
-
-#~ msgid "*bin/docker/build_docker_images.sh*"
-#~ msgstr "*bin/docker/build_docker_images.sh*"
-
-#~ msgid ""
-#~ "A 1:1 migration on the same application server with the same database "
-#~ "server."
-#~ msgstr ""
-#~ "Uma migração 1:1 no mesmo servidor de aplicativos com o mesmo servidor de "
-#~ "banco de dados."
-
-#~ msgid ""
-#~ "A streamlined migration where the source database is first copied to the "
-#~ "target database server."
-#~ msgstr ""
-#~ "Uma migração simplificada em que o banco de dados de origem é copiado "
-#~ "primeiro para o servidor de banco de dados de destino."
-
-#~ msgid "Copy the otrs database schema to the containerised database server"
-#~ msgstr ""
-#~ "Copie o esquema do banco de dados otrs para o servidor de banco de dados "
-#~ "em contêiner"
-
-#~ msgid ""
-#~ "Only the recommended approach is described here. But migration from a "
-#~ "running OTRS database is still feasable."
-#~ msgstr ""
-#~ "Apenas a abordagem recomendada é descrita aqui. Mas a migração de um "
-#~ "banco de dados OTRS em execução ainda é viável."
-
-#~ msgid ""
-#~ "In the generic approach, all data in the database tables is copied row by "
-#~ "row from the OTRS database into the OTOBO database. This approach is time-"
-#~ "consuming and can be optimised. To speed-up the process, we create a "
-#~ "temporary copy of the OTRS database on the server used for the OTOBO "
-#~ "database. In our case, this is the MariaDB-server running in the "
-#~ "container ``otobo_db_1``. After creating the temporary copy, all relevant "
-#~ "OTRS tables can be moved into the OTOBO database."
-#~ msgstr ""
-#~ "Na abordagem genérica, todos os dados nas tabelas do banco de dados são "
-#~ "copiados linha por linha do banco de dados OTRS para o banco de dados "
-#~ "OTOBO. Essa abordagem é demorada e pode ser otimizada. Para acelerar o "
-#~ "processo, criamos uma cópia temporária do banco de dados OTRS no servidor "
-#~ "usado para o banco de dados OTOBO. No nosso caso, este é o servidor "
-#~ "MariaDB rodando no container ``otobo_db_1``. Depois de criar a cópia "
-#~ "temporária, todas as tabelas OTRS relevantes podem ser movidas para o "
-#~ "banco de dados OTOBO."
-
-#~ msgid ""
-#~ "First of all, we need a dump of the needed OTRS database tables. As the "
-#~ "dumped tables are copied into the OTOBO database, we also have to make "
-#~ "sure that the character set is converted to *utf8mb4*. The dump is split "
-#~ "up into the files *otrs_schema.sql* and *otrs_data.sql* so that the "
-#~ "conversion can be done in a safe way."
-#~ msgstr ""
-#~ "Em primeiro lugar, precisamos despejar as tabelas de banco de dados OTRS "
-#~ "necessárias. Como as tabelas despejadas são copiadas para o banco de "
-#~ "dados OTOBO, também temos que nos certificar de que o conjunto de "
-#~ "caracteres seja convertido para *utf8mb4*. O dump é dividido nos arquivos "
-#~ "* otrs_schema.sql * e * otrs_data.sql * para que a conversão possa ser "
-#~ "feita de forma segura."
-
-#~ msgid ""
-#~ "The provided commands remove any special setup of MySQL collations. In "
-#~ "case you need any special collations, make sure to re-add them manually."
-#~ msgstr ""
-#~ "Os comandos fornecidos removem qualquer configuração especial de MySQL "
-#~ "collations. Caso precise de collations especiais, certifique-se de "
-#~ "adicioná-los novamente manualmente."
-
-#~ msgid ""
-#~ "The copied database will be read and altered by the database user *otobo* "
-#~ "during the migration. Therefore, *otobo* needs to be given extensive "
-#~ "access to the copied database."
-#~ msgstr ""
-#~ "O banco de dados copiado será lido e alterado pelo usuário do banco de "
-#~ "dados *otobo* durante a migração. Portanto, *otobo* precisa ter amplo "
-#~ "acesso ao banco de dados copiado."
-
-#~ msgid ""
-#~ "When performing the migration using the web-based migration tool, please "
-#~ "enter the following values when prompted:"
-#~ msgstr ""
-#~ "Ao realizar a migração usando a ferramenta de migração baseada na web, "
-#~ "insira os seguintes valores quando solicitado:"
-
-#~ msgid "'db' as the OTRS database host"
-#~ msgstr "'db' como o host do banco de dados OTRS"
-
-#~ msgid "'otobo' as the OTRS database user"
-#~ msgstr "'otobo' como o usuário do banco de dados OTRS"
-
-#~ msgid ""
-#~ "the password of the database user 'otobo' as the OTRS database user "
-#~ "password"
-#~ msgstr ""
-#~ "a senha do usuário do banco de dados 'otobo' como a senha do usuário do "
-#~ "banco de dados OTRS"
-
-#~ msgid "'otrs' as the OTRS database name"
-#~ msgstr "'otrs' como o nome do banco de dados OTRS"
-
-#~ msgid ""
-#~ "To run OTOBO, you'll also need to use a web server as reverse proxy and a "
-#~ "database server. Apart from that, you should install Perl and/or install "
-#~ "some additional Perl modules on the OTOBO machine."
-#~ msgstr ""
-#~ "Para executar o OTOBO, você também precisará usar um servidor da Web como "
-#~ "proxy reverso e um servidor de banco de dados. Além disso, você deve "
-#~ "instalar o Perl e/ou instalar alguns módulos adicionais do Perl na "
-#~ "máquina OTOBO."
-
-#~ msgid ""
-#~ "Perl must be installed on the same machine as OTOBO. The database back "
-#~ "end and the web server may be installed locally or on another host."
-#~ msgstr ""
-#~ "O Perl deve estar instalado na mesma máquina que o OTOBO. O back-end do "
-#~ "banco de dados e o servidor da web podem ser instalados localmente ou em "
-#~ "outro host."
-
-#~ msgid "OTOBO has also a console command for missing modules."
-#~ msgstr "O OTOBO também possui um comando de console para módulos ausentes."
-
-#~ msgid "Apache2"
-#~ msgstr "Apache2"
-
-#~ msgid "nginx"
-#~ msgstr "nginx"
-
-#~ msgid "Node.js 8.9 or higher (only for development)"
-#~ msgstr "Node.js 8.9 or higher (apenas para desenvolvimento)"
-
-#~ msgid "OTRSDynamicFieldAttachment"
-#~ msgstr "OTRSDynamicFieldAttachment"
-
-#~ msgid ""
-#~ "This manual had been published before OTOBO 10.0.4 was released. This "
-#~ "means that the git label rel-10.0.4 might not exist yet."
-#~ msgstr ""
-#~ "Este manual foi publicado antes do lançamento do OTOBO 10.0.4. Isso "
-#~ "significa que a git label rel-10.0.4 pode não existir ainda."
-
-#~ msgid ""
-#~ "Moving tables from one schema to another makes the source schema "
-#~ "unusable. So make sure the OTRS database used really is a throwaway copy "
-#~ "of the productive OTRS database."
-#~ msgstr ""
-#~ "Mover tabelas de um esquema para outro torna o esquema de origem "
-#~ "inutilizável. Portanto, certifique-se de que o banco de dados OTRS usado "
-#~ "é realmente uma cópia descartável do banco de dados OTRS produtivo."
-
-#~ msgid ""
-#~ "At the moment the Docker Compose environment is not tested in depth for "
-#~ "production use. Please use the standard installation process for "
-#~ "production use. Brave early adaptors are very welcome to share their "
-#~ "experiences."
-#~ msgstr ""
-#~ "No momento, o ambiente Docker Compose não foi testado em profundidade "
-#~ "para uso em produção. Use o processo de instalação padrão para uso de "
-#~ "produção. Os bravos primeiros adaptadores são bem-vindos para "
-#~ "compartilhar suas experiências."
-
-#~ msgid "Updating OTOBO using Docker and Docker Compose"
-#~ msgstr "Atualizando usando Docker e Docker Compose"
-
-#~ msgid "Updating to a new patch level release"
-#~ msgstr "Atualizando para uma nova versão de nível de patch"
-
-#~ msgid ""
-#~ "First make sure that in *.env* the images have either the tag `latest` or "
-#~ "the wanted version."
-#~ msgstr ""
-#~ "Primeiro certifique-se de que em *.env* as imagens tenham a tag `latest` "
-#~ "ou a versão desejada."
-
-#~ msgid ""
-#~ "After updating you need to reinstall all OTOBO packages and clear the "
-#~ "cache."
-#~ msgstr ""
-#~ "Após a atualização, você precisa reinstalar todos os pacotes OTOBO e "
-#~ "limpar o cache."
-
-#~ msgid "Force an update to or from a devel version"
-#~ msgstr "Força uma atualização para uma versão devel"
-
-#~ msgid ""
-#~ "Images of devel versions are not upgraded automatically. But the upgrade "
-#~ "can be forced. The source of the devel version can either be a local "
-#~ "build or a devel image from Docker Hub. Here is an example using the "
-#~ "devel image for the OTOBO 10.1.x branch from Docker Hub."
-#~ msgstr ""
-#~ "Imagens de versões desenvolvimento não são atualizadas automaticamente. "
-#~ "Mas a atualização pode ser forçada. A fonte da versão do desenvolvimento "
-#~ "pode ser uma compilação local ou uma imagem do desenvolvimento do Docker "
-#~ "Hub. Aqui está um exemplo usando a imagem devel para o branch OTOBO 10.1."
-#~ "x do Docker Hub."
-
-#~ msgid ""
-#~ "It is irrelevant whether your OTRS/ ((OTRS)) Community Edition was "
-#~ "previously installed on two separate servers (application and database "
-#~ "servers), or whether you want to change OTOBO to such a configuration."
-#~ msgstr ""
-#~ "É irrelevante se o OTRS/ ((OTRS)) Community Edition foi instalado "
-#~ "anteriormente em dois servidores separados (servidores de aplicação e "
-#~ "banco de dados) ou se você deseja alterar o OTOBO para essa configuração."
-
-#~ msgid ""
-#~ "Full-text index regular expression filters to remove parts of the text."
-#~ msgstr ""
-#~ "Filtros de expressão regular de índice de texto completo para remover "
-#~ "partes do texto."
-
-#~ msgid "``docker system prune -a`` start over"
-#~ msgstr "recomeçar ``docker system prune -a``"
-
-#~ msgid ""
-#~ "The configuration file *.env* allows you to manage your installation of "
-#~ "OTOBO. It must be first created and the adapted by yourself."
-#~ msgstr ""
-#~ "O arquivo de configuração *.env* é a interface que permite configurar a "
-#~ "instalação do OTOBO. *.env* não é criado automaticamente, ele deve ser "
-#~ "criado e editado pelo usuário."
-
-#~ msgid ""
-#~ "Two template files are available in the newly created folder *docker-"
-#~ "compose*:"
-#~ msgstr ""
-#~ "Dois arquivos de modelo estão disponíveis na pasta recém-criada *docker-"
-#~ "compose*:"
-
-#~ msgid "Provide HTTP support via port 80."
-#~ msgstr "Fornece HTTP via porta 80."
-
-#~ msgid "Provide HTTPS support via port 443."
-#~ msgstr "Fornece HTTPS via porta 443."
-
-#~ msgid ""
-#~ "Choose one of the files that suits your needs and rename it to *.env*."
-#~ msgstr ""
-#~ "Escolha um dos arquivos que atenda às suas necessidades e renomeie para "
-#~ "* .env *."
-
-#~ msgid ""
-#~ "For productive environments we recommend the use of a web proxy. If you "
-#~ "want to install your own web proxy for OTOBO, an extra docker nginx image "
-#~ "is available for use. In this case, please rename the *."
-#~ "docker_compose_env_https* file to *.env*."
-#~ msgstr ""
-#~ "Para ambientes produtivos, recomendamos o uso de um proxy da web. Se você "
-#~ "deseja instalar seu próprio proxy da web para OTOBO, uma imagem docker "
-#~ "nginx extra está disponível para uso. Nesse caso, renomeie o arquivo *."
-#~ "docker_compose_env_https* para *.env*."
-
-#~ msgid "Upgrading to a new patch level release"
-#~ msgstr "Atualizando para uma nova versão do patchlevel"
-
-#~ msgid ""
-#~ "Images of devel versions are not updated automatically. But the update "
-#~ "can be forced. The source of the devel version can either be a local "
-#~ "build or an devel image from Docker Hub. Here is a example using the "
-#~ "devel image for the OTOBO 10.1.x branch from Docker Hub."
-#~ msgstr ""
-#~ "Imagens de versões desenvolvimento não são atualizadas automaticamente. "
-#~ "Mas a atualização pode ser forçada. A fonte da versão do desenvolvimento "
-#~ "pode ser uma compilação local ou uma imagem do desenvolvimento do Docker "
-#~ "Hub. Aqui está um exemplo usando a imagem devel para o branch OTOBO 10.1."
-#~ "x do Docker Hub."
-
-#~ msgid ""
-#~ "These coḿmands do not reinstall or upgrade the installed OTOBO packages."
-#~ msgstr ""
-#~ "Esses comandos não reinstalam ou atualizam os pacotes OTOBO instalados."
-
-#~ msgid "Force an update to a devel version"
-#~ msgstr "Força uma atualização para uma versão devel"
-
-#~ msgid ""
-#~ "Example for installing git, docker, and docker-compose installation on "
-#~ "Ubuntu 20.04:"
-#~ msgstr ""
-#~ "Exemplo de instalação do git, docker e docker-compose no Ubuntu 20.04:"
-
-#~ msgid "Force an upgrade to a devel version"
-#~ msgstr "Força uma atualização para uma versão de desenvolvimento"
-
-#~ msgid ""
-#~ "If you are planning to migrate from one to another server, it must be "
-#~ "possible for the OTRS and OTOBO application servers to reach each other "
-#~ "via SSH. Furthermore, the database servers must be able to communicate "
-#~ "via the set database port and the database must allow external access."
-#~ msgstr ""
-#~ "Se você está planejando migrar de um servidor para outro, deve ser "
-#~ "possível que os servidores de aplicativos OTRS e OTOBO se conectem via "
-#~ "SSH. Além disso, os servidores de banco de dados devem poder se comunicar "
-#~ "via porta de banco de dados definida e o banco de dados deve permitir "
-#~ "acesso externo."
-
-#~ msgid ""
-#~ "If you install OTOBO on the same server as you OTRS / ((OTRS)) Community "
-#~ "Edition and under Apache, configure the OTOBO (or OTRS) web server "
-#~ "without Mod_perl as long as both systems are running, or deactivate OTRS "
-#~ "in the web server before the migration. Apache has difficulties with "
-#~ "running two systems under Mod_perl on the same server. To disable "
-#~ "Mod_perl, just comment out the mod_perl part in the file ``/opt/otobo/"
-#~ "scripts/apache2-httpd.include.conf``."
-#~ msgstr ""
-#~ "Se você instalar o OTOBO no mesmo servidor que o OTRS / ((OTRS)) "
-#~ "Community Edition e no Apache, configure o servidor da web OTOBO (ou "
-#~ "OTRS) sem o Mod_perl enquanto os dois sistemas estiverem em execução ou "
-#~ "desative o OTRS no servidor da Web antes a migração. O Apache tem "
-#~ "dificuldades em executar dois sistemas no mod_perl no mesmo servidor. "
-#~ "Para desativar o mod_perl, basta comentar a parte mod_perl no arquivo ``/"
-#~ "opt/otobo/scripts/apache2-httpd.include.conf``."
-
-#~ msgid ""
-#~ "Please do not change the path ``/etc/nginx/ssl/``, but only the filename."
-#~ msgstr ""
-#~ "Por favor, não mude o caminho ``/etc/nginx/ssl/``, mas apenas o nome do "
-#~ "arquivo."
-
-#~ msgid "``.docker_compose_env_https`` Run HTTPS on port 443."
-#~ msgstr "``.docker_compose_env_https`` Executa HTTPS na porta 443."
-
-#~ msgid "Git"
-#~ msgstr "Git"
-
-#~ msgid ""
-#~ "The following examples assume you have a working Docker environment, with "
-#~ "docker-compose installed. Please check the Docker documentation for "
-#~ "instructions."
-#~ msgstr ""
-#~ "Os exemplos a seguir presumem que você tenha um ambiente Docker "
-#~ "funcional, com docker-compose instalado. Verifique a documentação do "
-#~ "Docker para obter instruções."
-
-#~ msgid "2. Create a ``.env`` file with your settings"
-#~ msgstr "2. Crie um arquivo ``.env`` com duas configurações"
-
-#~ msgid "3. Edit the ``.env`` file"
-#~ msgstr "3. Edite o arquivo ``.env``"
-
-#~ msgid ""
-#~ "``OTOBO_DB_ROOT_PASSWORD`` The root password for MySQL. Must be set for "
-#~ "running otobo db to any value."
-#~ msgstr ""
-#~ "``OTOBO_DB_ROOT_PASSWORD`` A senha root do MySQL. Deve ser definido para "
-#~ "executar otobo db com qualquer valor."
-
-#~ msgid ""
-#~ "``OTOBO_NGINX_SSL_CERTIFICATE`` SSL cert for the nginx webproxy. We "
-#~ "configure this value in the next chapter."
-#~ msgstr ""
-#~ "``OTOBO_NGINX_SSL_CERTIFICATE`` Cert SSL para o webproxy nginx. "
-#~ "Configuramos esse valor no próximo capítulo."
-
-#~ msgid ""
-#~ "``OTOBO_NGINX_SSL_CERTIFICATE_KEY`` SSL key for the nginx webproxy. We "
-#~ "configure this value in the next chapter."
-#~ msgstr ""
-#~ "``OTOBO_NGINX_SSL_CERTIFICATE_KEY`` Chave SSL para o webproxy nginx. "
-#~ "Configuramos esse valor no próximo capítulo."
-
-#~ msgid "**Store the certificate in a volume**"
-#~ msgstr "**Armazene o certificado em um volume**"
-
-#~ msgid "7. Adjust server settings for production use"
-#~ msgstr "7. Ajuste as configurações do servidor para uso em produção"
-
-#~ msgid ""
-#~ "You can obtain either ``otobo-x.y.z.tar.gz`` or ``otobo-x.y.z.tar.bz2``. "
-#~ "Unpack the source archive (for example, using ``tar``) into the directory "
-#~ "``/opt``, and create a symbolic link ``/opt/otobo`` that points to ``/opt/"
-#~ "otobo-x.y.z``. **Do not forget** to replace the version numbers!"
-#~ msgstr ""
-#~ "Você pode obter ``otobo-x.y.z.tar.gz`` ou ``otobo-x.y.z.tar.bz2``. "
-#~ "Descompacte o arquivo fonte (por exemplo, usando o ``tar``) no diretório "
-#~ "``/opt`` e criando um link simbólico ``/opt/otobo`` que aponta para ``/"
-#~ "opt/otobo-x.y.z``. **Não se esqueça** substitua os números da versão!"
-
-#~ msgid ""
-#~ "Package ``bzip2`` is not installed in some systems by default. Make sure, "
-#~ "that ``bzip2`` is installed before unpacking ``otobo-x.y.z.tar.bz2``."
-#~ msgstr ""
-#~ "O pacote ``bzip2`` não é instalado por padrão em alguns sistemas. "
-#~ "Certifique-se que ``bzip2`` esteja instalado antes de descompactar "
-#~ "``otobo-x.y.z.tar.bz2``."
-
-#~ msgid "Unpack command for ``otobo-x.y.z.tar.gz``:"
-#~ msgstr "Comando para descompactar ``otobo-x.y.z.tar.gz``:"
-
-#~ msgid "Unpack command for ``otobo-x.y.z.tar.bz2``:"
-#~ msgstr "Comando para descompactar ``otobo-x.y.z.tar.bz2``:"
-
-#~ msgid ""
-#~ "It is recommended to create a symbolic link named ``/opt/otobo`` that "
-#~ "always points to the latest OTOBO version. Using a symbolic link makes "
-#~ "managing OTOBO updates easy: You can leave the directory of the previous "
-#~ "version untouched, only the symbolic link needs to change. Should you "
-#~ "need to revert the update, you can change the target of the symbolic link "
-#~ "back."
-#~ msgstr ""
-#~ "É recomendado criar um link simbólico chamado ``/opt/otobo`` que sempre "
-#~ "aponte para a versão mais recente do OTOBO. O uso de um link simbólico "
-#~ "facilita o gerenciamento das atualizações do OTOBO: você pode deixar o "
-#~ "diretório da versão anterior intocado, apenas o link simbólico precisa "
-#~ "ser alterado. Se você precisar reverter a atualização, poderá alterar "
-#~ "novamente o destino do link simbólico."
-
-#~ msgid "Execute this command to create a symbolic link:"
-#~ msgstr "Execute esse comando para criar o link simbólico:"
-
-#~ msgid ""
-#~ "Do not worry and finish the installation, in most cases the module will "
-#~ "not be needed."
-#~ msgstr ""
-#~ "Não se preocupe e termine a instalação, na maioria dos casos o módulo não "
-#~ "será necessário."
-
-#~ msgid "Restart Elasticsearch afterwards."
-#~ msgstr "Reinicie o Elasticsearch posteriormente."
-
-#~ msgid "Elasticsearch Activation in OTOBO"
-#~ msgstr "Ativação do Elasticsearch no OTOBO"
-
-#~ msgid ""
-#~ "To create indexes and migrate existing data to Elasticsearch, please use "
-#~ "the following command as user ``otobo``:"
-#~ msgstr ""
-#~ "Para criar índices e migrar dados existentes para o Elasticsearch, use o "
-#~ "seguinte comando como usuário ``otobo``:"
-
-#~ msgid ""
-#~ "Sometimes the first time the script is called, errors are displayed, "
-#~ "indicating that the index cannot be created or deleted. This is not a "
-#~ "problem, but to be on the safe side, you can simply abort the script and "
-#~ "run it again."
-#~ msgstr ""
-#~ "Às vezes, na primeira vez que o script é chamado, erros são exibidos, "
-#~ "indicando que o índice não pode ser criado ou excluído. Isso não é um "
-#~ "problema, mas para garantir a segurança, você pode simplesmente cancelar "
-#~ "o script e executá-lo novamente."
-
-#~ msgid "Elasticsearch::Active"
-#~ msgstr "Elasticsearch::Active"
-
-#~ msgid "Frontend::ToolBarModule###250-Ticket::ElasticsearchFulltext"
-#~ msgstr "Frontend::ToolBarModule###250-Ticket::ElasticsearchFulltext"
-
-#~ msgid "Other dependencies"
-#~ msgstr "Outras dependências"
-
-#~ msgid ""
-#~ "First we need to make sure that the backup files are not created in the "
-#~ "file system that is internal to the container. Because in that case all "
-#~ "data would be lost when the container is stopped. Therefore the backup "
-#~ "directory must be in a volume. For now we only consider the most simple "
-#~ "case, where the backup dir is a local dir on the Docker host. The "
-#~ "location of the backup dir in the container can be arbitrarily chosen. In "
-#~ "this example we choose the local dir ``otobo_backup`` as the location on "
-#~ "the host, and ``/otobo_backup`` as the location in the container."
-#~ msgstr ""
-#~ "Primeiro, precisamos nos certificar de que os arquivos de backup não "
-#~ "sejam criados no sistema de arquivos interno do contêiner. Porque nesse "
-#~ "caso todos os dados seriam perdidos quando o contêiner fosse "
-#~ "interrompido. Portanto, o diretório de backup deve estar em um volume. "
-#~ "Por enquanto, consideramos apenas o caso mais simples, em que o diretório "
-#~ "de backup é um diretório local no host Docker. A localização do diretório "
-#~ "de backup no contêiner pode ser escolhida arbitrariamente. Neste exemplo, "
-#~ "escolhemos o diretório local ``otobo_backup`` como o local no host, e ``/"
-#~ "otobo_backup`` como o local no contêiner."
-
-#~ msgid ""
-#~ "For creating the backup we need a running database and the volumes "
-#~ "``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver "
-#~ "and the Daemon may, but don't have to, be stopped."
-#~ msgstr ""
-#~ "Para criar o backup, precisamos de um banco de dados em execução e os "
-#~ "volumes ``otobo_opt_otobo`` e ``otobo_backup``. Isso significa que o "
-#~ "servidor da Web e o Daemon podem, mas não precisam, ser interrompidos."
-
-#~ msgid ""
-#~ "As of OTOBO version 10.0.7, we recommend Docker and Docker Compose for "
-#~ "the OTOBO installation. By using the provided Docker images, all "
-#~ "recommended dependencies (such as Elasticsearch, Redis Cache, etc.) are "
-#~ "installed and configured automatically. Updates are thus greatly "
-#~ "simplified and the performance has been improved. You can find the "
-#~ "instructions for Docker-based installation at https://doc.otobo.org/"
-#~ "manual/installation/10.1/en/content/installation-docker.html ."
-#~ msgstr ""
-#~ "A partir do OTOBO versão 10.0.7, recomendamos Docker e Docker Compose "
-#~ "para a instalação do OTOBO. Usando nossa imagem Docker-Compose, todas as "
-#~ "dependências recomendadas (como Elasticsearch, Redis Cache, etc.) são "
-#~ "instaladas e configuradas automaticamente. As atualizações são, portanto, "
-#~ "bastante simplificadas e o desempenho foi aumentado. Você pode encontrar "
-#~ "as instruções de instalação em https://doc.otobo.org/manual/installation/"
-#~ "stable/en/content/installation-docker.html."
-
-#~ msgid "The following approach is only supported in OTOBO 10.0.4 or later."
-#~ msgstr "A abordagem a seguir só é compatível com OTOBO 10.0.4 ou posterior."
-
-#~ msgid ""
-#~ "Your adapted nginx configuration usually contains the directive "
-#~ "**listen**, which declares the ports of the webserver. The internally "
-#~ "used ports have changed between OTOBO 10.0.3 and OTOBO 10.0.4. This "
-#~ "change must be reflected in the adapted nginx configuration. So for "
-#~ "version 10.0.3 or earlier listen to the ports 80 and 443. For OTOBO "
-#~ "10.0.4 listen to the ports 8080 and 8443."
-#~ msgstr ""
-#~ "Sua configuração nginx adaptada geralmente contém a diretiva **listen**, "
-#~ "que declara as portas do servidor web. As portas usadas internamente "
-#~ "foram alteradas entre OTOBO 10.0.3 e OTOBO 10.0.4. Essa mudança deve ser "
-#~ "refletida na configuração nginx adaptada. Portanto, para a versão 10.0.3 "
-#~ "ou anterior, escute as portas 80 e 443. Para o OTOBO 10.0.4, escute as "
-#~ "portas 8080 e 8443."
-
-#~ msgid "These instructions apply only to OTOBO 10.0.6 or later."
-#~ msgstr "Estas instruções se aplicam apenas ao OTOBO 10.0.6 ou posterior."
-
-#~ msgid ""
-#~ "The above listed commands can be automated. For that purpose the script "
-#~ "*scripts/update.sh* will be made available in OTOBO 10.0.8. This script "
-#~ "runs the commands, starting with the **docker-compose pull** command."
-#~ msgstr ""
-#~ "Os comandos listados acima podem ser automatizados. Para tal, o script "
-#~ "*scripts/update.sh* será disponibilizado no OTOBO 10.0.8. Este script "
-#~ "executa os comandos, começando com o comando **docker-compose pull**."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
