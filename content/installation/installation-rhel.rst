@@ -149,7 +149,7 @@ In this example we will be using ``/etc/systemd/system``.
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/var/systemd/* /etc/systemd/system/
+   root> cp /opt/otobo/scripts/systemd/* /etc/systemd/system/
    root> systemctl daemon-reload
 
 
@@ -171,18 +171,18 @@ Install the Nginx web server:
 
 Nginx installations commonly have a ``conf.d`` directory included.
 It may be found at ``/etc/nginx``.
+Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``.
 
 
 Configure Nginx without SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Example configuration is provided at ``/opt/otobo/scripts/nginx.conf``.
 In most cases no further editing of the template is required.
 The new configuration needs to be activated, subsequently.
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/var/nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
+   root> cp /opt/otobo/scripts/nginx-vhost-80.include.conf /etc/nginx/conf.d/nginx.conf
    root> systemctl restart nginx
 
 It is also required to enable port 80 on the firewall.
@@ -195,11 +195,11 @@ It is also required to enable port 80 on the firewall.
 Configure Nginx **with** SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Copy the template files ``/opt/otobo/scripts/nginx-ssl.conf`` to the nginx ``conf.d`` directory.
+If you want to enable SSL support, you need to copy the SSL configuration file.
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/var/nginx/nginx-ssl.conf /etc/nginx/conf.d/nginx-ssl.conf
+   root> cp /opt/otobo/scripts/nginx-vhost-443.include.conf /etc/nginx/conf.d/nginx.conf
    root> cd /etc/nginx/
    root> mkdir snippets
    root> cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf snippets/
