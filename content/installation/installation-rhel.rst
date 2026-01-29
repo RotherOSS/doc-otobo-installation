@@ -95,6 +95,7 @@ Step 3: Install Additional Programs and Perl Modules
 OTOBO requires a working Perl installation with all *core* modules such as the module ``version``.
 
 .. code-block:: text
+
    root> dnf install -y perl perl-DBD-MySQL wget
 
 Required Perl modules may be installed from CPAN.
