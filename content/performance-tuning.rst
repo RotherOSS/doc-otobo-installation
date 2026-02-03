@@ -136,11 +136,14 @@ Here are some relevant configuration settings. They come with good default value
 
 ``cluster.routing.allocation.disk.watermark.flood_stage``
    Default value of 95%. When this limit is exceeded, Elasticsearch will update the configuration of all indices, that have at least one shard allocated to the related cluster node, to read-only index blocks. Specifically, they are flagged with ``index.blocks.read_only_allow_delete``.
-  After that update, it is no longer possible to index new data to such indices. The indexes are restricted to searches and to delete actions only.
+
+After that update, it is no longer possible to index new data to such indices.
+The indexes are restricted to searches and to delete actions only.
 
 .. note::
 
-   If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch. If the related disks contain enough free space again due to manual actions, it is needed to change the configuration back to normal mode manually.
+   If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch.
+   If the related disks contain enough free space again due to manual actions, it is needed to change the configuration back to normal mode manually.
 
 For more information about disk watermarks and disk-based shard allocation, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__.
 
@@ -218,8 +221,9 @@ Caching
 
 A fast cache module is a great help in terms of performance. We recommend to use a Redis Cache server or to create a ramdisk.
 
+
 Install a Redis Cache Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Install Redis Server
 

@@ -18,7 +18,7 @@ Updating
    On Debian systems you may need to manually install some perl packages before upgrading to 11.0.
 
     .. code-block:: bash
-   
+
       apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
 For OTOBO 11.0, the following packages are being migrated automatically to the framework. This means that no separate packe is necessary and they will be part of OTOBO by default.
@@ -34,7 +34,7 @@ For OTOBO 11.0, the following packages are being migrated automatically to the f
     - TicketTimeUnitsMandatoryOnlyWithArticle
 
 Step 1: Stop All Relevant Services and the OTOBO Daemon
-------------------------------------------------------
+-------------------------------------------------------
 
 Please make sure there are no more running services or cron jobs that try to access OTOBO. This will depend on your service configuration.
 
@@ -60,7 +60,7 @@ Step 2: Backup Files and Database
 Create a backup of the hole ``/opt/otobo`` directory and the database.
 
 Example for a standard installation with Ubuntu and MySQL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
@@ -150,7 +150,7 @@ Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what sett
 
 
 Step 4: Check for new needed Perl modules
----------------------------------
+-----------------------------------------
 
 OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary.
 
@@ -169,8 +169,8 @@ OTOBO needs new cpan packages for some version jumps. Please check if new packag
     otobo> perl /opt/otobo/bin/otobo.CheckModules.pl --list
 
 
-Step 5: Update Installed Packages and reconfigure config 
----------------------------------
+Step 5: Update Installed Packages and reconfigure config
+--------------------------------------------------------
 
 You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon).
 
@@ -181,13 +181,15 @@ You can use the command below to update all installed packages. This works for a
     otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
     otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
 
+
 Step 6: Only for minor or major release upgrades (for example to upgrade from 10.1 to 11.0)
----------------------------------
+-------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
     root> su - otobo
     otobo> /opt/otobo/scripts/DBUpdate-to-11.0.pl
+
 
 Step 7: Start your Services
 ---------------------------

@@ -42,12 +42,12 @@ This means that the webserver and the OTOBO daemon may, but don't have to, be st
 
     # create a backup
     docker_admin> docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest-11_0 scripts/backup.pl --extra-dump-options="--single-transaction" -d /otobo_backup
-    
+
     # check the backup file
     docker_admin> tree otobo_backup
 
 .. note::
-     
+
    --extra-dump-options="--single-transaction" prevents the database tables from being locked, so OTOBO can still be used during the backup.
 
 .. note::
@@ -58,6 +58,7 @@ To drop an existing otobo database and create a new one you can use the followin
 First, you have to connect to the MySQL CLI of the `db` container.
 
 .. code-block:: bash
+
    docker_admin> cd /opt/otobo-docker
    docker_admin> docker-compose exec db bash
    mysql@4f7783595190:/$> mysql -u root -p${MYSQL_ROOT_PASSWORD}

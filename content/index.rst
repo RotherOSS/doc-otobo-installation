@@ -1,5 +1,6 @@
 .. image:: ../images/otobo-logo.png
    :align: center
+
 |
 
 ===========================
@@ -38,7 +39,9 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.io).
    introduction
    requirements
    installation
-   installation-docker
+   installation/installation-docker
+   installation/installation-ubuntu
+   installation/installation-rhel
    migration-from-otrs
    updating
    updating-docker
@@ -49,3 +52,4 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.io).
    installing-perl-modules
    performance-tuning
    history
+

@@ -26,6 +26,7 @@ The minimal versions of required software, that have been tested, are listed her
     For Ubuntu 24.04 LTS the usage of Compose V2 is recommended.
 
     .. code-block:: bash
+
         root> apt update
         root> apt install docker.io docker-compose-v2
 
@@ -33,7 +34,9 @@ The minimal versions of required software, that have been tested, are listed her
     in order to stay compatible with the ``docker-compose`` command known from Compose V1.
 
     .. code-block:: bash
+
        root> alias docker-compose='docker compose'
+
 
 git, Docker, and Docker Compose can be installed with the standard system tools.
 Here is an example for installation on Ubuntu 20.04 Focal Fossa:
@@ -446,7 +449,7 @@ in the *.env* file and by activating the mount directove in *docker-compose/otob
 
 **Kerberos SSO Installation Tutorial**
 
-:doc:`sso-kerberos`
+:doc:`../sso-kerberos`
 
 
 Choosing non-standard ports
@@ -661,6 +664,7 @@ running the test suite on a fresh installation.
    .......
    docker_admin> docker-compose start daemon
 
+
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -703,7 +707,7 @@ Finally, here is a highly subjective collection of links.
 
 * `Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
 * `Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_
-* `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu >`_
+* `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu>`_
 
 **Troubleshooting**
 

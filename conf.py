@@ -87,7 +87,7 @@ release = '11.0'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # Options for localization
 locale_dirs = ['locale/']
@@ -96,7 +96,7 @@ gettext_compact = True
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.venv']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -104,11 +104,18 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
+# We have files with the same structure, these should not generate warnings
+suppress_warnings = [
+    'autosectionlabel.*',
+# Supress "unknown mimetype for ..." warnings
+    'epub.unknown_project_files'
+]
+
 
 # -- Options for HTML output ----------------------------------------------
 
-html_logo = '/opt/otrs/var/thirdparty/_static/images/otobo-logo.png'
-html_theme_path = ['/opt/otrs/var/thirdparty/_sphinx-themes']
+html_logo = 'images/otobo-logo.png'
+# html_theme_path = ['/opt/otrs/var/thirdparty/_sphinx-themes']
 html_theme = 'sphinx_rtd_theme'
 html_show_sphinx = False
 
@@ -121,7 +128,7 @@ html_show_sphinx = False
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['/opt/otrs/var/thirdparty/_static']
+# html_static_path = ['/opt/otrs/var/thirdparty/_static']
 html_style = 'css/otobo.css'
 
 # Custom sidebar templates, must be a dictionary that maps document names
@@ -156,7 +163,7 @@ htmlhelp_basename = 'doc-otobo-doc-otobo-installation'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_logo = '/opt/otrs/var/thirdparty/_static/images/otobo-logo.png'
+latex_logo = 'images/otobo-logo.png'
 
 latex_engine = 'xelatex'
 
@@ -172,7 +179,7 @@ latex_elements = {
     # Additional options for the LaTeX preamble.
     #
     # Set postscript to ucs, usage of utf8 and font familiy to helvetica
-    'preamble': '''
+    'preamble': r'''
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
 \usepackage{tgtermes}
@@ -210,9 +217,6 @@ latex_documents = [
 ]
 
 # -- Options for EPUB output ----------------------------------------------
-
-# Supress "unknown mimetype for ..." warnings
-suppress_warnings = ['epub.unknown_project_files']
 
 epub_author = u'Rother OSS GmbH'
 epub_publisher = u'Rother OSS GmbH'
