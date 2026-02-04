@@ -332,7 +332,7 @@ Before starting with the initial web configuration you need to start and enable 
    root> systemctl enable --now otobo-web.service
 
 
-After that use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
+After that use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname or server IP) to set up your database and basic system settings such as email accounts.
 
 
 Step 11: First Login
