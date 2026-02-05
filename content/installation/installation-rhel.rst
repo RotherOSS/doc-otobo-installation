@@ -94,9 +94,10 @@ Step 3: Install Additional Programs and Perl Modules
 
 OTOBO requires a working Perl installation with all *core* modules such as the module ``version``.
 
-.. code-block:: text
+.. code-block:: bash
 
-   root> dnf install -y perl perl-DBD-MySQL wget
+   root> subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+   root> dnf install -y wget perl perl-DBD-MySQL libpq-devel libxslt-devel libxml2-devel graphviz-devel unixODBC-devel xz-devel
 
 Required Perl modules may be installed from CPAN.
 However, in more confined environments, access to the internet may be restricted.
@@ -109,8 +110,8 @@ To install the required packages from CPAN:
 
 .. code-block:: bash
 
-    dnf install -y perl-App-cpanminus                                               # Installs the cpanm package manager
-    cpanm --cpanfile /opt/otobo/cpanfile.plackup --notest --installdeps /opt/otobo/install/local        # Installs all required packages
+    root> dnf install -y perl-App-cpanminus                                                                   # Installs the cpanm package manager
+    root> cpanm --cpanfile /opt/otobo/cpanfile.plackup --notest --installdeps /opt/otobo/install/local        # Installs all required packages
 
 
 Option B: Deploy prebuilt packages
@@ -246,7 +247,7 @@ Find the commands needed to set up MySQL below.
 
 .. code-block:: bash
 
-   root> dnf install mysql-server
+   root> dnf install mariadb-server                # 'dnf install mysql-server' for mysql installations
    root> systemctl enable --now mysqld.service
 
 After installing the database server you need configure it.
@@ -257,14 +258,14 @@ Please login to the mysql console and set a different authentication module and 
 .. code-block:: bash
 
    root> mysql -u root
-   root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
+   sql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewRootPassword';
 
 After OTOBO installation it is possible to change the authentication module again, if needed.
 
 .. note::
 
-   The following configuration settings are minimum requirements for MySQL setups.
-   Please add the following lines to the MySQL Server configuration file ``/etc/my.cnf.d/mysql-server.cnf`` under the ``[mysqld]`` section:
+   The following configuration settings are minimum requirements for MariaDB/MySQL setups.
+   Please add the following lines to the Database Server configuration file ``/etc/my.cnf`` under the ``[mysqld]`` section:
 
    .. code-block:: ini
 
