@@ -6,7 +6,7 @@
 
 # -- Variables ------------------------------------------------------------
 # See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2026-02-05'
+doc_datestamp = '2026-02-06'
 doc_description = 'This is the description of the documentation.'
 doc_license = 'GNU Free Documentation License'
 doc_name = 'OTOBO Installation Guide'
@@ -107,7 +107,7 @@ todo_include_todos = False
 
 # -- Options for HTML output ----------------------------------------------
 
-html_logo = '/opt/otrs/var/sphinx/_static/images/otrs-logo.png'
+html_logo = '/opt/otrs/var/sphinx/_static/images/otobo-logo.png'
 html_theme_path = ['/opt/otrs/var/thirdparty/_sphinx-themes']
 html_theme = 'sphinx_rtd_theme'
 html_show_sphinx = False
@@ -122,7 +122,7 @@ html_show_sphinx = False
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['/opt/otrs/var/sphinx/_static']
-html_style = 'css/otrs.css'
+html_style = 'css/otobo.css'
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
