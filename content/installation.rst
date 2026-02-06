@@ -9,6 +9,7 @@ Please refer to any subsection for your preferred installation method.
 .. toctree::
    :maxdepth: 3
    :caption: Contents
+
    installation/installation-docker
    installation/installation-ubuntu
    installation/installation-rhel
