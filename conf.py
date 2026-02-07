@@ -42,8 +42,12 @@ doc_yearstamp,
 # ones.
 extensions = [
     'sphinx.ext.autosectionlabel',
-    'sphinx.ext.extlinks'
+    'sphinx.ext.extlinks',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
 ]
+
+autosummary_generate = False
 
 extlinks = {
     'sysconfig': (
@@ -94,7 +98,7 @@ gettext_compact = True
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.venv', '**/.venv',]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
