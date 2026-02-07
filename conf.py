@@ -1,224 +1,160 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+"""
+conf.py – Sphinx configuration
 
-# -- Variables ------------------------------------------------------------
-# See: https://stackoverflow.com/a/36331678
-doc_datestamp = '2026-02-06'
-doc_description = 'This is the description of the documentation.'
-doc_license = 'GNU Free Documentation License'
-doc_name = 'OTOBO Installation Guide'
-doc_url = 'https://otobo.io'
-doc_vendor = 'Rother OSS GmbH'
-doc_version = '11.0'
-doc_yearstamp = '2026'
+ARCHITECTURE NOTE
+-----------------
+documentation.yml is the single source of truth for:
+- project metadata
+- versions
+- repository names
+- RST variables
 
-rst_prolog = """
-.. |doc-datestamp| replace:: {0}
-.. |doc-description| replace:: {1}
-.. |doc-license| replace:: {2}
-.. |doc-name| replace:: {3}
-.. |doc-url| replace:: {4}
-.. |doc-vendor| replace:: {5}
-.. |doc-version| replace:: {6}
-.. |doc-yearstamp| replace:: {7}
-""".format(
-doc_datestamp,
-doc_description,
-doc_license,
-doc_name,
-doc_url,
-doc_vendor,
-doc_version,
-doc_yearstamp,
+This file only adapts documentation.yml to Sphinx.
+Do NOT hardcode project-specific values here.
+"""
+
+from pathlib import Path
+from datetime import date
+import yaml
+
+# -- Load documentation.yml -----------------------------------------------
+
+_doc = yaml.safe_load(
+    Path('documentation.yml').read_text(encoding='utf-8')
 )
+
+# -- Canonical values (from documentation.yml) ----------------------------
+
+PROJECT_NAME = _doc['ProjectName']
+AUTHOR = _doc['Author']
+VERSION = _doc['Version']
+RELEASE = _doc.get('Release', VERSION)
+
+REPOSITORY = _doc.get('Repository', {})
+REPO_NAME = REPOSITORY.get('Name', 'documentation')
+
+GITHUB = _doc.get('GitHub', {})
+GITHUB_USER = GITHUB.get('User', '')
+GITHUB_REPO = REPO_NAME
+
+VARS = _doc.get('Variables', {})
+
+DOC_NAME = VARS.get('doc_name', PROJECT_NAME)
+DOC_VENDOR = VARS.get('doc_vendor', AUTHOR)
+DOC_VERSION = VARS.get('doc_version', VERSION)
+DOC_LICENSE = VARS.get('doc_license', '')
+DOC_URL = VARS.get('doc_url', '')
+
+DOC_YEARSTAMP = (
+    str(date.today().year)
+    if VARS.get('doc_yearstamp') == 'current_yearstamp'
+    else VARS.get('doc_yearstamp', '')
+)
+
+DOC_DATESTAMP = (
+    date.today().isoformat()
+    if VARS.get('doc_datestamp') == 'current_datestamp'
+    else VARS.get('doc_datestamp', '')
+)
+
+# -- rst_prolog: variables available in all RST files ---------------------
+
+rst_prolog = f"""
+.. |doc-name| replace:: {DOC_NAME}
+.. |doc-vendor| replace:: {DOC_VENDOR}
+.. |doc-version| replace:: {DOC_VERSION}
+.. |doc-license| replace:: {DOC_LICENSE}
+.. |doc-url| replace:: {DOC_URL}
+.. |doc-datestamp| replace:: {DOC_DATESTAMP}
+.. |doc-yearstamp| replace:: {DOC_YEARSTAMP}
+"""
 
 # -- General configuration ------------------------------------------------
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
 extensions = [
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.extlinks',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
 ]
+
 autosectionlabel_prefix_document = True
-autosummary_generate = False
 
 extlinks = {
     'sysconfig': (
-        'https://doc.otobo.org/doc/manual/config-reference/11.0/en/content/%s',
+        f'https://doc.otobo.org/doc/manual/config-reference/{VERSION}/en/content/%s',
         ''
     )
 }
 
-# Add any paths that contain templates here, relative to this directory.
-# Allow for overriding the RTD theme templates from our own directory.
 templates_path = ['_templates']
-html_static_path = ['/opt/otrs/var/sphinx/_static',]
+html_static_path = ['_static']
+html_css_files = ['css/otobo.css']
 
-html_css_files = [
-
-    'css/otobo.css',
-
-]
-
-# The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
 source_suffix = '.rst'
-
-# The master toctree document.
 master_doc = 'content/index'
 
-# General information about the project.
-project = 'OTOBO Installation Guide'
-copyright = '2019-2026 Rother OSS GmbH, https://otobo.io/'
-author = 'Rother OSS GmbH'
+project = PROJECT_NAME
+author = AUTHOR
+version = VERSION
+release = RELEASE
 
-# The version info for the project you're documenting, acts as replacement for
-# |version| and |release|, also used in various other places throughout the
-# built documents.
-#
-# The short X.Y version.
-version = '11.0'
-# The full version, including alpha/beta/rc tags.
-release = '11.0'
-
-# Options for localization
-locale_dirs = ['locale/','/opt/otrs/var/sphinx/locale']
+locale_dirs = ['locale/', '/opt/otrs/var/sphinx/locale']
 gettext_compact = True
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.venv', '**/.venv',]
+exclude_patterns = [
+    '_build',
+    'Thumbs.db',
+    '.DS_Store',
+    '.venv',
+    '**/.venv',
+]
 
-# The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
-
-# If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
+# -- HTML output ----------------------------------------------------------
 
-# -- Options for HTML output ----------------------------------------------
-
-html_logo = '/opt/otrs/var/sphinx/_static/images/otobo-logo.png'
 html_theme = 'sphinx_rtd_theme'
-
+html_logo = '_static/images/otobo-logo.png'
 html_show_sphinx = False
+html_copy_source = False
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-# html_theme_options = {}
-
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
     '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
+        'relations.html',
         'searchbox.html',
     ]
 }
 
-# do not add the source folder to the html output
-html_copy_source = False
-
-# A dictionary of values to pass into the template engine's context for all pages.
 html_context = {
-
-    # Whether the current version is considered stable release.
-    "is_stable": True,
-
-    # The stable release link to show in a note on top (only if `is_stable: False`).
-    "stable_link": '',
-    # GitHub link configuration.
-    "display_github": True,
-    "github_user": "RotherOSS",
-    "github_repo": "doc-otobo-installation",
-    "github_version": "11.0",
-    "conf_py_path": "/",
-
+    'display_github': True,
+    'github_user': GITHUB_USER,
+    'github_repo': GITHUB_REPO,
+    'github_version': VERSION,
+    'conf_py_path': '/',
 }
 
-# -- Options for HTMLHelp output ------------------------------------------
+htmlhelp_basename = REPO_NAME
 
-# Output file base name for HTML help builder.
-htmlhelp_basename = 'doc-otobo-installation'
+# -- LaTeX ---------------------------------------------------------------
 
-
-# -- Options for LaTeX output ---------------------------------------------
-
-latex_logo = '/opt/otrs/var/sphinx/_static/images/otobo-logo.png'
-
+latex_logo = '_static/images/otobo-logo.png'
 latex_engine = 'xelatex'
 
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    #
-    # 'papersize': 'letterpaper',
-
-    # The font size ('10pt', '11pt' or '12pt').
-    #
-    # 'pointsize': '10pt',
-
-    # Additional options for the LaTeX preamble.
-    #
-    # Set postscript to ucs, usage of utf8 and font familiy to helvetica
-    'preamble': '''
-\\usepackage{ucs}
-\\usepackage[utf8x]{inputenc}
-\\usepackage{tgtermes}
-\\usepackage{tgheros}
-\\usepackage{tgcursor}
-\\setmonofont{TeX Gyre Cursor}
-\\setmainfont{Quicksand}
-\\setsansfont{Quicksand}
-''',
-
-# TODO: beautify the whole thing - suggestions:
-#% use the Quicksand font instead of TeX Gyre Heros (has to be installed; e.g. present in /usr/share/fonts/truetype/quicksand/)
-#\setmainfont{Quicksand}
-#\setsansfont{Quicksand}
-#% for package docs the "Chapter" style is a bit much; instead of usepackage[Sonny]{fncychap} try overwriting this sphinx-default(?) by adding
-#\usepackage{titlesec}
-#\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter}{0.8em}{\Huge\bfseries}
-
-#\usepackage[fallback]{xeCJK}
-# Rother OSS / TODO: Do not need vietnam chars, bug
-# \setCJKmainfont{HAN NOM A}
-# \setCJKfallbackfamilyfont{rm}{HAN NOM B}
-# EO Rother OSS
-    # Latex figure (float) alignment
-    #
-    # 'figure_align': 'htbp',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'doc-otobo-installation.tex', 'OTOBO Installation Guide',
-     'Rother OSS GmbH', 'manual'),
+    (
+        master_doc,
+        f'{REPO_NAME}.tex',
+        PROJECT_NAME,
+        AUTHOR,
+        'manual',
+    ),
 ]
 
-# -- Options for EPUB output ----------------------------------------------
+# -- EPUB ---------------------------------------------------------------
 
-# Supress "unknown mimetype for ..." warnings
 suppress_warnings = ['epub.unknown_project_files']
 
-epub_author = 'Rother OSS GmbH'
-epub_publisher = 'Rother OSS GmbH'
-epub_cover = ('/opt/otrs/var/sphinx/_static/images/otobo-logo.png', '')
+epub_author = AUTHOR
+epub_publisher = DOC_VENDOR
+epub_cover = ('_static/images/otobo-logo.png', '')
 epub_show_urls = 'no'
-

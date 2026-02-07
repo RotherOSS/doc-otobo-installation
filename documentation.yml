@@ -1,40 +1,87 @@
 ---
-# variables to be used inside the RST files.
-Variables:
-  doc_name: OTOBO Installation Guide
-  doc_description: This is the description of the documentation.
-  doc_version: 11.0
-  doc_yearstamp: current_yearstamp
-  doc_vendor: Rother OSS GmbH
-  doc_url: https://otobo.de
-  doc_datestamp: current_datestamp
-  doc_license: GNU Free Documentation License
+# ============================================================================
+# documentation.yml
+#
+# Single Source of Truth for this documentation project.
+#
+# This file defines:
+# - project metadata
+# - repository and GitHub information
+# - variables used inside RST files
+# - build and publish settings
+#
+# conf.py MUST NOT contain project-specific hardcoded values.
+# ============================================================================
 
-# project meta information
+
+# ---------------------------------------------------------------------------
+# Project meta information
+# ---------------------------------------------------------------------------
+
 ProjectName: OTOBO Installation Guide
-Copyright: 2019-2024 Rother OSS GmbH, https://otobo.de/
 Author: Rother OSS GmbH
+Copyright: 2019-2026 Rother OSS GmbH, https://otobo.io/
+
 Version: 11.0
 Release: 11.0
 
-# sphinx extension module names to be used
-Extensions:
-  - sphinx.ext.autosectionlabel
-  - sphinx.ext.extlinks
 
-# enable "Edit on GitHub" link
-DisplayGitHubEditButton: 1
+# ---------------------------------------------------------------------------
+# Repository information
+# ---------------------------------------------------------------------------
 
-# generate stable link to the current version
-Stable: 1
+Repository:
+  Name: doc-otobo-installation
 
-# publish documentation to target repository
-Publish: 1
 
-# PDF output directory path and filename
-PDFOutputPath: doc-installation/{{Version}}/{{Language}}/
-PDFFilename: otobo_installation_guide_{{Version}}_{{Language}}.pdf
+# ---------------------------------------------------------------------------
+# GitHub integration
+# ---------------------------------------------------------------------------
 
-# EPub output directory path and filename
-EPUBOutputPath: doc-installation/{{Version}}/{{Language}}/
-EPUBFilename: otobo_installation_guide_{{Version}}_{{Language}}.epub
+GitHub:
+  User: RotherOSS
+  DefaultBranch: rel-11_0
+  DisplayEditButton: true
+
+
+# ---------------------------------------------------------------------------
+# Variables to be used inside RST files
+# (available via rst_prolog in conf.py)
+# ---------------------------------------------------------------------------
+
+Variables:
+  doc_name: OTOBO Installation Guide
+  doc_description: This is the description of the documentation.
+  doc_vendor: Rother OSS GmbH
+  doc_version: 11.0
+  doc_license: GNU Free Documentation License
+  doc_url: https://otobo.io
+  doc_yearstamp: current_yearstamp
+  doc_datestamp: current_datestamp
+
+
+# ---------------------------------------------------------------------------
+# Build & publish configuration
+# (used by CI / Perl build scripts)
+# ---------------------------------------------------------------------------
+
+Publish: true
+Stable: true
+
+
+# ---------------------------------------------------------------------------
+# PDF output configuration
+# ---------------------------------------------------------------------------
+
+PDF:
+  OutputPath: doc-installation/{{Version}}/{{Language}}/
+  Filename: otobo_installation_guide_{{Version}}_{{Language}}.pdf
+
+
+# ---------------------------------------------------------------------------
+# EPUB output configuration
+# ---------------------------------------------------------------------------
+
+EPUB:
+  OutputPath: doc-installation/{{Version}}/{{Language}}/
+  Filename: otobo_installation_guide_{{Version}}_{{Language}}.epub
