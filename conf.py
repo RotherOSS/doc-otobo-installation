@@ -31,12 +31,12 @@ VERSION = str(_doc['Version'])
 RELEASE = str(_doc.get('Release', VERSION))
 
 REPOSITORY = _doc.get('Repository', {})
-REPO_NAME = REPOSITORY.get('Name', 'documentation')
+REPO_NAME  = REPOSITORY.get('Name', 'documentation')
 
 GITHUB = _doc.get('GitHub', {})
 GITHUB_USER = GITHUB.get('User', '')
 GITHUB_REPO = REPOSITORY.get('Name', 'documentation')
-GITHUB_BRANCH = _doc.get('Branch', {})
+GITHUB_BRANCH = GITHUB.get('Branch', {})
 
 VARS = _doc.get('Variables', {})
 
@@ -57,6 +57,28 @@ DOC_DATESTAMP = (
     if VARS.get('doc_datestamp') == 'current_datestamp'
     else VARS.get('doc_datestamp', '')
 )
+
+COPYRIGHT  = _doc.get('Copyright', {})
+COPYRIGHT_YEARNOW   = DOC_YEARSTAMP
+COPYRIGHT_STARTYEAR = COPYRIGHT.get('StartYear', '2019')
+COPYRIGHT_HOLDER    = COPYRIGHT.get('Holder', 'Rother OSS GmbH')
+COPYRIGHT_URL       = COPYRIGHT.get('URL', 'https://otobo.io')
+
+# -- Build copyright with year --------------------------------------------
+
+
+current_year = COPYRIGHT_YEARNOW
+start_year = COPYRIGHT_STARTYEAR
+holder = COPYRIGHT_HOLDER
+url = COPYRIGHT_URL
+
+if start_year == current_year:
+    copyright = f"{current_year} {holder}"
+else:
+    copyright = f"{start_year}–{current_year} {holder}"
+
+# optional: mit URL (RTD kann HTML im Footer)
+copyright += f", {url}"
 
 # -- rst_prolog: variables available in all RST files ---------------------
 
