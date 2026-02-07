@@ -119,6 +119,91 @@ Report Bugs
 
 If you find any kind of bugs in the documentation like typos, wrong information, dead links, etc., please create a bug report on [Github issue tracker](https://github.com/RotherOSS/doc-otobo-installation/issues).
 
+Documentation Architecture
+==========================
+
+Single Source of Truth
+----------------------
+
+This documentation project follows a **single source of truth architecture**.
+
+The file ``documentation.yml`` is the **master configuration file**.
+All project-specific information is defined there and nowhere else.
+
+This includes:
+
+- Project name and description
+- Author and vendor information
+- Version and release
+- Repository name
+- GitHub integration settings
+- Variables used inside RST files
+- Build and publish configuration (HTML / PDF / EPUB)
+
+The goal is to avoid duplication, configuration drift, and
+handbook-specific logic inside build or configuration files.
+
+Role of ``conf.py``
+-------------------
+
+The file ``conf.py`` is intentionally **generic and reusable**.
+
+It must **not** contain hard-coded project-specific values.
+Instead, it **loads ``documentation.yml`` and adapts its content for Sphinx**.
+
+Responsibilities of ``conf.py`` include:
+
+- Reading ``documentation.yml``
+- Mapping metadata to Sphinx settings such as ``project``, ``version``, and ``author``
+- Generating global RST variables via ``rst_prolog`` (for example ``|doc-name|`` or ``|doc-version|``)
+- Configuring the Sphinx theme and extensions
+- Providing GitHub integration for the *Edit on GitHub* links
+
+The same ``conf.py`` can be reused across **all OTOBO documentation repositories**
+(for example Installation Guide, Admin Guide, or User Guide) without modification.
+
+Role of RST Files
+-----------------
+
+RST files contain **content only**.
+
+They must not include:
+
+- Hard-coded project names
+- Hard-coded versions
+- Vendor or copyright strings
+
+Instead, RST files use variables defined in ``documentation.yml``,
+which are made available through ``rst_prolog``.
+
+Examples:
+
+::
+
+   |doc-name|
+   |doc-version|
+   |doc-vendor|
+
+This approach keeps the content clean, consistent, and easy to maintain
+across versions and languages.
+
+Why This Architecture?
+----------------------
+
+This architecture provides several advantages:
+
+- One central place to change project metadata
+- No duplication between YAML, Python, and RST
+- Easy handling of multiple versions and languages
+- CI-friendly and reproducible builds
+- Identical tooling for all documentation handbooks
+
+Rule of thumb:
+
+::
+
+   If you ask "Where do I change this?" → documentation.yml
+   If you ask "How does Sphinx see this?" → conf.py
 
 License
 =======

@@ -357,4 +357,4 @@ If you type a few characters of the command name, TAB will show all matching com
 Step 14: Further Information
 ----------------------------
 
-We advise you to read the OTOBO :doc:`performance-tuning` chapter.
+We advise you to read the OTOBO :doc:`../performance-tuning` chapter.

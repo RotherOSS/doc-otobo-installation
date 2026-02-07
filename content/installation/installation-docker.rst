@@ -26,6 +26,7 @@ The minimal versions of required software, that have been tested, are listed her
     For Ubuntu 24.04 LTS the usage of Compose V2 is recommended.
 
     .. code-block:: bash
+
         root> apt update
         root> apt install docker.io docker-compose-v2
 
@@ -33,15 +34,16 @@ The minimal versions of required software, that have been tested, are listed her
     in order to stay compatible with the ``docker-compose`` command known from Compose V1.
 
     .. code-block:: bash
+
        root> alias docker-compose='docker compose'
 
-git, Docker, and Docker Compose can be installed with the standard system tools.
+Git, Docker, and Docker Compose can be installed with the standard system tools.
 Here is an example for installation on Ubuntu 20.04 Focal Fossa:
 
 .. code-block:: bash
 
-   root> apt install git docker.io docker-compose curl
-   root> systemctl enable docker
+    root> apt install git docker.io docker-compose curl
+    root> systemctl enable docker
 
 Please check the Git and the Docker documentation for instructions on further setup.
 
@@ -53,7 +55,7 @@ We assume here that the user **docker_admin** is used for interacting with Docke
 the **root** user of the Docker host or a dedicated user with the required permissions.
 
 1. Clone the otobo-docker repo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Docker images will eventually be fetched from the repository https://hub.docker.com.
 But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository.
@@ -73,7 +75,7 @@ For example, when *OTOBO 11.0.2* is the current version then please use the tag 
    docker_admin> ls                 # just a sanity check, for example the file README.md should exist
 
 2. Create an initial *.env* file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Docker Compose configuration file *.env* is your primary interface for managing your installation of OTOBO.
 This file must first be created and then be adapted by yourself. In order to simplify the task there
@@ -107,10 +109,10 @@ is achieved by an additional reverse proxy, which is implemented as a nginx serv
 
 For the following commands we assume that HTTPS should be supported.
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> cp -p .docker_compose_env_https .env # or .docker_compose_env_http for HTTP
+        docker_admin> cd /opt/otobo-docker
+        docker_admin> cp -p .docker_compose_env_https .env # or .docker_compose_env_http for HTTP
 
 3. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -446,8 +448,7 @@ in the *.env* file and by activating the mount directove in *docker-compose/otob
 
 **Kerberos SSO Installation Tutorial**
 
-:doc:`sso-kerberos`
-
+:doc:`Kerberos Single Sign On <../sso-kerberos>`
 
 Choosing non-standard ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -703,7 +704,7 @@ Finally, here is a highly subjective collection of links.
 
 * `Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
 * `Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_
-* `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu >`_
+* `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu>`_
 
 **Troubleshooting**
 

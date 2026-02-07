@@ -1,6 +1,5 @@
 .. image:: ../images/otobo-logo.png
    :align: center
-|
 
 ===========================
 OTOBO Installation Tutorial
@@ -38,7 +37,6 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.io).
    introduction
    requirements
    installation
-   installation-docker
    migration-from-otrs
    updating
    updating-docker

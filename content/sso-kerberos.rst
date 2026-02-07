@@ -1,7 +1,7 @@
 Kerberos Single Sign On in OTOBO Docker installation
-================================
+====================================================
 
-Please read to the chapter :doc:`installation-docker` for basic information about installing and configure OTOBO.
+Please read to the chapter :doc:`installation/installation-docker` for basic information about installing and configure OTOBO.
 This tutorial assumes that OTOBO has been installed and configured using Docker.
 
 .. note::
@@ -10,7 +10,7 @@ This tutorial assumes that OTOBO has been installed and configured using Docker.
 
 
 Generate Active Directory User
-----------------------------------------------
+------------------------------
 
 Please create a new Active Directory User with the following settings and save the marked settings:
 
@@ -33,7 +33,7 @@ Generate Active Directory Keytab file
 -------------------------------------
 
 In the next step, we connect to a domain controller of the Active Directory and open a console (cmd) there with administrator privileges.
-Now we use the tool `ktpass.exe`to generate the needed keytab file:
+Now we use the tool `ktpass.exe` to generate the needed keytab file:
 
 .. code-block:: bash
 
@@ -220,6 +220,7 @@ Now you are able to debug the Kerberos settings. Examples:
     kinit -VV -k -t /etc/krb5.keytab HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL
 
 .. code-block:: bash
+
     kinit username@OTRS.LOCAL
 
 In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use seperate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your Kernel/Config.pm).

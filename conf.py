@@ -27,15 +27,16 @@ _doc = yaml.safe_load(
 
 PROJECT_NAME = _doc['ProjectName']
 AUTHOR = _doc['Author']
-VERSION = _doc['Version']
-RELEASE = _doc.get('Release', VERSION)
+VERSION = str(_doc['Version'])
+RELEASE = str(_doc.get('Release', VERSION))
 
 REPOSITORY = _doc.get('Repository', {})
 REPO_NAME = REPOSITORY.get('Name', 'documentation')
 
 GITHUB = _doc.get('GitHub', {})
 GITHUB_USER = GITHUB.get('User', '')
-GITHUB_REPO = REPO_NAME
+GITHUB_REPO = REPOSITORY.get('Name', 'documentation')
+GITHUB_BRANCH = _doc.get('Branch', {})
 
 VARS = _doc.get('Variables', {})
 
@@ -44,7 +45,7 @@ DOC_VENDOR = VARS.get('doc_vendor', AUTHOR)
 DOC_VERSION = VARS.get('doc_version', VERSION)
 DOC_LICENSE = VARS.get('doc_license', '')
 DOC_URL = VARS.get('doc_url', '')
-
+DOC_LOGO = VARS.get('doc_logo', '')
 DOC_YEARSTAMP = (
     str(date.today().year)
     if VARS.get('doc_yearstamp') == 'current_yearstamp'
@@ -86,7 +87,7 @@ extlinks = {
 }
 
 templates_path = ['_templates']
-html_static_path = ['_static']
+html_static_path = ['/opt/otrs/var/sphinx/_static']
 html_css_files = ['css/otobo.css']
 
 source_suffix = '.rst'
@@ -114,7 +115,7 @@ todo_include_todos = False
 # -- HTML output ----------------------------------------------------------
 
 html_theme = 'sphinx_rtd_theme'
-html_logo = '_static/images/otobo-logo.png'
+html_logo = DOC_LOGO
 html_show_sphinx = False
 html_copy_source = False
 
@@ -129,7 +130,7 @@ html_context = {
     'display_github': True,
     'github_user': GITHUB_USER,
     'github_repo': GITHUB_REPO,
-    'github_version': VERSION,
+    'github_version': GITHUB_BRANCH,
     'conf_py_path': '/',
 }
 
@@ -137,7 +138,7 @@ htmlhelp_basename = REPO_NAME
 
 # -- LaTeX ---------------------------------------------------------------
 
-latex_logo = '_static/images/otobo-logo.png'
+latex_logo = DOC_LOGO
 latex_engine = 'xelatex'
 
 latex_documents = [
@@ -156,5 +157,5 @@ suppress_warnings = ['epub.unknown_project_files']
 
 epub_author = AUTHOR
 epub_publisher = DOC_VENDOR
-epub_cover = ('_static/images/otobo-logo.png', '')
+epub_cover = (DOC_LOGO, '')
 epub_show_urls = 'no'
