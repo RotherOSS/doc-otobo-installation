@@ -37,9 +37,6 @@ doc_yearstamp,
 
 # -- General configuration ------------------------------------------------
 
-# If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '1.5.1'
-
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
@@ -57,7 +54,8 @@ extlinks = {
 
 # Add any paths that contain templates here, relative to this directory.
 # Allow for overriding the RTD theme templates from our own directory.
-templates_path = ['/opt/otrs/var/thirdparty/_sphinx-themes/sphinx_rtd_theme/otrs-templates']
+templates_path = ['_templates']
+html_static_path = ['_static',]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -70,7 +68,7 @@ master_doc = 'content/index'
 
 # General information about the project.
 project = 'OTOBO Installation Guide'
-copyright = '2019-2024 Rother OSS GmbH, https://otobo.de/'
+copyright = '2019-2026 Rother OSS GmbH, https://otobo.io/'
 author = 'Rother OSS GmbH'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -108,8 +106,8 @@ todo_include_todos = False
 # -- Options for HTML output ----------------------------------------------
 
 html_logo = '/opt/otrs/var/sphinx/_static/images/otobo-logo.png'
-html_theme_path = ['/opt/otrs/var/thirdparty/_sphinx-themes']
 html_theme = 'sphinx_rtd_theme'
+
 html_show_sphinx = False
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -117,12 +115,6 @@ html_show_sphinx = False
 # documentation.
 #
 # html_theme_options = {}
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['/opt/otrs/var/sphinx/_static']
-html_style = 'css/otobo.css'
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
