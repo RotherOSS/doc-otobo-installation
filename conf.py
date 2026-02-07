@@ -46,7 +46,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
 ]
-
+autosectionlabel_prefix_document = True
 autosummary_generate = False
 
 extlinks = {
@@ -59,7 +59,13 @@ extlinks = {
 # Add any paths that contain templates here, relative to this directory.
 # Allow for overriding the RTD theme templates from our own directory.
 templates_path = ['_templates']
-html_static_path = ['_static',]
+html_static_path = ['/opt/otrs/var/sphinx/_static',]
+
+html_css_files = [
+
+    'css/otobo.css',
+
+]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -139,8 +145,8 @@ html_context = {
     # GitHub link configuration.
     "display_github": True,
     "github_user": "RotherOSS",
-    "github_repo": "doc-otobo-doc-otobo-installation",
-    "github_version": "master",
+    "github_repo": "doc-otobo-installation",
+    "github_version": "11.0",
     "conf_py_path": "/",
 
 }
@@ -148,7 +154,7 @@ html_context = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'doc-otobo-doc-otobo-installation'
+htmlhelp_basename = 'doc-otobo-installation'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -202,7 +208,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'doc-otobo-doc-otobo-installation.tex', 'OTOBO Installation Guide',
+    (master_doc, 'doc-otobo-installation.tex', 'OTOBO Installation Guide',
      'Rother OSS GmbH', 'manual'),
 ]
 
@@ -211,8 +217,8 @@ latex_documents = [
 # Supress "unknown mimetype for ..." warnings
 suppress_warnings = ['epub.unknown_project_files']
 
-epub_author = u'Rother OSS GmbH'
-epub_publisher = u'Rother OSS GmbH'
+epub_author = 'Rother OSS GmbH'
+epub_publisher = 'Rother OSS GmbH'
 epub_cover = ('/opt/otrs/var/sphinx/_static/images/otobo-logo.png', '')
 epub_show_urls = 'no'
 
