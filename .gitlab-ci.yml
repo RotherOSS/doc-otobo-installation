@@ -1,4 +1,7 @@
-# Gitlab pipeline
-trigger:
-  project: rotheross/intern/otobo-documentation
-  branch: main
+include:
+  - project: rotheross/intern/otobo-documentation
+    ref: main
+    file:
+      - ci/check.yml
+      - ci/build.yml
+      - ci/deploy.yml
