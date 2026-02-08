@@ -30,7 +30,7 @@ DOC_LICENSE = globals().get('doc_license', 'GNU Free Documentation License')
 DOC_VENDOR = globals().get('doc_vendor', AUTHOR)
 DOC_LOGO = globals().get(
     'doc_logo',
-    '/opt/otrs/var/sphinx/_static/images/otobo-logo.png',
+    '_static/images/otobo-logo.png',
 )
 
 # -------------------------------------------------------------------------
@@ -60,6 +60,7 @@ rst_prolog = f"""
 extensions = [
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.extlinks',
+    'sphinx_copybutton',
 ]
 
 autosectionlabel_prefix_document = True
@@ -98,7 +99,7 @@ gettext_compact = True
 
 html_theme = 'sphinx_rtd_theme'
 html_logo = DOC_LOGO
-html_static_path = ['/opt/otrs/var/sphinx/_static']
+html_static_path = ['_static']
 html_css_files = ['css/otobo.css']
 
 html_show_sphinx = False
