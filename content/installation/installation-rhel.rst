@@ -35,9 +35,9 @@ SELinux status: enabled is returned when SELinux is enabled.
 Current mode: enforcing is returned when SELinux is running in enforcing mode.
 Policy from config file: targeted is returned when the SELinux targeted policy is used.
 
-Here's how to disable SELinux for RHEL/CentOS/Fedora.
+Here's how to switch off SELinux for RHEL/CentOS/Fedora.
 
-1. Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:
+1. Configure ``SELINUX=permissive`` in the ``/etc/selinux/config`` file:
 
    .. code-block:: text
 
@@ -46,7 +46,7 @@ Here's how to disable SELinux for RHEL/CentOS/Fedora.
       #       enforcing - SELinux security policy is enforced.
       #       permissive - SELinux prints warnings instead of enforcing.
       #       disabled - No SELinux policy is loaded.
-      SELINUX=disabled
+      SELINUX=permissive
       # SELINUXTYPE= can take one of these two values:
       #       targeted - Targeted processes are protected,
       #       mls - Multi Level Security protection.
