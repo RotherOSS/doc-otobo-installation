@@ -16,7 +16,7 @@ Updating
 
 
 Step 1: Stop All Relevant Services and the OTOBO Daemon
-------------------------------------------------------
+-------------------------------------------------------
 
 Please make sure there are no more running services or cron jobs that try to access OTOBO. This will depend on your service configuration.
 
@@ -42,7 +42,7 @@ Step 2: Backup Files and Database
 Create a backup of the hole ``/opt/otobo`` directory and the database.
 
 Example for a standard installation with Ubuntu and MySQL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
@@ -121,7 +121,7 @@ Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what sett
 
 
 Step 4: Check for new needed perl modules 
----------------------------------
+-----------------------------------------
 
 OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary.
 
@@ -141,7 +141,7 @@ OTOBO needs new cpan packages for some version jumps. Please check if new packag
 
 
 Step 5: Update Installed Packages and reconfigure config 
----------------------------------
+--------------------------------------------------------
 
 You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon).
 
@@ -153,7 +153,7 @@ You can use the command below to update all installed packages. This works for a
     otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
 
 Step 6: Only for minor or major release upgrades (for example to upgrade from 10.0 to 10.1)
----------------------------------
+-------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
