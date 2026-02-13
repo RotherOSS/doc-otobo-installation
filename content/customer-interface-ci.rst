@@ -1,5 +1,5 @@
 Adapt customer interface with corporate identity
-================================
+================================================
 
 In OTOBO it is very easy to adapt the customer area to your own corporate identity. 
 Follow this tutorial step by step and OTOBO will shine in your own design in a short time.
@@ -91,7 +91,7 @@ To remove the watermark, please remove the following line inside the file:
     Admin Manual: https://doc.otobo.org/manual/developer/10.1/en/content/how-to-publish-otobo-extensions.html
 
 Change Customer Dashboard tiles and options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To change the colours on the Customer Dashboard, please go to ``Admin -> System Configuration`` and search for **CustomerDashboard**. 
 

@@ -58,6 +58,7 @@ To drop an existing otobo database and create a new one you can use the followin
 First, you have to connect to the MySQL CLI of the `db` container.
 
 .. code-block:: bash
+   
    docker_admin>cd /opt/otobo-docker
    docker_admin>docker-compose exec db bash
    mysql@4f7783595190:/$>mysql -u root -p${MYSQL_ROOT_PASSWORD}

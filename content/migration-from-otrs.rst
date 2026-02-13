@@ -131,6 +131,7 @@ The following OPM packages and OTRS "Feature Addons" need NOT and should NOT be 
 
 The following OTOBO packages have been integrated into OTOBO 11.0. This means that they should not be installed
 in the target system when the target system is OTOBO 11.
+
     - ImportExport
 
 Step 2: Deactivate ``SecureMode`` on OTOBO
@@ -564,7 +565,7 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
     
 
 Optional Step: Streamlined migration of the database (only for experts and spezial scenarios)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the general migration strategy, all data in the database tables is copied row by row from the OTRS database
 into the OTOBO database.

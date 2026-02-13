@@ -1,5 +1,6 @@
 .. image:: ../images/otobo-logo.png
    :align: center
+
 |
 
 ===========================
