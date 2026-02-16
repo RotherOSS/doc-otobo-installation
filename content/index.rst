@@ -43,6 +43,7 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.io).
    backup-restore
    backup-restore-docker
    sso-kerberos
+   sso-kerbeos-native
    customer-interface-ci
    installing-perl-modules
    performance-tuning
