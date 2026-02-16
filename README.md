@@ -14,7 +14,6 @@ To verify changes to the documentation before submitting them, you can generate 
 Clone the repository
 --------------------
 
-
 ```bash
 git clone https://github.com/RotherOSS/doc-otobo-installation.git
 cd doc-otobo-installation
