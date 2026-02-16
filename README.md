@@ -23,7 +23,7 @@ Prerequisites
 -------------
 
 * **Python 3.10+**
-* **make** (standard on Linux/macOS; for Windows use MinGW or WSL)
+* **make** (standard on Linux/macOS; for Windows use MinGW or WSL )
 
 Quick Start
 -----------
