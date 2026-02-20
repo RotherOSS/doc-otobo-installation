@@ -18,7 +18,7 @@ Change colors in Customer Area
 To change the colors for the OTOBO customer interface, please go to ``Admin -> System Configuration`` and change the following settings:
 
 * CustomerColorDefinitions
-* To change the colours on the Customer Dashboard, please go to `Admin -> System Configuration`` and search for CustomerDashboard. In the search result you will find all the options you need with colour definitions.
+* To change the colours on the Customer Dashboard, please go to ``Admin -> System Configuration`` and search for CustomerDashboard. In the search result you will find all the options you need with colour definitions.
 
 
 Change Logos and Pictures
