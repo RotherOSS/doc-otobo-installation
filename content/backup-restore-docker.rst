@@ -1,5 +1,5 @@
 Backup and Restore using Docker
-===============================
+================================
 
 Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts.
 
