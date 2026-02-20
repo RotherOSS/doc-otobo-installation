@@ -49,7 +49,7 @@ made sure that the correct setup is used.
 
 .. note::
 
-    See ``https://hub.docker.com/r/rotheross/otobo/tags`` for the available releases.
+    See https://hub.docker.com/r/rotheross/otobo/tags for the available releases.
 
 .. code-block:: bash
 
