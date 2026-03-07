@@ -1,5 +1,5 @@
 About
-=====
+======
 
 This repository stores the source of the _OTOBO Installation Guide_.
 
