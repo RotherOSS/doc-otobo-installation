@@ -86,3 +86,4 @@ To do this change to your OTOBO directory (normaly `/opt/otobo-docker`) and exec
 
    # clear OTOBO cache
    docker_admin> docker compose exec web bin/otobo.Console.pl Maint::Cache::Delete
+
