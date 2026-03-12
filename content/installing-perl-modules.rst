@@ -17,7 +17,7 @@ For example, the command
 
 .. code-block:: bash
 
-    root> cpanm Acme::Dice
+    root> cpanm -M https://cpan.metacpan.org Acme::Dice
 
 results in:
 
@@ -52,7 +52,7 @@ the option ``--local-lib``. Here is a sample session in the container **web**.
     /opt/otobo
 
     # installing the sample module Acme::Dice
-    otobo@6ef90ed00cd0:~$ cpanm --local-lib local Acme::Dice
+    otobo@6ef90ed00cd0:~$ cpanm --local-lib local -M https://cpan.metacpan.org Acme::Dice
     --> Working on Acme::Dice
     Fetching http://www.cpan.org/authors/id/B/BO/BOFTX/Acme-Dice-1.01.tar.gz ... OK
     Configuring Acme-Dice-1.01 ... OK
