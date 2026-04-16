@@ -7,7 +7,8 @@ Updating
 
 .. note::
 
-   To prepare required perl modules beforehand, you can already download and unzip the new OTOBO version and execute the check modules script, e.g. with the following command (please adjust the file path). This is not necessary in a regular installation and will be part of the later update instruction.
+   To prepare required perl modules beforehand, you can already download and unzip the new OTOBO version and execute the check modules script, e.g. with the following command (please adjust the file path).
+   This is not necessary in a regular installation and will be part of the later update instruction.
 
    .. code-block:: bash
 
@@ -18,10 +19,12 @@ Updating
    On Debian systems you may need to manually install some perl packages before upgrading to 11.0.
 
     .. code-block:: bash
-   
+
       apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
-For OTOBO 11.0, the following packages are being migrated automatically to the framework. This means that no separate packe is necessary and they will be part of OTOBO by default.
+For OTOBO 11.0, the following packages are being migrated automatically to the framework.
+This means that no separate packe is necessary and they will be part of OTOBO by default.
+
     - Ayte-CustomTranslations
     - ExtendedCDBInfoTile
     - ImportExport
@@ -33,10 +36,12 @@ For OTOBO 11.0, the following packages are being migrated automatically to the f
     - RotherOSS-InternalTransitionActions
     - TicketTimeUnitsMandatoryOnlyWithArticle
 
+
 Step 1: Stop All Relevant Services and the OTOBO Daemon
 -------------------------------------------------------
 
-Please make sure there are no more running services or cron jobs that try to access OTOBO. This will depend on your service configuration.
+Please make sure there are no more running services or cron jobs that try to access OTOBO.
+This will depend on your service configuration.
 
 .. code-block:: bash
 
@@ -69,11 +74,14 @@ Example for a standard installation with Ubuntu and MySQL
     root> cp -pr /opt/otobo otobo-prod-old              # Backup the hole OTOBO directory to the update directory
     root> mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
 
-Please check if all files are valid. Now we have a backup with all required data.
+Please check if all files are valid.
+Now we have a backup with all required data.
 
 .. warning::
 
-    Don't proceed without a complete backup of your system. You can use also the :doc:`backup-restore` script for this.
+    Don't proceed without a complete backup of your system.
+    You can use also the :doc:`backup-restore` script for this.
+
 
 Step 2.1: Delete CPAN-directory if you are upgrading from 10.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,8 +97,7 @@ This can also be executed with sudo permissions.
 Step 3: Install the New Release
 -------------------------------
 
-Download the latest otobo release from https://ftp.otobo.org/pub/otobo/.
-and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
+Download the latest otobo release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
 
 .. code-block:: bash
 
@@ -136,7 +143,8 @@ If you have additional packages with default statistics you have to restore the 
 Set File Permissions
 ~~~~~~~~~~~~~~~~~~~~
 
-Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup.
+Please execute the following command to set the file and directory permissions for OTOBO.
+It will try to detect the correct user and group settings needed for your setup.
 
 .. code-block:: bash
 
@@ -145,14 +153,16 @@ Please execute the following command to set the file and directory permissions f
 Check Apache configuration files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Newer versions of OTOBO may need you to adjust the apache configuration. From version 10.1 and onwards we moved from CGI to PSGI.
+Newer versions of OTOBO may need you to adjust the apache configuration.
+From version 10.1 onwards we moved from CGI to PSGI.
 Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs to be adjusted/added.
 
 
 Step 4: Check for new needed Perl modules
 -----------------------------------------
 
-OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary.
+OTOBO needs new cpan packages for some version jumps.
+Please check if new packages are needed and install them if necessary.
 
 .. note::
 
@@ -170,10 +180,12 @@ OTOBO needs new cpan packages for some version jumps. Please check if new packag
     otobo> perl /opt/otobo/bin/otobo.CheckModules.pl --list
 
 
-Step 5: Update Installed Packages and reconfigure config 
+Step 5: Update Installed Packages and reconfigure config
 --------------------------------------------------------
 
-You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon).
+You can use the command below to update all installed packages.
+This works for all packages that are available from online repositories.
+You can update other packages later via the package manager (this requires a running OTOBO daemon).
 
 .. code-block:: bash
 
@@ -202,7 +214,8 @@ Start OTOBO cron jobs and the daemon (in this order):
     otobo> bin/otobo.Daemon.pl start
     otobo> bin/Cron.sh start
 
-Now the services can be started. This will depend on your service configuration, here is an example:
+Now the services can be started.
+This will depend on your service configuration, here is an example:
 
 .. code-block:: bash
 

@@ -1,18 +1,19 @@
 Hardware and Software Requirements
 ==================================
 
-The OTOBO web application can be installed on Linux and other Unix derivates, e.g. OpenBSD or FreeBSD.
+The OTOBO web application can be installed on Linux and other Unix derivatives, e.g., OpenBSD or FreeBSD.
 Running OTOBO on Microsoft Windows is not supported.
 
-The web application uses a relational database as backend. So, to run OTOBO, you'll need to run at least a web server and a database server.
+The web application uses a relational database as backend.
+So, to run OTOBO, you'll need to run at least a web server and a database server.
 The web server and the database server may be installed either on the same or on different hosts.
 
-Alternatively, OTOBO can also run under Docker. When running under Docker, the web and the database server are already included in the setup.
+Alternatively, OTOBO can also run under Docker.
+When running under Docker, the web and the database server are already included in the setup.
 Support for deployment with Kubernetes is under development.
 
 The OTOBO web application requires Perl along with additional Perl modules from CPAN.
-The modules can be installed either with a Perl package manager
-or via the package manager of your operating system (rpm, yast, apt-get).
+The modules can be installed either with a Perl package manager or via the package manager of your operating system (``rpm``, ``yast``, ``apt``).
 There is a console command for checking the module dependencies:
 
 .. code-block:: bash
@@ -27,8 +28,8 @@ If some packages are missing, you can get an install command for your operating 
 
 The listed commands should then be executed with root privileges.
 
-The output of the module check script shows the installed packages and the version numbers. Missing modules
-are marked with a comment.
+The output of the module check script shows the installed packages and the version numbers.
+Missing modules are marked with a comment.
 
 .. code-block:: none
 
@@ -105,7 +106,9 @@ are marked with a comment.
 Hardware Requirements
 ---------------------
 
-Hardware requirements highly depend on the usage of OTOBO. OTOBO can be used to process a few tickets per month or to process hundreds of tickets per day. The storage requirement also depends on the number of tickets and size of attachments.
+Hardware requirements highly depend on the usage of OTOBO.
+OTOBO can be used to process a few tickets per month or to process hundreds of tickets per day.
+The storage requirement also depends on the number of tickets and size of attachments.
 
 We recommend using a machine for testing purposes with **at least**:
 
@@ -121,7 +124,8 @@ We recommend using a machine for production purpose with **at least**:
 
 .. note::
 
-   Hardware requirements depend on the usage of OTOBO. Please contact your OTOBO consultant before deploying any hardware.
+   Hardware requirements depend on the usage of OTOBO.
+   Please contact your OTOBO consultant before deploying any hardware.
 
 Software requirements
 ---------------------
@@ -142,7 +146,7 @@ Databases
 Optional
    - Elasticsearch 7.x (fast search function for live previews)
    - Redis (fast caching)
-   - nginx or any other web server that can be used as a reverse proxy (SSL support and load distribution)
+   - Nginx or any other web server that can be used as a reverse proxy (SSL support and load distribution)
 
 Web browsers
    - Apple Safari

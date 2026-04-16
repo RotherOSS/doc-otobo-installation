@@ -1,7 +1,7 @@
 OTOBO Installation on RHEL
 ==========================
 
-This chapter describes the installation and basic configuration of the central OTOBO framework on a Red Hat Enterprise Linux system.
+This chapter describes the installation and basic configuration of the central OTOBO framework on a Red Hat Enterprise Linux (RHEL) system.
 
 .. note::
 
@@ -19,7 +19,7 @@ You can then use its web interface to login and administer the system.
     You can find the instructions for Docker-based installation at: https://doc.otobo.org/manual/installation/11.0/en/content/installation/installation-docker.html .
 
 
-Preparation: Disable SELinux when it is installed and enabled
+Preparation: Disable SELinux when it is Installed and Enabled
 -------------------------------------------------------------
 
 .. note::
@@ -52,7 +52,8 @@ Here's how to switch off SELinux for RHEL/CentOS/Fedora.
       #       mls - Multi Level Security protection.
       SELINUXTYPE=targeted
 
-2. Reboot your system. After reboot, confirm that the ``getenforce`` command returns *Disabled*:
+2. Reboot your system.
+   After reboot, confirm that the ``getenforce`` command returns *Disabled*:
 
    .. code-block:: bash
 
@@ -63,9 +64,9 @@ Here's how to switch off SELinux for RHEL/CentOS/Fedora.
 
 
 Step 1: Unpack and Install OTOBO
-------------------------------------------
+--------------------------------
 
-Download the latest otobo release from https://ftp.otobo.org/pub/otobo/.
+Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
@@ -114,8 +115,8 @@ To install the required packages from CPAN:
     root> cpanm --cpanfile /opt/otobo/cpanfile.plackup --notest --installdeps /opt/otobo/install/local        # Installs all required packages
 
 
-Option B: Deploy prebuilt packages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Option B: Deploy Pre-built Packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: bash
 
     root> cd /opt/otobo                                                                       # Change into your OTOBO directory
@@ -135,14 +136,15 @@ You may run the following command to verify the installation:
 Step 4: Activate the Default Configuration File
 -----------------------------------------------
 
-There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.dist``. You must activate it by copying it without the ``.dist`` file name extension.
+There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.dist``.
+You must activate it by copying it without the ``.dist`` file name extension.
 
 .. code-block:: bash
 
    root> cp /opt/otobo/Kernel/Config.pm.dist /opt/otobo/Kernel/Config.pm
 
 
-Step 5: Configure systemd services for OTOBO
+Step 5: Configure systemd Services for OTOBO
 --------------------------------------------
 
 The installation package provides systemd unit files.
@@ -161,7 +163,7 @@ After the ``daemon-reload`` all services should be controllable using systemd co
 Step 6: Configure the Nginx Web Server
 ---------------------------------------
 
-OTOBO's webserver listens on localhost on port 5000.
+OTOBO's webserver listens on ``localhost`` on port ``5000``.
 In order to make it accessible from outside, you need to configure a reverse proxy.
 
 Install the Nginx web server:
@@ -176,7 +178,7 @@ It may be found at ``/etc/nginx``.
 Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``.
 
 
-Configure Nginx without SSL support
+Configure Nginx without SSL Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In most cases no further editing of the template is required.
@@ -187,14 +189,14 @@ The new configuration needs to be activated, subsequently.
    root> cp /opt/otobo/scripts/nginx-vhost-80.include.conf /etc/nginx/conf.d/nginx.conf
    root> systemctl restart nginx
 
-It is also required to enable port 80 on the firewall.
+It is also required to enable port ``80`` on the firewall.
 
 .. code-block:: bash
 
    root> firewall-cmd --permanent --add-service=http
    root> firewall-cmd --reload
 
-Configure Nginx **with** SSL support
+Configure Nginx **with** SSL Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to enable SSL support, you need to copy the SSL configuration file.
@@ -215,7 +217,7 @@ On most systems you can use the following command to do so:
 
    root> systemctl restart nginx
 
-It is also required to enable port 80 and 443 on the firewall.
+It is also required to enable port ``80`` and ``443`` on the firewall.
 
 .. code-block:: bash
 
@@ -280,9 +282,10 @@ In order to apply these settings, you need to restart the MySQL service.
 
 
 Step 9: Setup Elasticsearch
------------------------------------
+---------------------------
 
-OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
+OTOBO recommends an active installation of Elasticsearch for quick search.
+The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
 Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
 
@@ -297,13 +300,14 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
 
 Elasticsearch Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Elasticsearch has a multitude of configuration options and possibilities.
 
-In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems.
+In order to ensure error-free operation, you should adjust the JVM heap space for larger OTOBO systems.
 Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``.
-You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:
+You should always set the min and max JVM heap size to the same value.
+For example, to set the heap to 512 MB, set:
 
 .. code-block:: bash
 
@@ -316,7 +320,8 @@ In our tests, a value between 512 MB and 4 GB for medium-sized installations has
 
     See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information.
 
-Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:
+Now you can restart your Elasticsearch server to load the new configuration settings.
+On most systems you can use the following command to do so:
 
 .. code-block:: bash
 
@@ -326,7 +331,7 @@ Now you can restart your Elasticsearch server to load the new configuration sett
 Step 10: Basic System Configuration
 -------------------------------------
 
-Before starting with the initial web configuration you need to start and enable the otobo web service via systemd.
+Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd.
 
 .. code-block:: bash
 
@@ -343,9 +348,10 @@ Now you are ready to login to your system at http://localhost/otobo/index.pl as 
 
 
 Step 12: Start the OTOBO Daemon
---------------------------------------------
+-------------------------------
 
-OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
+OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO.
+The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
 
 .. code-block:: bash
 
@@ -355,17 +361,18 @@ OTOBO daemon is responsible for handling any asynchronous and recurring tasks in
 Step 13: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
 
-All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier.
-
-You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user.
-
-After restarting your shell, you can just type this command followed by TAB, and it will list all available commands:
+All regular OTOBO command line operations happen via the OTOBO console interface.
+This provides an auto-completion for the bash shell which makes finding the right command and options much easier.
+You can activate the bash auto-completion by installing the package ``bash-completion``.
+It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user.
+After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:
 
 .. code-block:: bash
 
    otobo> /opt/otobo/bin/otobo.Console.pl
 
-If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB.
+If you type a few characters of the command name, ``TAB`` will show all matching commands.
+After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``.
 
 .. note::
 

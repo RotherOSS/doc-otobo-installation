@@ -1,7 +1,8 @@
 Backup and Restore
 ==================
 
-OTOBO has built in scripts for backup and restore. Execute the scripts with the option ``-h`` for more information.
+OTOBO has built in scripts for backup and restore ``scripts/backup.pl`` and ``scripts/restore.pl``.
+Execute the scripts with the option ``-h`` for more information.
 
 Backup
 ------
@@ -27,9 +28,9 @@ The output of the script:
     Short options:
      [-h]                   - Display help for this command.
      -d                     - Directory where the backup files should place to.
-     [-c]                   - Select the compression method (gzip|bzip2). Default: gzip.
+     [-c]                   - Select the compression method (gzip|bzip2).\ Default: gzip.
      [-r DAYS]              - Remove backups which are more than DAYS days old.
-     [-t]                   - Specify which data will be saved (fullbackup|nofullbackup|dbonly). Default: fullbackup.
+     [-t]                   - Specify which data will be saved (fullbackup|nofullbackup|dbonly).\ Default: fullbackup.
 
 
     Long options:
@@ -45,7 +46,7 @@ The output of the script:
     With -t dbonly only the database will be saved.
 
     Override the max allowed packet size:
-    When backing up a MySQL one might run into very large database fields. In this case the backup fails.
+    When backing up a MySQL one might run into very large database fields.\ In this case the backup fails.
     For making the backup succeed one can explicitly add the parameter --max-allowed-packet=<SIZE IN BYTES>.
     This setting will be passed on to the command mysqldump.
 
@@ -85,7 +86,8 @@ The output of the script:
     -d                     - Target OTOBO home directory.
     [-h]                   - Display help for this command.
 
-After successful restore it's advised to clear the OTOBO cache.
+
+After successful restore it is advised to clear the OTOBO cache.
 To do this execute the following command:
 
 .. code-block:: bash
@@ -93,8 +95,9 @@ To do this execute the following command:
    # clear OTOBO cache
    otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
 
-Considerations for running OTOBO under Docker
+Considerations for Running OTOBO under Docker
 ----------------------------------------------
 
-The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered.
+The same scripts can be used with OTOBO running under Docker.
+However some Docker specific limitation must be considered.
 Please read to the chapter :doc:`backup-restore-docker` for information about that case.

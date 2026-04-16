@@ -53,7 +53,8 @@ make help
 Contribution
 ============
 
-Contribution to documentation is very welcomed. You can add new pages or edit the existing text.
+Contribution to documentation is very welcome.
+You can add new pages or edit the existing text.
 
 To edit the documentation:
 
