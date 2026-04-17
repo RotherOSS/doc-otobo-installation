@@ -7,7 +7,7 @@ The content of the documentation is in [reStructuredText](https://en.wikipedia.o
 
 
 🛠  Local Preview and Development
-=================================
+================================
 
 To verify changes to the documentation before submitting them, you can generate a local HTML preview. This helps identify syntax errors in ReStructuredText (RST) or layout issues early in the process.
 
