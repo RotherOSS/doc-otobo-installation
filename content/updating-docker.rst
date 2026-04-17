@@ -3,14 +3,13 @@ Updating a Docker-based Installation of OTOBO
 
 .. warning::
 
-    Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in
-    your existing Docker installation for that.
+    Don't update without a complete backup of your system.
+    You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that.
 
-For running OTOBO under Docker we need the OTOBO software itself and an
-environment in which OTOBO can run. The OTOBO Docker image provides the environment
-and a copy of the OTOBO software. The software itself is installed in the volume *otobo_opt_otobo*.
-A named volume is used because run time data, e.g. configuration files and installed packages,
-is stored in the same directory tree.
+For running OTOBO under Docker we need the OTOBO software itself and an environment in which OTOBO can run.
+The OTOBO Docker image provides the environment and a copy of the OTOBO software.
+The software itself is installed in the volume ``otobo_opt_otobo``.
+A named volume is used because run time data, e.g. configuration files and installed packages, is stored in the same directory tree.
 
 When updating to a new version of OTOBO several things have to happen.
 
@@ -29,7 +28,9 @@ When updating to a new version of OTOBO several things have to happen.
 
     Before upgrading, please check if your installed packages are available for the new version
 
-For OTOBO 11.0, the following packages are being migrated automatically to the framework. This means that no separate packe is necessary and they will be part of OTOBO by default.
+For OTOBO 11.0, the following packages are being migrated automatically to the framework.
+This means that no separate packe is necessary and they will be part of OTOBO by default.
+
     - Ayte-CustomTranslations
     - ExtendedCDBInfoTile
     - ImportExport
@@ -44,8 +45,8 @@ For OTOBO 11.0, the following packages are being migrated automatically to the f
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The OTOBO Docker Compose files can change between releases. Therefore is must be
-made sure that the correct setup is used.
+The OTOBO Docker Compose files can change between releases.
+Therefore is must be made sure that the correct setup is used.
 
 .. note::
 
@@ -65,9 +66,9 @@ made sure that the correct setup is used.
 Checking the Docker Compose .env file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The file *.env* controls the OTOBO Docker container. Within that file, the variables
-*OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and *OTOBO_IMAGE_OTOBO_NGINX* declare
-which images are used. The latest images are used when these variables are not set.
+The file *.env* controls the OTOBO Docker container.
+Within that file, the variables ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, and ``OTOBO_IMAGE_OTOBO_NGINX`` declare which images are used.
+The latest images are used when these variables are not set.
 If you want to use a specific version, then please set these variables accordingly.
 
 Fetch the new Docker images
@@ -88,16 +89,17 @@ Update OTOBO
 
 .. warning::
 
-    Please note that minor or major upgrades must always be carried out one after the other. If you would like to upgrade from version 10.0.* to the latest 11.0.*,            please upgrade to 10.1 first and then to 11.0.
+    Please note that minor or major upgrades must always be carried out one after the other.
+    If you would like to upgrade from version 10.0.* to the latest 11.0.*, please upgrade to 10.1 first and then to 11.0.
 
-In this step the volume *otobo_opt_otobo* is updated and the following OTOBO console commands are performed:
+In this step the volume ``otobo_opt_otobo`` is updated and the following OTOBO console commands are performed:
 
 - Admin::Package::ReinstallAll
 - Admin::Package::UpgradeAll
 - Maint::Config::Rebuild
 - Maint::Cache::Delete
 
-For minor and major version upgrades, prior to this also update tasks for the core system have to be performed
+For minor and major version upgrades, prior to this also update tasks for the core system have to be performed as docker admin:
 
 .. code-block:: bash
 
@@ -113,7 +115,7 @@ For minor and major version upgrades, prior to this also update tasks for the co
     # a quick sanity check
     docker_admin> docker-compose ps
 
-    # ** Only for minor or major release upgrades! **
+    # **Only for minor or major release upgrades!**
     # run upgrade tasks for the OTOBO core (for example when upgrading from 10.1 to 11.0)
     docker_admin> docker-compose exec web perl scripts/DBUpdate-to-11.0.pl
 
@@ -128,16 +130,16 @@ For minor and major version upgrades, prior to this also update tasks for the co
 
 .. note::
 
-    For simple patchlevel updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of
-    the script *scripts/update.sh*.
-    This script runs the commands starting with the **docker-compose pull** command. Note that
-    that calling the database upgrade scripts is not included and therefor it cannot be used for version upgrades.
+    For simple patchlevel updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script *scripts/update.sh*.
+    This script runs the commands starting with the **docker-compose pull** command.
+    Note that calling the database upgrade scripts is not included and therefor it cannot be used for version upgrades.
+    As a docker administrator, you can use the script as follows:
 
     .. code-block:: bash
 
-        docker_admin> ./scripts/update.sh --help
-        docker_admin> ./scripts/update.sh
-        docker_admin> docker-compose restart
+        ./scripts/update.sh --help
+        ./scripts/update.sh
+        docker-compose restart
 
 .. note::
 

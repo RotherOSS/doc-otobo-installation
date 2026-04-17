@@ -22,7 +22,7 @@ You can then use its web interface to login and administer the system.
 Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
-Download the latest otobo release from https://ftp.otobo.org/pub/otobo/.
+Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
@@ -31,7 +31,7 @@ Unpack the source archive (for example, using ``tar``) into the directory ``/opt
     root> cd /opt/otobo-install                                             # Change into the update directory
     root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download the latest OTOBO 11 release
     root> tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-11.x.x/* /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
+    root> cp -r otobo-11.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -41,7 +41,7 @@ Use the following script to get an overview of all installed and required CPAN m
 
 .. note::
 
-   On Debian systems, like Ubuntu, you may need to manually install some perl packages:
+   On Debian systems, like Ubuntu, you may need to manually install some Perl packages:
 
    .. code-block:: bash
 
@@ -72,7 +72,7 @@ Execute this command to get an install command to install the missing dependenci
 .. note::
 
    There are a number of optional or alternative modules which can be installed, mostly for more customized versions of OTOBO.
-   Calling CheckModules.pl without any argument will list a complete listing of packages required for full functionality.
+   Calling ``otobo.CheckModules.pl`` without any argument will list a complete listing of packages required for full functionality.
 
 
 Step 3: Create the OTOBO User
@@ -116,7 +116,7 @@ After the ``daemon-reload`` all services should be controllable using systemd co
 Step 6: Configure the Nginx Web Server
 ---------------------------------------
 
-OTOBO's webserver listens on localhost on port 5000.
+OTOBO's webserver listens on ``localhost`` on port ``5000``.
 In order to make it accessible from outside, you need to configure a reverse proxy.
 
 Install the Nginx web server:
@@ -131,7 +131,7 @@ It may be found at ``/etc/nginx``.
 Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``.
 
 
-Configure Nginx without SSL support
+Configure Nginx without SSL Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In most cases no further editing of the template is required.
@@ -142,14 +142,14 @@ The new configuration needs to be activated, subsequently.
    root> cp /opt/otobo/scripts/nginx-vhost-80.include.conf /etc/nginx/conf.d/nginx.conf
    root> systemctl restart nginx
 
-It is also required to enable port 80 on the firewall.
+It is also required to enable port ``80`` on the firewall.
 
 .. code-block:: bash
 
    root> firewall-cmd --permanent --add-service=http
    root> firewall-cmd --reload
 
-Configure Nginx **with** SSL support
+Configure Nginx **with** SSL Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to enable SSL support, you need to copy the SSL configuration file.
@@ -170,7 +170,7 @@ On most systems you can use the following command to do so:
 
    root> systemctl restart nginx
 
-It is also required to enable port 80 and 443 on the firewall (if configured).
+It is also required to enable port ``80`` and ``443`` on the firewall (if configured).
 
 .. code-block:: bash
 
@@ -232,7 +232,7 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
 
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup.
-You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:
+You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:
 
 .. code-block:: bash
 
@@ -248,7 +248,8 @@ After installing execute the script:
 Step 8: Setup Elasticsearch
 -----------------------------------
 
-OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
+OTOBO recommends an active installation of Elasticsearch for quick search.
+The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
 Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
 
@@ -273,7 +274,8 @@ Elasticsearch Configuration
 
 In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems.
 Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``.
-You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:
+You should always set the min and max JVM heap size to the same value.
+For example, to set the heap to 512 MB, set:
 
 .. code-block:: bash
 
@@ -286,7 +288,8 @@ In our tests, a value between 512 MB and 4 GB for medium-sized installations has
 
     See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information.
 
-Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:
+Now you can restart your Elasticsearch server to load the new configuration settings.
+On most systems you can use the following command to do so:
 
 .. code-block:: bash
 
@@ -296,7 +299,7 @@ Now you can restart your Elasticsearch server to load the new configuration sett
 Step 9: Basic System Configuration
 -------------------------------------
 
-Before starting with the initial web configuration you need to start and enable the otobo web service via systemd.
+Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd.
 
 .. code-block:: bash
 
@@ -313,16 +316,18 @@ Now you are ready to login to your system at http://localhost/otobo/index.pl as 
 
 
 Step 11: Start the OTOBO Daemon
---------------------------------------------
+-------------------------------
 
-OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
+OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO.
+The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
 
 .. code-block:: bash
 
    otobo> systemctl enable --now otobo-daemon.service
 
 
-OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
+OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO.
+The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
 
 .. code-block:: bash
 
@@ -333,17 +338,18 @@ OTOBO daemon is responsible for handling any asynchronous and recurring tasks in
 Step 13: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
 
-All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier.
-
-You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user.
-
-After restarting your shell, you can just type this command followed by TAB, and it will list all available commands:
+All regular OTOBO command line operations happen via the OTOBO console interface.
+This provides an auto-completion for the bash shell which makes finding the right command and options much easier.
+You can activate the bash auto-completion by installing the package ``bash-completion``.
+It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user.
+After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:
 
 .. code-block:: bash
 
    otobo> /opt/otobo/bin/otobo.Console.pl
 
-If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB.
+If you type a few characters of the command name, ``TAB`` will show all matching commands.
+After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``.
 
 .. note::
 

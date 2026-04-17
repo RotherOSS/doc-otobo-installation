@@ -1,0 +1,27 @@
+name: PR Check
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/cache/restore@v5
+        id: cache-venv-restore
+        with:
+          path: .venv
+          key: ${{ runner.os }}-venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
+
+      - if: steps.cache-venv-restore.outputs.cache-hit != 'true'
+        run: make venv
+      - if: steps.cache-venv-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v5
+        with:
+          path: .venv
+          key: ${{ steps.cache-venv-restore.outputs.cache-primary-key }}
+
+
+      - run: make check
