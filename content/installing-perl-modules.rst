@@ -18,14 +18,14 @@ For example, the command
 
 .. code-block:: bash
 
-    root> cpanm -M https://cpan.metacpan.org Acme::Dice
+   cpanm -M https://cpan.metacpan.org Acme::Dice
 
 results in:
 
 .. code-block:: bash
 
-    otobo> perldoc -l Acme::Dice
-    /usr/local/share/perl/5.30.0/Acme/Dice.pm
+    perldoc -l Acme::Dice
+    # /usr/local/share/perl/5.30.0/Acme/Dice.pm
 
 Docker-based Installations
 ----------------------------
@@ -45,11 +45,11 @@ Specifically, we need to add the option ``--local-lib``.
 Here is a sample session in the container ``web``.
 
 
-.. code-block:: bash
+.. code-block::
 
     # starting a bash session in the container web
     docker_admin> cd /opt/otobo-docker/
-    docker_admin> docker-compose exec web bash
+    docker_admin> docker compose exec web bash
     otobo@6ef90ed00cd0:~$ pwd
     /opt/otobo
 

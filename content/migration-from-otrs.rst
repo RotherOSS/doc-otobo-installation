@@ -47,13 +47,13 @@ With the OTOBO Migration Interface it is possible to employ the following migrat
     Docker:
         Migrate to a Docker-based installation of OTOBO 10.1.
 
-2.  A variant of the general strategy where the database migration is streamlined.
+#.  A variant of the general strategy where the database migration is streamlined.
 
     Use the ETL-like migration when the source database mustn't suffer from increased load or when access to the source database is a bottleneck.
     In the general strategy, the data is row by row first read from the *otrs* database and then inserted into the OTOBO database.
     In this variant, the complete *otrs* database tables are first exported, then transformed, and then imported into the *otobo* database.
 
-3.  Migration from an Oracle based OTRS 6 / OTRS 7 installation to an Oracle based OTOBO installation.
+#.  Migration from an Oracle based OTRS 6 / OTRS 7 installation to an Oracle based OTOBO installation.
 
     This is a special case that is not supported by the general migration strategy.
     This means that a variant of the streamlined strategy must be used.
@@ -161,18 +161,18 @@ In the non-Docker case execute the following commands as the user ``otobo``:
 .. code-block:: bash
 
     # in case you are logged in as root
-    root> su - otobo
+    su - otobo
 
-    otobo> /opt/otobo/bin/Cron.sh stop
-    otobo> /opt/otobo/bin/otobo.Daemon.pl stop --force
+    /opt/otobo/bin/Cron.sh stop
+    /opt/otobo/bin/otobo.Daemon.pl stop --force
 
 When OTOBO is running in Docker, you just need to stop the service ``daemon``:
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> docker-compose stop daemon
-    docker_admin> docker-compose ps     # otobo_daemon_1 should have exited with the code 0
+    cd /opt/otobo-docker
+    docker compose stop daemon
+    docker compose ps     # otobo-daemon-1 should have exited with the code 0
 
 .. note::
 
@@ -200,23 +200,23 @@ For installing ``sshpass``, please log in on the server as user ``root`` and exe
 
 .. code-block:: bash
 
-    $ # Install sshpass under Debian / Ubuntu Linux
-    $ sudo apt-get install sshpass
+    # Install sshpass under Debian / Ubuntu Linux
+    sudo apt install sshpass
 
 .. code-block:: bash
 
-    $ #Install sshpass under RHEL/CentOS Linux
-    $ sudo yum install sshpass
+    # Install sshpass under RHEL/CentOS Linux
+    sudo yum install sshpass
 
 .. code-block:: bash
 
-    $ # Install sshpass under Fedora
-    $ sudo dnf install sshpass
+    # Install sshpass under Fedora
+    sudo dnf install sshpass
 
 .. code-block:: bash
 
-    $ # Install sshpass under OpenSUSE Linux
-    $ sudo zypper install sshpass
+    # Install sshpass under OpenSUSE Linux
+    sudo zypper install sshpass
 
 The same thing must be done for ``rsync`` when it isn't available yet.
 
@@ -241,9 +241,11 @@ Please make sure there are no running services or cron jobs.
 
 .. code-block:: bash
 
-    root> su - otrs
-    otrs> /opt/otrs/bin/Cron.sh stop
-    otrs> /opt/otrs/bin/otrs.Daemon.pl stop --force
+    # in case you are logged in as root
+    su - otrs
+
+    /opt/otrs/bin/Cron.sh stop
+    /opt/otrs/bin/otrs.Daemon.pl stop --force
 
 Clear the Caches and the Operational Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -253,12 +255,14 @@ The mail queue should at this point already be empty.
 
 .. code-block:: bash
 
-    root> su - otrs
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
+    # in case you are logged in as root
+    su - otrs
+
+    /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
+    /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
+    /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
+    /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
+    /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
 
 Optional Step for Docker: Make Required Data Available Inside Container
 ------------------------------------------------------------------------
@@ -266,7 +270,7 @@ Optional Step for Docker: Make Required Data Available Inside Container
 There are some specifics to be considered when your OTOBO installation is running under Docker.
 The most relevant: processes running in a Docker container generally cannot access directories outside the container.
 There is an exception though: directories mounted as volumes into the container can be accessed.
-Also, note that the MariaDB database running in ``otobo_db_1`` is not directly accessible from outside the container network.
+Also, note that the MariaDB database running in ``otobo-db-1`` is not directly accessible from outside the container network.
 
 .. note::
 
@@ -289,21 +293,21 @@ First we need to find out where the volume ``otobo_opt_otobo`` is available on t
 
 .. code-block:: bash
 
-    docker_admin> otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
-    docker_admin> echo $otobo_opt_otobo_mp  # just a sanity check
+    otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    echo $otobo_opt_otobo_mp  # just a sanity check
 
 For safe copying, we use ``rsync``.
 Depending on your Docker setup, the command ``rsync`` might need to be run with ``sudo``.
 
 .. code-block:: bash
 
-    docker_admin> # when docker_admin is root
-    docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
-    docker_admin> ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+    # when docker_admin is root
+    rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
+    ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
-    docker_admin> # when docker_admin is not root
-    docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
-    docker_admin> sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+    # when docker_admin is not root
+    sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
+    sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
 This copied directory will be available as ``/opt/otobo/var/tmp/copied_otrs`` within the container.
 
@@ -320,15 +324,19 @@ The application then guides you through the migration process.
     Please restart the webserver in this case.
     This forces the webserver to read in the current configuration.
 
+    For a native installation, the command is:
+
     .. code-block:: bash
 
-        # native installation
-        root> service apache2 restart
+        service apache2 restart
 
-        # Docker-based installation
-        docker_admin> cd /opt/otobo-docker
-        docker_admin> docker-compose restart web
-        docker_admin> docker-compose ps     # otobo_web_1 should be running again
+    For a Docker-based installation, the commands are:
+
+    .. code-block:: bash
+
+        cd /opt/otobo-docker
+        docker compose restart web
+        docker compose ps     # otobo-web-1 should be running again
 
 .. note::
 
@@ -339,7 +347,7 @@ The application then guides you through the migration process.
 
     The default values for OTRS database user and password are taken from ``Kernel/Config.pm`` in the OTRS home directory.
     Change the proposed settings if you are using a dedicated database user for the migration.
-    Also change the settings when you work with a database that was copied into the ``otobo_db_1`` Docker container.
+    Also change the settings when you work with a database that was copied into the ``otobo-db-1`` Docker container.
 
 .. note::
 
@@ -365,17 +373,18 @@ Once you have decided that the migration was successful and that you want to use
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo>
-    otobo> /opt/otobo/bin/Cron.sh start
-    otobo> /opt/otobo/bin/otobo.Daemon.pl start
+    # in case you are logged in as root
+    su - otobo
+
+    /opt/otobo/bin/Cron.sh start
+    /opt/otobo/bin/otobo.Daemon.pl start
 
 In the Docker case:
 
 .. code-block:: bash
 
-    docker_admin> cd ~/otobo-docker
-    docker_admin> docker-compose start daemon
+    cd ~/otobo-docker
+    docker compose start daemon
 
 Step 6: After Successful Migration!
 ------------------------------------
@@ -567,7 +576,8 @@ Stop the webserver for OTOBO, so that the DB connection for OTOBO is closed.
 
 .. note::
 
-    If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` has to be executed, to create the tables ``stats_report`` & ``data_storage``, which were newly added in version 10.1.
+    If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` has to be executed,
+    to create the tables ``stats_report`` & ``data_storage``, which were newly added in version 10.1.
 
 
 Optional Step: Streamlined Migration of the Database (only for Experts and Special Scenarios)
@@ -603,8 +613,8 @@ This case is supported by the script ``bin/backup.pl``.
 
 .. code-block:: bash
 
-    otobo> cd /opt/otobo
-    otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
+    cd /opt/otobo
+    scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
 
 .. note::
 
@@ -618,11 +628,11 @@ Native installation:
 
 .. code-block:: bash
 
-    otobo> cd <dump_dir>
-    otobo> mysql -u root -p<root_secret> otobo < otrs_pre.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_data.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
+    cd <dump_dir>
+    mysql -u root -p<root_secret> otobo < otrs_pre.sql
+    mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
+    mysql -u root -p<root_secret> otobo < otrs_data.sql
+    mysql -u root -p<root_secret> otobo < otrs_post.sql
 
 Docker-based installation:
 
@@ -631,27 +641,27 @@ Note that the password for the database root is now the password that has been s
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_pre.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_schema_for_otobo.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_data.sql
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_post.sql
+    cd /opt/otobo-docker
+    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_pre.sql
+    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_schema_for_otobo.sql
+    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_data.sql
+    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_post.sql
 
 For a quick check whether the import worked, you can run the following commands.
 
 .. code-block:: bash
 
-    otobo> mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    otobo> mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+    mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 When running under Docker:
 
 .. code-block:: bash
 
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    docker_admin> docker-compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+    docker compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+    docker compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    docker compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 The database is now migrated.
 This means that during the next step we can skip the database migration.

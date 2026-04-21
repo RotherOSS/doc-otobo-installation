@@ -36,10 +36,10 @@ In the next step copy the logo into the OTOBO home directory:
 .. code-block:: bash
 
     # Using OTOBO Docker Installation
-    otobo_admin> docker cp /tmp/logo.png otobo_web_1:/opt/otobo/var/httpd/htdocs/skins/Customer/default/img/
+    docker cp /tmp/logo.png otobo-web-1:/opt/otobo/var/httpd/htdocs/skins/Customer/default/img/
 
     # Nativ installation in /opt/otobo
-    otobo_admin> cp /tmp/logo.png /opt/otobo/var/httpd/htdocs/skins/Customer/default/img/
+    cp /tmp/logo.png /opt/otobo/var/httpd/htdocs/skins/Customer/default/img/
 
 
 The next sections describe the changes required in the OTOBO Agent Interface.
