@@ -6,6 +6,8 @@ Execute the scripts with the option ``-h`` for more information.
 
 Backup
 ------
+In order to backup the OTOBO system, the script ``scripts/backup.pl`` can be used.
+The script creates a backup of the OTOBO system in the specified directory.
 
 .. note::
 
@@ -13,7 +15,7 @@ Backup
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/scripts/backup.pl -h
+   /opt/otobo/scripts/backup.pl -h
 
 The output of the script:
 
@@ -59,18 +61,69 @@ The output of the script:
 
 .. note::
 
-  --extra-dump-options="--single-transaction" prevents the database tables from being locked, so OTOBO can still be used during the backup.
+  ``--extra-dump-options="--single-transaction"`` prevents the database tables from being locked, so OTOBO may still be used during backup archive creation.
+
+Docker
+~~~~~~
+
+The same scripts might be used when OTOBO is running under Docker, but some Docker specific limitations have to be considered.
+In order to be able to write a backup archive to the file system outside of the Docker container, appropriate volume mounts and permissions must be configured.
+
+.. code-block:: bash
+
+    # create the backup directory on the host
+    mkdir otobo_backup
+
+    # give the backup dir to the user otobo.
+    # we use the UID and GID of the user otobo inside the container
+    chown 1000:1000 otobo_backup
+
+    # create the Docker volume
+    docker volume create --name otobo_backup \
+      --opt type=none \
+      --opt device=$PWD/otobo_backup \
+      --opt o=bind
+
+We use an ephemeral container of OTOBO to pull the backup and place it in the backup directory on the host:
+
+.. code-block:: bash
+
+   docker run -it --rm --volume otobo_opt_otobo:/opt/otobo \
+      --volume otobo_backup:/otobo_backup \
+      --network otobo_default \
+      rotheross/otobo:latest-11_0 scripts/backup.pl \
+      --extra-dump-options="--single-transaction" -d /otobo_backup
+
+The parameters used, assume the defaults presented throughout this manual.
+You may need to fit them to your setup, e.g., if you use a different network name or a different image tag.
 
 Restore
 -------
 
-.. note::
-
-   To restore the database make sure that the database ``otobo`` exists and contains no tables.
+To restore the OTOBO system from backup, the script ``scripts/restore.pl`` can be used.
+For the script to be able to place the data into the database, the database name, name, and password have to be setup like the backed up system.
+The restore script, restores the configuration files from the backup archive first, and then uses the restored configuration files to connect to the database and restore the data.
+You may read them from backup to fit your database setup:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/scripts/restore.pl -h
+   tar -xOzf Config.tar.gz Kernel/Config.pm | grep '{Database'
+
+You may also fit the database connection parameters within the backup file before running the restore script:
+
+.. code-block:: bash
+
+   vim Config.tar.gz
+
+.. note::
+
+   To restore the database make sure the target database contains no tables.
+
+You may execute the restore script with the option ``-h`` for more information.
+
+.. code-block:: bash
+
+   /opt/otobo/scripts/restore.pl -h
 
 The output of the script:
 
@@ -92,12 +145,45 @@ To do this execute the following command:
 
 .. code-block:: bash
 
-   # clear OTOBO cache
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
+   /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
 
-Considerations for Running OTOBO under Docker
-----------------------------------------------
 
-The same scripts can be used with OTOBO running under Docker.
-However some Docker specific limitation must be considered.
-Please read to the chapter :doc:`backup-restore-docker` for information about that case.
+Docker
+~~~~~~
+To drop an existing OTOBO database and create a new one you can use the following commands.
+First, you have to connect to the MariaDB command line interface of the ``db`` container:
+
+.. code-block:: bash
+
+   cd /opt/otobo-docker
+   docker compose exec db mysql -u root -p
+
+Enter the database root password when prompted.
+As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database:
+
+.. code-block:: sql
+
+   DROP DATABASE otobo;
+   CREATE DATABASE otobo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   GRANT ALL PRIVILEGES ON otobo.* TO 'otobo'@'%';
+
+For restoring the backup we also need to specify which backup should be restored.
+The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``.
+
+.. code-block:: bash
+
+    # restore a backup
+    docker run -it --rm \
+      --volume otobo_opt_otobo:/opt/otobo \
+      --volume otobo_backup:/otobo_backup \
+      --network otobo_default \
+      rotheross/otobo:latest-11_0 \
+      scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>
+
+After successful restore it is advised to clear the OTOBO cache.
+To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:
+
+.. code-block:: bash
+
+   docker compose exec web bin/otobo.Console.pl Maint::Cache::Delete
+

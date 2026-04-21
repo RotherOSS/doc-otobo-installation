@@ -42,7 +42,6 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.io).
    updating
    updating-docker
    backup-restore
-   backup-restore-docker
    sso-kerberos
    sso-kerberos-native
    customer-interface-ci
