@@ -43,7 +43,7 @@ build: $(VENV_STAMP) ## Build the local HTML preview.
 	@$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)/html"
 	@echo "Done! Run \"make open\" to show the preview in your browser."
 
-check: $(VENV_STAMP) ## Check validity
+check: $(VENV_STAMP) clean ## Check validity
 	@status=0; \
 	echo "[check] buildability ..."; \
 	$(SPHINXBUILD) --color -q -W --keep-going -b html "$(SOURCEDIR)" "$(BUILDDIR)/html" || status=1; \
@@ -59,7 +59,7 @@ open: ## Open the generated HTML preview in the default browser.
 
 auto: build ## Automatically rebuild the documentation on changes.
 	@sleep 2 && $(OPEN_CMD) "http://localhost:9426/content/" &
-	@$(VENV)/bin/sphinx-autobuild -a --port 9426 --builder html --no-initial "$(SOURCEDIR)" "$(BUILDDIR)/html"
+	@$(VENV)/bin/sphinx-autobuild -a --port 9426 -b html --no-initial "$(SOURCEDIR)" "$(BUILDDIR)/html"
 
 clean: ## Remove the generated documentation build output.
 	rm -rf $(BUILDDIR)
