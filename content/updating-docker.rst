@@ -14,10 +14,10 @@ A named volume is used because run time data, e.g. configuration files and insta
 When updating to a new version of OTOBO several things have to happen.
 
 - The Docker Compose files have to be updated.
-- The Docker Compose config file *.env* has to be checked.
+- The Docker Compose configuration file ``.env`` has to be checked.
 - The new Docker image has to be fetched.
-- The volume *otobo_opt_otobo* must be updated.
-- Some maintainance tasks must be executed.
+- The volume ``otobo_opt_otobo`` must be updated.
+- Some maintenance tasks must be executed.
 
 .. note::
 
@@ -42,31 +42,36 @@ This means that no separate packe is necessary and they will be part of OTOBO by
     - RotherOSS-InternalTransitionActions
     - TicketTimeUnitsMandatoryOnlyWithArticle
 
+
 Updating the Docker Compose files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The OTOBO Docker Compose files can change between releases.
-Therefore is must be made sure that the correct setup is used.
+The OTOBO Docker Compose files may change between releases.
+Therefore, is must be made sure that the correct setup is used.
 
 .. note::
 
     See https://hub.docker.com/r/rotheross/otobo/tags for the available releases.
 
+To obtain the new Docker Compose files, the OTOBO Docker repository must be updated to the wanted version:
+As a docker administrator, you can do this as follows:
+
 .. code-block:: bash
 
     # Change to the otobo docker directory
-    docker_admin> cd /opt/otobo-docker
+    cd /opt/otobo-docker
 
     # Get the latest tags
-    docker-admin> git fetch --tags
+    git fetch --tags
 
-    # Update OTOBO docker-compose repository to version 11.x.y.
-    docker-admin> git checkout rel-11_x_y
+    # Update OTOBO docker compose repository to version 11.x.y.
+    git checkout rel-11_x_y
 
-Checking the Docker Compose .env file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The file *.env* controls the OTOBO Docker container.
+Checking the Docker Compose ``.env`` file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The file ``.env`` controls the OTOBO Docker container.
 Within that file, the variables ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, and ``OTOBO_IMAGE_OTOBO_NGINX`` declare which images are used.
 The latest images are used when these variables are not set.
 If you want to use a specific version, then please set these variables accordingly.
@@ -79,10 +84,10 @@ Docker compose can be used for fetching the wanted images from https://hub.docke
 .. code-block:: bash
 
     # Change to the otobo docker directory
-    docker_admin> cd /opt/otobo-docker
+    cd /opt/otobo-docker
 
     # fetch the new images, either the default tag 'latest-11_0' or the specific version tag declared in .env
-    docker_admin> docker-compose pull
+    docker compose pull
 
 Update OTOBO
 ~~~~~~~~~~~~~~~
@@ -94,52 +99,52 @@ Update OTOBO
 
 In this step the volume ``otobo_opt_otobo`` is updated and the following OTOBO console commands are performed:
 
-- Admin::Package::ReinstallAll
-- Admin::Package::UpgradeAll
-- Maint::Config::Rebuild
-- Maint::Cache::Delete
+- ``Admin::Package::ReinstallAll``
+- ``Admin::Package::UpgradeAll``
+- ``Maint::Config::Rebuild``
+- ``Maint::Cache::Delete``
 
 For minor and major version upgrades, prior to this also update tasks for the core system have to be performed as docker admin:
 
 .. code-block:: bash
 
     # stop and remove the containers, but keep the named volumes
-    docker_admin> docker-compose down
+    docker compose down
 
     # copy the OTOBO software, while containers are still stopped
-    docker_admin> docker-compose run --no-deps --rm web copy_otobo_next
+    docker compose run --no-deps --rm web copy_otobo_next
 
     # start containers again, using the new version and the updated /opt/otobo
-    docker_admin> docker-compose up --detach
+    docker compose up --detach
 
     # a quick sanity check
-    docker_admin> docker-compose ps
+    docker compose ps
 
     # **Only for minor or major release upgrades!**
     # run upgrade tasks for the OTOBO core (for example when upgrading from 10.1 to 11.0)
-    docker_admin> docker-compose exec web perl scripts/DBUpdate-to-11.0.pl
+    docker compose exec web perl scripts/DBUpdate-to-11.0.pl
 
     # complete the update, with running database
-    docker_admin> docker-compose exec web /opt/otobo_install/entrypoint.sh do_update_tasks
+    docker compose exec web /opt/otobo_install/entrypoint.sh do_update_tasks
 
     # inspect the update log
-    docker_admin> docker-compose exec web cat /opt/otobo/var/log/update.log
+    docker compose exec web cat /opt/otobo/var/log/update.log
 
     # restart all container again
-    docker_admin> docker-compose restart
+    docker compose restart
 
 .. note::
 
-    For simple patchlevel updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script *scripts/update.sh*.
-    This script runs the commands starting with the **docker-compose pull** command.
-    Note that calling the database upgrade scripts is not included and therefor it cannot be used for version upgrades.
+    For simple patch level updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script ``scripts/update.sh``.
+    This script runs the commands starting with the ``docker compose pull`` command.
+    Note that calling the database upgrade scripts is not included and therefore it cannot be used for version upgrades.
     As a docker administrator, you can use the script as follows:
 
     .. code-block:: bash
 
         ./scripts/update.sh --help
         ./scripts/update.sh
-        docker-compose restart
+        docker compose restart
 
 .. note::
 
@@ -147,4 +152,4 @@ For minor and major version upgrades, prior to this also update tasks for the co
 
     .. code-block:: bash
 
-        docker exec -it otobo_web_1 perl bin/otobo.Console.pl Admin::ITSM::ConfigItem::UpgradeTo11
+        docker compose exec web perl bin/otobo.Console.pl Admin::ITSM::ConfigItem::UpgradeTo11

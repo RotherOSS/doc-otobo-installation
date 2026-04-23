@@ -35,34 +35,34 @@ Generate Active Directory Keytab file
 -------------------------------------
 
 In the next step, we connect to a domain controller of the Active Directory and open a console (cmd) there with administrator privileges.
-Now we use the tool `ktpass.exe` to generate the needed keytab file:
+Now we use the tool ``ktpass.exe`` to generate the needed keytab file:
 
 .. code-block:: bash
 
     ktpass.exe -princ HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -mapuser OTRS\otrs32-centos6 -crypto All -pass Password -ptype KRB5_NT_PRINCIPAL -out c:\krb5.keytab
 
 
-* `-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL -> Picture Number 1+@+Picture Number 2`
-* `-mapuser = OTRS\otrs32-centos6  (Username prä Win 2000) ->  -> Picture Number 3+\+Picture Number`
-* `-pass = Password from user otrs32-centos6 (Active Directory User)`
-* `-out = c:/krb5.keytab`
+* ``-princ = HTTP/otrs32-centos6.otrs.local@OTRS.LOCAL`` → Picture Number 1 and 2
+* ``-mapuser = OTRS\otrs32-centos6  (Username prä Win 2000)`` → Picture Number 3 and 4
+* ``-pass = Password`` → from user otrs32-centos6 (Active Directory User)
+* ``-out = c:/krb5.keytab`` → storage location for the generated keytab file
 
 .. note::
 
-   Please write the domain (@OTRS.LOCAL) always in capital letters.
+   Please write the domain (``@OTRS.LOCAL``) always in capital letters.
    The password must not contain some special characters.
 
-In the next step please move the krb5.keytab file to the OTOBO Server:
+In the next step please move the ``krb5.keytab`` file to the OTOBO Server:
 
 .. code-block:: bash
 
     # Create new directory
-    docker_admin> mkdir /opt/otobo-docker/nginx-conf
+    mkdir /opt/otobo-docker/nginx-conf
 
     # Move the file krb5.keytab to the new directory (Attention, depending on where you have placed the krb5.conf file, the command below will change.)
-    docker_admin> mv ?/krb5.keytab /opt/otobo-docker/nginx-conf/krb5.keytab
+    mv ?/krb5.keytab /opt/otobo-docker/nginx-conf/krb5.keytab
 
-Create a new volume for your custom nginx configuration
+Create a new Volume for Your Custom Nginx Configuration
 -------------------------------------------------------
 
 .. code-block:: bash
@@ -75,7 +75,7 @@ Create a new volume for your custom nginx configuration
     docker rm tmp-nginx-container
     vim docker-compose/otobo-nginx-custom-config.yml
 
-Create new OTOBO .env file
+Create new OTOBO .env File
 --------------------------
 
 First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.tmp`` and create a new ``.env`` file including the kerberos settings.
@@ -83,39 +83,41 @@ First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.t
 .. code-block:: bash
 
     # Stop OTOBO Container if running
-    docker_admin>cd /opt/otobo-docker
-    docker_admin>docker-compose down
+    cd /opt/otobo-docker
+    docker compose down
 
     # create a backup of the old .env file
-    docker_admin>mv /opt/otobo-docker/.env /opt/otobo-docker/.env.tmp
+    mv /opt/otobo-docker/.env /opt/otobo-docker/.env.tmp
 
-    # create a new backupfile including kerberos settings
-    docker_admin>cp /opt/otobo-docker/.docker_compose_env_https_kerberos /opt/otobo-docker/.env
+    # create a new backup file including kerberos settings
+    cp /opt/otobo-docker/.docker_compose_env_https_kerberos /opt/otobo-docker/.env
 
-Now copy your existing configuration options to the new .env file (at least OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY)
+Now copy your existing configuration options to the new ``.env`` file (at least ``OTOBO_DB_ROOT_PASSWORD``, ``OTOBO_NGINX_SSL_CERTIFICATE``, ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``)
 and insert the following Kerberos settings:
 
-# Kerberos keytab
-OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab
+.. code-block:: bash
 
-# Kerberos config (Important, please comment out this option like here!)
-# In default configuration the krb5.conf file is generated automatically
-# OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf
+   # Kerberos keytab
+   OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab
 
-# Kerberos Service Name
-OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-centos6.otrs.local # -> Picture Number 1
+   # Kerberos config (Important, please comment out this option like here!)
+   # In default configuration the krb5.conf file is generated automatically
+   # OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf
 
-# Kerberos REALM
-OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> Picture Number 2
+   # Kerberos Service Name
+   OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-centos6.otrs.local # -> Picture Number 1
 
-# Active Directory Domain Controller / Kerberos kdc
-OTOBO_NGINX_KERBEROS_KDC=
+   # Kerberos REALM
+   OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> Picture Number 2
 
-# Active Directory Domain Controller / Kerberos Admin Server
-OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com
+   # Active Directory Domain Controller / Kerberos kdc
+   OTOBO_NGINX_KERBEROS_KDC=
 
-# Kerberos Default Domain
-OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local
+   # Active Directory Domain Controller / Kerberos Admin Server
+   OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com
+
+   # Kerberos Default Domain
+   OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local
 
 
 Start OTOBO
@@ -125,8 +127,8 @@ After the initial Kerberos configuration we start OTOBO again:
 
 .. code-block:: bash
 
-    # Start OTOBO using docker-compose
-    docker_admin> docker-compose up -d
+    # Start OTOBO using Docker Compose
+    docker compose up -d
 
 
 Tell OTOBO to use the Kerberos-Authentication
@@ -138,7 +140,7 @@ The authentication will not take place via LDAP anymore.
 To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm
 E.g. these lines could work:
 
-.. code-block:: bash
+.. code-block:: perl
 
     $Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth';
 
@@ -147,7 +149,7 @@ E.g. these lines could work:
     $Self->{'AuthModule::HTTPBasicAuth::ReplaceRegExp'} = '^(.+?)@.+?$';
 
 
-Configure Browser to understand Kerberos SSO
+Configure Browser to Understand Kerberos SSO
 ---------------------------------------------
 
 For SSO to work, the browser must be configured accordingly.
@@ -162,8 +164,10 @@ Enter "about:config" in the firefox address line
 
 and change the following settings:
 
-* network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)
-* network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)
+.. code-block::
+
+   network.negotiate-auth.trusted-uris = https:// (or https://otobofqdn)
+   network.negotiate-auth.delegation-uris = http:// (or https://otobofqdn)
 
 
 Debugging and Problems
@@ -174,7 +178,7 @@ If the Kerberos SSO does not work, please check first if the NGINX container is 
 .. code-block:: bash
 
     # Check Container
-    docker_admin> docker ps
+    docker ps
 
 
 In the next step please check the NGINX logs for more information:
@@ -182,33 +186,30 @@ In the next step please check the NGINX logs for more information:
 .. code-block:: bash
 
     # Check NGINX logs
-    docker_admin> docker logs otobo_nginx_1 -f
+    docker compose logs nginx -f
 
 
 If NGINX is running, please login into the NGINX Container and check all needed files:
 
 .. code-block:: bash
 
-    # Login to the NGINX Container
-    docker_admin> docker exec -it otobo_nginx_1 bash
-
     # Now please check if the krb5.conf file exists with your needed values
-    nginx_root> cat /etc/krb5.conf
+    docker compose exec nginx cat /etc/krb5.conf
 
     # Now please check if the krb5.keytab file exists
-    nginx_root> cat /etc/krb5.keytab
+    docker compose exec nginx cat /etc/krb5.keytab
 
     # If not, please quit from the container and copy the file again using docker
-    docker_admin> docker cp /opt/otobo-docker/nginx-conf/krb5.keytab otobo_nginx_1:/etc/krb5.keytab
+    docker compose cp /opt/otobo-docker/nginx-conf/krb5.keytab nginx:/etc/krb5.keytab
 
 
-Kerberos debugging
+Kerberos Debugging
 ~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
-     # Login to the NGINX Container
-    docker_admin> docker exec -it otobo_nginx_1 bash
+   # Login to the NGINX Container
+   docker compose exec nginx bash
 
 Now you are able to debug the Kerberos settings.
 Examples:
