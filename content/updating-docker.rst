@@ -43,7 +43,40 @@ This means that no separate packe is necessary and they will be part of OTOBO by
     - TicketTimeUnitsMandatoryOnlyWithArticle
 
 
-Updating the Docker Compose files
+Upgrade Docker Compose
+~~~~~~~~~~~~~~~~~~~~~~
+
+Please take note, that Docker Compose v1 is deprecated and will not be supported in the future.
+If ``docker-compose --version`` shows a version beginning with ``1``, Docker Compose v1 is installed.
+If ``docker ps`` shows a container called ``otobo_web_1``, then Docker Compose v1 is running your container.
+
+If your host is a recent Ubuntu Linux, migration is straight forward and does not entail downtime of OTOBO:
+
+.. code-block:: bash
+
+   # install docker compose v2
+   sudo apt install docker-compose-v2
+
+   # Change to the otobo docker directory
+   cd /opt/otobo-docker
+
+   # stop the containers
+   docker-compose down
+
+   # start containers again usind docker compose v2
+   docker compose up --detach
+
+   # remove docker compose v1
+   sudo apt remove docker-compose
+
+
+.. note::
+
+   Docker Compose v2 entails a new naming scheme for the containers, e.g., ``otobo_web_1`` becomes ``otobo-web-1`` (note the change of ``_`` to ``-``).
+   If you have tooling that relies on the ``docker-compose`` command or the name of the containers, e.g., when using ``acme.sh`` in standalone mode, you need to refit your setup.
+
+
+Updating the Docker Compose Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The OTOBO Docker Compose files may change between releases.
@@ -51,24 +84,24 @@ Therefore, is must be made sure that the correct setup is used.
 
 .. note::
 
-    See https://hub.docker.com/r/rotheross/otobo/tags for the available releases.
+   See https://hub.docker.com/r/rotheross/otobo/tags for the available releases.
 
 To obtain the new Docker Compose files, the OTOBO Docker repository must be updated to the wanted version:
 As a docker administrator, you can do this as follows:
 
 .. code-block:: bash
 
-    # Change to the otobo docker directory
-    cd /opt/otobo-docker
+   # Change to the otobo docker directory
+   cd /opt/otobo-docker
 
-    # Get the latest tags
-    git fetch --tags
+   # Get the latest tags
+   git fetch --tags
 
-    # Update OTOBO docker compose repository to version 11.x.y.
-    git checkout rel-11_x_y
+   # Update OTOBO docker compose repository to version 11.x.y.
+   git checkout rel-11_x_y
 
 
-Checking the Docker Compose ``.env`` file
+Checking the Docker Compose ``.env`` File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The file ``.env`` controls the OTOBO Docker container.
@@ -76,7 +109,7 @@ Within that file, the variables ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELAST
 The latest images are used when these variables are not set.
 If you want to use a specific version, then please set these variables accordingly.
 
-Fetch the new Docker images
+Fetch the new Docker Images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/.
