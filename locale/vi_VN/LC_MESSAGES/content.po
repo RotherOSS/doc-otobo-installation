@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 14:53+0000\n"
+"POT-Creation-Date: 2026-04-28 12:52+0000\n"
 "PO-Revision-Date: 2025-11-16 09:18+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Vietnamese <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/vi/>\n"
@@ -35,94 +35,86 @@ msgstr "OTOBO đã tích hợp các skript cho việc sao lưu và khôi phục.
 msgid "Backup"
 msgstr "Sao lưu"
 
-#: ../content/backup-restore.rst:12
+#: ../content/backup-restore.rst:9
+msgid "In order to backup the OTOBO system, the script ``scripts/backup.pl`` can be used. The script creates a backup of the OTOBO system in the specified directory."
+msgstr ""
+
+#: ../content/backup-restore.rst:14
 msgid "To create a new backup, write permission for the destination directory is needed for the user ``otobo``."
 msgstr "Để tạo bản sao lưu mới, người dùng ``otobo`` cần có quyền ghi vào thư mục đích."
 
-#: ../content/backup-restore.rst:18 ../content/backup-restore.rst:75
+#: ../content/backup-restore.rst:20 ../content/backup-restore.rst:128
 msgid "The output of the script:"
 msgstr "Kết quả đầu ra của kịch bản:"
 
-#: ../content/backup-restore.rst:62
-msgid "--extra-dump-options=\"--single-transaction\" prevents the database tables from being locked, so OTOBO can still be used during the backup."
+#: ../content/backup-restore.rst:64
+msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database tables from being locked, so OTOBO may still be used during backup archive creation."
 msgstr ""
 
-#: ../content/backup-restore.rst:65
+#: ../content/backup-restore.rst:67 ../content/backup-restore.rst:152
+#, fuzzy
+#| msgid "Docker:"
+msgid "Docker"
+msgstr "Docker:"
+
+#: ../content/backup-restore.rst:69
+#, fuzzy
+#| msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered. Please read to the chapter :doc:`backup-restore-docker` for information about that case."
+msgid "The same scripts might be used when OTOBO is running under Docker, but some Docker specific limitations have to be considered. In order to be able to write a backup archive to the file system outside of the Docker container, appropriate volume mounts and permissions must be configured."
+msgstr "Các kịch bản tương tự có thể được sử dụng với OTOBO chạy trên Docker. Tuy nhiên, một số hạn chế cụ thể của Docker cần được xem xét. Vui lòng đọc phần :doc:`backup-restore-docker` để biết thêm thông tin về trường hợp này."
+
+#: ../content/backup-restore.rst:87
+msgid "We use an ephemeral container of OTOBO to pull the backup and place it in the backup directory on the host:"
+msgstr ""
+
+#: ../content/backup-restore.rst:97
+msgid "The parameters used, assume the defaults presented throughout this manual. You may need to fit them to your setup, e.g., if you use a different network name or a different image tag."
+msgstr ""
+
+#: ../content/backup-restore.rst:101
 msgid "Restore"
 msgstr "Khôi phục"
 
-#: ../content/backup-restore-docker.rst:55 ../content/backup-restore.rst:69
-msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
+#: ../content/backup-restore.rst:103
+msgid "To restore the OTOBO system from backup, the script ``scripts/restore.pl`` can be used. For the script to be able to place the data into the database, the database name, name, and password have to be setup like the backed up system. The restore script, restores the configuration files from the backup archive first, and then uses the restored configuration files to connect to the database and restore the data. You may read them from backup to fit your database setup:"
+msgstr ""
+
+#: ../content/backup-restore.rst:112
+msgid "You may also fit the database connection parameters within the backup file before running the restore script:"
+msgstr ""
+
+#: ../content/backup-restore.rst:120
+#, fuzzy
+#| msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
+msgid "To restore the database make sure the target database contains no tables."
 msgstr "Để khôi phục cơ sở dữ liệu, hãy đảm bảo rằng cơ sở dữ liệu ``otobo`` tồn tại và không chứa bất kỳ bảng nào."
 
-#: ../content/backup-restore.rst:90
+#: ../content/backup-restore.rst:122
+msgid "You may execute the restore script with the option ``-h`` for more information."
+msgstr ""
+
+#: ../content/backup-restore.rst:143
 msgid "After successful restore it is advised to clear the OTOBO cache. To do this execute the following command:"
 msgstr ""
 
-#: ../content/backup-restore-docker.rst:7 ../content/backup-restore.rst:99
-#, fuzzy
-#| msgid "Considerations for running OTOBO under Docker"
-msgid "Considerations for Running OTOBO under Docker"
-msgstr "Các yếu tố cần xem xét khi chạy OTOBO trong Docker"
-
-#: ../content/backup-restore.rst:101
-msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered. Please read to the chapter :doc:`backup-restore-docker` for information about that case."
-msgstr "Các kịch bản tương tự có thể được sử dụng với OTOBO chạy trên Docker. Tuy nhiên, một số hạn chế cụ thể của Docker cần được xem xét. Vui lòng đọc phần :doc:`backup-restore-docker` để biết thêm thông tin về trường hợp này."
-
-#: ../content/backup-restore-docker.rst:2
-msgid "Backup and Restore using Docker"
-msgstr "Sao lưu và khôi phục bằng Docker"
-
-#: ../content/backup-restore-docker.rst:4
-msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
-msgstr "Vui lòng đọc phần :doc:`backup-restore` để biết thông tin cơ bản về các skript sao lưu và khôi phục."
-
-#: ../content/backup-restore-docker.rst:9
-#, fuzzy
-#| msgid "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
-msgid "The standard scripts ``scripts/backup.pl`` and ``scripts/restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
-msgstr "Các kịch bản tiêu chuẩn ``backup.pl`` và ``restore.pl`` cũng có thể được sử dụng với OTOBO chạy trên Docker. Tuy nhiên, một số hạn chế cụ thể của Docker cần được xem xét."
-
-#: ../content/backup-restore-docker.rst:12
-msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
-msgstr "Đầu tiên, chúng ta cần đảm bảo rằng các tệp sao lưu không được tạo trong hệ thống tệp nội bộ của container Docker. Bởi vì trong trường hợp đó, các tệp được tạo sẽ bị mất khi container bị dừng. Điều này có nghĩa là thư mục sao lưu phải được đặt trong một volume. Trong hướng dẫn này, chúng ta chỉ xem xét trường hợp đơn giản nhất, trong đó thư mục sao lưu là một thư mục cục bộ trên máy chủ Docker. Vị trí của thư mục sao lưu trong container có thể được chọn tùy ý. Trong ví dụ này, chúng ta chọn thư mục cục bộ ``otobo_backup`` làm vị trí trên máy chủ và ``/otobo_backup`` làm vị trí trong container."
-
-#: ../content/backup-restore-docker.rst:19
-#, fuzzy
-#| msgid "Secondly, commands in the Docker container usually run as the user `otobo` with the user id 1000 and the group id 1000. It must be made sure, that this user can write in the backup directory."
-msgid "Secondly, commands in the Docker container usually run as the user ``otobo`` with the user id ``1000`` and the group id ``1000``. It must be made sure, that this user can write in the backup directory."
-msgstr "Thứ hai, các lệnh trong container Docker thường được thực thi với tư cách người dùng `otobo` có ID người dùng 1000 và ID nhóm 1000. Cần đảm bảo rằng người dùng này có quyền ghi vào thư mục sao lưu."
-
-#: ../content/backup-restore-docker.rst:22
-msgid "First we need to create the volume."
-msgstr "Đầu tiên, chúng ta cần tạo khối lượng."
-
-#: ../content/backup-restore-docker.rst:38
-msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
-msgstr "Để tạo bản sao lưu, chúng ta cần một cơ sở dữ liệu đang hoạt động và các phân vùng ``otobo_opt_otobo`` và ``otobo_backup``. Điều này có nghĩa là máy chủ web và dịch vụ OTOBO có thể, nhưng không bắt buộc, phải được tắt."
-
-#: ../content/backup-restore-docker.rst:51
-msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database tables from being locked, so OTOBO can still be used during the backup."
-msgstr ""
-
-#: ../content/backup-restore-docker.rst:57
+#: ../content/backup-restore.rst:153
 #, fuzzy
 #| msgid "To drop an existing otobo database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the `db` container."
-msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the ``db`` container."
+msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MariaDB command line interface of the ``db`` container:"
 msgstr "Để xóa cơ sở dữ liệu otobo hiện có và tạo một cơ sở dữ liệu mới, bạn có thể sử dụng các lệnh sau. Đầu tiên, bạn cần kết nối với giao diện dòng lệnh MySQL (MySQL CLI) của container `db`."
 
-#: ../content/backup-restore-docker.rst:66
+#: ../content/backup-restore.rst:161
 #, fuzzy
 #| msgid "As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database."
-msgid "As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database."
+msgid "Enter the database root password when prompted. As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database:"
 msgstr "Ngay sau khi kết nối với máy chủ MySQL, bạn có thể xóa và tạo lại cơ sở dữ liệu `otobo`."
 
-#: ../content/backup-restore-docker.rst:74
+#: ../content/backup-restore.rst:170
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr "Để khôi phục bản sao lưu, chúng ta cũng cần chỉ định bản sao lưu nào cần khôi phục. Biểu tượng ``&lt;TIMESTAMP&gt;`` tương tự như ``2020-09-07_09-38``."
 
-#: ../content/backup-restore-docker.rst:82
-msgid "After successful restore it's advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
+#: ../content/backup-restore.rst:183
+msgid "After successful restore it is advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
 msgstr ""
 
 #: ../content/customer-interface-ci.rst:2
@@ -4241,8 +4233,10 @@ msgid "Updating a Docker-based Installation of OTOBO"
 msgstr "Cập nhật cài đặt OTOBO dựa trên Docker"
 
 #: ../content/updating-docker.rst:6
-msgid "Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that."
-msgstr "Đừng cập nhật mà không có bản sao lưu đầy đủ của hệ thống. Bạn có thể sử dụng skript :doc:`backup-restore-docker` trong cài đặt Docker hiện có của mình để thực hiện việc đó."
+#, fuzzy
+#| msgid "Don't proceed without a complete backup of your system. You can use also the :doc:`backup-restore` script for this."
+msgid "Don't update without a complete backup of your system. See :doc:`backup-restore` for more information."
+msgstr "Không nên tiếp tục mà không có bản sao lưu đầy đủ của hệ thống. Bạn cũng có thể sử dụng skript :doc:`backup-restore` cho mục đích này."
 
 #: ../content/updating-docker.rst:9
 #, fuzzy
@@ -4382,6 +4376,39 @@ msgstr "Đối với các bản cập nhật phiên bản nhỏ (ví dụ: từ 
 #: ../content/updating-docker.rst:151
 msgid "When upgrading from 10.1.x to 11.0.x with the ITSM plugin installed, the following command has to be executed additionally:"
 msgstr "Khi nâng cấp từ phiên bản 10.1.x lên 11.0.x với plugin ITSM đã được cài đặt, cần thực thi thêm lệnh sau:"
+
+#, fuzzy
+#~| msgid "Considerations for running OTOBO under Docker"
+#~ msgid "Considerations for Running OTOBO under Docker"
+#~ msgstr "Các yếu tố cần xem xét khi chạy OTOBO trong Docker"
+
+#~ msgid "Backup and Restore using Docker"
+#~ msgstr "Sao lưu và khôi phục bằng Docker"
+
+#~ msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
+#~ msgstr "Vui lòng đọc phần :doc:`backup-restore` để biết thông tin cơ bản về các skript sao lưu và khôi phục."
+
+#, fuzzy
+#~| msgid "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
+#~ msgid "The standard scripts ``scripts/backup.pl`` and ``scripts/restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
+#~ msgstr "Các kịch bản tiêu chuẩn ``backup.pl`` và ``restore.pl`` cũng có thể được sử dụng với OTOBO chạy trên Docker. Tuy nhiên, một số hạn chế cụ thể của Docker cần được xem xét."
+
+#~ msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
+#~ msgstr "Đầu tiên, chúng ta cần đảm bảo rằng các tệp sao lưu không được tạo trong hệ thống tệp nội bộ của container Docker. Bởi vì trong trường hợp đó, các tệp được tạo sẽ bị mất khi container bị dừng. Điều này có nghĩa là thư mục sao lưu phải được đặt trong một volume. Trong hướng dẫn này, chúng ta chỉ xem xét trường hợp đơn giản nhất, trong đó thư mục sao lưu là một thư mục cục bộ trên máy chủ Docker. Vị trí của thư mục sao lưu trong container có thể được chọn tùy ý. Trong ví dụ này, chúng ta chọn thư mục cục bộ ``otobo_backup`` làm vị trí trên máy chủ và ``/otobo_backup`` làm vị trí trong container."
+
+#, fuzzy
+#~| msgid "Secondly, commands in the Docker container usually run as the user `otobo` with the user id 1000 and the group id 1000. It must be made sure, that this user can write in the backup directory."
+#~ msgid "Secondly, commands in the Docker container usually run as the user ``otobo`` with the user id ``1000`` and the group id ``1000``. It must be made sure, that this user can write in the backup directory."
+#~ msgstr "Thứ hai, các lệnh trong container Docker thường được thực thi với tư cách người dùng `otobo` có ID người dùng 1000 và ID nhóm 1000. Cần đảm bảo rằng người dùng này có quyền ghi vào thư mục sao lưu."
+
+#~ msgid "First we need to create the volume."
+#~ msgstr "Đầu tiên, chúng ta cần tạo khối lượng."
+
+#~ msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
+#~ msgstr "Để tạo bản sao lưu, chúng ta cần một cơ sở dữ liệu đang hoạt động và các phân vùng ``otobo_opt_otobo`` và ``otobo_backup``. Điều này có nghĩa là máy chủ web và dịch vụ OTOBO có thể, nhưng không bắt buộc, phải được tắt."
+
+#~ msgid "Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that."
+#~ msgstr "Đừng cập nhật mà không có bản sao lưu đầy đủ của hệ thống. Bạn có thể sử dụng skript :doc:`backup-restore-docker` trong cài đặt Docker hiện có của mình để thực hiện việc đó."
 
 #~ msgid "Compose V2 is implemented as a plugin of the command ``docker``. An alias can be used in order to stay compatible with the ``docker-compose`` command known from Compose V1."
 #~ msgstr "Compose V2 được triển khai dưới dạng một plugin của lệnh ``docker``. Một biệt danh có thể được sử dụng để duy trì tính tương thích với lệnh ``docker-compose`` đã quen thuộc từ Compose V1."

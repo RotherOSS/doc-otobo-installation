@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 14:53+0000\n"
+"POT-Creation-Date: 2026-04-28 12:52+0000\n"
 "PO-Revision-Date: 2024-09-02 14:23+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Hungarian <http://weblate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/hu/>\n"
@@ -36,100 +36,85 @@ msgstr "Az OTOBO beépített szkriptekkel rendelkezik a biztonsági mentéshez �
 msgid "Backup"
 msgstr "Biztonsági mentés"
 
-#: ../content/backup-restore.rst:12
+#: ../content/backup-restore.rst:9
+msgid "In order to backup the OTOBO system, the script ``scripts/backup.pl`` can be used. The script creates a backup of the OTOBO system in the specified directory."
+msgstr ""
+
+#: ../content/backup-restore.rst:14
 #, fuzzy
 msgid "To create a new backup, write permission for the destination directory is needed for the user ``otobo``."
 msgstr "Új biztonsági mentés készítéséhez a ``otobo`` felhasználónak írási jogosultságra van szüksége a célkönyvtárhoz."
 
-#: ../content/backup-restore.rst:18 ../content/backup-restore.rst:75
+#: ../content/backup-restore.rst:20 ../content/backup-restore.rst:128
 #, fuzzy
 msgid "The output of the script:"
 msgstr "A szkript kimenete:"
 
-#: ../content/backup-restore.rst:62
-msgid "--extra-dump-options=\"--single-transaction\" prevents the database tables from being locked, so OTOBO can still be used during the backup."
+#: ../content/backup-restore.rst:64
+msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database tables from being locked, so OTOBO may still be used during backup archive creation."
 msgstr ""
 
-#: ../content/backup-restore.rst:65
+#: ../content/backup-restore.rst:67 ../content/backup-restore.rst:152
+#, fuzzy
+msgid "Docker"
+msgstr "Docker:"
+
+#: ../content/backup-restore.rst:69
+#, fuzzy
+msgid "The same scripts might be used when OTOBO is running under Docker, but some Docker specific limitations have to be considered. In order to be able to write a backup archive to the file system outside of the Docker container, appropriate volume mounts and permissions must be configured."
+msgstr "Ugyanezek a szkriptek használhatók a Docker alatt futó OTOBO-val is. Néhány Docker-specifikus korlátozást azonban figyelembe kell venni."
+
+#: ../content/backup-restore.rst:87
+msgid "We use an ephemeral container of OTOBO to pull the backup and place it in the backup directory on the host:"
+msgstr ""
+
+#: ../content/backup-restore.rst:97
+msgid "The parameters used, assume the defaults presented throughout this manual. You may need to fit them to your setup, e.g., if you use a different network name or a different image tag."
+msgstr ""
+
+#: ../content/backup-restore.rst:101
 #, fuzzy
 msgid "Restore"
 msgstr "Visszaállítás"
 
-#: ../content/backup-restore-docker.rst:55 ../content/backup-restore.rst:69
+#: ../content/backup-restore.rst:103
+msgid "To restore the OTOBO system from backup, the script ``scripts/restore.pl`` can be used. For the script to be able to place the data into the database, the database name, name, and password have to be setup like the backed up system. The restore script, restores the configuration files from the backup archive first, and then uses the restored configuration files to connect to the database and restore the data. You may read them from backup to fit your database setup:"
+msgstr ""
+
+#: ../content/backup-restore.rst:112
+msgid "You may also fit the database connection parameters within the backup file before running the restore script:"
+msgstr ""
+
+#: ../content/backup-restore.rst:120
 #, fuzzy
-msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
+msgid "To restore the database make sure the target database contains no tables."
 msgstr "Az adatbázis visszaállításához győződjön meg róla, hogy az ``otobo`` adatbázis létezik, és nem tartalmaz táblákat."
 
-#: ../content/backup-restore.rst:90
+#: ../content/backup-restore.rst:122
+msgid "You may execute the restore script with the option ``-h`` for more information."
+msgstr ""
+
+#: ../content/backup-restore.rst:143
 msgid "After successful restore it is advised to clear the OTOBO cache. To do this execute the following command:"
 msgstr ""
 
-#: ../content/backup-restore-docker.rst:7 ../content/backup-restore.rst:99
+#: ../content/backup-restore.rst:153
 #, fuzzy
-msgid "Considerations for Running OTOBO under Docker"
-msgstr "Az OTOBO Docker alatt történő futtatásával kapcsolatos megfontolások"
-
-#: ../content/backup-restore.rst:101
-#, fuzzy
-msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered. Please read to the chapter :doc:`backup-restore-docker` for information about that case."
-msgstr "Ugyanezek a szkriptek használhatók a Docker alatt futó OTOBO-val is. Néhány Docker-specifikus korlátozást azonban figyelembe kell venni."
-
-#: ../content/backup-restore-docker.rst:2
-#, fuzzy
-msgid "Backup and Restore using Docker"
-msgstr "Biztonsági mentés és visszaállítás Docker használatával"
-
-#: ../content/backup-restore-docker.rst:4
-#, fuzzy
-msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
-msgstr "Kérjük, olvassa el a :doc:`backup-restore` fejezetet a mentési és visszaállítási szkriptekkel kapcsolatos alapvető információkért."
-
-#: ../content/backup-restore-docker.rst:9
-#, fuzzy
-msgid "The standard scripts ``scripts/backup.pl`` and ``scripts/restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
-msgstr "A szabványos ``backup.pl`` és ``restore.pl`` szkriptek a Docker alatt futó OTOBO-val is használhatók. Néhány Docker-specifikus korlátozást azonban figyelembe kell venni."
-
-#: ../content/backup-restore-docker.rst:12
-#, fuzzy
-msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
-msgstr "Először is meg kell győződnünk arról, hogy a mentési fájlok nem a Docker konténer belső fájlrendszerében jönnek létre. Ebben az esetben ugyanis a létrehozott fájlok elvesznének a konténer leállításakor. Ez azt jelenti, hogy a biztonsági mentés könyvtárának egy kötetben kell elhelyezkednie. Ebben a kézikönyvben csak a legegyszerűbb esetet vesszük figyelembe, amikor a biztonsági mentés könyvtára egy helyi könyvtár a Docker hoston. A backup dir helye a konténerben tetszőlegesen megválasztható. Ebben a példában az ``otobo_backup`` helyi könyvtárat választjuk a hoszton, és az ``/otobo_backup``-t a konténerben."
-
-#: ../content/backup-restore-docker.rst:19
-#, fuzzy
-msgid "Secondly, commands in the Docker container usually run as the user ``otobo`` with the user id ``1000`` and the group id ``1000``. It must be made sure, that this user can write in the backup directory."
-msgstr "Másodszor, a Docker-konténerben a parancsok általában az `otobo` felhasználóként futnak, az 1000-es felhasználói azonosítóval és az 1000-es csoport azonosítóval. Meg kell győződni arról, hogy ez a felhasználó írhat a mentési könyvtárba."
-
-#: ../content/backup-restore-docker.rst:22
-#, fuzzy
-msgid "First we need to create the volume."
-msgstr "Először létre kell hoznunk a kötetet."
-
-#: ../content/backup-restore-docker.rst:38
-#, fuzzy
-msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
-msgstr "A biztonsági mentés létrehozásához szükségünk van egy futó adatbázisra, valamint az ``otobo_opt_otobo`` és az ``otobo_backup`` kötetekre. Ez azt jelenti, hogy a webszerver és az OTOBO démon leállhat, de nem kell leállítani."
-
-#: ../content/backup-restore-docker.rst:51
-msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database tables from being locked, so OTOBO can still be used during the backup."
-msgstr ""
-
-#: ../content/backup-restore-docker.rst:57
-#, fuzzy
-msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the ``db`` container."
+msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MariaDB command line interface of the ``db`` container:"
 msgstr "Egy meglévő otobo adatbázis törléséhez és egy új létrehozásához a következő parancsokat használhatja. Először is csatlakoznunk kell a `db` konténer MySQL CLI-jéhez."
 
-#: ../content/backup-restore-docker.rst:66
+#: ../content/backup-restore.rst:161
 #, fuzzy
-msgid "As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database."
+msgid "Enter the database root password when prompted. As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database:"
 msgstr "Amint csatlakozik a MySQL szerverhez, törölheti és újra létrehozhatja az `otobo` adatbázist."
 
-#: ../content/backup-restore-docker.rst:74
+#: ../content/backup-restore.rst:170
 #, fuzzy
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr "A biztonsági mentés visszaállításához azt is meg kell adnunk, hogy melyik biztonsági mentést kell visszaállítani. A ``<TIMESTAMP>`` helyőrző például ``2020-09-07_09-38``."
 
-#: ../content/backup-restore-docker.rst:82
-msgid "After successful restore it's advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
+#: ../content/backup-restore.rst:183
+msgid "After successful restore it is advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
 msgstr ""
 
 #: ../content/customer-interface-ci.rst:2
@@ -4437,7 +4422,7 @@ msgstr "Az OTOBO Docker-alapú telepítésének frissítése"
 
 #: ../content/updating-docker.rst:6
 #, fuzzy
-msgid "Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that."
+msgid "Don't update without a complete backup of your system. See :doc:`backup-restore` for more information."
 msgstr "Ne folytassa a munkát a rendszer teljes biztonsági mentése nélkül. Ehhez használhatja a :ref:`backup-restore` szkriptet is."
 
 #: ../content/updating-docker.rst:9
@@ -4573,6 +4558,42 @@ msgstr "Egyszerű patchszintű frissítések (pl. 11.0.2 11.0.3-ra) esetén a fe
 #: ../content/updating-docker.rst:151
 msgid "When upgrading from 10.1.x to 11.0.x with the ITSM plugin installed, the following command has to be executed additionally:"
 msgstr "A 10.1.x-ről 11.0.x-re történő frissítéskor, amikor az ITSM plugin telepítve van, a következő parancsot is végre kell hajtani:"
+
+#, fuzzy
+#~ msgid "Considerations for Running OTOBO under Docker"
+#~ msgstr "Az OTOBO Docker alatt történő futtatásával kapcsolatos megfontolások"
+
+#, fuzzy
+#~ msgid "Backup and Restore using Docker"
+#~ msgstr "Biztonsági mentés és visszaállítás Docker használatával"
+
+#, fuzzy
+#~ msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
+#~ msgstr "Kérjük, olvassa el a :doc:`backup-restore` fejezetet a mentési és visszaállítási szkriptekkel kapcsolatos alapvető információkért."
+
+#, fuzzy
+#~ msgid "The standard scripts ``scripts/backup.pl`` and ``scripts/restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
+#~ msgstr "A szabványos ``backup.pl`` és ``restore.pl`` szkriptek a Docker alatt futó OTOBO-val is használhatók. Néhány Docker-specifikus korlátozást azonban figyelembe kell venni."
+
+#, fuzzy
+#~ msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
+#~ msgstr "Először is meg kell győződnünk arról, hogy a mentési fájlok nem a Docker konténer belső fájlrendszerében jönnek létre. Ebben az esetben ugyanis a létrehozott fájlok elvesznének a konténer leállításakor. Ez azt jelenti, hogy a biztonsági mentés könyvtárának egy kötetben kell elhelyezkednie. Ebben a kézikönyvben csak a legegyszerűbb esetet vesszük figyelembe, amikor a biztonsági mentés könyvtára egy helyi könyvtár a Docker hoston. A backup dir helye a konténerben tetszőlegesen megválasztható. Ebben a példában az ``otobo_backup`` helyi könyvtárat választjuk a hoszton, és az ``/otobo_backup``-t a konténerben."
+
+#, fuzzy
+#~ msgid "Secondly, commands in the Docker container usually run as the user ``otobo`` with the user id ``1000`` and the group id ``1000``. It must be made sure, that this user can write in the backup directory."
+#~ msgstr "Másodszor, a Docker-konténerben a parancsok általában az `otobo` felhasználóként futnak, az 1000-es felhasználói azonosítóval és az 1000-es csoport azonosítóval. Meg kell győződni arról, hogy ez a felhasználó írhat a mentési könyvtárba."
+
+#, fuzzy
+#~ msgid "First we need to create the volume."
+#~ msgstr "Először létre kell hoznunk a kötetet."
+
+#, fuzzy
+#~ msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
+#~ msgstr "A biztonsági mentés létrehozásához szükségünk van egy futó adatbázisra, valamint az ``otobo_opt_otobo`` és az ``otobo_backup`` kötetekre. Ez azt jelenti, hogy a webszerver és az OTOBO démon leállhat, de nem kell leállítani."
+
+#, fuzzy
+#~ msgid "Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that."
+#~ msgstr "Ne folytassa a munkát a rendszer teljes biztonsági mentése nélkül. Ehhez használhatja a :ref:`backup-restore` szkriptet is."
 
 #~ msgid "Compose V2 is implemented as a plugin of the command ``docker``. An alias can be used in order to stay compatible with the ``docker-compose`` command known from Compose V1."
 #~ msgstr "A Compose V2 a ``docker`` parancs pluginjaként van implementálva. Egy alias használható, hogy kompatibilis maradjon a Compose V1-ből ismert ``docker-compose`` paranccsal."

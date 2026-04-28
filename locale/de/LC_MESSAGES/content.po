@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-23 14:53+0000\n"
+"POT-Creation-Date: 2026-04-28 12:52+0000\n"
 "PO-Revision-Date: 2026-03-17 09:00+0000\n"
 "Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: German <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/de/>\n"
@@ -44,98 +44,90 @@ msgstr "OTOBO bietet fertige Skripte zum Erstellen und Wiedereinspielen von Back
 msgid "Backup"
 msgstr "Backup"
 
-#: ../content/backup-restore.rst:12
+#: ../content/backup-restore.rst:9
+msgid "In order to backup the OTOBO system, the script ``scripts/backup.pl`` can be used. The script creates a backup of the OTOBO system in the specified directory."
+msgstr ""
+
+#: ../content/backup-restore.rst:14
 msgid "To create a new backup, write permission for the destination directory is needed for the user ``otobo``."
 msgstr "Der Benutzer ``otobo`` benötigt im Zielverzeichnis Schreibrechte, damit ein neues Backup erstellt werden kann."
 
-#: ../content/backup-restore.rst:18 ../content/backup-restore.rst:75
+#: ../content/backup-restore.rst:20 ../content/backup-restore.rst:128
 msgid "The output of the script:"
 msgstr "Die Ausgabe des Skriptes:"
 
-#: ../content/backup-restore.rst:62
-msgid "--extra-dump-options=\"--single-transaction\" prevents the database tables from being locked, so OTOBO can still be used during the backup."
+#: ../content/backup-restore.rst:64
+msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database tables from being locked, so OTOBO may still be used during backup archive creation."
 msgstr ""
 
-#: ../content/backup-restore.rst:65
+#: ../content/backup-restore.rst:67 ../content/backup-restore.rst:152
+#, fuzzy
+#| msgid "Docker:"
+msgid "Docker"
+msgstr "Docker:"
+
+#: ../content/backup-restore.rst:69
+#, fuzzy
+#| msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered. Please read to the chapter :doc:`backup-restore-docker` for information about that case."
+msgid "The same scripts might be used when OTOBO is running under Docker, but some Docker specific limitations have to be considered. In order to be able to write a backup archive to the file system outside of the Docker container, appropriate volume mounts and permissions must be configured."
+msgstr "Die gleichen Skripte können mit OTOBO unter Docker verwendet werden. Allerdings müssen einige Docker-spezifische Einschränkungen beachtet werden. Bitte lesen Sie das Kapitel :doc:`backup-restore-docker` für Informationen zu diesem Fall."
+
+#: ../content/backup-restore.rst:87
+msgid "We use an ephemeral container of OTOBO to pull the backup and place it in the backup directory on the host:"
+msgstr ""
+
+#: ../content/backup-restore.rst:97
+msgid "The parameters used, assume the defaults presented throughout this manual. You may need to fit them to your setup, e.g., if you use a different network name or a different image tag."
+msgstr ""
+
+#: ../content/backup-restore.rst:101
 msgid "Restore"
 msgstr "Wiederherstellen"
 
-#: ../content/backup-restore-docker.rst:55 ../content/backup-restore.rst:69
-msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
+#: ../content/backup-restore.rst:103
+msgid "To restore the OTOBO system from backup, the script ``scripts/restore.pl`` can be used. For the script to be able to place the data into the database, the database name, name, and password have to be setup like the backed up system. The restore script, restores the configuration files from the backup archive first, and then uses the restored configuration files to connect to the database and restore the data. You may read them from backup to fit your database setup:"
+msgstr ""
+
+#: ../content/backup-restore.rst:112
+msgid "You may also fit the database connection parameters within the backup file before running the restore script:"
+msgstr ""
+
+#: ../content/backup-restore.rst:120
+#, fuzzy
+#| msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
+msgid "To restore the database make sure the target database contains no tables."
 msgstr "Bevor Sie die Datenbank wiederherstellen, stellen Sie sicher, dass die Datenbank ``otobo`` vorhanden ist und keine Tabellen enthält."
 
-#: ../content/backup-restore.rst:90
+#: ../content/backup-restore.rst:122
+msgid "You may execute the restore script with the option ``-h`` for more information."
+msgstr ""
+
+#: ../content/backup-restore.rst:143
 #, fuzzy
 #| msgid "After successful restore it's advised to clear the OTOBO cache. To do this execute the following command:"
 msgid "After successful restore it is advised to clear the OTOBO cache. To do this execute the following command:"
 msgstr "Nach erfolgreicher Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Führen Sie dazu den folgenden Befehl aus:"
 
-#: ../content/backup-restore-docker.rst:7 ../content/backup-restore.rst:99
-#, fuzzy
-#| msgid "Considerations for running OTOBO under Docker"
-msgid "Considerations for Running OTOBO under Docker"
-msgstr "Sonderfalll: OTOBO und Docker"
-
-#: ../content/backup-restore.rst:101
-msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered. Please read to the chapter :doc:`backup-restore-docker` for information about that case."
-msgstr "Die gleichen Skripte können mit OTOBO unter Docker verwendet werden. Allerdings müssen einige Docker-spezifische Einschränkungen beachtet werden. Bitte lesen Sie das Kapitel :doc:`backup-restore-docker` für Informationen zu diesem Fall."
-
-#: ../content/backup-restore-docker.rst:2
-msgid "Backup and Restore using Docker"
-msgstr "Backup und Wiederherstellung mit Docker"
-
-#: ../content/backup-restore-docker.rst:4
-msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
-msgstr "Bitte lesen Sie die Anleitung Backup und Wiederherstellung :doc:`backup-restore`. Hier finden Sie die grundlegenden Informationen zu den Backup-Skripten."
-
-#: ../content/backup-restore-docker.rst:9
-#, fuzzy
-#| msgid "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
-msgid "The standard scripts ``scripts/backup.pl`` and ``scripts/restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
-msgstr "Auch für Docker-basierte OTOBO-Umgebungen können die OTOBO-Standardskripte ``backup.pl`` und ``restore.pl`` verwendet werden. Beachten Sie jedoch einige Docker-spezifische Besonderheiten."
-
-#: ../content/backup-restore-docker.rst:12
-msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
-msgstr "Erstens: Legen Sie die Backupdateien nicht im internen Dateisystem des Containers ab. Wird der Container gestoppt, sind die Daten dort verloren. Stattdessen empfehlen wir das Backup-Verzeichnis in einem Volume anzulegen. Wir betrachten zunächst nur den einfachsten Fall: Als Backup-Verzeichnis wird ein lokales Verzeichnis auf dem Docker-Host verwendet. Innerhalb des Containers kann das Backup-Verzeichnis an beliebiger Stelle angelegt werden. Für dieses Beispiel verwenden wir das lokale Verzeichnis ``otobo_backup`` als Speicherort auf dem Host und ``/otobo_backup`` im Container."
-
-#: ../content/backup-restore-docker.rst:19
-#, fuzzy
-#| msgid "Secondly, commands in the Docker container usually run as the user `otobo` with the user id 1000 and the group id 1000. It must be made sure, that this user can write in the backup directory."
-msgid "Secondly, commands in the Docker container usually run as the user ``otobo`` with the user id ``1000`` and the group id ``1000``. It must be made sure, that this user can write in the backup directory."
-msgstr "Zweitens: Innerhalb des Docker-Containers werden Befehle in der Regel vom User `otobo` mit der User-ID 1000 und der Gruppen-ID 1000 ausgeführt. Achten Sie darauf, dass dieser User im Backup-Verzeichnis Schreibrechte hat."
-
-#: ../content/backup-restore-docker.rst:22
-msgid "First we need to create the volume."
-msgstr "Als erstes legen wir das Volume an."
-
-#: ../content/backup-restore-docker.rst:38
-msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
-msgstr "Um das Backup zu erstellen, benötigen wir eine laufende Datenbank und die Volumes ``otobo_opt_otobo`` sowie ``otobo_backup``. Das bedeutet, Webserver und OTOBO Daemon können, müssen aber nicht, gestoppt werden."
-
-#: ../content/backup-restore-docker.rst:51
-msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database tables from being locked, so OTOBO can still be used during the backup."
-msgstr ""
-
-#: ../content/backup-restore-docker.rst:57
+#: ../content/backup-restore.rst:153
 #, fuzzy
 #| msgid "To drop an existing otobo database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the `db` container."
-msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the ``db`` container."
+msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MariaDB command line interface of the ``db`` container:"
 msgstr "Um eine bestehende otobo Datenbank zu löschen und eine neue zu erstellen können folgende Befehle verwendet werden. Zuerst müssen Sie sich hierzu mit der MySQL CLI des `db` Containers verbinden."
 
-#: ../content/backup-restore-docker.rst:66
+#: ../content/backup-restore.rst:161
 #, fuzzy
 #| msgid "As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database."
-msgid "As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database."
+msgid "Enter the database root password when prompted. As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database:"
 msgstr "Sobald man mit dem MySQL Server verbunden ist, kann die `otobo` Datenbank gelöscht und neu erstellt werden."
 
-#: ../content/backup-restore-docker.rst:74
+#: ../content/backup-restore.rst:170
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr "Um das System aus einem Backup wiederherstellen zu können, müssen wir angeben, welches Backup verwendet werden soll. Der Platzhalter ``<TIMESTAMP>`` steht für einen Wert wie ``2020-09-07_09-38``."
 
-#: ../content/backup-restore-docker.rst:82
+#: ../content/backup-restore.rst:183
 #, fuzzy
 #| msgid "After successful restore it's advised to clear the OTOBO cache. To do this change to your OTOBO directory (normaly `/opt/otobo-docker`) and execute the following command:"
-msgid "After successful restore it's advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
+msgid "After successful restore it is advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
 msgstr "Nach erfolgreicher Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Wechseln Sie dazu in Ihr OTOBO-Verzeichnis (normalerweise `/opt/otobo-docker`) und führen Sie den folgenden Befehl aus:"
 
 #: ../content/customer-interface-ci.rst:2
@@ -4235,8 +4227,10 @@ msgid "Updating a Docker-based Installation of OTOBO"
 msgstr "Aktualisieren einer Docker-basierte OTOBO-Installation"
 
 #: ../content/updating-docker.rst:6
-msgid "Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that."
-msgstr "Aktualisieren Sie nicht ohne eine vollständige Sicherung Ihres Systems. Sie können dafür das Skript :doc:`backup-restore-docker` in Ihrer bestehenden Docker-Installation verwenden."
+#, fuzzy
+#| msgid "Don't proceed without a complete backup of your system. You can use also the :doc:`backup-restore` script for this."
+msgid "Don't update without a complete backup of your system. See :doc:`backup-restore` for more information."
+msgstr "Fahren Sie nicht fort, ohne ein vollständiges Backup Ihres Systems zu erstellen. Sie können dafür auch das :doc:`backup-restore`-Skript verwenden."
 
 #: ../content/updating-docker.rst:9
 #, fuzzy
@@ -4376,6 +4370,39 @@ msgstr "Für einfache Patchlevel-Updates (z.B. von 11.0.2 auf 11.0.3) kann die A
 #: ../content/updating-docker.rst:151
 msgid "When upgrading from 10.1.x to 11.0.x with the ITSM plugin installed, the following command has to be executed additionally:"
 msgstr "Beim Upgrade von 10.1.x auf 11.0.x mit installiertem ITSM-Plugin muss zusätzlich der folgende Befehl ausgeführt werden:"
+
+#, fuzzy
+#~| msgid "Considerations for running OTOBO under Docker"
+#~ msgid "Considerations for Running OTOBO under Docker"
+#~ msgstr "Sonderfalll: OTOBO und Docker"
+
+#~ msgid "Backup and Restore using Docker"
+#~ msgstr "Backup und Wiederherstellung mit Docker"
+
+#~ msgid "Please read to the chapter :doc:`backup-restore` for basic information about the backup and restore scripts."
+#~ msgstr "Bitte lesen Sie die Anleitung Backup und Wiederherstellung :doc:`backup-restore`. Hier finden Sie die grundlegenden Informationen zu den Backup-Skripten."
+
+#, fuzzy
+#~| msgid "The standard scripts ``backup.pl`` and ``restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
+#~ msgid "The standard scripts ``scripts/backup.pl`` and ``scripts/restore.pl`` can also be used with OTOBO running under Docker. However some Docker specific limitations have to be considered."
+#~ msgstr "Auch für Docker-basierte OTOBO-Umgebungen können die OTOBO-Standardskripte ``backup.pl`` und ``restore.pl`` verwendet werden. Beachten Sie jedoch einige Docker-spezifische Besonderheiten."
+
+#~ msgid "First, we need to make sure that the backup files are not created in the file system that is internal to a Docker container. Because in that case the created files would be lost when the container is stopped. This means that the backup directory must located within in a volume. For this manual we only consider the most simple case, where the backup directory is a local directory on the Docker host. The location of the backup dir in the container can be arbitrarily chosen. In this example we choose the local dir ``otobo_backup`` as the location on the host and ``/otobo_backup`` as the location in the container."
+#~ msgstr "Erstens: Legen Sie die Backupdateien nicht im internen Dateisystem des Containers ab. Wird der Container gestoppt, sind die Daten dort verloren. Stattdessen empfehlen wir das Backup-Verzeichnis in einem Volume anzulegen. Wir betrachten zunächst nur den einfachsten Fall: Als Backup-Verzeichnis wird ein lokales Verzeichnis auf dem Docker-Host verwendet. Innerhalb des Containers kann das Backup-Verzeichnis an beliebiger Stelle angelegt werden. Für dieses Beispiel verwenden wir das lokale Verzeichnis ``otobo_backup`` als Speicherort auf dem Host und ``/otobo_backup`` im Container."
+
+#, fuzzy
+#~| msgid "Secondly, commands in the Docker container usually run as the user `otobo` with the user id 1000 and the group id 1000. It must be made sure, that this user can write in the backup directory."
+#~ msgid "Secondly, commands in the Docker container usually run as the user ``otobo`` with the user id ``1000`` and the group id ``1000``. It must be made sure, that this user can write in the backup directory."
+#~ msgstr "Zweitens: Innerhalb des Docker-Containers werden Befehle in der Regel vom User `otobo` mit der User-ID 1000 und der Gruppen-ID 1000 ausgeführt. Achten Sie darauf, dass dieser User im Backup-Verzeichnis Schreibrechte hat."
+
+#~ msgid "First we need to create the volume."
+#~ msgstr "Als erstes legen wir das Volume an."
+
+#~ msgid "For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``. This means that the webserver and the OTOBO daemon may, but don't have to, be stopped."
+#~ msgstr "Um das Backup zu erstellen, benötigen wir eine laufende Datenbank und die Volumes ``otobo_opt_otobo`` sowie ``otobo_backup``. Das bedeutet, Webserver und OTOBO Daemon können, müssen aber nicht, gestoppt werden."
+
+#~ msgid "Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that."
+#~ msgstr "Aktualisieren Sie nicht ohne eine vollständige Sicherung Ihres Systems. Sie können dafür das Skript :doc:`backup-restore-docker` in Ihrer bestehenden Docker-Installation verwenden."
 
 #~ msgid "Compose V2 is implemented as a plugin of the command ``docker``. An alias can be used in order to stay compatible with the ``docker-compose`` command known from Compose V1."
 #~ msgstr "Compose V2 ist als Plugin für den Befehl ``docker`` implementiert. Ein Alias kann verwendet werden, um mit dem aus Compose V1 bekannten Befehl ``docker-compose`` kompatibel zu bleiben."
