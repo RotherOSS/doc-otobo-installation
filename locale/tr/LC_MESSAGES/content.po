@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 12:52+0000\n"
+"POT-Creation-Date: 2026-04-28 14:21+0000\n"
 "PO-Revision-Date: 2024-09-02 14:23+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Turkish <http://weblate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/tr/>\n"
@@ -4471,91 +4471,108 @@ msgstr ""
 
 #: ../content/updating-docker.rst:47
 #, fuzzy
-msgid "Updating the Docker Compose files"
-msgstr "Docker Compose dosyalarını güncelleme"
+msgid "Upgrade Docker Compose"
+msgstr "Docker Compose 1.25.0"
 
 #: ../content/updating-docker.rst:49
+msgid "Please take note, that Docker Compose v1 is deprecated and will not be supported in the future. If ``docker-compose --version`` shows a version beginning with ``1``, Docker Compose v1 is installed. If ``docker ps`` shows a container called ``otobo_web_1``, then Docker Compose v1 is running your container."
+msgstr ""
+
+#: ../content/updating-docker.rst:53
+msgid "If your host is a recent Ubuntu Linux, migration is straight forward and does not entail downtime of OTOBO:"
+msgstr ""
+
+#: ../content/updating-docker.rst:75
+msgid "Docker Compose v2 entails a new naming scheme for the containers, e.g., ``otobo_web_1`` becomes ``otobo-web-1`` (note the change of ``_`` to ``-``). If you have tooling that relies on the ``docker-compose`` command or the name of the containers, e.g., when using ``acme.sh`` in standalone mode, you need to refit your setup."
+msgstr ""
+
+#: ../content/updating-docker.rst:80
+#, fuzzy
+msgid "Updating the Docker Compose Files"
+msgstr "Docker Compose dosyalarını güncelleme"
+
+#: ../content/updating-docker.rst:82
 #, fuzzy
 msgid "The OTOBO Docker Compose files may change between releases. Therefore, is must be made sure that the correct setup is used."
 msgstr "OTOBO Docker Compose dosyaları sürümler arasında değişebilir. Bu nedenle doğru kurulumun kullanıldığından emin olunmalıdır."
 
-#: ../content/updating-docker.rst:54
+#: ../content/updating-docker.rst:87
 #, fuzzy
 msgid "See https://hub.docker.com/r/rotheross/otobo/tags for the available releases."
 msgstr "Mevcut sürümler için https://hub.docker.com/r/rotheross/otobo/tags adresine bakın."
 
-#: ../content/updating-docker.rst:56
+#: ../content/updating-docker.rst:89
 msgid "To obtain the new Docker Compose files, the OTOBO Docker repository must be updated to the wanted version: As a docker administrator, you can do this as follows:"
 msgstr ""
 
-#: ../content/updating-docker.rst:72
+#: ../content/updating-docker.rst:105
 #, fuzzy
-msgid "Checking the Docker Compose ``.env`` file"
+msgid "Checking the Docker Compose ``.env`` File"
 msgstr "Docker Compose .env dosyasını kontrol etme"
 
-#: ../content/updating-docker.rst:74
+#: ../content/updating-docker.rst:107
 #, fuzzy
 msgid "The file ``.env`` controls the OTOBO Docker container. Within that file, the variables ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, and ``OTOBO_IMAGE_OTOBO_NGINX`` declare which images are used. The latest images are used when these variables are not set. If you want to use a specific version, then please set these variables accordingly."
 msgstr ".env* dosyası OTOBO Docker konteynerini kontrol eder. Bu dosya içinde *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH* ve *OTOBO_IMAGE_OTOBO_NGINX* değişkenleri hangi görüntülerin kullanılacağını bildirir. Bu değişkenler ayarlanmadığında en son görüntüler kullanılır. Belirli bir sürümü kullanmak istiyorsanız, lütfen bu değişkenleri uygun şekilde ayarlayın."
 
-#: ../content/updating-docker.rst:80
+#: ../content/updating-docker.rst:113
 #, fuzzy
-msgid "Fetch the new Docker images"
+msgid "Fetch the new Docker Images"
 msgstr "Yeni Docker görüntülerini getirin"
 
-#: ../content/updating-docker.rst:82
+#: ../content/updating-docker.rst:115
 #, fuzzy
 msgid "Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/."
 msgstr "Docker compose, https://hub.docker.com/r/rotheross/otobo/ adresinden istenen görüntüleri almak için kullanılabilir."
 
-#: ../content/updating-docker.rst:93
+#: ../content/updating-docker.rst:126
 #, fuzzy
 msgid "Update OTOBO"
 msgstr "OTOBO'yu Güncelle"
 
-#: ../content/updating-docker.rst:97
+#: ../content/updating-docker.rst:130
 #, fuzzy
 msgid "Please note that minor or major upgrades must always be carried out one after the other. If you would like to upgrade from version 10.0.* to the latest 11.0.*, please upgrade to 10.1 first and then to 11.0."
 msgstr "Lütfen küçük veya büyük yükseltmelerin her zaman birbiri ardına yapılması gerektiğini unutmayın. Sürüm 10.0.*'dan en son sürüm 11.0.*'a yükseltmek istiyorsanız, lütfen önce 10.1'e ve ardından 11.0'a yükseltin."
 
-#: ../content/updating-docker.rst:100
+#: ../content/updating-docker.rst:133
 #, fuzzy
 msgid "In this step the volume ``otobo_opt_otobo`` is updated and the following OTOBO console commands are performed:"
 msgstr "Bu adımda *otobo_opt_otobo* birimi güncellenir ve aşağıdaki OTOBO konsol komutları gerçekleştirilir:"
 
-#: ../content/updating-docker.rst:102
+#: ../content/updating-docker.rst:135
 #, fuzzy
 msgid "``Admin::Package::ReinstallAll``"
 msgstr "Admin::Package::ReinstallAll"
 
-#: ../content/updating-docker.rst:103
+#: ../content/updating-docker.rst:136
 #, fuzzy
 msgid "``Admin::Package::UpgradeAll``"
 msgstr "Admin::Package::UpgradeAll"
 
-#: ../content/updating-docker.rst:104
+#: ../content/updating-docker.rst:137
 #, fuzzy
 msgid "``Maint::Config::Rebuild``"
 msgstr "Maint::Config::Rebuild"
 
-#: ../content/updating-docker.rst:105
+#: ../content/updating-docker.rst:138
 #, fuzzy
 msgid "``Maint::Cache::Delete``"
 msgstr "Maint::Cache::Delete"
 
-#: ../content/updating-docker.rst:107
+#: ../content/updating-docker.rst:140
 #, fuzzy
 #| msgid "For minor and major version upgrades, prior to this also update tasks for the core system have to be performed"
 msgid "For minor and major version upgrades, prior to this also update tasks for the core system have to be performed as docker admin:"
 msgstr "Küçük ve büyük sürüm yükseltmeleri için, bundan önce çekirdek sistem için güncelleme görevlerinin de gerçekleştirilmesi gerekir"
 
-#: ../content/updating-docker.rst:138
+#: ../content/updating-docker.rst:171
 #, fuzzy
 #| msgid "For simple patchlevel updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script *scripts/update.sh*. This script runs the commands starting with the **docker-compose pull** command. Note that that calling the database upgrade scripts is not included and therefor it cannot be used for version upgrades."
 msgid "For simple patch level updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script ``scripts/update.sh``. This script runs the commands starting with the ``docker compose pull`` command. Note that calling the database upgrade scripts is not included and therefore it cannot be used for version upgrades. As a docker administrator, you can use the script as follows:"
 msgstr "Basit yama seviyesi güncellemeleri için (örneğin 11.0.2'den 11.0.3'e) yukarıda belirtilen komutların çalıştırılması *scripts/update.sh* betiği yardımıyla otomatikleştirilebilir. Bu betik **docker-compose pull** komutu ile başlayan komutları çalıştırır. Veritabanı yükseltme komut dosyalarının çağrılmasının dahil edilmediğini ve bu nedenle sürüm yükseltmeleri için kullanılamayacağını unutmayın."
 
-#: ../content/updating-docker.rst:151
+#: ../content/updating-docker.rst:184
 msgid "When upgrading from 10.1.x to 11.0.x with the ITSM plugin installed, the following command has to be executed additionally:"
 msgstr "ITSM eklentisi yüklüyken 10.1.x'ten 11.0.x'e yükseltme yaparken, aşağıdaki komutun ek olarak yürütülmesi gerekir:"
 

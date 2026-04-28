@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 12:52+0000\n"
+"POT-Creation-Date: 2026-04-28 14:21+0000\n"
 "PO-Revision-Date: 2026-03-17 09:00+0000\n"
 "Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Hindi <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/hi/>\n"
@@ -3683,73 +3683,89 @@ msgid "Before upgrading, please check if your installed packages are available f
 msgstr ""
 
 #: ../content/updating-docker.rst:47
-msgid "Updating the Docker Compose files"
+msgid "Upgrade Docker Compose"
 msgstr ""
 
 #: ../content/updating-docker.rst:49
-msgid "The OTOBO Docker Compose files may change between releases. Therefore, is must be made sure that the correct setup is used."
+msgid "Please take note, that Docker Compose v1 is deprecated and will not be supported in the future. If ``docker-compose --version`` shows a version beginning with ``1``, Docker Compose v1 is installed. If ``docker ps`` shows a container called ``otobo_web_1``, then Docker Compose v1 is running your container."
 msgstr ""
 
-#: ../content/updating-docker.rst:54
-msgid "See https://hub.docker.com/r/rotheross/otobo/tags for the available releases."
+#: ../content/updating-docker.rst:53
+msgid "If your host is a recent Ubuntu Linux, migration is straight forward and does not entail downtime of OTOBO:"
 msgstr ""
 
-#: ../content/updating-docker.rst:56
-msgid "To obtain the new Docker Compose files, the OTOBO Docker repository must be updated to the wanted version: As a docker administrator, you can do this as follows:"
-msgstr ""
-
-#: ../content/updating-docker.rst:72
-msgid "Checking the Docker Compose ``.env`` file"
-msgstr ""
-
-#: ../content/updating-docker.rst:74
-msgid "The file ``.env`` controls the OTOBO Docker container. Within that file, the variables ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, and ``OTOBO_IMAGE_OTOBO_NGINX`` declare which images are used. The latest images are used when these variables are not set. If you want to use a specific version, then please set these variables accordingly."
+#: ../content/updating-docker.rst:75
+msgid "Docker Compose v2 entails a new naming scheme for the containers, e.g., ``otobo_web_1`` becomes ``otobo-web-1`` (note the change of ``_`` to ``-``). If you have tooling that relies on the ``docker-compose`` command or the name of the containers, e.g., when using ``acme.sh`` in standalone mode, you need to refit your setup."
 msgstr ""
 
 #: ../content/updating-docker.rst:80
-msgid "Fetch the new Docker images"
+msgid "Updating the Docker Compose Files"
 msgstr ""
 
 #: ../content/updating-docker.rst:82
-msgid "Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/."
+msgid "The OTOBO Docker Compose files may change between releases. Therefore, is must be made sure that the correct setup is used."
 msgstr ""
 
-#: ../content/updating-docker.rst:93
-msgid "Update OTOBO"
+#: ../content/updating-docker.rst:87
+msgid "See https://hub.docker.com/r/rotheross/otobo/tags for the available releases."
 msgstr ""
 
-#: ../content/updating-docker.rst:97
-msgid "Please note that minor or major upgrades must always be carried out one after the other. If you would like to upgrade from version 10.0.* to the latest 11.0.*, please upgrade to 10.1 first and then to 11.0."
-msgstr ""
-
-#: ../content/updating-docker.rst:100
-msgid "In this step the volume ``otobo_opt_otobo`` is updated and the following OTOBO console commands are performed:"
-msgstr ""
-
-#: ../content/updating-docker.rst:102
-msgid "``Admin::Package::ReinstallAll``"
-msgstr ""
-
-#: ../content/updating-docker.rst:103
-msgid "``Admin::Package::UpgradeAll``"
-msgstr ""
-
-#: ../content/updating-docker.rst:104
-msgid "``Maint::Config::Rebuild``"
+#: ../content/updating-docker.rst:89
+msgid "To obtain the new Docker Compose files, the OTOBO Docker repository must be updated to the wanted version: As a docker administrator, you can do this as follows:"
 msgstr ""
 
 #: ../content/updating-docker.rst:105
-msgid "``Maint::Cache::Delete``"
+msgid "Checking the Docker Compose ``.env`` File"
 msgstr ""
 
 #: ../content/updating-docker.rst:107
-msgid "For minor and major version upgrades, prior to this also update tasks for the core system have to be performed as docker admin:"
+msgid "The file ``.env`` controls the OTOBO Docker container. Within that file, the variables ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, and ``OTOBO_IMAGE_OTOBO_NGINX`` declare which images are used. The latest images are used when these variables are not set. If you want to use a specific version, then please set these variables accordingly."
+msgstr ""
+
+#: ../content/updating-docker.rst:113
+msgid "Fetch the new Docker Images"
+msgstr ""
+
+#: ../content/updating-docker.rst:115
+msgid "Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/."
+msgstr ""
+
+#: ../content/updating-docker.rst:126
+msgid "Update OTOBO"
+msgstr ""
+
+#: ../content/updating-docker.rst:130
+msgid "Please note that minor or major upgrades must always be carried out one after the other. If you would like to upgrade from version 10.0.* to the latest 11.0.*, please upgrade to 10.1 first and then to 11.0."
+msgstr ""
+
+#: ../content/updating-docker.rst:133
+msgid "In this step the volume ``otobo_opt_otobo`` is updated and the following OTOBO console commands are performed:"
+msgstr ""
+
+#: ../content/updating-docker.rst:135
+msgid "``Admin::Package::ReinstallAll``"
+msgstr ""
+
+#: ../content/updating-docker.rst:136
+msgid "``Admin::Package::UpgradeAll``"
+msgstr ""
+
+#: ../content/updating-docker.rst:137
+msgid "``Maint::Config::Rebuild``"
 msgstr ""
 
 #: ../content/updating-docker.rst:138
+msgid "``Maint::Cache::Delete``"
+msgstr ""
+
+#: ../content/updating-docker.rst:140
+msgid "For minor and major version upgrades, prior to this also update tasks for the core system have to be performed as docker admin:"
+msgstr ""
+
+#: ../content/updating-docker.rst:171
 msgid "For simple patch level updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script ``scripts/update.sh``. This script runs the commands starting with the ``docker compose pull`` command. Note that calling the database upgrade scripts is not included and therefore it cannot be used for version upgrades. As a docker administrator, you can use the script as follows:"
 msgstr ""
 
-#: ../content/updating-docker.rst:151
+#: ../content/updating-docker.rst:184
 msgid "When upgrading from 10.1.x to 11.0.x with the ITSM plugin installed, the following command has to be executed additionally:"
 msgstr ""
