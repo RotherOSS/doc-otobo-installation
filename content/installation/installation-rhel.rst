@@ -120,8 +120,8 @@ Option B: Deploy Pre-built Packages
 .. code-block:: bash
 
     root> cd /opt/otobo                                                                       # Change into your OTOBO directory
-    root> wget https://ftp.otobo.org/pub/otobo/rhel/otobo-deps-11.0-latest-rhel-9.7.tar.gz    # Download all required packages
-    root> tar -xzf otobo-deps-11.0-rhel-9.7.tar.gz                                            # Unzip packages
+    root> wget https://ftp.otobo.org/pub/otobo/rhel/otobo-deps-11.0-rhel-9.7-latest.tar.gz    # Download all required packages
+    root> tar -xzf otobo-deps-11.0-rhel-9.7-latest.tar.gz                                     # Unzip packages
     root> echo 'export PERL5LIB="/opt/otobo/install/local/lib/perl5"' >> /opt/otobo/.profile  # Add additional library path to otobo user
     root> export PERL5LIB="/opt/otobo/install/local/lib/perl5"
 
