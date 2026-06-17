@@ -1,13 +1,15 @@
 Updating
 ========
 
+This procedure describes how to update an existing OTOBO 11.0 installation to OTOBO 11.1.
+
 .. note::
 
    It is highly recommended to perform a test update on a separate testing machine first.
 
 .. note::
 
-   To prepare required perl modules beforehand, you can already download and unzip the new OTOBO version and execute the check modules script, e.g. with the following command (please adjust the file path).
+   To prepare required Perl modules beforehand, you can already download and unzip the new OTOBO version and execute the check modules script, e.g. with the following command (please adjust the file path).
    This is not necessary in a regular installation and will be part of the later update instruction.
 
    .. code-block:: bash
@@ -16,72 +18,88 @@ Updating
 
 .. note::
 
-   On Debian systems you may need to manually install some perl packages before upgrading to 11.0.
+   On Ubuntu/Debian systems you have to manually install some Perl packages before upgrading to 11.1.
 
     .. code-block:: bash
 
-      apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
+      sudo apt install --yes libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl libmariadb-dev build-essential cpanminus
+      sudo cpanm --notest Gazelle DBD::MariaDB
 
 For OTOBO 11.1, the following packages are being migrated automatically to the framework.
 This means that no separate package is necessary and they will be part of OTOBO by default.
 
-    - CK5-FullWindowMode
-    - CustomerAgeShowCreated
-    - CustomerTicketSearch
-    - Elasticsearch-Extension
-    - ExtendedArticleEdit
-    - HideShowForAgentTicketCompose
-    - ImportExportCustomerCompany
-    - ImportExportStandardObjects
-    - ImportExportTicket
-    - PostMasterXFromHeader
-    - ProcessTicketTemplates
-    - RestorePendingInformation
-    - RotherOSS-AccountedTimeInViews
-    - TicketUpdateOperationExternalIdentifier
-    - OAuth2
-    - OAuth2-Mail
-    - Elasticsearch-FAQ
+   - CK5-FullWindowMode
+   - CustomerAgeShowCreated
+   - CustomerTicketSearch
+   - Elasticsearch-Extension
+   - ExtendedArticleEdit
+   - HideShowForAgentTicketCompose
+   - ImportExportCustomerCompany
+   - ImportExportStandardObjects
+   - ImportExportTicket
+   - PostMasterXFromHeader
+   - ProcessTicketTemplates
+   - RestorePendingInformation
+   - RotherOSS-AccountedTimeInViews
+   - TicketUpdateOperationExternalIdentifier
+   - OAuth2
+   - OAuth2-Mail
+   - Elasticsearch-FAQ
 
 The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by
 new functionality in OTOBO core, it needs to be uninstalled manually before migration
 to OTOBO 11.1.
 
-
 For the record, here is the list of integrated packages for OTOBO 11.0.
+For OTOBO 11.0, the following packages are being migrated automatically to the framework.
+This means that no separate package is necessary and they will be part of OTOBO by default.
 
-    - Ayte-CustomTranslations
-    - ExtendedCDBInfoTile
-    - ImportExport
-    - LightAdmin
-    - MarkTicketSeenUnseen
-    - QuickDateButtons
-    - ResponseTemplatesStatePreselection
-    - RotherOSS-LightAdmin
-    - RotherOSS-InternalTransitionActions
-    - TicketTimeUnitsMandatoryOnlyWithArticle
+   - Ayte-CustomTranslations
+   - ExtendedCDBInfoTile
+   - ImportExport
+   - LightAdmin
+   - MarkTicketSeenUnseen
+   - QuickDateButtons
+   - ResponseTemplatesStatePreselection
+   - RotherOSS-LightAdmin
+   - RotherOSS-InternalTransitionActions
+   - TicketTimeUnitsMandatoryOnlyWithArticle
 
 
 Step 1: Stop All Relevant Services and the OTOBO Daemon
 -------------------------------------------------------
 
-Please make sure there are no more running services or cron jobs that try to access OTOBO.
+Please make sure there are no more running services or Cron jobs that try to access OTOBO.
 This will depend on your service configuration.
 
 .. code-block:: bash
 
-   root> systemctl stop postfix
-   root> systemctl stop apache2
-   root> systemctl stop cron
+   sudo systemctl stop postfix
+   sudo systemctl stop apache2
+   sudo systemctl stop cron
 
-Stop OTOBO cron jobs and the daemon (in this order):
+Now you need to be stopping the OTOBO core services depending on your configuration.
+
+Option A: Systemd Unit Files Configured
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you have already migrated to Systemd unit files in the past the following line can be used:
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> cd /opt/otobo/
-    otobo> bin/Cron.sh stop
-    otobo> bin/otobo.Daemon.pl stop
+    sudo systemctl disable --now otobo-web.service otobo-daemon.service
+
+
+Option B: Systemd Unit Files **NOT** Configured
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Otherwise stop OTOBO Cron jobs and the daemon manually (in this order):
+
+.. code-block:: bash
+
+    sudo -u otobo cd /opt/otobo/
+    sudo -u otobo bin/Cron.sh stop
+    sudo -u otobo bin/otobo.Daemon.pl stop
 
 
 Step 2: Backup Files and Database
@@ -89,123 +107,106 @@ Step 2: Backup Files and Database
 
 Create a backup of the hole ``/opt/otobo`` directory and the database.
 
-Example for a standard installation with Ubuntu and MySQL
+Example for a Standard Installation with Ubuntu and MySQL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
-    root> mkdir /root/otobo-update                      # Create a update directory
-    root> cd /root/otobo-update                         # Change into the update directory
-    root> cp -pr /opt/otobo otobo-prod-old              # Backup the hole OTOBO directory to the update directory
-    root> mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
+    sudo mkdir /root/otobo-update                            # Create a update directory
+    sudo cd /root/otobo-update                               # Change into the update directory
+    sudo cp -pr /opt/otobo otobo-prod-old                    # Backup the whole OTOBO directory into the update directory
+    sudo mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
 
-Please check if all files are valid.
-Now we have a backup with all required data.
+Please check whether all files are valid.
 
 .. warning::
 
-    Don't proceed without a complete backup of your system.
-    You can use also the :doc:`backup-restore` script for this.
+    Do not proceed without a complete backup of your system.
+    You can also use the :doc:`backup-restore` script for this.
 
-
-Step 2.1: Delete CPAN-directory if you are upgrading from 10.1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you are upgrading from 10.1 to 11.0 you need to clean the cpan-lib directory, since some of the cpan libraries have changed.
-
-.. code-block:: bash
-
-    root> rm -rf /opt/otobo/Kernel/cpan-lib/*
-
-This can also be executed with sudo permissions.
-
-Step 3: Install the New Release
+Step 3: Install the new Release
 -------------------------------
 
-Download the latest otobo release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
+Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download he latest OTOBO 11.0 release
-    root> tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-11.0.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+    sudo cd /root/otobo-update                                             # Change into the update directory
+    sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.1.tar.gz     # Download he latest OTOBO 11.1 release
+    sudo tar -xzf otobo-latest-11.1.tar.gz                                 # Unzip OTOBO
+    sudo cp -r otobo-11.1.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Restore Old Configuration Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We need only copy the file ``Kernel/Config.pm`` in OTOBO 10.
+We need only copy the file ``Kernel/Config.pm`` in OTOBO 11.
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update
-    root> cp -p otobo-prod-old/Kernel/Config.pm /opt/otobo/Kernel/
-    root> cp -p otobo-prod-old/var/cron/* /opt/otobo/var/cron/
+    sudo cd /root/otobo-update
+    sudo cp -p otobo-prod-old/Kernel/Config.pm /opt/otobo/Kernel/
+    sudo cp -p otobo-prod-old/var/cron/* /opt/otobo/var/cron/
 
 Restore Article Data
 ~~~~~~~~~~~~~~~~~~~~
 
-If you configured OTOBO to store article data in the file system you have to restore the ``article`` folder to ``/opt/otobo/var/`` or the folder specified in the system configuration.
+If you configured OTOBO to store article data in the file system, restore the ``article`` folder to ``/opt/otobo/var/`` or the folder specified in the system configuration.
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update
-    root> cp -pr otobo-prod-old/var/article/* /opt/otobo/var/article/
+    sudo cd /root/otobo-update
+    sudo cp -pr otobo-prod-old/var/article/* /opt/otobo/var/article/
 
 
 Restore Already Installed Default Statistics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you have additional packages with default statistics you have to restore the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/stats``.
+If you have additional packages with default statistics, restore the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/stats``.
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update/otobo-prod-old/var/stats
-    root> cp *.installed /opt/otobo/var/stats
+    sudo cd /root/otobo-update/otobo-prod-old/var/stats
+    sudo cp *.installed /opt/otobo/var/stats
 
 
 Set File Permissions
 ~~~~~~~~~~~~~~~~~~~~
 
-Please execute the following command to set the file and directory permissions for OTOBO.
+Execute the following command to set the file and directory permissions for OTOBO.
 It will try to detect the correct user and group settings needed for your setup.
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.SetPermissions.pl
+   sudo /opt/otobo/bin/otobo.SetPermissions.pl
 
-Check Apache configuration files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Check Webserver Configuration Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Newer versions of OTOBO may need you to adjust the apache configuration.
-From version 10.1 onwards we moved from CGI to PSGI.
-Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs to be adjusted/added.
+Newer versions of OTOBO may need you to adjust the webserver configuration.
+From version 11.0 onwards we moved from PSGI to native Nginx.
+We provide Nginx templates at ``scripts/nginx-vhost-443.include.conf`` and ``scripts/nginx-vhost-80.include.conf``.
 
 
-Step 4: Check for new needed Perl modules
+Step 4: Check for New Needed Perl Modules
 -----------------------------------------
 
 OTOBO needs new cpan packages for some version jumps.
-Please check if new packages are needed and install them if necessary.
-
-.. note::
-
-   On Debian systems you may need to manually install some packages:
-
-   .. code-block:: bash
-
-      apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
-
-
+Please make sure to install all required packages and modules listed at the beginning of this article and the listed packages from the command below.
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> perl /opt/otobo/bin/otobo.CheckModules.pl --list
+    sudo -u otobo perl /opt/otobo/bin/otobo.CheckModules.pl --instt
+
+Step 5: Only for Minor or Major Release Upgrades (e.g., 11.0 to 11.1)
+---------------------------------------------------------------------
+
+.. code-block:: bash
+
+    sudo -u otobo /opt/otobo/scripts/DBUpdate-to-11.1.pl
 
 
-Step 5: Update Installed Packages and reconfigure config
+Step 6: Update Installed Packages and Reconfigure Config
 --------------------------------------------------------
 
 You can use the command below to update all installed packages.
@@ -214,38 +215,152 @@ You can update other packages later via the package manager (this requires a run
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
+    sudo -u otobo /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
+    sudo -u otobo /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
+    sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
+    sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
+    sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Loader::CacheCleanup
+    sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Translations::Deploy
 
-Step 6: Only for minor or major release upgrades (for example to upgrade from 10.1 to 11.0)
--------------------------------------------------------------------------------------------
+
+Step 7: Deploy new Systemd Service Files (Optional)
+---------------------------------------------------
+
+Since OTOBO 11.1 it is recommended for native installations to run their OTOBO web service and OTOBO daemon using Systemd unit files.
+This way the OTOBO services are becoming easier to manage and more tightly integrated into the hosts operating stack.
+In addition, they significantly simplify the troubleshooting experience.
+
+If you are not sure if the unit files are already implemented you can use the following command to check.
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> /opt/otobo/scripts/DBUpdate-to-11.0.pl
+    sudo systemctl status otobo-web.service
+    sudo systemctl status otobo-daemon.service
 
-Step 7: Start your Services
+If the services are showing up this step can be skipped.
+
+To make sure that these files are visible to the system they need to be copied to a valid Systemd directory.
+In this example we will be using ``/etc/systemd/system``.
+
+.. code-block:: bash
+
+   sudo cp /opt/otobo/scripts/systemd/* /etc/systemd/system/
+   sudo systemctl daemon-reload
+
+
+After the ``daemon-reload`` all services should be controllable using Systemd control service like ``systemctl``.
+
+
+Check Webserver Configuration Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The new Systemd unit files are now relying on Gazelle webserver which means that the previous Apache webserver configs with the modperl plugin will not work anymore.
+The new Gazelle webserver binds the OTOBO webservice internally on port 5000.
+Opening this port to the public and handling SSL has to be done by an external reverse proxy.
+It is still possible to use Apache webserver to do this job but we strongly recommend switching to Nginx since it provides more modern features and Nginx syntax will also be used for all templates in the future.
+
+To migrate to Nginx the old webserver has to be removed first.
+
+.. code-block:: bash
+
+    sudo apt remove --yes apache2 libapache2-mod-perl2
+
+In the next step Nginx has to be installed and configured.
+
+.. code-block:: bash
+
+    sudo apt install --yes nginx
+
+Similar to Apache, a site configuration needs to be provided to Nginx.
+Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``.
+
+Configure Nginx without SSL Support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In most cases the included template is suitable.
+Nevertheless, the ``server_name`` in the template file has to be changed from ``localhost`` to the desired name to become reachable externally.
+The new configuration needs to be activated, subsequently.
+
+.. code-block:: bash
+
+   sudo cp /opt/otobo/scripts/nginx-vhost-80.include.conf /etc/nginx/sites-available/nginx.conf
+   sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
+   sudo systemctl restart nginx
+
+It is also required to allow port ``80`` on the firewall if it is enabled.
+
+.. code-block:: bash
+
+   sudo ufw allow 80
+   sudo ufw reload
+
+
+.. note::
+
+    A webserver without SSL support doesn't allow any type of encryption and should never be used for production services.
+
+
+Configure Nginx **with** SSL Support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to enable SSL support, you need to copy the SSL configuration file.
+
+.. code-block:: bash
+
+   sudo cp /opt/otobo/scripts/nginx-vhost-443.include.conf /etc/nginx/sites-available/nginx.conf.conf
+   sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
+   sudo cd /etc/nginx/
+   sudo mkdir snippets
+   sudo cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf snippets/
+
+Edit the files and add the required information like SSL certificate storage path.
+
+Restart your web server to load the new configuration settings.
+On most systems you can use the following command to do so:
+
+.. code-block:: bash
+
+   sudo systemctl restart nginx
+
+It is also required to allow port ``80`` and ``443`` on the firewall (if configured).
+
+.. code-block:: bash
+
+   sudo ufw allow "Nginx Full"
+
+Step 8: Start your Services
 ---------------------------
 
-Start OTOBO cron jobs and the daemon (in this order):
+This will now depend on whether the OTOBO services have been migrated to the Systemd unit files as mentioned in Step 7 or not.
+
+Option A: Services have been Migrated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the services have been migrated they can simply be enabled and started using ``systemctl``.
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> cd /opt/otobo/
-    otobo> bin/otobo.Daemon.pl start
-    otobo> bin/Cron.sh start
+    sudo systemctl enable --now otobo-web.service otobo-daemon.service
 
-Now the services can be started.
+Option B: Services have not been Migrated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If not migrated, OTOBO daemon and cron jobs must be started using their associated scripts (in this order):
+
+.. code-block:: bash
+
+    sudo -u otobo cd /opt/otobo/
+    sudo -u otobo bin/otobo.Daemon.pl start
+    sudo -u otobo bin/Cron.sh start
+
+
+Now additional services can be started.
 This will depend on your service configuration, here is an example:
 
 .. code-block:: bash
 
-   root> systemctl start postfix
-   root> systemctl start apache2
-   root> systemctl start cron
+   sudo systemctl start postfix
+   sudo systemctl start apache2        # Won't be available after systemd unit migration
+   sudo systemctl start cron
 
 Now you can log into your system.

@@ -18,13 +18,13 @@ There is a console command for checking the module dependencies:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --inst
+   sudo -u otobo /opt/otobo/bin/otobo.CheckModules.pl --inst
 
 If some packages are missing, you can get an install command for your operating system by running the script with the ``--list`` option.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list | more
+   sudo -u otobo /opt/otobo/bin/otobo.CheckModules.pl --list | more
 
 The listed commands should then be executed with root privileges.
 
@@ -119,7 +119,7 @@ We recommend using a machine for testing purposes with **at least**:
 We recommend using a machine for production purpose with **at least**:
 
 - 3 GHz Xeon or comparable CPU
-- 8 GB RAM (16 GB recommend)
+- 8 GB RAM (16 GB recommended)
 - 40 GB storage
 
 .. note::
@@ -135,18 +135,17 @@ Perl
    - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl --list`` console command
 
 Web Server
-   - Apache HTTP Server Version 2.4
+   - Nginx HTTP Server Version 1.24 or higher
 
 Databases
+   - MariaDB 10.11 or higher (recommended)
    - MySQL 8.4 or higher
-   - MariaDB 10.11 or higher
    - PostgreSQL 13 or higher
    - Oracle 19c or higher
 
 Optional
    - Elasticsearch 7.x (fast search function for live previews)
-   - Redis (fast caching)
-   - Nginx or any other web server that can be used as a reverse proxy (SSL support and load distribution)
+   - Redis (caching)
 
 Web browsers
    - Apple Safari

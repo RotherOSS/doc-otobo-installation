@@ -12,7 +12,7 @@ to ensure the AD user seamless authorization into OTOBO.
 .. note::
 
     Please read the chapter :doc:`installation` for basic information about installing and configure OTOBO.
-    This manual assumes that OTOBO has been installed and configured using Apache.
+    This manual assumes that OTOBO has been installed and configured using Nginx.
 
 
 Kerberos SSO Overview
@@ -118,12 +118,11 @@ Login on the Linux server and install Kerberos client libraries:
 
 .. code-block:: bash
 
-    apt install krb5-user
+    DEBIAN_FRONTEND=noninteractive apt install -y krb5-user
 
 .. note::
 
-    Instructions are valid on Ubuntu 24.04.
-    Other Linux flavors may have different names for Kerberos libraries.
+    ``DEBIAN_FRONTEND=noninteractive`` is required to skip inital keytab configuration since the keytab file is configured manually.
 
 Now check the keytab file content:
 
@@ -213,109 +212,113 @@ Check if SPN is registered for "serviceaccount" - under AD user on windows run `
 
 The output SPN should match with the output of ``klist -kte krb5.keytab``
 
-Apache with Kerberos SSO and SSL
+Nginx with Kerberos SSO and SSL
 ================================
 
 .. note::
 
-    I suppose you already have Apache running.
-    If not, read `Otobo basic installation manual <https://doc.otobo.de/manual/installation/10.1/en/content/installation.html#step-5-configure-the-apache-web-server>`_
+    If Nginx is not already up and running refer to `Otobo basic installation manual <https://doc.otobo.org/manual/installation/11.1/en/content/installation.html>`_
 
-Install and enable required Apache modules:
-
-.. code-block:: bash
-
-   apt install libapache2-mod-auth-gssapi
-   a2enmod auth_gssapi headers ssl
-
-Ensure the Apache user (``www-data``) can read ``/etc/krb5.keytab``:
+Install required Nginx modules:
 
 .. code-block:: bash
 
-   chown root:www-data /etc/krb5.keytab
-   chmod 640 /etc/krb5.keytab
+   sudo apt install -y libnginx-mod-http-auth-spnego
 
-Create Apache config with ``nano /etc/apache2/sites-available/otobo-apache-ssl.conf``.
-It should contain the following content:
+Ensure that the file permissions for ``/etc/krb5.keytab`` are set correctly:
 
-.. code:: ini
+.. code-block:: bash
 
-   <VirtualHost *:443>
-           # Server
-           ServerName otobo.company.com
-           ServerAdmin root@company.com
-
-           # logs
-           # LogLevel info auth_gssapi:debug ssl:warn  # uncomment to debug Kerberos
-           ErrorLog ${APACHE_LOG_DIR}/error.log
-           CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-           # ssl
-           SSLEngine on
-           SSLCertificateFile      /etc/ssl/company.pem
-           SSLCertificateKeyFile   /etc/ssl/company.key
-
-           ### Perl
-           # mod_perl is required
-           <IfModule !mod_perl.c>
-               Error "mod_perl is required for Plack::Handler::Apache.\ Use apache2-httpd-cgi.include.conf as fallback."
-           </IfModule>
-           <IfModule mpm_event_module>
-               Error "The Multi-Processing Module mpm_event is active but it isn' supported by OTOBO.\ Please switch to mpm_prefork."
-           </IfModule>
-           <IfModule mpm_worker_module>
-               Error "The Multi-Processing Module mpm_worker is active but it isn't supported by OTOBO.\ Please switch to mpm_prefork."
-           </IfModule>
-           # Use a dedicated Perl interpreter for the current virtual host, usually the default virtual host
-           PerlOptions +Parent
-
-           # Preload otobo.psgi so that that the app doesn't have to be loaded again for every process.
-           # This also sets @INC.
-           PerlPostConfigRequire /opt/otobo/scripts/apache2-perl-preload_otobo_psgi.pl
-
-           <Location />
-                   # Kerbeos SSO Authentication
-                   AuthType GSSAPI
-                   AuthName "Kerberos authenticated intranet with mod_auht_gssapi"
-                   GssapiCredStore keytab:/etc/krb5.keytab
-                   # Only allow krb5 and ignore ntlmssp and iakerb
-                   GssapiAllowedMech krb5
-                   # We don't want to fallback to Basic Auth
-                   GssapiBasicAuth Off
-                   # Resolve remote's user into REMOTE_USER variable.
-                   # Proper setting of [realms].auth_to_local in /etc/krb5.conf is required
-                   GssapiLocalName On
-                   # Enforce encrypted HTTPS/TLS connection
-                   GssapiSSLonly On
-                   require valid-user
-
-                   # handle all requests, including the static content, with otobo.psgi
-                   SetHandler          perl-script
-                   PerlResponseHandler Plack::Handler::Apache2
-                   PerlSetVar          psgi_app /opt/otobo/bin/psgi-bin/otobo.psgi
-
-                   # WARNING - for Kerberos to work in Apache, you have to disable Require all granted!
-                   # Require all granted
-           </Location>
-   </VirtualHost>
-
-   # Limit the number of requests per child to avoid excessive memory usage.
-   MaxConnectionsPerChild 1000
+   sudo chown root:www-data /etc/krb5.keytab
+   sudo chmod 640 /etc/krb5.keytab
 
 .. note::
 
-    you can use Nginx for SSL part and Apache for Kerbeos,
-    than in the apache configuration change ``<VirtualHost *:443>`` to ``<VirtualHost localhost:8080>``
-    and delete the SSL-related lines
+    The name of the webserver group can change depending on your OS.
+    For SUSE and Red Hat/CentOS/Fedora it is called ``nginx``. On Debian and Ubuntu ``www-data``.
 
-If you have the old apache configuration for Otobo - don't forget to disable it.
+The following Nginx config file ``/etc/nginx/sites-available/nginx.conf`` should replace your previous default config file.
+It should contain the this content:
+
+.. code:: nginx
+
+    # Config for nginx serving as a reverse proxy for the OTOBO web application.
+
+    # This config is based on default.conf in the nginx installation
+
+    # The master process runs as root.
+    # When no user is configured then the workers will run as nobody.
+    #user
+
+    proxy_send_timeout 120;
+    proxy_read_timeout 99999;
+    proxy_buffering    off;
+    tcp_nodelay        on;
+
+    # Do not serve HTTP, redirect to HTTPS instead.
+    # See https://linuxize.com/post/redirect-http-to-https-in-nginx/.
+    server {
+        listen 80;
+        listen [::]:80;
+
+        # catch all domains
+        server_name _;
+
+        # 301 Moved Permanently, (in 'SEO-speak', it is said that the 'link-juice' is sent to the new URL).
+        return 301 https://otobo.company.com$request_uri;
+    }
+
+    # serve HTTPS
+    server {
+        listen 443 ssl http2;                # falls back to regular HTTPS over HTTP/1.1 when the browser does not support HTTP/2
+        listen [::]:443 ssl http2;
+
+        # See https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
+        # See https://ssl-config.mozilla.org/
+        include snippets/ssl-params.conf;
+        ssl_certificate     /etc/ssl/certs/otobo.de.cert;
+        ssl_certificate_key /etc/ssl/private/otobo.de.nopass.key;
+
+        server_name  otobo.company.com;
+
+        # allow large uploads of files
+        client_max_body_size 1G;
+
+        #access_log  /var/log/nginx/host.access.log  main;
+
+        # proxy to the otobo webapp accessible from the host
+        # pass on information about the client
+        location / {
+
+            # Settings for using Kerberos SSO (mostly untested)
+            proxy_set_header                REMOTE_USER $remote_user;
+            auth_gss                        on;
+            auth_gss_keytab                 /etc/krb5.keytab;
+            auth_gss_service_name           HTTP/otobo.company.com;
+            auth_gss_realm                  DOMAIN.COM;
+            auth_gss_allow_basic_fallback   on;
+
+            proxy_set_header X-Forwarded-Host $host:$server_port;
+            proxy_set_header X-Forwarded-Server $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_pass       http://localhost:5000/;
+        }
+    }
+
+.. note::
+
+    Make sure to replace ``ssl_certificate`` and ``ssl_certificate_key`` with your custom ssl configuration.
+    Adjust ``auth_gss_service_name`` and ``auth_gss_realm`` with values depending on your Kerberos Realm setup.
+
+If you have the old Nginx configuration for Otobo - don't forget to disable it.
 
 Enable our website
 
 .. code-block:: bash
 
-   sudo a2ensite otobo-apache-ssl.conf
-   sudo systemctl reload apache2
+   sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enable/nginx.conf
+   sudo systemctl reload nginx
 
 Ensure the webserver sends a proper header, that invites browser to use Kerberos authentication:
 
@@ -326,19 +329,19 @@ Ensure the webserver sends a proper header, that invites browser to use Kerberos
 output should have a following header:
  ``WWW-Authenticate: Negotiate …``
 
-Obobo configuration
+Otobo Configuration
 -------------------
 
 To make Otobo trust the username passed by the webserver (in the ``REMOTE_USER`` environment variable or the ``Remote-User`` HTTP header)
 and skip the login screen, you have to enable a ``HTTPBasicAuth`` auth backend in the Otobo configuration ``Kernel/Config.pm``:
 
 * for agents: ``$Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth`` (instead of LDAP)
-* for users : ``$Self->{'Customer::AuthModule'} = 'Kernel::System::CustomerAuth::HTTPBasicAuth';``
+* for users: ``$Self->{'Customer::AuthModule'} = 'Kernel::System::CustomerAuth::HTTPBasicAuth';``
 
 You still can use LDAP to populate Users data from the AD,
 as it is described in the corresponding sections of``Kernel/Config/Defaults.pm``
 
-Configure Browser to understand kerberos sso
+Configure Browser to Understand Kerberos SSO
 --------------------------------------------
 
 In the browser address line, open ``about:config`` and change the following settings:

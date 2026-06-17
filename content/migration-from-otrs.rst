@@ -9,27 +9,30 @@ Thus, every migration to OTOBO requires thorough preparation and possibly some r
 Please take your time for the migration and follow these instructions step by step.
 
 If you have any problem or question, please do not despair.
-Call our support line, write an email, or post your query  in the OTOBO Community forum at https://forum.otobo.org/.
+Call our support line, write an email, or post your query in the OTOBO Community forum at https://forum.otobo.org/.
 We will find a way to help you!
 
 .. note::
 
-    After the migration the data previously available in OTRS will be available in OTOBO.
-    We do not modify any data of the OTRS installation during the migration.
+   After the migration the data previously available in OTRS will be available in OTOBO.
+   We do not modify any data of the OTRS installation during the migration.
 
 .. warning::
 
-    Please migrate your OTRS to OTOBO version 10.1 first and then upgrade your OTOBO to the latest stable release.
+   Migration from OTRS to OTOBO is only supported on 10.1.X.
+   Upgrade step by step through all Major/Minor until you reach your target version (10.1 → 11.0 → 11.1).
+   Refer to the specific upgrade instructions for each version, and to the chapter :doc:`updating` in general.
+
 
 Overview over the Supported Migration Scenarios
 ------------------------------------------------
 
 With the OTOBO Migration Interface it is possible to employ the following migration strategies:
 
-#.  The general migration strategy.
+#. The general migration strategy.
 
     This is the regular way to perform a migration.
-    Many different different combinations are supported:
+    Many different combinations are supported:
 
     Change server:
         Migrate and simultaneously move to a new application server.
@@ -166,13 +169,19 @@ In the non-Docker case execute the following commands as the user ``otobo``:
     /opt/otobo/bin/Cron.sh stop
     /opt/otobo/bin/otobo.Daemon.pl stop --force
 
+You can also use systemctl if systemd unit files are configured on OTOBO.
+
+.. code-block:: bash
+
+   systemctl disable --now otobo-web.service otobo-daemon.service
+
 When OTOBO is running in Docker, you just need to stop the service ``daemon``:
 
 .. code-block:: bash
 
-    cd /opt/otobo-docker
-    docker compose stop daemon
-    docker compose ps     # otobo-daemon-1 should have exited with the code 0
+   cd /opt/otobo-docker
+   docker compose stop daemon
+   docker compose ps     # otobo-daemon-1 should have exited with the code 0
 
 .. note::
 
@@ -328,7 +337,7 @@ The application then guides you through the migration process.
 
     .. code-block:: bash
 
-        service apache2 restart
+        systemctl restart apache2 # Or nginx depending on your setup
 
     For a Docker-based installation, the commands are:
 
@@ -378,6 +387,12 @@ Once you have decided that the migration was successful and that you want to use
 
     /opt/otobo/bin/Cron.sh start
     /opt/otobo/bin/otobo.Daemon.pl start
+
+In case you have systemd unit files configured:
+
+.. code-block:: bash
+
+    systemctl disable --now otobo-web.service otobo-daemon.service
 
 In the Docker case:
 
