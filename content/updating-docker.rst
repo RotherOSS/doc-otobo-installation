@@ -28,19 +28,24 @@ When updating to a new version of OTOBO several things have to happen.
 
     Before upgrading, please check if your installed packages are available for the new version
 
-For OTOBO 11.0, the following packages are being migrated automatically to the framework.
-This means that no separate packe is necessary and they will be part of OTOBO by default.
+For OTOBO 11.1, the following packages are being migrated automatically to the framework.
+This means that no separate package is necessary and they will be part of OTOBO by default.
 
-    - Ayte-CustomTranslations
-    - ExtendedCDBInfoTile
-    - ImportExport
-    - LightAdmin
-    - MarkTicketSeenUnseen
-    - QuickDateButtons
-    - ResponseTemplatesStatePreselection
-    - RotherOSS-LightAdmin
-    - RotherOSS-InternalTransitionActions
-    - TicketTimeUnitsMandatoryOnlyWithArticle
+    - CK5-FullWindowMode
+    - CustomerAgeShowCreated
+    - CustomerTicketSearch
+    - ExtendedArticleEdit
+    - HideShowForAgentTicketCompose
+    - ImportExportCustomerCompany
+    - ImportExportStandardObjects
+    - ImportExportTicket
+    - OAuth2
+    - OAuth2-Mail
+    - PostMasterXFromHeader
+    - ProcessTicketTemplates
+    - RestorePendingInformation
+    - RotherOSS-AccountedTimeInViews
+    - TicketUpdateOperationExternalIdentifier
 
 
 Upgrade Docker Compose
