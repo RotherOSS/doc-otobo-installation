@@ -326,14 +326,6 @@ The daemon also handles all GenericAgent jobs and must be started from the OTOBO
    otobo> systemctl enable --now otobo-daemon.service
 
 
-OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO.
-The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
-
-.. code-block:: bash
-
-   otobo> systemctl enable --now otobo-daemon.service
-
-
 
 Step 13: Setup Bash Auto-Completion (optional)
 ----------------------------------------------
