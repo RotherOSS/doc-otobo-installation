@@ -22,7 +22,7 @@ When updating to a new version of OTOBO several things have to happen.
 .. note::
 
     In the sample commands below, the version **11.x.y**, corresponding to the tag **11_x_y**, is used as the example version.
-    Please substitute it with the real version, e.g. **11.0.7**.
+    Please substitute it with the real version, e.g. **11.1.7**.
 
 .. note::
 
@@ -133,7 +133,7 @@ Update OTOBO
 .. warning::
 
     Please note that minor or major upgrades must always be carried out one after the other.
-    If you would like to upgrade from version 10.0.* to the latest 11.0.*, please upgrade to 10.1 first and then to 11.0.
+    If you would like to upgrade from version 10.0.* to the latest 11.1.*, please upgrade to 10.1 first and then to 11.1.
 
 In this step the volume ``otobo_opt_otobo`` is updated and the following OTOBO console commands are performed:
 
@@ -159,8 +159,8 @@ For minor and major version upgrades, prior to this also update tasks for the co
     docker compose ps
 
     # **Only for minor or major release upgrades!**
-    # run upgrade tasks for the OTOBO core (for example when upgrading from 10.1 to 11.0)
-    docker compose exec web perl scripts/DBUpdate-to-11.0.pl
+    # run upgrade tasks for the OTOBO core (for example when upgrading from 11.0 to 11.0)
+    docker compose exec web perl scripts/DBUpdate-to-11.1.pl
 
     # complete the update, with running database
     docker compose exec web /opt/otobo_install/entrypoint.sh do_update_tasks
@@ -173,7 +173,7 @@ For minor and major version upgrades, prior to this also update tasks for the co
 
 .. note::
 
-    For simple patch level updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script ``scripts/update.sh``.
+    For simple patch level updates (e.g. 11.1.2 to 11.1.3) running the above mentioned commands can be automated with the help of the script ``scripts/update.sh``.
     This script runs the commands starting with the ``docker compose pull`` command.
     Note that calling the database upgrade scripts is not included and therefore it cannot be used for version upgrades.
     As a docker administrator, you can use the script as follows:
