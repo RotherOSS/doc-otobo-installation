@@ -34,6 +34,7 @@ This means that no separate package is necessary and they will be part of OTOBO 
     - CK5-FullWindowMode
     - CustomerAgeShowCreated
     - CustomerTicketSearch
+    - Elasticsearch-Extension
     - ExtendedArticleEdit
     - HideShowForAgentTicketCompose
     - ImportExportCustomerCompany
