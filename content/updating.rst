@@ -22,8 +22,33 @@ Updating
 
       apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
-For OTOBO 11.0, the following packages are being migrated automatically to the framework.
-This means that no separate packe is necessary and they will be part of OTOBO by default.
+For OTOBO 11.1, the following packages are being migrated automatically to the framework.
+This means that no separate package is necessary and they will be part of OTOBO by default.
+
+    - CK5-FullWindowMode
+    - CustomerAgeShowCreated
+    - CustomerTicketSearch
+    - Elasticsearch-Extension
+    - ExtendedArticleEdit
+    - HideShowForAgentTicketCompose
+    - ImportExportCustomerCompany
+    - ImportExportStandardObjects
+    - ImportExportTicket
+    - PostMasterXFromHeader
+    - ProcessTicketTemplates
+    - RestorePendingInformation
+    - RotherOSS-AccountedTimeInViews
+    - TicketUpdateOperationExternalIdentifier
+    - OAuth2
+    - OAuth2-Mail
+    - Elasticsearch-FAQ
+
+The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by
+new functionality in OTOBO core, it needs to be uninstalled manually before migration
+to OTOBO 11.1.
+
+
+For the record, here is the list of integrated packages for OTOBO 11.0.
 
     - Ayte-CustomTranslations
     - ExtendedCDBInfoTile
