@@ -97,7 +97,7 @@ Otherwise stop OTOBO Cron jobs and the daemon manually (in this order):
 
 .. code-block:: bash
 
-    sudo -u otobo cd /opt/otobo/
+    cd /opt/otobo/
     sudo -u otobo bin/Cron.sh stop
     sudo -u otobo bin/otobo.Daemon.pl stop
 
@@ -112,10 +112,10 @@ Example for a Standard Installation with Ubuntu and MySQL
 
 .. code-block:: bash
 
-    sudo mkdir /root/otobo-update                            # Create a update directory
-    sudo cd /root/otobo-update                               # Change into the update directory
-    sudo cp -pr /opt/otobo otobo-prod-old                    # Backup the whole OTOBO directory into the update directory
-    sudo mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
+    sudo mkdir /opt/otobo-update                            # Create a update directory
+    cd /opt/otobo-update                                    # Change into the update directory
+    sudo cp -pr /opt/otobo otobo-prod-old                   # Backup the whole OTOBO directory into the update directory
+    sudo mysqldump -u otobo -p otobo -r otobo-prod-old.sql  # Backup the otobo database to otobo-prod-old.sql
 
 Please check whether all files are valid.
 
@@ -127,14 +127,14 @@ Please check whether all files are valid.
 Step 3: Install the new Release
 -------------------------------
 
-Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
+Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-update``:
 
 .. code-block:: bash
 
-    sudo cd /root/otobo-update                                             # Change into the update directory
+    cd /opt/otobo-update                                                   # Change into the update directory
     sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.1.tar.gz     # Download he latest OTOBO 11.1 release
     sudo tar -xzf otobo-latest-11.1.tar.gz                                 # Unzip OTOBO
-    sudo cp -r otobo-11.1.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+    sudo cp -r otobo-11.1.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Restore Old Configuration Files
@@ -144,7 +144,7 @@ We need only copy the file ``Kernel/Config.pm`` in OTOBO 11.
 
 .. code-block:: bash
 
-    sudo cd /root/otobo-update
+    cd /opt/otobo-update
     sudo cp -p otobo-prod-old/Kernel/Config.pm /opt/otobo/Kernel/
     sudo cp -p otobo-prod-old/var/cron/* /opt/otobo/var/cron/
 
@@ -155,7 +155,7 @@ If you configured OTOBO to store article data in the file system, restore the ``
 
 .. code-block:: bash
 
-    sudo cd /root/otobo-update
+    cd /opt/otobo-update
     sudo cp -pr otobo-prod-old/var/article/* /opt/otobo/var/article/
 
 
@@ -166,7 +166,7 @@ If you have additional packages with default statistics, restore the stats XML f
 
 .. code-block:: bash
 
-    sudo cd /root/otobo-update/otobo-prod-old/var/stats
+    cd /opt/otobo-update/otobo-prod-old/var/stats
     sudo cp *.installed /opt/otobo/var/stats
 
 
@@ -196,7 +196,7 @@ Please make sure to install all required packages and modules listed at the begi
 
 .. code-block:: bash
 
-    sudo -u otobo perl /opt/otobo/bin/otobo.CheckModules.pl --instt
+    sudo -u otobo perl /opt/otobo/bin/otobo.CheckModules.pl --inst
 
 Step 5: Only for Minor or Major Release Upgrades (e.g., 11.0 to 11.1)
 ---------------------------------------------------------------------
@@ -309,7 +309,7 @@ If you want to enable SSL support, you need to copy the SSL configuration file.
 
    sudo cp /opt/otobo/scripts/nginx-vhost-443.include.conf /etc/nginx/sites-available/nginx.conf.conf
    sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
-   sudo cd /etc/nginx/
+   cd /etc/nginx/
    sudo mkdir snippets
    sudo cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf snippets/
 
