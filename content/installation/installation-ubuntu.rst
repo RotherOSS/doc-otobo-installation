@@ -1,37 +1,38 @@
 OTOBO Installation on Ubuntu
 ============================
 
-This chapter describes the installation and basic configuration of the central OTOBO framework on Ubuntu.
+This chapter describes the installation and basic configuration of OTOBO 11.1 on Ubuntu.
 
 .. note::
-   Currently only Ubuntu 22.04 (noble) has been tested and verified.
-   However the configuration may also work on other versions.
+
+   Currently only Ubuntu 24.04 (noble) has been tested and verified.
+   However, the configuration may also work on other versions.
 
 Follow the detailed steps in this chapter to install OTOBO on your Ubuntu server.
 You can then use its web interface to login and administer the system.
 
 .. note::
 
-    We recommend Docker and Docker Compose for the OTOBO installation because its configuration works independent of the base operating system (Ubuntu, SUSE, etc.).
-    By using the provided Docker images, all recommended dependencies (such as Elasticsearch, Redis Cache, etc.) are installed and configured automatically.
+    We recommend Docker and Docker Compose for the installation of OTOBO.
+    By using the provided Docker images, all recommended dependencies, Perl packages and services like the database or Elasticsearch, are installed, kurated and configured automatically.
     Updates are thus greatly simplified and the performance may improve.
-    You can find the instructions for Docker-based installation at: https://doc.otobo.org/manual/installation/11.0/en/content/installation/installation-docker.html .
+    You can find the instructions for Docker-based installation at: https://doc.otobo.org/manual/installation/11.1/en/content/installation/installation-docker.html .
 
 
 
 Step 1: Unpack and Install OTOBO
-------------------------------------------
+--------------------------------
 
 Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
 
-    root> mkdir /opt/otobo-install && mkdir /opt/otobo                      # Create a temporary install directory
-    root> cd /opt/otobo-install                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download the latest OTOBO 11 release
-    root> tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-11.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+    sudo mkdir /opt/otobo-install && sudo mkdir /opt/otobo                 # Create a temporary install directory
+    cd /opt/otobo-install                                                  # Change into the update directory
+    sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.1.tar.gz     # Download the latest OTOBO 11 release
+    sudo tar -xzf otobo-latest-11.1.tar.gz                                 # Unzip OTOBO
+    sudo cp -r otobo-11.1.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -45,11 +46,12 @@ Use the following script to get an overview of all installed and required CPAN m
 
    .. code-block:: bash
 
-      apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
+      sudo apt install --yes libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl libmariadb-dev build-essential cpanminus
+      sudo cpanm --notest Gazelle DBD::MariaDB
 
 .. code-block:: text
 
-   root> perl /opt/otobo/bin/otobo.CheckModules.pl -list
+   sudo perl /opt/otobo/bin/otobo.CheckModules.pl --list
    Checking for Perl Modules:
      o Archive::Tar.....................ok (v1.90)
      o Archive::Zip.....................ok (v1.37)
@@ -67,7 +69,7 @@ Execute this command to get an install command to install the missing dependenci
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.CheckModules.pl --inst
+   sudo /opt/otobo/bin/otobo.CheckModules.pl --inst
 
 .. note::
 
@@ -82,7 +84,7 @@ Create a dedicated user for OTOBO within its own group:
 
 .. code-block:: bash
 
-   root> useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
+   sudo useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
 
 
 
@@ -94,10 +96,10 @@ You must activate it by copying it without the ``.dist`` file name extension.
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/Kernel/Config.pm.dist /opt/otobo/Kernel/Config.pm
+   sudo cp /opt/otobo/Kernel/Config.pm.dist /opt/otobo/Kernel/Config.pm
 
 
-Step 5: Configure systemd services for OTOBO
+Step 5: Configure Systemd Services for OTOBO
 --------------------------------------------
 
 The installation package provides systemd unit files.
@@ -106,8 +108,8 @@ In this example we will be using ``/etc/systemd/system``.
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/scripts/systemd/* /etc/systemd/system/
-   root> systemctl daemon-reload
+   sudo cp /opt/otobo/scripts/systemd/* /etc/systemd/system/
+   sudo systemctl daemon-reload
 
 
 After the ``daemon-reload`` all services should be controllable using systemd control service like ``systemctl``.
@@ -116,14 +118,15 @@ After the ``daemon-reload`` all services should be controllable using systemd co
 Step 6: Configure the Nginx Web Server
 ---------------------------------------
 
-OTOBO's webserver listens on ``localhost`` on port ``5000``.
+OTOBO uses a high performance Perl web server called Gazelle to serve the web interface.
+Gazelle listens on ``localhost`` on port ``5000``.
 In order to make it accessible from outside, you need to configure a reverse proxy.
 
 Install the Nginx web server:
 
 .. code-block:: bash
 
-   root> apt install nginx
+   sudo apt install --yes nginx
 
 
 Nginx installations commonly have a ``conf.d`` directory included.
@@ -134,20 +137,28 @@ Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.
 Configure Nginx without SSL Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In most cases no further editing of the template is required.
+For testing purposes, you can use the provided configuration file for port ``80`` without SSL support.
+The ``server_name`` in the template file has to be changed from ``localhost`` to the desired name to become reachable externally.
 The new configuration needs to be activated, subsequently.
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/scripts/nginx-vhost-80.include.conf /etc/nginx/conf.d/nginx.conf
-   root> systemctl restart nginx
+   sudo cp /opt/otobo/scripts/nginx-vhost-80.include.conf /etc/nginx/sites-available/nginx.conf
+   sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
+   sudo systemctl restart nginx
 
-It is also required to enable port ``80`` on the firewall.
+It is also required to allow port ``80`` on the firewall if it is enabled.
 
 .. code-block:: bash
 
-   root> firewall-cmd --permanent --add-service=http
-   root> firewall-cmd --reload
+   sudo ufw allow 80
+   sudo ufw reload
+
+
+.. note::
+
+   A webserver without SSL support doesn't allow any type of encryption and should never be used for production services.
+
 
 Configure Nginx **with** SSL Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -156,28 +167,29 @@ If you want to enable SSL support, you need to copy the SSL configuration file.
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/scripts/nginx-vhost-443.include.conf /etc/nginx/conf.d/nginx.conf
-   root> cd /etc/nginx/
-   root> mkdir snippets
-   root> cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf snippets/
+   sudo cp /opt/otobo/scripts/nginx-vhost-443.include.conf /etc/nginx/sites-available/nginx.conf
+   sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
+   cd /etc/nginx/
+   sudo mkdir snippets
+   sudo cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf snippets/
 
-Please edit the files and add the required information like SSL certificate storage path.
+Edit the files and add the required information like SSL certificate storage path.
 
-Now you can restart your web server to load the new configuration settings.
+Now you restart your web server to load the new configuration settings.
 On most systems you can use the following command to do so:
 
 .. code-block:: bash
 
-   root> systemctl restart nginx
+   sudo systemctl restart nginx
 
-It is also required to enable port ``80`` and ``443`` on the firewall (if configured).
+It is also required to allow port ``80`` and ``443`` on the firewall (if configured).
 
 .. code-block:: bash
 
-   root> ufw allow "Nginx Full"
+   sudo ufw allow "Nginx Full"
 
 
-Step 6: Set File Permissions
+Step 7: Set File Permissions
 ----------------------------
 
 Please execute the following command to set the file and directory permissions for OTOBO.
@@ -185,14 +197,14 @@ It will try to detect the correct user and group settings needed for your setup.
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.SetPermissions.pl --otobo-user=otobo --web-group=otobo
+   sudo /opt/otobo/bin/otobo.SetPermissions.pl --otobo-user=otobo --web-group=otobo
 
 
-Step 7: Setup the Database
+Step 8: Setup the Database
 --------------------------
 
 OTOBO requires a database to persist data.
-It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system.
+It is recommended to use the MariaDB package, which will be delivered with your Linux system.
 However, an external database may be used but latency may increase.
 
 Packages for a local database may be obtained from the system's package manager.
@@ -200,7 +212,7 @@ Find the commands needed to set up MariaDB below.
 
 .. code-block:: bash
 
-   root> apt-get install mariadb-server
+   sudo apt install --yes mariadb-server
 
 After installing the database server you need configure it.
 
@@ -208,9 +220,9 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
 
 .. code-block:: text
 
-   root> mariadb -u root
-   sql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewRootPassword';
-   sql> quit
+   # chose a strong password and replace "NewRootPassword" with it
+   # openssl rand -base64 48
+   sudo mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewRootPassword';"
 
 
 .. note::
@@ -224,11 +236,18 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
       innodb_log_file_size = 256M
 
 
-  Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:
+   Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:
 
    .. code-block:: ini
 
       max_allowed_packet   = 64M
+
+
+   Make sure to restart the associated service after making these changes
+
+   .. code-block:: bash
+
+      sudo systemctl restart mariadb.service
 
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup.
@@ -236,7 +255,7 @@ You can download the script from Github ``https://github.com/major/MySQLTuner-pe
 
 .. code-block:: bash
 
-   root> apt-get install mysqltuner
+   root> apt-get install --yes mysqltuner
 
 After installing execute the script:
 
@@ -245,77 +264,44 @@ After installing execute the script:
    root> mysqltuner --user root --pass NewRootPassword
 
 
-Step 8: Setup Elasticsearch
------------------------------------
+Step 9: Setup Elasticsearch
+---------------------------
 
 OTOBO recommends an active installation of Elasticsearch for quick search.
 The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
 Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
 
-Elasticsearch Installation on another Linux distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
-
-Elasticsearch Module Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Additionally, OTOBO requires plugins to be installed into Elasticsearch:
+OTOBO requires plugins to be installed into Elasticsearch:
 
 .. code-block:: bash
 
-  root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
-  root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
+  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
+  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
 
 
 
-Elasticsearch Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems.
-Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``.
-You should always set the min and max JVM heap size to the same value.
-For example, to set the heap to 512 MB, set:
-
-.. code-block:: bash
-
-   -Xms512m
-   -Xmx512m
-
-In our tests, a value between 512 MB and 4 GB for medium-sized installations has proven to be the best.
-
-.. note::
-
-    See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information.
-
-Now you can restart your Elasticsearch server to load the new configuration settings.
-On most systems you can use the following command to do so:
-
-.. code-block:: bash
-
-   root> systemctl restart elasticsearch
-
-
-Step 9: Basic System Configuration
+Step 10: Basic System Configuration
 -------------------------------------
 
-Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd.
+Before starting with the initial web configuration you need to start and enable the OTOBO web service via Systemd.
 
 .. code-block:: bash
 
-   root> systemctl enable --now otobo-web.service
+   sudo systemctl enable --now otobo-web.service
 
 
 Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
 
 
-Step 10: First Login
+Step 11: First Login
 --------------------
 
 Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above).
 
 
-Step 11: Start the OTOBO Daemon
+Step 12: Start the OTOBO Daemon
 -------------------------------
 
 OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO.
@@ -323,15 +309,7 @@ The daemon also handles all GenericAgent jobs and must be started from the OTOBO
 
 .. code-block:: bash
 
-   otobo> systemctl enable --now otobo-daemon.service
-
-
-OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO.
-The daemon also handles all GenericAgent jobs and must be started from the OTOBO user.
-
-.. code-block:: bash
-
-   otobo> systemctl enable --now otobo-daemon.service
+   sudo systemctl enable --now otobo-daemon.service
 
 
 
@@ -346,7 +324,7 @@ After restarting your shell, you can just type this command followed by ``TAB``,
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl
 
 If you type a few characters of the command name, ``TAB`` will show all matching commands.
 After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``.
