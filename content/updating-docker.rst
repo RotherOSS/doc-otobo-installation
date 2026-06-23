@@ -125,11 +125,11 @@ Docker compose can be used for fetching the wanted images from https://hub.docke
     # Change to the otobo docker directory
     cd /opt/otobo-docker
 
-    # fetch the new images, either the default tag 'latest-11_0' or the specific version tag declared in .env
+    # fetch the new images, either the default tag 'latest-11_1' or the specific version tag declared in .env
     docker compose pull
 
 Update OTOBO
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 .. warning::
 
@@ -171,6 +171,49 @@ For minor and major version upgrades, prior to this also update tasks for the co
 
     # restart all container again
     docker compose restart
+
+Redis Cache Migration
+~~~~~~~~~~~~~~~~~~~~~
+
+Since OTOBO 11.1 we no longer recommend Redis for caching in general because it often results in increased loading times.
+There are still use cases in production environments where Redis is the better option but on average we recommend using the local filesystem for better results.
+
+In this chapter we show how to either completely disable redis caching or migrate it to the new setup.
+
+Option A: Disable Redis Caching (Recommended)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To set this up, follow these steps in the OTOBO UI:
+
+1. Navigate to the **Admin** tab.
+2. Scroll down and click on **System Configuration**.
+3. Search for the setting ``Cache::Module``.
+4. Change the value from ``Kernel::System::Cache::Redis`` to ``Kernel::System::Cache::FileStorable``.
+
+After these steps the redis service no longer has to be provided.
+
+Option B: Migrate Redis to new compose setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the new system the redis service has been moved from the main compose file to ``docker-compose/caching/redis.yml``.
+Therefore it has to be included in the ``COMPOSE_FILE`` environment variable at the end of the ':'-separated list.
+The variable can be changed in the ``/opt/otobo-docker/.env`` file.
+
+.. code-block:: bash
+
+    # /opt/otobo-docker/.env
+
+    COMPOSE_PATH_SEPARATOR=:
+    COMPOSE_FILE=docker-compose/otobo-base.yml: ... :docker-compose/caching/redis.yml # <-- Right here
+    
+    ...
+
+After this the compose stack needs to be restarted.
+
+.. code-block:: bash
+
+    cd /opt/otobo-docker
+    sudo docker compose down && docker compose up -d
 
 .. note::
 

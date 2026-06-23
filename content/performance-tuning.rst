@@ -258,12 +258,43 @@ Install a Redis Cache Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Install Redis Server
+^^^^^^^^^^^^^^^^^^^^^^^
 
-First of all you need to install the newest Redis Server.
+First of all you need to install the Redis Server.
+
+Option A: On native installations
+
 The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as OTOBO and binding it to its default port.
+
+Option B: When using OTOBO Docker
+
+The redis service is located outside from the main compose file at ``docker-compose/caching/redis.yml``.
+Therefore it has to be included in the ``COMPOSE_FILE`` environment variable at the end of the ':'-separated list.
+The variable can be changed in the ``/opt/otobo-docker/.env`` file.
+
+.. code-block:: bash
+
+    # /opt/otobo-docker/.env
+
+    COMPOSE_PATH_SEPARATOR=:
+    COMPOSE_FILE=docker-compose/otobo-base.yml: ... :docker-compose/caching/redis.yml # <-- Right here
+    
+    ...
+
+After this change the compose stack needs to be restarted.
+
+.. code-block:: bash
+
+   cd /opt/otobo-docker
+   sudo docker compose down && docker compose up -d
 
 
 2. Install Perl module ``Redis`` or ``Redis::Fast``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+   Docker users can skip this part.
 
 You can choose which Redis module to use: ``Redis`` or ``Redis::Fast`` (which is compatible with ``Redis`` but **~2x faster**).
 Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:
@@ -273,6 +304,7 @@ Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:
    otobo> /opt/otobo/bin/otobo.CheckModules.pl --all
 
 3. Configure OTOBO for Redis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please use the OTOBO `SysConfig` (Admin -> System Configuration) to configure OTOBO properly:
 

@@ -364,3 +364,12 @@ This will depend on your service configuration, here is an example:
    sudo systemctl start cron
 
 Now you can log into your system.
+
+Step 9: (Optional) Disable Redis Caching
+----------------------------------------
+
+Since OTOBO 11.1 we no longer recommend Redis for caching in general because it often results in increased loading times.
+There are still use cases in production environments where Redis is the better option but on average we recommend using the local filesystem for better results.
+
+Depending on your setup this can either be changed in your ``/opt/otobo/Kernel/Config.pm`` file or in the Sysconfig ``Cache::Module`` in the OTOBO UI.
+The value has to be changed from ``Kernel::System::Cache::Redis`` to ``Kernel::System::Cache::FileStorable``.
