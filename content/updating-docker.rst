@@ -205,7 +205,7 @@ The variable can be changed in the ``/opt/otobo-docker/.env`` file.
 
     COMPOSE_PATH_SEPARATOR=:
     COMPOSE_FILE=docker-compose/otobo-base.yml: ... :docker-compose/caching/redis.yml # <-- Right here
-    
+
     ...
 
 After this the compose stack needs to be restarted.
