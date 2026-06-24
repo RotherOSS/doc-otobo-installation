@@ -266,7 +266,7 @@ First of all you need to install the Redis Server.
 
 On native installations, `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as OTOBO and binding it to its default port.
 
-When using OTOBO Docker the redis service is provided in an override at ``docker-compose/caching/redis.yml``.
+When using OTOBO Docker the Redis service is provided in an override at ``docker-compose/caching/redis.yml``.
 In order to add it to your Docker Compose Stack you have to include it in the ``COMPOSE_FILE`` environment variable. 
 Append it to the end of the ':'-separated list.
 Change the variable in the ``/opt/otobo-docker/.env`` env file.

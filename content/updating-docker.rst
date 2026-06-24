@@ -129,6 +129,13 @@ If you want to always pull the latest image, use ``latest``.
 Update OTOBO
 ~~~~~~~~~~~~
 
+.. note::
+
+    Since OTOBO 11.1 Redis caching gets migrated to FileStorage caching automatically when running ``update.sh``.
+    For common setups this results in increased query times.
+    If you still want to use Redis, follow the instructions at :doc:`/content/performance-tuning`.
+
+
 .. warning::
 
     Please note that minor or major upgrades must always be carried out one after the other.
