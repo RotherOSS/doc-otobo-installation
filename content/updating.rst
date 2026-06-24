@@ -46,24 +46,12 @@ This means that no separate package is necessary and they will be part of OTOBO 
    - OAuth2-Mail
    - Elasticsearch-FAQ
 
-The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by
-new functionality in OTOBO core, it needs to be uninstalled manually before migration
-to OTOBO 11.1.
-
-For the record, here is the list of integrated packages for OTOBO 11.0.
-For OTOBO 11.0, the following packages are being migrated automatically to the framework.
-This means that no separate package is necessary and they will be part of OTOBO by default.
-
-   - Ayte-CustomTranslations
-   - ExtendedCDBInfoTile
-   - ImportExport
-   - LightAdmin
-   - MarkTicketSeenUnseen
-   - QuickDateButtons
-   - ResponseTemplatesStatePreselection
-   - RotherOSS-LightAdmin
-   - RotherOSS-InternalTransitionActions
-   - TicketTimeUnitsMandatoryOnlyWithArticle
+.. warning::
+   The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by new functionality in OTOBO core.
+   It will not be uninstalled during migration to OTOBO 11.1.
+   It will be listed as not fully installed.
+   This will allow you to migrate configuration from the old package to new core functionality.
+   You need to uninstall the package manually after migration.
 
 
 Step 1: Stop All Relevant Services and the OTOBO Daemon
