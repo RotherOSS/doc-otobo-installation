@@ -25,7 +25,7 @@ cd doc-otobo-admin
 Prerequisites
 -------------
 
-* Python3
+* Python >= 3.9
 * `make` (standard on Linux/macOS; for Windows use MinGW or WSL)
 
 Quick Start
