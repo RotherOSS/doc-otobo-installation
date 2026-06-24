@@ -46,7 +46,12 @@ This means that no separate package is necessary and they will be part of OTOBO 
     - RotherOSS-AccountedTimeInViews
     - TicketUpdateOperationExternalIdentifier
 
-
+.. warning::
+   The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by new functionality in OTOBO core.
+   It will not be uninstalled during migration to OTOBO 11.1.
+   It will be listed as not fully installed.
+   This will allow you to migrate configuration from the old package to new core functionality.
+   You need to uninstall the package manually after migration.
 
 Migrating to Docker Compose v2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
