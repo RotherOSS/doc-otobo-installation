@@ -88,7 +88,7 @@ Stop the Containers
 
    cd /opt/otobo-docker
    docker compose down
-   docker compose ps 
+   docker compose ps
    # no containers should be listed here
 
 
