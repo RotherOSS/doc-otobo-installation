@@ -26,9 +26,9 @@ This is the OTOBO Installation Manual. It serves as a reference for administrato
    performance-tuning
    history
 
-=======
-License
-=======
+=======================
+Copyright and Licensing
+=======================
 
 This work is copyrighted by OTRS AG (https://otrs.com),
 Zimmersmühlenweg 11, 61440 Oberursel, Germany.
