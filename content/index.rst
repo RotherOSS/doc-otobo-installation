@@ -6,6 +6,31 @@
 OTOBO Installation Tutorial
 ===========================
 
+This is the OTOBO Installation Manual.
+It serves as a reference for administrators during the installation process, as well as for migrating and updating existing OTOBO systems.
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents
+
+   introduction
+   requirements
+   installation
+   migration-from-otrs
+   updating
+   updating-docker
+   backup-restore
+   sso-kerberos
+   sso-kerberos-native
+   customer-interface-ci
+   installing-perl-modules
+   performance-tuning
+   history
+
+=======================
+Copyright and Licensing
+=======================
+
 This work is copyrighted by OTRS AG (https://otrs.com),
 Zimmersmühlenweg 11, 61440 Oberursel, Germany.
 
@@ -30,21 +55,3 @@ Published by: Rother OSS GmbH, (https://otobo.io),
 Oberwalting 31, 94339 Leiblfing, Germany.
 
 Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.io).
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Contents
-
-   introduction
-   requirements
-   installation
-   migration-from-otrs
-   updating
-   updating-docker
-   backup-restore
-   sso-kerberos
-   sso-kerberos-native
-   customer-interface-ci
-   installing-perl-modules
-   performance-tuning
-   history
