@@ -6,7 +6,8 @@
 OTOBO Installation Tutorial
 ===========================
 
-This is the OTOBO Installation Manual. It serves as a reference for administrators during the installation process, as well as for migrating and updating existing OTOBO systems.
+This is the OTOBO Installation Manual.
+It serves as a reference for administrators during the installation process, as well as for migrating and updating existing OTOBO systems.
 
 .. toctree::
    :maxdepth: 3
