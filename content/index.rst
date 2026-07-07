@@ -6,6 +6,38 @@
 OTOBO Installation Tutorial
 ===========================
 
+This is the OTOBO Administration Manual.
+It provides detailed instructions and guidance for installing, configuring, and maintaining the OTOBO ticketing system.
+
+.. important:: Beta
+   This documentation is for the 11.1 beta version of OTOBO.
+   It may contain incomplete or inaccurate information, and some features may not be fully functional.
+   Please use this documentation with caution and report any issues to the OTOBO development team.
+   You may find the documentation for the latest stable release at https://doc.otobo.org/manual/installation/11.0/en/content/index.html.
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents
+
+   introduction
+   requirements
+   installation
+   migration-from-otrs
+   updating
+   updating-docker
+   backup-restore
+   sso-kerberos
+   sso-kerberos-native
+   customer-interface-ci
+   installing-perl-modules
+   performance-tuning
+   history
+
+
+License
+=======
+
 This work is copyrighted by OTRS AG (https://otrs.com),
 Zimmersmühlenweg 11, 61440 Oberursel, Germany.
 
@@ -31,20 +63,4 @@ Oberwalting 31, 94339 Leiblfing, Germany.
 
 Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.io).
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Contents
 
-   introduction
-   requirements
-   installation
-   migration-from-otrs
-   updating
-   updating-docker
-   backup-restore
-   sso-kerberos
-   sso-kerberos-native
-   customer-interface-ci
-   installing-perl-modules
-   performance-tuning
-   history
