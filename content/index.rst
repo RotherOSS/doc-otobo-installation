@@ -9,11 +9,11 @@ OTOBO Installation Tutorial
 This is the OTOBO Administration Manual.
 It provides detailed instructions and guidance for installing, configuring, and maintaining the OTOBO ticketing system.
 
-.. important:: Beta
-   This documentation is for the 11.1 beta version of OTOBO.
+.. important::
+   This documentation is for the **11.1 beta** version of OTOBO.
    It may contain incomplete or inaccurate information, and some features may not be fully functional.
    Please use this documentation with caution and report any issues to the OTOBO development team.
-   You may find the documentation for the latest stable release at https://doc.otobo.org/manual/installation/11.0/en/content/index.html.
+   You may find the **documentation for the latest stable release** at https://doc.otobo.org/manual/installation/11.0/en/content/index.html.
 
 
 .. toctree::
