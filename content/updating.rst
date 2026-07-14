@@ -1,7 +1,10 @@
 Updating
 ========
 
-This procedure describes how to update an existing OTOBO 11.0 installation to OTOBO 11.1.
+This document describes the procedure for upgrading an existing OTOBO 11.0 to 11.1.
+However, the same procedure can be used for patch level updates, e.g., 11.1.0 to 11.1.1.
+Just omit the steps not relevant for patch level updates.
+
 
 .. note::
 
@@ -120,7 +123,7 @@ Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/ and unpa
 .. code-block:: bash
 
     cd /opt/otobo-update                                                   # Change into the update directory
-    sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.1.tar.gz     # Download he latest OTOBO 11.1 release
+    sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.1.tar.gz     # Download the latest OTOBO 11.1 release
     sudo tar -xzf otobo-latest-11.1.tar.gz                                 # Unzip OTOBO
     sudo cp -r otobo-11.1.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
