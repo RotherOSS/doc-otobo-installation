@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-30 14:15+0000\n"
+"POT-Creation-Date: 2026-07-14 19:22+0000\n"
 "PO-Revision-Date: 2024-09-02 14:23+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Latvian <http://weblate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/lv/>\n"
@@ -2348,7 +2348,7 @@ msgstr "Znuny4OTRS-PasswordPolicy"
 msgid "The following OTOBO packages have been integrated into OTOBO 11.0. This means that they should not be installed in the target system when the target system is OTOBO 11:"
 msgstr "OTOBO 11.0 ir integrētas šādas OTOBO paketes. Tas nozīmē, ka tās nedrīkst instalēt mērķa sistēmā, ja mērķa sistēma ir OTOBO 11."
 
-#: ../content/migration-from-otrs.rst:142 ../content/updating-docker.rst:36
+#: ../content/migration-from-otrs.rst:142 ../content/updating-docker.rst:41
 #: ../content/updating.rst:30
 #, fuzzy
 msgid "ImportExport"
@@ -4231,39 +4231,39 @@ msgstr "Debian sistēmās pirms atjaunināšanas no 10.0 uz 10.1 var būt nepiec
 msgid "For OTOBO 11.0, the following packages are being migrated automatically to the framework. This means that no separate packe is necessary and they will be part of OTOBO by default."
 msgstr ""
 
-#: ../content/updating-docker.rst:34 ../content/updating.rst:28
+#: ../content/updating-docker.rst:39 ../content/updating.rst:28
 msgid "Ayte-CustomTranslations"
 msgstr ""
 
-#: ../content/updating-docker.rst:35 ../content/updating.rst:29
+#: ../content/updating-docker.rst:40 ../content/updating.rst:29
 msgid "ExtendedCDBInfoTile"
 msgstr ""
 
-#: ../content/updating-docker.rst:37 ../content/updating.rst:31
+#: ../content/updating-docker.rst:42 ../content/updating.rst:31
 msgid "LightAdmin"
 msgstr ""
 
-#: ../content/updating-docker.rst:38 ../content/updating.rst:32
+#: ../content/updating-docker.rst:43 ../content/updating.rst:32
 msgid "MarkTicketSeenUnseen"
 msgstr ""
 
-#: ../content/updating-docker.rst:39 ../content/updating.rst:33
+#: ../content/updating-docker.rst:44 ../content/updating.rst:33
 msgid "QuickDateButtons"
 msgstr ""
 
-#: ../content/updating-docker.rst:40 ../content/updating.rst:34
+#: ../content/updating-docker.rst:45 ../content/updating.rst:34
 msgid "ResponseTemplatesStatePreselection"
 msgstr ""
 
-#: ../content/updating-docker.rst:41 ../content/updating.rst:35
+#: ../content/updating-docker.rst:46 ../content/updating.rst:35
 msgid "RotherOSS-LightAdmin"
 msgstr ""
 
-#: ../content/updating-docker.rst:42 ../content/updating.rst:36
+#: ../content/updating-docker.rst:47 ../content/updating.rst:36
 msgid "RotherOSS-InternalTransitionActions"
 msgstr ""
 
-#: ../content/updating-docker.rst:43 ../content/updating.rst:37
+#: ../content/updating-docker.rst:48 ../content/updating.rst:37
 msgid "TicketTimeUnitsMandatoryOnlyWithArticle"
 msgstr ""
 
@@ -4435,158 +4435,162 @@ msgstr "OTOBO instalācijas, kas balstīta uz Docker, atjaunināšana"
 msgid "Don't update without a complete backup of your system. See :doc:`backup-restore` for more information."
 msgstr "Neievietojiet pilnu sistēmas dublējumu. Šim nolūkam varat izmantot arī :ref:`backup-restore` skriptu."
 
-#: ../content/updating-docker.rst:9
+#: ../content/updating-docker.rst:11
+msgid "Updates from one patch version to another patch version, e.g., from 11.0.6 to 11.0.7, are tested and under quality assurance. Skipping vesions in between may work, but may lead to unexpected results."
+msgstr ""
+
+#: ../content/updating-docker.rst:14
 #, fuzzy
 msgid "For running OTOBO under Docker we need the OTOBO software itself and an environment in which OTOBO can run. The OTOBO Docker image provides the environment and a copy of the OTOBO software. The software itself is installed in the volume ``otobo_opt_otobo``. A named volume is used because run time data, e.g. configuration files and installed packages, is stored in the same directory tree."
 msgstr "OTOBO darbināšanai Docker vidē mums ir nepieciešama pati OTOBO programmatūra un vide, kurā OTOBO var darboties. OTOBO Docker attēls nodrošina vidi un OTOBO programmatūras kopiju. Pati programmatūra ir instalēta sējumā *otobo_opt_otobo*. Nosauktais sējums tiek izmantots tāpēc, ka izpildes laika dati, piemēram, konfigurācijas faili un instalētās paketes, tiek glabāti tajā pašā direktoriju kokā."
 
-#: ../content/updating-docker.rst:14
+#: ../content/updating-docker.rst:19
 #, fuzzy
 msgid "When updating to a new version of OTOBO several things have to happen."
 msgstr "Atjauninot OTOBO uz jaunu versiju, ir jāveic vairākas darbības."
 
-#: ../content/updating-docker.rst:16
+#: ../content/updating-docker.rst:21
 #, fuzzy
 msgid "The Docker Compose files have to be updated."
 msgstr "Ir jāatjaunina Docker Compose faili."
 
-#: ../content/updating-docker.rst:17
+#: ../content/updating-docker.rst:22
 #, fuzzy
 msgid "The Docker Compose configuration file ``.env`` has to be checked."
 msgstr "Ir jāpārbauda Docker Compose konfigurācijas fails *.env*."
 
-#: ../content/updating-docker.rst:18
+#: ../content/updating-docker.rst:23
 #, fuzzy
 msgid "The new Docker image has to be fetched."
 msgstr "Jāizsauc jaunais Docker tēls."
 
-#: ../content/updating-docker.rst:19
+#: ../content/updating-docker.rst:24
 #, fuzzy
 msgid "The volume ``otobo_opt_otobo`` must be updated."
 msgstr "Jāatjaunina sējums *otobo_opt_otobo*."
 
-#: ../content/updating-docker.rst:20
+#: ../content/updating-docker.rst:25
 #, fuzzy
 msgid "Some maintenance tasks must be executed."
 msgstr "Jāveic daži uzturēšanas uzdevumi."
 
-#: ../content/updating-docker.rst:24
+#: ../content/updating-docker.rst:29
 #, fuzzy
 msgid "In the sample commands below, the version **11.x.y**, corresponding to the tag **11_x_y**, is used as the example version. Please substitute it with the real version, e.g. **11.0.7**."
 msgstr "Tālāk dotajos komandu paraugos kā piemēra versija tiek izmantota **11.x.y**, kas atbilst tagam **11_x_y**. Lūdzu, aizstāt to ar reālo versiju, piemēram, **11.0.7**."
 
-#: ../content/updating-docker.rst:29
+#: ../content/updating-docker.rst:34
 msgid "Before upgrading, please check if your installed packages are available for the new version"
 msgstr ""
 
-#: ../content/updating-docker.rst:31
+#: ../content/updating-docker.rst:36
 msgid "For OTOBO 11.0, the following packages are being migrated automatically to the framework. This means that no separate package is necessary and they will be part of OTOBO by default."
 msgstr ""
 
-#: ../content/updating-docker.rst:47
+#: ../content/updating-docker.rst:52
 #, fuzzy
 msgid "Upgrade Docker Compose"
 msgstr "Docker Compose 1.25.0"
 
-#: ../content/updating-docker.rst:49
+#: ../content/updating-docker.rst:54
 msgid "Please take note, that Docker Compose v1 is deprecated and will not be supported in the future. If ``docker-compose --version`` shows a version beginning with ``1``, Docker Compose v1 is installed. If ``docker ps`` shows a container called ``otobo_web_1``, then Docker Compose v1 is running your container."
 msgstr ""
 
-#: ../content/updating-docker.rst:53
+#: ../content/updating-docker.rst:58
 msgid "If your host is a recent Ubuntu Linux, migration is straight forward and does not entail downtime of OTOBO:"
 msgstr ""
 
-#: ../content/updating-docker.rst:75
+#: ../content/updating-docker.rst:80
 msgid "Docker Compose v2 entails a new naming scheme for the containers, e.g., ``otobo_web_1`` becomes ``otobo-web-1`` (note the change of ``_`` to ``-``). If you have tooling that relies on the ``docker-compose`` command or the name of the containers, e.g., when using ``acme.sh`` in standalone mode, you need to refit your setup."
 msgstr ""
 
-#: ../content/updating-docker.rst:80
+#: ../content/updating-docker.rst:85
 #, fuzzy
 msgid "Updating the Docker Compose Files"
 msgstr "Docker Compose failu atjaunināšana"
 
-#: ../content/updating-docker.rst:82
+#: ../content/updating-docker.rst:87
 #, fuzzy
 msgid "The OTOBO Docker Compose files may change between releases. Therefore, is must be made sure that the correct setup is used."
 msgstr "OTOBO Docker Compose faili starp versijām var mainīties. Tāpēc ir jāpārliecinās, ka tiek izmantota pareizā iestatīšana."
 
-#: ../content/updating-docker.rst:87
+#: ../content/updating-docker.rst:92
 #, fuzzy
 msgid "See https://hub.docker.com/r/rotheross/otobo/tags for the available releases."
 msgstr "Pieejamos laidienus skatiet vietnē https://hub.docker.com/r/rotheross/otobo/tags."
 
-#: ../content/updating-docker.rst:89
+#: ../content/updating-docker.rst:94
 msgid "To obtain the new Docker Compose files, the OTOBO Docker repository must be updated to the wanted version: As a docker administrator, you can do this as follows:"
 msgstr ""
 
-#: ../content/updating-docker.rst:105
+#: ../content/updating-docker.rst:110
 #, fuzzy
 msgid "Checking the Docker Compose ``.env`` File"
 msgstr "Docker Compose .env faila pārbaude"
 
-#: ../content/updating-docker.rst:107
+#: ../content/updating-docker.rst:112
 #, fuzzy
 msgid "The file ``.env`` controls the OTOBO Docker container. Within that file, the variables ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, and ``OTOBO_IMAGE_OTOBO_NGINX`` declare which images are used. The latest images are used when these variables are not set. If you want to use a specific version, then please set these variables accordingly."
 msgstr "Failiņš *.env* kontrolē OTOBO Docker konteineru. Šajā failā mainīgie *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH* un *OTOBO_IMAGE_OTOBO_NGINX* norāda, kuri attēli tiek izmantoti. Ja šie mainīgie nav iestatīti, tiek izmantoti jaunākie attēli. Ja vēlaties izmantot konkrētu versiju, attiecīgi iestatiet šos mainīgos."
 
-#: ../content/updating-docker.rst:113
+#: ../content/updating-docker.rst:118
 #, fuzzy
 msgid "Fetch the new Docker Images"
 msgstr "Jauno Docker attēlu iegūšana"
 
-#: ../content/updating-docker.rst:115
+#: ../content/updating-docker.rst:120
 #, fuzzy
 msgid "Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/."
 msgstr "Docker compose var izmantot, lai lejupielādētu vēlamos attēlus no https://hub.docker.com/r/rotheross/otobo/."
 
-#: ../content/updating-docker.rst:126
+#: ../content/updating-docker.rst:131
 #, fuzzy
 msgid "Update OTOBO"
 msgstr "OTOBO atjaunināšana"
 
-#: ../content/updating-docker.rst:130
+#: ../content/updating-docker.rst:135
 #, fuzzy
 msgid "Please note that minor or major upgrades must always be carried out one after the other. If you would like to upgrade from version 10.0.* to the latest 11.0.*, please upgrade to 10.1 first and then to 11.0."
 msgstr "Lūdzu, ņemiet vērā, ka nelieli vai lieli atjauninājumi vienmēr jāveic viens pēc otra. Ja vēlaties atjaunināt 10.0.* versiju uz jaunāko 11.0.* versiju, vispirms atjauniniet 10.1 versiju un pēc tam 11.0 versiju."
 
-#: ../content/updating-docker.rst:133
+#: ../content/updating-docker.rst:138
 #, fuzzy
 msgid "In this step the volume ``otobo_opt_otobo`` is updated and the following OTOBO console commands are performed:"
 msgstr "Šajā solī tiek atjaunināts sējums *otobo_opt_otobo* un tiek izpildītas šādas OTOBO konsoles komandas:"
 
-#: ../content/updating-docker.rst:135
+#: ../content/updating-docker.rst:140
 #, fuzzy
 msgid "``Admin::Package::ReinstallAll``"
 msgstr "admin::Package::ReinstallAll"
 
-#: ../content/updating-docker.rst:136
+#: ../content/updating-docker.rst:141
 #, fuzzy
 msgid "``Admin::Package::UpgradeAll``"
 msgstr "admin::Package::UpgradeAll"
 
-#: ../content/updating-docker.rst:137
+#: ../content/updating-docker.rst:142
 #, fuzzy
 msgid "``Maint::Config::Rebuild``"
 msgstr "Maint::Config::Rebuild"
 
-#: ../content/updating-docker.rst:138
+#: ../content/updating-docker.rst:143
 #, fuzzy
 msgid "``Maint::Cache::Delete``"
 msgstr "Maint::Cache::Delete"
 
-#: ../content/updating-docker.rst:140
+#: ../content/updating-docker.rst:145
 #, fuzzy
 #| msgid "For minor and major version upgrades, prior to this also update tasks for the core system have to be performed"
 msgid "For minor and major version upgrades, prior to this also update tasks for the core system have to be performed as docker admin:"
 msgstr "Nelielu un lielu versiju atjauninājumiem pirms tam ir jāveic arī atjaunināšanas uzdevumi pamatsistēmai."
 
-#: ../content/updating-docker.rst:171
+#: ../content/updating-docker.rst:176
 #, fuzzy
 #| msgid "For simple patchlevel updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script *scripts/update.sh*. This script runs the commands starting with the **docker-compose pull** command. Note that that calling the database upgrade scripts is not included and therefor it cannot be used for version upgrades."
 msgid "For simple patch level updates (e.g. 11.0.2 to 11.0.3) running the above mentioned commands can be automated with the help of the script ``scripts/update.sh``. This script runs the commands starting with the ``docker compose pull`` command. Note that calling the database upgrade scripts is not included and therefore it cannot be used for version upgrades. As a docker administrator, you can use the script as follows:"
 msgstr "Vienkāršiem ielāpu līmeņa atjauninājumiem (piemēram, no 11.0.2 uz 11.0.3) iepriekš minēto komandu izpildi var automatizēt, izmantojot skriptu *scripts/update.sh*. Šis skripts izpilda komandas, sākot ar komandu **docker-compose pull**. Ņemiet vērā, ka datubāzes atjaunināšanas skriptu izsaukšana nav iekļauta, tāpēc to nevar izmantot versiju atjaunināšanai."
 
-#: ../content/updating-docker.rst:184
+#: ../content/updating-docker.rst:189
 msgid "When upgrading from 10.1.x to 11.0.x with the ITSM plugin installed, the following command has to be executed additionally:"
 msgstr "Atjauninot no 10.1.x uz 11.0.x ar instalētu ITSM spraudni, papildus jāizpilda šāda komanda:"
 
