@@ -6,6 +6,12 @@ Updating a Docker-based Installation of OTOBO
     Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in
     your existing Docker installation for that.
 
+
+.. important::
+
+   Updates from one patch version to another patch version, e.g., from 10.1.6 to 10.1.7, are tested and under quality assurance.
+   Skipping vesions in between may work, but may lead to unexpected results.
+
 For running OTOBO under Docker we need the OTOBO software itself and an
 environment in which OTOBO can run. The OTOBO Docker image provides the environment
 and a copy of the OTOBO software. The software itself is installed in the volume *otobo_opt_otobo*.
