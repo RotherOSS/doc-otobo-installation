@@ -131,7 +131,7 @@ Software requirements
 ---------------------
 
 Perl
-   - Perl 5.24.0 or higher
+   - Perl 5.26.0 or higher
    - Perl packages listed by ``/opt/otobo/bin/otobo.CheckModules.pl --list`` console command
 
 Web Server
