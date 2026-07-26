@@ -58,9 +58,7 @@ Here's how to switch off SELinux for RHEL/CentOS/Fedora.
    .. code-block:: bash
 
       root> getenforce
-      Disabled
-
-
+      Permissive
 
 
 Step 1: Unpack and Install OTOBO
@@ -250,7 +248,7 @@ Find the commands needed to set up MySQL below.
 .. code-block:: bash
 
    root> dnf install mariadb-server                # 'dnf install mysql-server' for mysql installations
-   root> systemctl enable --now mysqld.service
+   root> systemctl enable --now mariadb.service
 
 After installing the database server you need configure it.
 

@@ -4,7 +4,7 @@ Updating a Docker-based Installation of OTOBO
 .. warning::
 
     Don't update without a complete backup of your system.
-    See :doc:`backup-restore` for more information.
+    See :doc:`../backup-restore` for more information.
 
 .. important::
 
