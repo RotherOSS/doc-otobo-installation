@@ -9,6 +9,10 @@ extensions = [
     'sphinx_rtd_theme',
 ]
 
+# we do have duplicate section headings by design
+suppress_warnings = ['autosectionlabel.*']
+
 html_theme = 'sphinx_rtd_theme'
 master_doc = 'content/index'
 language = 'en'
+exclude_patterns = ['_build', '.venv', 'Thumbs.db', '.DS_Store']
