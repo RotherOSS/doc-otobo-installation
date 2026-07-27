@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-12 10:18+0000\n"
+"POT-Creation-Date: 2026-07-27 15:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3253,90 +3253,94 @@ msgstr ""
 msgid "Don't update without a complete backup of your system. You can use the :doc:`backup-restore-docker` script in your existing Docker installation for that."
 msgstr ""
 
-#: ../content/updating-docker.rst:9
-msgid "For running OTOBO under Docker we need the OTOBO software itself and an environment in which OTOBO can run. The OTOBO Docker image provides the environment and a copy of the OTOBO software. The software itself is installed in the volume *otobo_opt_otobo*. A named volume is used because run time data, e.g. configuration files and installed packages, is stored in the same directory tree."
+#: ../content/updating-docker.rst:12
+msgid "Updates from one patch version to another patch version, e.g., from 10.1.6 to 10.1.7, are tested and under quality assurance. Skipping vesions in between may work, but may lead to unexpected results."
 msgstr ""
 
 #: ../content/updating-docker.rst:15
-msgid "When updating to a new version of OTOBO several things have to happen."
-msgstr ""
-
-#: ../content/updating-docker.rst:17
-msgid "The Docker Compose files have to be updated."
-msgstr ""
-
-#: ../content/updating-docker.rst:18
-msgid "The Docker Compose config file *.env* has to be checked."
-msgstr ""
-
-#: ../content/updating-docker.rst:19
-msgid "The new Docker image has to be fetched."
-msgstr ""
-
-#: ../content/updating-docker.rst:20
-msgid "The volume *otobo_opt_otobo* must be updated."
+msgid "For running OTOBO under Docker we need the OTOBO software itself and an environment in which OTOBO can run. The OTOBO Docker image provides the environment and a copy of the OTOBO software. The software itself is installed in the volume *otobo_opt_otobo*. A named volume is used because run time data, e.g. configuration files and installed packages, is stored in the same directory tree."
 msgstr ""
 
 #: ../content/updating-docker.rst:21
-msgid "Some maintainance tasks must be executed."
+msgid "When updating to a new version of OTOBO several things have to happen."
+msgstr ""
+
+#: ../content/updating-docker.rst:23
+msgid "The Docker Compose files have to be updated."
+msgstr ""
+
+#: ../content/updating-docker.rst:24
+msgid "The Docker Compose config file *.env* has to be checked."
 msgstr ""
 
 #: ../content/updating-docker.rst:25
-msgid "In the sample commands below, the version **10.x.y**, corresponding to the tag **10_x_y**, is used as the example version. Please substitute it with the real version, e.g. **10.1.10**."
+msgid "The new Docker image has to be fetched."
 msgstr ""
 
-#: ../content/updating-docker.rst:29
-msgid "Updating the Docker Compose files"
+#: ../content/updating-docker.rst:26
+msgid "The volume *otobo_opt_otobo* must be updated."
+msgstr ""
+
+#: ../content/updating-docker.rst:27
+msgid "Some maintainance tasks must be executed."
 msgstr ""
 
 #: ../content/updating-docker.rst:31
+msgid "In the sample commands below, the version **10.x.y**, corresponding to the tag **10_x_y**, is used as the example version. Please substitute it with the real version, e.g. **10.1.10**."
+msgstr ""
+
+#: ../content/updating-docker.rst:35
+msgid "Updating the Docker Compose files"
+msgstr ""
+
+#: ../content/updating-docker.rst:37
 msgid "The OTOBO Docker Compose files can change between releases. Therefore is must be made sure that the correct setup is used."
 msgstr ""
 
-#: ../content/updating-docker.rst:36
+#: ../content/updating-docker.rst:42
 msgid "See https://hub.docker.com/r/rotheross/otobo/tags for the available releases."
 msgstr ""
 
-#: ../content/updating-docker.rst:50
+#: ../content/updating-docker.rst:56
 msgid "Checking the Docker Compose .env file"
 msgstr ""
 
-#: ../content/updating-docker.rst:52
+#: ../content/updating-docker.rst:58
 msgid "The file *.env* controls the OTOBO Docker container. Within that file, the variables *OTOBO_IMAGE_OTOBO*, *OTOBO_IMAGE_OTOBO_ELASTICSEARCH*, and *OTOBO_IMAGE_OTOBO_NGINX* declare which images are used. The latest images are used when these variables are not set. If you want to use a specific version, then please set these variables accordingly."
 msgstr ""
 
-#: ../content/updating-docker.rst:58
+#: ../content/updating-docker.rst:64
 msgid "Fetch the new Docker images"
 msgstr ""
 
-#: ../content/updating-docker.rst:60
+#: ../content/updating-docker.rst:66
 msgid "Docker compose can be used for fetching the wanted images from https://hub.docker.com/r/rotheross/otobo/."
 msgstr ""
 
-#: ../content/updating-docker.rst:71
+#: ../content/updating-docker.rst:77
 msgid "Update OTOBO"
 msgstr ""
 
-#: ../content/updating-docker.rst:73
+#: ../content/updating-docker.rst:79
 msgid "In this step the volume *otobo_opt_otobo* is updated and the following OTOBO console commands are performed:"
 msgstr ""
 
-#: ../content/updating-docker.rst:75
+#: ../content/updating-docker.rst:81
 msgid "Admin::Package::ReinstallAll"
 msgstr ""
 
-#: ../content/updating-docker.rst:76
+#: ../content/updating-docker.rst:82
 msgid "Admin::Package::UpgradeAll"
 msgstr ""
 
-#: ../content/updating-docker.rst:77
+#: ../content/updating-docker.rst:83
 msgid "Maint::Config::Rebuild"
 msgstr ""
 
-#: ../content/updating-docker.rst:78
+#: ../content/updating-docker.rst:84
 msgid "Maint::Cache::Delete"
 msgstr ""
 
-#: ../content/updating-docker.rst:105
+#: ../content/updating-docker.rst:111
 msgid "Running the above mentioned commands can be automated with the help of the script *scripts/update.sh*. This script runs the commands starting with the **docker-compose pull** command. Note that that calling the database upgrade scripts is not included."
 msgstr ""
