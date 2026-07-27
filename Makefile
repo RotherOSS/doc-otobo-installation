@@ -18,7 +18,7 @@ else
 	$(error Unsupported OS: $(UNAME_S))
 endif
 
-.PHONY: help open clean venv build auto clean-venv
+.PHONY: help open clean venv build auto clean-venv check
 
 help: ## List every available make target and what it does.
 	@echo
@@ -31,8 +31,8 @@ $(VENV_PYTHON): ## (internal) Create the virtual environment if it does not exis
 	@test -x $@ || $(PYTHON) -m venv $(VENV)
 
 $(VENV_STAMP): $(VENV_PYTHON) requirements.txt ## (internal) Install or refresh the documentation dependencies.
-	$(VENV_PIP) install --quiet --upgrade pip
-	$(VENV_PIP) install --quiet -r requirements.txt
+	$(VENV_PIP) install --quiet --no-cache-dir --upgrade pip
+	$(VENV_PIP) install --quiet --no-cache-dir -r requirements.txt
 	@touch $@
 
 venv: $(VENV_STAMP) ## Validate the virtual environment and install dependencies if needed.
