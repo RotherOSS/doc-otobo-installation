@@ -9,6 +9,7 @@ extensions = [
     'sphinx_rtd_theme',
 ]
 
+# we do have duplicate section headings by design
 suppress_warnings = ['autosectionlabel.*']
 
 html_theme = 'sphinx_rtd_theme'
