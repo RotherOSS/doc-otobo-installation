@@ -21,7 +21,7 @@ We will find a way to help you!
 
    Migration from OTRS to OTOBO is only supported on 10.1.X.
    Upgrade step by step through all Major/Minor until you reach your target version (10.1 → 11.0 → 11.1).
-   Refer to the specific upgrade instructions for each version, and to the chapter :doc:`updating/updating-ubuntu` in general.
+   Refer to the specific upgrade instructions for each version, and to the chapter :doc:`updating` in general.
 
 
 Overview over the Supported Migration Scenarios

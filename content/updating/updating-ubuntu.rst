@@ -1,5 +1,5 @@
-Updating
-========
+Updating on Ubuntu
+==================
 
 This document describes the procedure for upgrading an existing OTOBO 11.0 to 11.1.
 However, the same procedure can be used for patch level updates, e.g., 11.1.0 to 11.1.1.
