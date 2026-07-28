@@ -156,12 +156,6 @@ It will try to detect the correct user and group settings needed for your setup.
     sudo env PERL5LIB="/opt/otobo/install/local/lib/perl5" /opt/otobo/bin/otobo.SetPermissions.pl --otobo-user=otobo --web-group=otobo
     sudo chmod +x /opt/otobo/install/local/bin/*
 
-Check Webserver Configuration Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Newer versions of OTOBO may need you to adjust the webserver configuration.
-We provide Nginx templates at ``scripts/nginx-vhost-443.include.conf`` and ``scripts/nginx-vhost-80.include.conf``.
-
 
 Step 4: Install new needed Perl Modules
 -----------------------------------------
