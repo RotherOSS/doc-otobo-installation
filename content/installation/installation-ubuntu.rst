@@ -30,8 +30,8 @@ Unpack the source archive (for example, using ``tar``) into the directory ``/opt
 
     sudo mkdir /opt/otobo-install && sudo mkdir /opt/otobo                 # Create a temporary install directory
     cd /opt/otobo-install                                                  # Change into the update directory
-    sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.1.tar.gz     # Download the latest OTOBO 11 release
-    sudo tar -xzf otobo-latest-11.1.tar.gz                                 # Unzip OTOBO
+    sudo wget https://ftp.otobo.org/pub/otobo/otobo-11.1.0-beta1.tar.gz    # Download the latest OTOBO 11 release
+    sudo tar -xzf otobo-11.1.0-beta1.tar.gz                                # Unzip OTOBO
     sudo cp -r otobo-11.1.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 

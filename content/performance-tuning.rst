@@ -300,7 +300,7 @@ Use ``otobo.CheckModules.pl --list`` to choose the right package for you:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --all
+   sudo -i -u otobo /opt/otobo/bin/otobo.CheckModules.pl --all
 
 1. Configure OTOBO for Redis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -326,9 +326,9 @@ If you have enough RAM, you can also try to put this directory on a ramdisk like
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Session::DeleteAll
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
-   root> mount -o size=16G -t tmpfs none /opt/otobo/var/tmp
+   sudo -i -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Session::DeleteAll
+   sudo -i -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
+   sudo mount -o size=16G -t tmpfs none /opt/otobo/var/tmp
 
 .. note::
 

@@ -23,9 +23,8 @@ It provides detailed instructions and guidance for installing, configuring, and 
    introduction
    requirements
    installation
-   migration-from-otrs
    updating
-   updating-docker
+   migration-from-otrs
    backup-restore
    sso-kerberos
    sso-kerberos-native
