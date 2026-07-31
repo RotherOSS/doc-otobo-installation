@@ -357,7 +357,7 @@ If not migrated, OTOBO daemon and cron jobs must be started using their associat
 
 .. code-block:: bash
 
-    sudo -u otobo cd /opt/otobo/
+    cd /opt/otobo/
     sudo -u otobo bin/otobo.Daemon.pl start
     sudo -u otobo bin/Cron.sh start
 
