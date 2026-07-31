@@ -22,16 +22,33 @@ You can then use its web interface to login and administer the system.
 Step 1: Unpack and Install OTOBO
 ------------------------------------------
 
+
 Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
-Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
 
-    sudo mkdir /opt/otobo-install && mkdir /opt/otobo                      # Create a temporary install directory
-    cd /opt/otobo-install                                             # Change into the update directory
-    sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download the latest OTOBO 11 release
-    sudo tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
-    sudo cp -r otobo-11.0.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+   sudo mkdir /opt/otobo-install && sudo mkdir /opt/otobo                    # Create a temporary install directory
+   cd /opt/otobo-install                                                     # Change into the update directory
+   sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz        # Download the latest OTOBO 11.0 release
+
+.. note::
+
+   (Optional) It's recommended to validate the downloaded file's integrity before continuing.
+   This has should be done in the same folder than the tar.gz file obtained previously.
+
+   .. code-block:: bash
+
+      sudo wget https://ftp.otobo.org/pub/otobo/checksums/otobo-11.1.0-beta2.tar.gz.sha256
+      sudo sha256sum -c otobo-11.1.0-beta2.tar.gz.sha256
+
+   The output from the last prompt should be "OK". Otherwise the installation with that file shouldn't be continued.
+
+After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
+
+.. code-block:: bash
+
+    sudo tar -xzf otobo-latest-11.0.tar.gz                            # Unzip OTOBO
+    sudo cp -r otobo-11.0.*/* /opt/otobo                              # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -86,7 +103,6 @@ Create a dedicated user for OTOBO within its own group:
    sudo useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
 
 
-
 Step 4: Activate the Default Configuration File
 -----------------------------------------------
 
@@ -110,7 +126,6 @@ In this example we will be using ``/etc/systemd/system``.
    sudo cp /opt/otobo/scripts/systemd/* /etc/systemd/system/
    sudo systemctl daemon-reload
 
-
 After the ``daemon-reload`` all services should be controllable using systemd control service like ``systemctl``.
 
 
@@ -125,7 +140,6 @@ Install the Nginx web server:
 .. code-block:: bash
 
    sudo apt install --yes nginx
-
 
 Nginx installations commonly have a ``sites-available`` and a ``sites-enabled`` directory on debian-based systems.
 It may be found at ``/etc/nginx``.
@@ -215,7 +229,6 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
    # openssl rand -base64 48
    sudo mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewRootPassword';"
 
-
 .. note::
 
    The following configuration settings are minimum requirements for MySQL setups.
@@ -226,13 +239,11 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
       max_allowed_packet   = 64M
       innodb_log_file_size = 256M
 
-
   Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:
 
    .. code-block:: ini
 
       max_allowed_packet   = 64M
-
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup.
 You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:
@@ -271,7 +282,6 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
   sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
 
 
-
 Elasticsearch Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -308,7 +318,6 @@ Before starting with the initial web configuration you need to start and enable 
 
    sudo systemctl enable --now otobo-web.service
 
-
 Please use the web installer at http://localhost/otobo/installer.pl (replace "localhost" with your OTOBO hostname) to set up your database and basic system settings such as email accounts.
 
 
@@ -327,7 +336,6 @@ The daemon also handles all GenericAgent jobs and must be started from the OTOBO
 .. code-block:: bash
 
    sudo systemctl enable --now otobo-daemon.service
-
 
 
 Step 13: Setup Bash Auto-Completion (optional)
