@@ -24,15 +24,31 @@ Step 1: Unpack and Install OTOBO
 --------------------------------
 
 Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
-Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
 
-    sudo mkdir /opt/otobo-install && sudo mkdir /opt/otobo                 # Create a temporary install directory
-    cd /opt/otobo-install                                                  # Change into the update directory
-    sudo wget https://ftp.otobo.org/pub/otobo/otobo-11.1.0-beta1.tar.gz    # Download the latest OTOBO 11 release
-    sudo tar -xzf otobo-11.1.0-beta1.tar.gz                                # Unzip OTOBO
-    sudo cp -r otobo-11.1.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+   sudo mkdir /opt/otobo-install && sudo mkdir /opt/otobo                    # Create a temporary install directory
+   cd /opt/otobo-install                                                     # Change into the update directory
+   sudo wget https://ftp.otobo.org/pub/otobo/otobo-11.1.0-beta2.tar.gz       # Download the latest OTOBO 11.1 release
+
+.. note::
+
+   (Optional) It's recommended to validate the downloaded file's integrity before continuing.
+   This has should be done in the same folder than the tar.gz file obtained previously.
+
+   .. code-block:: bash
+
+      sudo wget https://ftp.otobo.org/pub/otobo/checksums/otobo-11.1.0-beta2.tar.gz.sha256
+      sudo sha256sum -c otobo-11.1.0-beta2.tar.gz.sha256
+
+   The output from the last prompt should be "OK". Otherwise the installation with that file shouldn't be continued.
+
+After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
+
+.. code-block:: bash
+
+    sudo tar -xzf otobo-11.1.0-beta2.tar.gz                                # Unzip OTOBO
+    sudo cp -r otobo-11.1.0-beta2/* /opt/otobo                             # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -85,7 +101,6 @@ Create a dedicated user for OTOBO within its own group:
 .. code-block:: bash
 
    sudo useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
-
 
 
 Step 4: Activate the Default Configuration File
@@ -153,7 +168,6 @@ It is also required to allow port ``80`` on the firewall if it is enabled.
 
    sudo ufw allow 80
    sudo ufw reload
-
 
 .. note::
 
@@ -280,8 +294,6 @@ OTOBO requires plugins to be installed into Elasticsearch:
   sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
 
 
-
-
 Step 10: Basic System Configuration
 -------------------------------------
 
@@ -310,7 +322,6 @@ The daemon also handles all GenericAgent jobs and must be started from the OTOBO
 .. code-block:: bash
 
    sudo systemctl enable --now otobo-daemon.service
-
 
 
 Step 13: Setup Bash Auto-Completion (optional)

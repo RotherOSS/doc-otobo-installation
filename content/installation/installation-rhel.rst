@@ -65,16 +65,31 @@ Step 1: Unpack and Install OTOBO
 --------------------------------
 
 Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
-Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
 
 .. code-block:: bash
 
-   sudo mkdir /opt/otobo-install && mkdir /opt/otobo                      # Create a temporary install directory
-   cd /opt/otobo-install                                                  # Change into the update directory
-   sudo wget https://ftp.otobo.org/pub/otobo/otobo-11.1.0-beta1.tar.gz    # Download the latest OTOBO 11 release
-   sudo tar -xzf otobo-11.1.0-beta1.tar.gz                                # Unzip OTOBO
-   sudo cp -r otobo-11.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+   sudo mkdir /opt/otobo-install && sudo mkdir /opt/otobo                    # Create a temporary install directory
+   cd /opt/otobo-install                                                     # Change into the update directory
+   sudo wget https://ftp.otobo.org/pub/otobo/otobo-11.1.0-beta2.tar.gz       # Download the latest OTOBO 11.1 release
 
+.. note::
+
+   (Optional) It's recommended to validate the downloaded file's integrity before continuing.
+   This has should be done in the same folder than the tar.gz file obtained previously.
+
+   .. code-block:: bash
+
+      sudo wget https://ftp.otobo.org/pub/otobo/checksums/otobo-11.1.0-beta2.tar.gz.sha256
+      sudo sha256sum -c otobo-11.1.0-beta2.tar.gz.sha256
+
+   The output from the last prompt should be "OK". Otherwise the installation with that file shouldn't be continued.
+
+After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:
+
+.. code-block:: bash
+
+    sudo tar -xzf otobo-11.1.0-beta2.tar.gz                                # Unzip OTOBO
+    sudo cp -r otobo-11.1.0-beta2/* /opt/otobo                             # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Create the OTOBO User
@@ -85,7 +100,6 @@ Create a dedicated user for OTOBO within its own group:
 .. code-block:: bash
 
    sudo useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
-
 
 
 Step 3: Install Additional Programs and Perl Modules
@@ -115,14 +129,33 @@ To install the required packages from CPAN:
 
 Option B: Deploy Pre-built Packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Download the pre-built packages from https://ftp.otobo.org/pub/otobo/.
+
 .. code-block:: bash
 
-   cd /opt/otobo                                                                                         # Change into your OTOBO directory
-   sudo wget https://ftp.otobo.org/pub/otobo/rhel/otobo-deps-11.1-rhel-9.7-latest.tar.gz                 # Download all required packages
-   sudo tar -xzf otobo-deps-11.1-rhel-9.7-latest.tar.gz                                                  # Unzip packages
-   sudo bash -c "echo 'export PERL5LIB="/opt/otobo/install/local/lib/perl5"' >> /opt/otobo/.profile"     # Add additional library path to otobo user
+   cd /opt/otobo                                                                             # Change into your OTOBO directory
+   sudo wget https://ftp.otobo.org/pub/otobo/rhel/otobo-deps-11.1-rhel-9.7-latest.tar.gz     # Download all required packages
+
+.. note::
+
+   (Optional) It's recommended to validate the downloaded file's integrity before continuing.
+   This has should be done in the same folder than the tar.gz file obtained previously.
+
+   .. code-block:: bash
+
+      sudo wget https://ftp.otobo.org/pub/otobo/rhel/checksums/otobo-deps-11.1-rhel-9.7-latest.tar.gz.sha256
+      sudo sha256sum -c otobo-deps-11.1-rhel-9.7-latest.tar.gz.sha256
+
+   The output from the last prompt should be "OK". Otherwise the installation with that file shouldn't be continued.
+
+.. code-block:: bash
+
+    sudo tar -xzf otobo-deps-11.1-rhel-9.7-latest.tar.gz                                                 # Unzip packages
+    sudo bash -c "echo 'export PERL5LIB="/opt/otobo/install/local/lib/perl5"' >> /opt/otobo/.profile"    # Add additional library path to otobo user
 
 You should now see a ``install`` folder containing all required Perl packages.
+
 You may run the following command to verify the installation:
 
 .. code-block:: text
