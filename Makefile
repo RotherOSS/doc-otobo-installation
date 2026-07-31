@@ -44,14 +44,16 @@ build: $(VENV_STAMP) ## Build the local HTML preview.
 	@echo "Done! Run \"make open\" to show the preview in your browser."
 
 check: $(VENV_STAMP) clean ## Check validity
-	@status=0; \
-	echo "[check] buildability ..."; \
-	$(SPHINXBUILD) --color -q -W --keep-going -b html "$(SOURCEDIR)" "$(BUILDDIR)/html" || status=1; \
-	printf "[check] trailing whitespace ...\n"; \
+	@status=0;\
+	printf "\n`tput bold`=== [check] buildability ...`tput sgr0`\n"; \
+	$(SPHINXBUILD) --color -q -W --keep-going -n -b html "$(SOURCEDIR)" "$(BUILDDIR)/html" || status=1; \
+	printf "\n`tput bold`=== [check] links ...`tput sgr0`\n"; \
+	$(SPHINXBUILD) --color -b linkcheck "$(SOURCEDIR)" "$(BUILDDIR)/linkcheck" || status=1; \
+	printf "\n`tput bold`=== [check] trailing whitespace ...`tput sgr0`\n"; \
 	! git --no-pager grep --ignore-case --line-number --color=always --recursive ' $$' -- '*.rst' '*.md' || status=1; \
-	printf "[check] sembr ...\n"; \
+	printf "\n`tput bold`=== [check] sembr ...`tput sgr0`\n"; \
 	! git --no-pager grep --ignore-case --line-number --color=always --recursive '[a-z]\{2,\}[\.\?\!] .*$$' -- '*.rst' '*.md' || status=1; \
-	if [ $$status -eq 0 ]; then printf "\nAll checks passed 🎉\n"; fi; \
+	if [ $$status -eq 0 ]; then printf "\n`tput bold`=== All checks passed 🎉`tput sgr0`\n"; fi; \
 	exit $$status
 
 open: ## Open the generated HTML preview in the default browser.
