@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-31 15:04+0000\n"
+"POT-Creation-Date: 2026-07-31 23:40+0000\n"
 "PO-Revision-Date: 2024-09-02 14:23+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Lithuanian <http://weblate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/lt/>\n"
@@ -1500,332 +1500,361 @@ msgstr "Konfigūruokite ``SELINUX=disabled`` failą ``/etc/selinux/config``:"
 msgid "Reboot your system. After reboot, confirm that the ``getenforce`` command returns *Disabled*:"
 msgstr "Perkraukite sistemą. Po perkrovimo įsitikinkite, kad komanda ``getenforce`` grąžina *Disabled*:"
 
-#: ../content/installation/installation-rhel.rst:67
+#: ../content/installation/installation-rhel.rst:65
 #: ../content/installation/installation-ubuntu.rst:23
 #, fuzzy
 msgid "Step 1: Unpack and Install OTOBO"
 msgstr "1 žingsnis: išpakuokite ir įdiekite OTOBO"
 
-#: ../content/installation/installation-rhel.rst:69
-#: ../content/installation/installation-ubuntu.rst:25
+#: ../content/installation/installation-rhel.rst:67
+#: ../content/installation/installation-ubuntu.rst:26
+#: ../content/updating.rst:99
+msgid "Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:77
+#: ../content/installation/installation-rhel.rst:142
+#: ../content/installation/installation-ubuntu.rst:36
+#: ../content/updating.rst:108
+msgid "(Optional) It's recommended to validate the downloaded file's integrity before continuing. This has should be done in the same folder than the tar.gz file obtained previously."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:85
+#: ../content/installation/installation-rhel.rst:150
+#: ../content/installation/installation-ubuntu.rst:44
+#: ../content/updating.rst:116
+msgid "The output from the last prompt should be \"OK\". Otherwise the installation with that file shouldn't be continued."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:87
+#: ../content/installation/installation-ubuntu.rst:46
 #, fuzzy
-msgid "Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/. Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
+msgid "After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
 msgstr "Atsisiųskite naujausią \"otobo\" versiją iš https://ftp.otobo.org/pub/otobo/. Išpakuokite šaltinio archyvą (pvz., naudodami ``tar``) į katalogą ``/opt/otobo-install``:"
 
-#: ../content/installation/installation-rhel.rst:83
+#: ../content/installation/installation-rhel.rst:96
 #, fuzzy
 msgid "Step 2: Create the OTOBO User"
 msgstr "3 žingsnis: sukurti OTOBO naudotoją"
 
-#: ../content/installation/installation-rhel.rst:85
-#: ../content/installation/installation-ubuntu.rst:82
+#: ../content/installation/installation-rhel.rst:98
+#: ../content/installation/installation-ubuntu.rst:99
 #, fuzzy
 msgid "Create a dedicated user for OTOBO within its own group:"
 msgstr "Sukurkite specialų OTOBO naudotoją savo grupėje:"
 
-#: ../content/installation/installation-rhel.rst:94
+#: ../content/installation/installation-rhel.rst:106
 #, fuzzy
 msgid "Step 3: Install Additional Programs and Perl Modules"
 msgstr "2 žingsnis: Įdiekite papildomas programas ir \"Perl\" modulius"
 
-#: ../content/installation/installation-rhel.rst:96
+#: ../content/installation/installation-rhel.rst:108
 msgid "OTOBO requires a working Perl installation with all *core* modules such as the module ``version``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:103
+#: ../content/installation/installation-rhel.rst:115
 msgid "Required Perl modules may be installed from CPAN. However, in more confined environments, access to the internet may be restricted. Hence, one may download a prebuilt set of Perl packages (Option B):"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:108
+#: ../content/installation/installation-rhel.rst:120
 msgid "Option A: Install packages from CPAN"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:110
+#: ../content/installation/installation-rhel.rst:122
 msgid "To install the required packages from CPAN:"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:119
+#: ../content/installation/installation-rhel.rst:131
 msgid "Option B: Deploy Pre-built Packages"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:128
-msgid "You should now see a ``install`` folder containing all required Perl packages. You may run the following command to verify the installation:"
+#: ../content/installation/installation-rhel.rst:133
+msgid "Download the pre-built packages from https://ftp.otobo.org/pub/otobo/."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:137
-#: ../content/installation/installation-ubuntu.rst:91
+#: ../content/installation/installation-rhel.rst:157
+msgid "You should now see a ``install`` folder containing all required Perl packages."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:159
+#, fuzzy
+msgid "You may run the following command to verify the installation:"
+msgstr "Norėdami sukurti naują indeksą, paleiskite šią komandą:"
+
+#: ../content/installation/installation-rhel.rst:167
+#: ../content/installation/installation-ubuntu.rst:107
 #, fuzzy
 msgid "Step 4: Activate the Default Configuration File"
 msgstr "4 veiksmas: suaktyvinti numatytąjį konfigūracijos failą"
 
-#: ../content/installation/installation-rhel.rst:139
-#: ../content/installation/installation-ubuntu.rst:93
+#: ../content/installation/installation-rhel.rst:169
+#: ../content/installation/installation-ubuntu.rst:109
 #, fuzzy
 msgid "There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.dist``. You must activate it by copying it without the ``.dist`` file name extension."
 msgstr "OTOBO konfigūracijos failas yra ``$OTOBO_HOME/Kernel/Config.pm.dist``. Turite jį aktyvuoti nukopijuodami be ``.dist`` failo vardo plėtinio."
 
-#: ../content/installation/installation-rhel.rst:148
+#: ../content/installation/installation-rhel.rst:178
 #, fuzzy
 msgid "Step 5: Configure systemd Services for OTOBO"
 msgstr "5 veiksmas: \"Apache\" žiniatinklio serverio konfigūravimas"
 
-#: ../content/installation/installation-rhel.rst:150
-#: ../content/installation/installation-ubuntu.rst:104
+#: ../content/installation/installation-rhel.rst:180
+#: ../content/installation/installation-ubuntu.rst:120
 msgid "The installation package provides systemd unit files. To make sure that these files are visible to the system they need to be copied to a valid systemd directory. In this example we will be using ``/etc/systemd/system``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:160
-#: ../content/installation/installation-ubuntu.rst:114
+#: ../content/installation/installation-rhel.rst:190
+#: ../content/installation/installation-ubuntu.rst:129
 msgid "After the ``daemon-reload`` all services should be controllable using systemd control service like ``systemctl``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:164
-#: ../content/installation/installation-ubuntu.rst:118
+#: ../content/installation/installation-rhel.rst:194
+#: ../content/installation/installation-ubuntu.rst:133
 #, fuzzy
 msgid "Step 6: Configure the Nginx Web Server"
 msgstr "5 veiksmas: \"Apache\" žiniatinklio serverio konfigūravimas"
 
-#: ../content/installation/installation-rhel.rst:166
-#: ../content/installation/installation-ubuntu.rst:120
+#: ../content/installation/installation-rhel.rst:196
+#: ../content/installation/installation-ubuntu.rst:135
 msgid "OTOBO's webserver listens on ``localhost`` on port ``5000``. In order to make it accessible from outside, you need to configure a reverse proxy."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:169
-#: ../content/installation/installation-ubuntu.rst:123
+#: ../content/installation/installation-rhel.rst:199
+#: ../content/installation/installation-ubuntu.rst:138
 #, fuzzy
 msgid "Install the Nginx web server:"
 msgstr "Įdiegti \"Redis\" serverį"
 
-#: ../content/installation/installation-rhel.rst:176
+#: ../content/installation/installation-rhel.rst:206
 msgid "Nginx installations commonly have a ``conf.d`` directory included. It may be found at ``/etc/nginx``. Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:182
-#: ../content/installation/installation-ubuntu.rst:136
+#: ../content/installation/installation-rhel.rst:212
+#: ../content/installation/installation-ubuntu.rst:150
 #, fuzzy
 msgid "Configure Nginx without SSL Support"
 msgstr "Konfigūruoti \"Apache\" be SSL palaikymo"
 
-#: ../content/installation/installation-rhel.rst:184
-#: ../content/installation/installation-ubuntu.rst:138
+#: ../content/installation/installation-rhel.rst:214
+#: ../content/installation/installation-ubuntu.rst:152
 msgid "In most cases no further editing of the template is required. The new configuration needs to be activated, subsequently."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:192
-#: ../content/installation/installation-ubuntu.rst:147
+#: ../content/installation/installation-rhel.rst:222
+#: ../content/installation/installation-ubuntu.rst:161
 msgid "It is also required to enable port ``80`` on the firewall."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:200
-#: ../content/installation/installation-ubuntu.rst:155
+#: ../content/installation/installation-rhel.rst:230
+#: ../content/installation/installation-ubuntu.rst:169
 #, fuzzy
 msgid "Configure Nginx **with** SSL Support"
 msgstr "Konfigūruokite \"Apache\" **su** SSL palaikymu"
 
-#: ../content/installation/installation-rhel.rst:202
-#: ../content/installation/installation-ubuntu.rst:157
+#: ../content/installation/installation-rhel.rst:232
+#: ../content/installation/installation-ubuntu.rst:171
 msgid "If you want to enable SSL support, you need to copy the SSL configuration file."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:211
-#: ../content/installation/installation-ubuntu.rst:167
+#: ../content/installation/installation-rhel.rst:241
+#: ../content/installation/installation-ubuntu.rst:181
 #, fuzzy
 msgid "Please edit the files and add the required information like SSL certificate storage path."
 msgstr "Redaguokite failus ir pridėkite reikiamą informaciją, pavyzdžiui, SSL sertifikato saugojimo kelią. Po to įjunkite \"OTOBO Apache\" konfigūraciją:"
 
-#: ../content/installation/installation-rhel.rst:213
-#: ../content/installation/installation-ubuntu.rst:169
+#: ../content/installation/installation-rhel.rst:243
+#: ../content/installation/installation-ubuntu.rst:183
 #, fuzzy
 msgid "Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr "Dabar galite iš naujo paleisti žiniatinklio serverį, kad būtų įkelti nauji konfigūracijos nustatymai. Daugumoje sistemų tai galite padaryti naudodami šią komandą:"
 
-#: ../content/installation/installation-rhel.rst:220
+#: ../content/installation/installation-rhel.rst:250
 msgid "It is also required to enable port ``80`` and ``443`` on the firewall."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:229
+#: ../content/installation/installation-rhel.rst:259
 #, fuzzy
 msgid "Step 7: Set File Permissions"
 msgstr "6 veiksmas: nustatykite failų leidimus"
 
-#: ../content/installation/installation-rhel.rst:231
-#: ../content/installation/installation-ubuntu.rst:186
-#: ../content/updating.rst:146
+#: ../content/installation/installation-rhel.rst:261
+#: ../content/installation/installation-ubuntu.rst:200
+#: ../content/updating.rst:160
 #, fuzzy
 msgid "Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup."
 msgstr "Įvykdykite šią komandą, kad nustatytumėte OTOBO failų ir katalogų teises. Ji pabandys aptikti tinkamus naudotojo ir grupės nustatymus, reikalingus jūsų sąrankai."
 
-#: ../content/installation/installation-rhel.rst:241
+#: ../content/installation/installation-rhel.rst:271
 #, fuzzy
 msgid "Step 8: Setup the Database"
 msgstr "7 veiksmas: Duomenų bazės nustatymas"
 
-#: ../content/installation/installation-rhel.rst:243
-#: ../content/installation/installation-ubuntu.rst:197
+#: ../content/installation/installation-rhel.rst:273
+#: ../content/installation/installation-ubuntu.rst:211
 msgid "OTOBO requires a database to persist data. It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system. However, an external database may be used but latency may increase."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:247
+#: ../content/installation/installation-rhel.rst:277
 msgid "Packages for a local database may be obtained from the system's package manager. Find the commands needed to set up MySQL below."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:255
-#: ../content/installation/installation-ubuntu.rst:208
+#: ../content/installation/installation-rhel.rst:285
+#: ../content/installation/installation-ubuntu.rst:222
 #, fuzzy
 msgid "After installing the database server you need configure it."
 msgstr "Įdiegus \"MySQL\" serverį reikia jį sukonfigūruoti."
 
-#: ../content/installation/installation-rhel.rst:257
+#: ../content/installation/installation-rhel.rst:287
 #, fuzzy
 msgid "In MySQL higher or equal version 5.7 a new authentication module is active, and it is not possible to use the OTOBO web installer for database creation. Please login to the mysql console and set a different authentication module and password for the user ``root`` if this is the case:"
 msgstr "Aukštesnėje nei 5.7 \"MySQL\" versijoje veikia naujas autentifikavimo modulis, todėl duomenų bazei sukurti negalima naudoti OTOBO interneto diegimo programos. Tokiu atveju prisijunkite prie mysql konsolės ir nustatykite kitokį autentifikavimo modulį ir slaptažodį naudotojui ``root``:"
 
-#: ../content/installation/installation-rhel.rst:265
+#: ../content/installation/installation-rhel.rst:296
 #, fuzzy
 msgid "After OTOBO installation it is possible to change the authentication module again, if needed."
 msgstr "Įdiegus OTOBO, prireikus autentifikavimo modulį galima pakeisti dar kartą."
 
-#: ../content/installation/installation-rhel.rst:269
+#: ../content/installation/installation-rhel.rst:300
 #, fuzzy
 msgid "The following configuration settings are minimum requirements for MariaDB/MySQL setups. Please add the following lines to the Database Server configuration file ``/etc/my.cnf`` under the ``[mysqld]`` section:"
 msgstr "Toliau nurodyti konfigūracijos nustatymai yra minimalūs \"MySQL\" konfigūracijos reikalavimai. Į \"MySQL\" serverio konfigūracijos failą ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` arba ``/etc/mysql/mysql.conf.d/mysqld.cnf`` skirsnyje ``[mysqld]`` pridėkite šias eilutes:"
 
-#: ../content/installation/installation-rhel.rst:277
+#: ../content/installation/installation-rhel.rst:308
 msgid "In order to apply these settings, you need to restart the MySQL service."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:285
+#: ../content/installation/installation-rhel.rst:316
 #, fuzzy
 msgid "Step 9: Setup Elasticsearch"
 msgstr "8 žingsnis: \"Elasticsearch\" sąranka"
 
-#: ../content/installation/installation-rhel.rst:287
-#: ../content/installation/installation-ubuntu.rst:254
+#: ../content/installation/installation-rhel.rst:318
+#: ../content/installation/installation-ubuntu.rst:265
 #, fuzzy
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr "OTOBO rekomenduoja aktyviai įdiegti \"Elasticsearch\", kad galėtumėte greitai atlikti paiešką. Paprasčiausia \"Elasticsearch\" įdiegti tame pačiame kompiuteryje kaip ir OTOBO ir susieti jį su numatytuoju prievadu."
 
-#: ../content/installation/installation-rhel.rst:290
-#: ../content/installation/installation-ubuntu.rst:257
-#: ../content/installation/installation-ubuntu.rst:262
+#: ../content/installation/installation-rhel.rst:321
+#: ../content/installation/installation-ubuntu.rst:268
+#: ../content/installation/installation-ubuntu.rst:273
 #, fuzzy
 msgid "Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 msgstr "Vadovaukitės diegimo instrukcija, kurią rasite adresu https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 
-#: ../content/installation/installation-rhel.rst:293
-#: ../content/installation/installation-ubuntu.rst:265
+#: ../content/installation/installation-rhel.rst:324
+#: ../content/installation/installation-ubuntu.rst:276
 #, fuzzy
 msgid "Elasticsearch Module Installation"
 msgstr "\"Elasticsearch\" modulio diegimas"
 
-#: ../content/installation/installation-rhel.rst:294
-#: ../content/installation/installation-ubuntu.rst:266
+#: ../content/installation/installation-rhel.rst:325
+#: ../content/installation/installation-ubuntu.rst:277
 #, fuzzy
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "Be to, OTOBO reikalauja, kad į \"Elasticsearch\" būtų įdiegti papildiniai:"
 
-#: ../content/installation/installation-rhel.rst:303
-#: ../content/installation/installation-ubuntu.rst:276
+#: ../content/installation/installation-rhel.rst:334
+#: ../content/installation/installation-ubuntu.rst:286
 #, fuzzy
 msgid "Elasticsearch Configuration"
 msgstr "\"Elasticsearch\" konfigūracija"
 
-#: ../content/installation/installation-rhel.rst:305
+#: ../content/installation/installation-rhel.rst:336
 #, fuzzy
 msgid "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr "\"Elasticsearch\" turi daugybę konfigūravimo parinkčių ir galimybių."
 
-#: ../content/installation/installation-rhel.rst:307
+#: ../content/installation/installation-rhel.rst:338
 #, fuzzy
 msgid "In order to ensure error-free operation, you should adjust the JVM heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:"
 msgstr "Kad būtų užtikrintas veikimas be klaidų, didesnėms OTOBO sistemoms turėtumėte pritaikyti jvm krūvos erdvę. Pakeiskite nustatymus faile ``/etc/elasticsearch/jvm.options``. Visada turėtumėte nustatyti tą pačią minimalaus ir maksimalaus JVM heap dydžio reikšmę. Pavyzdžiui, norėdami nustatyti 4 GB kaupo dydį, nustatykite:"
 
-#: ../content/installation/installation-rhel.rst:317
-#: ../content/installation/installation-ubuntu.rst:288
+#: ../content/installation/installation-rhel.rst:348
+#: ../content/installation/installation-ubuntu.rst:298
 #, fuzzy
 msgid "In our tests, a value between 512 MB and 4 GB for medium-sized installations has proven to be the best."
 msgstr "Mūsų bandymuose nustatyta, kad vidutinio dydžio įrenginiams tinkamiausia yra 4-10 GB vertė."
 
-#: ../content/installation/installation-rhel.rst:321
-#: ../content/installation/installation-ubuntu.rst:292
+#: ../content/installation/installation-rhel.rst:352
+#: ../content/installation/installation-ubuntu.rst:302
 #, fuzzy
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr "Daugiau informacijos rasite ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html``."
 
-#: ../content/installation/installation-rhel.rst:323
-#: ../content/installation/installation-ubuntu.rst:294
+#: ../content/installation/installation-rhel.rst:354
+#: ../content/installation/installation-ubuntu.rst:304
 #, fuzzy
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr "Dabar galite iš naujo paleisti \"Elasticsearch\" serverį, kad būtų įkelti nauji konfigūracijos nustatymai. Daugumoje sistemų tai galite padaryti naudodami šią komandą:"
 
-#: ../content/installation/installation-rhel.rst:332
+#: ../content/installation/installation-rhel.rst:363
 #, fuzzy
 msgid "Step 10: Basic System Configuration"
 msgstr "9 veiksmas: pagrindinė sistemos konfigūracija"
 
-#: ../content/installation/installation-rhel.rst:334
-#: ../content/installation/installation-ubuntu.rst:305
+#: ../content/installation/installation-rhel.rst:365
+#: ../content/installation/installation-ubuntu.rst:315
 msgid "Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:341
+#: ../content/installation/installation-rhel.rst:371
 #, fuzzy
 msgid "After that use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname or server IP) to set up your database and basic system settings such as email accounts."
 msgstr "Norėdami nustatyti duomenų bazę ir pagrindinius sistemos nustatymus, pvz., el. pašto paskyras, naudokite interneto diegimo programą adresu http://localhost/otobo/installer.pl (vietoj \"localhost\" įrašykite savo OTOBO prieglobos vardą)."
 
-#: ../content/installation/installation-rhel.rst:345
+#: ../content/installation/installation-rhel.rst:375
 #, fuzzy
 msgid "Step 11: First Login"
 msgstr "10 veiksmas: Pirmasis prisijungimas"
 
-#: ../content/installation/installation-rhel.rst:347
-#: ../content/installation/installation-ubuntu.rst:318
+#: ../content/installation/installation-rhel.rst:377
+#: ../content/installation/installation-ubuntu.rst:327
 #, fuzzy
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr "Dabar galite prisijungti prie savo sistemos adresu http://localhost/otobo/index.pl kaip vartotojas ```root@localhost``` su sugeneruotu slaptažodžiu (žr. pirmiau)."
 
-#: ../content/installation/installation-rhel.rst:351
+#: ../content/installation/installation-rhel.rst:381
 #, fuzzy
 msgid "Step 12: Start the OTOBO Daemon"
 msgstr "11 veiksmas: paleiskite OTOBO demoną"
 
-#: ../content/installation/installation-rhel.rst:353
-#: ../content/installation/installation-ubuntu.rst:324
+#: ../content/installation/installation-rhel.rst:383
+#: ../content/installation/installation-ubuntu.rst:333
 #, fuzzy
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr "OTOBO demonas yra atsakingas už bet kokių asinchroninių ir pasikartojančių OTOBO užduočių tvarkymą. Tai, kas anksčiau buvo cron failų apibrėžtyse, dabar tvarko OTOBO demonas, kuris reikalingas OTOBO veikimui. Demonas taip pat tvarko visas GenericAgent užduotis ir turi būti paleistas iš OTOBO naudotojo."
 
-#: ../content/installation/installation-rhel.rst:362
-#: ../content/installation/installation-ubuntu.rst:334
+#: ../content/installation/installation-rhel.rst:392
+#: ../content/installation/installation-ubuntu.rst:342
 #, fuzzy
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
 msgstr "13 veiksmas: \"Bash\" automatinio užbaigimo nustatymas (neprivaloma)"
 
-#: ../content/installation/installation-rhel.rst:364
-#: ../content/installation/installation-ubuntu.rst:336
+#: ../content/installation/installation-rhel.rst:394
+#: ../content/installation/installation-ubuntu.rst:344
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier. You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user. After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:374
-#: ../content/installation/installation-ubuntu.rst:346
+#: ../content/installation/installation-rhel.rst:404
+#: ../content/installation/installation-ubuntu.rst:354
 #, fuzzy
 msgid "If you type a few characters of the command name, ``TAB`` will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``."
 msgstr "Jei įvesite kelis komandos pavadinimo simbolius, TAB parodys visas atitinkančias komandas. Įvedus visą komandą, paspaudus TAB bus rodomos visos galimos parinktys ir argumentai."
 
-#: ../content/installation/installation-rhel.rst:379
-#: ../content/installation/installation-ubuntu.rst:351
+#: ../content/installation/installation-rhel.rst:409
+#: ../content/installation/installation-ubuntu.rst:359
 #, fuzzy
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr "Jei kyla problemų, galite įvykdyti šią eilutę kaip vartotojas ```otobo``` ir įtraukti ją į savo ``~/.bashrc``, kad būtų vykdomos faile esančios komandos."
 
-#: ../content/installation/installation-rhel.rst:387
-#: ../content/installation/installation-ubuntu.rst:359
+#: ../content/installation/installation-rhel.rst:417
+#: ../content/installation/installation-ubuntu.rst:367
 #, fuzzy
 msgid "Step 14: Further Information"
 msgstr "14 veiksmas: papildoma informacija"
 
-#: ../content/installation/installation-rhel.rst:389
-#: ../content/installation/installation-ubuntu.rst:361
+#: ../content/installation/installation-rhel.rst:419
+#: ../content/installation/installation-ubuntu.rst:369
 #, fuzzy
 msgid "We advise you to read the OTOBO :doc:`../performance-tuning` chapter."
 msgstr "Rekomenduojame perskaityti OTOBO :doc:``performance-tuning`` skyrių."
@@ -1848,127 +1877,127 @@ msgstr ""
 msgid "Follow the detailed steps in this chapter to install OTOBO on your Ubuntu server. You can then use its web interface to login and administer the system."
 msgstr "Atlikite šiame skyriuje pateiktus išsamius OTOBO diegimo į serverį veiksmus. Tuomet galite naudotis jo žiniatinklio sąsaja, kad prisijungtumėte ir administruotumėte sistemą."
 
-#: ../content/installation/installation-ubuntu.rst:38
+#: ../content/installation/installation-ubuntu.rst:55
 #, fuzzy
 msgid "Step 2: Install Additional Programs and Perl Modules"
 msgstr "2 žingsnis: Įdiekite papildomas programas ir \"Perl\" modulius"
 
-#: ../content/installation/installation-ubuntu.rst:40
+#: ../content/installation/installation-ubuntu.rst:57
 #, fuzzy
 msgid "Use the following script to get an overview of all installed and required CPAN modules and other external dependencies."
 msgstr "Naudokite šį scenarijų, kad peržiūrėtumėte visus įdiegtus ir reikalingus CPAN modulius bei kitas išorines priklausomybes."
 
-#: ../content/installation/installation-ubuntu.rst:44
+#: ../content/installation/installation-ubuntu.rst:61
 #, fuzzy
 msgid "On Debian systems, like Ubuntu, you may need to manually install some Perl packages:"
 msgstr "\"Debian\" sistemose gali tekti rankiniu būdu įdiegti kai kuriuos \"perl\" paketus:"
 
-#: ../content/installation/installation-ubuntu.rst:62
+#: ../content/installation/installation-ubuntu.rst:79
 #, fuzzy
 msgid "Please note that OTOBO requires a working Perl installation with all *core* modules such as the module ``version``. These modules are not explicitly checked by the script."
 msgstr "Atkreipkite dėmesį, kad OTOBO reikalauja veikiančios Perl programos su visais *pagrindiniais* moduliais, pvz., moduliu ``versija``. Šie moduliai scenarijuje nėra aiškiai tikrinami. Kai kuriose sistemose, pavyzdžiui, RHEL, kuriose pagal nutylėjimą neįdiegiami \"Perl\" branduolio paketai, gali tekti įdiegti ``perl-core`` paketą."
 
-#: ../content/installation/installation-ubuntu.rst:65
+#: ../content/installation/installation-ubuntu.rst:82
 #, fuzzy
 msgid "To install the required and optional packages, you can use either CPAN or the package manager of your Linux distribution."
 msgstr "Norėdami įdiegti reikiamus ir pasirenkamuosius paketus, galite naudoti CPAN arba savo \"Linux\" distributyvo paketų tvarkyklę."
 
-#: ../content/installation/installation-ubuntu.rst:67
+#: ../content/installation/installation-ubuntu.rst:84
 #, fuzzy
 msgid "Execute this command to get an install command to install the missing dependencies:"
 msgstr "Įvykdykite šią komandą, kad gautumėte diegimo komandą trūkstamoms priklausomybėms įdiegti:"
 
-#: ../content/installation/installation-ubuntu.rst:75
+#: ../content/installation/installation-ubuntu.rst:92
 #, fuzzy
 msgid "There are a number of optional or alternative modules which can be installed, mostly for more customized versions of OTOBO. Calling ``otobo.CheckModules.pl`` without any argument will list a complete listing of packages required for full functionality."
 msgstr "Galima įdiegti keletą papildomų arba alternatyvių modulių, dažniausiai skirtų labiau pritaikytoms OTOBO versijoms. Iškvietus CheckModules.pl be jokių argumentų, bus pateiktas visas jo funkcionalumas."
 
-#: ../content/installation/installation-ubuntu.rst:80
+#: ../content/installation/installation-ubuntu.rst:97
 #, fuzzy
 msgid "Step 3: Create the OTOBO User"
 msgstr "3 žingsnis: sukurti OTOBO naudotoją"
 
-#: ../content/installation/installation-ubuntu.rst:102
+#: ../content/installation/installation-ubuntu.rst:118
 msgid "Step 5: Configure systemd services for OTOBO"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:130
+#: ../content/installation/installation-ubuntu.rst:144
 msgid "Nginx installations commonly have a ``sites-available`` and a ``sites-enabled`` directory on debian-based systems. It may be found at ``/etc/nginx``. Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``."
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:176
+#: ../content/installation/installation-ubuntu.rst:190
 msgid "It is also required to enable port ``80`` and ``443`` on the firewall (if configured)."
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:184
+#: ../content/installation/installation-ubuntu.rst:198
 #, fuzzy
 msgid "Step 6: Set File Permissions"
 msgstr "6 veiksmas: nustatykite failų leidimus"
 
-#: ../content/installation/installation-ubuntu.rst:195
+#: ../content/installation/installation-ubuntu.rst:209
 #, fuzzy
 msgid "Step 7: Setup the Database"
 msgstr "7 veiksmas: Duomenų bazės nustatymas"
 
-#: ../content/installation/installation-ubuntu.rst:201
+#: ../content/installation/installation-ubuntu.rst:215
 msgid "Packages for a local database may be obtained from the system's package manager. Find the commands needed to set up MariaDB below."
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:210
+#: ../content/installation/installation-ubuntu.rst:224
 msgid "In order to use the OTOBO installer the password for the ``root`` user has to be set:"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:221
+#: ../content/installation/installation-ubuntu.rst:234
 #, fuzzy
 msgid "The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/mysql/mariadb.conf.d/50-server.cnf`` under the ``[mysqld]`` section:"
 msgstr "Toliau nurodyti konfigūracijos nustatymai yra minimalūs \"MySQL\" konfigūracijos reikalavimai. Į \"MySQL\" serverio konfigūracijos failą ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` arba ``/etc/mysql/mysql.conf.d/mysqld.cnf`` skirsnyje ``[mysqld]`` pridėkite šias eilutes:"
 
-#: ../content/installation/installation-ubuntu.rst:230
+#: ../content/installation/installation-ubuntu.rst:242
 #, fuzzy
 msgid "Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr "Taip pat į \"MySQL\" serverio konfigūracijos failą ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` arba ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` skirsnyje ``[mysqldump]`` pridėkite šias eilutes:"
 
-#: ../content/installation/installation-ubuntu.rst:237
+#: ../content/installation/installation-ubuntu.rst:248
 #, fuzzy
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr "Gamybos tikslais rekomenduojame naudoti įrankį ``mysqltuner``, kad rastumėte tobulą sąranką. Skriptą galite atsisiųsti iš github ``https://github.com/major/MySQLTuner-perl`` arba įdiegti į Debian arba Ubuntu sistemas per paketų tvarkyklę:"
 
-#: ../content/installation/installation-ubuntu.rst:244
+#: ../content/installation/installation-ubuntu.rst:255
 #, fuzzy
 msgid "After installing execute the script:"
 msgstr "Įdiegę įvykdykite scenarijų:"
 
-#: ../content/installation/installation-ubuntu.rst:252
+#: ../content/installation/installation-ubuntu.rst:263
 #, fuzzy
 msgid "Step 8: Setup Elasticsearch"
 msgstr "8 žingsnis: \"Elasticsearch\" sąranka"
 
-#: ../content/installation/installation-ubuntu.rst:260
+#: ../content/installation/installation-ubuntu.rst:271
 #, fuzzy
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "\"Elasticsearch\" diegimas kitame \"Linux\" distributyve"
 
-#: ../content/installation/installation-ubuntu.rst:278
+#: ../content/installation/installation-ubuntu.rst:288
 #, fuzzy
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:"
 msgstr "Kad būtų užtikrintas veikimas be klaidų, didesnėms OTOBO sistemoms turėtumėte pritaikyti jvm krūvos erdvę. Pakeiskite nustatymus faile ``/etc/elasticsearch/jvm.options``. Visada turėtumėte nustatyti tą pačią minimalaus ir maksimalaus JVM heap dydžio reikšmę. Pavyzdžiui, norėdami nustatyti 4 GB kaupo dydį, nustatykite:"
 
-#: ../content/installation/installation-ubuntu.rst:303
+#: ../content/installation/installation-ubuntu.rst:313
 #, fuzzy
 msgid "Step 9: Basic System Configuration"
 msgstr "9 veiksmas: pagrindinė sistemos konfigūracija"
 
-#: ../content/installation/installation-ubuntu.rst:312
+#: ../content/installation/installation-ubuntu.rst:321
 #, fuzzy
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr "Norėdami nustatyti duomenų bazę ir pagrindinius sistemos nustatymus, pvz., el. pašto paskyras, naudokite interneto diegimo programą adresu http://localhost/otobo/installer.pl (vietoj \"localhost\" įrašykite savo OTOBO prieglobos vardą)."
 
-#: ../content/installation/installation-ubuntu.rst:316
+#: ../content/installation/installation-ubuntu.rst:325
 #, fuzzy
 msgid "Step 10: First Login"
 msgstr "10 veiksmas: Pirmasis prisijungimas"
 
-#: ../content/installation/installation-ubuntu.rst:322
+#: ../content/installation/installation-ubuntu.rst:331
 #, fuzzy
 msgid "Step 11: Start the OTOBO Daemon"
 msgstr "11 veiksmas: paleiskite OTOBO demoną"
@@ -4282,145 +4311,145 @@ msgstr "Įsitikinkite, kad nebėra veikiančių tarnybų ar cron užduočių, ku
 msgid "Stop OTOBO cron jobs and the daemon (in this order):"
 msgstr "Sustabdykite OTOBO cron užduotis ir demoną (šia tvarka):"
 
-#: ../content/updating.rst:63
+#: ../content/updating.rst:62
 #, fuzzy
 msgid "Step 2: Backup Files and Database"
 msgstr "2 veiksmas: failų ir duomenų bazės atsarginės kopijos"
 
-#: ../content/updating.rst:65
+#: ../content/updating.rst:64
 #, fuzzy
 msgid "Create a backup of the hole ``/opt/otobo`` directory and the database."
 msgstr "Sukurkite atsarginę skylės ``/opt/otobo`` katalogo ir duomenų bazės kopiją."
 
-#: ../content/updating.rst:68
+#: ../content/updating.rst:67
 #, fuzzy
 msgid "Example for a standard installation with Ubuntu and MySQL"
 msgstr "Standartinio diegimo su \"Ubuntu\" ir \"MySQL\" pavyzdys"
 
-#: ../content/updating.rst:77
+#: ../content/updating.rst:76
 #, fuzzy
 msgid "Please check if all files are valid. Now we have a backup with all required data."
 msgstr "Patikrinkite, ar visi failai galioja. Dabar turime atsarginę kopiją su visais reikalingais duomenimis."
 
-#: ../content/updating.rst:82
+#: ../content/updating.rst:81
 #, fuzzy
 msgid "Don't proceed without a complete backup of your system. You can use also the :doc:`backup-restore` script for this."
 msgstr "Nepradėkite darbo, jei nesukūrėte visos atsarginės sistemos kopijos. Tam taip pat galite naudoti :ref:`backup-restore` scenarijų."
 
-#: ../content/updating.rst:87
+#: ../content/updating.rst:85
 msgid "Step 2.1: Delete CPAN-directory if you are upgrading from 10.1"
 msgstr "2.1 žingsnis: Ištrinkite CPAN katalogą, jei atnaujinate iš 10.1"
 
-#: ../content/updating.rst:89
+#: ../content/updating.rst:87
 msgid "If you are upgrading from 10.1 to 11.0 you need to clean the cpan-lib directory, since some of the cpan libraries have changed."
 msgstr "Jei atnaujinate iš 10.1 į 11.0, turite išvalyti cpan-lib katalogą, nes pasikeitė kai kurios cpan bibliotekos."
 
-#: ../content/updating.rst:95
+#: ../content/updating.rst:93
 #, fuzzy
 msgid "This can also be executed with sudo permissions."
 msgstr "Tada išvardytas komandas reikia vykdyti su root teisėmis."
 
-#: ../content/updating.rst:98
+#: ../content/updating.rst:97
 #, fuzzy
 msgid "Step 3: Install the New Release"
 msgstr "3 veiksmas: Įdiekite naująją versiją"
 
-#: ../content/updating.rst:100
+#: ../content/updating.rst:118
 #, fuzzy
-msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:"
+msgid "After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-update``:"
 msgstr "Atsisiųskite naujausią \"otobo\" versiją iš https://ftp.otobo.org/pub/otobo/ ir išpakuokite šaltinio archyvą (pvz., naudodami ``tar``) į katalogą ``/root/otobo-update``:"
 
-#: ../content/updating.rst:111
+#: ../content/updating.rst:127
 #, fuzzy
 msgid "Restore Old Configuration Files"
 msgstr "Senų konfigūracijos failų atkūrimas"
 
-#: ../content/updating.rst:113
+#: ../content/updating.rst:129
 #, fuzzy
 msgid "We need only copy the file ``Kernel/Config.pm`` in OTOBO 10."
 msgstr "Mums tereikia nukopijuoti OTOBO 10 failą ``Kernel/Config.pm``."
 
-#: ../content/updating.rst:122
+#: ../content/updating.rst:138
 #, fuzzy
 msgid "Restore Article Data"
 msgstr "Straipsnio duomenų atkūrimas"
 
-#: ../content/updating.rst:124
+#: ../content/updating.rst:140
 #, fuzzy
 msgid "If you configured OTOBO to store article data in the file system you have to restore the ``article`` folder to ``/opt/otobo/var/`` or the folder specified in the system configuration."
 msgstr "Jei OTOBO sukonfigūravote straipsnių duomenis saugoti failų sistemoje, turite atkurti ``straipsnių`` aplanką į ``/opt/otobo/var/`` arba į sistemos konfigūracijoje nurodytą aplanką."
 
-#: ../content/updating.rst:133
+#: ../content/updating.rst:148
 #, fuzzy
 msgid "Restore Already Installed Default Statistics"
 msgstr "Atkurti jau įdiegtą numatytąją statistiką"
 
-#: ../content/updating.rst:135
+#: ../content/updating.rst:150
 #, fuzzy
 msgid "If you have additional packages with default statistics you have to restore the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/stats``."
 msgstr "Jei turite papildomų paketų su numatytaisiais statistikos duomenimis, turite atkurti statistikos XML failus su priesaga ``*.installed`` į ``/opt/otobo/var/stats``."
 
-#: ../content/updating.rst:144
+#: ../content/updating.rst:158
 #, fuzzy
 msgid "Set File Permissions"
 msgstr "Failų leidimų nustatymas"
 
-#: ../content/updating.rst:154
+#: ../content/updating.rst:168
 #, fuzzy
 msgid "Check Apache configuration files"
 msgstr "Patikrinkite \"Apache\" konfigūracijos failus"
 
-#: ../content/updating.rst:156
+#: ../content/updating.rst:170
 #, fuzzy
 msgid "Newer versions of OTOBO may need you to adjust the apache configuration. From version 10.1 onwards we moved from CGI to PSGI. Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs to be adjusted/added."
 msgstr "Naujesnėms OTOBO versijoms gali tekti koreguoti apache konfigūraciją. Nuo 10.1 versijos ir vėlesnių versijų perėjome nuo CGI prie PSGI. Peržiūrėkite ``scripts/apache2-httpd-vhost-443.include.conf``, kad pamatytumėte, kokius nustatymus reikia pakoreguoti ir (arba) papildyti."
 
-#: ../content/updating.rst:162
+#: ../content/updating.rst:176
 #, fuzzy
 msgid "Step 4: Check for new needed Perl modules"
 msgstr "4 veiksmas: Patikrinkite, ar yra naujų reikalingų perl modulių"
 
-#: ../content/updating.rst:164
+#: ../content/updating.rst:178
 #, fuzzy
 msgid "OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary."
 msgstr "OTOBO reikalingi nauji cpan paketai, kad būtų galima atlikti kai kuriuos versijų šuolius. Patikrinkite, ar reikalingi nauji paketai, ir, jei reikia, juos įdiekite."
 
-#: ../content/updating.rst:169
+#: ../content/updating.rst:183
 #, fuzzy
 msgid "On Debian systems you may need to manually install some packages:"
 msgstr "\"Debian\" sistemose kai kuriuos paketus gali tekti įdiegti rankiniu būdu:"
 
-#: ../content/updating.rst:184
+#: ../content/updating.rst:195
 #, fuzzy
 msgid "Step 5: Update Installed Packages and reconfigure config"
 msgstr "5 veiksmas: Atnaujinkite įdiegtus paketus ir iš naujo sukonfigūruokite konfigūraciją"
 
-#: ../content/updating.rst:186
+#: ../content/updating.rst:197
 #, fuzzy
 msgid "You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon)."
 msgstr "Norėdami atnaujinti visus įdiegtus paketus, galite naudoti toliau pateiktą komandą. Tai veikia visiems paketams, kurie yra prieinami iš internetinių saugyklų. Kitus paketus galite atnaujinti vėliau per paketų tvarkyklę (tam reikia, kad veiktų OTOBO demonas)."
 
-#: ../content/updating.rst:198
+#: ../content/updating.rst:209
 #, fuzzy
 msgid "Step 6: Only for minor or major release upgrades (for example to upgrade from 10.1 to 11.0)"
 msgstr "6 veiksmas: tik nedideliems arba dideliems leidimų atnaujinimams (pvz., norint atnaujinti versiją iš 10.0 į 10.1)"
 
-#: ../content/updating.rst:206
+#: ../content/updating.rst:217
 #, fuzzy
 msgid "Step 7: Start your Services"
 msgstr "7 veiksmas: pradėkite teikti paslaugas"
 
-#: ../content/updating.rst:208
+#: ../content/updating.rst:219
 #, fuzzy
 msgid "Start OTOBO cron jobs and the daemon (in this order):"
 msgstr "Paleiskite OTOBO cron užduotis ir demoną (šia tvarka):"
 
-#: ../content/updating.rst:217
+#: ../content/updating.rst:227
 #, fuzzy
 msgid "Now the services can be started. This will depend on your service configuration, here is an example:"
 msgstr "Dabar galima paleisti paslaugas. Tai priklausys nuo jūsų paslaugų konfigūracijos, čia pateikiamas pavyzdys:"
 
-#: ../content/updating.rst:226
+#: ../content/updating.rst:236
 #, fuzzy
 msgid "Now you can log into your system."
 msgstr "Dabar galite prisijungti prie sistemos."

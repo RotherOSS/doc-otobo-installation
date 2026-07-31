@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-31 15:04+0000\n"
+"POT-Creation-Date: 2026-07-31 23:40+0000\n"
 "PO-Revision-Date: 2025-11-16 09:18+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Hebrew <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/he/>\n"
@@ -1544,315 +1544,345 @@ msgstr "הגדר ``SELINUX=disabled`` בקובץ ``/etc/selinux/config``:"
 msgid "Reboot your system. After reboot, confirm that the ``getenforce`` command returns *Disabled*:"
 msgstr "הפעל מחדש את המערכת. לאחר ההפעלה מחדש, ודא שהפקודה ``getenforce`` מחזירה את התוצאה *Disabled*:"
 
-#: ../content/installation/installation-rhel.rst:67
+#: ../content/installation/installation-rhel.rst:65
 #: ../content/installation/installation-ubuntu.rst:23
 msgid "Step 1: Unpack and Install OTOBO"
 msgstr "שלב 1: פתח את האריזה והתקן את OTOBO"
 
-#: ../content/installation/installation-rhel.rst:69
-#: ../content/installation/installation-ubuntu.rst:25
+#: ../content/installation/installation-rhel.rst:67
+#: ../content/installation/installation-ubuntu.rst:26
+#: ../content/updating.rst:99
+msgid "Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:77
+#: ../content/installation/installation-rhel.rst:142
+#: ../content/installation/installation-ubuntu.rst:36
+#: ../content/updating.rst:108
+msgid "(Optional) It's recommended to validate the downloaded file's integrity before continuing. This has should be done in the same folder than the tar.gz file obtained previously."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:85
+#: ../content/installation/installation-rhel.rst:150
+#: ../content/installation/installation-ubuntu.rst:44
+#: ../content/updating.rst:116
+msgid "The output from the last prompt should be \"OK\". Otherwise the installation with that file shouldn't be continued."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:87
+#: ../content/installation/installation-ubuntu.rst:46
 #, fuzzy
 #| msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
-msgid "Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/. Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
+msgid "After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
 msgstr "הורד את הגרסה האחרונה של otobo מ-https://ftp.otobo.org/pub/otobo/. פתח את ארכיון המקור (למשל, באמצעות ``tar``) לספרייה ``/opt/otobo-install``:"
 
-#: ../content/installation/installation-rhel.rst:83
+#: ../content/installation/installation-rhel.rst:96
 #, fuzzy
 msgid "Step 2: Create the OTOBO User"
 msgstr "שלב 3: צור את המשתמש OTOBO"
 
-#: ../content/installation/installation-rhel.rst:85
-#: ../content/installation/installation-ubuntu.rst:82
+#: ../content/installation/installation-rhel.rst:98
+#: ../content/installation/installation-ubuntu.rst:99
 msgid "Create a dedicated user for OTOBO within its own group:"
 msgstr "צור משתמש ייעודי עבור OTOBO בתוך הקבוצה שלו:"
 
-#: ../content/installation/installation-rhel.rst:94
+#: ../content/installation/installation-rhel.rst:106
 #, fuzzy
 msgid "Step 3: Install Additional Programs and Perl Modules"
 msgstr "שלב 2: התקן תוכניות נוספות ומודולי Perl"
 
-#: ../content/installation/installation-rhel.rst:96
+#: ../content/installation/installation-rhel.rst:108
 msgid "OTOBO requires a working Perl installation with all *core* modules such as the module ``version``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:103
+#: ../content/installation/installation-rhel.rst:115
 msgid "Required Perl modules may be installed from CPAN. However, in more confined environments, access to the internet may be restricted. Hence, one may download a prebuilt set of Perl packages (Option B):"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:108
+#: ../content/installation/installation-rhel.rst:120
 msgid "Option A: Install packages from CPAN"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:110
+#: ../content/installation/installation-rhel.rst:122
 msgid "To install the required packages from CPAN:"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:119
+#: ../content/installation/installation-rhel.rst:131
 msgid "Option B: Deploy Pre-built Packages"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:128
-msgid "You should now see a ``install`` folder containing all required Perl packages. You may run the following command to verify the installation:"
+#: ../content/installation/installation-rhel.rst:133
+msgid "Download the pre-built packages from https://ftp.otobo.org/pub/otobo/."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:137
-#: ../content/installation/installation-ubuntu.rst:91
+#: ../content/installation/installation-rhel.rst:157
+msgid "You should now see a ``install`` folder containing all required Perl packages."
+msgstr ""
+
+#: ../content/installation/installation-rhel.rst:159
+#, fuzzy
+#| msgid "Run the following command in order to generate a new index:"
+msgid "You may run the following command to verify the installation:"
+msgstr "הפעל את הפקודה הבאה כדי ליצור אינדקס חדש:"
+
+#: ../content/installation/installation-rhel.rst:167
+#: ../content/installation/installation-ubuntu.rst:107
 msgid "Step 4: Activate the Default Configuration File"
 msgstr "שלב 4: הפעל את קובץ התצורה המוגדר כברירת מחדל"
 
-#: ../content/installation/installation-rhel.rst:139
-#: ../content/installation/installation-ubuntu.rst:93
+#: ../content/installation/installation-rhel.rst:169
+#: ../content/installation/installation-ubuntu.rst:109
 msgid "There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.dist``. You must activate it by copying it without the ``.dist`` file name extension."
 msgstr "קובץ התצורה של OTOBO נמצא ב-``$OTOBO_HOME/Kernel/Config.pm.dist``. עליך להפעיל אותו על ידי העתקתו ללא סיומת הקובץ ``.dist``."
 
-#: ../content/installation/installation-rhel.rst:148
+#: ../content/installation/installation-rhel.rst:178
 #, fuzzy
 msgid "Step 5: Configure systemd Services for OTOBO"
 msgstr "שלב 5: קביעת תצורת שרת האינטרנט Apache"
 
-#: ../content/installation/installation-rhel.rst:150
-#: ../content/installation/installation-ubuntu.rst:104
+#: ../content/installation/installation-rhel.rst:180
+#: ../content/installation/installation-ubuntu.rst:120
 msgid "The installation package provides systemd unit files. To make sure that these files are visible to the system they need to be copied to a valid systemd directory. In this example we will be using ``/etc/systemd/system``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:160
-#: ../content/installation/installation-ubuntu.rst:114
+#: ../content/installation/installation-rhel.rst:190
+#: ../content/installation/installation-ubuntu.rst:129
 msgid "After the ``daemon-reload`` all services should be controllable using systemd control service like ``systemctl``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:164
-#: ../content/installation/installation-ubuntu.rst:118
+#: ../content/installation/installation-rhel.rst:194
+#: ../content/installation/installation-ubuntu.rst:133
 #, fuzzy
 msgid "Step 6: Configure the Nginx Web Server"
 msgstr "שלב 5: קביעת תצורת שרת האינטרנט Apache"
 
-#: ../content/installation/installation-rhel.rst:166
-#: ../content/installation/installation-ubuntu.rst:120
+#: ../content/installation/installation-rhel.rst:196
+#: ../content/installation/installation-ubuntu.rst:135
 msgid "OTOBO's webserver listens on ``localhost`` on port ``5000``. In order to make it accessible from outside, you need to configure a reverse proxy."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:169
-#: ../content/installation/installation-ubuntu.rst:123
+#: ../content/installation/installation-rhel.rst:199
+#: ../content/installation/installation-ubuntu.rst:138
 #, fuzzy
 msgid "Install the Nginx web server:"
 msgstr "התקן את שרת Redis"
 
-#: ../content/installation/installation-rhel.rst:176
+#: ../content/installation/installation-rhel.rst:206
 msgid "Nginx installations commonly have a ``conf.d`` directory included. It may be found at ``/etc/nginx``. Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:182
-#: ../content/installation/installation-ubuntu.rst:136
+#: ../content/installation/installation-rhel.rst:212
+#: ../content/installation/installation-ubuntu.rst:150
 #, fuzzy
 msgid "Configure Nginx without SSL Support"
 msgstr "הגדר את Apache ללא תמיכה ב-SSL"
 
-#: ../content/installation/installation-rhel.rst:184
-#: ../content/installation/installation-ubuntu.rst:138
+#: ../content/installation/installation-rhel.rst:214
+#: ../content/installation/installation-ubuntu.rst:152
 msgid "In most cases no further editing of the template is required. The new configuration needs to be activated, subsequently."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:192
-#: ../content/installation/installation-ubuntu.rst:147
+#: ../content/installation/installation-rhel.rst:222
+#: ../content/installation/installation-ubuntu.rst:161
 msgid "It is also required to enable port ``80`` on the firewall."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:200
-#: ../content/installation/installation-ubuntu.rst:155
+#: ../content/installation/installation-rhel.rst:230
+#: ../content/installation/installation-ubuntu.rst:169
 #, fuzzy
 msgid "Configure Nginx **with** SSL Support"
 msgstr "הגדר את Apache **עם** תמיכה ב-SSL"
 
-#: ../content/installation/installation-rhel.rst:202
-#: ../content/installation/installation-ubuntu.rst:157
+#: ../content/installation/installation-rhel.rst:232
+#: ../content/installation/installation-ubuntu.rst:171
 msgid "If you want to enable SSL support, you need to copy the SSL configuration file."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:211
-#: ../content/installation/installation-ubuntu.rst:167
+#: ../content/installation/installation-rhel.rst:241
+#: ../content/installation/installation-ubuntu.rst:181
 #, fuzzy
 msgid "Please edit the files and add the required information like SSL certificate storage path."
 msgstr "ערוך את הקבצים והוסף את המידע הנדרש, כגון נתיב האחסון של תעודת SSL. לאחר מכן, הפעל את תצורת OTOBO Apache:"
 
-#: ../content/installation/installation-rhel.rst:213
-#: ../content/installation/installation-ubuntu.rst:169
+#: ../content/installation/installation-rhel.rst:243
+#: ../content/installation/installation-ubuntu.rst:183
 msgid "Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr "כעת תוכל להפעיל מחדש את שרת האינטרנט כדי לטעון את הגדרות התצורה החדשות. ברוב המערכות תוכל להשתמש בפקודה הבאה כדי לעשות זאת:"
 
-#: ../content/installation/installation-rhel.rst:220
+#: ../content/installation/installation-rhel.rst:250
 msgid "It is also required to enable port ``80`` and ``443`` on the firewall."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:229
+#: ../content/installation/installation-rhel.rst:259
 #, fuzzy
 msgid "Step 7: Set File Permissions"
 msgstr "שלב 6: הגדר הרשאות קבצים"
 
-#: ../content/installation/installation-rhel.rst:231
-#: ../content/installation/installation-ubuntu.rst:186
-#: ../content/updating.rst:146
+#: ../content/installation/installation-rhel.rst:261
+#: ../content/installation/installation-ubuntu.rst:200
+#: ../content/updating.rst:160
 msgid "Please execute the following command to set the file and directory permissions for OTOBO. It will try to detect the correct user and group settings needed for your setup."
 msgstr "אנא בצע את הפקודה הבאה כדי להגדיר את הרשאות הקבצים והספריות עבור OTOBO. התוכנה תנסה לזהות את הגדרות המשתמש והקבוצה הנכונות הדרושות להתקנה שלך."
 
-#: ../content/installation/installation-rhel.rst:241
+#: ../content/installation/installation-rhel.rst:271
 #, fuzzy
 msgid "Step 8: Setup the Database"
 msgstr "שלב 7: הגדרת מסד הנתונים"
 
-#: ../content/installation/installation-rhel.rst:243
-#: ../content/installation/installation-ubuntu.rst:197
+#: ../content/installation/installation-rhel.rst:273
+#: ../content/installation/installation-ubuntu.rst:211
 msgid "OTOBO requires a database to persist data. It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system. However, an external database may be used but latency may increase."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:247
+#: ../content/installation/installation-rhel.rst:277
 msgid "Packages for a local database may be obtained from the system's package manager. Find the commands needed to set up MySQL below."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:255
-#: ../content/installation/installation-ubuntu.rst:208
+#: ../content/installation/installation-rhel.rst:285
+#: ../content/installation/installation-ubuntu.rst:222
 #, fuzzy
 msgid "After installing the database server you need configure it."
 msgstr "לאחר התקנת שרת MySQL, עליך להגדיר אותו."
 
-#: ../content/installation/installation-rhel.rst:257
+#: ../content/installation/installation-rhel.rst:287
 #, fuzzy
 msgid "In MySQL higher or equal version 5.7 a new authentication module is active, and it is not possible to use the OTOBO web installer for database creation. Please login to the mysql console and set a different authentication module and password for the user ``root`` if this is the case:"
 msgstr "ב-MySQL בגרסה 5.7 ומעלה  מודול אימות חדש פעיל, ולא ניתן להשתמש במתקין האינטרנט של OTOBO ליצירת מסד נתונים. אנא התחבר לקונסולת mysql והגדר מודול אימות וסיסמה שונים עבור המשתמש ``root`` אם זה המצב:"
 
-#: ../content/installation/installation-rhel.rst:265
+#: ../content/installation/installation-rhel.rst:296
 msgid "After OTOBO installation it is possible to change the authentication module again, if needed."
 msgstr "לאחר התקנת OTOBO ניתן לשנות שוב את מודול האימות, במידת הצורך."
 
-#: ../content/installation/installation-rhel.rst:269
+#: ../content/installation/installation-rhel.rst:300
 #, fuzzy
 msgid "The following configuration settings are minimum requirements for MariaDB/MySQL setups. Please add the following lines to the Database Server configuration file ``/etc/my.cnf`` under the ``[mysqld]`` section:"
 msgstr "הגדרות התצורה הבאות הן דרישות המינימום להתקנת MySQL. אנא הוסף את השורות הבאות לקובץ התצורה של שרת MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` או ``/etc/mysql/mysql.conf.d/mysqld.cnf`` תחת הקטע ``[mysqld]``:"
 
-#: ../content/installation/installation-rhel.rst:277
+#: ../content/installation/installation-rhel.rst:308
 msgid "In order to apply these settings, you need to restart the MySQL service."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:285
+#: ../content/installation/installation-rhel.rst:316
 #, fuzzy
 msgid "Step 9: Setup Elasticsearch"
 msgstr "שלב 8: הגדרת Elasticsearch"
 
-#: ../content/installation/installation-rhel.rst:287
-#: ../content/installation/installation-ubuntu.rst:254
+#: ../content/installation/installation-rhel.rst:318
+#: ../content/installation/installation-ubuntu.rst:265
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr "OTOBO ממליץ על התקנה פעילה של Elasticsearch לצורך חיפוש מהיר. הדרך הקלה ביותר היא להגדיר את Elasticsearch באותו מארח כמו OTOBO ולקשר אותו ליציאה המוגדרת כברירת מחדל."
 
-#: ../content/installation/installation-rhel.rst:290
-#: ../content/installation/installation-ubuntu.rst:257
-#: ../content/installation/installation-ubuntu.rst:262
+#: ../content/installation/installation-rhel.rst:321
+#: ../content/installation/installation-ubuntu.rst:268
+#: ../content/installation/installation-ubuntu.rst:273
 msgid "Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 msgstr "אנא עקבו אחר מדריך ההתקנה המופיע בכתובת https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 
-#: ../content/installation/installation-rhel.rst:293
-#: ../content/installation/installation-ubuntu.rst:265
+#: ../content/installation/installation-rhel.rst:324
+#: ../content/installation/installation-ubuntu.rst:276
 msgid "Elasticsearch Module Installation"
 msgstr "התקנת מודול Elasticsearch"
 
-#: ../content/installation/installation-rhel.rst:294
-#: ../content/installation/installation-ubuntu.rst:266
+#: ../content/installation/installation-rhel.rst:325
+#: ../content/installation/installation-ubuntu.rst:277
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "בנוסף, OTOBO דורש התקנת תוספים ב-Elasticsearch:"
 
-#: ../content/installation/installation-rhel.rst:303
-#: ../content/installation/installation-ubuntu.rst:276
+#: ../content/installation/installation-rhel.rst:334
+#: ../content/installation/installation-ubuntu.rst:286
 msgid "Elasticsearch Configuration"
 msgstr "תצורת Elasticsearch"
 
-#: ../content/installation/installation-rhel.rst:305
+#: ../content/installation/installation-rhel.rst:336
 msgid "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr "Elasticsearch מציע מגוון רחב של אפשרויות ואופציות תצורה."
 
-#: ../content/installation/installation-rhel.rst:307
+#: ../content/installation/installation-rhel.rst:338
 #, fuzzy
 msgid "In order to ensure error-free operation, you should adjust the JVM heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:"
 msgstr "על מנת להבטיח פעולה ללא שגיאות, יש להתאים את שטח הערימה של jvm למערכות OTOBO גדולות יותר. יש להתאים את ההגדרות בקובץ ``/etc/elasticsearch/jvm.options``. יש להגדיר תמיד את גודל הערימה המינימלי והמקסימלי של JVM לאותו ערך. לדוגמה, כדי להגדיר את הערימה ל-4 GB, יש להגדיר:"
 
-#: ../content/installation/installation-rhel.rst:317
-#: ../content/installation/installation-ubuntu.rst:288
+#: ../content/installation/installation-rhel.rst:348
+#: ../content/installation/installation-ubuntu.rst:298
 #, fuzzy
 msgid "In our tests, a value between 512 MB and 4 GB for medium-sized installations has proven to be the best."
 msgstr "בבדיקות שלנו, ערך שבין 4 ל-10 GB עבור התקנות בינוניות הוכח כטוב ביותר."
 
-#: ../content/installation/installation-rhel.rst:321
-#: ../content/installation/installation-ubuntu.rst:292
+#: ../content/installation/installation-rhel.rst:352
+#: ../content/installation/installation-ubuntu.rst:302
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr "למידע נוסף, ראה \"https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html\"."
 
-#: ../content/installation/installation-rhel.rst:323
-#: ../content/installation/installation-ubuntu.rst:294
+#: ../content/installation/installation-rhel.rst:354
+#: ../content/installation/installation-ubuntu.rst:304
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr "כעת תוכלו להפעיל מחדש את שרת Elasticsearch כדי לטעון את הגדרות התצורה החדשות. ברוב המערכות תוכלו להשתמש בפקודה הבאה כדי לעשות זאת:"
 
-#: ../content/installation/installation-rhel.rst:332
+#: ../content/installation/installation-rhel.rst:363
 #, fuzzy
 msgid "Step 10: Basic System Configuration"
 msgstr "שלב 9: תצורת מערכת בסיסית"
 
-#: ../content/installation/installation-rhel.rst:334
-#: ../content/installation/installation-ubuntu.rst:305
+#: ../content/installation/installation-rhel.rst:365
+#: ../content/installation/installation-ubuntu.rst:315
 msgid "Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd."
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:341
+#: ../content/installation/installation-rhel.rst:371
 #, fuzzy
 msgid "After that use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname or server IP) to set up your database and basic system settings such as email accounts."
 msgstr "אנא השתמש במתקין האינטרנט בכתובת http://localhost/otobo/installer.pl (החלף את \"localhost\" בשם המארח של OTOBO שלך) כדי להגדיר את מסד הנתונים ואת הגדרות המערכת הבסיסיות, כגון חשבונות דואר אלקטרוני."
 
-#: ../content/installation/installation-rhel.rst:345
+#: ../content/installation/installation-rhel.rst:375
 #, fuzzy
 msgid "Step 11: First Login"
 msgstr "שלב 10: כניסה ראשונה"
 
-#: ../content/installation/installation-rhel.rst:347
-#: ../content/installation/installation-ubuntu.rst:318
+#: ../content/installation/installation-rhel.rst:377
+#: ../content/installation/installation-ubuntu.rst:327
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr "כעת אתה מוכן להתחבר למערכת שלך בכתובת http://localhost/otobo/index.pl כמשתמש ``root@localhost`` עם הסיסמה שנוצרה (ראה לעיל)."
 
-#: ../content/installation/installation-rhel.rst:351
+#: ../content/installation/installation-rhel.rst:381
 #, fuzzy
 msgid "Step 12: Start the OTOBO Daemon"
 msgstr "שלב 11: הפעל את הדמון OTOBO"
 
-#: ../content/installation/installation-rhel.rst:353
-#: ../content/installation/installation-ubuntu.rst:324
+#: ../content/installation/installation-rhel.rst:383
+#: ../content/installation/installation-ubuntu.rst:333
 #, fuzzy
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr "הדמון OTOBO אחראי על טיפול בכל המשימות האסינכרוניות והחוזרות ב-OTOBO. מה שהיה בעבר בהגדרות קובץ cron מטופל כעת על ידי הדמון OTOBO, הנדרש להפעלת OTOBO. הדמון מטפל גם בכל משימות GenericAgent ויש להפעילו ממשתמש OTOBO."
 
-#: ../content/installation/installation-rhel.rst:362
-#: ../content/installation/installation-ubuntu.rst:334
+#: ../content/installation/installation-rhel.rst:392
+#: ../content/installation/installation-ubuntu.rst:342
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
 msgstr "שלב 13: הגדרת השלמת אוטומטית של Bash (אופציונלי)"
 
-#: ../content/installation/installation-rhel.rst:364
-#: ../content/installation/installation-ubuntu.rst:336
+#: ../content/installation/installation-rhel.rst:394
+#: ../content/installation/installation-ubuntu.rst:344
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier. You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user. After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:"
 msgstr ""
 
-#: ../content/installation/installation-rhel.rst:374
-#: ../content/installation/installation-ubuntu.rst:346
+#: ../content/installation/installation-rhel.rst:404
+#: ../content/installation/installation-ubuntu.rst:354
 #, fuzzy
 #| msgid "If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB."
 msgid "If you type a few characters of the command name, ``TAB`` will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``."
 msgstr "אם תקלידו כמה תווים משם הפקודה, מקש ה-TAB יציג את כל הפקודות התואמות. לאחר הקלדת הפקודה המלאה, כל האפשרויות והארגומנטים האפשריים יוצגו בלחיצה על מקש ה-TAB."
 
-#: ../content/installation/installation-rhel.rst:379
-#: ../content/installation/installation-ubuntu.rst:351
+#: ../content/installation/installation-rhel.rst:409
+#: ../content/installation/installation-ubuntu.rst:359
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr "אם אתה נתקל בבעיות, אתה יכול להריץ את השורה הבאה כמשתמש ``otobo`` ולהוסיף אותה ל-``~/.bashrc`` כדי להריץ את הפקודות מהקובץ."
 
-#: ../content/installation/installation-rhel.rst:387
-#: ../content/installation/installation-ubuntu.rst:359
+#: ../content/installation/installation-rhel.rst:417
+#: ../content/installation/installation-ubuntu.rst:367
 msgid "Step 14: Further Information"
 msgstr "שלב 14: מידע נוסף"
 
-#: ../content/installation/installation-rhel.rst:389
-#: ../content/installation/installation-ubuntu.rst:361
+#: ../content/installation/installation-rhel.rst:419
+#: ../content/installation/installation-ubuntu.rst:369
 #, fuzzy
 #| msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgid "We advise you to read the OTOBO :doc:`../performance-tuning` chapter."
@@ -1876,115 +1906,115 @@ msgstr ""
 msgid "Follow the detailed steps in this chapter to install OTOBO on your Ubuntu server. You can then use its web interface to login and administer the system."
 msgstr "בצע את השלבים המפורטים בפרק זה כדי להתקין את OTOBO בשרת שלך. לאחר מכן תוכל להשתמש בממשק האינטרנט שלו כדי להתחבר ולנהל את המערכת."
 
-#: ../content/installation/installation-ubuntu.rst:38
+#: ../content/installation/installation-ubuntu.rst:55
 msgid "Step 2: Install Additional Programs and Perl Modules"
 msgstr "שלב 2: התקן תוכניות נוספות ומודולי Perl"
 
-#: ../content/installation/installation-ubuntu.rst:40
+#: ../content/installation/installation-ubuntu.rst:57
 msgid "Use the following script to get an overview of all installed and required CPAN modules and other external dependencies."
 msgstr "השתמש בסקריפט הבא כדי לקבל סקירה כללית של כל מודולי CPAN המותקנים והנדרשים ותלות חיצונית אחרת."
 
-#: ../content/installation/installation-ubuntu.rst:44
+#: ../content/installation/installation-ubuntu.rst:61
 #, fuzzy
 msgid "On Debian systems, like Ubuntu, you may need to manually install some Perl packages:"
 msgstr "במערכות Debian ייתכן שתצטרך להתקין ידנית כמה חבילות perl:"
 
-#: ../content/installation/installation-ubuntu.rst:62
+#: ../content/installation/installation-ubuntu.rst:79
 #, fuzzy
 msgid "Please note that OTOBO requires a working Perl installation with all *core* modules such as the module ``version``. These modules are not explicitly checked by the script."
 msgstr "שימו לב ש-OTOBO דורש התקנה תקינה של Perl עם כל המודולים *הבסיסיים*, כגון המודול ``version``. מודולים אלה אינם נבדקים במפורש על ידי הסקריפט. ייתכן שתצטרכו להתקין חבילת ``perl-core`` במערכות מסוימות, כגון RHEL, שאינן מתקינות את חבילות הליבה של Perl כברירת מחדל."
 
-#: ../content/installation/installation-ubuntu.rst:65
+#: ../content/installation/installation-ubuntu.rst:82
 msgid "To install the required and optional packages, you can use either CPAN or the package manager of your Linux distribution."
 msgstr "כדי להתקין את החבילות הנדרשות והאופציונליות, ניתן להשתמש ב-CPAN או במנהל החבילות של הפצת לינוקס שלך."
 
-#: ../content/installation/installation-ubuntu.rst:67
+#: ../content/installation/installation-ubuntu.rst:84
 msgid "Execute this command to get an install command to install the missing dependencies:"
 msgstr "הפעל פקודה זו כדי לקבל פקודת התקנה להתקנת התלות החסרות:"
 
-#: ../content/installation/installation-ubuntu.rst:75
+#: ../content/installation/installation-ubuntu.rst:92
 #, fuzzy
 msgid "There are a number of optional or alternative modules which can be installed, mostly for more customized versions of OTOBO. Calling ``otobo.CheckModules.pl`` without any argument will list a complete listing of packages required for full functionality."
 msgstr "ישנם מספר מודולים אופציונליים או חלופיים שניתן להתקין, בעיקר עבור גרסאות מותאמות אישית יותר של OTOBO. קריאה ל-CheckModules.pl ללא כל ארגומנט תציג את כל הפונקציונליות שלו."
 
-#: ../content/installation/installation-ubuntu.rst:80
+#: ../content/installation/installation-ubuntu.rst:97
 msgid "Step 3: Create the OTOBO User"
 msgstr "שלב 3: צור את המשתמש OTOBO"
 
-#: ../content/installation/installation-ubuntu.rst:102
+#: ../content/installation/installation-ubuntu.rst:118
 msgid "Step 5: Configure systemd services for OTOBO"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:130
+#: ../content/installation/installation-ubuntu.rst:144
 msgid "Nginx installations commonly have a ``sites-available`` and a ``sites-enabled`` directory on debian-based systems. It may be found at ``/etc/nginx``. Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``."
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:176
+#: ../content/installation/installation-ubuntu.rst:190
 msgid "It is also required to enable port ``80`` and ``443`` on the firewall (if configured)."
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:184
+#: ../content/installation/installation-ubuntu.rst:198
 msgid "Step 6: Set File Permissions"
 msgstr "שלב 6: הגדר הרשאות קבצים"
 
-#: ../content/installation/installation-ubuntu.rst:195
+#: ../content/installation/installation-ubuntu.rst:209
 msgid "Step 7: Setup the Database"
 msgstr "שלב 7: הגדרת מסד הנתונים"
 
-#: ../content/installation/installation-ubuntu.rst:201
+#: ../content/installation/installation-ubuntu.rst:215
 msgid "Packages for a local database may be obtained from the system's package manager. Find the commands needed to set up MariaDB below."
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:210
+#: ../content/installation/installation-ubuntu.rst:224
 msgid "In order to use the OTOBO installer the password for the ``root`` user has to be set:"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:221
+#: ../content/installation/installation-ubuntu.rst:234
 #, fuzzy
 msgid "The following configuration settings are minimum requirements for MySQL setups. Please add the following lines to the MySQL Server configuration file ``/etc/mysql/mariadb.conf.d/50-server.cnf`` under the ``[mysqld]`` section:"
 msgstr "הגדרות התצורה הבאות הן דרישות המינימום להתקנת MySQL. אנא הוסף את השורות הבאות לקובץ התצורה של שרת MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` או ``/etc/mysql/mysql.conf.d/mysqld.cnf`` תחת הקטע ``[mysqld]``:"
 
-#: ../content/installation/installation-ubuntu.rst:230
+#: ../content/installation/installation-ubuntu.rst:242
 #, fuzzy
 msgid "Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr "הוסף גם את השורות הבאות לקובץ התצורה של שרת MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` או ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` תחת הקטע ``[mysqldump]``:"
 
-#: ../content/installation/installation-ubuntu.rst:237
+#: ../content/installation/installation-ubuntu.rst:248
 #, fuzzy
 #| msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr "למטרות ייצור, אנו ממליצים להשתמש בכלי ``mysqltuner`` כדי למצוא את ההגדרה המושלמת. ניתן להוריד את הסקריפט מ-github ``https://github.com/major/MySQLTuner-perl`` או להתקין אותו במערכות Debian או Ubuntu באמצעות מנהל החבילות:"
 
-#: ../content/installation/installation-ubuntu.rst:244
+#: ../content/installation/installation-ubuntu.rst:255
 msgid "After installing execute the script:"
 msgstr "לאחר ההתקנה, הפעל את הסקריפט:"
 
-#: ../content/installation/installation-ubuntu.rst:252
+#: ../content/installation/installation-ubuntu.rst:263
 msgid "Step 8: Setup Elasticsearch"
 msgstr "שלב 8: הגדרת Elasticsearch"
 
-#: ../content/installation/installation-ubuntu.rst:260
+#: ../content/installation/installation-ubuntu.rst:271
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "התקנת Elasticsearch בהפצת לינוקס אחרת"
 
-#: ../content/installation/installation-ubuntu.rst:278
+#: ../content/installation/installation-ubuntu.rst:288
 #, fuzzy
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:"
 msgstr "על מנת להבטיח פעולה ללא שגיאות, יש להתאים את שטח הערימה של jvm למערכות OTOBO גדולות יותר. יש להתאים את ההגדרות בקובץ ``/etc/elasticsearch/jvm.options``. יש להגדיר תמיד את גודל הערימה המינימלי והמקסימלי של JVM לאותו ערך. לדוגמה, כדי להגדיר את הערימה ל-4 GB, יש להגדיר:"
 
-#: ../content/installation/installation-ubuntu.rst:303
+#: ../content/installation/installation-ubuntu.rst:313
 msgid "Step 9: Basic System Configuration"
 msgstr "שלב 9: תצורת מערכת בסיסית"
 
-#: ../content/installation/installation-ubuntu.rst:312
+#: ../content/installation/installation-ubuntu.rst:321
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr "אנא השתמש במתקין האינטרנט בכתובת http://localhost/otobo/installer.pl (החלף את \"localhost\" בשם המארח של OTOBO שלך) כדי להגדיר את מסד הנתונים ואת הגדרות המערכת הבסיסיות, כגון חשבונות דואר אלקטרוני."
 
-#: ../content/installation/installation-ubuntu.rst:316
+#: ../content/installation/installation-ubuntu.rst:325
 msgid "Step 10: First Login"
 msgstr "שלב 10: כניסה ראשונה"
 
-#: ../content/installation/installation-ubuntu.rst:322
+#: ../content/installation/installation-ubuntu.rst:331
 msgid "Step 11: Start the OTOBO Daemon"
 msgstr "שלב 11: הפעל את הדמון OTOBO"
 
@@ -4116,124 +4146,124 @@ msgstr "אנא ודא שאין יותר שירותים פועלים או משי�
 msgid "Stop OTOBO cron jobs and the daemon (in this order):"
 msgstr "עצור את משימות cron של OTOBO ואת הדמון (בסדר זה):"
 
-#: ../content/updating.rst:63
+#: ../content/updating.rst:62
 msgid "Step 2: Backup Files and Database"
 msgstr "שלב 2: גיבוי קבצים ומסד נתונים"
 
-#: ../content/updating.rst:65
+#: ../content/updating.rst:64
 msgid "Create a backup of the hole ``/opt/otobo`` directory and the database."
 msgstr "צור גיבוי של ספריית ``/opt/otobo`` ושל מסד הנתונים."
 
-#: ../content/updating.rst:68
+#: ../content/updating.rst:67
 msgid "Example for a standard installation with Ubuntu and MySQL"
 msgstr "דוגמה להתקנה סטנדרטית עם Ubuntu ו-MySQL"
 
-#: ../content/updating.rst:77
+#: ../content/updating.rst:76
 msgid "Please check if all files are valid. Now we have a backup with all required data."
 msgstr "אנא בדוק אם כל הקבצים תקינים. כעת יש לנו גיבוי עם כל הנתונים הנדרשים."
 
-#: ../content/updating.rst:82
+#: ../content/updating.rst:81
 msgid "Don't proceed without a complete backup of your system. You can use also the :doc:`backup-restore` script for this."
 msgstr "אל תמשיך ללא גיבוי מלא של המערכת שלך. ניתן להשתמש גם בסקריפט :doc:`backup-restore` לשם כך."
 
-#: ../content/updating.rst:87
+#: ../content/updating.rst:85
 msgid "Step 2.1: Delete CPAN-directory if you are upgrading from 10.1"
 msgstr "שלב 2.1: מחק את ספריית CPAN אם אתה משדרג מגרסה 10.1"
 
-#: ../content/updating.rst:89
+#: ../content/updating.rst:87
 msgid "If you are upgrading from 10.1 to 11.0 you need to clean the cpan-lib directory, since some of the cpan libraries have changed."
 msgstr "אם אתם משדרגים מ-10.1 ל-11.0, עליכם לנקות את ספריית cpan-lib, מכיוון שחלק מספריות cpan השתנו."
 
-#: ../content/updating.rst:95
+#: ../content/updating.rst:93
 #, fuzzy
 msgid "This can also be executed with sudo permissions."
 msgstr "הפקודות המפורטות צריכות להבוצע עם הרשאות root."
 
-#: ../content/updating.rst:98
+#: ../content/updating.rst:97
 msgid "Step 3: Install the New Release"
 msgstr "שלב 3: התקן את המהדורה החדשה"
 
-#: ../content/updating.rst:100
+#: ../content/updating.rst:118
 #, fuzzy
 #| msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:"
-msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:"
+msgid "After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-update``:"
 msgstr "הורד את הגרסה האחרונה של otobo מ-https://ftp.otobo.org/pub/otobo/. ופרק את ארכיון המקור (למשל, באמצעות ``tar``) לספרייה ``/root/otobo-update``:"
 
-#: ../content/updating.rst:111
+#: ../content/updating.rst:127
 msgid "Restore Old Configuration Files"
 msgstr "שחזור קבצי תצורה ישנים"
 
-#: ../content/updating.rst:113
+#: ../content/updating.rst:129
 msgid "We need only copy the file ``Kernel/Config.pm`` in OTOBO 10."
 msgstr "אנו צריכים רק להעתיק את הקובץ ``Kernel/Config.pm`` ב-OTOBO 10."
 
-#: ../content/updating.rst:122
+#: ../content/updating.rst:138
 msgid "Restore Article Data"
 msgstr "שחזור נתוני המאמר"
 
-#: ../content/updating.rst:124
+#: ../content/updating.rst:140
 msgid "If you configured OTOBO to store article data in the file system you have to restore the ``article`` folder to ``/opt/otobo/var/`` or the folder specified in the system configuration."
 msgstr "אם קבעת את OTOBO לאחסן נתוני מאמרים במערכת הקבצים, עליך לשחזר את התיקייה \"article\" ל-\"/opt/otobo/var/\" או לתיקייה שצוינה בתצורת המערכת."
 
-#: ../content/updating.rst:133
+#: ../content/updating.rst:148
 msgid "Restore Already Installed Default Statistics"
 msgstr "שחזור סטטיסטיקות ברירת מחדל שכבר הותקנו"
 
-#: ../content/updating.rst:135
+#: ../content/updating.rst:150
 msgid "If you have additional packages with default statistics you have to restore the stats XML files with the suffix ``*.installed`` to ``/opt/otobo/var/stats``."
 msgstr "אם יש לך חבילות נוספות עם סטטיסטיקות ברירת מחדל, עליך לשחזר את קבצי ה-XML של הסטטיסטיקות עם הסיומת ``*.installed`` ל-``/opt/otobo/var/stats``."
 
-#: ../content/updating.rst:144
+#: ../content/updating.rst:158
 msgid "Set File Permissions"
 msgstr "הגדר הרשאות קבצים"
 
-#: ../content/updating.rst:154
+#: ../content/updating.rst:168
 msgid "Check Apache configuration files"
 msgstr "בדוק את קבצי התצורה של Apache"
 
-#: ../content/updating.rst:156
+#: ../content/updating.rst:170
 #, fuzzy
 #| msgid "Newer versions of OTOBO may need you to adjust the apache configuration. From version 10.1 and onwards we moved from CGI to PSGI. Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs to be adjusted/added."
 msgid "Newer versions of OTOBO may need you to adjust the apache configuration. From version 10.1 onwards we moved from CGI to PSGI. Take a look at ``scripts/apache2-httpd-vhost-443.include.conf`` to see what settings needs to be adjusted/added."
 msgstr "בגרסאות חדשות יותר של OTOBO ייתכן שתצטרך לשנות את תצורת Apache. מגרסה 10.1 ואילך עברנו מ-CGI ל-PSGI. עיין בקובץ ``scripts/apache2-httpd-vhost-443.include.conf`` כדי לראות אילו הגדרות יש לשנות/להוסיף."
 
-#: ../content/updating.rst:162
+#: ../content/updating.rst:176
 msgid "Step 4: Check for new needed Perl modules"
 msgstr "שלב 4: בדוק אם יש מודולים Perl חדשים הדרושים"
 
-#: ../content/updating.rst:164
+#: ../content/updating.rst:178
 msgid "OTOBO needs new cpan packages for some version jumps. Please check if new packages are needed and install them if necessary."
 msgstr "OTOBO זקוק לחבילות cpan חדשות עבור כמה קפיצות גרסה. אנא בדקו אם יש צורך בחבילות חדשות והתקינו אותן במידת הצורך."
 
-#: ../content/updating.rst:169
+#: ../content/updating.rst:183
 msgid "On Debian systems you may need to manually install some packages:"
 msgstr "במערכות Debian ייתכן שתצטרך להתקין ידנית כמה חבילות:"
 
-#: ../content/updating.rst:184
+#: ../content/updating.rst:195
 msgid "Step 5: Update Installed Packages and reconfigure config"
 msgstr "שלב 5: עדכן את החבילות המותקנות והגדר מחדש את התצורה"
 
-#: ../content/updating.rst:186
+#: ../content/updating.rst:197
 msgid "You can use the command below to update all installed packages. This works for all packages that are available from online repositories. You can update other packages later via the package manager (this requires a running OTOBO daemon)."
 msgstr "ניתן להשתמש בפקודה הבאה כדי לעדכן את כל החבילות המותקנות. זה עובד עבור כל החבילות הזמינות במאגרי מקוונים. ניתן לעדכן חבילות אחרות מאוחר יותר באמצעות מנהל החבילות (זה דורש הפעלת דמון OTOBO)."
 
-#: ../content/updating.rst:198
+#: ../content/updating.rst:209
 msgid "Step 6: Only for minor or major release upgrades (for example to upgrade from 10.1 to 11.0)"
 msgstr "שלב 6: רק עבור שדרוגים קטנים או גדולים (לדוגמה, שדרוג מ-10.1 ל-11.0)"
 
-#: ../content/updating.rst:206
+#: ../content/updating.rst:217
 msgid "Step 7: Start your Services"
 msgstr "שלב 7: הפעל את השירותים שלך"
 
-#: ../content/updating.rst:208
+#: ../content/updating.rst:219
 msgid "Start OTOBO cron jobs and the daemon (in this order):"
 msgstr "הפעל את משימות cron של OTOBO ואת הדמון (בסדר זה):"
 
-#: ../content/updating.rst:217
+#: ../content/updating.rst:227
 msgid "Now the services can be started. This will depend on your service configuration, here is an example:"
 msgstr "כעת ניתן להפעיל את השירותים. הדבר תלוי בתצורת השירותים שלכם. להלן דוגמה:"
 
-#: ../content/updating.rst:226
+#: ../content/updating.rst:236
 msgid "Now you can log into your system."
 msgstr "כעת תוכל להתחבר למערכת שלך."
 
