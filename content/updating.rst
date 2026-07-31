@@ -20,7 +20,7 @@ Updating
 
     .. code-block:: bash
 
-      apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
+      sudo apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
 For OTOBO 11.0, the following packages are being migrated automatically to the framework.
 This means that no separate packe is necessary and they will be part of OTOBO by default.
@@ -45,18 +45,17 @@ This will depend on your service configuration.
 
 .. code-block:: bash
 
-   root> systemctl stop postfix
-   root> systemctl stop apache2
-   root> systemctl stop cron
+   sudo systemctl stop postfix
+   sudo systemctl stop apache2
+   sudo systemctl stop cron
 
 Stop OTOBO cron jobs and the daemon (in this order):
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> cd /opt/otobo/
-    otobo> bin/Cron.sh stop
-    otobo> bin/otobo.Daemon.pl stop
+   cd /opt/otobo/
+   sudo -u otobo bin/Cron.sh stop
+   sudo -u otobo bin/otobo.Daemon.pl stop
 
 
 Step 2: Backup Files and Database
@@ -69,10 +68,10 @@ Example for a standard installation with Ubuntu and MySQL
 
 .. code-block:: bash
 
-    root> mkdir /root/otobo-update                      # Create a update directory
-    root> cd /root/otobo-update                         # Change into the update directory
-    root> cp -pr /opt/otobo otobo-prod-old              # Backup the hole OTOBO directory to the update directory
-    root> mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
+   sudo mkdir /root/otobo-update                            # Create a update directory
+   cd /root/otobo-update                                    # Change into the update directory
+   sudo cp -pr /opt/otobo otobo-prod-old                    # Backup the hole OTOBO directory to the update directory
+   sudo mysqldump -u otobo -p otobo -r otobo-prod-old.sql   # Backup the otobo database to otobo-prod-old.sql
 
 Please check if all files are valid.
 Now we have a backup with all required data.
@@ -82,7 +81,6 @@ Now we have a backup with all required data.
     Don't proceed without a complete backup of your system.
     You can use also the :doc:`backup-restore` script for this.
 
-
 Step 2.1: Delete CPAN-directory if you are upgrading from 10.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -90,21 +88,39 @@ If you are upgrading from 10.1 to 11.0 you need to clean the cpan-lib directory,
 
 .. code-block:: bash
 
-    root> rm -rf /opt/otobo/Kernel/cpan-lib/*
+   sudo rm -rf /opt/otobo/Kernel/cpan-lib/*
 
 This can also be executed with sudo permissions.
+
 
 Step 3: Install the New Release
 -------------------------------
 
-Download the latest otobo release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:
+Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz     # Download he latest OTOBO 11.0 release
-    root> tar -xzf otobo-latest-11.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-11.0.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+   cd /opt/otobo-update                                                      # Change into the update directory
+   sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-11.0.tar.gz        # Download the latest OTOBO 11.0 release
+
+.. note::
+
+   (Optional) It's recommended to validate the downloaded file's integrity before continuing.
+   This has should be done in the same folder than the tar.gz file obtained previously.
+
+   .. code-block:: bash
+
+      sudo wget https://ftp.otobo.org/pub/otobo/checksums/otobo-latest-11.0.tar.gz.sha256
+      sudo sha256sum -c otobo-latest-11.0.tar.gz.sha256
+
+   The output from the last prompt should be "OK". Otherwise the installation with that file shouldn't be continued.
+
+After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-update``:
+
+.. code-block:: bash
+
+    sudo tar -xzf otobo-latest-11.0.tar.gz                                # Unzip OTOBO
+    sudo cp -r otobo-latest-11.0/* /opt/otobo                             # Copy the new otobo directory to /opt/otobo
 
 
 Restore Old Configuration Files
@@ -114,9 +130,9 @@ We need only copy the file ``Kernel/Config.pm`` in OTOBO 10.
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update
-    root> cp -p otobo-prod-old/Kernel/Config.pm /opt/otobo/Kernel/
-    root> cp -p otobo-prod-old/var/cron/* /opt/otobo/var/cron/
+   cd /root/otobo-update
+   sudo cp -p otobo-prod-old/Kernel/Config.pm /opt/otobo/Kernel/
+   sudo cp -p otobo-prod-old/var/cron/* /opt/otobo/var/cron/
 
 Restore Article Data
 ~~~~~~~~~~~~~~~~~~~~
@@ -125,9 +141,8 @@ If you configured OTOBO to store article data in the file system you have to res
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update
-    root> cp -pr otobo-prod-old/var/article/* /opt/otobo/var/article/
-
+    cd /root/otobo-update
+    sudo cp -pr otobo-prod-old/var/article/* /opt/otobo/var/article/
 
 Restore Already Installed Default Statistics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,9 +151,8 @@ If you have additional packages with default statistics you have to restore the 
 
 .. code-block:: bash
 
-    root> cd /root/otobo-update/otobo-prod-old/var/stats
-    root> cp *.installed /opt/otobo/var/stats
-
+   cd /root/otobo-update/otobo-prod-old/var/stats
+   sudo cp *.installed /opt/otobo/var/stats
 
 Set File Permissions
 ~~~~~~~~~~~~~~~~~~~~
@@ -148,7 +162,7 @@ It will try to detect the correct user and group settings needed for your setup.
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.SetPermissions.pl
+   sudo /opt/otobo/bin/otobo.SetPermissions.pl
 
 Check Apache configuration files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -170,14 +184,11 @@ Please check if new packages are needed and install them if necessary.
 
    .. code-block:: bash
 
-      apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
-
-
+      sudo apt-get install -y libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libapache2-mod-perl2 libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libpath-class-perl libplack-perl libplack-middleware-header-perl libplack-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> perl /opt/otobo/bin/otobo.CheckModules.pl --list
+   sudo -u otobo perl /opt/otobo/bin/otobo.CheckModules.pl --inst
 
 
 Step 5: Update Installed Packages and reconfigure config
@@ -189,18 +200,18 @@ You can update other packages later via the package manager (this requires a run
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
-    otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Admin::Package::ReinstallAll
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Admin::Package::UpgradeAll
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
+
 
 Step 6: Only for minor or major release upgrades (for example to upgrade from 10.1 to 11.0)
 -------------------------------------------------------------------------------------------
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> /opt/otobo/scripts/DBUpdate-to-11.0.pl
+   sudo -u otobo /opt/otobo/scripts/DBUpdate-to-11.0.pl
+
 
 Step 7: Start your Services
 ---------------------------
@@ -209,18 +220,17 @@ Start OTOBO cron jobs and the daemon (in this order):
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo> cd /opt/otobo/
-    otobo> bin/otobo.Daemon.pl start
-    otobo> bin/Cron.sh start
+   cd /opt/otobo/
+   sudo -u otobo bin/otobo.Daemon.pl start
+   sudo -u otobo bin/Cron.sh start
 
 Now the services can be started.
 This will depend on your service configuration, here is an example:
 
 .. code-block:: bash
 
-   root> systemctl start postfix
-   root> systemctl start apache2
-   root> systemctl start cron
+   sudo systemctl start postfix
+   sudo systemctl start apache2
+   sudo systemctl start cron
 
 Now you can log into your system.
