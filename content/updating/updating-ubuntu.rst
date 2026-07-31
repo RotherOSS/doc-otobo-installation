@@ -118,14 +118,31 @@ Please check whether all files are valid.
 Step 3: Install the new Release
 -------------------------------
 
-Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/ and unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-update``:
+Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 
 .. code-block:: bash
 
-    cd /opt/otobo-update                                                   # Change into the update directory
-    sudo wget https://ftp.otobo.org/pub/otobo/otobo-11.1.0-beta1.tar.gz    # Download the latest OTOBO 11.1 release
-    sudo tar -xzf otobo-latest-11.1.tar.gz                                 # Unzip OTOBO
-    sudo cp -r otobo-11.1.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+   cd /opt/otobo-update                                                      # Change into the update directory
+   sudo wget https://ftp.otobo.org/pub/otobo/otobo-11.1.0-beta2.tar.gz       # Download the latest OTOBO 11.1 release
+
+.. note::
+
+   (Optional) It's recommended to validate the downloaded file's integrity before continuing.
+   This has should be done in the same folder than the tar.gz file obtained previously.
+
+   .. code-block:: bash
+
+      sudo wget https://ftp.otobo.org/pub/otobo/checksums/otobo-11.1.0-beta2.tar.gz.sha256
+      sudo sha256sum -c otobo-11.1.0-beta2.tar.gz.sha256
+
+   The output from the last prompt should be "OK". Otherwise the installation with that file shouldn't be continued.
+
+After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-update``:
+
+.. code-block:: bash
+
+    sudo tar -xzf otobo-11.1.0-beta2.tar.gz                                # Unzip OTOBO
+    sudo cp -r otobo-11.1.0-beta2/* /opt/otobo                             # Copy the new otobo directory to /opt/otobo
 
 
 Restore Old Configuration Files
