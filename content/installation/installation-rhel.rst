@@ -89,7 +89,7 @@ After that, unpack the source archive (for example, using ``tar``) into the dire
 .. code-block:: bash
 
     sudo tar -xzf otobo-latest-11.0.tar.gz                         # Unzip OTOBO
-    sudo cp -r otobo-11.x.x/* /opt/otobo                           # Copy the new otobo directory to /opt/otobo
+    sudo cp -r otobo-11.0.*/* /opt/otobo                           # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Create the OTOBO User
