@@ -22,4 +22,4 @@ then you have to change the path in the commands or create a symbolic link to th
 
 .. code-block:: bash
 
-   root> ln -s /path/to/otobo /opt/otobo
+   sudo ln -s /path/to/otobo /opt/otobo
