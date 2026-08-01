@@ -12,7 +12,7 @@ Backup
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/scripts/backup.pl -h
+   sudo -u otobo /opt/otobo/scripts/backup.pl -h
 
 The output of the script:
 
@@ -65,7 +65,7 @@ Restore
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/scripts/restore.pl -h
+   sudo -u otobo /opt/otobo/scripts/restore.pl -h
 
 The output of the script:
 

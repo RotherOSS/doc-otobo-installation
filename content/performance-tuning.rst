@@ -15,9 +15,9 @@ Ticket index module can be set via system configuration setting ``Ticket::IndexM
 ``Kernel::System::Ticket::IndexAccelerator::StaticDB``
    The most powerful module, should be used when you have above 80,000 open tickets. It uses an extra ``ticket_index`` table, which will be populated with keywords based on ticket data. Use the following command for generating an initial index after switching back ends:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-      otobo> /opt/otobo/bin/otobo.Console.pl Maint::Ticket::QueueIndexRebuild
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Ticket::QueueIndexRebuild
 
 
 Ticket Search Index
@@ -29,7 +29,7 @@ To create an initial index, use this command:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndex --rebuild
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndex --rebuild
 
 .. note::
 
@@ -54,7 +54,7 @@ There are some options available for fine-tuning the search index:
 
       .. code-block:: bash
 
-         otobo> /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndexRebuild
+         sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndexRebuild
 
    ``WordCountMax``
       Defines the maximum number of words which will be processed to build up the index. For example only the first 1000 words of an article body are stored in the article search index.
@@ -168,7 +168,7 @@ You can switch from one back end to the other on the fly. You can switch the bac
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Admin::Article::StorageSwitch --target ArticleStorageFS
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Admin::Article::StorageSwitch --target ArticleStorageFS
 
 You can use the ``--target`` option to specify the target back end.
 
@@ -234,7 +234,7 @@ Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --all
+   sudo -u otobo /opt/otobo/bin/otobo.CheckModules.pl --all
 
 3. Configure OTOBO for Redis
 
@@ -257,9 +257,9 @@ OTOBO caches a lot of temporary data in ``/opt/otobo/var/tmp``. Please make sure
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Session::DeleteAll
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
-   root> mount -o size=16G -t tmpfs none /opt/otobo/var/tmp
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Session::DeleteAll
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
+   sudo mount -o size=16G -t tmpfs none /opt/otobo/var/tmp
 
 .. note::
 
