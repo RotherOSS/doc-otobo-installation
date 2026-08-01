@@ -38,8 +38,8 @@ Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 
    .. code-block:: bash
 
-      sudo wget https://ftp.otobo.org/pub/otobo/checksums/otobo-11.1.0-beta2.tar.gz.sha256
-      sudo sha256sum -c otobo-11.1.0-beta2.tar.gz.sha256
+      sudo wget https://ftp.otobo.org/pub/otobo/checksums/otobo-latest-11.0.tar.gz.sha256
+      sudo sha256sum -c otobo-latest-11.0.tar.gz.sha256
 
    The output from the last prompt should be "OK". Otherwise the installation with that file shouldn't be continued.
 
