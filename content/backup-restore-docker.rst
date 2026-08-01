@@ -24,7 +24,7 @@ First we need to create the volume.
 .. code-block:: bash
 
    # create the backup directory on the host
-   sudomkdir otobo_backup
+   sudo mkdir otobo_backup
 
    # give the backup dir to the user otobo, elevated privs might be needed for that
    sudo chown 1000:1000 otobo_backup
