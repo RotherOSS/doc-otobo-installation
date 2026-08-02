@@ -12,32 +12,32 @@ Backup
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/scripts/backup.pl -h
+   sudo -u otobo /opt/otobo/scripts/backup.pl -h
 
 The output of the script:
 
-.. code-block:: none
+.. code-block:: bash
 
-    Back up an OTOBO system.
+   Back up an OTOBO system.
 
-    Usage:
+   Usage:
 
-        # print this help message
-        otobo> cd /opt/otobo
-        otobo> scripts/backup.pl --help
+      # print this help message
+      cd /opt/otobo
+      sudo -u otobo scripts/backup.pl --help
 
-        # for regular backups, can also be used in a cron job
-        otobo> cd /opt/otobo
-        otobo> scripts/backup.pl -d /data_backup_dir [-c gzip|bzip2] [-r DAYS] [-t fullbackup|nofullbackup|dbonly]
-        otobo> scripts/backup.pl --backup-dir /data_backup_dir [--compress gzip|bzip2] [--remove-old-backups DAYS] [--backup-type fullbackup|nofullbackup|dbonly|migratefromotrs]
+      # for regular backups, can also be used in a cron job
+      cd /opt/otobo
+      sudo -u otobo scripts/backup.pl -d /data_backup_dir [-c gzip|bzip2] [-r DAYS] [-t fullbackup|nofullbackup|dbonly]
+      sudo -u otobo scripts/backup.pl --backup-dir /data_backup_dir [--compress gzip|bzip2] [--remove-old-backups DAYS] [--backup-type fullbackup|nofullbackup|dbonly|migratefromotrs]
 
-        # backups for creating a dump for migrating an OTRS database OTOBO
-        otobo> cd /opt/otobo
-        otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host 127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
+      # backups for creating a dump for migrating an OTRS database OTOBO
+      cd /opt/otobo
+      sudo scripts/backup.pl -t migratefromotrs --db-name otrs --db-host 127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
 
-        # In special cases extra options can be passed to the dump command.
-        # Multiple options are separated by a space. Note the required quotes.
-        otobo> scripts/backup.pl --max-allowed-packet 128M --extra-dump-options "-P 3307 --column-statistics=0"
+      # In special cases extra options can be passed to the dump command.
+      # Multiple options are separated by a space. Note the required quotes.
+      sudo scripts/backup.pl --max-allowed-packet 128M --extra-dump-options "-P 3307 --column-statistics=0"
 
     Short options:
     [-h]                   - Display help for this command.
@@ -96,7 +96,7 @@ Restore
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/scripts/restore.pl -h
+   sudo -u otobo /opt/otobo/scripts/restore.pl -h
 
 The output of the script:
 
