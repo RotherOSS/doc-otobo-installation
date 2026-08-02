@@ -250,11 +250,8 @@ Please make sure there are no running services or cron jobs.
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    su - otrs
-
-    /opt/otrs/bin/Cron.sh stop
-    /opt/otrs/bin/otrs.Daemon.pl stop --force
+   sudo -u otobo /opt/otrs/bin/Cron.sh stop
+   sudo -u otobo /opt/otrs/bin/otrs.Daemon.pl stop --force
 
 Clear the Caches and the Operational Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -264,14 +261,11 @@ The mail queue should at this point already be empty.
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    su - otrs
-
-    /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
-    /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
-    /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
-    /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
-    /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
+   sudo -u otobo /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
+   sudo -u otobo /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
+   sudo -u otobo /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
+   sudo -u otobo /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
+   sudo -u otobo /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
 
 Optional Step for Docker: Make Required Data Available Inside Container
 ------------------------------------------------------------------------
@@ -382,24 +376,21 @@ Once you have decided that the migration was successful and that you want to use
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    su - otobo
-
-    /opt/otobo/bin/Cron.sh start
-    /opt/otobo/bin/otobo.Daemon.pl start
+   sudo -u otobo /opt/otobo/bin/Cron.sh start
+   sudo -u otobo /opt/otobo/bin/otobo.Daemon.pl start
 
 In case you have systemd unit files configured:
 
 .. code-block:: bash
 
-    systemctl disable --now otobo-web.service otobo-daemon.service
+   systemctl disable --now otobo-web.service otobo-daemon.service
 
 In the Docker case:
 
 .. code-block:: bash
 
-    cd ~/otobo-docker
-    docker compose start daemon
+   cd /opt/otobo-docker
+   docker compose start daemon
 
 Step 6: After Successful Migration!
 ------------------------------------
@@ -559,13 +550,13 @@ Stop the webserver for OTOBO, so that the DB connection for OTOBO is closed.
 
 .. code-block:: bash
 
-    expdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
+   expdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
 
 3. Import the OTRS schema, renaming the schema to ``otobo``.
 
 .. code-block:: bash
 
-    impdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
+   impdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
 
 .. code-block:: SQL
 
@@ -580,19 +571,20 @@ Stop the webserver for OTOBO, so that the DB connection for OTOBO is closed.
 
 .. code-block:: bash
 
-    cd /opt/otobo
-    scripts/backup.pl --backup-type migratefromotrs # it's OK that the command knows only about the otobo database, only last line is relevant
-    sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /home/bernhard/devel/OTOBO/otobo/2021-03-31_13-36-55/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
-    double check with `select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
+   cd /opt/otobo
+   scripts/backup.pl --backup-type migratefromotrs # it's OK that the command knows only about the otobo database, only last line is relevant
+   # Replace the path to the .sql file with your actual backup path!
+   sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /path/to/your/backup/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
+   double check with `select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
 
-5. Start the web server for OTOBO again
+1. Start the web server for OTOBO again
 
-6. Proceed with step 5, that is with running ``migration.pl``.
+2. Proceed with step 5, that is with running ``migration.pl``.
 
 .. note::
 
-    If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` has to be executed,
-    to create the tables ``stats_report`` & ``data_storage``, which were newly added in version 10.1.
+   If migrating to OTOBO version greater or equal 10.1 the script ``/opt/otobo/scripts/DBUpdate-to-10.1.pl`` has to be executed,
+   to create the tables ``stats_report`` & ``data_storage``, which were newly added in version 10.1.
 
 
 Optional Step: Streamlined Migration of the Database (only for Experts and Special Scenarios)
@@ -603,18 +595,18 @@ Exporting the data from the OTRS database and importing it into the OTOBO databa
 
 .. note::
 
-    This variant works for both Docker-based and native installations.
+   This variant works for both Docker-based and native installations.
 
 .. note::
 
-    These instructions assume that OTRS is using MySQL as its backend.
+   These instructions assume that OTRS is using MySQL as its backend.
 
 First of all, we need a dump of the needed OTRS database tables.
 Then we need to perform a couple of transformations:
 
-    - convert the character set to ``utf8mb4``
-    - rename a couple of tables
-    - shorten some table columns
+   - convert the character set to ``utf8mb4``
+   - rename a couple of tables
+   - shorten some table columns
 
 After the transformation we can overwrite the tables in the OTOBO schema with the transformed data from OTRS.
 Effectively we need not a single dump file, but several SQL scripts.
@@ -624,17 +616,17 @@ This case is supported by the script ``bin/backup.pl``.
 
 .. warning::
 
-    This requires that an OTOBO installation is available on the Docker host.
+   This requires that an OTOBO installation is available on the Docker host.
 
 .. code-block:: bash
 
-    cd /opt/otobo
-    scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
+   cd /opt/otobo
+   scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
 
 .. note::
 
-    Alternatively, the database can be dumped on another server and then be transferred to the Docker host afterwards.
-    An easy way to do this is to copy ``/opt/otobo`` to the server running OTRS and perform the same command as above.
+   Alternatively, the database can be dumped on another server and then be transferred to the Docker host afterwards.
+   An easy way to do this is to copy ``/opt/otobo`` to the server running OTRS and perform the same command as above.
 
 The script ``bin/backup.pl`` generates four SQL scripts in a dump directory, e.g., in ``2021-04-13_12-13-04``
 In order to execute the SQL scripts, we need to run the command ``mysql``.
@@ -643,11 +635,11 @@ Native installation:
 
 .. code-block:: bash
 
-    cd <dump_dir>
-    mysql -u root -p<root_secret> otobo < otrs_pre.sql
-    mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
-    mysql -u root -p<root_secret> otobo < otrs_data.sql
-    mysql -u root -p<root_secret> otobo < otrs_post.sql
+   cd <dump_dir>
+   mysql -u root -p<root_secret> otobo < otrs_pre.sql
+   mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
+   mysql -u root -p<root_secret> otobo < otrs_data.sql
+   mysql -u root -p<root_secret> otobo < otrs_post.sql
 
 Docker-based installation:
 
@@ -656,27 +648,27 @@ Note that the password for the database root is now the password that has been s
 
 .. code-block:: bash
 
-    cd /opt/otobo-docker
-    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_pre.sql
-    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_schema_for_otobo.sql
-    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_data.sql
-    docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_post.sql
+   cd /opt/otobo-docker
+   docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_pre.sql
+   docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_schema_for_otobo.sql
+   docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_data.sql
+   docker compose exec -T db mysql -u root -p<root_secret> otobo < /opt/otobo/<dump_dir>/otrs_post.sql
 
 For a quick check whether the import worked, you can run the following commands.
 
 .. code-block:: bash
 
-    mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+   mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+   mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+   mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 When running under Docker:
 
 .. code-block:: bash
 
-    docker compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
-    docker compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    docker compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+   docker compose exec -T db mysql -u root -p<root_secret> -e 'SHOW DATABASES'
+   docker compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW TABLES'
+   docker compose exec -T db mysql -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 The database is now migrated.
 This means that during the next step we can skip the database migration.

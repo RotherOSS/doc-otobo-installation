@@ -62,7 +62,7 @@ There are some options available for fine-tuning the search index:
 
       .. code-block:: bash
 
-         otobo> /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndexRebuild
+         sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndexRebuild
 
    ``WordCountMax``
       Defines the maximum number of words which will be processed to build up the index.
@@ -199,7 +199,7 @@ You can switch the back end in the system configuration, and then run this comma
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Admin::Article::StorageSwitch --target ArticleStorageFS
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Admin::Article::StorageSwitch --target ArticleStorageFS
 
 You can use the ``--target`` option to specify the target back end.
 
