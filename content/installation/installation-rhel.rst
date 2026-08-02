@@ -140,7 +140,7 @@ Download the pre-built packages from https://ftp.otobo.org/pub/otobo/.
 .. note::
 
    (Optional) It's recommended to validate the downloaded file's integrity before continuing.
-   This has should be done in the same folder than the tar.gz file obtained previously.
+   This should be done in the same folder than the tar.gz file obtained previously.
 
    .. code-block:: bash
 
@@ -234,9 +234,8 @@ If you want to enable SSL support, you need to copy the SSL configuration file.
 .. code-block:: bash
 
    sudo cp /opt/otobo/scripts/nginx-vhost-443.include.conf /etc/nginx/conf.d/nginx.conf
-   cd /etc/nginx/
-   sudo mkdir snippets
-   sudo cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf snippets/
+   sudo mkdir -p /etc/nginx/snippets
+   sudo cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf /etc/nginx/snippets/
 
 Please edit the files and add the required information like SSL certificate storage path.
 
@@ -309,7 +308,7 @@ In order to apply these settings, you need to restart the MySQL service.
 
 .. code-block:: bash
 
-   sudo systemctl restart mysqld.service
+   sudo systemctl restart mariadb.service
 
 
 Step 9: Setup Elasticsearch

@@ -14,7 +14,7 @@ You can then use its web interface to login and administer the system.
 .. note::
 
     We recommend Docker and Docker Compose for the installation of OTOBO.
-    By using the provided Docker images, all recommended dependencies, Perl packages and services like the database or Elasticsearch, are installed, kurated and configured automatically.
+    By using the provided Docker images, all recommended dependencies, Perl packages and services like the database or Elasticsearch, are installed, curated and configured automatically.
     Updates are thus greatly simplified and the performance may improve.
     You can find the instructions for Docker-based installation at: https://doc.otobo.org/manual/installation/11.1/en/content/installation/installation-docker.html .
 
@@ -34,7 +34,7 @@ Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 .. note::
 
    (Optional) It's recommended to validate the downloaded file's integrity before continuing.
-   This has should be done in the same folder than the tar.gz file obtained previously.
+   This should be done in the same folder than the tar.gz file obtained previously.
 
    .. code-block:: bash
 
@@ -47,8 +47,8 @@ After that, unpack the source archive (for example, using ``tar``) into the dire
 
 .. code-block:: bash
 
-    sudo tar -xzf otobo-11.1.0-beta2.tar.gz                                # Unzip OTOBO
-    sudo cp -r otobo-11.1.0-beta2/* /opt/otobo                             # Copy the new otobo directory to /opt/otobo
+   sudo tar -xzf otobo-11.1.0-beta2.tar.gz                                # Unzip OTOBO
+   sudo cp -r otobo-11.1.0-beta2/* /opt/otobo                             # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -189,7 +189,7 @@ If you want to enable SSL support, you need to copy the SSL configuration file.
 
 Edit the files and add the required information like SSL certificate storage path.
 
-Now you restart your web server to load the new configuration settings.
+Now restart your web server to load the new configuration settings.
 On most systems you can use the following command to do so:
 
 .. code-block:: bash
@@ -269,13 +269,13 @@ You can download the script from Github ``https://github.com/major/MySQLTuner-pe
 
 .. code-block:: bash
 
-   root> apt-get install --yes mysqltuner
+   sudo apt-get install --yes mysqltuner
 
 After installing execute the script:
 
 .. code-block:: bash
 
-   root> mysqltuner --user root --pass NewRootPassword
+   sudo mysqltuner --user root --pass NewRootPassword
 
 
 Step 9: Setup Elasticsearch

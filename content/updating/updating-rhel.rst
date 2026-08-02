@@ -112,7 +112,7 @@ Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 .. note::
 
    (Optional) It's recommended to validate the downloaded file's integrity before continuing.
-   This has should be done in the same folder than the tar.gz file obtained previously.
+   This should be done in the same folder than the tar.gz file obtained previously.
 
    .. code-block:: bash
 
@@ -206,7 +206,7 @@ Download the pre-built packages from https://ftp.otobo.org/pub/otobo/.
 .. note::
 
    (Optional) It's recommended to validate the downloaded file's integrity before continuing.
-   This has should be done in the same folder than the tar.gz file obtained previously.
+   This should be done in the same folder than the tar.gz file obtained previously.
 
    .. code-block:: bash
 
@@ -217,8 +217,8 @@ Download the pre-built packages from https://ftp.otobo.org/pub/otobo/.
 
 .. code-block:: bash
 
-    sudo tar -xzf otobo-deps-11.1-rhel-9.7-latest.tar.gz                                                 # Unzip packages
-    sudo bash -c "echo 'export PERL5LIB="/opt/otobo/install/local/lib/perl5"' >> /opt/otobo/.profile"    # Add additional library path to otobo user
+   sudo tar -xzf otobo-deps-11.1-rhel-9.7-latest.tar.gz                                                 # Unzip packages
+   sudo bash -c "echo 'export PERL5LIB="/opt/otobo/install/local/lib/perl5"' >> /opt/otobo/.profile"    # Add additional library path to otobo user
 
 You should now see a ``install`` folder containing all required Perl packages.
 
