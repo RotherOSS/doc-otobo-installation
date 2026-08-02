@@ -439,10 +439,7 @@ session as the user *root*:
 
 .. code-block:: bash
 
-    sudo docker run -it --user root --entrypoint /bin/bash --name otobo_orig rotheross/otobo:rel-10_0_10
-    apt update
-    apt install fortunes
-    exit
+    sudo docker run --user root --name otobo_orig rotheross/otobo:rel-10_0_10 /bin/bash -c "apt update && apt install -y fortunes"
     sudo docker ps -a | head
 
 Create an image from the stopped container and give it a name.
@@ -510,10 +507,8 @@ running the test suite on a fresh installation.
    sudo docker-compose down -v
    sudo docker-compose up --detach
    sudo docker-compose stop daemon
-   sudo docker-compose exec web bash \
-   -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
-   sudo docker-compose exec web bash \
-   -c "bin/docker/run_test_suite.sh"
+   sudo docker-compose exec web bash -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
+   sudo docker-compose exec web bash -c "bin/docker/run_test_suite.sh"
    sudo docker-compose start daemon
 
 List of useful commands

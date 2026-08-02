@@ -264,24 +264,22 @@ Please login to the mysql console and set a different authentication module and 
 
 .. code-block:: bash
 
-   sudo mysql -u root
-   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
+   # Replace 'NewRootPassword' with your choosen database password
+   sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';"
 
 For MariaDB > 10.1 use instead the following command:
 
 .. code-block:: bash
 
-   sudo mariadb -u root
-   update mysql.user set authentication_string=password('NewRootPassword') plugin='mysql_native_password' where user='root';
+   # Replace 'NewRootPassword' with your choosen database password
+   sudo mariadb -u root -e "UPDATE mysql.user SET authentication_string=password('NewRootPassword'), plugin='mysql_native_password' WHERE user='root';"
 
 If this command not work, please try the following commands:
 
 .. code-block:: bash
 
-   sudo mysql -u root
-   UPDATE mysql.user SET password = PASSWORD('NewRootPassword') WHERE user = 'root';
-   UPDATE mysql.user SET authentication_string = '' WHERE user = 'root';
-   UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root';
+   # Replace 'NewRootPassword' with your choosen database password
+   sudo mysql -u root -e "UPDATE mysql.user SET password = PASSWORD('NewRootPassword') WHERE user = 'root'; UPDATE mysql.user SET authentication_string = '' WHERE user = 'root'; UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root';"
 
 After OTOBO installation it is possible to change the authentication module again, if needed.
 
@@ -413,7 +411,7 @@ There are two default OTOBO cron files in ``/opt/otobo/var/cron/\*.dist``, and t
 .. code-block:: bash
 
    cd /opt/otobo/var/cron/
-   for foo in *.dist; do cp $foo `basename $foo .dist`; done
+   for foo in *.dist; do sudo cp $foo `basename $foo .dist`; done
 
    cd /opt/otobo/
    sudo -u otobo bin/Cron.sh start

@@ -265,7 +265,7 @@ First we need to find out where the volume *otobo_opt_otobo* is available on the
 
 .. code-block:: bash
 
-    otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    otobo_opt_otobo_mp=$(sudo docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
     echo $otobo_opt_otobo_mp  # just a sanity check
 
 For safe copying, we use ``rsync``.
@@ -428,13 +428,13 @@ that the migration was successful and that you want to use OTOBO from now on, st
 .. code-block:: bash
 
     sudo -u otobo /opt/otobo/bin/Cron.sh start
-    sudo -u otobog /opt/otobo/bin/otobo.Daemon.pl start
+    sudo -u otobo /opt/otobo/bin/otobo.Daemon.pl start
 
 In the Docker case:
 
 .. code-block:: bash
 
-    cd ~/otobo-docker
+    cd cd /opt/otobo-docker
     sudo docker-compose start daemon
 
 Step 6: After Successful Migration!
@@ -592,13 +592,13 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 
 .. code-block:: bash
 
-    sudo expdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
+    sudo expdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
 
 3. Import the OTRS schema, renaming the schema to 'otobo'.
 
 .. code-block:: bash
 
-    sudo impdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
+    sudo impdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
 
 .. code-block:: SQL
 
@@ -614,9 +614,13 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 .. code-block:: bash
 
     cd /opt/otobo
-    sudo -u otobo scripts/backup.pl --backup-type migratefromotrs # it's OK that the command knows only about the otobo database, only last line is relevant
-    sudo sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /home/bernhard/devel/OTOBO/otobo/2021-03-31_13-36-55/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
-    sudo double check with `select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
+    sudo -u otobo scripts/backup.pl --backup-type migratefromotrs
+
+    # IMPORTANT: Replace the path to the .sql file with your actual backup path!
+    sudo sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /path/to/your/backup/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
+
+    # Double check the result in your database:
+    # select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
 
 5. Start the web server for otobo again
 

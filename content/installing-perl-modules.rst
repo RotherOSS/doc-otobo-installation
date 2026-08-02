@@ -7,7 +7,7 @@ That repository is called CPAN and is available at https://metacpan.org/.
 
 It is recommended to use the command line client ``cpanm`` for installing modules.
 ``cpanm`` is often already installed on your system.
-Please see https://metacpan.org/pod/App::cpanminus for what to do when is isn't already available.
+Please see https://metacpan.org/pod/App::cpanminus for what to do when it isn't already available.
 
 Alternatively, many Perl modules are also available as packages for your operating system. These
 packages can be installed with your systems regular package manager.

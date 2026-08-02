@@ -55,10 +55,10 @@ and unpack the source archive (for example, using ``tar``) into the directory ``
 
 .. code-block:: bash
 
-    cd /root/otobo-update                                             # Change into the update directory
+    cd /root/otobo-update                                                  # Change into the update directory
     sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
     sudo tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
-    sudo cp -r otobo-10.x.x/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
+    sudo cp -r otobo-10.0.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Restore Old Configuration Files
@@ -70,7 +70,7 @@ We need only copy the file ``Kernel/Config.pm`` in OTOBO 10.
 
     cd /root/otobo-update
     sudo cp -p otobo-prod-old/Kernel/Config.pm /opt/otobo/Kernel/
-    sudo cp -p otobo-prod-old/var/cron/* /opt/otobo/var/cron/
+    sudo cp -p otobo-prod-old/var/cron/. /opt/otobo/var/cron/
 
 Restore Article Data
 ~~~~~~~~~~~~~~~~~~~~
@@ -79,8 +79,8 @@ If you configured OTOBO to store article data in the file system you have to res
 
 .. code-block:: bash
 
-    sudo cd /root/otobo-update
-    sudo cp -pr otobo-prod-old/var/article/* /opt/otobo/var/article/
+    cd /root/otobo-update
+    sudo cp -pr otobo-prod-old/var/article/. /opt/otobo/var/article/
 
 Restore Already Installed Default Statistics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
