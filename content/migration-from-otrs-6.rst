@@ -148,19 +148,16 @@ In the non-Docker case execute the following commands as the user *otobo*:
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    root> su - otobo
-
-    otobo> /opt/otobo/bin/Cron.sh stop
-    otobo> /opt/otobo/bin/otobo.Daemon.pl stop --force
+    sudo -u otobo /opt/otobo/bin/Cron.sh stop
+    sudo -u otobo /opt/otobo/bin/otobo.Daemon.pl stop --force
 
 When OTOBO is running in Docker, you just need to stop the service ``daemon``:
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> docker-compose stop daemon
-    docker_admin> docker-compose ps     # otobo_daemon_1 should have exited with the code 0
+    cd /opt/otobo-docker
+    sudo docker-compose stop daemon
+    sudo docker-compose ps              # otobo_daemon_1 should have exited with the code 0
 
 .. note::
 
@@ -190,23 +187,23 @@ and execute one of the following commands:
 
 .. code-block:: bash
 
-    $ # Install sshpass under Debian / Ubuntu Linux
-    $ sudo apt-get install sshpass
+    # Install sshpass under Debian / Ubuntu Linux
+    sudo apt-get install -y sshpass
 
 .. code-block:: bash
 
-    $ #Install sshpass under RHEL/CentOS Linux
-    $ sudo yum install sshpass
+    #Install sshpass under RHEL/CentOS Linux
+    sudo yum install sshpass
 
 .. code-block:: bash
 
-    $ # Install sshpass under Fedora
-    $ sudo dnf install sshpass
+    # Install sshpass under Fedora
+    sudo dnf install sshpass
 
 .. code-block:: bash
 
-    $ # Install sshpass under OpenSUSE Linux
-    $ sudo zypper install sshpass
+    # Install sshpass under OpenSUSE Linux
+    sudo zypper install sshpass
 
 The same thing must be done for *rsync* when it isn't available yet.
 
@@ -231,15 +228,12 @@ Please make sure there are no running services or cron jobs.
 
 .. code-block:: bash
 
-    root> su - otrs
-    otrs>
-    otrs> /opt/otrs/bin/Cron.sh stop
-    otrs> /opt/otrs/bin/otrs.Daemon.pl stop --force
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
-    otrs> /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
-
+    sudo -u otrs /opt/otrs/bin/Cron.sh stop
+    sudo -u otrs /opt/otrs/bin/otrs.Daemon.pl stop --force
+    sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
+    sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
+    sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
+    sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
 
 Optional Step for Docker: make required data available inside container
 ------------------------------------------------------------------------
@@ -271,21 +265,16 @@ First we need to find out where the volume *otobo_opt_otobo* is available on the
 
 .. code-block:: bash
 
-    docker_admin> otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
-    docker_admin> echo $otobo_opt_otobo_mp  # just a sanity check
+    otobo_opt_otobo_mp=$(sudo docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+    echo $otobo_opt_otobo_mp  # just a sanity check
 
 For safe copying, we use ``rsync``.
 Depending on your Docker setup, the command ``rsync`` might need to be run with ``sudo``.
 
 .. code-block:: bash
 
-    docker_admin> # when docker_admin is root
-    docker_admin> rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
-    docker_admin> ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
-
-    docker_admin> # when docker_admin is not root
-    docker_admin> sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
-    docker_admin> sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+    sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
+    sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
 This copied directory will be available as */opt/otobo/var/tmp/copied_otrs* within the container.
 
@@ -325,8 +314,8 @@ by the script *bin/backup.pl*.
 
 .. code-block:: bash
 
-    otobo> cd /opt/otobo
-    otobo> scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
+    cd /opt/otobo
+    sudo -u otobo scripts/backup.pl -t migratefromotrs --db-name otrs --db-host=127.0.0.1 --db-user otrs --db-password "secret_otrs_password"
 
 .. note::
 
@@ -340,11 +329,11 @@ Native installation:
 
 .. code-block:: bash
 
-    otobo> cd <dump_dir>
-    otobo> mysql -u root -p<root_secret> otobo < otrs_pre.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_data.sql
-    otobo> mysql -u root -p<root_secret> otobo < otrs_post.sql
+    cd <dump_dir>
+    sudo -u otobo mysql -u root -p<root_secret> otobo < otrs_pre.sql
+    sudo -u otobo mysql -u root -p<root_secret> otobo < otrs_schema_for_otobo.sql
+    sudo -u otobo mysql -u root -p<root_secret> otobo < otrs_data.sql
+    sudo -u otobo mysql -u root -p<root_secret> otobo < otrs_post.sql
 
 Docker-based installation:
 
@@ -354,28 +343,28 @@ that has been set up in the file *.env* on the Docker host.
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> cd <dump_dir>
-    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_pre.sql
-    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_schema_for_otobo.sql
-    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_data.sql
-    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_post.sql
+    cd /opt/otobo-docker
+    cd <dump_dir>
+    sudo docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_pre.sql
+    sudo docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_schema_for_otobo.sql
+    sudo docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_data.sql
+    sudo docker-compose exec -T db mariadb -u root -p<root_secret> otobo < <dump_dir>/otrs_post.sql
 
 For a quick check whether the import worked, you can run the following commands.
 
 .. code-block:: bash
 
-    otobo> mariadb -u root -p<root_secret> -e 'SHOW DATABASES'
-    otobo> mariadb -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    otobo> mariadb -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+    sudo -u otobo mariadb -u root -p<root_secret> -e 'SHOW DATABASES'
+    sudo -u otobo mariadb -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    sudo -u otobo mariadb -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 or
 
 .. code-block:: bash
 
-    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> -e 'SHOW DATABASES'
-    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo -e 'SHOW TABLES'
-    docker_admin> docker-compose exec -T db mariadb -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
+    sudo docker-compose exec -T db mariadb -u root -p<root_secret> -e 'SHOW DATABASES'
+    sudo docker-compose exec -T db mariadb -u root -p<root_secret> otobo -e 'SHOW TABLES'
+    sudo docker-compose exec -T db mariadb -u root -p<root_secret> otobo -e 'SHOW CREATE TABLE ticket'
 
 The database is now migrated. This means that during the next step we can skip the database migration.
 Watch out for the relevant checkbox.
@@ -395,12 +384,12 @@ The application then guides you through the migration process.
     .. code-block:: bash
 
         # native installation
-        root> service apache2 restart
+        sudo service apache2 restart
 
         # Docker-based installation
-        docker_admin> cd /opt/otobo-docker
-        docker_admin> docker-compose restart web
-        docker_admin> docker-compose ps     # otobo_web_1 should be running again
+        cd /opt/otobo-docker
+        sudo docker-compose restart web
+        sudo docker-compose ps          # otobo_web_1 should be running again
 
 .. note::
 
@@ -438,17 +427,15 @@ that the migration was successful and that you want to use OTOBO from now on, st
 
 .. code-block:: bash
 
-    root> su - otobo
-    otobo>
-    otobo> /opt/otobo/bin/Cron.sh start
-    otobo> /opt/otobo/bin/otobo.Daemon.pl start
+    sudo -u otobo /opt/otobo/bin/Cron.sh start
+    sudo -u otobo /opt/otobo/bin/otobo.Daemon.pl start
 
 In the Docker case:
 
 .. code-block:: bash
 
-    docker_admin> cd ~/otobo-docker
-    docker_admin> docker-compose start daemon
+    cd cd /opt/otobo-docker
+    sudo docker-compose start daemon
 
 Step 6: After Successful Migration!
 ------------------------------------
@@ -595,7 +582,7 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 
 .. code-block:: bash
 
-   mkdir /tmp/otrs_dump_dir
+   sudo mkdir /tmp/otrs_dump_dir
 
 .. code-block:: SQL
 
@@ -605,13 +592,13 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 
 .. code-block:: bash
 
-    expdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
+    sudo expdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
 
 3. Import the OTRS schema, renaming the schema to 'otobo'.
 
 .. code-block:: bash
 
-    impdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
+    sudo impdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
 
 .. code-block:: SQL
 
@@ -627,9 +614,13 @@ Stop the webserver for otobo, so that the DB connection for otobo is closed.
 .. code-block:: bash
 
     cd /opt/otobo
-    scripts/backup.pl --backup-type migratefromotrs # it's OK that the command knows only about the otobo database, only last line is relevant
-    sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /home/bernhard/devel/OTOBO/otobo/2021-03-31_13-36-55/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
-    double check with `select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
+    sudo -u otobo scripts/backup.pl --backup-type migratefromotrs
+
+    # IMPORTANT: Replace the path to the .sql file with your actual backup path!
+    sudo sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /path/to/your/backup/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
+
+    # Double check the result in your database:
+    # select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
 
 5. Start the web server for otobo again
 

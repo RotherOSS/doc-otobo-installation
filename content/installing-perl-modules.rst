@@ -7,7 +7,7 @@ That repository is called CPAN and is available at https://metacpan.org/.
 
 It is recommended to use the command line client ``cpanm`` for installing modules.
 ``cpanm`` is often already installed on your system.
-Please see https://metacpan.org/pod/App::cpanminus for what to do when is isn't already available.
+Please see https://metacpan.org/pod/App::cpanminus for what to do when it isn't already available.
 
 Alternatively, many Perl modules are also available as packages for your operating system. These
 packages can be installed with your systems regular package manager.
@@ -17,14 +17,13 @@ For example, the command
 
 .. code-block:: bash
 
-    root> cpanm Acme::Dice
+    sudo cpanm Acme::Dice
 
 results in:
 
 .. code-block:: bash
 
-    otobo> perldoc -l Acme::Dice
-    /usr/local/share/perl/5.30.0/Acme/Dice.pm
+    sudo perldoc -l Acme::Dice     # Output: /usr/local/share/perl/5.30.0/Acme/Dice.pm
 
 Docker-based installations
 ----------------------------
@@ -46,13 +45,17 @@ the option ``--local-lib``. Here is a sample session in the container **web**.
 .. code-block:: bash
 
     # starting a bash session in the container web
-    docker_admin> cd /opt/otobo-docker/
-    docker_admin> docker-compose exec web bash
-    otobo@6ef90ed00cd0:~$ pwd
-    /opt/otobo
+    cd /opt/otobo-docker/
+    sudo docker-compose exec web bash
+    cd /opt/otobo
 
     # installing the sample module Acme::Dice
-    otobo@6ef90ed00cd0:~$ cpanm --local-lib local Acme::Dice
+    cpanm --local-lib local Acme::Dice
+
+The output should look like this:
+
+.. code-block:: text
+
     --> Working on Acme::Dice
     Fetching http://www.cpan.org/authors/id/B/BO/BOFTX/Acme-Dice-1.01.tar.gz ... OK
     Configuring Acme-Dice-1.01 ... OK
@@ -60,12 +63,11 @@ the option ``--local-lib``. Here is a sample session in the container **web**.
     Successfully installed Acme-Dice-1.01
     1 distribution installed
 
+.. code-block:: bash
+
     # confirm the installation directory
-    otobo@6ef90ed00cd0:~$ perldoc -l Acme::Dice
-    /opt/otobo/local/lib/perl5/Acme/Dice.pm
+    perldoc -l Acme::Dice       # Output: /opt/otobo/local/lib/perl5/Acme/Dice.pm
 
     # locally installed module is found because the environment is preset accordingly
-    otobo@6ef90ed00cd0:~$ echo $PERL5LIB
-    /opt/otobo_install/local/lib/perl5:/opt/otobo/local/lib/perl5
-    otobo@6ef90ed00cd0:~$ echo $PATH
-    /opt/otobo_install/local/bin:/opt/otobo/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    echo $PERL5LIB    # Output: /opt/otobo_install/local/lib/perl5:/opt/otobo/local/lib/perl5
+    echo $PATH        # Output: /opt/otobo_install/local/bin:/opt/otobo/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

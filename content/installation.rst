@@ -30,7 +30,7 @@ Policy from config file: targeted is returned when the SELinux targeted policy i
 
 Here's how to disable SELinux for RHEL/CentOS/Fedora.
 
-1. Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:
+1. Configure ``SELINUX=permissive`` in the ``/etc/selinux/config`` file:
 
    .. code-block:: text
 
@@ -49,8 +49,8 @@ Here's how to disable SELinux for RHEL/CentOS/Fedora.
 
    .. code-block:: bash
 
-      root> getenforce
-      Disabled
+      sudo getenforce
+      Permissive
 
 
 Step 1: Unpack and Install OTOBO
@@ -61,11 +61,11 @@ Unpack the source archive (for example, using ``tar``) into the directory ``/opt
 
 .. code-block:: bash
 
-    root> mkdir /opt/otobo-install                                          # Create a temporary install directory
-    root> cd /opt/otobo-install                                             # Change into the update directory
-    root> wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
-    root> tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
-    root> cp -r otobo-10.x.x /opt/otobo                                     # Copy the new otobo directory to /opt/otobo
+   sudo mkdir /opt/otobo-install                                          # Create a temporary install directory
+   cd /opt/otobo-install                                             # Change into the update directory
+   sudo wget https://ftp.otobo.org/pub/otobo/otobo-latest-10.0.tar.gz     # Download he latest OTOBO 10 release
+   sudo tar -xzf otobo-latest-10.0.tar.gz                                 # Unzip OTOBO
+   sudo cp -r otobo-10.0.*/* /opt/otobo                                   # Copy the new otobo directory to /opt/otobo
 
 
 Step 2: Install Additional Programs and Perl Modules
@@ -75,7 +75,7 @@ Use the following script to get an overview of all installed and required CPAN m
 
 .. code-block:: text
 
-   root> perl /opt/otobo/bin/otobo.CheckModules.pl -list
+   sudo perl /opt/otobo/bin/otobo.CheckModules.pl -list
    Checking for Perl Modules:
      o Archive::Tar.....................ok (v1.90)
      o Archive::Zip.....................ok (v1.37)
@@ -92,7 +92,7 @@ Execute this command to get an install command to install the missing dependenci
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.CheckModules.pl -inst
+   sudo /opt/otobo/bin/otobo.CheckModules.pl -inst
 
 .. note::
 
@@ -106,14 +106,14 @@ Create a dedicated user for OTOBO within its own group:
 
 .. code-block:: bash
 
-   root> useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
+   sudo useradd -r -U -d /opt/otobo -c 'OTOBO user' otobo -s /bin/bash
 
 Add the user to web server group (if the web server is not running as otobo user):
 
 .. code-block:: bash
 
-   root> usermod -G www-data otobo
-   (SUSE=www, Red Hat/CentOS/Fedora=apache, Debian/Ubuntu=www-data)
+   sudo usermod -G www-data otobo
+   #(SUSE=www, Red Hat/CentOS/Fedora=apache, Debian/Ubuntu=www-data)
 
 
 Step 4: Activate the Default Configuration File
@@ -123,7 +123,7 @@ There is an OTOBO configuration file bundled in ``$OTOBO_HOME/Kernel/Config.pm.d
 
 .. code-block:: bash
 
-   root> cp /opt/otobo/Kernel/Config.pm.dist /opt/otobo/Kernel/Config.pm
+   sudo cp /opt/otobo/Kernel/Config.pm.dist /opt/otobo/Kernel/Config.pm
 
 
 Step 5: Configure the Apache Web Server
@@ -135,13 +135,13 @@ Below you'll find the commands needed to set up Apache on the most popular Linux
 .. code-block:: bash
 
    # RHEL / CentOS:
-   root> yum install httpd mod_perl
+   sudo yum install httpd mod_perl
 
    # SuSE:
-   root> zypper install apache2-mod_perl
+   sudo zypper install apache2-mod_perl
 
    # Debian/Ubuntu:
-   root> apt-get install apache2 libapache2-mod-perl2
+   sudo apt-get install apache2 libapache2-mod-perl2
 
 A critical setting of the Apache web server is the choice of the multi-processing module.
 For running OTOBO, the recommended choice is the module **mpm_prefork**.
@@ -149,8 +149,8 @@ Like other Apache modules the multi-processing module can be managed with the to
 
 .. code-block:: bash
 
-   root> # check which MPM is active
-   root> apache2ctl -M | grep mpm_
+   # check which MPM is active
+   sudo apache2ctl -M | grep mpm_
 
 All is fine whem mpm_prefork already is enabled.
 
@@ -158,32 +158,32 @@ Disable mpm_event when it is currently active.
 
 .. code-block:: bash
 
-   root> a2dismod mpm_event
+   sudo a2dismod mpm_event
 
 Disable mpm_worker in case that MPM is enabled.
 
 .. code-block:: bash
 
-   root> a2dismod mpm_worker
+   sudo a2dismod mpm_worker
 
 Finally activate mpm_prefork.
 
 .. code-block:: bash
 
-   root> a2enmod mpm_prefork
+   sudo a2enmod mpm_prefork
 
 OTOBO requires a few more Apache modules to be active for optimal operation. Again, on most platforms you can make sure they are active via the tool a2enmod.
 
 .. code-block:: bash
 
-   root> a2enmod perl
-   root> a2enmod deflate
-   root> a2enmod filter
-   root> a2enmod headers
+   sudo a2enmod perl
+   sudo a2enmod deflate
+   sudo a2enmod filter
+   sudo a2enmod headers
 
 .. note::
 
-    On some platforms not all Apache modules exist and an error is displayed when installing. Do not worry and finish the installation, in most cases the module will not be needed.
+   On some platforms not all Apache modules exist and an error is displayed when installing. Do not worry and finish the installation, in most cases the module will not be needed.
 
 Most Apache installations have a ``conf.d`` directory included. On Linux systems you can usually find this directory under ``/etc/apache`` or ``/etc/apache2``.
 
@@ -197,10 +197,9 @@ is required. Then enable the new configuration.
 .. code-block:: bash
 
    # Debian/Ubuntu:
-   root> cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-available/zzz_otobo.conf
-   root> a2ensite zzz_otobo.conf
-   root> systemctl restart apache2
-
+   sudo cp /opt/otobo/scripts/apache2-httpd.include.conf /etc/apache2/sites-available/zzz_otobo.conf
+   sudo a2ensite zzz_otobo.conf
+   sudo systemctl restart apache2
 
 Configure Apache **with** SSL support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -211,21 +210,21 @@ the apache ``sites-available`` directory.
 .. code-block:: bash
 
    # Debian/Ubuntu:
-   root> cp /opt/otobo/scripts/apache2-httpd-vhost-80.include.conf /etc/apache2/sites-available/zzz_otobo-80.conf
-   root> cp /opt/otobo/scripts/apache2-httpd-vhost-443.include.conf /etc/apache2/sites-available/zzz_otobo-443.conf
+   sudo cp /opt/otobo/scripts/apache2-httpd-vhost-80.include.conf /etc/apache2/sites-available/zzz_otobo-80.conf
+   sudo cp /opt/otobo/scripts/apache2-httpd-vhost-443.include.conf /etc/apache2/sites-available/zzz_otobo-443.conf
 
 Please edit the files and add the required information like SSL certificate storage path. After that, enable the OTOBO Apache configuration:
 
 .. code-block:: bash
 
-   root> a2ensite zzz_otobo-80.conf
-   root> a2ensite zzz_otobo-443.conf
+   sudo a2ensite zzz_otobo-80.conf
+   sudo a2ensite zzz_otobo-443.conf
 
 Now you can restart your web server to load the new configuration settings. On most systems you can use the following command to do so:
 
 .. code-block:: bash
 
-   root> systemctl restart apache2
+   sudo systemctl restart apache2
 
 
 Step 6: Set File Permissions
@@ -235,7 +234,7 @@ Please execute the following command to set the file and directory permissions f
 
 .. code-block:: bash
 
-   root> /opt/otobo/bin/otobo.SetPermissions.pl
+   sudo /opt/otobo/bin/otobo.SetPermissions.pl
 
 
 Step 7: Setup the Database
@@ -250,13 +249,13 @@ Below you'll find the commands needed to set up MySQL on the most popular Linux 
 .. code-block:: bash
 
    # RHEL / CentOS:
-   root> yum install mysql-server
+   sudo yum install mysql-server
 
    # SuSE:
-   root> zypper install mysql-community-server
+   sudo zypper install mysql-community-server
 
    # Debian/Ubuntu:
-   root> apt-get install mysql-server
+   sudo apt-get install mysql-server
 
 After installing the MySQL server you need configure it.
 
@@ -265,24 +264,22 @@ Please login to the mysql console and set a different authentication module and 
 
 .. code-block:: bash
 
-   root> mysql -u root
-   root> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';
+   # Replace 'NewRootPassword' with your choosen database password
+   sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewRootPassword';"
 
 For MariaDB > 10.1 use instead the following command:
 
 .. code-block:: bash
 
-   root> mariadb -u root
-   root> update mysql.user set authentication_string=password('NewRootPassword') plugin='mysql_native_password' where user='root';
+   # Replace 'NewRootPassword' with your choosen database password
+   sudo mariadb -u root -e "UPDATE mysql.user SET authentication_string=password('NewRootPassword'), plugin='mysql_native_password' WHERE user='root';"
 
 If this command not work, please try the following commands:
 
 .. code-block:: bash
 
-   root> mysql -u root
-   root> UPDATE mysql.user SET password = PASSWORD('NewRootPassword') WHERE user = 'root';
-   root> UPDATE mysql.user SET authentication_string = '' WHERE user = 'root';
-   root> UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root';
+   # Replace 'NewRootPassword' with your choosen database password
+   sudo mysql -u root -e "UPDATE mysql.user SET password = PASSWORD('NewRootPassword') WHERE user = 'root'; UPDATE mysql.user SET authentication_string = '' WHERE user = 'root'; UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root';"
 
 After OTOBO installation it is possible to change the authentication module again, if needed.
 
@@ -305,21 +302,20 @@ After OTOBO installation it is possible to change the authentication module agai
 
    .. code-block:: ini
 
-      max_allowed_packet   = 64M  
-
+      max_allowed_packet   = 64M
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
 or install it on Debian or Ubuntu systems via package manager:
 
 .. code-block:: bash
 
-   root> apt-get install mysqltuner
+   sudo apt-get install -y mysqltuner
 
 After installing execute the script:
 
 .. code-block:: bash
 
-   root> mysqltuner --user root --pass NewRootPassword
+   sudo mysqltuner --user root --pass NewRootPassword
 
 
 Step 8: Setup Elasticsearch
@@ -334,17 +330,17 @@ JDK Installation
 
 .. code-block:: bash
 
-   root> apt update
-   root> apt install openjdk-8-jdk
+   sudo apt update
+   sudo apt install openjdk-8-jdk
 
 Elasticsearch Installation
 
 .. code-block:: bash
 
-  root> wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-  root> echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
-  root> apt update
-  root> apt -y install elasticsearch
+   sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+   echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+   sudo apt update
+   sudo apt -y install elasticsearch
 
 Elasticsearch Installation on another Linux distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -357,9 +353,8 @@ Additionally, OTOBO requires plugins to be installed into Elasticsearch:
 
 .. code-block:: bash
 
-  root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
-  root> /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
-
+  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
+  sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu
 
 Elasticsearch Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -384,7 +379,7 @@ Now you can restart your Elasticsearch server to load the new configuration sett
 
 .. code-block:: bash
 
-   root> systemctl restart elasticsearch
+   sudo systemctl restart elasticsearch
 
 
 Step 8: Basic System Configuration
@@ -406,7 +401,7 @@ OTOBO daemon is responsible for handling any asynchronous and recurring tasks in
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Daemon.pl start
+   sudo -u otobo /opt/otobo/bin/otobo.Daemon.pl start
 
 Step 11: Cron jobs for the OTOBO user
 -----------------------------------------------
@@ -415,11 +410,11 @@ There are two default OTOBO cron files in ``/opt/otobo/var/cron/\*.dist``, and t
 
 .. code-block:: bash
 
-   root> cd /opt/otobo/var/cron/
-   root> for foo in *.dist; do cp $foo `basename $foo .dist`; done
+   cd /opt/otobo/var/cron/
+   for foo in *.dist; do sudo cp $foo `basename $foo .dist`; done
 
-   root> cd /opt/otobo/
-   root> bin/Cron.sh start
+   cd /opt/otobo/
+   sudo -u otobo bin/Cron.sh start
 
 With this step, the basic system setup is finished.
 
@@ -435,7 +430,7 @@ After restarting your shell, you can just type this command followed by TAB, and
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl
 
 If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB.
 

@@ -23,28 +23,28 @@ First we need to create the volume.
 
 .. code-block:: bash
 
-    # create the backup directory on the host
-    docker_admin>mkdir otobo_backup
+   # create the backup directory on the host
+   sudo mkdir otobo_backup
 
-    # give the backup dir to the user otobo, elevated privs might be needed for that
-    docker_admin>chown 1000:1000 otobo_backup
+   # give the backup dir to the user otobo, elevated privs might be needed for that
+   sudo chown 1000:1000 otobo_backup
 
-    # create the Docker volume
-    docker_admin>docker volume create --name otobo_backup --opt type=none --opt device=$PWD/otobo_backup --opt o=bind
+   # create the Docker volume
+   sudo docker volume create --name otobo_backup --opt type=none --opt device=$PWD/otobo_backup --opt o=bind
 
-    # inspect the volume out of curiosity
-    docker_admin>docker volume inspect otobo_backup
+   # inspect the volume out of curiosity
+   sudo docker volume inspect otobo_backup
 
 For creating the backup we need a running database and the volumes ``otobo_opt_otobo`` and ``otobo_backup``.
 This means that the webserver and the OTOBO daemon may, but don't have to, be stopped.
 
 .. code-block:: bash
 
-    # create a backup
-    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/backup.pl -d /otobo_backup
+   # create a backup
+   sudo docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/backup.pl -d /otobo_backup
 
-    # check the backup file
-    docker_admin>tree otobo_backup
+   # check the backup file
+   sudo tree otobo_backup
 
 .. note::
 
@@ -54,22 +54,23 @@ To drop an existing otobo database and create a new one you can use the followin
 First, you have to connect to the MariaDB CLI of the `db` container.
 
 .. code-block:: bash
-   docker_admin>cd /opt/otobo-docker
-   docker_admin>docker-compose exec db bash
-   mysql@4f7783595190:/$>mariadb -u root -p${MYSQL_ROOT_PASSWORD}
+
+   cd /opt/otobo-docker
+   sudo docker-compose exec db bash
+   mariadb -u root -p${MYSQL_ROOT_PASSWORD}
 
 As soon as you are connected to the MariaDB server, you can drop and recreate the `otobo` database.
 
 .. code-block:: bash
 
-   mysql@4f7783595190:/$>DROP DATABASE otobo;
-   mysql@4f7783595190:/$>CREATE DATABASE otobo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-   mysql@4f7783595190:/$>GRANT ALL PRIVILEGES ON otobo.* TO 'otobo'@'%';
+   DROP DATABASE otobo;
+   CREATE DATABASE otobo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   GRANT ALL PRIVILEGES ON otobo.* TO 'otobo'@'%';
 
 For restoring the backup we also need to specify which backup should be restored.
 The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``.
 
 .. code-block:: bash
 
-    # restore a backup
-    docker_admin>docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>
+   # restore a backup
+   sudo docker run -it --rm --volume otobo_opt_otobo:/opt/otobo --volume otobo_backup:/otobo_backup --network otobo_default rotheross/otobo:latest scripts/restore.pl -d /opt/otobo -b /otobo_backup/<TIMESTAMP>

@@ -32,8 +32,8 @@ Here is an example for installation on Ubuntu 20.04:
 
 .. code-block:: bash
 
-   root> apt-get install git docker docker-compose curl
-   root> systemctl enable docker
+   sudo apt-get install -y git docker docker-compose curl
+   sudo systemctl enable docker
 
 Please check the Git and the Docker documentation for instructions on further setup.
 
@@ -59,12 +59,12 @@ For example, when *OTOBO 10.0.21* is the current version then please use the tag
 
 .. code-block:: bash
 
-   docker_admin> cd /opt
-   docker_admin> git clone https://github.com/RotherOSS/otobo-docker.git --branch <TAG> --single-branch
-   docker_admin> cd otobo-docker    # change into the git sandbox
-   docker_admin> ls                 # just a sanity check, for example the file README.md should exist
+    cd /opt
+    sudo git clone https://github.com/RotherOSS/otobo-docker.git --branch <TAG> --single-branch
+    cd otobo-docker    # change into the git sandbox
+    ls                 # just a sanity check, for example the file README.md should exist
 
-2. Create an initial *.env* file
+1. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Docker Compose configuration file *.env* is your primary interface for managing your installation of OTOBO.
@@ -101,10 +101,10 @@ For the following commands we assume that HTTPS should be supported.
 
 .. code-block:: bash
 
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> cp -p .docker_compose_env_https .env # or .docker_compose_env_http for HTTP
+    cd /opt/otobo-docker
+    sudo cp -p .docker_compose_env_https .env # or .docker_compose_env_http for HTTP
 
-3. Configure the password for the database admin user
+1. Configure the password for the database admin user
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Change the following setting inside your *.env* file:
@@ -140,10 +140,10 @@ In any case the volume needs to be generated manually, and we need to copy the c
 
 .. code-block:: bash
 
-    docker_admin> docker volume create otobo_nginx_ssl
-    docker_admin> otobo_nginx_ssl_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl)
-    docker_admin> echo $otobo_nginx_ssl_mp  # just a sanity check
-    docker_admin> cp /PathToYourSSLCert/ssl-cert.crt /PathToYourSSLCert/ssl-key.key $otobo_nginx_ssl_mp
+    sudo docker volume create otobo_nginx_ssl
+    otobo_nginx_ssl_mp=$(sudo docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl)
+    echo $otobo_nginx_ssl_mp  # just a sanity check
+    sudo cp /PathToYourSSLCert/ssl-cert.crt /PathToYourSSLCert/ssl-key.key $otobo_nginx_ssl_mp
 
 The names of the copied files need to be set in our newly created *.env* file. E.g.
 
@@ -152,7 +152,7 @@ The names of the copied files need to be set in our newly created *.env* file. E
 
 Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image.
 
-5. Start the Docker containers with Docker Compose
+1. Start the Docker containers with Docker Compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be
@@ -160,14 +160,14 @@ fetched from https://hub.docker.com/u/rotheross.
 
 .. code-block:: bash
 
-    docker_admin> docker-compose up --detach
+    sudo docker-compose up --detach
 
 To verify that the six required services (five in the case of HTTP only) are actually running, type:
 
 .. code-block:: bash
 
-    docker_admin> docker-compose ps
-    docker_admin> docker volume ls
+    sudo docker-compose ps
+    sudo docker volume ls
 
 6. Install and start OTOBO
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -348,25 +348,25 @@ First comes generation of the new volume. In these sample commands, we use the e
 .. code-block:: bash
 
     # stop the possibly running containers
-    docker_admin> cd /opt/otobo-docker
-    docker_admin> docker-compose down
+    cd /opt/otobo-docker
+    sudo docker-compose down
 
     # create a volume that is initially not connected to otobo_nginx_1
-    docker_admin> docker volume create otobo_nginx_custom_config
+    sudo docker volume create otobo_nginx_custom_config
 
     # find out where the new volume is located on the Docker host
-    docker_admin> otobo_nginx_custom_config_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
-    docker_admin> echo $otobo_nginx_custom_config_mp  # just a sanity check
-    docker_admin> ls $otobo_nginx_custom_config_mp    # another sanity check
+    otobo_nginx_custom_config_mp=$(sudo docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_custom_config)
+    echo $otobo_nginx_custom_config_mp          # just a sanity check
+    sudo ls $otobo_nginx_custom_config_mp       # another sanity check
 
     # copy the default config into the new volume
-    docker_admin> docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest-10_0
-    docker_admin> docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
-    docker_admin> ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template # just checking, might need 'sudo'
-    docker_admin> docker rm tmp-nginx-container
+    sudo docker create --name tmp-nginx-container rotheross/otobo-nginx-webproxy:latest-10_0
+    sudo docker cp tmp-nginx-container:/etc/nginx/templates/otobo_nginx.conf.template $otobo_nginx_custom_config_mp # might need 'sudo'
+    sudo ls -l $otobo_nginx_custom_config_mp/otobo_nginx.conf.template                                              # just checking, might need 'sudo'
+    sudo docker rm tmp-nginx-container
 
     # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
-    docker_admin> vim $otobo_nginx_custom_config_mp/otobo_nginx.conf.template
+    sudo vim $otobo_nginx_custom_config_mp/otobo_nginx.conf.template
 
 .. warning::
 
@@ -389,13 +389,13 @@ The changed Docker Compose configuration can be inspected with:
 
 .. code-block:: bash
 
-    docker_admin> docker-compose config | more
+    sudo docker-compose config | more
 
 Finally, the containers can be started again:
 
 .. code-block:: bash
 
-    docker_admin> docker-compose up --detach
+    sudo docker-compose up --detach
 
 See also the section "Using environment variables in nginx configuration (new in 1.19)" in https://hub.docker.com/_/nginx.
 
@@ -431,32 +431,29 @@ Pull a tagged OTOBO image, if we don't have it yet, and check whether the image 
 
 .. code-block:: bash
 
-    $ docker run rotheross/otobo:rel-10_0_10 /usr/games/fortune
-    /opt/otobo_install/entrypoint.sh: line 57: /usr/games/fortune: No such file or directory
+    sudo docker run rotheross/otobo:rel-10_0_10 /usr/games/fortune
+    #/opt/otobo_install/entrypoint.sh: line 57: /usr/games/fortune: No such file or directory
 
 Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive
 session as the user *root*:
 
 .. code-block:: bash
 
-    $ docker run -it --user root --entrypoint /bin/bash --name otobo_orig rotheross/otobo:rel-10_0_10
-    root@50ac203409eb:/opt/otobo# apt update
-    root@50ac203409eb:/opt/otobo# apt install fortunes
-    root@50ac203409eb:/opt/otobo# exit
-    $ docker ps -a | head
+    sudo docker run --user root --name otobo_orig rotheross/otobo:rel-10_0_10 /bin/bash -c "apt update && apt install -y fortunes"
+    sudo docker ps -a | head
 
 Create an image from the stopped container and give it a name.
 Take into account that the default user and entrypoint script must be restored:
 
 .. code-block:: bash
 
-    $ docker commit -c 'USER otobo'  -c 'ENTRYPOINT ["/opt/otobo_install/entrypoint.sh"]' otobo_orig otobo_with_fortune_cookies
+    sudo docker commit -c 'USER otobo'  -c 'ENTRYPOINT ["/opt/otobo_install/entrypoint.sh"]' otobo_orig otobo_with_fortune_cookies
 
 Finally we can doublecheck:
 
 .. code-block:: bash
 
-    $ docker run otobo_with_fortune_cookies /usr/games/fortune
+    sudo docker run otobo_with_fortune_cookies /usr/games/fortune
     A platitude is simply a truth repeated till people get tired of hearing it.
                     -- Stanley Baldwin
 
@@ -482,13 +479,13 @@ The script for the actual creation of the images is *bin/docker/build_docker_ima
 
 .. code-block:: bash
 
-   docker_admin> cd /opt
-   docker_admin> git clone https://github.com/RotherOSS/otobo.git
-   docker_admin> cd otobo
-   docker_admin> # checkout the wanted branch. e.g. git checkout rel-10_0_11
-   docker_admin> # modify the docker files if necessary
-   docker_admin> bin/docker/build_docker_images.sh
-   docker_admin> docker image ls
+   cd /opt
+   sudo git clone https://github.com/RotherOSS/otobo.git
+   cd otobo
+   # checkout the wanted branch. e.g. git checkout rel-10_0_11
+   # modify the docker files if necessary
+   sudo bin/docker/build_docker_images.sh
+   sudo docker image ls
 
 The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*.
 
@@ -507,15 +504,12 @@ running the test suite on a fresh installation.
 
 .. code-block:: bash
 
-   docker_admin> docker-compose down -v
-   docker_admin> docker-compose up --detach
-   docker_admin> docker-compose stop daemon
-   docker_admin> docker-compose exec web bash\
-   -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
-   docker_admin> docker-compose exec web bash\
-   -c "bin/docker/run_test_suite.sh"
-   .......
-   docker_admin> docker-compose start daemon
+   sudo docker-compose down -v
+   sudo docker-compose up --detach
+   sudo docker-compose stop daemon
+   sudo docker-compose exec web bash -c "rm -f Kernel/Config/Files/ZZZAAuto.pm ; bin/docker/quick_setup.pl --db-password otobo_root"
+   sudo docker-compose exec web bash -c "bin/docker/run_test_suite.sh"
+   sudo docker-compose start daemon
 
 List of useful commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

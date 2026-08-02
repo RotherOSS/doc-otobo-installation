@@ -42,13 +42,13 @@ made sure that the correct setup is used.
 .. code-block:: bash
 
     # Change to the otobo docker directory
-    docker_admin> cd /opt/otobo-docker
+    cd /opt/otobo-docker
 
     # Get the latest tags
-    docker-admin> git pull --tags
+    sudo git pull --tags
 
     # Update OTOBO docker-compose repository to version 10.x.y.
-    docker-admin> git checkout rel-10_x_y
+    sudo git checkout rel-10_x_y
 
 Checking the Docker Compose .env file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,10 +66,10 @@ Docker compose can be used for fetching the wanted images from https://hub.docke
 .. code-block:: bash
 
     # Change to the otobo docker directory
-    docker_admin> cd /opt/otobo-docker
+    cd /opt/otobo-docker
 
     # fetch the new images, either 'latest' or the specific version declared in .env
-    docker_admin> docker-compose pull
+    sudo docker-compose pull
 
 Update OTOBO
 ~~~~~~~~~~~~~~~
@@ -84,22 +84,22 @@ In this step the volume *otobo_opt_otobo* is updated and the following OTOBO con
 .. code-block:: bash
 
     # stop and remove the containers, but keep the named volumes
-    docker_admin> docker-compose down
+    sudo docker-compose down
 
     # copy the OTOBO software, while containers are still stopped
-    docker_admin> docker-compose run --no-deps --rm web copy_otobo_next
+    sudo docker-compose run --no-deps --rm web copy_otobo_next
 
     # start containers again, using the new version and the updated /opt/otobo
-    docker_admin> docker-compose up --detach
+    sudo docker-compose up --detach
 
     # a quick sanity check
-    docker_admin> docker-compose ps
+    sudo docker-compose ps
 
     # complete the update, with running database
-    docker_admin> docker-compose exec web /opt/otobo_install/entrypoint.sh do_update_tasks
+    sudo docker-compose exec web /opt/otobo_install/entrypoint.sh do_update_tasks
 
     # inspect the update log
-    docker_admin> docker-compose exec web cat /opt/otobo/var/log/update.log
+    sudo docker-compose exec web cat /opt/otobo/var/log/update.log
 
 .. note::
 
