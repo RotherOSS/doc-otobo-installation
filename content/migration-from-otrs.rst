@@ -160,28 +160,25 @@ In the non-Docker case execute the following commands as the user ``otobo``:
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    su - otobo
-
-    /opt/otobo/bin/Cron.sh stop
-    /opt/otobo/bin/otobo.Daemon.pl stop --force
+   sudo -u otobo /opt/otobo/bin/Cron.sh stop
+   sudo -u otobo /opt/otobo/bin/otobo.Daemon.pl stop --force
 
 When OTOBO is running in Docker, you just need to stop the service ``daemon``:
 
 .. code-block:: bash
 
-    cd /opt/otobo-docker
-    docker compose stop daemon
-    docker compose ps     # otobo-daemon-1 should have exited with the code 0
+   cd /opt/otobo-docker
+   docker compose stop daemon
+   docker compose ps     # otobo-daemon-1 should have exited with the code 0
 
 .. note::
 
-    It is recommended to run a backup of the whole OTOBO system at this point.
-    If something goes wrong during migration, you will then not have to repeat the entire installation process, but can instead import the backup for a new migration.
+   It is recommended to run a backup of the whole OTOBO system at this point.
+   If something goes wrong during migration, you will then not have to repeat the entire installation process, but can instead import the backup for a new migration.
 
     .. seealso::
 
-        We advise you to read the OTOBO :doc:`backup-restore` chapter.
+      We advise you to read the OTOBO :doc:`backup-restore` chapter.
 
 Optional Step: Mount ``/opt/otrs`` for Convenient Access
 --------------------------------------------------------
@@ -200,23 +197,23 @@ For installing ``sshpass``, please log in on the server as user ``root`` and exe
 
 .. code-block:: bash
 
-    # Install sshpass under Debian / Ubuntu Linux
-    sudo apt install sshpass
+   # Install sshpass under Debian / Ubuntu Linux
+   sudo apt install sshpass
 
 .. code-block:: bash
 
-    # Install sshpass under RHEL/CentOS Linux
-    sudo yum install sshpass
+   # Install sshpass under RHEL/CentOS Linux
+   sudo yum install sshpass
 
 .. code-block:: bash
 
-    # Install sshpass under Fedora
-    sudo dnf install sshpass
+   # Install sshpass under Fedora
+   sudo dnf install sshpass
 
 .. code-block:: bash
 
-    # Install sshpass under OpenSUSE Linux
-    sudo zypper install sshpass
+   # Install sshpass under OpenSUSE Linux
+   sudo zypper install sshpass
 
 The same thing must be done for ``rsync`` when it isn't available yet.
 
@@ -225,8 +222,8 @@ Step 4: Preparing the OTRS / ((OTRS)) Community Edition system
 
 .. note::
 
-    Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too.
-    Yes, we do not touch any OTRS data during the migration, but at times a wrong entry is enough to cause trouble.
+   Be sure to have a valid backup of your OTRS / ((OTRS)) Community Edition system, too.
+   Yes, we do not touch any OTRS data during the migration, but at times a wrong entry is enough to cause trouble.
 
 Now we are ready for the migration.
 First of all we need to make sure that no more tickets are processed and no users log on to OTRS:
@@ -241,11 +238,8 @@ Please make sure there are no running services or cron jobs.
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    su - otrs
-
-    /opt/otrs/bin/Cron.sh stop
-    /opt/otrs/bin/otrs.Daemon.pl stop --force
+   sudo -u otrs /opt/otrs/bin/Cron.sh stop
+   sudo -u otrs /opt/otrs/bin/otrs.Daemon.pl stop --force
 
 Clear the Caches and the Operational Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -255,14 +249,11 @@ The mail queue should at this point already be empty.
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    su - otrs
-
-    /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
-    /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
-    /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
-    /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
-    /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
+   sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Cache::Delete
+   sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Session::DeleteAll
+   sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Loader::CacheCleanup
+   sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::WebUploadCache::Cleanup
+   sudo -u otrs /opt/otrs/bin/otrs.Console.pl Maint::Email::MailQueue --delete-all
 
 Optional Step for Docker: Make Required Data Available Inside Container
 ------------------------------------------------------------------------
@@ -274,8 +265,8 @@ Also, note that the MariaDB database running in ``otobo-db-1`` is not directly a
 
 .. note::
 
-    In the sample commands, we assume that the user **docker_admin** is used for interacting with Docker.
-    The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions.
+   In the sample commands, we assume that the user **docker_admin** is used for interacting with Docker.
+   The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions.
 
 Copy ``/opt/otrs`` into the Volume ``otobo_opt_otobo``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -284,8 +275,8 @@ In this section, we assume that the OTRS home directory ``/opt/otrs`` is availab
 
 There are at least two viable possibilitie
 
-    a. Copy ``/opt/otrs`` into the existing volume ``otobo_opt_otobo``
-    b. Mount ``/opt/otrs`` as an additional volume
+   a. Copy ``/opt/otrs`` into the existing volume ``otobo_opt_otobo``
+   b. Mount ``/opt/otrs`` as an additional volume
 
 Let's concentrate on option **a.** here.
 
@@ -293,21 +284,21 @@ First we need to find out where the volume ``otobo_opt_otobo`` is available on t
 
 .. code-block:: bash
 
-    otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
-    echo $otobo_opt_otobo_mp  # just a sanity check
+   otobo_opt_otobo_mp=$(docker volume inspect --format '{{ .Mountpoint }}' otobo_opt_otobo)
+   echo $otobo_opt_otobo_mp  # just a sanity check
 
 For safe copying, we use ``rsync``.
 Depending on your Docker setup, the command ``rsync`` might need to be run with ``sudo``.
 
 .. code-block:: bash
 
-    # when docker_admin is root
-    rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
-    ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+   # when docker_admin is root
+   rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
+   ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
-    # when docker_admin is not root
-    sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
-    sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
+   # when docker_admin is not root
+   sudo rsync --recursive --safe-links --owner --group --chown 1000:1000 --perms --chmod "a-wx,Fu+r,Du+rx" /opt/otrs/ $otobo_opt_otobo_mp/var/tmp/copied_otrs
+   sudo ls -la $otobo_opt_otobo_mp/var/tmp/copied_otrs  # just a sanity check
 
 This copied directory will be available as ``/opt/otobo/var/tmp/copied_otrs`` within the container.
 
@@ -320,48 +311,48 @@ The application then guides you through the migration process.
 
 .. warning::
 
-    Sometimes, a warning is shown that the deactivation of **SecureMode** has not been detected.
-    Please restart the webserver in this case.
-    This forces the webserver to read in the current configuration.
+   Sometimes, a warning is shown that the deactivation of **SecureMode** has not been detected.
+   Please restart the webserver in this case.
+   This forces the webserver to read in the current configuration.
 
-    For a native installation, the command is:
+   For a native installation, the command is:
 
-    .. code-block:: bash
+   .. code-block:: bash
 
-        service apache2 restart
+      service apache2 restart
 
-    For a Docker-based installation, the commands are:
+   For a Docker-based installation, the commands are:
 
-    .. code-block:: bash
+   .. code-block:: bash
 
-        cd /opt/otobo-docker
-        docker compose restart web
-        docker compose ps     # otobo-web-1 should be running again
-
-.. note::
-
-    If OTOBO runs inside a Docker container, keep the default settings ``localhost`` for the OTRS server and ``/opt/otobo/var/tmp/copied_otrs`` for the OTRS home directory.
-    This is the path of the data that was copied in the optional step.
+      cd /opt/otobo-docker
+      docker compose restart web
+      docker compose ps     # otobo-web-1 should be running again
 
 .. note::
 
-    The default values for OTRS database user and password are taken from ``Kernel/Config.pm`` in the OTRS home directory.
-    Change the proposed settings if you are using a dedicated database user for the migration.
-    Also change the settings when you work with a database that was copied into the ``otobo-db-1`` Docker container.
+   If OTOBO runs inside a Docker container, keep the default settings ``localhost`` for the OTRS server and ``/opt/otobo/var/tmp/copied_otrs`` for the OTRS home directory.
+   This is the path of the data that was copied in the optional step.
 
 .. note::
 
-    In the Docker case, a database running on the Docker host won't be reachable via ``127.0.0.1`` from within the Docker container.
-    This means that the setting ``127.0.0.1`` won't be valid for the input field ``OTRS Server``.
-    In that case, enter one of the alternative IP addresses reported by the command ``hostname --all-ip-addresses`` for ``OTRS Server``.
+   The default values for OTRS database user and password are taken from ``Kernel/Config.pm`` in the OTRS home directory.
+   Change the proposed settings if you are using a dedicated database user for the migration.
+   Also change the settings when you work with a database that was copied into the ``otobo-db-1`` Docker container.
 
 .. note::
 
-    When migrating to a new application server, or to a Docker-based installation, quite often the database cannot be accessed from the target installation.
-    This is usually due to the fact that the otobo database user can only connect from the host the database runs on.
-    In order to allow access anyways it is recommended to create a dedicated database user for the migration.
-    E.g., ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';`` and ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``.
-    This user can be dropped again after the migration: ``DROP USER 'otrs_migration'@'%'``.
+   In the Docker case, a database running on the Docker host won't be reachable via ``127.0.0.1`` from within the Docker container.
+   This means that the setting ``127.0.0.1`` won't be valid for the input field ``OTRS Server``.
+   In that case, enter one of the alternative IP addresses reported by the command ``hostname --all-ip-addresses`` for ``OTRS Server``.
+
+.. note::
+
+   When migrating to a new application server, or to a Docker-based installation, quite often the database cannot be accessed from the target installation.
+   This is usually due to the fact that the otobo database user can only connect from the host the database runs on.
+   In order to allow access anyways it is recommended to create a dedicated database user for the migration.
+   E.g., ``CREATE USER 'otrs_migration'@'%' IDENTIFIED BY 'otrs_migration';`` and ``GRANT SELECT, SHOW VIEW ON otrs.* TO 'otrs_migration'@'%';``.
+   This user can be dropped again after the migration: ``DROP USER 'otrs_migration'@'%'``.
 
 Custom settings in ``Kernel/Config.pm`` are carried over from the old OTRS installation to the new OTOBO installation.
 When you have custom settings, then please take a look at the migrated file ``/opt/otobo/Kernel/Config.pm``.
@@ -373,18 +364,15 @@ Once you have decided that the migration was successful and that you want to use
 
 .. code-block:: bash
 
-    # in case you are logged in as root
-    su - otobo
-
-    /opt/otobo/bin/Cron.sh start
-    /opt/otobo/bin/otobo.Daemon.pl start
+   sudo -u otobo /opt/otobo/bin/Cron.sh start
+   sudo -u otobo /opt/otobo/bin/otobo.Daemon.pl start
 
 In the Docker case:
 
 .. code-block:: bash
 
-    cd ~/otobo-docker
-    docker compose start daemon
+   cd /opt/otobo-docker
+   docker compose start daemon
 
 Step 6: After Successful Migration!
 ------------------------------------
@@ -510,15 +498,15 @@ On the OTOBO host a Oracle client and the Perl module ``DBD::Oracle`` must be in
 
 .. note::
 
-    When using the Oracle instant client, then the optional SDK is also needed for installing ``DBD::Oracle``.
+   When using the Oracle instant client, then the optional SDK is also needed for installing ``DBD::Oracle``.
 
 There are many ways of cloning a schema.
 In the sample commands we use ``expdb`` and ``impdb`` which use Data Pump under the hood.
 
 .. note::
 
-    The connect strings shown in this documentation refer to the case when both source and target database run in a Docker container.
-    See also https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md .
+   The connect strings shown in this documentation refer to the case when both source and target database run in a Docker container.
+   See also https://github.com/bschmalhofer/otobo-ideas/blob/master/oracle.md .
 
 
 1. Clear out OTOBO
@@ -527,8 +515,8 @@ Stop the webserver for OTOBO, so that the DB connection for OTOBO is closed.
 
 .. code-block:: SQL
 
-    -- in the OTOBO database
-    DROP USER otobo CASCADE
+   -- in the OTOBO database
+   DROP USER otobo CASCADE
 
 2. Export the complete OTRS schema.
 
@@ -538,41 +526,43 @@ Stop the webserver for OTOBO, so that the DB connection for OTOBO is closed.
 
 .. code-block:: SQL
 
-    -- in the OTRS database
-    CREATE DIRECTORY OTRS_DUMP_DIR AS '/tmp/otrs_dump_dir';
-    GRANT READ, WRITE ON DIRECTORY OTRS_DUMP_DIR TO sys;
+   -- in the OTRS database
+   CREATE DIRECTORY OTRS_DUMP_DIR AS '/tmp/otrs_dump_dir';
+   GRANT READ, WRITE ON DIRECTORY OTRS_DUMP_DIR TO sys;
 
 .. code-block:: bash
 
-    expdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
+   expdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' schemas=otrs directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=expdpotrs.log
 
 3. Import the OTRS schema, renaming the schema to ``otobo``.
 
 .. code-block:: bash
 
-    impdp \"sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba\" directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
+   impdp 'sys/Oradoc_db1@//127.0.0.1/orclpdb1.localdomain as sysdba' directory=OTRS_DUMP_DIR dumpfile=otrs.dmp logfile=impdpotobo.log remap_schema=otrs:otobo
 
 .. code-block:: SQL
 
-    -- in the OTOBO database
-    -- double check
-    select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
+   -- in the OTOBO database
+   -- double check
+   select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
 
-    -- optionally, set the password for the user otobo
-        ALTER USER otobo IDENTIFIED BY XXXXXX;
+   -- optionally, set the password for the user otobo
+      ALTER USER otobo IDENTIFIED BY XXXXXX;
 
 4. Adapt the cloned schema ``otobo``:
 
 .. code-block:: bash
 
-    cd /opt/otobo
-    scripts/backup.pl --backup-type migratefromotrs # it's OK that the command knows only about the otobo database, only last line is relevant
-    sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /home/bernhard/devel/OTOBO/otobo/2021-03-31_13-36-55/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
-    double check with `select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
+   cd /opt/otobo
+   scripts/backup.pl --backup-type migratefromotrs # it's OK that the command knows only about the otobo database, only last line is relevant.
+   # Replace the path to the .sql file with your actual backup path.
+   sqlplus otobo/otobo@//127.0.0.1/orclpdb1.localdomain < /path/to/your/backup/orclpdb1.localdomain_post.sql >sqlplus.out 2>&1
+   # Double check the result in your database:
+   # select owner, table_name from all_tables where table_name like 'ARTICLE_DATA_OT%_CHAT';
 
-5. Start the web server for OTOBO again
+1. Start the web server for OTOBO again
 
-6. Proceed with step 5, that is with running ``migration.pl``.
+2. Proceed with step 5, that is with running ``migration.pl``.
 
 .. note::
 

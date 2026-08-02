@@ -62,7 +62,7 @@ There are some options available for fine-tuning the search index:
 
       .. code-block:: bash
 
-         otobo> /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndexRebuild
+         sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Ticket::FulltextIndexRebuild
 
    ``WordCountMax``
       Defines the maximum number of words which will be processed to build up the index.
@@ -199,7 +199,7 @@ You can switch the back end in the system configuration, and then run this comma
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Admin::Article::StorageSwitch --target ArticleStorageFS
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Admin::Article::StorageSwitch --target ArticleStorageFS
 
 You can use the ``--target`` option to specify the target back end.
 
@@ -270,7 +270,7 @@ Please use ``otobo.CheckModules.pl --list`` to choose the right package for you:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --all
+   sudo -u otobo /opt/otobo/bin/otobo.CheckModules.pl --all
 
 3. Configure OTOBO for Redis
 
@@ -295,9 +295,9 @@ If you have enough RAM, you can also try to put this directory on a ramdisk like
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Session::DeleteAll
-   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
-   root> mount -o size=16G -t tmpfs none /opt/otobo/var/tmp
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Session::DeleteAll
+   sudo -u otobo /opt/otobo/bin/otobo.Console.pl Maint::Cache::Delete
+   sudo mount -o size=16G -t tmpfs none /opt/otobo/var/tmp
 
 .. note::
 

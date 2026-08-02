@@ -18,13 +18,13 @@ There is a console command for checking the module dependencies:
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --inst
+   sudo -u otobo /opt/otobo/bin/otobo.CheckModules.pl --inst
 
 If some packages are missing, you can get an install command for your operating system by running the script with the ``--list`` option.
 
 .. code-block:: bash
 
-   otobo> /opt/otobo/bin/otobo.CheckModules.pl --list | more
+   sudo -u otobo /opt/otobo/bin/otobo.CheckModules.pl --list | more
 
 The listed commands should then be executed with root privileges.
 
