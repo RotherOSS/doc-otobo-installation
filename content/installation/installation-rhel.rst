@@ -75,7 +75,7 @@ Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 .. note::
 
    (Optional) It's recommended to validate the downloaded file's integrity before continuing.
-   This has should be done in the same folder than the tar.gz file obtained previously.
+   This should be done in the same folder than the tar.gz file obtained previously.
 
    .. code-block:: bash
 
@@ -140,7 +140,7 @@ Download the pre-built packages from https://ftp.otobo.org/pub/otobo/.
 .. note::
 
    (Optional) It's recommended to validate the downloaded file's integrity before continuing.
-   This has should be done in the same folder than the tar.gz file obtained previously.
+   This should be done in the same folder than the tar.gz file obtained previously.
 
    .. code-block:: bash
 
@@ -234,9 +234,8 @@ If you want to enable SSL support, you need to copy the SSL configuration file.
 .. code-block:: bash
 
    sudo cp /opt/otobo/scripts/nginx-vhost-443.include.conf /etc/nginx/conf.d/nginx.conf
-   cd /etc/nginx/
-   sudo mkdir snippets
-   sudo cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf snippets/
+   sudo mkdir -p /etc/nginx/snippets
+   sudo cp /opt/otobo/scripts/nginx/snippets/ssl-params.conf /etc/nginx/snippets/
 
 Please edit the files and add the required information like SSL certificate storage path.
 
@@ -264,7 +263,7 @@ It will try to detect the correct user and group settings needed for your setup.
 .. code-block:: bash
 
    sudo env PERL5LIB="/opt/otobo/install/local/lib/perl5" /opt/otobo/bin/otobo.SetPermissions.pl --otobo-user=otobo --web-group=otobo
-   root> chmod +x /opt/otobo/install/local/bin/*
+   sudo chmod +x /opt/otobo/install/local/bin/*
 
 
 Step 8: Setup the Database

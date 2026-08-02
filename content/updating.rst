@@ -106,7 +106,7 @@ Download the latest OTOBO release from https://ftp.otobo.org/pub/otobo/.
 .. note::
 
    (Optional) It's recommended to validate the downloaded file's integrity before continuing.
-   This has should be done in the same folder than the tar.gz file obtained previously.
+   This should be done in the same folder than the tar.gz file obtained previously.
 
    .. code-block:: bash
 
@@ -121,7 +121,6 @@ After that, unpack the source archive (for example, using ``tar``) into the dire
 
     sudo tar -xzf otobo-latest-11.0.tar.gz                                # Unzip OTOBO
     sudo cp -r otobo-11.0.*/* /opt/otobo                                  # Copy the new otobo directory to /opt/otobo
-
 
 Restore Old Configuration Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
