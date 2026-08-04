@@ -45,16 +45,36 @@ build: $(VENV_STAMP) ## Build the local HTML preview.
 
 check: $(VENV_STAMP) clean ## Check validity
 	@status=0;\
-	printf "\n`tput bold`=== [check] buildability ...`tput sgr0`\n"; \
-	$(SPHINXBUILD) --color -q -W --keep-going -n -b html "$(SOURCEDIR)" "$(BUILDDIR)/html" || status=1; \
-	printf "\n`tput bold`=== [check] links ...`tput sgr0`\n"; \
-	$(SPHINXBUILD) --color -b linkcheck "$(SOURCEDIR)" "$(BUILDDIR)/linkcheck" || status=1; \
-	printf "\n`tput bold`=== [check] trailing whitespace ...`tput sgr0`\n"; \
-	! git --no-pager grep --ignore-case --line-number --color=always --recursive ' $$' -- '*.rst' '*.md' || status=1; \
-	printf "\n`tput bold`=== [check] sembr ...`tput sgr0`\n"; \
-	! git --no-pager grep --ignore-case --line-number --color=always --recursive '[a-z]\{2,\}[\.\?\!] .*$$' -- '*.rst' '*.md' || status=1; \
+	$(MAKE) buildable || status=1; \
+	$(MAKE) linkcheck || status=1; \
+	$(MAKE) trailing-whitespace || status=1; \
+	$(MAKE) sembr || status=1; \
 	if [ $$status -eq 0 ]; then printf "\n`tput bold`=== All checks passed 🎉`tput sgr0`\n"; fi; \
 	exit $$status
+
+buildable: $(VENV_STAMP) ## Check if the documentation is buildable.
+	@printf "\n`tput bold`=== [check] buildability ...`tput sgr0`\n"; \
+	$(SPHINXBUILD) --color -q -W --keep-going -n -b html "$(SOURCEDIR)" "$(BUILDDIR)/html" && printf "`tput setaf 2`ok.`tput sgr0`\n"
+
+linkcheck: $(VENV_STAMP) ## Check for broken links in the documentation.
+	@printf "\n`tput bold`=== [check] external links ...`tput sgr0`\n"; \
+	$(SPHINXBUILD) -Q -b linkcheck "$(SOURCEDIR)" "$(BUILDDIR)/linkcheck"; \
+  STATUS=$$?; \
+	OUTPUT=$$(jq -r '\
+      select(.status | IN("working", "unchecked") | not) |\
+      "\u001b[35m\(.filename)\u001b[0m:\u001b[32m\(.lineno)\u001b[0m \(.uri) - \u001b[1m\(.status)\u001b[0m - \(.info)"\
+      ' $(BUILDDIR)/linkcheck/output.json); \
+  if [ -z "$$OUTPUT" ]; then echo "`tput setaf 2`ok.`tput sgr0`"; else echo "$$OUTPUT"; exit 1; fi; \
+  exit $$STATUS
+
+trailing-whitespace: $(VENV_STAMP) ## Check for trailing whitespace in the documentation.
+	@printf "\n`tput bold`=== [check] trailing whitespace ...`tput sgr0`\n"; \
+	! git --no-pager grep --ignore-case --line-number --color=always --recursive ' $$' -- '*.rst' '*.md' && printf "`tput setaf 2`ok.`tput sgr0`\n"
+
+sembr: $(VENV_STAMP) ## Check for semantic linebreaks (best effort).
+	@printf "\n`tput bold`=== [check] https://sembr.org ...`tput sgr0`\n"; \
+	! git --no-pager grep --ignore-case --line-number --color=always --recursive '[a-z]\{2,\}[\.\?\!] .*$$' -- '*.rst' '*.md' && printf "`tput setaf 2`ok.`tput sgr0`\n"
+
 
 open: ## Open the generated HTML preview in the default browser.
 	$(OPEN_CMD) $(BUILDDIR)/html/content/index.html
