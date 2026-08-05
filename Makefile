@@ -18,7 +18,7 @@ else
 	$(error Unsupported OS: $(UNAME_S))
 endif
 
-.PHONY: help open clean venv build auto clean-venv check
+.PHONY: help open clean venv build auto clean-venv check linkcheck trailing-whitespace sembr buildable
 
 help: ## List every available make target and what it does.
 	@echo
