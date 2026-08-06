@@ -18,7 +18,7 @@ Requirements
 The minimal versions of required software, that have been tested, are listed here:
 
 * Docker 19.03.13
-* Docker Compose v2
+* Docker Compose v2 or Docker Compose v5
 * Git 2.17.1
 
 
