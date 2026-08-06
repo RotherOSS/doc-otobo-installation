@@ -62,7 +62,7 @@ This means that no separate package is necessary and they will be part of OTOBO 
 Migrating to Docker Compose v2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please take note, that Docker Compose v1 is deprecated and will not be supported in the future.
+Please take note, that Docker Compose v1 is no longer supported in OTOBO 11.1.
 If ``docker-compose --version`` shows a version beginning with ``1``, Docker Compose v1 is installed.
 If ``docker ps`` shows a container called ``otobo_web_1``, then Docker Compose v1 is running your container.
 
