@@ -17,6 +17,10 @@ master_doc = 'content/index'
 language = 'en'
 exclude_patterns = ['_build', '.venv', 'Thumbs.db', '.DS_Store']
 
+linkcheck_ignore = [
+  r'https?://localhost.*',
+  r'https?://OTOBO_FQDN.*',
+]
 linkcheck_anchors_ignore_for_url = [
     r'https://github\.com/.*'
 ]
