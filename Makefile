@@ -61,7 +61,7 @@ linkcheck: $(VENV_STAMP) ## Check for broken links in the documentation.
 	$(SPHINXBUILD) -Q -b linkcheck "$(SOURCEDIR)" "$(BUILDDIR)/linkcheck"; \
   STATUS=$$?; \
 	OUTPUT=$$(jq -r '\
-      select(.status | IN("working", "unchecked") | not) |\
+      select(.status | IN("working", "unchecked", "ignored") | not) |\
       "\u001b[35m\(.filename)\u001b[0m:\u001b[32m\(.lineno)\u001b[0m \(.uri) - \u001b[1m\(.status)\u001b[0m - \(.info)"\
       ' $(BUILDDIR)/linkcheck/output.json); \
   if [ -z "$$OUTPUT" ]; then echo "`tput setaf 2`ok.`tput sgr0`"; else echo "$$OUTPUT"; exit 1; fi; \
