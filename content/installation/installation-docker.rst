@@ -268,6 +268,12 @@ These setting are used when HTTPS is enabled.
     SSL key for the nginx webproxy.
     Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``
 
+OTOBO_PROXY_SECRET
+    Used to enable remote SSO when nginx does the SSO (e.g. kerberos)
+    and forwards the user identity to OTOBO.
+    Necessary only in combination with the HTTPBasicAuth authentication module in OTOBO.
+    Also see ``WebServer::ProxySecret`` in Kernel/Config/Defaults.pm.
+
 **Nginx webproxy settings for Kerberos**
 
 This settings are used by Nginx when Kerberos is used for single sign on.
@@ -432,6 +438,9 @@ This can be done by mounting a volume that overrides ``/etc/krb5.conf`` in the c
 This can be achieved by setting ``OTOBO_NGINX_KERBEROS_CONFIG`` in the ``.env`` file and by activating the mount directive in ``docker-compose/otobo-override-https-kerberos.yml``.
 
 ``/etc/krb5.keytab`` is always installation specific and must therefore always be mounted from the host system.
+
+Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication.
+See also ``WebServer::ProxySecret`` in Kernel/Config/Defaults.pm.
 
 **Kerberos SSO Installation Tutorial**
 
