@@ -41,8 +41,9 @@ Installation
 ------------
 
 The following instructions assume that all requirements are met, that you have a working Docker environment.
-We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either
-the **root** user of the Docker host or a dedicated user with the required permissions.
+We assume here that the user **docker_admin** is used for interacting with Docker.
+The Docker admin may be either the **root** user of the Docker host 
+or a dedicated user with the required permissions.
 
 1. Clone the otobo-docker repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,11 +67,14 @@ For example, when *OTOBO 10.1.10* is the current version then please use the tag
 1. Create an initial *.env* file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Docker Compose configuration file *.env* is your primary interface for managing your installation of OTOBO.
-This file must first be created and then be adapted by yourself. In order to simplify the task there
-are several example files that should be used as starting point.
-Which sample file it the best fit depends on your use case. In most cases the decision is between
-*.docker_compose_env_http* and *.docker_compose_env_https*, depending on whether TLS must be supported or not.
+The Docker Compose configuration file *.env* is your primary interface
+for managing your installation of OTOBO.
+This file must first be created and then be adapted by yourself.
+In order to simplify the task there are several example files that should be used as starting point.
+Which sample file it the best fit depends on your use case.
+In most cases the decision is between
+*.docker_compose_env_http* and *.docker_compose_env_https*,
+depending on whether TLS must be supported or not.
 The other files are for more specialised use cases.
 
 .docker_compose_env_http
@@ -83,7 +87,8 @@ The other files are for more specialised use cases.
     Like *.docker_compose_env_https* but with support for a custom Nginx configuration.
 
 .docker_compose_env_https_kerberos
-    Like *.docker_compose_env_https* but with sample setup for single sign on. Note that Kerberos support is still **experimental**.
+    Like *.docker_compose_env_https* but with sample setup for single sign on.
+    Note that Kerberos support is still **experimental**.
 
 .docker_compose_env_http_selenium and .docker_compose_env_https_selenium
     These are used only for development when Selenium testing is activated.
@@ -92,9 +97,10 @@ The other files are for more specialised use cases.
 
     Use ``ls -a`` for listing the hidden sample files.
 
-Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP.
-When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support
-is achieved by an additional reverse proxy, which is implemented as a nginx service.
+Per default OTOBO is served on the standard ports.
+Port 443 for HTTPS and port 80 for HTTP.
+When HTTPS is activated then the OTOBO web application actually still runs with HTTP.
+HTTPS support is achieved by an additional reverse proxy, which is implemented as a nginx service.
 
 For the following commands we assume that HTTPS should be supported.
 
@@ -110,9 +116,10 @@ Change the following setting inside your *.env* file:
 
 ``OTOBO_DB_ROOT_PASSWORD=<your_secret_password>``
 
-The password for the database admin user may be chosen freely. The database admin user is needed to
-create the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated
-database user **otobo**.
+The password for the database admin user may be chosen freely.
+The database admin user is needed to create the database user **otobo**
+and the database schema **otobo**.
+OTOBO will actually use the dedicated database user **otobo**.
 
 4. Set up a volume with SSL configuration for the nginx webproxy (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -123,8 +130,8 @@ nginx needs for SSL encryption a certificate and a private key.
 
 .. note::
 
-    For testing and development a self-signed certificate can be used. However for productive use you should
-    work with regular registered certificates.
+    For testing and development a self-signed certificate can be used.
+    However for productive use you should work with regular registered certificates.
 
     See e.g. https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04
     on how to create self-signed certificates.
@@ -134,8 +141,10 @@ nginx needs for SSL encryption a certificate and a private key.
     To specify a CA chain with a certificate in nginx, it is necessary to copy the CA chain file
     with the actual certificate into a file.
 
-The certificate and the private key are stored in a volume, so that they can be used by nginx later on.
-In any case the volume needs to be generated manually, and we need to copy the certificate and key to the volume:
+The certificate and the private key are stored in a volume,
+so that they can be used by nginx later on.
+In any case the volume needs to be generated manually,
+and we need to copy the certificate and key to the volume:
 
 .. code-block:: bash
 
@@ -144,7 +153,9 @@ In any case the volume needs to be generated manually, and we need to copy the c
    echo "$otobo_nginx_ssl_mp"  # just a sanity check
    sudo cp /PathToYourSSLCert/ssl-cert.crt /PathToYourSSLCert/ssl-key.key "$otobo_nginx_ssl_mp"
 
-The names of the copied files need to be set in our newly created *.env* file. E.g.
+The names of the copied files need to be set in our newly created *.env* file.
+
+E.g.:
 
 ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and
 ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``
@@ -154,8 +165,8 @@ Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard co
 1. Start the Docker containers with Docker Compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be
-fetched from https://hub.docker.com/u/rotheross.
+Now we start the Docker containers using ``docker-compose``.
+By default the Docker images will be fetched from https://hub.docker.com/u/rotheross.
 
 .. code-block:: bash
 
@@ -184,7 +195,8 @@ Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
 
 .. note::
 
-    To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command:
+    To change to the OTOBO directory, inside the running container, 
+    to work on command line as usual, you can use the following Docker command:
     ``docker-compose exec web bash``.
 
 Additional technical information
@@ -199,7 +211,8 @@ Container otobo_web_1
     OTOBO webserver on internal port 5000.
 
 Container otobo_daemon_1
-    OTOBO daemon. The OTOBO daemon is started and periodically checked.
+    OTOBO daemon.
+	The OTOBO daemon is started and periodically checked.
 
 Container otobo_db_1
     Run the database MariaDB on internal port 3306.
@@ -217,8 +230,8 @@ Overview over the Docker volumes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Docker volumes are created on the host for persistent data.
-These allow starting and stopping the services without losing data. Keep in mind that
-containers are temporary and only data in the volumes is permanent.
+These allow starting and stopping the services without losing data.
+Keep in mind that containers are temporary and only data in the volumes is permanent.
 
 otobo_opt_otobo
     contains */opt/otobo* in the container **web** and **daemon**.
@@ -238,18 +251,21 @@ otobo_nginx_ssl
 Docker environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the instructions we did only minimal configuration. But the file *.env* allows to set
-more variables. Here is a short list of the most important environment variables.
+In the instructions we did only minimal configuration.
+But the file *.env* allows to set more variables.
+Here is a short list of the most important environment variables.
 Note that more environment variables are supported by the base images.
 
 **MariaDB settings**
 
 OTOBO_DB_ROOT_PASSWORD
-    The root password for MariaDB. This setting is required for running the service *db*.
+    The root password for MariaDB.
+    This setting is required for running the service *db*.
 
 **Elasticsearch settings**
 
-Elasticsearch needs some settings for productive environments. Please read
+Elasticsearch needs some settings for productive environments.
+Please read
 https://www.elastic.co/guide/en/elasticsearch/reference/7.8/docker.html#docker-prod-prerequisites
 for detailed information.
 
@@ -283,42 +299,56 @@ OTOBO_NGINX_SSL_CERTIFICATE_KEY
     SSL key for the nginx webproxy.
     Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*
 
+OTOBO_PROXY_SECRET
+    Used to enable remote SSO when nginx does the SSO (e.g. kerberos)
+    and forwards the user identity to OTOBO.
+    Necessary only in combination with the HTTPBasicAuth authentication module in OTOBO.
+    Also see ``WebServer::ProxySecret`` in Kernel/Config/Defaults.pm.
+
 **Nginx webproxy settings for Kerberos**
 
 This settings are used by Nginx when Kerberos is used for single sign on.
 
 OTOBO_NGINX_KERBEROS_KEYTAB
-    Kerberos keytab file. The default is */etc/krb5.keytab*.
+    Kerberos keytab file.
+    The default is */etc/krb5.keytab*.
 
 OTOBO_NGINX_KERBEROS_CONFIG
-    Kerberos config file. The default is */etc/krb5.conf*, usually generated from *krb5.conf.template*
+    Kerberos config file.
+    The default is */etc/krb5.conf*, usually generated from *krb5.conf.template*
 
 OTOBO_NGINX_KERBEROS_SERVICE_NAME
-    Kerberos Service Name. It is not clear where this setting is actually used anywhere.
+    Kerberos Service Name.
+    It is not clear where this setting is actually used anywhere.
 
 OTOBO_NGINX_KERBEROS_REALM
-    Kerberos REALM. Used in */etc/krb5.conf*.
+    Kerberos REALM.
+    Used in */etc/krb5.conf*.
 
 OTOBO_NGINX_KERBEROS_KDC
-    Kerberos kdc / AD Controller. Used in */etc/krb5.conf*.
+    Kerberos kdc / AD Controller.
+    Used in */etc/krb5.conf*.
 
 OTOBO_NGINX_KERBEROS_ADMIN_SERVER
-    Kerberos Admin Server. Used in */etc/krb5.conf*.
+    Kerberos Admin Server.
+    Used in */etc/krb5.conf*.
 
 OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN
-    Kerberos Default Domain. Used in */etc/krb5.conf*.
+    Kerberos Default Domain.
+    Used in */etc/krb5.conf*.
 
 NGINX_ENVSUBST_TEMPLATE_DIR
-    Provide a custom Nginx config template dir. Gives extra flexibility.
+    Provide a custom Nginx config template dir.
+    Gives extra flexibility.
 
 **Docker Compose settings**
 
 These settings are used by Docker Compose directly.
 
 COMPOSE_PROJECT_NAME
-    The project name is used as the prefix for the volumes and containers. Per default this prefix is set to
-    `otobo`, resulting in container names like `otobo_web_1` and `otobo_db_1`. Change this name when you want to run
-    more then one instance of OTOBO on the same server.
+    The project name is used as the prefix for the volumes and containers.
+    By default this prefix is set to `otobo`, resulting in container names like `otobo_web_1` and `otobo_db_1`.
+    Change this name when you want to run more then one instance of OTOBO on the same server.
 
 COMPOSE_PATH_SEPARATOR
     Separator for the value of COMPOSE_FILE
@@ -328,7 +358,8 @@ COMPOSE_FILE
     E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*.
 
 OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, ...
-    Used for specifying alternative Docker images. Useful for testing local builds or for using updated versions of the images.
+    Used for specifying alternative Docker images.
+    Useful for testing local builds or for using updated versions of the images.
 
 Advanced topics
 ----------------------------------
@@ -337,14 +368,16 @@ Custom configuration of the nginx webproxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The container ``otobo_nginx_1`` provides HTTPS support by running Nginx as a reverse proxy.
-The Docker image that runs in the container
-is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with
+The Docker image that runs in the container is composed of the official Nginx Docker image,
+https://hub.docker.com/_/nginx, along with
 a OTOBO specific configuration of Nginx.
 
 The default OTOBO specific configuration can be found within the Docker image at
-*/etc/nginx/template/otobo_nginx.conf.template*. Actually, this is only a template for the final configuration.
-There is a process, provided by the Nginx base image, that replaces
-the macros in the template with the corresponding environment variable. This process runs when the container starts up.
+*/etc/nginx/template/otobo_nginx.conf.template*.
+Actually, this is only a template for the final configuration.
+There is a process, provided by the Nginx base image,
+that replaces the macros in the template with the corresponding environment variable.
+This process runs when the container starts up.
 In the default template file, the following macros are used:
 
 OTOBO_NGINX_SSL_CERTIFICATE
@@ -362,11 +395,14 @@ OTOBO_NGINX_WEB_PORT
 See step `4.` for how this configuration possibility was used for setting up the SSL certificate.
 
 When the standard macros are not sufficient, then the customisation can go further.
-This can be achieved by replacing the default config template with a customized version. It is best practice to
-not simple change the configuration in the running container. Instead we first create a persistent volume that contains
-the custom config. Then we tell the *otobo_nginx_1* to mount the new volume and to use the customized configuration.
+This can be achieved by replacing the default config template with a customized version.
+It is best practice to not simple change the configuration in the running container.
+Instead we first create a persistent volume that contains the custom config.
+Then we tell the *otobo_nginx_1* to mount the new volume
+and to use the customized configuration.
 
-First comes generation of the new volume. In these sample commands, we use the existing template as a starting point.
+First comes generation of the new volume.
+In these sample commands, we use the existing template as a starting point.
 
 .. code-block:: bash
 
@@ -391,9 +427,11 @@ First comes generation of the new volume. In these sample commands, we use the e
    # adapt the file $otobo_nginx_custom_config_mp/otobo_nginx.conf.template to your needs
    sudo vim $otobo_nginx_custom_config_mp/otobo_nginx.conf.template
 
-After setting up the volume, the adapted configuration must be activated. The new volume is set up in
-*docker-compose/otobo-nginx-custom-config.yml*. Therefore this file must be added to **COMPOSE_FILE**.
-Then Nginx must be directed to use the new config. This is done by setting **NGINX_ENVSUBST_TEMPLATE_DIR** in the environment.
+After setting up the volume, the adapted configuration must be activated.
+The new volume is set up in *docker-compose/otobo-nginx-custom-config.yml*.
+Therefore this file must be added to **COMPOSE_FILE**.
+Then Nginx must be directed to use the new config.
+This is done by setting **NGINX_ENVSUBST_TEMPLATE_DIR** in the environment.
 In order to achieve this, uncomment or add the following lines in your *.env* file:
 
 .. code-block:: text
@@ -422,18 +460,26 @@ Single Sign On Using the Kerberos Support in Nginx
 
 For enabling authentication with Kerberos please base you *.env file* on the sample file *.docker_compose_env_https_kerberos*.
 This activates the special configuration in *docker-compose/otobo-override-https-kerberos.yml*.
-This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings
-as environment values to the running Nginx container. These settings are listed above.
+This Docker compose configuration file selects a Nginx image that supports Kerberos.
+It also passes some Kerberos specific settings as environment values to the running Nginx container.
+These settings are listed above.
 
-As usual, the values for these setting can be specified in the *.env* file. Most of ghese setting will be used
-as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container.
+As usual, the values for these setting can be specified in the *.env* file.
+Most of ghese setting will be used as replacement values for the template 
+https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template .
+The replacement takes place during the startup of the container.
 In the running container the adapted config will be available in */etc/krb5.conf*.
 
-Providing an user specific */etc/krb5.conf* file is still possible. This can be done by mounting a volume
-that overrides */etc/krb5.conf* in the container. This can be achieved by setting OTOBO_NGINX_KERBEROS_CONFIG
-in the *.env* file and by activating the mount directove in *docker-compose/otobo-override-https-kerberos.yml*.
+Providing an user specific */etc/krb5.conf* file is still possible.
+This can be done by mounting a volume that overrides */etc/krb5.conf* in the container.
+This can be achieved by setting OTOBO_NGINX_KERBEROS_CONFIG in the *.env* file
+and by activating the mount directove in *docker-compose/otobo-override-https-kerberos.yml*.
 
-*/etc/krb5.keytab* is always installation specific and must therefore always be mounted from the host system.
+*/etc/krb5.keytab* is always installation specific
+and must therefore always be mounted from the host system.
+
+Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication.
+See also ``WebServer::ProxySecret`` in Kernel/Config/Defaults.pm.
 
 **Kerberos SSO Installation Tutorial**
 
@@ -443,47 +489,54 @@ in the *.env* file and by activating the mount directove in *docker-compose/otob
 Choosing non-standard ports
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports
-are already used by other services. In these cases the default ports can be overridden by specifying
-`OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
+Per default the ports 443 and 80 serve HTTPS and HTTP respectively.
+There can be cases where one or both of these ports are already used by other services.
+In these cases the default ports can be overridden by specifying `OTOBO_WEB_HTTP_PORT`
+and `OTOBO_WEB_HTTPS_PORT` in the *.env* file.
 
 Skip startup of specific services
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases
-where one or more of these services are not needed. The prime example is when the database should not run as a Docker service,
-but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services.
-But the option `--scale` can be abused for this purpose. So for an installation with an external database
-the following command can be used:
+The current Docker compose setup start five, six when HTTPS is activated, services.
+But there are valid use cases where one or more of these services are not needed.
+The prime example is when the database should not run as a Docker service,
+but as an external database.
+Unfortunately there is no dedicated Docker compose option for skipping specific services.
+But the option `--scale` can be abused for this purpose.
+So for an installation with an external database the following command can be used:
 
 .. code-block:: bash
 
    sudo docker-compose up --detach --scale db=0
 
-Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml* and removing the relevant
-service definitions.
+Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml*
+and removing the relevant service definitions.
 
 Prepare offline installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please download `the latest version of otobo-docker
 <https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__
-on a system that has internet access and where docker is installed. Then navigate to
-the following folder *otobo-docker/docker-compose*.
+on a system that has internet access and where docker is installed.
+Then navigate to the following folder *otobo-docker/docker-compose*.
 
 .. code-block:: bash
 
    cd otobo-docker/docker-compose
 
-Now you can run the following command to download all Docker images from a specific file, in my example I use the *otobo-base.yml*.
+Now you can run the following command to download all Docker images from a specific file,
+in my example I use the *otobo-base.yml*.
 
 .. code-block:: bash
 
    for i in $(cat otobo-base.yml| grep image:| cut -d":" -f3,4 | sed -e "s/-//1" -e"s/\}//g"); do docker pull $i; docker save $i -o $(echo $i|sed "s/\//-/g").docker; done
 
-After that, the images (.docker) are located in the docker-compose folder and can be uploaded to the target system via e.g `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__.
+After that, the images (.docker) are located in the docker-compose folder
+and can be uploaded to the target system via e.g `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__.
 
-On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one.
+On the offline target system,
+go to the folder where the docker images are stored.
+And enter the following command to import them one by one.
 
 In the following example I import the mariadb image:
 
@@ -494,9 +547,11 @@ In the following example I import the mariadb image:
 Customizing OTOBO Docker Compose
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Instead of editing the files under *docker-compose/* and risking to overwrite your own options with the `next update
-<https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the otobo-docker folder,
-it is advisable to create an extra YAML file where the specific services are overwritten with additional options.
+Instead of editing the files under *docker-compose/*
+and risking to overwrite your own options
+with the `next update <https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the otobo-docker folder,
+it is advisable to create an extra YAML file
+where the specific services are overwritten with additional options.
 
 A common example would be to make the database container accessible from the outside via port 3306.
 For this you could create an extra docker compose file thats look like:
@@ -528,9 +583,10 @@ With this procedure you can customize any service or volumes.
 Customizing the OTOBO Docker image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Many customizations can be done in the external volume *otobo_opt_otobo* which corresponds to the directory */opt/otobo*
-in the Docker image. This works e.g. for local Perl modules which can be installed into */opt/otobo/local*. Here is an
-example that installs the not very useful CPAN module `Acme::123`.
+Many customizations can be done in the external volume *otobo_opt_otobo* 
+which corresponds to the directory */opt/otobo* in the Docker image.
+This works e.g. for local Perl modules which can be installed into */opt/otobo/local*.
+Here is an example that installs the not very useful CPAN module `Acme::123`.
 
 .. code-block:: bash
 
@@ -550,29 +606,33 @@ example that installs the not very useful CPAN module `Acme::123`.
 
 The nice thing of this approach is that the Docker image itself does not have to be modified.
 
-Installing extra Debian packages is a little bit trickier. One approach is to create a custom *Dockerfile*
-and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running
-container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/.
+Installing extra Debian packages is a little bit trickier.
+One approach is to create a custom *Dockerfile* 
+and use the OTOBO image as the base image.
+Another approach is to create a modified image directly from a running container.
+This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/.
 A nice writeup of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image.
 
-But for the latter approach there are two hurdles to overcome. First, the image *otobo* runs per default as the user *otobo*
-with the UID 1000. The problem is that the user *otobo* is not allowed to install system packages.
+But for the latter approach there are two hurdles to overcome.
+First, the image *otobo* runs per default as the user *otobo* with the UID 1000.
+The problem is that the user *otobo* is not allowed to install system packages.
 Thus, the first part of the solution is to pass the option `--user root` when running the image.
 However the second hurdle is that the default entrypoint script */opt/otobo_install/entrypoint.sh*
-exits immediately when it is called as *root*. The reasoning behind that design decision is that
-running inadvertently as *root* should be discouraged. So, the second part of the solution is to specify
-a different entrypoint script that does not care who the caller is.
+exits immediately when it is called as *root*.
+The reasoning behind that design decision is that running inadvertently as *root* should be discouraged.
+So, the second part of the solution is to specify a different entrypoint script that does not care who the caller is.
 This leaves us with following example commands, where we add fortune cookies to otobo:
 
-Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:
+Pull a tagged OTOBO image, if we don't have it yet,
+and check whether the image already provides fortune cookies:
 
 .. code-block:: bash
 
    sudo docker run rotheross/otobo:rel-10_1_10 /usr/games/fortune
    /opt/otobo_install/entrypoint.sh: line 57: /usr/games/fortune: No such file or directory
 
-Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive
-session as the user *root*:
+Add fortune cookies to a named container running the original OTOBO image.
+This is done in an interactive session as the user *root*:
 
 .. code-block:: bash
 
@@ -621,21 +681,23 @@ The script for the actual creation of the images is *bin/docker/build_docker_ima
    cd /opt
    sudo git clone https://github.com/RotherOSS/otobo.git
    cd otobo
-   # checkout the wanted branch. e.g. git checkout rel-10_1
+   # checkout the wanted branch.
+   # e.g. git checkout rel-10_1
    # modify the docker files if necessary
    sudo bin/docker/build_docker_images.sh
    sudo docker image ls
 
 The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*.
 
-After building the local images, one can return to the *docker-compose* directory. The local images are declared by setting
+After building the local images, one can return to the *docker-compose* directory.
+The local images are declared by setting
 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*.
 
 Automatic Installation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is useful for
-running the test suite on a fresh installation.
+Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut.
+This is useful for running the test suite on a fresh installation.
 
 .. warning::
 
