@@ -47,8 +47,8 @@ SSO Authentication Process Overview
 * OTOBO trust the username passed in the ``REMOTE_USER`` environment variable or the ``Remote-User`` HTTP header and skips the login screen
 
 
-Kerberos SSO Setup
-==================
+Example Setup
+-------------
 
 In our example OTOBO runs at https://otobo.company.com/ .
 AD controller should be able to reach the OTOBO service by its name using DNS A-Record!
@@ -60,7 +60,7 @@ Service communicates with AD using a service account.
 Let service account name be "serviceaccount".
 
 Active Directory Settings
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Login on AD controller under administrator.
 Open "Active Directory Users and Computers" application.
@@ -91,7 +91,7 @@ Important is that you see your service principal name (``HTTP/...``).
 
 
 Generate Keytab File
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 .. note::
 
@@ -106,7 +106,7 @@ Login into AD under domain administrator account and generate keytab file using 
 
 
 Setup Kerberos Client on the OTOBO Server
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Copy the keytab file from the AD controller to the OTOBO server:
 
@@ -173,7 +173,7 @@ This is a correct answer.
 Goto webserver section.
 
 Error: No Suitable Keys for Service
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -194,7 +194,7 @@ The list should contain exact principal (service account) name (+ AD domain name
 If not, you probably had mistyped the ``ktpass`` command arguments and have to regenerate the keytab file.
 
 Error: Client not Found in Kerberos
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -213,11 +213,11 @@ Check if SPN is registered for "serviceaccount" - under AD user on windows run `
 The output SPN should match with the output of ``klist -kte krb5.keytab``
 
 Nginx with Kerberos SSO and SSL
-================================
+-------------------------------
 
 .. note::
 
-    If Nginx is not already up and running refer to `Otobo basic installation manual <https://doc.otobo.org/manual/installation/11.1/en/content/installation.html>`_
+   If Nginx is not already up and running refer to `Otobo basic installation manual <https://doc.otobo.org/manual/installation/11.1/en/content/installation.html>`_
 
 Install required Nginx modules:
 
@@ -298,6 +298,7 @@ It should contain the this content:
             auth_gss_realm                  DOMAIN.COM;
             auth_gss_allow_basic_fallback   on;
 
+            proxy_set_header X-OTOBO-Proxy-Secret "YourProxySecret1234!";
             proxy_set_header X-Forwarded-Host $host:$server_port;
             proxy_set_header X-Forwarded-Server $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -306,10 +307,26 @@ It should contain the this content:
         }
     }
 
-.. note::
+Make sure to replace ``ssl_certificate`` and ``ssl_certificate_key`` with your custom ssl configuration.
+Adjust ``auth_gss_service_name`` and ``auth_gss_realm`` with values depending on your Kerberos Realm setup.
+Set a strong secret for ``X-OTOBO-Proxy-Secret`` to ensure only trusted sources can forward identities to OTOBO.
+This secret will later be added into the OTOBO Config.pm and it's recommended to be a very secure randomly generated string.
 
-    Make sure to replace ``ssl_certificate`` and ``ssl_certificate_key`` with your custom ssl configuration.
-    Adjust ``auth_gss_service_name`` and ``auth_gss_realm`` with values depending on your Kerberos Realm setup.
+.. important::
+
+   **Using an External Upstream Proxy?**
+
+   If authentication is handled by an external proxy (e.g., a load balancer) in front of this NGINX, that outermost proxy should inject both the user identity and the secret.
+   In this NGINX configuration, remove the local Kerberos setup and simply pass the headers through:
+
+   .. code-block:: nginx
+
+      # Forward auth headers provided by the external proxy
+      proxy_set_header Remote-User $http_remote_user;
+      proxy_set_header X-OTOBO-Proxy-Secret $http_x_otobo_proxy_secret;
+
+   Ensure you restrict network access so this NGINX instance only accepts requests from your trusted upstream proxy.
+   Also make sure to provide the secret to the upstream proxy.
 
 If you have the old Nginx configuration for Otobo - don't forget to disable it.
 
@@ -317,7 +334,7 @@ Enable our website
 
 .. code-block:: bash
 
-   sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enable/nginx.conf
+   sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
    sudo systemctl reload nginx
 
 Ensure the webserver sends a proper header, that invites browser to use Kerberos authentication:
@@ -335,11 +352,22 @@ Otobo Configuration
 To make Otobo trust the username passed by the webserver (in the ``REMOTE_USER`` environment variable or the ``Remote-User`` HTTP header)
 and skip the login screen, you have to enable a ``HTTPBasicAuth`` auth backend in the Otobo configuration ``Kernel/Config.pm``:
 
-* for agents: ``$Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth`` (instead of LDAP)
+* for agents: ``$Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth';`` (instead of LDAP)
 * for users: ``$Self->{'Customer::AuthModule'} = 'Kernel::System::CustomerAuth::HTTPBasicAuth';``
 
 You still can use LDAP to populate Users data from the AD,
-as it is described in the corresponding sections of``Kernel/Config/Defaults.pm``
+as it is described in the corresponding sections of ``Kernel/Config/Defaults.pm``
+
+Also make sure to configure the secret that has been previously configured for the ``X-OTOBO-Proxy-Secret``.
+
+.. code-block:: perl
+
+      $Self->{'AuthModule::HTTPBasicAuth::TrustProxyHeader'} = 1;
+
+      # and the request carries the shared secret configured in
+      $Self->{'WebServer::ProxySecret'} = 'YourProxySecret1234!';
+      # which the reverse proxy sends in the header X-OTOBO-Proxy-Secret.
+
 
 Configure Browser to Understand Kerberos SSO
 --------------------------------------------
