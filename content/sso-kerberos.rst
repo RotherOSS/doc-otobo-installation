@@ -23,7 +23,9 @@ Please create a new Active Directory User with the following settings and save t
 
    The password doesn't work properly with some special characters (e.g. '&').
 
-   You have to create a seperate AD-user. You can not use the one that you already use for your LDAP/AD sync.
+   You have to create a seperate AD user.
+
+   You can not use the one that you already use for your LDAP/AD sync.
 
 .. figure:: images/kerberos-1-ad.png
    :alt: Active Directory User configuration
@@ -100,27 +102,32 @@ First of all we need to move the old file ``/opt/otobo-docker/.env`` to ``.env.t
 Now copy your existing configuration options to the new .env file (at least OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY)
 and insert the following Kerberos settings:
 
-# Kerberos keytab
-OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab
+.. code-block:: bash
 
-# Kerberos config (Important, please comment out this option like here!)
-# In default configuration the krb5.conf file is generated automatically
-# OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf
+   # Kerberos keytab
+   OTOBO_NGINX_KERBEROS_KEYTAB=/opt/otobo-docker/nginx-conf/krb5.keytab
 
-# Kerberos Service Name
-OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-centos6.otrs.local # -> Picture Number 1
+   # Kerberos config (Important, please comment out this option like here!)
+   # In default configuration the krb5.conf file is generated automatically
+   # OTOBO_NGINX_KERBEROS_CONFIG=/opt/otobo-docker/nginx-conf/krb5.conf
 
-# Kerberos REALM
-OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> Picture Number 2
+   # Kerberos Service Name
+   OTOBO_NGINX_KERBEROS_SERVICE_NAME=HTTP/otrs32-centos6.otrs.local # -> Picture Number 1
 
-# Active Directory Domain Controller / Kerberos kdc
-OTOBO_NGINX_KERBEROS_KDC=
+   # Kerberos REALM
+   OTOBO_NGINX_KERBEROS_REALM=ROTHER-OSS.COM -> OTRS.LOCAL # -> Picture Number 2
 
-# Active Directory Domain Controller / Kerberos Admin Server
-OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com
+   # Active Directory Domain Controller / Kerberos kdc
+   OTOBO_NGINX_KERBEROS_KDC=
 
-# Kerberos Default Domain
-OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local
+   # Active Directory Domain Controller / Kerberos Admin Server
+   OTOBO_NGINX_KERBEROS_ADMIN_SERVER=rother-oss.com
+
+   # Kerberos Default Domain
+   OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local
+
+   # add the OTOBO_PROXY_SECRET and set it to a long random string
+   OTOBO_PROXY_SECRET=
 
 
 Start OTOBO
@@ -150,6 +157,10 @@ E.g. these lines could work:
    # In case you need to replace some part of the REMOTE_USER, you can
    # use the following RegExp ($1 will be new login).
    $Self->{'AuthModule::HTTPBasicAuth::ReplaceRegExp'} = '^(.+?)@.+?$';
+
+   # enable remote SSO from proxy in OTOBO
+   $Self->{'AuthModule::HTTPBasicAuth::TrustProxyHeader'} = 1;
+   $Self->{'WebServer::ProxySecret'} = 'use same long random string as specified in .env file above';
 
 
 Configure Browser to understand Kerberos SSO
@@ -212,7 +223,9 @@ Kerberos debugging
    # Login to the NGINX Container
    sudo docker exec -it otobo_nginx_1 bash
 
-Now you are able to debug the Kerberos settings. Examples:
+Now you are able to debug the kerberos settings
+
+Examples:
 
 .. code-block:: bash
 
@@ -227,7 +240,18 @@ Now you are able to debug the Kerberos settings. Examples:
 
    kinit username@OTRS.LOCAL
 
-In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use seperate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your Kernel/Config.pm).
+In case you stumble upon the issue that apparently the authentication works, 
+but the agent is not yet in the database, 
+then your sync (if implemented) might not work.
+
+An error 52e (First bind failed) indicates that something is wrong with your search user.
+
+This happens if you use the same user for the AD sync and as a SSO user.
+
+Please use seperate AD users for that.
+
+In order to not have to create a new keytab and having to repeat the steps mentioned above, 
+it could be easier to create a new user to use in your AD sync (probably in your Kernel/Config.pm).
 
 In case SSO is not working properly, make sure:
 * the user for which it is not working is in Active Directory
