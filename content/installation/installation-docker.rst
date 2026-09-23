@@ -155,7 +155,7 @@ To verify that the six required services (five in the case of HTTP only) are act
 6. Install and Start OTOBO
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl.
+Run the OTOBO installer at ``http://OTOBO_FQDN/otobo/installer.pl``.
 
 .. note::
 
@@ -471,7 +471,7 @@ Of course the same goal can also be achieved by editing the file ``docker-compos
 Prepare Offline Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo>`_ on a system that has internet access and where docker is installed.
+Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.1/en/content/installation/installation-docker.html#clone-the-otobo-docker-repository>`_ on a system that has internet access and where docker is installed.
 Then navigate to the following folder ``otobo-docker/docker-compose``.
 
 .. code-block:: bash
@@ -548,7 +548,7 @@ The nice thing of this approach is that the Docker image itself does not have to
 Installing extra Debian packages is a little bit trickier.
 One approach is to create a custom ``Dockerfile`` and use the OTOBO image as the base image.
 Another approach is to create a modified image directly from a running container.
-This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/.
+This can be done with the command `docker commit`, https://docs.docker.com/reference/cli/docker/container/commit/.
 A nice write-up of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image.
 
 But for the latter approach there are two hurdles to overcome.
@@ -627,7 +627,7 @@ The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OT
 Automatic Installation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut.
+Instead of going through http://OTOBO_FQDN/otobo/installer.pl, one can take a short cut.
 This is useful for running the test suite on a fresh installation.
 
 .. warning::
@@ -686,12 +686,11 @@ Finally, here is a highly subjective collection of links.
 
 **Tips and hints**
 
-* `Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_
+* `Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images/20>`_
 * `Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_
 * `Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu>`_
 
 **Troubleshooting**
 
-* `Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_
 * `Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_
 * `Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_

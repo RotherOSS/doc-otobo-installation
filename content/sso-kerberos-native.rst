@@ -50,7 +50,7 @@ SSO Authentication Process Overview
 Kerberos SSO Setup
 ==================
 
-In our example OTOBO runs at https://otobo.company.com/ .
+In our example OTOBO runs at ``https://otobo.company.com`` .
 AD controller should be able to reach the OTOBO service by its name using DNS A-Record!
 
 AD domain name is "DOMAIN" (because it may differ from "COMPANY.COM").

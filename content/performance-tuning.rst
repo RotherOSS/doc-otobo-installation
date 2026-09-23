@@ -108,7 +108,7 @@ Document Search
 ---------------
 
 OTOBO uses Elasticsearch for its document search functionality.
-For a good introduction into the concepts, installation and usage of Elasticsearch, please follow the `Getting Started guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html>`__.
+For a good introduction into the concepts, installation and usage of Elasticsearch, please follow the `Getting Started guide <https://www.elastic.co/docs/solutions/search/get-started>`__.
 
 
 Heap Size
@@ -133,7 +133,7 @@ Therefore it is highly recommended to set those configurations to an equal value
 The higher the heap maximum value is set, the more memory can be used by Elasticsearch, which also increases the possible pauses for garbage collection, done by the JVM.
 Therefore it is recommended to set a value for ``Xmx``, that is not higher than 50% of the physical memory.
 
-For more information and good rules of thumb about the heap size, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html>`__.
+For more information and good rules of thumb about the heap size, please follow `the official documentation <https://www.elastic.co/docs/deploy-manage/deploy/self-managed/important-settings-configuration#heap-size-settings>`__.
 
 
 Disk Allocation
@@ -168,7 +168,7 @@ They come with good default values, but might be important in trouble shooting.
    If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch.
    If the related disks contain enough free space again due to manual actions, it is needed to change the configuration back to normal mode manually.
 
-For more information about disk watermarks and disk-based shard allocation, please follow `the official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html>`__.
+For more information about disk watermarks and disk-based shard allocation, please follow `the official documentation <https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings#disk-based-shard-allocation>`__.
 
 
 Article Storage
@@ -264,7 +264,7 @@ The following chapter describes the installation and configuration of Redis on e
 
 First of all you need to install the Redis Server.
 
-On native installations, `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as OTOBO and binding it to its default port.
+On native installations, `setup Redis <https://redis.io/docs/latest/develop/>`__ on the same host as OTOBO and binding it to its default port.
 
 When using OTOBO Docker the Redis service is provided in an override at ``docker-compose/caching/redis.yml``.
 In order to add it to your Docker Compose Stack you have to include it in the ``COMPOSE_FILE`` environment variable.

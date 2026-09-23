@@ -9,7 +9,7 @@ Thus, every migration to OTOBO requires thorough preparation and possibly some r
 Please take your time for the migration and follow these instructions step by step.
 
 If you have any problem or question, please do not despair.
-Call our support line, write an email, or post your query in the OTOBO Community forum at https://forum.otobo.org/.
+Call our support line, write an email, or post your query in the OTOBO Community forum at https://otobo.io/forums/otobo/otobo-forum/.
 We will find a way to help you!
 
 .. note::
@@ -83,7 +83,7 @@ Migration Requirements
     Experience shows that quite often a new start is the better option.
     This is because in many cases the previously used installation and configuration was rather suboptimal anyways.
     It might also make sense to only transfer the ticket data and to change the basic configuration to OTOBO Best Practice.
-    We are happy to advise you, please get in touch at hello@otobo.io or ask your question in the OTOBO Community forum at https://forum.otobo.org/.
+    We are happy to advise you, please get in touch at hello@otobo.io or ask your question in the OTOBO Community forum at https://otobo.io/forums/otobo/otobo-forum/.
 
 2.  You need a running OTOBO installation to start the migration from there!
 
@@ -442,7 +442,7 @@ It is not clear yet, whether the extended privileges have to be granted in every
 
 .. seealso::
 
-    The discussion in https://otobo.de/de/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/.
+    The discussion in https://otobo.io/forums/topic/otrs-6-mysql-migration-to-otobo-postgresql/.
 
 5. Problems with the Deployment the Merged System Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
