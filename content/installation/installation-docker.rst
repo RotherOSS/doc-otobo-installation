@@ -261,18 +261,17 @@ These setting are used when HTTPS is enabled.
     Set in case the HTTPS port should deviate from the standard port 443.
 
 ``OTOBO_NGINX_SSL_CERTIFICATE``
-    SSL cert for the nginx webproxy.
+    SSL cert for the NGINX webproxy.
     Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``
 
 ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``
-    SSL key for the nginx webproxy.
+    SSL key for the NGINX webproxy.
     Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``
 
-OTOBO_PROXY_SECRET
-    Used to enable remote SSO when nginx does the SSO (e.g. kerberos)
-    and forwards the user identity to OTOBO.
-    Necessary only in combination with the HTTPBasicAuth authentication module in OTOBO.
-    Also see ``WebServer::ProxySecret`` in Kernel/Config/Defaults.pm.
+``OTOBO_PROXY_SECRET``
+    Used if NGINX does the SSO (e.g., Kerberos) and forwards the user identity to OTOBO.
+    Necessary only in combination with the HTTPBasicAuth authentication module.
+    Also see ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``.
 
 **Nginx webproxy settings for Kerberos**
 
@@ -440,7 +439,7 @@ This can be achieved by setting ``OTOBO_NGINX_KERBEROS_CONFIG`` in the ``.env`` 
 ``/etc/krb5.keytab`` is always installation specific and must therefore always be mounted from the host system.
 
 Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication.
-See also ``WebServer::ProxySecret`` in Kernel/Config/Defaults.pm.
+See also ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``.
 
 **Kerberos SSO Installation Tutorial**
 
