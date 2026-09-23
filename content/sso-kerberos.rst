@@ -119,6 +119,8 @@ and insert the following Kerberos settings:
    # Kerberos Default Domain
    OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN=otrs.local
 
+   # add the OTOBO_PROXY_SECRET and set it to a long random string
+   OTOBO_PROXY_SECRET=
 
 Start OTOBO
 --------------------------
@@ -147,6 +149,10 @@ E.g. these lines could work:
     # In case you need to replace some part of the REMOTE_USER, you can
     # use the following RegExp ($1 will be new login).
     $Self->{'AuthModule::HTTPBasicAuth::ReplaceRegExp'} = '^(.+?)@.+?$';
+
+    # enable remote SSO from proxy in OTOBO
+    $Self->{'AuthModule::HTTPBasicAuth::TrustProxyHeader'} = 1;
+    $Self->{'WebServer::ProxySecret'} = 'use same long random string as specified in .env file above';
 
 
 Configure Browser to Understand Kerberos SSO
