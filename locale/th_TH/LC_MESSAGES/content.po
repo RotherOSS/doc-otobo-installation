@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 14:40+0000\n"
+"POT-Creation-Date: 2026-09-23 14:50+0000\n"
 "PO-Revision-Date: 2025-11-16 10:40+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Thai <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/th/>\n"
@@ -3796,7 +3796,7 @@ msgstr "ในกรณีที่คุณได้กำหนดค่าก
 msgid "To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
 msgstr "ในการใช้การตรวจสอบสิทธิ์ Kerberos ให้คัดลอกบรรทัด Kerberos จาก Kernel/Config/Defaults.pm แล้ววางลงใน Kernel/Config.pm ของคุณ ตัวอย่างเช่น บรรทัดเหล่านี้อาจใช้งานได้:"
 
-#: ../content/sso-kerberos-native.rst:345 ../content/sso-kerberos.rst:159
+#: ../content/sso-kerberos-native.rst:373 ../content/sso-kerberos.rst:159
 #, fuzzy
 #| msgid "Configure Browser to understand Kerberos SSO"
 msgid "Configure Browser to Understand Kerberos SSO"
@@ -3947,10 +3947,8 @@ msgid "OTOBO trust the username passed in the ``REMOTE_USER`` environment variab
 msgstr ""
 
 #: ../content/sso-kerberos-native.rst:51
-#, fuzzy
-#| msgid "Kerberos debugging"
-msgid "Kerberos SSO Setup"
-msgstr "การดีบัก Kerberos"
+msgid "Example Setup"
+msgstr ""
 
 #: ../content/sso-kerberos-native.rst:53
 msgid "In our example OTOBO runs at ``https://otobo.company.com`` . AD controller should be able to reach the OTOBO service by its name using DNS A-Record!"
@@ -4127,52 +4125,68 @@ msgstr ""
 msgid "The following Nginx config file ``/etc/nginx/sites-available/nginx.conf`` should replace your previous default config file. It should contain the this content:"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:311
-msgid "Make sure to replace ``ssl_certificate`` and ``ssl_certificate_key`` with your custom ssl configuration. Adjust ``auth_gss_service_name`` and ``auth_gss_realm`` with values depending on your Kerberos Realm setup."
+#: ../content/sso-kerberos-native.rst:310
+msgid "Make sure to replace ``ssl_certificate`` and ``ssl_certificate_key`` with your custom ssl configuration. Adjust ``auth_gss_service_name`` and ``auth_gss_realm`` with values depending on your Kerberos Realm setup. Set a strong secret for ``X-OTOBO-Proxy-Secret`` to ensure only trusted sources can forward identities to OTOBO. This secret will later be added into the OTOBO Config.pm and it's recommended to be a very secure randomly generated string."
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:314
+#: ../content/sso-kerberos-native.rst:317
+msgid "**Using an External Upstream Proxy?**"
+msgstr ""
+
+#: ../content/sso-kerberos-native.rst:319
+msgid "If authentication is handled by an external proxy (e.g., a load balancer) in front of this NGINX, that outermost proxy should inject both the user identity and the secret. In this NGINX configuration, remove the local Kerberos setup and simply pass the headers through:"
+msgstr ""
+
+#: ../content/sso-kerberos-native.rst:328
+msgid "Ensure you restrict network access so this NGINX instance only accepts requests from your trusted upstream proxy. Also make sure to provide the secret to the upstream proxy."
+msgstr ""
+
+#: ../content/sso-kerberos-native.rst:331
 msgid "If you have the old Nginx configuration for Otobo - don't forget to disable it."
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:316
+#: ../content/sso-kerberos-native.rst:333
 msgid "Enable our website"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:323
+#: ../content/sso-kerberos-native.rst:340
 msgid "Ensure the webserver sends a proper header, that invites browser to use Kerberos authentication:"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:330
+#: ../content/sso-kerberos-native.rst:347
 msgid "output should have a following header:"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:330
+#: ../content/sso-kerberos-native.rst:347
 msgid "``WWW-Authenticate: Negotiate …``"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:333
+#: ../content/sso-kerberos-native.rst:350
 #, fuzzy
 msgid "Otobo Configuration"
 msgstr "กู้คืนไฟล์การกำหนดค่าเก่า"
 
-#: ../content/sso-kerberos-native.rst:335
+#: ../content/sso-kerberos-native.rst:352
 msgid "To make Otobo trust the username passed by the webserver (in the ``REMOTE_USER`` environment variable or the ``Remote-User`` HTTP header) and skip the login screen, you have to enable a ``HTTPBasicAuth`` auth backend in the Otobo configuration ``Kernel/Config.pm``:"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:338
-msgid "for agents: ``$Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth`` (instead of LDAP)"
+#: ../content/sso-kerberos-native.rst:355
+msgid "for agents: ``$Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth';`` (instead of LDAP)"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:339
+#: ../content/sso-kerberos-native.rst:356
 msgid "for users: ``$Self->{'Customer::AuthModule'} = 'Kernel::System::CustomerAuth::HTTPBasicAuth';``"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:341
-msgid "You still can use LDAP to populate Users data from the AD, as it is described in the corresponding sections of``Kernel/Config/Defaults.pm``"
+#: ../content/sso-kerberos-native.rst:358
+msgid "You still can use LDAP to populate Users data from the AD, as it is described in the corresponding sections of ``Kernel/Config/Defaults.pm``"
 msgstr ""
 
-#: ../content/sso-kerberos-native.rst:347
+#: ../content/sso-kerberos-native.rst:361
+msgid "Also make sure to configure the secret that has been previously configured for the ``X-OTOBO-Proxy-Secret``."
+msgstr ""
+
+#: ../content/sso-kerberos-native.rst:375
 msgid "In the browser address line, open ``about:config`` and change the following settings:"
 msgstr ""
 
@@ -4798,6 +4812,11 @@ msgstr ""
 #: ../content/updating/updating-ubuntu.rst:376
 msgid "Step 9: (Optional) Disable Redis Caching"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Kerberos debugging"
+#~ msgid "Kerberos SSO Setup"
+#~ msgstr "การดีบัก Kerberos"
 
 #~ msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 #~ msgstr "การล้างแคชของ Docker <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur&gt;"
