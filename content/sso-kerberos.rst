@@ -166,9 +166,7 @@ Add page under local or trusted pages and activate 'Integrated Windows Authentic
 
 **Firefox**
 
-Enter "about:config" in the firefox address line
-
-and change the following settings:
+Enter ``about:config`` in the Firefox address line and change the following settings:
 
 .. code-block::
 

@@ -264,7 +264,7 @@ Step 8: Setup Elasticsearch
 OTOBO recommends an active installation of Elasticsearch for quick search.
 The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port.
 
-Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
+Please follow the installation tutorial found at https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch.
 
 Elasticsearch Installation on another Linux distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

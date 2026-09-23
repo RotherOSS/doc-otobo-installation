@@ -90,7 +90,7 @@ To remove the watermark, please remove the following line inside the file ``Kern
 .. note::
 
     Please add the files to a OPM package in the next step, so that the changes remain persistent.
-    You can find instructions on how to do this in our Admin Manual: https://doc.otobo.org/manual/developer/11.0/en/content/how-to-publish-otobo-extensions.html
+    You can find instructions on how to do this in our Developer Manual: https://doc.otobo.org/manual/dev/11.1/en/content/how-to-publish-otobo-extensions.html
 
 Change Customer Dashboard Tiles and Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
