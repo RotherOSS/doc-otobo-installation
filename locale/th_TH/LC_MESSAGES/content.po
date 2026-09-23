@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 06:58+0000\n"
+"POT-Creation-Date: 2026-09-23 14:10+0000\n"
 "PO-Revision-Date: 2025-11-16 10:40+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Thai <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/th/>\n"
@@ -821,7 +821,7 @@ msgid "Set in case the HTTPS port should deviate from the standard port 443."
 msgstr "ตั้งค่าในกรณีที่พอร์ต HTTPS ควรจะแตกต่างจากพอร์ตมาตรฐาน 443"
 
 #: ../content/installation/installation-docker.rst:265
-#: ../content/installation/installation-docker.rst:343
+#: ../content/installation/installation-docker.rst:348
 #, fuzzy
 #| msgid "OTOBO_NGINX_SSL_CERTIFICATE"
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE``"
@@ -830,11 +830,11 @@ msgstr "OTOBO_NGINX_SSL_CERTIFICATE"
 #: ../content/installation/installation-docker.rst:264
 #, fuzzy
 #| msgid "SSL cert for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
-msgid "SSL cert for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
+msgid "SSL cert for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
 msgstr "ใบรับรอง SSL สำหรับพร็อกซีเว็บ nginx ตัวอย่าง: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
 #: ../content/installation/installation-docker.rst:269
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:351
 #, fuzzy
 #| msgid "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
@@ -843,645 +843,659 @@ msgstr "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
 #: ../content/installation/installation-docker.rst:268
 #, fuzzy
 #| msgid "SSL key for the nginx webproxy. Example: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
-msgid "SSL key for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
+msgid "SSL key for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
 msgstr "คีย์ SSL สำหรับพร็อกซีเว็บ nginx ตัวอย่าง: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
-#: ../content/installation/installation-docker.rst:271
+#: ../content/installation/installation-docker.rst:274
+#, fuzzy
+#| msgid "OTOBO_NGINX_WEB_PORT"
+msgid "``OTOBO_PROXY_SECRET``"
+msgstr "OTOBO_NGINX_WEB_PORT"
+
+#: ../content/installation/installation-docker.rst:272
+msgid "Used if NGINX does the SSO (e.g., Kerberos) and forwards the user identity to OTOBO. Necessary only in combination with the HTTPBasicAuth authentication module. Also see ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:276
 msgid "**Nginx webproxy settings for Kerberos**"
 msgstr "**การตั้งค่าพร็อกซีเว็บ Nginx สำหรับ Kerberos**"
 
-#: ../content/installation/installation-docker.rst:273
+#: ../content/installation/installation-docker.rst:278
 msgid "This settings are used by Nginx when Kerberos is used for single sign on."
 msgstr "การตั้งค่าเหล่านี้ใช้โดย Nginx เมื่อใช้ Kerberos สำหรับการลงชื่อเข้าใช้ครั้งเดียว"
 
-#: ../content/installation/installation-docker.rst:277
+#: ../content/installation/installation-docker.rst:282
 #, fuzzy
 #| msgid "OTOBO_NGINX_KERBEROS_KEYTAB"
 msgid "``OTOBO_NGINX_KERBEROS_KEYTAB``"
 msgstr "OTOBO_NGINX_KERBEROS_KEYTAB"
 
-#: ../content/installation/installation-docker.rst:276
+#: ../content/installation/installation-docker.rst:281
 #, fuzzy
 #| msgid "Kerberos keytab file. The default is */etc/krb5.keytab*."
 msgid "Kerberos keytab file. The default is ``/etc/krb5.keytab``."
 msgstr "ไฟล์คีย์แท็บ Kerberos ค่าเริ่มต้นคือ */etc/krb5.keytab*."
 
-#: ../content/installation/installation-docker.rst:281
+#: ../content/installation/installation-docker.rst:286
 #, fuzzy
 #| msgid "OTOBO_NGINX_KERBEROS_CONFIG"
 msgid "``OTOBO_NGINX_KERBEROS_CONFIG``"
 msgstr "OTOBO_NGINX_KERBEROS_CONFIG"
 
-#: ../content/installation/installation-docker.rst:280
+#: ../content/installation/installation-docker.rst:285
 #, fuzzy
 #| msgid "Kerberos config file. The default is */etc/krb5.conf*, usually generated from *krb5.conf.template*"
 msgid "Kerberos config file. The default is ``/etc/krb5.conf``, usually generated from ``krb5.conf.template``."
 msgstr "ไฟล์กำหนดค่า Kerberos ค่าเริ่มต้นคือ */etc/krb5.conf* ซึ่งโดยปกติจะถูกสร้างจาก *krb5.conf.template*"
 
-#: ../content/installation/installation-docker.rst:285
+#: ../content/installation/installation-docker.rst:290
 #, fuzzy
 #| msgid "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
 msgid "``OTOBO_NGINX_KERBEROS_SERVICE_NAME``"
 msgstr "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
 
-#: ../content/installation/installation-docker.rst:284
+#: ../content/installation/installation-docker.rst:289
 msgid "Kerberos Service Name. It is not clear where this setting is actually used anywhere."
 msgstr "ชื่อบริการ Kerberos ไม่ชัดเจนว่าการตั้งค่านี้ถูกใช้จริงที่ไหน"
 
-#: ../content/installation/installation-docker.rst:289
+#: ../content/installation/installation-docker.rst:294
 #, fuzzy
 #| msgid "OTOBO_NGINX_KERBEROS_REALM"
 msgid "``OTOBO_NGINX_KERBEROS_REALM``"
 msgstr "OTOBO_NGINX_KERBEROS_REALM"
 
-#: ../content/installation/installation-docker.rst:288
+#: ../content/installation/installation-docker.rst:293
 #, fuzzy
 #| msgid "Kerberos REALM. Used in */etc/krb5.conf*."
 msgid "Kerberos REALM. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos REALM. ใช้ใน */etc/krb5.conf*."
 
-#: ../content/installation/installation-docker.rst:293
+#: ../content/installation/installation-docker.rst:298
 #, fuzzy
 #| msgid "OTOBO_NGINX_KERBEROS_KDC"
 msgid "``OTOBO_NGINX_KERBEROS_KDC``"
 msgstr "OTOBO_NGINX_KERBEROS_KDC"
 
-#: ../content/installation/installation-docker.rst:292
+#: ../content/installation/installation-docker.rst:297
 #, fuzzy
 #| msgid "Kerberos kdc / AD Controller. Used in */etc/krb5.conf*."
 msgid "Kerberos kdc / AD Controller. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos kdc / AD Controller. ใช้ใน */etc/krb5.conf*."
 
-#: ../content/installation/installation-docker.rst:297
+#: ../content/installation/installation-docker.rst:302
 #, fuzzy
 #| msgid "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
 msgid "``OTOBO_NGINX_KERBEROS_ADMIN_SERVER``"
 msgstr "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
 
-#: ../content/installation/installation-docker.rst:296
+#: ../content/installation/installation-docker.rst:301
 #, fuzzy
 #| msgid "Kerberos Admin Server. Used in */etc/krb5.conf*."
 msgid "Kerberos Admin Server. Used in ``/etc/krb5.conf``."
 msgstr "เซิร์ฟเวอร์ผู้ดูแลระบบ Kerberos ใช้ใน */etc/krb5.conf*"
 
-#: ../content/installation/installation-docker.rst:301
+#: ../content/installation/installation-docker.rst:306
 #, fuzzy
 #| msgid "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
 msgid "``OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN``"
 msgstr "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
 
-#: ../content/installation/installation-docker.rst:300
+#: ../content/installation/installation-docker.rst:305
 #, fuzzy
 #| msgid "Kerberos Default Domain. Used in */etc/krb5.conf*."
 msgid "Kerberos Default Domain. Used in ``/etc/krb5.conf``."
 msgstr "โดเมนเริ่มต้นของ Kerberos ใช้ใน */etc/krb5.conf*"
 
-#: ../content/installation/installation-docker.rst:305
+#: ../content/installation/installation-docker.rst:310
 #, fuzzy
 #| msgid "NGINX_ENVSUBST_TEMPLATE_DIR"
 msgid "``NGINX_ENVSUBST_TEMPLATE_DIR``"
 msgstr "NGINX_ENVSUBST_TEMPLATE_DIR"
 
-#: ../content/installation/installation-docker.rst:304
+#: ../content/installation/installation-docker.rst:309
 msgid "Provide a custom Nginx config template dir. Gives extra flexibility."
 msgstr "ให้ไดเรกทอรีเทมเพลตการกำหนดค่า Nginx แบบกำหนดเอง มอบความยืดหยุ่นเพิ่มเติม"
 
-#: ../content/installation/installation-docker.rst:307
+#: ../content/installation/installation-docker.rst:312
 msgid "**Docker Compose settings**"
 msgstr "**การตั้งค่า Docker Compose**"
 
-#: ../content/installation/installation-docker.rst:309
+#: ../content/installation/installation-docker.rst:314
 msgid "These settings are used by Docker Compose directly."
 msgstr "การตั้งค่าเหล่านี้ถูกใช้โดย Docker Compose โดยตรง"
 
-#: ../content/installation/installation-docker.rst:314
+#: ../content/installation/installation-docker.rst:319
 #, fuzzy
 #| msgid "COMPOSE_PROJECT_NAME"
 msgid "``COMPOSE_PROJECT_NAME``"
 msgstr "COMPOSE_PROJECT_NAME"
 
-#: ../content/installation/installation-docker.rst:312
+#: ../content/installation/installation-docker.rst:317
 #, fuzzy
 #| msgid "The project name is used as the prefix for the volumes and containers. Per default this prefix is set to `otobo`, resulting in container names like `otobo_web_1` and `otobo_db_1`. Change this name when you want to run more then one instance of OTOBO on the same server."
 msgid "The project name is used as the prefix for the volumes and containers. By default this prefix is set to ``otobo``, resulting in container names like ``otobo-web-1`` and ``otobo-db-1``. Change this name when you want to run more then one instance of OTOBO on the same server."
 msgstr "ชื่อโครงการถูกใช้เป็นคำนำหน้าสำหรับโวลุ่มและคอนเทนเนอร์ โดยค่าเริ่มต้น คำนำหน้านี้จะถูกตั้งค่าเป็น `otobo` ส่งผลให้ชื่อคอนเทนเนอร์เป็น `otobo_web_1` และ `otobo_db_1` เป็นต้น ให้เปลี่ยนชื่อนี้เมื่อคุณต้องการรัน OTOBO มากกว่าหนึ่งอินสแตนซ์บนเซิร์ฟเวอร์เดียวกัน"
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 #| msgid "COMPOSE_PATH_SEPARATOR"
 msgid "``COMPOSE_PATH_SEPARATOR``"
 msgstr "ตัวคั่นเส้นทางคอมโพส"
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 #| msgid "Separator for the value of COMPOSE_FILE"
 msgid "Separator for the value of ``COMPOSE_FILE``"
 msgstr "ตัวคั่นสำหรับค่าของ COMPOSE_FILE"
 
-#: ../content/installation/installation-docker.rst:321
+#: ../content/installation/installation-docker.rst:326
 #, fuzzy
 #| msgid "COMPOSE_FILE"
 msgid "``COMPOSE_FILE``"
 msgstr "COMPOSE_FILE"
 
-#: ../content/installation/installation-docker.rst:320
+#: ../content/installation/installation-docker.rst:325
 #, fuzzy
 #| msgid "Use *docker-compose/otobo-base.yml* as the base and add the wanted extension files. E.g *docker-compose/otobo-override-http.yml* or *docker-compose/otobo-override-https.yml*."
 msgid "Use ``docker-compose/otobo-base.yml`` as the base and add the wanted extension files. E.g., ``docker-compose/otobo-override-http.yml`` or ``docker-compose/otobo-override-https.yml``."
 msgstr "ใช้ *docker-compose/otobo-base.yml* เป็นฐานและเพิ่มไฟล์ส่วนขยายที่ต้องการ เช่น *docker-compose/otobo-override-http.yml* หรือ *docker-compose/otobo-override-https.yml*"
 
-#: ../content/installation/installation-docker.rst:325
+#: ../content/installation/installation-docker.rst:330
 #, fuzzy
 #| msgid "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, ..."
 msgid "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``, ..."
 msgstr "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, ..."
 
-#: ../content/installation/installation-docker.rst:324
+#: ../content/installation/installation-docker.rst:329
 msgid "Used for specifying alternative Docker images. Useful for testing local builds or for using updated versions of the images."
 msgstr "ใช้สำหรับระบุภาพ Docker ที่เป็นทางเลือก มีประโยชน์สำหรับการทดสอบการสร้างในเครื่องหรือการใช้เวอร์ชันที่อัปเดตของภาพ"
 
-#: ../content/installation/installation-docker.rst:328
+#: ../content/installation/installation-docker.rst:333
 #, fuzzy
 #| msgid "Advanced topics"
 msgid "Advanced Topics"
 msgstr "หัวข้อขั้นสูง"
 
-#: ../content/installation/installation-docker.rst:331
+#: ../content/installation/installation-docker.rst:336
 #, fuzzy
 #| msgid "Custom configuration of the nginx webproxy"
 msgid "Custom Configuration of the Nginx Webproxy"
 msgstr "การกำหนดค่าเฉพาะของพร็อกซีเว็บ nginx"
 
-#: ../content/installation/installation-docker.rst:333
+#: ../content/installation/installation-docker.rst:338
 #, fuzzy
 #| msgid "The container ``otobo_nginx_1`` provides HTTPS support by running Nginx as a reverse proxy. The Docker image that runs in the container is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with a OTOBO specific configuration of Nginx."
 msgid "The container ``otobo-nginx-1`` provides HTTPS support by running Nginx as a reverse proxy. The Docker image that runs in the container is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with a OTOBO specific configuration of Nginx."
 msgstr "คอนเทนเนอร์ ``otobo_nginx_1`` ให้การสนับสนุน HTTPS โดยการทำงานของ Nginx เป็น proxy แบบย้อนกลับ (reverse proxy) Docker image ที่ทำงานในคอนเทนเนอร์นี้ประกอบไปด้วย Docker image ของ Nginx อย่างเป็นทางการ https://hub.docker.com/_/nginx พร้อมกับการตั้งค่าเฉพาะของ OTOBO สำหรับ Nginx"
 
-#: ../content/installation/installation-docker.rst:336
+#: ../content/installation/installation-docker.rst:341
 #, fuzzy
 #| msgid "The default OTOBO specific configuration can be found within the Docker image at */etc/nginx/template/otobo_nginx.conf.template*. Actually, this is only a template for the final configuration. There is a process, provided by the Nginx base image, that replaces the macros in the template with the corresponding environment variable. This process runs when the container starts up. In the default template file, the following macros are used:"
 msgid "The default OTOBO specific configuration can be found within the Docker image at ``/etc/nginx/template/otobo_nginx.conf.template``. Actually, this is only a template for the final configuration. There is a process, provided by the Nginx base image, that replaces the macros in the template with the corresponding environment variable. This process runs when the container starts up. In the default template file, the following macros are used:"
 msgstr "การตั้งค่าเฉพาะของ OTOBO ที่ใช้เป็นค่าเริ่มต้นสามารถพบได้ใน Docker image ที่ */etc/nginx/template/otobo_nginx.conf.template*. จริงๆ แล้วนี่เป็นเพียงเทมเพลตสำหรับการตั้งค่าสุดท้ายเท่านั้น มีกระบวนการที่จัดเตรียมโดย Nginx base image ที่จะแทนที่แมโครในเทมเพลตด้วยตัวแปรสภาพแวดล้อมที่สอดคล้องกัน กระบวนการนี้จะทำงานเมื่อคอนเทนเนอร์เริ่มต้นขึ้น ในไฟล์เทมเพลตเริ่มต้นจะใช้แมโครดังต่อไปนี้:"
 
-#: ../content/installation/installation-docker.rst:343
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:348
+#: ../content/installation/installation-docker.rst:351
 msgid "For configuring SSL."
 msgstr "สำหรับการกำหนดค่า SSL"
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 #, fuzzy
 #| msgid "OTOBO_NGINX_WEB_HOST"
 msgid "``OTOBO_NGINX_WEB_HOST``"
 msgstr "OTOBO_NGINX_WEB_HOST"
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 msgid "The internally used HTTP host."
 msgstr "โฮสต์ HTTP ที่ใช้ภายใน"
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 #, fuzzy
 #| msgid "OTOBO_NGINX_WEB_PORT"
 msgid "``OTOBO_NGINX_WEB_PORT``"
 msgstr "OTOBO_NGINX_WEB_PORT"
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 msgid "The internally used HTTP port."
 msgstr "พอร์ต HTTP ที่ใช้ภายใน"
 
-#: ../content/installation/installation-docker.rst:354
+#: ../content/installation/installation-docker.rst:359
 msgid "See step `4.` for how this configuration possibility was used for setting up the SSL certificate."
 msgstr "ดูขั้นตอนที่ `4` สำหรับวิธีการใช้ความเป็นไปได้ในการกำหนดค่านี้เพื่อตั้งค่าใบรับรอง SSL"
 
-#: ../content/installation/installation-docker.rst:356
+#: ../content/installation/installation-docker.rst:361
 #, fuzzy
 #| msgid "When the standard macros are not sufficient, then the customisation can go further. This can be achieved by replacing the default config template with a customized version. It is best practice to not simple change the configuration in the running container. Instead we first create a persistent volume that contains the custom config. Then we tell the *otobo_nginx_1* to mount the new volume and to use the customized configuration."
 msgid "When the standard macros are not sufficient, then the customization can go further. This can be achieved by replacing the default config template with a customized version. It is best practice to not simple change the configuration in the running container. Instead we first create a persistent volume that contains the custom config. Then we tell the ``otobo-nginx-1`` to mount the new volume and to use the customized configuration."
 msgstr "เมื่อมาโครมาตรฐานไม่เพียงพอ การปรับแต่งเพิ่มเติมสามารถทำได้ การทำเช่นนี้สามารถทำได้โดยการแทนที่เทมเพลตการตั้งค่าเริ่มต้นด้วยเวอร์ชันที่ปรับแต่งเอง การปฏิบัติที่ดีที่สุดคือไม่ควรเปลี่ยนการตั้งค่าในคอนเทนเนอร์ที่กำลังทำงานอยู่โดยตรง แต่ให้สร้างโวลุ่มถาวรที่บรรจุการตั้งค่าที่ปรับแต่งไว้ก่อน จากนั้นให้บอก *otobo_nginx_1* ให้เมาท์โวลุ่มใหม่และใช้การตั้งค่าที่ปรับแต่งไว้"
 
-#: ../content/installation/installation-docker.rst:362
+#: ../content/installation/installation-docker.rst:367
 msgid "First comes generation of the new volume. In these sample commands, we use the existing template as a starting point."
 msgstr "ขั้นแรกคือการสร้างปริมาณใหม่ ในคำสั่งตัวอย่างเหล่านี้ เราใช้เทมเพลตที่มีอยู่เป็นจุดเริ่มต้น"
 
-#: ../content/installation/installation-docker.rst:388
+#: ../content/installation/installation-docker.rst:393
 #, fuzzy
 #| msgid "After setting up the volume, the adapted configuration must be activated. The new volume is set up in *docker-compose/otobo-nginx-custom-config.yml*. Therefore this file must be added to **COMPOSE_FILE**. Then Nginx must be directed to use the new config. This is done by setting **NGINX_ENVSUBST_TEMPLATE_DIR** in the environment. In order to achieve this, uncomment or add the following lines in your *.env* file:"
 msgid "After setting up the volume, the adapted configuration must be activated. The new volume is set up in ``docker-compose/otobo-nginx-custom-config.yml``. Therefore, this file must be added to ``COMPOSE_FILE``. Then Nginx must be directed to use the new configuration. This is done by setting ``NGINX_ENVSUBST_TEMPLATE_DIR`` in the environment. In order to achieve this, uncomment or add the following lines in your ``.env`` file:"
 msgstr "หลังจากตั้งค่าโวลุ่มแล้ว ต้องเปิดใช้งานการกำหนดค่าที่ปรับใช้ใหม่ การตั้งค่าโวลุ่มใหม่จะถูกกำหนดไว้ใน *docker-compose/otobo-nginx-custom-config.yml* ดังนั้นไฟล์นี้จะต้องถูกเพิ่มเข้าไปใน **COMPOSE_FILE**จากนั้น Nginx จะต้องถูกกำหนดให้ใช้การตั้งค่าใหม่ ซึ่งทำได้โดยการตั้งค่า **NGINX_ENVSUBST_TEMPLATE_DIR** ในสภาพแวดล้อม เพื่อที่จะทำเช่นนี้ ให้ยกเลิกการคอมเมนต์หรือเพิ่มบรรทัดต่อไปนี้ในไฟล์ *.env* ของคุณ:"
 
-#: ../content/installation/installation-docker.rst:400
+#: ../content/installation/installation-docker.rst:405
 msgid "The changed Docker Compose configuration can be inspected with:"
 msgstr "การกำหนดค่า Docker Compose ที่เปลี่ยนแปลงสามารถตรวจสอบได้โดย:"
 
-#: ../content/installation/installation-docker.rst:406
+#: ../content/installation/installation-docker.rst:411
 msgid "Finally, the containers can be started again:"
 msgstr "ในที่สุด, สามารถเริ่มใช้งานคอนเทนเนอร์ได้อีกครั้ง:"
 
-#: ../content/installation/installation-docker.rst:412
+#: ../content/installation/installation-docker.rst:417
 #, fuzzy
 #| msgid "See also the section \"Using environment variables in nginx configuration (new in 1.19)\" in https://hub.docker.com/_/nginx."
 msgid "See also the section \"Using environment variables in Nginx configuration (new in 1.19)\" in https://hub.docker.com/_/nginx."
 msgstr "ดูเพิ่มเติมที่หัวข้อ \"การใช้ตัวแปรสภาพแวดล้อมในการกำหนดค่า nginx (ใหม่ในเวอร์ชัน 1.19)\" ใน https://hub.docker.com/_/nginx."
 
-#: ../content/installation/installation-docker.rst:415
+#: ../content/installation/installation-docker.rst:420
 #, fuzzy
 #| msgid "Single Sign On Using the Kerberos Support in Nginx"
 msgid "Single Sign-On Using the Kerberos Support in Nginx"
 msgstr "การลงชื่อเข้าใช้ครั้งเดียวโดยใช้การสนับสนุน Kerberos ใน Nginx"
 
-#: ../content/installation/installation-docker.rst:417
+#: ../content/installation/installation-docker.rst:422
 msgid "**Short Description**"
 msgstr "**คำอธิบายสั้น**"
 
-#: ../content/installation/installation-docker.rst:419
+#: ../content/installation/installation-docker.rst:424
 #, fuzzy
 #| msgid "For enabling authentication with Kerberos please base you *.env file* on the sample file *.docker_compose_env_https_kerberos*. This activates the special configuration in *docker-compose/otobo-override-https-kerberos.yml*. This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings as environment values to the running Nginx container. These settings are listed above."
 msgid "For enabling authentication with Kerberos please base you ``.env`` file on the sample file ``.docker_compose_env_https_kerberos``. This activates the special configuration in ``docker-compose/otobo-override-https-kerberos.yml``. This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings as environment values to the running Nginx container. These settings are listed above."
 msgstr "สำหรับการเปิดใช้งานการยืนยันตัวตนด้วย Kerberos โปรดใช้ไฟล์ *.env ของคุณโดยอ้างอิงจากไฟล์ตัวอย่าง *.docker_compose_env_https_kerberos*.การดำเนินการนี้จะเปิดใช้งานการกำหนดค่าพิเศษใน *docker-compose/otobo-override-https-kerberos.yml* ไฟล์กำหนดค่า Docker compose นี้จะเลือก image ของ Nginx ที่รองรับ Kerberos และยังส่งค่าการตั้งค่าเฉพาะของ Kerberos บางค่าเป็นค่าสภาพแวดล้อมไปยัง container ของ Nginx ที่กำลังทำงานอยู่ การตั้งค่าเหล่านี้ได้แสดงไว้ข้างต้น"
 
-#: ../content/installation/installation-docker.rst:425
+#: ../content/installation/installation-docker.rst:430
 #, fuzzy
 #| msgid "As usual, the values for these setting can be specified in the *.env* file. Most of ghese setting will be used as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-11_0/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container. In the running container the adapted config will be available in */etc/krb5.conf*."
 msgid "As usual, the values for these setting can be specified in the ``.env`` file. Most of these setting will be used as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-11_0/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container. In the running container the adapted configuration will be available in ``/etc/krb5.conf``."
 msgstr "ตามปกติ ค่าสำหรับตัวเลือกการตั้งค่าเหล่านี้สามารถระบุได้ในไฟล์ *.env*การตั้งค่าส่วนใหญ่เหล่านี้จะถูกใช้เป็นค่าแทนสำหรับเทมเพลต  https://github.com/RotherOSS/otobo/blob/rel-11_0/scripts/nginx/kerberos/templates/krb5.conf.template  การแทนที่นี้จะเกิดขึ้นระหว่างการเริ่มต้นของคอนเทนเนอร์ ในคอนเทนเนอร์ที่กำลังทำงานอยู่ การตั้งค่าที่ปรับแต่งแล้วจะสามารถใช้งานได้ใน */etc/krb5.conf*"
 
-#: ../content/installation/installation-docker.rst:430
+#: ../content/installation/installation-docker.rst:435
 #, fuzzy
 #| msgid "Providing an user specific */etc/krb5.conf* file is still possible. This can be done by mounting a volume that overrides */etc/krb5.conf* in the container. This can be achieved by setting OTOBO_NGINX_KERBEROS_CONFIG in the *.env* file and by activating the mount directove in *docker-compose/otobo-override-https-kerberos.yml*."
 msgid "Providing an user specific ``/etc/krb5.conf`` file is still possible. This can be done by mounting a volume that overrides ``/etc/krb5.conf`` in the container. This can be achieved by setting ``OTOBO_NGINX_KERBEROS_CONFIG`` in the ``.env`` file and by activating the mount directive in ``docker-compose/otobo-override-https-kerberos.yml``."
 msgstr "การให้ไฟล์ */etc/krb5.conf* ที่เฉพาะเจาะจงกับผู้ใช้ยังคงเป็นไปได้สามารถทำได้โดยการติดตั้งโวลุ่มที่แทนที่ */etc/krb5.conf* ในคอนเทนเนอร์ สามารถทำได้โดยการตั้งค่า OTOBO_NGINX_KERBEROS_CONFIG ในไฟล์ *.env* และเปิดใช้งานคำสั่ง mount ใน *docker-compose/otobo-override-https-kerberos.yml*."
 
-#: ../content/installation/installation-docker.rst:434
+#: ../content/installation/installation-docker.rst:439
 #, fuzzy
 #| msgid "*/etc/krb5.keytab* is always installation specific and must therefore always be mounted from the host system."
 msgid "``/etc/krb5.keytab`` is always installation specific and must therefore always be mounted from the host system."
 msgstr "*/etc/krb5.keytab* เป็นข้อมูลเฉพาะสำหรับการติดตั้งเสมอ และดังนั้นจึงต้องถูกติดตั้งจากระบบโฮสต์เสมอ"
 
-#: ../content/installation/installation-docker.rst:436
+#: ../content/installation/installation-docker.rst:441
+msgid "Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication. See also ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:444
 msgid "**Kerberos SSO Installation Tutorial**"
 msgstr "**คู่มือการติดตั้ง Kerberos SSO**"
 
-#: ../content/installation/installation-docker.rst:438
+#: ../content/installation/installation-docker.rst:446
 msgid ":doc:`Kerberos Single Sign On <../sso-kerberos>`"
 msgstr ""
 
-#: ../content/installation/installation-docker.rst:441
+#: ../content/installation/installation-docker.rst:449
 #, fuzzy
 #| msgid "Choosing non-standard ports"
 msgid "Choosing non-standard Ports"
 msgstr "การเลือกพอร์ตที่ไม่ใช่มาตรฐาน"
 
-#: ../content/installation/installation-docker.rst:443
+#: ../content/installation/installation-docker.rst:451
 #, fuzzy
 #| msgid "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports are already used by other services. In these cases the default ports can be overridden by specifying `OTOBO_WEB_HTTP_PORT` and `OTOBO_WEB_HTTPS_PORT` in the *.env* file."
 msgid "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports are already used by other services. In these cases the default ports can be overridden by specifying ``OTOBO_WEB_HTTP_PORT`` and ``OTOBO_WEB_HTTPS_PORT`` in the ``.env`` file."
 msgstr "โดยค่าเริ่มต้น พอร์ต 443 และ 80 จะให้บริการ HTTPS และ HTTP ตามลำดับ อาจมีกรณีที่พอร์ตใดพอร์ตหนึ่งหรือทั้งสองพอร์ตถูกใช้งานโดยบริการอื่นอยู่แล้ว ในกรณีเหล่านี้ สามารถกำหนดพอร์ตเริ่มต้นใหม่ได้โดยระบุ `OTOBO_WEB_HTTP_PORT` และ `OTOBO_WEB_HTTPS_PORT` ในไฟล์ *.env*"
 
-#: ../content/installation/installation-docker.rst:448
+#: ../content/installation/installation-docker.rst:456
 #, fuzzy
 #| msgid "Skip startup of specific services"
 msgid "Skip Startup of Specific Services"
 msgstr "ข้ามการเริ่มต้นของบริการเฉพาะ"
 
-#: ../content/installation/installation-docker.rst:450
+#: ../content/installation/installation-docker.rst:458
 #, fuzzy
 #| msgid "The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases where one or more of these services are not needed. The prime example is when the database should not run as a Docker service, but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services. But the option `--scale` can be abused for this purpose. So for an installation with an external database the following command can be used:"
 msgid "The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases where one or more of these services are not needed. The prime example is when the database should not run as a Docker service, but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services. But the option ``--scale`` can be abused for this purpose. So for an installation with an external database the following command can be used:"
 msgstr "การตั้งค่า Docker compose ในปัจจุบันจะเริ่มต้นบริการห้าหรือหกตัวเมื่อเปิดใช้งาน HTTPS แต่มีกรณีการใช้งานที่ถูกต้องซึ่งไม่จำเป็นต้องใช้บริการเหล่านี้ทั้งหมด ตัวอย่างหลักคือเมื่อฐานข้อมูลไม่ควรทำงานเป็นบริการ Docker แต่ควรเป็นฐานข้อมูลภายนอก น่าเสียดายที่ไม่มีตัวเลือกเฉพาะใน Docker compose สำหรับการข้ามบริการเฉพาะ แต่สามารถใช้ตัวเลือก `--scale` เพื่อวัตถุประสงค์นี้ได้ ดังนั้นสำหรับการติดตั้งที่มีฐานข้อมูลภายนอกสามารถใช้คำสั่งต่อไปนี้:"
 
-#: ../content/installation/installation-docker.rst:461
+#: ../content/installation/installation-docker.rst:469
 #, fuzzy
 #| msgid "Of course the same goal can also be achieved by editing the file *docker-compose/otobo-base.yml* and removing the relevant service definitions."
 msgid "Of course the same goal can also be achieved by editing the file ``docker-compose/otobo-base.yml`` and removing the relevant service definitions."
 msgstr "แน่นอนว่าเป้าหมายเดียวกันนี้สามารถทำได้โดยการแก้ไขไฟล์ *docker-compose/otobo-base.yml* และลบการกำหนดค่าบริการที่เกี่ยวข้อง"
 
-#: ../content/installation/installation-docker.rst:464
+#: ../content/installation/installation-docker.rst:472
 #, fuzzy
 #| msgid "Prepare offline installation"
 msgid "Prepare Offline Installation"
 msgstr "เตรียมการติดตั้งแบบออฟไลน์"
 
-#: ../content/installation/installation-docker.rst:466
+#: ../content/installation/installation-docker.rst:474
 #, fuzzy
 #| msgid "Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__ on a system that has internet access and where docker is installed. Then navigate to the following folder *otobo-docker/docker-compose*."
 msgid "Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo>`_ on a system that has internet access and where docker is installed. Then navigate to the following folder ``otobo-docker/docker-compose``."
 msgstr "โปรดดาวน์โหลด `เวอร์ชันล่าสุดของ otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo&gt;`__ บนระบบที่มีการเชื่อมต่ออินเทอร์เน็ตและมีการติดตั้ง docker แล้ว จากนั้นไปที่โฟลเดอร์ต่อไปนี้ *otobo-docker/docker-compose*"
 
-#: ../content/installation/installation-docker.rst:473
+#: ../content/installation/installation-docker.rst:481
 #, fuzzy
 #| msgid "Now you can run the following command to download all Docker images from a specific file, in my example I use the *otobo-base.yml*."
 msgid "Now you can run the following command to download all Docker images from a specific file, in my example I use the ``otobo-base.yml``."
 msgstr "ตอนนี้คุณสามารถรันคำสั่งต่อไปนี้เพื่อดาวน์โหลดภาพ Docker ทั้งหมดจากไฟล์เฉพาะ ในตัวอย่างของฉัน ฉันใช้ *otobo-base.yml*"
 
-#: ../content/installation/installation-docker.rst:479
+#: ../content/installation/installation-docker.rst:487
 #, fuzzy
 #| msgid "After that, the images (.docker) are located in the docker-compose folder and can be uploaded to the target system via e.g `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
 msgid "After that, the images (``.docker``) are located in the ``docker-compose`` folder and can be uploaded to the target system via, e.g, `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
 msgstr "หลังจากนั้น ภาพ (.docker) จะอยู่ในโฟลเดอร์ docker-compose และสามารถอัปโหลดไปยังระบบเป้าหมายได้ผ่านคำสั่ง เช่น `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol&gt;`__."
 
-#: ../content/installation/installation-docker.rst:481
+#: ../content/installation/installation-docker.rst:489
 #, fuzzy
 #| msgid "On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one."
 msgid "On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one. In the following example the Mariadb image is imported:"
 msgstr "บนระบบเป้าหมายที่ไม่ได้เชื่อมต่ออินเทอร์เน็ต ให้ไปที่โฟลเดอร์ที่เก็บภาพ docker ไว้ และป้อนคำสั่งต่อไปนี้เพื่อนำเข้าภาพทีละภาพ"
 
-#: ../content/installation/installation-docker.rst:490
+#: ../content/installation/installation-docker.rst:498
 msgid "Customizing OTOBO Docker Compose"
 msgstr "การปรับแต่ง OTOBO Docker Compose"
 
-#: ../content/installation/installation-docker.rst:492
+#: ../content/installation/installation-docker.rst:500
 #, fuzzy
 #| msgid "Instead of editing the files under *docker-compose/* and risking to overwrite your own options with the `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the otobo-docker folder, it is advisable to create an extra YAML file where the specific services are overwritten with additional options."
 msgid "Instead of editing the files under ``docker-compose/*`` and risking to overwrite your own options with the `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the ``otobo-docker`` folder, it is advisable to create an extra YAML file where the specific services are overwritten with additional options."
 msgstr "แทนที่จะแก้ไขไฟล์ภายใต้ *docker-compose/* และเสี่ยงที่จะเขียนทับตัวเลือกของคุณเองด้วยการอัปเดตครั้งถัดไป `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files&gt;_ ของโฟลเดอร์ otobo-docker ขอแนะนำให้สร้างไฟล์ YAML เพิ่มเติมขึ้นมาอีกไฟล์หนึ่ง เพื่อใช้สำหรับเขียนทับบริการเฉพาะที่ต้องการด้วยตัวเลือกเพิ่มเติม"
 
-#: ../content/installation/installation-docker.rst:494
+#: ../content/installation/installation-docker.rst:502
 #, fuzzy
 #| msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create an extra docker compose file thats look like:"
 msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create an extra docker compose file that looks like:"
 msgstr "ตัวอย่างที่พบบ่อยคือการทำให้คอนเทนเนอร์ฐานข้อมูลสามารถเข้าถึงได้จากภายนอกผ่านพอร์ต 3306 สำหรับสิ่งนี้คุณสามารถสร้างไฟล์ docker compose เพิ่มเติมที่มีลักษณะดังนี้:"
 
-#: ../content/installation/installation-docker.rst:505
+#: ../content/installation/installation-docker.rst:513
 #, fuzzy
 #| msgid "Now we have to tell *docker-compose* to include our new file. For this you have to add your YAML file to the *COMPOSE_FILE* variable in the *.env* file, for example:"
 msgid "Now we have to tell Docker Compose to include our new file. For this you have to add your YAML file to the ``COMPOSE_FILE`` variable in the ``.env`` file, for example:"
 msgstr "ตอนนี้เราต้องบอก *docker-compose* ให้รวมไฟล์ใหม่ของเรา สำหรับสิ่งนี้คุณต้องเพิ่มไฟล์ YAML ของคุณไปยังตัวแปร *COMPOSE_FILE* ในไฟล์ *.env* ตัวอย่างเช่น:"
 
-#: ../content/installation/installation-docker.rst:512
+#: ../content/installation/installation-docker.rst:520
 #, fuzzy
 #| msgid "Now we can use *docker-compose* to recreate our container"
 msgid "Now we can use ``docker compose`` to recreate our container"
 msgstr "ตอนนี้เราสามารถใช้ *docker-compose* เพื่อสร้างคอนเทนเนอร์ของเราขึ้นมาใหม่ได้"
 
-#: ../content/installation/installation-docker.rst:519
+#: ../content/installation/installation-docker.rst:527
 msgid "With this procedure you can customize any service or volumes."
 msgstr "ด้วยขั้นตอนนี้คุณสามารถปรับแต่งบริการหรือปริมาณใด ๆ ได้"
 
-#: ../content/installation/installation-docker.rst:522
+#: ../content/installation/installation-docker.rst:530
 #, fuzzy
 #| msgid "Customizing the OTOBO Docker image"
 msgid "Customizing the OTOBO Docker Image"
 msgstr "การปรับแต่งภาพ Docker ของ OTOBO"
 
-#: ../content/installation/installation-docker.rst:524
+#: ../content/installation/installation-docker.rst:532
 #, fuzzy
 #| msgid "Many customizations can be done in the external volume *otobo_opt_otobo* which corresponds to the directory */opt/otobo* in the Docker image. This works e.g. for local Perl modules which can be installed into */opt/otobo/local*. Here is an example that installs the not very useful CPAN module `Acme::123`."
 msgid "Customization can be done in the external volume ``otobo_opt_otobo`` which corresponds to the directory ``/opt/otobo`` in the Docker image. This works, e.g., for local Perl modules which can be installed into ``/opt/otobo/local``. Here is an example that installs the not very useful CPAN module `Acme::123`."
 msgstr "สามารถปรับแต่งได้หลายอย่างในไดเรกทอรีภายนอก *otobo_opt_otobo* ซึ่งสอดคล้องกับไดเรกทอรี */opt/otobo* ใน Docker image การทำงานนี้สามารถใช้ได้ เช่น สำหรับโมดูล Perl ในเครื่องที่สามารถติดตั้งลงใน */opt/otobo/local* ตัวอย่างต่อไปนี้เป็นการติดตั้งโมดูล CPAN ที่ไม่ค่อยมีประโยชน์ชื่อ `Acme::123`"
 
-#: ../content/installation/installation-docker.rst:538
+#: ../content/installation/installation-docker.rst:546
 msgid "The nice thing of this approach is that the Docker image itself does not have to be modified."
 msgstr "ข้อดีของวิธีนี้คือภาพ Docker เองไม่จำเป็นต้องถูกแก้ไข"
 
-#: ../content/installation/installation-docker.rst:540
+#: ../content/installation/installation-docker.rst:548
 #, fuzzy
 #| msgid "Installing extra Debian packages is a little bit trickier. One approach is to create a custom *Dockerfile* and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice writeup of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 msgid "Installing extra Debian packages is a little bit trickier. One approach is to create a custom ``Dockerfile`` and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice write-up of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 msgstr "การติดตั้งแพ็กเกจ Debian เพิ่มเติมนั้นค่อนข้างซับซ้อนเล็กน้อย หนึ่งในวิธีคือการสร้างไฟล์ *Dockerfile* แบบกำหนดเอง และใช้ภาพ OTOBO เป็นภาพฐานอีกวิธีหนึ่งคือการสร้างภาพที่แก้ไขแล้วโดยตรงจากคอนเทนเนอร์ที่กำลังทำงานอยู่ สามารถทำได้ด้วยคำสั่ง `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. มีบทความที่ดีเกี่ยวกับกระบวนการนี้ที่ https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 
-#: ../content/installation/installation-docker.rst:546
+#: ../content/installation/installation-docker.rst:554
 #, fuzzy
 #| msgid "But for the latter approach there are two hurdles to overcome. First, the image *otobo* runs per default as the user *otobo* with the UID 1000. The problem is that the user *otobo* is not allowed to install system packages. Thus, the first part of the solution is to pass the option `--user root` when running the image. However the second hurdle is that the default entrypoint script */opt/otobo_install/entrypoint.sh* exits immediately when it is called as *root*. The reasoning behind that design decision is that running inadvertently as *root* should be discouraged. So, the second part of the solution is to specify a different entrypoint script that does not care who the caller is. This leaves us with following example commands, where we add fortune cookies to otobo:"
 msgid "But for the latter approach there are two hurdles to overcome. First, the image ``otobo`` runs per default as the user ``otobo`` with the UID ``1000``. The problem is that the user ``otobo`` is not allowed to install system packages. Thus, the first part of the solution is to pass the option ``--user root`` when running the image. However the second hurdle is that the default entrypoint script ``/opt/otobo_install/entrypoint.sh`` exits immediately when it is called as ``root``. The reasoning behind that design decision is that running inadvertently as ``root`` should be discouraged. So, the second part of the solution is to specify a different entrypoint script that does not care who the caller is. This leaves us with following example commands, where we add fortune cookies to OTOBO:"
 msgstr "แต่สำหรับแนวทางหลังนี้ มีอุปสรรคสองประการที่ต้องเอาชนะ ประการแรก ภาพ *otobo* ทำงานโดยค่าเริ่มต้นในฐานะผู้ใช้ *otobo* ที่มี UID 1000 ปัญหาคือผู้ใช้ *otobo* ไม่ได้รับอนุญาตให้ติดตั้งแพ็กเกจระบบ ดังนั้น ส่วนแรกของวิธีแก้ปัญหาคือการส่งตัวเลือก `--user root` เมื่อเรียกใช้ภาพอย่างไรก็ตาม อุปสรรคที่สองคือสคริปต์ entrypoint เริ่มต้น */opt/otobo_install/entrypoint.sh* จะออกทันทีเมื่อถูกเรียกใช้ในฐานะ *root* เหตุผลเบื้องหลังการตัดสินใจออกแบบนี้คือเพื่อป้องกันการใช้งานโดยไม่ตั้งใจในฐานะ *root* ดังนั้น ส่วนที่สองของวิธีแก้คือการระบุสคริปต์ entrypoint ที่แตกต่างกันซึ่งไม่สนใจว่าใครเป็นผู้เรียกใช้ ซึ่งจะทำให้เราได้คำสั่งตัวอย่างต่อไปนี้ ที่เราเพิ่ม fortune cookies ลงใน otobo:"
 
-#: ../content/installation/installation-docker.rst:555
+#: ../content/installation/installation-docker.rst:563
 msgid "Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:"
 msgstr "ดึงภาพ OTOBO ที่มีแท็ก หากเรายังไม่มี และตรวจสอบว่าภาพนั้นมีคุกกี้เสี่ยงทายให้แล้วหรือไม่:"
 
-#: ../content/installation/installation-docker.rst:562
+#: ../content/installation/installation-docker.rst:570
 #, fuzzy
 #| msgid "Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive session as the user *root*:"
 msgid "Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive session as the user ``root``:"
 msgstr "เพิ่มคุกกี้เสี่ยงทายลงในคอนเทนเนอร์ที่มีชื่อซึ่งกำลังรันอิมเมจ OTOBO ต้นฉบับ การดำเนินการนี้จะทำในเซสชันแบบโต้ตอบในฐานะผู้ใช้ *root*:"
 
-#: ../content/installation/installation-docker.rst:570
+#: ../content/installation/installation-docker.rst:578
 msgid "Create an image from the stopped container and give it a name. Take into account that the default user and entrypoint script must be restored:"
 msgstr "สร้างภาพจากคอนเทนเนอร์ที่หยุดแล้วและตั้งชื่อให้มัน คำนึงถึงว่าผู้ใช้เริ่มต้นและสคริปต์ entrypoint ต้องถูกกู้คืน:"
 
-#: ../content/installation/installation-docker.rst:577
+#: ../content/installation/installation-docker.rst:585
 msgid "Finally we can doublecheck:"
 msgstr "ในที่สุดเราก็สามารถตรวจสอบซ้ำได้:"
 
-#: ../content/installation/installation-docker.rst:586
+#: ../content/installation/installation-docker.rst:594
 #, fuzzy
 #| msgid "The modified image can be specified in your *.env* file and then be used for fun and profit."
 msgid "The modified image can be specified in your ``.env`` file and then be used for fun and profit."
 msgstr "ภาพที่แก้ไขแล้วสามารถระบุได้ในไฟล์ *.env* ของคุณ จากนั้นสามารถนำไปใช้เพื่อความสนุกและผลกำไรได้"
 
-#: ../content/installation/installation-docker.rst:589
+#: ../content/installation/installation-docker.rst:597
 #, fuzzy
 #| msgid "Building local images"
 msgid "Building Local Images"
 msgstr "การสร้างภาพท้องถิ่น"
 
-#: ../content/installation/installation-docker.rst:593
+#: ../content/installation/installation-docker.rst:601
 msgid "Building Docker images locally is usually only needed during development. Other use cases are when more current base images should be used for an installation or when extra functionality must be added to the images."
 msgstr "การสร้าง Docker images ในเครื่องมักจำเป็นเฉพาะในระหว่างการพัฒนาเท่านั้น กรณีการใช้งานอื่นๆ คือเมื่อต้องใช้ base images ที่ทันสมัยกว่าสำหรับการติดตั้ง หรือเมื่อต้องเพิ่มฟังก์ชันการทำงานเพิ่มเติมลงใน images"
 
-#: ../content/installation/installation-docker.rst:596
+#: ../content/installation/installation-docker.rst:604
 #, fuzzy
 #| msgid "The Docker files needed for creating Docker images locally are part of the the git repository https://github.com/RotherOSS/otobo:"
 msgid "The Docker files needed for creating Docker images locally are part of the git repository https://github.com/RotherOSS/otobo:"
 msgstr "ไฟล์ Docker ที่จำเป็นสำหรับการสร้าง Docker images ในเครื่องเป็นส่วนหนึ่งของ git repository https://github.com/RotherOSS/otobo:"
 
-#: ../content/installation/installation-docker.rst:598
+#: ../content/installation/installation-docker.rst:606
 #, fuzzy
 #| msgid "*otobo.web.dockerfile*"
 msgid "``otobo.web.dockerfile``"
 msgstr "*otobo.web.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:599
+#: ../content/installation/installation-docker.rst:607
 #, fuzzy
 #| msgid "*otobo.nginx.dockerfile*"
 msgid "``otobo.nginx.dockerfile``"
 msgstr "*otobo.nginx.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:600
+#: ../content/installation/installation-docker.rst:608
 #, fuzzy
 #| msgid "*otobo.elasticsearch.dockerfile*"
 msgid "``otobo.elasticsearch.dockerfile``"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:602
+#: ../content/installation/installation-docker.rst:610
 #, fuzzy
 #| msgid "The script for the actual creation of the images is *bin/docker/build_docker_images.sh*."
 msgid "The script for the actual creation of the images is ``bin/docker/build_docker_images.sh``."
 msgstr "สคริปต์สำหรับการสร้างภาพจริงคือ *bin/docker/build_docker_images.sh*."
 
-#: ../content/installation/installation-docker.rst:614
+#: ../content/installation/installation-docker.rst:622
 #, fuzzy
 #| msgid "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file *RELEASE*."
 msgid "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file ``RELEASE``."
 msgstr "ภาพ Docker ที่สร้างขึ้นในท้องถิ่นจะถูกแท็กเป็น ``local-<OTOBO_VERSION>`` โดยใช้เวอร์ชันที่ตั้งค่าไว้ในไฟล์ *RELEASE*."
 
-#: ../content/installation/installation-docker.rst:616
+#: ../content/installation/installation-docker.rst:624
 #, fuzzy
 #| msgid "After building the local images, one can return to the *docker-compose* directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in *.env*."
 msgid "After building the local images, one can return to the ``docker-compose`` directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in the ``.env`` file."
 msgstr "หลังจากสร้างอิมเมจในเครื่องแล้ว สามารถกลับไปที่ไดเรกทอรี *docker-compose* ได้ อิมเมจในเครื่องจะถูกกำหนดโดยการตั้งค่า ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` ในไฟล์ *.env*"
 
-#: ../content/installation/installation-docker.rst:620
+#: ../content/installation/installation-docker.rst:628
 msgid "Automatic Installation"
 msgstr "การติดตั้งอัตโนมัติ"
 
-#: ../content/installation/installation-docker.rst:622
+#: ../content/installation/installation-docker.rst:630
 msgid "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is useful for running the test suite on a fresh installation."
 msgstr "แทนที่จะทำตาม http://yourIPorFQDN/otobo/installer.pl คุณสามารถใช้ทางลัดได้ วิธีนี้มีประโยชน์สำหรับการรันชุดทดสอบบนการติดตั้งใหม่"
 
-#: ../content/installation/installation-docker.rst:627
+#: ../content/installation/installation-docker.rst:635
 #, fuzzy
 #| msgid "``docker-compose down -v`` will remove all previous setup and data."
 msgid "``docker compose down -v`` will remove all previous setup and data."
 msgstr "``docker-compose down -v`` จะลบการตั้งค่าและข้อมูลทั้งหมดที่เคยมีอยู่"
 
-#: ../content/installation/installation-docker.rst:642
+#: ../content/installation/installation-docker.rst:650
 #, fuzzy
 #| msgid "List of useful commands"
 msgid "List of Useful Commands"
 msgstr "รายการคำสั่งที่มีประโยชน์"
 
-#: ../content/installation/installation-docker.rst:644
+#: ../content/installation/installation-docker.rst:652
 msgid "**Docker**"
 msgstr "**Docker**"
 
-#: ../content/installation/installation-docker.rst:646
+#: ../content/installation/installation-docker.rst:654
 msgid "``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)"
 msgstr "``docker system prune -a`` ทำความสะอาดระบบ (ลบภาพ, คอนเทนเนอร์, โวลุ่ม, เครือข่ายที่ไม่ใช้งานทั้งหมด)"
 
-#: ../content/installation/installation-docker.rst:647
+#: ../content/installation/installation-docker.rst:655
 msgid "``docker version`` show version"
 msgstr "``docker version`` แสดงเวอร์ชัน"
 
-#: ../content/installation/installation-docker.rst:648
+#: ../content/installation/installation-docker.rst:656
 msgid "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr "``docker build --tag otobo --file=otobo.web.Dockerfile .`` สร้างภาพ"
 
-#: ../content/installation/installation-docker.rst:649
+#: ../content/installation/installation-docker.rst:657
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``docker run --publish 80:5000 otobo`` รันอิมเมจใหม่"
 
-#: ../content/installation/installation-docker.rst:650
+#: ../content/installation/installation-docker.rst:658
 msgid "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` เข้าสู่ระบบในภาพใหม่"
 
-#: ../content/installation/installation-docker.rst:651
+#: ../content/installation/installation-docker.rst:659
 msgid "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that in case entrypoint.sh is broken"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` ลองใช้คำสั่งนี้ในกรณีที่ entrypoint.sh ใช้งานไม่ได้"
 
-#: ../content/installation/installation-docker.rst:652
+#: ../content/installation/installation-docker.rst:660
 msgid "``docker ps`` show running images"
 msgstr "``docker ps`` แสดงภาพที่กำลังทำงาน"
 
-#: ../content/installation/installation-docker.rst:653
+#: ../content/installation/installation-docker.rst:661
 msgid "``docker images`` show available images"
 msgstr "``docker images`` แสดงภาพที่มีอยู่"
 
-#: ../content/installation/installation-docker.rst:654
+#: ../content/installation/installation-docker.rst:662
 msgid "``docker volume ls`` list volumes"
 msgstr "``docker volume ls`` แสดงรายการโวลุ่ม"
 
-#: ../content/installation/installation-docker.rst:655
+#: ../content/installation/installation-docker.rst:663
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr "``docker volume inspect otobo_opt_otobo`` ตรวจสอบโวลุ่ม"
 
-#: ../content/installation/installation-docker.rst:656
+#: ../content/installation/installation-docker.rst:664
 msgid "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 msgstr "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 
-#: ../content/installation/installation-docker.rst:657
+#: ../content/installation/installation-docker.rst:665
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``docker volume rm tmp_volume`` ลบโวลุ่ม"
 
-#: ../content/installation/installation-docker.rst:658
+#: ../content/installation/installation-docker.rst:666
 msgid "``docker inspect <container>`` inspect a container"
 msgstr "``docker inspect <container>`` ตรวจสอบคอนเทนเนอร์"
 
-#: ../content/installation/installation-docker.rst:659
+#: ../content/installation/installation-docker.rst:667
 msgid "``docker save --output otobo.tar otobo:latest-11_0 && tar -tvf otobo.tar`` list files in an image"
 msgstr "``docker save --output otobo.tar otobo:latest-11_0 && tar -tvf otobo.tar`` แสดงรายการไฟล์ในอิมเมจ"
 
-#: ../content/installation/installation-docker.rst:660
+#: ../content/installation/installation-docker.rst:668
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` โหลดใหม่ nginx"
 
-#: ../content/installation/installation-docker.rst:662
+#: ../content/installation/installation-docker.rst:670
 msgid "**Docker Compose**"
 msgstr "**Docker Compose**"
 
-#: ../content/installation/installation-docker.rst:664
+#: ../content/installation/installation-docker.rst:672
 #, fuzzy
 #| msgid "``docker-compose config`` check and show the configuration"
 msgid "``docker compose config`` check and show the configuration"
 msgstr "``docker-compose config`` ตรวจสอบและแสดงการกำหนดค่า"
 
-#: ../content/installation/installation-docker.rst:665
+#: ../content/installation/installation-docker.rst:673
 #, fuzzy
 #| msgid "``docker-compose ps`` show the running containers"
 msgid "``docker compose ps`` show the running containers"
 msgstr "``docker-compose ps`` แสดงคอนเทนเนอร์ที่กำลังทำงาน"
 
-#: ../content/installation/installation-docker.rst:666
+#: ../content/installation/installation-docker.rst:674
 #, fuzzy
 #| msgid "``docker-compose exec nginx nginx -s reload`` reload nginx"
 msgid "``docker compose exec nginx nginx -s reload`` reload nginx"
 msgstr "```docker-compose exec nginx nginx -s reload``` reload nginx"
 
-#: ../content/installation/installation-docker.rst:669
+#: ../content/installation/installation-docker.rst:677
 msgid "Resources"
 msgstr "ทรัพยากร"
 
-#: ../content/installation/installation-docker.rst:671
+#: ../content/installation/installation-docker.rst:679
 msgid "Finally, here is a highly subjective collection of links."
 msgstr "สุดท้ายนี้ นี่คือชุดลิงก์ที่รวบรวมขึ้นโดยมีความเห็นส่วนตัวอย่างมาก"
 
-#: ../content/installation/installation-docker.rst:673
+#: ../content/installation/installation-docker.rst:681
 msgid "**General info and tutorials**"
 msgstr "**ข้อมูลทั่วไปและบทแนะนำ**"
 
-#: ../content/installation/installation-docker.rst:675
+#: ../content/installation/installation-docker.rst:683
 msgid "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 msgstr "`Perl Maven: เริ่มต้นใช้งาน Perl บน Docker <https://perlmaven.com/getting-started-with-perl-on-docker&gt;`_"
 
-#: ../content/installation/installation-docker.rst:676
+#: ../content/installation/installation-docker.rst:684
 msgid "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
 msgstr "`แนวทางปฏิบัติที่ดีที่สุดสำหรับ Dockerfile;`_"
 
-#: ../content/installation/installation-docker.rst:677
+#: ../content/installation/installation-docker.rst:685
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "สิ่งแวดล้อม <https://vsupalov.com/docker-arg-env-variable-guide/&gt;"
 
-#: ../content/installation/installation-docker.rst:679
+#: ../content/installation/installation-docker.rst:687
 msgid "**Tips and hints**"
 msgstr "**เคล็ดลับและคำแนะนำ**"
 
-#: ../content/installation/installation-docker.rst:681
+#: ../content/installation/installation-docker.rst:689
 msgid "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 msgstr "`ทำความสะอาดภาพที่ไม่ได้ใช้ <https://forums.docker.com/t/command-to-remove-all-unused-images&gt;`_"
 
-#: ../content/installation/installation-docker.rst:682
+#: ../content/installation/installation-docker.rst:690
 msgid "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
 msgstr "`IP ของโฮสต์ Docker <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container&gt;`_"
 
-#: ../content/installation/installation-docker.rst:683
+#: ../content/installation/installation-docker.rst:691
 #, fuzzy
 #| msgid "`Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu >`_"
 msgid "`Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu>`_"
 msgstr "`ใบรับรองที่ลงนามด้วยตนเอง <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu >`_"
 
-#: ../content/installation/installation-docker.rst:685
+#: ../content/installation/installation-docker.rst:693
 msgid "**Troubleshooting**"
 msgstr "**การแก้ไขปัญหา**"
 
-#: ../content/installation/installation-docker.rst:687
+#: ../content/installation/installation-docker.rst:695
 msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 msgstr "การล้างแคชของ Docker <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur&gt;"
 
-#: ../content/installation/installation-docker.rst:688
+#: ../content/installation/installation-docker.rst:696
 msgid "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 msgstr "`การใช้ tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/&gt;`_"
 
-#: ../content/installation/installation-docker.rst:689
+#: ../content/installation/installation-docker.rst:697
 msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 msgstr "ตรวจสอบการสร้างที่ล้มเหลว <https://pythonspeed.com/articles/debugging-docker-build/&gt;"
 
@@ -3678,89 +3692,89 @@ msgstr "ก่อนอื่นเราต้องย้ายไฟล์เ
 msgid "Now copy your existing configuration options to the new ``.env`` file (at least ``OTOBO_DB_ROOT_PASSWORD``, ``OTOBO_NGINX_SSL_CERTIFICATE``, ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``) and insert the following Kerberos settings:"
 msgstr "ตอนนี้ให้คัดลอกตัวเลือกการกำหนดค่าที่มีอยู่ของคุณไปยังไฟล์ .env ใหม่ (อย่างน้อย OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY) และแทรกการตั้งค่า Kerberos ต่อไปนี้:"
 
-#: ../content/sso-kerberos.rst:124
+#: ../content/sso-kerberos.rst:126
 msgid "Start OTOBO"
 msgstr "เริ่ม OTOBO"
 
-#: ../content/sso-kerberos.rst:126
+#: ../content/sso-kerberos.rst:128
 msgid "After the initial Kerberos configuration we start OTOBO again:"
 msgstr "หลังจากกำหนดค่า Kerberos เบื้องต้นแล้ว ให้เริ่ม OTOBO อีกครั้ง:"
 
-#: ../content/sso-kerberos.rst:135
+#: ../content/sso-kerberos.rst:137
 msgid "Tell OTOBO to use the Kerberos-Authentication"
 msgstr "บอก OTOBO ให้ใช้การตรวจสอบสิทธิ์ Kerberos"
 
-#: ../content/sso-kerberos.rst:137
+#: ../content/sso-kerberos.rst:139
 msgid "In case you have configured AD-Authentication, de-activate it (e.g. by commenting out the respective lines from your Kernel/Config.pm). The authentication will not take place via LDAP anymore."
 msgstr "ในกรณีที่คุณได้กำหนดค่าการตรวจสอบสิทธิ์ AD ไว้แล้ว ให้ยกเลิกการใช้งาน (เช่น โดยการใส่เครื่องหมาย # หน้าบรรทัดที่เกี่ยวข้องใน Kernel/Config.pm ของคุณ) การตรวจสอบสิทธิ์จะไม่ดำเนินการผ่าน LDAP อีกต่อไป"
 
-#: ../content/sso-kerberos.rst:140
+#: ../content/sso-kerberos.rst:142
 msgid "To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
 msgstr "ในการใช้การตรวจสอบสิทธิ์ Kerberos ให้คัดลอกบรรทัด Kerberos จาก Kernel/Config/Defaults.pm แล้ววางลงใน Kernel/Config.pm ของคุณ ตัวอย่างเช่น บรรทัดเหล่านี้อาจใช้งานได้:"
 
-#: ../content/sso-kerberos.rst:153
+#: ../content/sso-kerberos.rst:159
 #, fuzzy
 #| msgid "Configure Browser to understand Kerberos SSO"
 msgid "Configure Browser to Understand Kerberos SSO"
 msgstr "กำหนดค่าเบราว์เซอร์ให้เข้าใจ Kerberos SSO"
 
-#: ../content/sso-kerberos.rst:155
+#: ../content/sso-kerberos.rst:161
 msgid "For SSO to work, the browser must be configured accordingly."
 msgstr "เพื่อให้ระบบ SSO ทำงานได้, เบราว์เซอร์ต้องได้รับการตั้งค่าให้เหมาะสม."
 
-#: ../content/sso-kerberos.rst:157
+#: ../content/sso-kerberos.rst:163
 msgid "**Chrome, Edge, Internet Explorer, etc.**"
 msgstr "**Chrome, Edge, Internet Explorer, ฯลฯ**"
 
-#: ../content/sso-kerberos.rst:159
+#: ../content/sso-kerberos.rst:165
 msgid "Add page under local or trusted pages and activate 'Integrated Windows Authentication' (Internet Options)."
 msgstr "เพิ่มหน้าภายใต้หน้าท้องถิ่นหรือหน้าเชื่อถือ และเปิดใช้งาน 'การตรวจสอบสิทธิ์ Windows แบบบูรณาการ' (ตัวเลือกอินเทอร์เน็ต)"
 
-#: ../content/sso-kerberos.rst:161
+#: ../content/sso-kerberos.rst:167
 msgid "**Firefox**"
 msgstr "**Firefox**"
 
-#: ../content/sso-kerberos.rst:163
+#: ../content/sso-kerberos.rst:169
 msgid "Enter \"about:config\" in the firefox address line"
 msgstr "ป้อน \"about:config\" ในแถบที่อยู่ของ Firefox"
 
-#: ../content/sso-kerberos.rst:165
+#: ../content/sso-kerberos.rst:171
 msgid "and change the following settings:"
 msgstr "และเปลี่ยนการตั้งค่าต่อไปนี้:"
 
-#: ../content/sso-kerberos.rst:174
+#: ../content/sso-kerberos.rst:180
 msgid "Debugging and Problems"
 msgstr "การแก้ไขข้อผิดพลาดและปัญหา"
 
-#: ../content/sso-kerberos.rst:176
+#: ../content/sso-kerberos.rst:182
 msgid "If the Kerberos SSO does not work, please check first if the NGINX container is started:"
 msgstr "หากระบบ Kerberos SSO ไม่ทำงาน กรุณาตรวจสอบก่อนว่าคอนเทนเนอร์ NGINX ได้เริ่มต้นทำงานแล้วหรือไม่:"
 
-#: ../content/sso-kerberos.rst:184
+#: ../content/sso-kerberos.rst:190
 msgid "In the next step please check the NGINX logs for more information:"
 msgstr "ในขั้นตอนถัดไป โปรดตรวจสอบบันทึกของ NGINX เพื่อดูข้อมูลเพิ่มเติม:"
 
-#: ../content/sso-kerberos.rst:192
+#: ../content/sso-kerberos.rst:198
 msgid "If NGINX is running, please login into the NGINX Container and check all needed files:"
 msgstr "หาก NGINX กำลังทำงานอยู่ กรุณาเข้าสู่ระบบใน NGINX Container และตรวจสอบไฟล์ที่จำเป็นทั้งหมด:"
 
-#: ../content/sso-kerberos.rst:207
+#: ../content/sso-kerberos.rst:213
 #, fuzzy
 #| msgid "Kerberos debugging"
 msgid "Kerberos Debugging"
 msgstr "การดีบัก Kerberos"
 
-#: ../content/sso-kerberos.rst:214
+#: ../content/sso-kerberos.rst:220
 msgid "Now you are able to debug the Kerberos settings. Examples:"
 msgstr "ขณะนี้คุณสามารถดีบักการตั้งค่า Kerberos ได้แล้ว ตัวอย่าง:"
 
-#: ../content/sso-kerberos.rst:230
+#: ../content/sso-kerberos.rst:236
 #, fuzzy
 #| msgid "In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use seperate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your Kernel/Config.pm)."
 msgid "In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use separate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your ``Kernel/Config.pm``)."
 msgstr "ในกรณีที่คุณพบปัญหาที่ดูเหมือนว่าการยืนยันตัวตนทำงานได้ แต่ตัวแทนยังไม่อยู่ในฐานข้อมูล อาจเป็นเพราะการซิงค์ของคุณ (หากมีการใช้งาน) ไม่ทำงาน ข้อผิดพลาด 52e (การเชื่อมต่อครั้งแรกล้มเหลว) หมายความว่า มีบางอย่างผิดปกติกับผู้ใช้ที่คุณค้นหา นี่เกิดขึ้นหากคุณใช้ผู้ใช้เดียวกันสำหรับการซิงค์ AD และเป็นผู้ใช้งาน SSOกรุณาใช้ผู้ใช้ AD แยกต่างหากสำหรับสิ่งนั้น เพื่อที่จะไม่ต้องสร้าง keytab ใหม่และไม่ต้องทำขั้นตอนที่กล่าวไว้ข้างต้นซ้ำ อาจง่ายกว่าที่จะสร้างผู้ใช้ใหม่เพื่อใช้ใน sync AD ของคุณ (อาจอยู่ใน Kernel/Config.pm ของคุณ)"
 
-#: ../content/sso-kerberos.rst:236
+#: ../content/sso-kerberos.rst:242
 msgid "In case SSO is not working properly, make sure: * the user for which it is not working is in Active Directory * the system has to be in the domain * it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO')"
 msgstr "ในกรณีที่ SSO ไม่ทำงานอย่างถูกต้อง ให้ตรวจสอบว่า: * ผู้ใช้ที่ไม่สามารถใช้งานได้อยู่ใน Active Directory * ระบบต้องอยู่ในโดเมน * ได้ระบุว่าเป็นหน้าเว็บที่เชื่อถือได้ถูกต้องแล้ว (ดูที่ 'กำหนดค่าเบราว์เซอร์เพื่อเข้าใจ Kerberos SSO')"
 

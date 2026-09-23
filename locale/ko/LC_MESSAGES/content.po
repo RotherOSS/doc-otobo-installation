@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 06:58+0000\n"
+"POT-Creation-Date: 2026-09-23 14:10+0000\n"
 "PO-Revision-Date: 2026-02-20 17:00+0000\n"
 "Last-Translator: Stefan Rother <sr@rother-oss.com>\n"
 "Language-Team: Korean <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/ko/>\n"
@@ -793,649 +793,662 @@ msgid "Set in case the HTTPS port should deviate from the standard port 443."
 msgstr "HTTPS 포트가 표준 포트 443에서 벗어날 경우 설정합니다."
 
 #: ../content/installation/installation-docker.rst:265
-#: ../content/installation/installation-docker.rst:343
+#: ../content/installation/installation-docker.rst:348
 #, fuzzy
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE``"
 msgstr "OTOBO_NGINX_S_S_CERTIFICATE"
 
 #: ../content/installation/installation-docker.rst:264
 #, fuzzy
-msgid "SSL cert for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
+msgid "SSL cert for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
 msgstr "nginx 웹프록시용 SSL 인증서입니다. 예시: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
 #: ../content/installation/installation-docker.rst:269
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:351
 #, fuzzy
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 msgstr "OTOBO_NGINX_S_S_S_인증서_키"
 
 #: ../content/installation/installation-docker.rst:268
 #, fuzzy
-msgid "SSL key for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
+msgid "SSL key for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
 msgstr "nginx 웹프록시용 SSL 키입니다. 예시: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
-#: ../content/installation/installation-docker.rst:271
+#: ../content/installation/installation-docker.rst:274
+#, fuzzy
+msgid "``OTOBO_PROXY_SECRET``"
+msgstr "오토보_엔진스_웹_포트"
+
+#: ../content/installation/installation-docker.rst:272
+msgid "Used if NGINX does the SSO (e.g., Kerberos) and forwards the user identity to OTOBO. Necessary only in combination with the HTTPBasicAuth authentication module. Also see ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:276
 #, fuzzy
 msgid "**Nginx webproxy settings for Kerberos**"
 msgstr "**Kerberos용 Nginx 웹 프록시 설정**"
 
-#: ../content/installation/installation-docker.rst:273
+#: ../content/installation/installation-docker.rst:278
 #, fuzzy
 msgid "This settings are used by Nginx when Kerberos is used for single sign on."
 msgstr "이 설정은 싱글 사인온에 Kerberos를 사용할 때 Nginx에서 사용됩니다."
 
-#: ../content/installation/installation-docker.rst:277
+#: ../content/installation/installation-docker.rst:282
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_KEYTAB``"
 msgstr "오토비_엔진스_커베로스_키탭"
 
-#: ../content/installation/installation-docker.rst:276
+#: ../content/installation/installation-docker.rst:281
 #, fuzzy
 msgid "Kerberos keytab file. The default is ``/etc/krb5.keytab``."
 msgstr "Kerberos 키탭 파일. 기본값은 */etc/krb5.keytab*입니다."
 
-#: ../content/installation/installation-docker.rst:281
+#: ../content/installation/installation-docker.rst:286
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_CONFIG``"
 msgstr "오토노_엔진스_커베로스_구성"
 
-#: ../content/installation/installation-docker.rst:280
+#: ../content/installation/installation-docker.rst:285
 #, fuzzy
 msgid "Kerberos config file. The default is ``/etc/krb5.conf``, usually generated from ``krb5.conf.template``."
 msgstr "Kerberos 구성 파일. 기본값은 */etc/krb5.conf*이며, 일반적으로 *krb5.conf.template*에서 생성됩니다."
 
-#: ../content/installation/installation-docker.rst:285
+#: ../content/installation/installation-docker.rst:290
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_SERVICE_NAME``"
 msgstr "오토_엔진스_커베로스_서비스_이름"
 
-#: ../content/installation/installation-docker.rst:284
+#: ../content/installation/installation-docker.rst:289
 #, fuzzy
 msgid "Kerberos Service Name. It is not clear where this setting is actually used anywhere."
 msgstr "Kerberos 서비스 이름. 이 설정이 실제로 어디에서 사용되는지는 명확하지 않습니다."
 
-#: ../content/installation/installation-docker.rst:289
+#: ../content/installation/installation-docker.rst:294
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_REALM``"
 msgstr "오토보_엔진스_커베로스_영역"
 
-#: ../content/installation/installation-docker.rst:288
+#: ../content/installation/installation-docker.rst:293
 #, fuzzy
 msgid "Kerberos REALM. Used in ``/etc/krb5.conf``."
 msgstr "케르베로스 영역. etc/krb5.conf*에서 사용됩니다."
 
-#: ../content/installation/installation-docker.rst:293
+#: ../content/installation/installation-docker.rst:298
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_KDC``"
 msgstr "오토보_엔진스_커베로스_KDC"
 
-#: ../content/installation/installation-docker.rst:292
+#: ../content/installation/installation-docker.rst:297
 #, fuzzy
 msgid "Kerberos kdc / AD Controller. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos kdc/AD 컨트롤러. etc/krb5.conf*에서 사용됩니다."
 
-#: ../content/installation/installation-docker.rst:297
+#: ../content/installation/installation-docker.rst:302
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_ADMIN_SERVER``"
 msgstr "오토노_엔진스_커베로스_관리자_서버"
 
-#: ../content/installation/installation-docker.rst:296
+#: ../content/installation/installation-docker.rst:301
 #, fuzzy
 msgid "Kerberos Admin Server. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos 관리자 서버. etc/krb5.conf*에서 사용됩니다."
 
-#: ../content/installation/installation-docker.rst:301
+#: ../content/installation/installation-docker.rst:306
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN``"
 msgstr "오토_엔진스_커베로스_기본_도메인"
 
-#: ../content/installation/installation-docker.rst:300
+#: ../content/installation/installation-docker.rst:305
 #, fuzzy
 msgid "Kerberos Default Domain. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos 기본 도메인. etc/krb5.conf*에서 사용됩니다."
 
-#: ../content/installation/installation-docker.rst:305
+#: ../content/installation/installation-docker.rst:310
 #, fuzzy
 msgid "``NGINX_ENVSUBST_TEMPLATE_DIR``"
 msgstr "nginx_envsubst_template_dir"
 
-#: ../content/installation/installation-docker.rst:304
+#: ../content/installation/installation-docker.rst:309
 #, fuzzy
 msgid "Provide a custom Nginx config template dir. Gives extra flexibility."
 msgstr "사용자 정의 Nginx 구성 템플릿 디렉토리를 제공합니다. 추가적인 유연성을 제공합니다."
 
-#: ../content/installation/installation-docker.rst:307
+#: ../content/installation/installation-docker.rst:312
 #, fuzzy
 msgid "**Docker Compose settings**"
 msgstr "**도커 컴포즈 설정**"
 
-#: ../content/installation/installation-docker.rst:309
+#: ../content/installation/installation-docker.rst:314
 #, fuzzy
 msgid "These settings are used by Docker Compose directly."
 msgstr "이러한 설정은 Docker Compose에서 직접 사용합니다."
 
-#: ../content/installation/installation-docker.rst:314
+#: ../content/installation/installation-docker.rst:319
 #, fuzzy
 msgid "``COMPOSE_PROJECT_NAME``"
 msgstr "작성_프로젝트_이름"
 
-#: ../content/installation/installation-docker.rst:312
+#: ../content/installation/installation-docker.rst:317
 #, fuzzy
 msgid "The project name is used as the prefix for the volumes and containers. By default this prefix is set to ``otobo``, resulting in container names like ``otobo-web-1`` and ``otobo-db-1``. Change this name when you want to run more then one instance of OTOBO on the same server."
 msgstr "프로젝트 이름은 볼륨과 컨테이너의 접두사로 사용됩니다. 기본적으로 이 접두사는 `otobo`로 설정되어 있으므로 `otobo_web_1` 및 `otobo_db_1`과 같은 컨테이너 이름이 생성됩니다. 동일한 서버에서 두 개 이상의 OTOBO 인스턴스를 실행하려면 이 이름을 변경하세요."
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 msgid "``COMPOSE_PATH_SEPARATOR``"
 msgstr "작성_경로_구분자"
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 msgid "Separator for the value of ``COMPOSE_FILE``"
 msgstr "COMPOSE_FILE 값의 구분 기호"
 
-#: ../content/installation/installation-docker.rst:321
+#: ../content/installation/installation-docker.rst:326
 #, fuzzy
 msgid "``COMPOSE_FILE``"
 msgstr "COMPOSE_FILE"
 
-#: ../content/installation/installation-docker.rst:320
+#: ../content/installation/installation-docker.rst:325
 #, fuzzy
 msgid "Use ``docker-compose/otobo-base.yml`` as the base and add the wanted extension files. E.g., ``docker-compose/otobo-override-http.yml`` or ``docker-compose/otobo-override-https.yml``."
 msgstr "docker-compose/otobo-base.yml*을 기본으로 사용하고 원하는 확장자 파일을 추가합니다. 예: *docker-compose/otobo-override-http.yml* 또는 *docker-compose/otobo-override-https.yml*."
 
-#: ../content/installation/installation-docker.rst:325
+#: ../content/installation/installation-docker.rst:330
 #, fuzzy
 msgid "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``, ..."
 msgstr "오토보_이미지_오토보, 오토보_이미지_오토보_엘라스틱서치, 오토보_이미지_오토보_엔진스, ..."
 
-#: ../content/installation/installation-docker.rst:324
+#: ../content/installation/installation-docker.rst:329
 #, fuzzy
 msgid "Used for specifying alternative Docker images. Useful for testing local builds or for using updated versions of the images."
 msgstr "대체 Docker 이미지를 지정하는 데 사용됩니다. 로컬 빌드를 테스트하거나 업데이트된 버전의 이미지를 사용할 때 유용합니다."
 
-#: ../content/installation/installation-docker.rst:328
+#: ../content/installation/installation-docker.rst:333
 #, fuzzy
 msgid "Advanced Topics"
 msgstr "고급 주제"
 
-#: ../content/installation/installation-docker.rst:331
+#: ../content/installation/installation-docker.rst:336
 #, fuzzy
 msgid "Custom Configuration of the Nginx Webproxy"
 msgstr "nginx 웹프록시의 사용자 지정 구성"
 
-#: ../content/installation/installation-docker.rst:333
+#: ../content/installation/installation-docker.rst:338
 #, fuzzy
 msgid "The container ``otobo-nginx-1`` provides HTTPS support by running Nginx as a reverse proxy. The Docker image that runs in the container is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with a OTOBO specific configuration of Nginx."
 msgstr "컨테이너 ``otobo_nginx_1``은 Nginx를 리버스 프록시로 실행하여 HTTPS 지원을 제공합니다. 컨테이너에서 실행되는 Docker 이미지는 공식 Nginx Docker 이미지(https://hub.docker.com/_/nginx)와 Nginx의 OTOBO 전용 구성으로 구성됩니다."
 
-#: ../content/installation/installation-docker.rst:336
+#: ../content/installation/installation-docker.rst:341
 #, fuzzy
 msgid "The default OTOBO specific configuration can be found within the Docker image at ``/etc/nginx/template/otobo_nginx.conf.template``. Actually, this is only a template for the final configuration. There is a process, provided by the Nginx base image, that replaces the macros in the template with the corresponding environment variable. This process runs when the container starts up. In the default template file, the following macros are used:"
 msgstr "기본 OTOBO 관련 구성은 */etc/nginx/template/otobo_nginx.conf.template*의 Docker 이미지 내에서 찾을 수 있습니다. 사실 이것은 최종 구성을 위한 템플릿일 뿐입니다. 템플릿의 매크로를 해당 환경 변수로 대체하는 프로세스가 Nginx 기본 이미지에서 제공됩니다. 이 프로세스는 컨테이너가 시작될 때 실행됩니다. 기본 템플릿 파일에서는 다음 매크로가 사용됩니다:"
 
-#: ../content/installation/installation-docker.rst:343
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:348
+#: ../content/installation/installation-docker.rst:351
 #, fuzzy
 msgid "For configuring SSL."
 msgstr "SSL 구성용."
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 #, fuzzy
 msgid "``OTOBO_NGINX_WEB_HOST``"
 msgstr "오토보_엔진스_웹_호스트"
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 #, fuzzy
 msgid "The internally used HTTP host."
 msgstr "내부적으로 사용되는 HTTP 호스트입니다."
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 #, fuzzy
 msgid "``OTOBO_NGINX_WEB_PORT``"
 msgstr "오토보_엔진스_웹_포트"
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 #, fuzzy
 msgid "The internally used HTTP port."
 msgstr "내부적으로 사용되는 HTTP 포트입니다."
 
-#: ../content/installation/installation-docker.rst:354
+#: ../content/installation/installation-docker.rst:359
 #, fuzzy
 msgid "See step `4.` for how this configuration possibility was used for setting up the SSL certificate."
 msgstr "이 구성 가능성이 SSL 인증서 설정에 어떻게 사용되었는지는 `4.` 단계를 참조하세요."
 
-#: ../content/installation/installation-docker.rst:356
+#: ../content/installation/installation-docker.rst:361
 #, fuzzy
 msgid "When the standard macros are not sufficient, then the customization can go further. This can be achieved by replacing the default config template with a customized version. It is best practice to not simple change the configuration in the running container. Instead we first create a persistent volume that contains the custom config. Then we tell the ``otobo-nginx-1`` to mount the new volume and to use the customized configuration."
 msgstr "표준 매크로로 충분하지 않은 경우 사용자 지정으로 더 나아갈 수 있습니다. 기본 구성 템플릿을 사용자 지정 버전으로 바꾸면 됩니다. 실행 중인 컨테이너의 구성을 단순히 변경하지 않는 것이 가장 좋습니다. 대신 먼저 사용자 지정 구성이 포함된 퍼시스턴트 볼륨을 만듭니다. 그런 다음 *otobo_nginx_1*에 새 볼륨을 마운트하고 사용자 지정 구성을 사용하도록 지시합니다."
 
-#: ../content/installation/installation-docker.rst:362
+#: ../content/installation/installation-docker.rst:367
 #, fuzzy
 msgid "First comes generation of the new volume. In these sample commands, we use the existing template as a starting point."
 msgstr "먼저 새 볼륨을 생성합니다. 이 샘플 명령에서는 기존 템플릿을 시작점으로 사용합니다."
 
-#: ../content/installation/installation-docker.rst:388
+#: ../content/installation/installation-docker.rst:393
 #, fuzzy
 msgid "After setting up the volume, the adapted configuration must be activated. The new volume is set up in ``docker-compose/otobo-nginx-custom-config.yml``. Therefore, this file must be added to ``COMPOSE_FILE``. Then Nginx must be directed to use the new configuration. This is done by setting ``NGINX_ENVSUBST_TEMPLATE_DIR`` in the environment. In order to achieve this, uncomment or add the following lines in your ``.env`` file:"
 msgstr "볼륨을 설정한 후에는 조정된 구성을 활성화해야 합니다. 새 볼륨은 *docker-compose/otobo-nginx-custom-config.yml*에 설정됩니다. 따라서 이 파일을 **COMPOSE_FILE**에 추가해야 합니다. 그런 다음 Nginx가 새 구성을 사용하도록 지시해야 합니다. 이는 환경에서 **NGINX_ENVSUBST_TEMPLATE_DIR**을 설정하여 수행됩니다. 이렇게 하려면 *.env* 파일에서 다음 줄의 주석을 제거하거나 추가합니다:"
 
-#: ../content/installation/installation-docker.rst:400
+#: ../content/installation/installation-docker.rst:405
 #, fuzzy
 msgid "The changed Docker Compose configuration can be inspected with:"
 msgstr "변경된 Docker Compose 구성은 다음과 같이 검사할 수 있습니다:"
 
-#: ../content/installation/installation-docker.rst:406
+#: ../content/installation/installation-docker.rst:411
 #, fuzzy
 msgid "Finally, the containers can be started again:"
 msgstr "마지막으로 컨테이너를 다시 시작할 수 있습니다:"
 
-#: ../content/installation/installation-docker.rst:412
+#: ../content/installation/installation-docker.rst:417
 #, fuzzy
 msgid "See also the section \"Using environment variables in Nginx configuration (new in 1.19)\" in https://hub.docker.com/_/nginx."
 msgstr "https://hub.docker.com/_/nginx 의 \"nginx 구성에서 환경 변수 사용(1.19의 새로운 기능)\" 섹션도 참조하세요."
 
-#: ../content/installation/installation-docker.rst:415
+#: ../content/installation/installation-docker.rst:420
 #, fuzzy
 msgid "Single Sign-On Using the Kerberos Support in Nginx"
 msgstr "Nginx에서 Kerberos 지원을 사용한 싱글 사인온"
 
-#: ../content/installation/installation-docker.rst:417
+#: ../content/installation/installation-docker.rst:422
 #, fuzzy
 msgid "**Short Description**"
 msgstr "**간단한 설명**"
 
-#: ../content/installation/installation-docker.rst:419
+#: ../content/installation/installation-docker.rst:424
 #, fuzzy
 msgid "For enabling authentication with Kerberos please base you ``.env`` file on the sample file ``.docker_compose_env_https_kerberos``. This activates the special configuration in ``docker-compose/otobo-override-https-kerberos.yml``. This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings as environment values to the running Nginx container. These settings are listed above."
 msgstr "Kerberos로 인증을 활성화하려면 샘플 파일 *.docker_compose_env_https_kerberos*를 기반으로 *.env 파일*을 만드세요. 이렇게 하면 *docker-compose/otobo-override-https-kerberos.yml*의 특수 구성이 활성화됩니다. 이 Docker 구성 구성 파일은 Kerberos를 지원하는 Nginx 이미지를 선택합니다. 또한 실행 중인 Nginx 컨테이너에 환경 값으로 일부 Kerberos 관련 설정을 전달합니다. 이러한 설정은 위에 나열되어 있습니다."
 
-#: ../content/installation/installation-docker.rst:425
+#: ../content/installation/installation-docker.rst:430
 #, fuzzy
 msgid "As usual, the values for these setting can be specified in the ``.env`` file. Most of these setting will be used as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-11_0/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container. In the running container the adapted configuration will be available in ``/etc/krb5.conf``."
 msgstr "평소와 마찬가지로 이러한 설정 값은 *.env* 파일에 지정할 수 있습니다. 이 설정의 대부분은 https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template 템플릿의 대체 값으로 사용됩니다. 대체는 컨테이너를 시작하는 동안 이루어집니다. 실행 중인 컨테이너에서는 */etc/krb5.conf*에서 변경된 설정을 사용할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:430
+#: ../content/installation/installation-docker.rst:435
 #, fuzzy
 msgid "Providing an user specific ``/etc/krb5.conf`` file is still possible. This can be done by mounting a volume that overrides ``/etc/krb5.conf`` in the container. This can be achieved by setting ``OTOBO_NGINX_KERBEROS_CONFIG`` in the ``.env`` file and by activating the mount directive in ``docker-compose/otobo-override-https-kerberos.yml``."
 msgstr "사용자별 */etc/krb5.conf* 파일을 제공하는 것도 여전히 가능합니다. 이는 컨테이너에 */etc/krb5.conf*를 재정의하는 볼륨을 마운트하여 수행할 수 있습니다. 이는 *.env* 파일에서 OTOBO_NGINX_KERBEROS_CONFIG를 설정하고 *docker-compose/otobo-override-https-kerberos.yml*에서 마운트 디렉토브를 활성화하여 달성할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:434
+#: ../content/installation/installation-docker.rst:439
 #, fuzzy
 msgid "``/etc/krb5.keytab`` is always installation specific and must therefore always be mounted from the host system."
 msgstr "*/etc/krb5.keytab*은 항상 설치에 따라 다르므로 항상 호스트 시스템에서 마운트해야 합니다."
 
-#: ../content/installation/installation-docker.rst:436
+#: ../content/installation/installation-docker.rst:441
+msgid "Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication. See also ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:444
 #, fuzzy
 msgid "**Kerberos SSO Installation Tutorial**"
 msgstr "**케르베로스 SSO 설치 튜토리얼**"
 
-#: ../content/installation/installation-docker.rst:438
+#: ../content/installation/installation-docker.rst:446
 msgid ":doc:`Kerberos Single Sign On <../sso-kerberos>`"
 msgstr ""
 
-#: ../content/installation/installation-docker.rst:441
+#: ../content/installation/installation-docker.rst:449
 #, fuzzy
 msgid "Choosing non-standard Ports"
 msgstr "비표준 포트 선택"
 
-#: ../content/installation/installation-docker.rst:443
+#: ../content/installation/installation-docker.rst:451
 #, fuzzy
 msgid "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports are already used by other services. In these cases the default ports can be overridden by specifying ``OTOBO_WEB_HTTP_PORT`` and ``OTOBO_WEB_HTTPS_PORT`` in the ``.env`` file."
 msgstr "기본적으로 포트 443과 80은 각각 HTTPS와 HTTP를 지원합니다. 이 포트 중 하나 또는 두 개를 다른 서비스에서 이미 사용하고 있는 경우가 있을 수 있습니다. 이러한 경우 *.env* 파일에 `OTOBO_WEB_HTTP_PORT` 및 `OTOBO_WEB_HTTPS_PORT`를 지정하여 기본 포트를 재정의할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:448
+#: ../content/installation/installation-docker.rst:456
 #, fuzzy
 msgid "Skip Startup of Specific Services"
 msgstr "특정 서비스 시작 건너뛰기"
 
-#: ../content/installation/installation-docker.rst:450
+#: ../content/installation/installation-docker.rst:458
 #, fuzzy
 msgid "The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases where one or more of these services are not needed. The prime example is when the database should not run as a Docker service, but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services. But the option ``--scale`` can be abused for this purpose. So for an installation with an external database the following command can be used:"
 msgstr "현재 Docker 구성 설정은 HTTPS가 활성화된 경우 5번, 6번 서비스부터 시작합니다. 그러나 이러한 서비스 중 하나 이상이 필요하지 않은 유효한 사용 사례가 있습니다. 대표적인 예는 데이터베이스를 Docker 서비스가 아닌 외부 데이터베이스로 실행해야 하는 경우입니다. 안타깝게도 특정 서비스를 건너뛰기 위한 전용 Docker 구성 옵션은 없습니다. 그러나 `--규모` 옵션은 이러한 목적으로 악용될 수 있습니다. 따라서 외부 데이터베이스가 있는 설치의 경우 다음 명령을 사용할 수 있습니다:"
 
-#: ../content/installation/installation-docker.rst:461
+#: ../content/installation/installation-docker.rst:469
 #, fuzzy
 msgid "Of course the same goal can also be achieved by editing the file ``docker-compose/otobo-base.yml`` and removing the relevant service definitions."
 msgstr "물론 *docker-compose/otobo-base.yml* 파일을 편집하고 관련 서비스 정의를 제거하여 동일한 목표를 달성할 수도 있습니다."
 
-#: ../content/installation/installation-docker.rst:464
+#: ../content/installation/installation-docker.rst:472
 #, fuzzy
 msgid "Prepare Offline Installation"
 msgstr "오프라인 설치 준비"
 
-#: ../content/installation/installation-docker.rst:466
+#: ../content/installation/installation-docker.rst:474
 #, fuzzy
 #| msgid "Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__ on a system that has internet access and where docker is installed. Then navigate to the following folder *otobo-docker/docker-compose*."
 msgid "Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo>`_ on a system that has internet access and where docker is installed. Then navigate to the following folder ``otobo-docker/docker-compose``."
 msgstr "인터넷에 접속할 수 있고 도커가 설치된 시스템에서 '최신 버전의 `otobo-docker <https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__'를 다운로드하세요. 그런 다음 다음 폴더 *otobo-docker/docker-compose*로 이동합니다."
 
-#: ../content/installation/installation-docker.rst:473
+#: ../content/installation/installation-docker.rst:481
 #, fuzzy
 msgid "Now you can run the following command to download all Docker images from a specific file, in my example I use the ``otobo-base.yml``."
 msgstr "이제 다음 명령을 실행하여 특정 파일에서 모든 Docker 이미지를 다운로드할 수 있습니다(예제에서는 *otobo-base.yml*을 사용했습니다)."
 
-#: ../content/installation/installation-docker.rst:479
+#: ../content/installation/installation-docker.rst:487
 #, fuzzy
 #| msgid "After that, the images (.docker) are located in the docker-compose folder and can be uploaded to the target system via e.g `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
 msgid "After that, the images (``.docker``) are located in the ``docker-compose`` folder and can be uploaded to the target system via, e.g, `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
 msgstr "그 후 이미지(.docker)는 docker-compose 폴더에 있으며 `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__를 통해 대상 시스템에 업로드할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:481
+#: ../content/installation/installation-docker.rst:489
 #, fuzzy
 msgid "On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one. In the following example the Mariadb image is imported:"
 msgstr "오프라인 대상 시스템에서 도커 이미지가 저장된 폴더로 이동합니다. 그리고 다음 명령을 입력하여 이미지를 하나씩 가져옵니다."
 
-#: ../content/installation/installation-docker.rst:490
+#: ../content/installation/installation-docker.rst:498
 #, fuzzy
 msgid "Customizing OTOBO Docker Compose"
 msgstr "오토보 도커 컴포즈 사용자 지정하기"
 
-#: ../content/installation/installation-docker.rst:492
+#: ../content/installation/installation-docker.rst:500
 #, fuzzy
 msgid "Instead of editing the files under ``docker-compose/*`` and risking to overwrite your own options with the `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the ``otobo-docker`` folder, it is advisable to create an extra YAML file where the specific services are overwritten with additional options."
 msgstr "도커-컴포즈/*에서 파일을 편집하고 otobo-docker 폴더의 `다음 업데이트 <https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_로 자신의 옵션을 덮어쓰는 위험을 감수하는 대신, 특정 서비스를 추가 옵션으로 덮어쓰는 추가 YAML 파일을 생성하는 것을 권장합니다."
 
-#: ../content/installation/installation-docker.rst:494
+#: ../content/installation/installation-docker.rst:502
 #, fuzzy
 msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create an extra docker compose file that looks like:"
 msgstr "일반적인 예는 외부에서 3306 포트를 통해 데이터베이스 컨테이너에 액세스할 수 있도록 하는 것입니다. 이를 위해 다음과 같은 추가 도커 컴포즈 파일을 만들 수 있습니다:"
 
-#: ../content/installation/installation-docker.rst:505
+#: ../content/installation/installation-docker.rst:513
 #, fuzzy
 msgid "Now we have to tell Docker Compose to include our new file. For this you have to add your YAML file to the ``COMPOSE_FILE`` variable in the ``.env`` file, for example:"
 msgstr "이제 *docker-compose*에 새 파일을 포함하도록 지시해야 합니다. 이를 위해 예를 들어 *.env* 파일의 *COMPOSE_FILE* 변수에 YAML 파일을 추가해야 합니다:"
 
-#: ../content/installation/installation-docker.rst:512
+#: ../content/installation/installation-docker.rst:520
 #, fuzzy
 msgid "Now we can use ``docker compose`` to recreate our container"
 msgstr "이제 *docker-compose*를 사용하여 컨테이너를 다시 생성할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:519
+#: ../content/installation/installation-docker.rst:527
 #, fuzzy
 msgid "With this procedure you can customize any service or volumes."
 msgstr "이 절차를 통해 모든 서비스 또는 볼륨을 사용자 지정할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:522
+#: ../content/installation/installation-docker.rst:530
 #, fuzzy
 msgid "Customizing the OTOBO Docker Image"
 msgstr "오토보 도커 이미지 사용자 지정하기"
 
-#: ../content/installation/installation-docker.rst:524
+#: ../content/installation/installation-docker.rst:532
 #, fuzzy
 msgid "Customization can be done in the external volume ``otobo_opt_otobo`` which corresponds to the directory ``/opt/otobo`` in the Docker image. This works, e.g., for local Perl modules which can be installed into ``/opt/otobo/local``. Here is an example that installs the not very useful CPAN module `Acme::123`."
 msgstr "Docker 이미지의 */opt/otobo* 디렉토리에 해당하는 외부 볼륨 *otobo_opt_otobo*에서 많은 사용자 정의 작업을 수행할 수 있습니다. 예를 들어 */opt/otobo/local*에 설치할 수 있는 로컬 Perl 모듈의 경우 이 기능을 사용할 수 있습니다. 다음은 그다지 유용하지 않은 CPAN 모듈 `Acme::123`을 설치하는 예제입니다."
 
-#: ../content/installation/installation-docker.rst:538
+#: ../content/installation/installation-docker.rst:546
 #, fuzzy
 msgid "The nice thing of this approach is that the Docker image itself does not have to be modified."
 msgstr "이 접근 방식의 좋은 점은 Docker 이미지 자체를 수정할 필요가 없다는 것입니다."
 
-#: ../content/installation/installation-docker.rst:540
+#: ../content/installation/installation-docker.rst:548
 #, fuzzy
 msgid "Installing extra Debian packages is a little bit trickier. One approach is to create a custom ``Dockerfile`` and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice write-up of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 msgstr "추가 데비안 패키지를 설치하는 것은 조금 더 까다롭습니다. 한 가지 방법은 사용자 지정 *Dockerfile*을 생성하고 OTOBO 이미지를 기본 이미지로 사용하는 것입니다. 또 다른 접근 방식은 실행 중인 컨테이너에서 직접 수정된 이미지를 생성하는 것입니다. 이 작업은 `docker commit`(https://docs.docker.com/engine/reference/commandline/commit/) 명령으로 수행할 수 있습니다. 이 프로세스에 대한 자세한 설명은 https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image 에서 확인할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:546
+#: ../content/installation/installation-docker.rst:554
 #, fuzzy
 msgid "But for the latter approach there are two hurdles to overcome. First, the image ``otobo`` runs per default as the user ``otobo`` with the UID ``1000``. The problem is that the user ``otobo`` is not allowed to install system packages. Thus, the first part of the solution is to pass the option ``--user root`` when running the image. However the second hurdle is that the default entrypoint script ``/opt/otobo_install/entrypoint.sh`` exits immediately when it is called as ``root``. The reasoning behind that design decision is that running inadvertently as ``root`` should be discouraged. So, the second part of the solution is to specify a different entrypoint script that does not care who the caller is. This leaves us with following example commands, where we add fortune cookies to OTOBO:"
 msgstr "그러나 후자의 접근 방식에는 극복해야 할 두 가지 장애물이 있습니다. 첫째, 이미지 *otobo*는 기본적으로 UID 1000의 사용자 *otobo*로 실행됩니다. 문제는 *otobo* 사용자는 시스템 패키지를 설치할 수 없다는 것입니다. 따라서 해결 방법의 첫 번째 부분은 이미지를 실행할 때 `--사용자 루트` 옵션을 전달하는 것입니다. 그러나 두 번째 장애물은 기본 진입점 스크립트 */opt/otobo_install/entrypoint.sh*가 *root*로 호출될 때 즉시 종료된다는 것입니다. 이러한 설계 결정의 배경에는 실수로 *root*로 실행되는 것을 방지해야 한다는 이유가 있습니다. 따라서 해결책의 두 번째 부분은 호출자가 누구인지 상관하지 않는 다른 진입점 스크립트를 지정하는 것입니다. 이렇게 하면 다음과 같은 예제 명령이 남게 되며, 여기서 오토보에 포춘 쿠키를 추가합니다:"
 
-#: ../content/installation/installation-docker.rst:555
+#: ../content/installation/installation-docker.rst:563
 #, fuzzy
 msgid "Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:"
 msgstr "아직 태그가 없는 경우 태그가 지정된 오토보 이미지를 가져와 이미지에 포춘쿠키가 이미 제공되고 있는지 확인합니다:"
 
-#: ../content/installation/installation-docker.rst:562
+#: ../content/installation/installation-docker.rst:570
 #, fuzzy
 msgid "Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive session as the user ``root``:"
 msgstr "원본 오토보 이미지를 실행하는 네임드 컨테이너에 포춘 쿠키를 추가합니다. 이 작업은 *root* 사용자로 대화형 세션에서 수행됩니다:"
 
-#: ../content/installation/installation-docker.rst:570
+#: ../content/installation/installation-docker.rst:578
 #, fuzzy
 msgid "Create an image from the stopped container and give it a name. Take into account that the default user and entrypoint script must be restored:"
 msgstr "중지된 컨테이너에서 이미지를 만들고 이름을 지정합니다. 기본 사용자 및 진입점 스크립트를 복원해야 한다는 점을 고려하세요:"
 
-#: ../content/installation/installation-docker.rst:577
+#: ../content/installation/installation-docker.rst:585
 #, fuzzy
 msgid "Finally we can doublecheck:"
 msgstr "마지막으로 다시 한 번 확인합니다:"
 
-#: ../content/installation/installation-docker.rst:586
+#: ../content/installation/installation-docker.rst:594
 #, fuzzy
 msgid "The modified image can be specified in your ``.env`` file and then be used for fun and profit."
 msgstr "수정된 이미지는 *.env* 파일에 지정한 다음 재미와 수익을 위해 사용할 수 있습니다."
 
-#: ../content/installation/installation-docker.rst:589
+#: ../content/installation/installation-docker.rst:597
 #, fuzzy
 msgid "Building Local Images"
 msgstr "로컬 이미지 구축"
 
-#: ../content/installation/installation-docker.rst:593
+#: ../content/installation/installation-docker.rst:601
 #, fuzzy
 msgid "Building Docker images locally is usually only needed during development. Other use cases are when more current base images should be used for an installation or when extra functionality must be added to the images."
 msgstr "로컬에서 Docker 이미지를 빌드하는 것은 일반적으로 개발 중에만 필요합니다. 다른 사용 사례는 설치에 최신 기본 이미지를 사용해야 하거나 이미지에 추가 기능을 추가해야 하는 경우입니다."
 
-#: ../content/installation/installation-docker.rst:596
+#: ../content/installation/installation-docker.rst:604
 #, fuzzy
 msgid "The Docker files needed for creating Docker images locally are part of the git repository https://github.com/RotherOSS/otobo:"
 msgstr "로컬에서 Docker 이미지를 만드는 데 필요한 Docker 파일은 https://github.com/RotherOSS/otobo:"
 
-#: ../content/installation/installation-docker.rst:598
+#: ../content/installation/installation-docker.rst:606
 #, fuzzy
 msgid "``otobo.web.dockerfile``"
 msgstr "*otobo.web.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:599
+#: ../content/installation/installation-docker.rst:607
 #, fuzzy
 msgid "``otobo.nginx.dockerfile``"
 msgstr "*otobo.nginx.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:600
+#: ../content/installation/installation-docker.rst:608
 #, fuzzy
 msgid "``otobo.elasticsearch.dockerfile``"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:602
+#: ../content/installation/installation-docker.rst:610
 #, fuzzy
 msgid "The script for the actual creation of the images is ``bin/docker/build_docker_images.sh``."
 msgstr "실제 이미지 생성을 위한 스크립트는 *bin/docker/build_docker_images.sh*입니다."
 
-#: ../content/installation/installation-docker.rst:614
+#: ../content/installation/installation-docker.rst:622
 #, fuzzy
 msgid "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file ``RELEASE``."
 msgstr "로컬로 빌드된 Docker 이미지는 *RELEASE* 파일에 설정된 버전을 사용하여 ``local-<OTOBO_VERSION>``으로 태그가 지정됩니다."
 
-#: ../content/installation/installation-docker.rst:616
+#: ../content/installation/installation-docker.rst:624
 #, fuzzy
 msgid "After building the local images, one can return to the ``docker-compose`` directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in the ``.env`` file."
 msgstr "로컬 이미지를 빌드한 후 *docker-compose* 디렉토리로 돌아갈 수 있습니다. 로컬 이미지는 *.env*에서 ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``를 설정하여 선언합니다."
 
-#: ../content/installation/installation-docker.rst:620
+#: ../content/installation/installation-docker.rst:628
 #, fuzzy
 msgid "Automatic Installation"
 msgstr "자동 설치"
 
-#: ../content/installation/installation-docker.rst:622
+#: ../content/installation/installation-docker.rst:630
 #, fuzzy
 msgid "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is useful for running the test suite on a fresh installation."
 msgstr "http://yourIPorFQDN/otobo/installer.pl 으로 이동하는 대신 바로 가기를 사용할 수 있습니다. 이 방법은 새로 설치할 때 테스트 스위트를 실행하는 데 유용합니다."
 
-#: ../content/installation/installation-docker.rst:627
+#: ../content/installation/installation-docker.rst:635
 #, fuzzy
 msgid "``docker compose down -v`` will remove all previous setup and data."
 msgstr "'docker-compose down -v'는 이전의 모든 설정과 데이터를 제거합니다."
 
-#: ../content/installation/installation-docker.rst:642
+#: ../content/installation/installation-docker.rst:650
 #, fuzzy
 msgid "List of Useful Commands"
 msgstr "유용한 명령어 목록"
 
-#: ../content/installation/installation-docker.rst:644
+#: ../content/installation/installation-docker.rst:652
 #, fuzzy
 msgid "**Docker**"
 msgstr "**도커**"
 
-#: ../content/installation/installation-docker.rst:646
+#: ../content/installation/installation-docker.rst:654
 #, fuzzy
 msgid "``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)"
 msgstr "'``도커 시스템 프룬 -a`` 시스템 정리(사용하지 않는 모든 이미지, 컨테이너, 볼륨, 네트워크 제거)"
 
-#: ../content/installation/installation-docker.rst:647
+#: ../content/installation/installation-docker.rst:655
 #, fuzzy
 msgid "``docker version`` show version"
 msgstr "``도커 버전`` 버전 표시"
 
-#: ../content/installation/installation-docker.rst:648
+#: ../content/installation/installation-docker.rst:656
 #, fuzzy
 msgid "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr "``docker build --태그 오토보 --파일 = 오토보.웹.도커파일 .`` 이미지를 빌드합니다."
 
-#: ../content/installation/installation-docker.rst:649
+#: ../content/installation/installation-docker.rst:657
 #, fuzzy
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``도커 실행 --publish 80:5000 오토보`` 새 이미지를 실행합니다."
 
-#: ../content/installation/installation-docker.rst:650
+#: ../content/installation/installation-docker.rst:658
 #, fuzzy
 msgid "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` 새 이미지에 로그인합니다."
 
-#: ../content/installation/installation-docker.rst:651
+#: ../content/installation/installation-docker.rst:659
 #, fuzzy
 msgid "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that in case entrypoint.sh is broken"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` entrypoint.sh가 손상된 경우 시도해 보십시오."
 
-#: ../content/installation/installation-docker.rst:652
+#: ../content/installation/installation-docker.rst:660
 #, fuzzy
 msgid "``docker ps`` show running images"
 msgstr "``도커 ps`` 실행 이미지 표시"
 
-#: ../content/installation/installation-docker.rst:653
+#: ../content/installation/installation-docker.rst:661
 #, fuzzy
 msgid "``docker images`` show available images"
 msgstr "'도커 이미지'는 사용 가능한 이미지를 표시합니다."
 
-#: ../content/installation/installation-docker.rst:654
+#: ../content/installation/installation-docker.rst:662
 #, fuzzy
 msgid "``docker volume ls`` list volumes"
 msgstr "'``도커 볼륨 ls`` 볼륨 나열"
 
-#: ../content/installation/installation-docker.rst:655
+#: ../content/installation/installation-docker.rst:663
 #, fuzzy
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr "``도커 볼륨 검사 오토보_옵트_오토보`` 볼륨 검사하기"
 
-#: ../content/installation/installation-docker.rst:656
+#: ../content/installation/installation-docker.rst:664
 #, fuzzy
 msgid "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 msgstr "``도커 볼륨 검사 --형식 '{{ .마운트포인트 }}' otobo_nginx_ssl`` 볼륨 마운트포인트 가져오기"
 
-#: ../content/installation/installation-docker.rst:657
+#: ../content/installation/installation-docker.rst:665
 #, fuzzy
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``도커 볼륨 rm tmp_volume`` 볼륨을 제거합니다."
 
-#: ../content/installation/installation-docker.rst:658
+#: ../content/installation/installation-docker.rst:666
 #, fuzzy
 msgid "``docker inspect <container>`` inspect a container"
 msgstr "``도커 검사 <컨테이너>`` 컨테이너 검사"
 
-#: ../content/installation/installation-docker.rst:659
+#: ../content/installation/installation-docker.rst:667
 #, fuzzy
 msgid "``docker save --output otobo.tar otobo:latest-11_0 && tar -tvf otobo.tar`` list files in an image"
 msgstr "``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` 이미지에 파일을 나열합니다."
 
-#: ../content/installation/installation-docker.rst:660
+#: ../content/installation/installation-docker.rst:668
 #, fuzzy
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``도커 실행 -it nginx-server nginx -s 재로드`` nginx 재로드"
 
-#: ../content/installation/installation-docker.rst:662
+#: ../content/installation/installation-docker.rst:670
 #, fuzzy
 msgid "**Docker Compose**"
 msgstr "**도커 컴포즈**"
 
-#: ../content/installation/installation-docker.rst:664
+#: ../content/installation/installation-docker.rst:672
 #, fuzzy
 msgid "``docker compose config`` check and show the configuration"
 msgstr "``docker-compose config`` 구성을 확인하고 표시합니다."
 
-#: ../content/installation/installation-docker.rst:665
+#: ../content/installation/installation-docker.rst:673
 #, fuzzy
 msgid "``docker compose ps`` show the running containers"
 msgstr "``docker-compose ps``는 실행 중인 컨테이너를 표시합니다."
 
-#: ../content/installation/installation-docker.rst:666
+#: ../content/installation/installation-docker.rst:674
 #, fuzzy
 msgid "``docker compose exec nginx nginx -s reload`` reload nginx"
 msgstr "``도커-컴포즈 실행 nginx -s 재로드`` 재로드 nginx"
 
-#: ../content/installation/installation-docker.rst:669
+#: ../content/installation/installation-docker.rst:677
 msgid "Resources"
 msgstr "자원"
 
-#: ../content/installation/installation-docker.rst:671
+#: ../content/installation/installation-docker.rst:679
 #, fuzzy
 msgid "Finally, here is a highly subjective collection of links."
 msgstr "마지막으로 지극히 주관적인 링크 모음입니다."
 
-#: ../content/installation/installation-docker.rst:673
+#: ../content/installation/installation-docker.rst:681
 #, fuzzy
 msgid "**General info and tutorials**"
 msgstr "**일반 정보 및 튜토리얼**"
 
-#: ../content/installation/installation-docker.rst:675
+#: ../content/installation/installation-docker.rst:683
 #, fuzzy
 msgid "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 msgstr "`Perl Maven: Docker에서 Perl 시작하기 <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
-#: ../content/installation/installation-docker.rst:676
+#: ../content/installation/installation-docker.rst:684
 #, fuzzy
 msgid "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
 msgstr "도커파일 모범 사례 <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
 
-#: ../content/installation/installation-docker.rst:677
+#: ../content/installation/installation-docker.rst:685
 #, fuzzy
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`환경 <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
-#: ../content/installation/installation-docker.rst:679
+#: ../content/installation/installation-docker.rst:687
 #, fuzzy
 msgid "**Tips and hints**"
 msgstr "**팁과 힌트**"
 
-#: ../content/installation/installation-docker.rst:681
+#: ../content/installation/installation-docker.rst:689
 #, fuzzy
 msgid "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 msgstr "`사용하지 않는 이미지 정리 <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
-#: ../content/installation/installation-docker.rst:682
+#: ../content/installation/installation-docker.rst:690
 #, fuzzy
 msgid "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
 msgstr "`도커 호스트 IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
 
-#: ../content/installation/installation-docker.rst:683
+#: ../content/installation/installation-docker.rst:691
 #, fuzzy
 msgid "`Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu>`_"
 msgstr "`자체 서명 인증서 <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 
-#: ../content/installation/installation-docker.rst:685
+#: ../content/installation/installation-docker.rst:693
 #, fuzzy
 msgid "**Troubleshooting**"
 msgstr "**문제 해결**"
 
-#: ../content/installation/installation-docker.rst:687
+#: ../content/installation/installation-docker.rst:695
 #, fuzzy
 msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 msgstr "`도커 캐시 무효화 <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 
-#: ../content/installation/installation-docker.rst:688
+#: ../content/installation/installation-docker.rst:696
 #, fuzzy
 msgid "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 msgstr "`사용 tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 
-#: ../content/installation/installation-docker.rst:689
+#: ../content/installation/installation-docker.rst:697
 #, fuzzy
 msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 msgstr "`실패한 빌드 검사 <https://pythonspeed.com/articles/debugging-docker-build/>`_"
@@ -3819,102 +3832,102 @@ msgstr "먼저 이전 파일인 ``/opt/otobo-docker/.env``를 ``.env.tmp``로 �
 msgid "Now copy your existing configuration options to the new ``.env`` file (at least ``OTOBO_DB_ROOT_PASSWORD``, ``OTOBO_NGINX_SSL_CERTIFICATE``, ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``) and insert the following Kerberos settings:"
 msgstr "이제 기존 구성 옵션을 새 .env 파일에 복사하고(최소한 OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY) 다음 Kerberos 설정을 삽입합니다:"
 
-#: ../content/sso-kerberos.rst:124
+#: ../content/sso-kerberos.rst:126
 #, fuzzy
 msgid "Start OTOBO"
 msgstr "오토보 시작"
 
-#: ../content/sso-kerberos.rst:126
+#: ../content/sso-kerberos.rst:128
 #, fuzzy
 msgid "After the initial Kerberos configuration we start OTOBO again:"
 msgstr "초기 Kerberos 구성이 끝나면 OTOBO를 다시 시작합니다:"
 
-#: ../content/sso-kerberos.rst:135
+#: ../content/sso-kerberos.rst:137
 #, fuzzy
 msgid "Tell OTOBO to use the Kerberos-Authentication"
 msgstr "OTOBO에 Kerberos 인증을 사용하도록 지시합니다."
 
-#: ../content/sso-kerberos.rst:137
+#: ../content/sso-kerberos.rst:139
 #, fuzzy
 msgid "In case you have configured AD-Authentication, de-activate it (e.g. by commenting out the respective lines from your Kernel/Config.pm). The authentication will not take place via LDAP anymore."
 msgstr "AD 인증을 구성한 경우, 이를 비활성화합니다(예: 커널/Config.pm에서 해당 줄을 주석 처리하여 비활성화). 인증은 더 이상 LDAP를 통해 이루어지지 않습니다."
 
-#: ../content/sso-kerberos.rst:140
+#: ../content/sso-kerberos.rst:142
 #, fuzzy
 msgid "To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
 msgstr "Kerberos-Authentication을 사용하려면 Kernel/Config/Defaults.pm에서 Kerberos-라인을 가져와 Kernel/Config.pm에 넣으세요(예: 이 라인이 작동할 수 있습니다):"
 
-#: ../content/sso-kerberos.rst:153
+#: ../content/sso-kerberos.rst:159
 #, fuzzy
 msgid "Configure Browser to Understand Kerberos SSO"
 msgstr "Kerberos SSO를 이해하도록 브라우저 구성하기"
 
-#: ../content/sso-kerberos.rst:155
+#: ../content/sso-kerberos.rst:161
 #, fuzzy
 msgid "For SSO to work, the browser must be configured accordingly."
 msgstr "SSO가 작동하려면 브라우저를 적절히 구성해야 합니다."
 
-#: ../content/sso-kerberos.rst:157
+#: ../content/sso-kerberos.rst:163
 #, fuzzy
 msgid "**Chrome, Edge, Internet Explorer, etc.**"
 msgstr "크롬, 엣지, 인터넷 익스플로러 등****"
 
-#: ../content/sso-kerberos.rst:159
+#: ../content/sso-kerberos.rst:165
 #, fuzzy
 msgid "Add page under local or trusted pages and activate 'Integrated Windows Authentication' (Internet Options)."
 msgstr "로컬 또는 신뢰할 수 있는 페이지 아래에 페이지를 추가하고 '통합 Windows 인증'(인터넷 옵션)을 활성화합니다."
 
-#: ../content/sso-kerberos.rst:161
+#: ../content/sso-kerberos.rst:167
 #, fuzzy
 msgid "**Firefox**"
 msgstr "**Firefox**"
 
-#: ../content/sso-kerberos.rst:163
+#: ../content/sso-kerberos.rst:169
 #, fuzzy
 msgid "Enter \"about:config\" in the firefox address line"
 msgstr "Firefox 주소 줄에 \"about:config\"를 입력합니다."
 
-#: ../content/sso-kerberos.rst:165
+#: ../content/sso-kerberos.rst:171
 #, fuzzy
 msgid "and change the following settings:"
 msgstr "를 클릭하고 다음 설정을 변경합니다:"
 
-#: ../content/sso-kerberos.rst:174
+#: ../content/sso-kerberos.rst:180
 #, fuzzy
 msgid "Debugging and Problems"
 msgstr "디버깅 및 문제"
 
-#: ../content/sso-kerberos.rst:176
+#: ../content/sso-kerberos.rst:182
 #, fuzzy
 msgid "If the Kerberos SSO does not work, please check first if the NGINX container is started:"
 msgstr "Kerberos SSO가 작동하지 않는 경우 먼저 NGINX 컨테이너가 시작되었는지 확인하세요:"
 
-#: ../content/sso-kerberos.rst:184
+#: ../content/sso-kerberos.rst:190
 #, fuzzy
 msgid "In the next step please check the NGINX logs for more information:"
 msgstr "다음 단계에서 NGINX 로그를 확인하여 자세한 정보를 확인하세요:"
 
-#: ../content/sso-kerberos.rst:192
+#: ../content/sso-kerberos.rst:198
 #, fuzzy
 msgid "If NGINX is running, please login into the NGINX Container and check all needed files:"
 msgstr "NGINX가 실행 중인 경우 NGINX 컨테이너에 로그인하여 필요한 모든 파일을 확인하세요:"
 
-#: ../content/sso-kerberos.rst:207
+#: ../content/sso-kerberos.rst:213
 #, fuzzy
 msgid "Kerberos Debugging"
 msgstr "Kerberos 디버깅"
 
-#: ../content/sso-kerberos.rst:214
+#: ../content/sso-kerberos.rst:220
 #, fuzzy
 msgid "Now you are able to debug the Kerberos settings. Examples:"
 msgstr "이제 Kerberos 설정을 디버깅할 수 있습니다. 예시:"
 
-#: ../content/sso-kerberos.rst:230
+#: ../content/sso-kerberos.rst:236
 #, fuzzy
 msgid "In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use separate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your ``Kernel/Config.pm``)."
 msgstr "인증은 작동하지만 상담원이 아직 데이터베이스에 없는 문제가 발생하는 경우 동기화(구현된 경우)가 작동하지 않을 수 있습니다. 오류 52e(첫 번째 바인딩 실패)는 검색 사용자에 문제가 있음을 나타냅니다. 이 오류는 AD 동기화와 SSO 사용자로 동일한 사용자를 사용하는 경우에 발생합니다. 이 경우 별도의 AD 사용자를 사용하세요. 키탭을 새로 만들지 않고 위에서 언급한 단계를 반복하지 않으려면 AD 동기화에서 사용할 새 사용자를 만드는 것이 더 쉬울 수 있습니다(아마도 커널/Config.pm에서)."
 
-#: ../content/sso-kerberos.rst:236
+#: ../content/sso-kerberos.rst:242
 #, fuzzy
 msgid "In case SSO is not working properly, make sure: * the user for which it is not working is in Active Directory * the system has to be in the domain * it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO')"
 msgstr "SSO가 제대로 작동하지 않는 경우 다음 사항을 확인하세요: * 작동하지 않는 사용자가 Active Directory에 있는지 * 시스템이 도메인에 있어야 하는지 * 신뢰할 수 있는 페이지로 제대로 명시되어 있는지('Kerberos SSO를 이해하도록 브라우저 구성하기' 참조) 확인하세요."

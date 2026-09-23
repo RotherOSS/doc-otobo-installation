@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 06:58+0000\n"
+"POT-Creation-Date: 2026-09-23 14:10+0000\n"
 "PO-Revision-Date: 2024-09-02 14:23+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Turkish <http://weblate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/tr/>\n"
@@ -795,648 +795,661 @@ msgid "Set in case the HTTPS port should deviate from the standard port 443."
 msgstr "HTTPS bağlantı noktasının standart bağlantı noktası 443'ten farklı olması durumunda ayarlanır."
 
 #: ../content/installation/installation-docker.rst:265
-#: ../content/installation/installation-docker.rst:343
+#: ../content/installation/installation-docker.rst:348
 #, fuzzy
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE``"
 msgstr "OTOBO_NGINX_SSL_CERTIFICATE"
 
 #: ../content/installation/installation-docker.rst:264
 #, fuzzy
-msgid "SSL cert for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
+msgid "SSL cert for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
 msgstr "nginx webproxy için SSL sertifikası. Örnek: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
 #: ../content/installation/installation-docker.rst:269
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:351
 #, fuzzy
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 msgstr "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
 
 #: ../content/installation/installation-docker.rst:268
 #, fuzzy
-msgid "SSL key for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
+msgid "SSL key for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
 msgstr "nginx webproxy için SSL anahtarı. Örnek: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
-#: ../content/installation/installation-docker.rst:271
+#: ../content/installation/installation-docker.rst:274
+#, fuzzy
+msgid "``OTOBO_PROXY_SECRET``"
+msgstr "OTOBO_NGINX_WEB_PORT"
+
+#: ../content/installation/installation-docker.rst:272
+msgid "Used if NGINX does the SSO (e.g., Kerberos) and forwards the user identity to OTOBO. Necessary only in combination with the HTTPBasicAuth authentication module. Also see ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:276
 #, fuzzy
 msgid "**Nginx webproxy settings for Kerberos**"
 msgstr "**Kerberos için Nginx webproxy ayarları**"
 
-#: ../content/installation/installation-docker.rst:273
+#: ../content/installation/installation-docker.rst:278
 #, fuzzy
 msgid "This settings are used by Nginx when Kerberos is used for single sign on."
 msgstr "Bu ayarlar, tek oturum açma için Kerberos kullanıldığında Nginx tarafından kullanılır."
 
-#: ../content/installation/installation-docker.rst:277
+#: ../content/installation/installation-docker.rst:282
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_KEYTAB``"
 msgstr "OTOBO_NGINX_KERBEROS_KEYTAB"
 
-#: ../content/installation/installation-docker.rst:276
+#: ../content/installation/installation-docker.rst:281
 #, fuzzy
 msgid "Kerberos keytab file. The default is ``/etc/krb5.keytab``."
 msgstr "Kerberos keytab dosyası. Varsayılan */etc/krb5.keytab* şeklindedir."
 
-#: ../content/installation/installation-docker.rst:281
+#: ../content/installation/installation-docker.rst:286
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_CONFIG``"
 msgstr "OTOBO_NGINX_KERBEROS_CONFIG"
 
-#: ../content/installation/installation-docker.rst:280
+#: ../content/installation/installation-docker.rst:285
 #, fuzzy
 msgid "Kerberos config file. The default is ``/etc/krb5.conf``, usually generated from ``krb5.conf.template``."
 msgstr "Kerberos yapılandırma dosyası. Varsayılan */etc/krb5.conf* dosyasıdır ve genellikle *krb5.conf.template* dosyasından oluşturulur."
 
-#: ../content/installation/installation-docker.rst:285
+#: ../content/installation/installation-docker.rst:290
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_SERVICE_NAME``"
 msgstr "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
 
-#: ../content/installation/installation-docker.rst:284
+#: ../content/installation/installation-docker.rst:289
 #, fuzzy
 msgid "Kerberos Service Name. It is not clear where this setting is actually used anywhere."
 msgstr "Kerberos Hizmet Adı. Bu ayarın gerçekte nerede kullanıldığı belli değildir."
 
-#: ../content/installation/installation-docker.rst:289
+#: ../content/installation/installation-docker.rst:294
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_REALM``"
 msgstr "OTOBO_NGINX_KERBEROS_REALM"
 
-#: ../content/installation/installation-docker.rst:288
+#: ../content/installation/installation-docker.rst:293
 #, fuzzy
 msgid "Kerberos REALM. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos REALM. /etc/krb5.conf* içinde kullanılır."
 
-#: ../content/installation/installation-docker.rst:293
+#: ../content/installation/installation-docker.rst:298
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_KDC``"
 msgstr "OTOBO_NGINX_KERBEROS_KDC"
 
-#: ../content/installation/installation-docker.rst:292
+#: ../content/installation/installation-docker.rst:297
 #, fuzzy
 msgid "Kerberos kdc / AD Controller. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos kdc / AD Denetleyicisi. etc/krb5.conf* içinde kullanılır."
 
-#: ../content/installation/installation-docker.rst:297
+#: ../content/installation/installation-docker.rst:302
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_ADMIN_SERVER``"
 msgstr "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
 
-#: ../content/installation/installation-docker.rst:296
+#: ../content/installation/installation-docker.rst:301
 #, fuzzy
 msgid "Kerberos Admin Server. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos Yönetici Sunucusu. etc/krb5.conf* içinde kullanılır."
 
-#: ../content/installation/installation-docker.rst:301
+#: ../content/installation/installation-docker.rst:306
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN``"
 msgstr "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
 
-#: ../content/installation/installation-docker.rst:300
+#: ../content/installation/installation-docker.rst:305
 #, fuzzy
 msgid "Kerberos Default Domain. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos Varsayılan Etki Alanı. /etc/krb5.conf* içinde kullanılır."
 
-#: ../content/installation/installation-docker.rst:305
+#: ../content/installation/installation-docker.rst:310
 #, fuzzy
 msgid "``NGINX_ENVSUBST_TEMPLATE_DIR``"
 msgstr "NGINX_ENVSUBST_TEMPLATE_DIR"
 
-#: ../content/installation/installation-docker.rst:304
+#: ../content/installation/installation-docker.rst:309
 #, fuzzy
 msgid "Provide a custom Nginx config template dir. Gives extra flexibility."
 msgstr "Özel bir Nginx yapılandırma şablonu dir sağlayın. Ekstra esneklik sağlar."
 
-#: ../content/installation/installation-docker.rst:307
+#: ../content/installation/installation-docker.rst:312
 #, fuzzy
 msgid "**Docker Compose settings**"
 msgstr "**Docker Compose ayarları**"
 
-#: ../content/installation/installation-docker.rst:309
+#: ../content/installation/installation-docker.rst:314
 #, fuzzy
 msgid "These settings are used by Docker Compose directly."
 msgstr "Bu ayarlar Docker Compose tarafından doğrudan kullanılır."
 
-#: ../content/installation/installation-docker.rst:314
+#: ../content/installation/installation-docker.rst:319
 #, fuzzy
 msgid "``COMPOSE_PROJECT_NAME``"
 msgstr "COMPOSE_PROJECT_NAME"
 
-#: ../content/installation/installation-docker.rst:312
+#: ../content/installation/installation-docker.rst:317
 #, fuzzy
 msgid "The project name is used as the prefix for the volumes and containers. By default this prefix is set to ``otobo``, resulting in container names like ``otobo-web-1`` and ``otobo-db-1``. Change this name when you want to run more then one instance of OTOBO on the same server."
 msgstr "Proje adı, birimler ve kapsayıcılar için önek olarak kullanılır. Varsayılan olarak bu önek `otobo` olarak ayarlanmıştır ve `otobo_web_1` ve `otobo_db_1` gibi konteyner adlarıyla sonuçlanır. Aynı sunucu üzerinde birden fazla OTOBO örneği çalıştırmak istediğinizde bu adı değiştirin."
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 msgid "``COMPOSE_PATH_SEPARATOR``"
 msgstr "COMPOSE_PATH_SEPARATOR"
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 msgid "Separator for the value of ``COMPOSE_FILE``"
 msgstr "COMPOSE_FILE değeri için ayırıcı"
 
-#: ../content/installation/installation-docker.rst:321
+#: ../content/installation/installation-docker.rst:326
 #, fuzzy
 msgid "``COMPOSE_FILE``"
 msgstr "COMPOSE_FILE"
 
-#: ../content/installation/installation-docker.rst:320
+#: ../content/installation/installation-docker.rst:325
 #, fuzzy
 msgid "Use ``docker-compose/otobo-base.yml`` as the base and add the wanted extension files. E.g., ``docker-compose/otobo-override-http.yml`` or ``docker-compose/otobo-override-https.yml``."
 msgstr "Temel olarak *docker-compose/otobo-base.yml* dosyasını kullanın ve istediğiniz uzantı dosyalarını ekleyin. Örneğin *docker-compose/otobo-override-http.yml* veya *docker-compose/otobo-override-https.yml*."
 
-#: ../content/installation/installation-docker.rst:325
+#: ../content/installation/installation-docker.rst:330
 #, fuzzy
 msgid "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``, ..."
 msgstr "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, ..."
 
-#: ../content/installation/installation-docker.rst:324
+#: ../content/installation/installation-docker.rst:329
 #, fuzzy
 msgid "Used for specifying alternative Docker images. Useful for testing local builds or for using updated versions of the images."
 msgstr "Alternatif Docker görüntülerini belirtmek için kullanılır. Yerel derlemeleri test etmek veya imajların güncellenmiş sürümlerini kullanmak için kullanışlıdır."
 
-#: ../content/installation/installation-docker.rst:328
+#: ../content/installation/installation-docker.rst:333
 #, fuzzy
 msgid "Advanced Topics"
 msgstr "İleri düzey konular"
 
-#: ../content/installation/installation-docker.rst:331
+#: ../content/installation/installation-docker.rst:336
 #, fuzzy
 msgid "Custom Configuration of the Nginx Webproxy"
 msgstr "Nginx webproxy'nin özel yapılandırması"
 
-#: ../content/installation/installation-docker.rst:333
+#: ../content/installation/installation-docker.rst:338
 #, fuzzy
 msgid "The container ``otobo-nginx-1`` provides HTTPS support by running Nginx as a reverse proxy. The Docker image that runs in the container is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with a OTOBO specific configuration of Nginx."
 msgstr "``otobo_nginx_1`` konteyneri, Nginx'i bir ters proxy olarak çalıştırarak HTTPS desteği sağlar. Konteynerde çalışan Docker imajı, resmi Nginx Docker imajı olan https://hub.docker.com/_/nginx ile birlikte Nginx'in OTOBO'ya özel bir yapılandırmasından oluşur."
 
-#: ../content/installation/installation-docker.rst:336
+#: ../content/installation/installation-docker.rst:341
 #, fuzzy
 msgid "The default OTOBO specific configuration can be found within the Docker image at ``/etc/nginx/template/otobo_nginx.conf.template``. Actually, this is only a template for the final configuration. There is a process, provided by the Nginx base image, that replaces the macros in the template with the corresponding environment variable. This process runs when the container starts up. In the default template file, the following macros are used:"
 msgstr "Varsayılan OTOBO'ya özgü yapılandırma Docker görüntüsü içinde */etc/nginx/template/otobo_nginx.conf.template* adresinde bulunabilir. Aslında bu sadece nihai yapılandırma için bir şablondur. Nginx temel imajı tarafından sağlanan ve şablondaki makroları ilgili ortam değişkeniyle değiştiren bir süreç vardır. Bu işlem konteyner başlatıldığında çalışır. Varsayılan şablon dosyasında aşağıdaki makrolar kullanılır:"
 
-#: ../content/installation/installation-docker.rst:343
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:348
+#: ../content/installation/installation-docker.rst:351
 #, fuzzy
 msgid "For configuring SSL."
 msgstr "SSL yapılandırması için."
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 #, fuzzy
 msgid "``OTOBO_NGINX_WEB_HOST``"
 msgstr "OTOBO_NGINX_WEB_HOST"
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 #, fuzzy
 msgid "The internally used HTTP host."
 msgstr "Dahili olarak kullanılan HTTP ana bilgisayarı."
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 #, fuzzy
 msgid "``OTOBO_NGINX_WEB_PORT``"
 msgstr "OTOBO_NGINX_WEB_PORT"
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 #, fuzzy
 msgid "The internally used HTTP port."
 msgstr "Dahili olarak kullanılan HTTP bağlantı noktası."
 
-#: ../content/installation/installation-docker.rst:354
+#: ../content/installation/installation-docker.rst:359
 #, fuzzy
 msgid "See step `4.` for how this configuration possibility was used for setting up the SSL certificate."
 msgstr "SSL sertifikasını ayarlamak için bu yapılandırma olasılığının nasıl kullanıldığını görmek için `4.` adımına bakın."
 
-#: ../content/installation/installation-docker.rst:356
+#: ../content/installation/installation-docker.rst:361
 #, fuzzy
 msgid "When the standard macros are not sufficient, then the customization can go further. This can be achieved by replacing the default config template with a customized version. It is best practice to not simple change the configuration in the running container. Instead we first create a persistent volume that contains the custom config. Then we tell the ``otobo-nginx-1`` to mount the new volume and to use the customized configuration."
 msgstr "Standart makrolar yeterli olmadığında, özelleştirme daha da ileri gidebilir. Bu, varsayılan yapılandırma şablonunu özelleştirilmiş bir sürümle değiştirerek gerçekleştirilebilir. Çalışan konteynerdeki yapılandırmayı basitçe değiştirmemek en iyi uygulamadır. Bunun yerine önce özel yapılandırmayı içeren kalıcı bir birim oluştururuz. Ardından *otobo_nginx_1*'e yeni birimi bağlamasını ve özelleştirilmiş yapılandırmayı kullanmasını söyleriz."
 
-#: ../content/installation/installation-docker.rst:362
+#: ../content/installation/installation-docker.rst:367
 #, fuzzy
 msgid "First comes generation of the new volume. In these sample commands, we use the existing template as a starting point."
 msgstr "İlk olarak yeni birimin oluşturulması gelir. Bu örnek komutlarda, başlangıç noktası olarak mevcut şablonu kullanıyoruz."
 
-#: ../content/installation/installation-docker.rst:388
+#: ../content/installation/installation-docker.rst:393
 #, fuzzy
 msgid "After setting up the volume, the adapted configuration must be activated. The new volume is set up in ``docker-compose/otobo-nginx-custom-config.yml``. Therefore, this file must be added to ``COMPOSE_FILE``. Then Nginx must be directed to use the new configuration. This is done by setting ``NGINX_ENVSUBST_TEMPLATE_DIR`` in the environment. In order to achieve this, uncomment or add the following lines in your ``.env`` file:"
 msgstr "Birimi ayarladıktan sonra, uyarlanmış yapılandırma etkinleştirilmelidir. Yeni birim *docker-compose/otobo-nginx-custom-config.yml* dosyasında ayarlanır. Bu nedenle bu dosya **COMPOSE_FILE** dosyasına eklenmelidir. Daha sonra Nginx yeni yapılandırmayı kullanmaya yönlendirilmelidir. Bu, ortamda **NGINX_ENVSUBST_TEMPLATE_DIR** ayarlanarak yapılır. Bunu başarmak için, *.env* dosyanızda aşağıdaki satırları açın veya ekleyin:"
 
-#: ../content/installation/installation-docker.rst:400
+#: ../content/installation/installation-docker.rst:405
 #, fuzzy
 msgid "The changed Docker Compose configuration can be inspected with:"
 msgstr "Değiştirilen Docker Compose yapılandırması şu şekilde incelenebilir:"
 
-#: ../content/installation/installation-docker.rst:406
+#: ../content/installation/installation-docker.rst:411
 #, fuzzy
 msgid "Finally, the containers can be started again:"
 msgstr "Son olarak, konteynerler yeniden başlatılabilir:"
 
-#: ../content/installation/installation-docker.rst:412
+#: ../content/installation/installation-docker.rst:417
 #, fuzzy
 msgid "See also the section \"Using environment variables in Nginx configuration (new in 1.19)\" in https://hub.docker.com/_/nginx."
 msgstr "Ayrıca https://hub.docker.com/_/nginx adresindeki \"nginx yapılandırmasında ortam değişkenlerini kullanma (1.19'da yeni)\" bölümüne bakın."
 
-#: ../content/installation/installation-docker.rst:415
+#: ../content/installation/installation-docker.rst:420
 #, fuzzy
 msgid "Single Sign-On Using the Kerberos Support in Nginx"
 msgstr "Nginx'te Kerberos Desteğini Kullanarak Tek Oturum Açma"
 
-#: ../content/installation/installation-docker.rst:417
+#: ../content/installation/installation-docker.rst:422
 #, fuzzy
 msgid "**Short Description**"
 msgstr "**Kısa Açıklama**"
 
-#: ../content/installation/installation-docker.rst:419
+#: ../content/installation/installation-docker.rst:424
 #, fuzzy
 msgid "For enabling authentication with Kerberos please base you ``.env`` file on the sample file ``.docker_compose_env_https_kerberos``. This activates the special configuration in ``docker-compose/otobo-override-https-kerberos.yml``. This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings as environment values to the running Nginx container. These settings are listed above."
 msgstr "Kerberos ile kimlik doğrulamayı etkinleştirmek için lütfen *.env dosyanızı* *.docker_compose_env_https_kerberos* örnek dosyasına dayandırın. Bu, *docker-compose/otobo-override-https-kerberos.yml* dosyasındaki özel yapılandırmayı etkinleştirir. Bu Docker compose yapılandırma dosyası Kerberos'u destekleyen bir Nginx görüntüsü seçer. Ayrıca Kerberos'a özgü bazı ayarları çalışan Nginx konteynerine ortam değerleri olarak aktarır. Bu ayarlar yukarıda listelenmiştir."
 
-#: ../content/installation/installation-docker.rst:425
+#: ../content/installation/installation-docker.rst:430
 #, fuzzy
 msgid "As usual, the values for these setting can be specified in the ``.env`` file. Most of these setting will be used as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-11_0/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container. In the running container the adapted configuration will be available in ``/etc/krb5.conf``."
 msgstr "Her zamanki gibi, bu ayarlar için değerler *.env* dosyasında belirtilebilir. Bu ayarların çoğu https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template şablonu için yedek değerler olarak kullanılacaktır. Değiştirme işlemi konteynerin başlatılması sırasında gerçekleşir. Çalışan konteynerde uyarlanmış yapılandırma */etc/krb5.conf* dosyasında mevcut olacaktır."
 
-#: ../content/installation/installation-docker.rst:430
+#: ../content/installation/installation-docker.rst:435
 #, fuzzy
 msgid "Providing an user specific ``/etc/krb5.conf`` file is still possible. This can be done by mounting a volume that overrides ``/etc/krb5.conf`` in the container. This can be achieved by setting ``OTOBO_NGINX_KERBEROS_CONFIG`` in the ``.env`` file and by activating the mount directive in ``docker-compose/otobo-override-https-kerberos.yml``."
 msgstr "Kullanıcıya özel bir */etc/krb5.conf* dosyası sağlamak hala mümkündür. Bu, konteynerde */etc/krb5.conf* dosyasını geçersiz kılan bir birim monte edilerek yapılabilir. Bu, *.env* dosyasında OTOBO_NGINX_KERBEROS_CONFIG ayarlanarak ve *docker-compose/otobo-override-https-kerberos.yml* dosyasında mount directove etkinleştirilerek gerçekleştirilebilir."
 
-#: ../content/installation/installation-docker.rst:434
+#: ../content/installation/installation-docker.rst:439
 #, fuzzy
 msgid "``/etc/krb5.keytab`` is always installation specific and must therefore always be mounted from the host system."
 msgstr "*/etc/krb5.keytab* her zaman kuruluma özeldir ve bu nedenle her zaman ana sistemden bağlanmalıdır."
 
-#: ../content/installation/installation-docker.rst:436
+#: ../content/installation/installation-docker.rst:441
+msgid "Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication. See also ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:444
 #, fuzzy
 msgid "**Kerberos SSO Installation Tutorial**"
 msgstr "**Kerberos SSO Kurulum Eğitimi**"
 
-#: ../content/installation/installation-docker.rst:438
+#: ../content/installation/installation-docker.rst:446
 msgid ":doc:`Kerberos Single Sign On <../sso-kerberos>`"
 msgstr ""
 
-#: ../content/installation/installation-docker.rst:441
+#: ../content/installation/installation-docker.rst:449
 #, fuzzy
 msgid "Choosing non-standard Ports"
 msgstr "Standart olmayan bağlantı noktalarını seçme"
 
-#: ../content/installation/installation-docker.rst:443
+#: ../content/installation/installation-docker.rst:451
 #, fuzzy
 msgid "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports are already used by other services. In these cases the default ports can be overridden by specifying ``OTOBO_WEB_HTTP_PORT`` and ``OTOBO_WEB_HTTPS_PORT`` in the ``.env`` file."
 msgstr "Varsayılan olarak 443 ve 80 bağlantı noktaları sırasıyla HTTPS ve HTTP'ye hizmet eder. Bu bağlantı noktalarından birinin veya her ikisinin başka hizmetler tarafından zaten kullanıldığı durumlar olabilir. Bu durumlarda varsayılan bağlantı noktaları *.env* dosyasında `OTOBO_WEB_HTTP_PORT` ve `OTOBO_WEB_HTTPS_PORT` belirtilerek geçersiz kılınabilir."
 
-#: ../content/installation/installation-docker.rst:448
+#: ../content/installation/installation-docker.rst:456
 #, fuzzy
 msgid "Skip Startup of Specific Services"
 msgstr "Belirli hizmetlerin başlatılmasını atlama"
 
-#: ../content/installation/installation-docker.rst:450
+#: ../content/installation/installation-docker.rst:458
 #, fuzzy
 msgid "The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases where one or more of these services are not needed. The prime example is when the database should not run as a Docker service, but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services. But the option ``--scale`` can be abused for this purpose. So for an installation with an external database the following command can be used:"
 msgstr "Mevcut Docker compose kurulumu beş, HTTPS etkinleştirildiğinde altı hizmet başlatır. Ancak bu hizmetlerden bir veya daha fazlasının gerekli olmadığı geçerli kullanım durumları vardır. Bunun en iyi örneği, veritabanının bir Docker hizmeti olarak değil, harici bir veritabanı olarak çalışması gerektiğidir. Ne yazık ki belirli hizmetleri atlamak için özel bir Docker compose seçeneği yoktur. Ancak `--scale` seçeneği bu amaç için kötüye kullanılabilir. Dolayısıyla, harici bir veritabanına sahip bir kurulum için aşağıdaki komut kullanılabilir:"
 
-#: ../content/installation/installation-docker.rst:461
+#: ../content/installation/installation-docker.rst:469
 #, fuzzy
 msgid "Of course the same goal can also be achieved by editing the file ``docker-compose/otobo-base.yml`` and removing the relevant service definitions."
 msgstr "Elbette aynı hedefe *docker-compose/otobo-base.yml* dosyasını düzenleyerek ve ilgili hizmet tanımlarını kaldırarak da ulaşılabilir."
 
-#: ../content/installation/installation-docker.rst:464
+#: ../content/installation/installation-docker.rst:472
 #, fuzzy
 msgid "Prepare Offline Installation"
 msgstr "Çevrimdışı kurulumu hazırlama"
 
-#: ../content/installation/installation-docker.rst:466
+#: ../content/installation/installation-docker.rst:474
 #, fuzzy
 msgid "Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo>`_ on a system that has internet access and where docker is installed. Then navigate to the following folder ``otobo-docker/docker-compose``."
 msgstr "Lütfen internet erişimi olan ve docker'ın kurulu olduğu bir sisteme otobo-docker'ın <https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__ son sürümünü indirin. Daha sonra aşağıdaki *otobo-docker/docker-compose* klasörüne gidin."
 
-#: ../content/installation/installation-docker.rst:473
+#: ../content/installation/installation-docker.rst:481
 #, fuzzy
 msgid "Now you can run the following command to download all Docker images from a specific file, in my example I use the ``otobo-base.yml``."
 msgstr "Şimdi belirli bir dosyadan tüm Docker görüntülerini indirmek için aşağıdaki komutu çalıştırabilirsiniz, benim örneğimde *otobo-base.yml* dosyasını kullanıyorum."
 
-#: ../content/installation/installation-docker.rst:479
+#: ../content/installation/installation-docker.rst:487
 #, fuzzy
 msgid "After that, the images (``.docker``) are located in the ``docker-compose`` folder and can be uploaded to the target system via, e.g, `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
 msgstr "Bundan sonra, imajlar (.docker) docker-compose klasöründe bulunur ve örneğin `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__ aracılığıyla hedef sisteme yüklenebilir."
 
-#: ../content/installation/installation-docker.rst:481
+#: ../content/installation/installation-docker.rst:489
 #, fuzzy
 msgid "On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one. In the following example the Mariadb image is imported:"
 msgstr "Çevrimdışı hedef sistemde, docker imajlarının depolandığı klasöre gidin. Ve bunları tek tek içe aktarmak için aşağıdaki komutu girin."
 
-#: ../content/installation/installation-docker.rst:490
+#: ../content/installation/installation-docker.rst:498
 #, fuzzy
 msgid "Customizing OTOBO Docker Compose"
 msgstr "OTOBO Docker Compose'u Özelleştirme"
 
-#: ../content/installation/installation-docker.rst:492
+#: ../content/installation/installation-docker.rst:500
 #, fuzzy
 msgid "Instead of editing the files under ``docker-compose/*`` and risking to overwrite your own options with the `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the ``otobo-docker`` folder, it is advisable to create an extra YAML file where the specific services are overwritten with additional options."
 msgstr "Docker-compose/* altındaki dosyaları düzenlemek ve otobo-docker klasörünün `next update <https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_ ile kendi seçeneklerinizin üzerine yazma riskini almak yerine, belirli hizmetlerin ek seçeneklerle üzerine yazıldığı ekstra bir YAML dosyası oluşturmanız önerilir."
 
-#: ../content/installation/installation-docker.rst:494
+#: ../content/installation/installation-docker.rst:502
 #, fuzzy
 msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create an extra docker compose file that looks like:"
 msgstr "Yaygın bir örnek, veritabanı konteynerini 3306 portu üzerinden dışarıdan erişilebilir hale getirmek olabilir. Bunun için aşağıdaki gibi görünen ekstra bir docker compose dosyası oluşturabilirsiniz:"
 
-#: ../content/installation/installation-docker.rst:505
+#: ../content/installation/installation-docker.rst:513
 #, fuzzy
 msgid "Now we have to tell Docker Compose to include our new file. For this you have to add your YAML file to the ``COMPOSE_FILE`` variable in the ``.env`` file, for example:"
 msgstr "Şimdi *docker-compose*'a yeni dosyamızı dahil etmesini söylemeliyiz. Bunun için YAML dosyanızı örneğin *.env* dosyasındaki *COMPOSE_FILE* değişkenine eklemeniz gerekir:"
 
-#: ../content/installation/installation-docker.rst:512
+#: ../content/installation/installation-docker.rst:520
 #, fuzzy
 msgid "Now we can use ``docker compose`` to recreate our container"
 msgstr "Şimdi konteynerimizi yeniden oluşturmak için *docker-compose* kullanabiliriz"
 
-#: ../content/installation/installation-docker.rst:519
+#: ../content/installation/installation-docker.rst:527
 #, fuzzy
 msgid "With this procedure you can customize any service or volumes."
 msgstr "Bu prosedür ile herhangi bir hizmeti veya birimi özelleştirebilirsiniz."
 
-#: ../content/installation/installation-docker.rst:522
+#: ../content/installation/installation-docker.rst:530
 #, fuzzy
 msgid "Customizing the OTOBO Docker Image"
 msgstr "OTOBO Docker görüntüsünü özelleştirme"
 
-#: ../content/installation/installation-docker.rst:524
+#: ../content/installation/installation-docker.rst:532
 #, fuzzy
 msgid "Customization can be done in the external volume ``otobo_opt_otobo`` which corresponds to the directory ``/opt/otobo`` in the Docker image. This works, e.g., for local Perl modules which can be installed into ``/opt/otobo/local``. Here is an example that installs the not very useful CPAN module `Acme::123`."
 msgstr "Birçok özelleştirme, Docker görüntüsündeki */opt/otobo* dizinine karşılık gelen *otobo_opt_otobo* harici biriminde yapılabilir. Bu, örneğin */opt/otobo/local* dizinine kurulabilen yerel Perl modülleri için geçerlidir. İşte çok kullanışlı olmayan CPAN modülü `Acme::123`ü yükleyen bir örnek."
 
-#: ../content/installation/installation-docker.rst:538
+#: ../content/installation/installation-docker.rst:546
 #, fuzzy
 msgid "The nice thing of this approach is that the Docker image itself does not have to be modified."
 msgstr "Bu yaklaşımın güzel yanı, Docker görüntüsünün kendisinin değiştirilmesinin gerekmemesidir."
 
-#: ../content/installation/installation-docker.rst:540
+#: ../content/installation/installation-docker.rst:548
 #, fuzzy
 msgid "Installing extra Debian packages is a little bit trickier. One approach is to create a custom ``Dockerfile`` and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice write-up of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 msgstr "Ekstra Debian paketlerini yüklemek biraz daha zordur. Bir yaklaşım, özel bir *Dockerfile* oluşturmak ve OTOBO imajını temel imaj olarak kullanmaktır. Diğer bir yaklaşım ise çalışan bir konteynerden doğrudan değiştirilmiş bir imaj oluşturmaktır. Bu `docker commit` komutu ile yapılabilir, https://docs.docker.com/engine/reference/commandline/commit/. Bu süreçle ilgili güzel bir yazı https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image adresinde mevcuttur."
 
-#: ../content/installation/installation-docker.rst:546
+#: ../content/installation/installation-docker.rst:554
 #, fuzzy
 msgid "But for the latter approach there are two hurdles to overcome. First, the image ``otobo`` runs per default as the user ``otobo`` with the UID ``1000``. The problem is that the user ``otobo`` is not allowed to install system packages. Thus, the first part of the solution is to pass the option ``--user root`` when running the image. However the second hurdle is that the default entrypoint script ``/opt/otobo_install/entrypoint.sh`` exits immediately when it is called as ``root``. The reasoning behind that design decision is that running inadvertently as ``root`` should be discouraged. So, the second part of the solution is to specify a different entrypoint script that does not care who the caller is. This leaves us with following example commands, where we add fortune cookies to OTOBO:"
 msgstr "Ancak ikinci yaklaşım için aşılması gereken iki engel vardır. Birincisi, *otobo* görüntüsü varsayılan olarak UID 1000 ile *otobo* kullanıcısı olarak çalışır. Sorun, *otobo* kullanıcısının sistem paketlerini yüklemesine izin verilmemesidir. Bu nedenle, çözümün ilk kısmı imajı çalıştırırken `--user root' seçeneğini geçmektir. Ancak ikinci engel, varsayılan giriş noktası betiğinin */opt/otobo_install/entrypoint.sh* *root* olarak çağrıldığında hemen çıkmasıdır. Bu tasarım kararının arkasındaki mantık, yanlışlıkla *root* olarak çalıştırmanın cesaretinin kırılması gerektiğidir. Dolayısıyla, çözümün ikinci kısmı, çağıranın kim olduğunu önemsemeyen farklı bir giriş noktası betiği belirtmektir. Bu da bize otobo'ya fal kurabiyeleri eklediğimiz aşağıdaki örnek komutları bırakır:"
 
-#: ../content/installation/installation-docker.rst:555
+#: ../content/installation/installation-docker.rst:563
 #, fuzzy
 msgid "Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:"
 msgstr "Henüz elimizde yoksa, etiketlenmiş bir OTOBO görüntüsü çekin ve görüntünün zaten fal kurabiyeleri sağlayıp sağlamadığını kontrol edin:"
 
-#: ../content/installation/installation-docker.rst:562
+#: ../content/installation/installation-docker.rst:570
 #, fuzzy
 msgid "Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive session as the user ``root``:"
 msgstr "Orijinal OTOBO görüntüsünü çalıştıran adlandırılmış bir konteynere servet kurabiyeleri ekleyin. Bu işlem etkileşimli bir oturumda *root* kullanıcısı olarak yapılır:"
 
-#: ../content/installation/installation-docker.rst:570
+#: ../content/installation/installation-docker.rst:578
 #, fuzzy
 msgid "Create an image from the stopped container and give it a name. Take into account that the default user and entrypoint script must be restored:"
 msgstr "Durdurulan konteynerden bir imaj oluşturun ve ona bir isim verin. Varsayılan kullanıcı ve giriş noktası komut dosyasının geri yüklenmesi gerektiğini göz önünde bulundurun:"
 
-#: ../content/installation/installation-docker.rst:577
+#: ../content/installation/installation-docker.rst:585
 #, fuzzy
 msgid "Finally we can doublecheck:"
 msgstr "Sonunda iki kez kontrol edebiliriz:"
 
-#: ../content/installation/installation-docker.rst:586
+#: ../content/installation/installation-docker.rst:594
 #, fuzzy
 msgid "The modified image can be specified in your ``.env`` file and then be used for fun and profit."
 msgstr "Değiştirilen görüntü *.env* dosyanızda belirtilebilir ve daha sonra eğlence ve kâr için kullanılabilir."
 
-#: ../content/installation/installation-docker.rst:589
+#: ../content/installation/installation-docker.rst:597
 #, fuzzy
 msgid "Building Local Images"
 msgstr "Yerel görüntüler oluşturma"
 
-#: ../content/installation/installation-docker.rst:593
+#: ../content/installation/installation-docker.rst:601
 #, fuzzy
 msgid "Building Docker images locally is usually only needed during development. Other use cases are when more current base images should be used for an installation or when extra functionality must be added to the images."
 msgstr "Docker görüntülerini yerel olarak oluşturmak genellikle yalnızca geliştirme sırasında gereklidir. Diğer kullanım durumları, bir kurulum için daha güncel temel imajların kullanılması veya imajlara ekstra işlevsellik eklenmesi gereken durumlardır."
 
-#: ../content/installation/installation-docker.rst:596
+#: ../content/installation/installation-docker.rst:604
 #, fuzzy
 msgid "The Docker files needed for creating Docker images locally are part of the git repository https://github.com/RotherOSS/otobo:"
 msgstr "Docker görüntülerini yerel olarak oluşturmak için gereken Docker dosyaları git deposunun https://github.com/RotherOSS/otobo bir parçasıdır:"
 
-#: ../content/installation/installation-docker.rst:598
+#: ../content/installation/installation-docker.rst:606
 #, fuzzy
 msgid "``otobo.web.dockerfile``"
 msgstr "*otobo.web.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:599
+#: ../content/installation/installation-docker.rst:607
 #, fuzzy
 msgid "``otobo.nginx.dockerfile``"
 msgstr "*otobo.nginx.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:600
+#: ../content/installation/installation-docker.rst:608
 #, fuzzy
 msgid "``otobo.elasticsearch.dockerfile``"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:602
+#: ../content/installation/installation-docker.rst:610
 #, fuzzy
 msgid "The script for the actual creation of the images is ``bin/docker/build_docker_images.sh``."
 msgstr "Görüntülerin asıl oluşturulması için kullanılan betik *bin/docker/build_docker_images.sh* şeklindedir."
 
-#: ../content/installation/installation-docker.rst:614
+#: ../content/installation/installation-docker.rst:622
 #, fuzzy
 msgid "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file ``RELEASE``."
 msgstr "Yerel olarak oluşturulan Docker görüntüleri, *RELEASE* dosyasında ayarlanan sürüm kullanılarak ``local-<OTOBO_VERSION>` olarak etiketlenir."
 
-#: ../content/installation/installation-docker.rst:616
+#: ../content/installation/installation-docker.rst:624
 #, fuzzy
 msgid "After building the local images, one can return to the ``docker-compose`` directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in the ``.env`` file."
 msgstr "Yerel görüntüleri oluşturduktan sonra *docker-compose* dizinine dönülebilir. Yerel görüntüler *.env* dosyasında ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` ayarlanarak bildirilir."
 
-#: ../content/installation/installation-docker.rst:620
+#: ../content/installation/installation-docker.rst:628
 #, fuzzy
 msgid "Automatic Installation"
 msgstr "Otomatik Kurulum"
 
-#: ../content/installation/installation-docker.rst:622
+#: ../content/installation/installation-docker.rst:630
 #, fuzzy
 msgid "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is useful for running the test suite on a fresh installation."
 msgstr "http://yourIPorFQDN/otobo/installer.pl adresinden geçmek yerine kısa bir yol izlenebilir. Bu, test paketini yeni bir kurulumda çalıştırmak için kullanışlıdır."
 
-#: ../content/installation/installation-docker.rst:627
+#: ../content/installation/installation-docker.rst:635
 #, fuzzy
 msgid "``docker compose down -v`` will remove all previous setup and data."
 msgstr "``docker-compose down -v`` önceki tüm kurulum ve verileri kaldıracaktır."
 
-#: ../content/installation/installation-docker.rst:642
+#: ../content/installation/installation-docker.rst:650
 #, fuzzy
 msgid "List of Useful Commands"
 msgstr "Yararlı komutların listesi"
 
-#: ../content/installation/installation-docker.rst:644
+#: ../content/installation/installation-docker.rst:652
 #, fuzzy
 msgid "**Docker**"
 msgstr "**Docker**"
 
-#: ../content/installation/installation-docker.rst:646
+#: ../content/installation/installation-docker.rst:654
 #, fuzzy
 msgid "``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)"
 msgstr "``docker system prune -a`` sistem temizliği (kullanılmayan tüm imajları, konteynerleri, birimleri, ağları kaldırır)"
 
-#: ../content/installation/installation-docker.rst:647
+#: ../content/installation/installation-docker.rst:655
 #, fuzzy
 msgid "``docker version`` show version"
 msgstr "``docker sürümü`` sürümü göster"
 
-#: ../content/installation/installation-docker.rst:648
+#: ../content/installation/installation-docker.rst:656
 #, fuzzy
 msgid "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr "``docker build --tag otobo --file=otobo.web.Dockerfile .`` bir görüntü oluşturun"
 
-#: ../content/installation/installation-docker.rst:649
+#: ../content/installation/installation-docker.rst:657
 #, fuzzy
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``docker run --publish 80:5000 otobo`` yeni görüntüyü çalıştırın"
 
-#: ../content/installation/installation-docker.rst:650
+#: ../content/installation/installation-docker.rst:658
 #, fuzzy
 msgid "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` yeni imajda oturum açın"
 
-#: ../content/installation/installation-docker.rst:651
+#: ../content/installation/installation-docker.rst:659
 #, fuzzy
 msgid "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that in case entrypoint.sh is broken"
 msgstr "''docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo'' entrypoint.sh dosyasının bozuk olması ihtimaline karşı bunu deneyin"
 
-#: ../content/installation/installation-docker.rst:652
+#: ../content/installation/installation-docker.rst:660
 #, fuzzy
 msgid "``docker ps`` show running images"
 msgstr "``docker ps`` çalışan görüntüleri göster"
 
-#: ../content/installation/installation-docker.rst:653
+#: ../content/installation/installation-docker.rst:661
 #, fuzzy
 msgid "``docker images`` show available images"
 msgstr "``docker images`` mevcut görüntüleri göster"
 
-#: ../content/installation/installation-docker.rst:654
+#: ../content/installation/installation-docker.rst:662
 #, fuzzy
 msgid "``docker volume ls`` list volumes"
 msgstr "``docker volume ls`` birimleri listele"
 
-#: ../content/installation/installation-docker.rst:655
+#: ../content/installation/installation-docker.rst:663
 #, fuzzy
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr "``docker volume inspect otobo_opt_otobo`` bir birimi inceler"
 
-#: ../content/installation/installation-docker.rst:656
+#: ../content/installation/installation-docker.rst:664
 #, fuzzy
 msgid "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 msgstr "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 
-#: ../content/installation/installation-docker.rst:657
+#: ../content/installation/installation-docker.rst:665
 #, fuzzy
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``docker volume rm tmp_volume`` bir birimi kaldırın"
 
-#: ../content/installation/installation-docker.rst:658
+#: ../content/installation/installation-docker.rst:666
 #, fuzzy
 msgid "``docker inspect <container>`` inspect a container"
 msgstr "``docker inspect <container>`` bir konteyneri inceler"
 
-#: ../content/installation/installation-docker.rst:659
+#: ../content/installation/installation-docker.rst:667
 #, fuzzy
 msgid "``docker save --output otobo.tar otobo:latest-11_0 && tar -tvf otobo.tar`` list files in an image"
 msgstr "``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` bir imajdaki dosyaları listeler"
 
-#: ../content/installation/installation-docker.rst:660
+#: ../content/installation/installation-docker.rst:668
 #, fuzzy
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` nginx'i yeniden yükle"
 
-#: ../content/installation/installation-docker.rst:662
+#: ../content/installation/installation-docker.rst:670
 #, fuzzy
 msgid "**Docker Compose**"
 msgstr "**Docker Compose**"
 
-#: ../content/installation/installation-docker.rst:664
+#: ../content/installation/installation-docker.rst:672
 #, fuzzy
 msgid "``docker compose config`` check and show the configuration"
 msgstr "``docker-compose config`` yapılandırmayı kontrol eder ve gösterir"
 
-#: ../content/installation/installation-docker.rst:665
+#: ../content/installation/installation-docker.rst:673
 #, fuzzy
 msgid "``docker compose ps`` show the running containers"
 msgstr "``docker-compose ps`` çalışan konteynerleri gösterir"
 
-#: ../content/installation/installation-docker.rst:666
+#: ../content/installation/installation-docker.rst:674
 #, fuzzy
 msgid "``docker compose exec nginx nginx -s reload`` reload nginx"
 msgstr "``docker-compose exec nginx nginx -s reload`` nginx'i yeniden yükle"
 
-#: ../content/installation/installation-docker.rst:669
+#: ../content/installation/installation-docker.rst:677
 #, fuzzy
 msgid "Resources"
 msgstr "Kaynaklar"
 
-#: ../content/installation/installation-docker.rst:671
+#: ../content/installation/installation-docker.rst:679
 #, fuzzy
 msgid "Finally, here is a highly subjective collection of links."
 msgstr "Son olarak, işte oldukça öznel bir bağlantı koleksiyonu."
 
-#: ../content/installation/installation-docker.rst:673
+#: ../content/installation/installation-docker.rst:681
 #, fuzzy
 msgid "**General info and tutorials**"
 msgstr "**Genel bilgiler ve eğitimler**"
 
-#: ../content/installation/installation-docker.rst:675
+#: ../content/installation/installation-docker.rst:683
 #, fuzzy
 msgid "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 msgstr "`Perl Maven: Docker üzerinde Perl ile Başlarken <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
-#: ../content/installation/installation-docker.rst:676
+#: ../content/installation/installation-docker.rst:684
 #, fuzzy
 msgid "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
 msgstr "`Dockerfile en iyi uygulamaları <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
 
-#: ../content/installation/installation-docker.rst:677
+#: ../content/installation/installation-docker.rst:685
 #, fuzzy
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`Çevre <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
-#: ../content/installation/installation-docker.rst:679
+#: ../content/installation/installation-docker.rst:687
 #, fuzzy
 msgid "**Tips and hints**"
 msgstr "**İpuçları ve ipuçları**"
 
-#: ../content/installation/installation-docker.rst:681
+#: ../content/installation/installation-docker.rst:689
 #, fuzzy
 msgid "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 msgstr "`Kullanılmayan resimleri temizleyin <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
-#: ../content/installation/installation-docker.rst:682
+#: ../content/installation/installation-docker.rst:690
 #, fuzzy
 msgid "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
 msgstr "`Docker Ana Bilgisayar IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
 
-#: ../content/installation/installation-docker.rst:683
+#: ../content/installation/installation-docker.rst:691
 #, fuzzy
 msgid "`Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu>`_"
 msgstr "`Kendi imzalı sertifika <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 
-#: ../content/installation/installation-docker.rst:685
+#: ../content/installation/installation-docker.rst:693
 #, fuzzy
 msgid "**Troubleshooting**"
 msgstr "**Sorun Giderme**"
 
-#: ../content/installation/installation-docker.rst:687
+#: ../content/installation/installation-docker.rst:695
 #, fuzzy
 msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 msgstr "`Docker önbelleği geçersiz kılma <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 
-#: ../content/installation/installation-docker.rst:688
+#: ../content/installation/installation-docker.rst:696
 #, fuzzy
 msgid "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 msgstr "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 
-#: ../content/installation/installation-docker.rst:689
+#: ../content/installation/installation-docker.rst:697
 #, fuzzy
 msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 msgstr "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
@@ -3829,102 +3842,102 @@ msgstr "Öncelikle eski ``/opt/otobo-docker/.env`` dosyasını ``.env.tmp`` dosy
 msgid "Now copy your existing configuration options to the new ``.env`` file (at least ``OTOBO_DB_ROOT_PASSWORD``, ``OTOBO_NGINX_SSL_CERTIFICATE``, ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``) and insert the following Kerberos settings:"
 msgstr "Şimdi mevcut yapılandırma seçeneklerinizi yeni .env dosyasına kopyalayın (en azından OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY) ve aşağıdaki Kerberos ayarlarını ekleyin:"
 
-#: ../content/sso-kerberos.rst:124
+#: ../content/sso-kerberos.rst:126
 #, fuzzy
 msgid "Start OTOBO"
 msgstr "OTOBO'yu başlat"
 
-#: ../content/sso-kerberos.rst:126
+#: ../content/sso-kerberos.rst:128
 #, fuzzy
 msgid "After the initial Kerberos configuration we start OTOBO again:"
 msgstr "İlk Kerberos yapılandırmasından sonra OTOBO'yu tekrar başlatıyoruz:"
 
-#: ../content/sso-kerberos.rst:135
+#: ../content/sso-kerberos.rst:137
 #, fuzzy
 msgid "Tell OTOBO to use the Kerberos-Authentication"
 msgstr "OTOBO'ya Kerberos-Kimlik Doğrulamasını kullanmasını söyleyin"
 
-#: ../content/sso-kerberos.rst:137
+#: ../content/sso-kerberos.rst:139
 #, fuzzy
 msgid "In case you have configured AD-Authentication, de-activate it (e.g. by commenting out the respective lines from your Kernel/Config.pm). The authentication will not take place via LDAP anymore."
 msgstr "AD-Authentication'ı yapılandırdıysanız, devre dışı bırakın (örneğin, Kernel/Config.pm dosyanızdan ilgili satırları yorumlayarak). Kimlik doğrulama artık LDAP üzerinden gerçekleşmeyecektir."
 
-#: ../content/sso-kerberos.rst:140
+#: ../content/sso-kerberos.rst:142
 #, fuzzy
 msgid "To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
 msgstr "Kerberos-Authentication kullanmak için Kerberos satırlarını Kernel/Config/Defaults.pm'den alın ve Kernel/Config.pm'ye koyun Örneğin bu satırlar işe yarayabilir:"
 
-#: ../content/sso-kerberos.rst:153
+#: ../content/sso-kerberos.rst:159
 #, fuzzy
 msgid "Configure Browser to Understand Kerberos SSO"
 msgstr "Tarayıcıyı Kerberos SSO'yu anlayacak şekilde yapılandırma"
 
-#: ../content/sso-kerberos.rst:155
+#: ../content/sso-kerberos.rst:161
 #, fuzzy
 msgid "For SSO to work, the browser must be configured accordingly."
 msgstr "SSO'nun çalışması için tarayıcının uygun şekilde yapılandırılması gerekir."
 
-#: ../content/sso-kerberos.rst:157
+#: ../content/sso-kerberos.rst:163
 #, fuzzy
 msgid "**Chrome, Edge, Internet Explorer, etc.**"
 msgstr "**Chrome, Edge, Internet Explorer, vb.**"
 
-#: ../content/sso-kerberos.rst:159
+#: ../content/sso-kerberos.rst:165
 #, fuzzy
 msgid "Add page under local or trusted pages and activate 'Integrated Windows Authentication' (Internet Options)."
 msgstr "Sayfayı yerel veya güvenilen sayfalar altına ekleyin ve 'Tümleşik Windows Kimlik Doğrulaması'nı etkinleştirin (İnternet Seçenekleri)."
 
-#: ../content/sso-kerberos.rst:161
+#: ../content/sso-kerberos.rst:167
 #, fuzzy
 msgid "**Firefox**"
 msgstr "**Firefox**"
 
-#: ../content/sso-kerberos.rst:163
+#: ../content/sso-kerberos.rst:169
 #, fuzzy
 msgid "Enter \"about:config\" in the firefox address line"
 msgstr "Firefox adres satırına \"about:config\" girin"
 
-#: ../content/sso-kerberos.rst:165
+#: ../content/sso-kerberos.rst:171
 #, fuzzy
 msgid "and change the following settings:"
 msgstr "ve aşağıdaki ayarları değiştirin:"
 
-#: ../content/sso-kerberos.rst:174
+#: ../content/sso-kerberos.rst:180
 #, fuzzy
 msgid "Debugging and Problems"
 msgstr "Hata Ayıklama ve Sorunlar"
 
-#: ../content/sso-kerberos.rst:176
+#: ../content/sso-kerberos.rst:182
 #, fuzzy
 msgid "If the Kerberos SSO does not work, please check first if the NGINX container is started:"
 msgstr "Kerberos SSO çalışmazsa, lütfen önce NGINX konteynerinin başlatılıp başlatılmadığını kontrol edin:"
 
-#: ../content/sso-kerberos.rst:184
+#: ../content/sso-kerberos.rst:190
 #, fuzzy
 msgid "In the next step please check the NGINX logs for more information:"
 msgstr "Bir sonraki adımda lütfen daha fazla bilgi için NGINX günlüklerini kontrol edin:"
 
-#: ../content/sso-kerberos.rst:192
+#: ../content/sso-kerberos.rst:198
 #, fuzzy
 msgid "If NGINX is running, please login into the NGINX Container and check all needed files:"
 msgstr "NGINX çalışıyorsa, lütfen NGINX Konteynerine giriş yapın ve gerekli tüm dosyaları kontrol edin:"
 
-#: ../content/sso-kerberos.rst:207
+#: ../content/sso-kerberos.rst:213
 #, fuzzy
 msgid "Kerberos Debugging"
 msgstr "Kerberos hata ayıklama"
 
-#: ../content/sso-kerberos.rst:214
+#: ../content/sso-kerberos.rst:220
 #, fuzzy
 msgid "Now you are able to debug the Kerberos settings. Examples:"
 msgstr "Artık Kerberos ayarlarında hata ayıklayabilirsiniz. Örnekler:"
 
-#: ../content/sso-kerberos.rst:230
+#: ../content/sso-kerberos.rst:236
 #, fuzzy
 msgid "In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use separate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your ``Kernel/Config.pm``)."
 msgstr "Görünüşe göre kimlik doğrulamanın çalıştığı ancak aracının henüz veritabanında olmadığı bir sorunla karşılaşırsanız, senkronizasyonunuz (uygulandıysa) çalışmayabilir. 52e hatası (İlk bağlama başarısız oldu) Arama Kullanıcınızda bir sorun olduğunu gösterir. Bu, AD senkronizasyonu için ve SSO kullanıcısı olarak aynı kullanıcıyı kullanırsanız olur. Lütfen bunun için ayrı AD kullanıcıları kullanın. Yeni bir keytab oluşturmak ve yukarıda belirtilen adımları tekrarlamak zorunda kalmamak için, AD senkronizasyonunuzda kullanmak üzere yeni bir kullanıcı oluşturmak daha kolay olabilir (muhtemelen Kernel/Config.pm dosyanızda)."
 
-#: ../content/sso-kerberos.rst:236
+#: ../content/sso-kerberos.rst:242
 #, fuzzy
 msgid "In case SSO is not working properly, make sure: * the user for which it is not working is in Active Directory * the system has to be in the domain * it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO')"
 msgstr "SSO'nun düzgün çalışmaması durumunda, emin olun: * çalışmadığı kullanıcının Active Directory'de olduğundan * sistemin etki alanında olması gerektiğinden * güvenilir bir sayfa olarak doğru şekilde belirtildiğinden (bkz. 'Tarayıcıyı Kerberos SSO'yu anlamak için yapılandırma')"
