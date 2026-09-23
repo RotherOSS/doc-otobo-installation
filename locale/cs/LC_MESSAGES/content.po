@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 06:57+0000\n"
+"POT-Creation-Date: 2026-09-23 14:12+0000\n"
 "PO-Revision-Date: 2024-09-02 14:23+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Czech <http://weblate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/cs/>\n"
@@ -800,648 +800,661 @@ msgid "Set in case the HTTPS port should deviate from the standard port 443."
 msgstr "Nastavuje se pro případ, že by se port HTTPS měl odchýlit od standardního portu 443."
 
 #: ../content/installation/installation-docker.rst:265
-#: ../content/installation/installation-docker.rst:343
+#: ../content/installation/installation-docker.rst:348
 #, fuzzy
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE``"
 msgstr "OTOBO_NGINX_SSL_CERTIFICATE"
 
 #: ../content/installation/installation-docker.rst:264
 #, fuzzy
-msgid "SSL cert for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
+msgid "SSL cert for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt``"
 msgstr "SSL certifikát pro webový server nginx. Příklad: *OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/acme.crt*"
 
 #: ../content/installation/installation-docker.rst:269
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:351
 #, fuzzy
 msgid "``OTOBO_NGINX_SSL_CERTIFICATE_KEY``"
 msgstr "OTOBO_NGINX_SSL_CERTIFICATE_KEY"
 
 #: ../content/installation/installation-docker.rst:268
 #, fuzzy
-msgid "SSL key for the nginx webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
+msgid "SSL key for the NGINX webproxy. Example: ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key``"
 msgstr "Klíč SSL pro webový server nginx. Příklad: *OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/acme.key*"
 
-#: ../content/installation/installation-docker.rst:271
+#: ../content/installation/installation-docker.rst:274
+#, fuzzy
+msgid "``OTOBO_PROXY_SECRET``"
+msgstr "OTOBO_NGINX_WEB_PORT"
+
+#: ../content/installation/installation-docker.rst:272
+msgid "Used if NGINX does the SSO (e.g., Kerberos) and forwards the user identity to OTOBO. Necessary only in combination with the HTTPBasicAuth authentication module. Also see ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:276
 #, fuzzy
 msgid "**Nginx webproxy settings for Kerberos**"
 msgstr "**Nastavení webového serveru Nginx pro Kerberos**"
 
-#: ../content/installation/installation-docker.rst:273
+#: ../content/installation/installation-docker.rst:278
 #, fuzzy
 msgid "This settings are used by Nginx when Kerberos is used for single sign on."
 msgstr "Toto nastavení používá Nginx, když se pro jednotné přihlášení používá Kerberos."
 
-#: ../content/installation/installation-docker.rst:277
+#: ../content/installation/installation-docker.rst:282
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_KEYTAB``"
 msgstr "OTOBO_NGINX_KERBEROS_KEYTAB"
 
-#: ../content/installation/installation-docker.rst:276
+#: ../content/installation/installation-docker.rst:281
 #, fuzzy
 msgid "Kerberos keytab file. The default is ``/etc/krb5.keytab``."
 msgstr "Soubor keytab systému Kerberos. Výchozí je */etc/krb5.keytab*."
 
-#: ../content/installation/installation-docker.rst:281
+#: ../content/installation/installation-docker.rst:286
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_CONFIG``"
 msgstr "OTOBO_NGINX_KERBEROS_CONFIG"
 
-#: ../content/installation/installation-docker.rst:280
+#: ../content/installation/installation-docker.rst:285
 #, fuzzy
 msgid "Kerberos config file. The default is ``/etc/krb5.conf``, usually generated from ``krb5.conf.template``."
 msgstr "Konfigurační soubor Kerberos. Výchozí je */etc/krb5.conf*, obvykle se generuje ze souboru *krb5.conf.template*."
 
-#: ../content/installation/installation-docker.rst:285
+#: ../content/installation/installation-docker.rst:290
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_SERVICE_NAME``"
 msgstr "OTOBO_NGINX_KERBEROS_SERVICE_NAME"
 
-#: ../content/installation/installation-docker.rst:284
+#: ../content/installation/installation-docker.rst:289
 #, fuzzy
 msgid "Kerberos Service Name. It is not clear where this setting is actually used anywhere."
 msgstr "Název služby Kerberos. Není jasné, kde se toto nastavení vlastně používá."
 
-#: ../content/installation/installation-docker.rst:289
+#: ../content/installation/installation-docker.rst:294
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_REALM``"
 msgstr "OTOBO_NGINX_KERBEROS_REALM"
 
-#: ../content/installation/installation-docker.rst:288
+#: ../content/installation/installation-docker.rst:293
 #, fuzzy
 msgid "Kerberos REALM. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos REALM. Používá se v souboru */etc/krb5.conf*."
 
-#: ../content/installation/installation-docker.rst:293
+#: ../content/installation/installation-docker.rst:298
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_KDC``"
 msgstr "OTOBO_NGINX_KERBEROS_KDC"
 
-#: ../content/installation/installation-docker.rst:292
+#: ../content/installation/installation-docker.rst:297
 #, fuzzy
 msgid "Kerberos kdc / AD Controller. Used in ``/etc/krb5.conf``."
 msgstr "Kerberos kdc / AD Controller. Používá se v souboru */etc/krb5.conf*."
 
-#: ../content/installation/installation-docker.rst:297
+#: ../content/installation/installation-docker.rst:302
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_ADMIN_SERVER``"
 msgstr "OTOBO_NGINX_KERBEROS_ADMIN_SERVER"
 
-#: ../content/installation/installation-docker.rst:296
+#: ../content/installation/installation-docker.rst:301
 #, fuzzy
 msgid "Kerberos Admin Server. Used in ``/etc/krb5.conf``."
 msgstr "Server správce systému Kerberos. Používá se v souboru */etc/krb5.conf*."
 
-#: ../content/installation/installation-docker.rst:301
+#: ../content/installation/installation-docker.rst:306
 #, fuzzy
 msgid "``OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN``"
 msgstr "OTOBO_NGINX_KERBEROS_DEFAULT_DOMAIN"
 
-#: ../content/installation/installation-docker.rst:300
+#: ../content/installation/installation-docker.rst:305
 #, fuzzy
 msgid "Kerberos Default Domain. Used in ``/etc/krb5.conf``."
 msgstr "Výchozí doména Kerberos. Používá se v souboru */etc/krb5.conf*."
 
-#: ../content/installation/installation-docker.rst:305
+#: ../content/installation/installation-docker.rst:310
 #, fuzzy
 msgid "``NGINX_ENVSUBST_TEMPLATE_DIR``"
 msgstr "NGINX_ENVSUBST_TEMPLATE_DIR"
 
-#: ../content/installation/installation-docker.rst:304
+#: ../content/installation/installation-docker.rst:309
 #, fuzzy
 msgid "Provide a custom Nginx config template dir. Gives extra flexibility."
 msgstr "Poskytněte vlastní šablonu konfigurace Nginx. Poskytuje větší flexibilitu."
 
-#: ../content/installation/installation-docker.rst:307
+#: ../content/installation/installation-docker.rst:312
 #, fuzzy
 msgid "**Docker Compose settings**"
 msgstr "**Nastavení nástroje Docker Compose**"
 
-#: ../content/installation/installation-docker.rst:309
+#: ../content/installation/installation-docker.rst:314
 #, fuzzy
 msgid "These settings are used by Docker Compose directly."
 msgstr "Tato nastavení používá přímo nástroj Docker Compose."
 
-#: ../content/installation/installation-docker.rst:314
+#: ../content/installation/installation-docker.rst:319
 #, fuzzy
 msgid "``COMPOSE_PROJECT_NAME``"
 msgstr "COMPOSE_PROJECT_NAME"
 
-#: ../content/installation/installation-docker.rst:312
+#: ../content/installation/installation-docker.rst:317
 #, fuzzy
 msgid "The project name is used as the prefix for the volumes and containers. By default this prefix is set to ``otobo``, resulting in container names like ``otobo-web-1`` and ``otobo-db-1``. Change this name when you want to run more then one instance of OTOBO on the same server."
 msgstr "Název projektu se používá jako předpona pro svazky a kontejnery. Ve výchozím nastavení je tato předpona nastavena na `otobo`, což vede k názvům kontejnerů jako `otobo_web_1` a `otobo_db_1`. Tento název změňte, pokud chcete na stejném serveru provozovat více instancí systému OTOBO."
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 msgid "``COMPOSE_PATH_SEPARATOR``"
 msgstr "COMPOSE_PATH_SEPARATOR"
 
-#: ../content/installation/installation-docker.rst:317
+#: ../content/installation/installation-docker.rst:322
 #, fuzzy
 msgid "Separator for the value of ``COMPOSE_FILE``"
 msgstr "Oddělovač hodnoty COMPOSE_FILE"
 
-#: ../content/installation/installation-docker.rst:321
+#: ../content/installation/installation-docker.rst:326
 #, fuzzy
 msgid "``COMPOSE_FILE``"
 msgstr "COMPOSE_FILE"
 
-#: ../content/installation/installation-docker.rst:320
+#: ../content/installation/installation-docker.rst:325
 #, fuzzy
 msgid "Use ``docker-compose/otobo-base.yml`` as the base and add the wanted extension files. E.g., ``docker-compose/otobo-override-http.yml`` or ``docker-compose/otobo-override-https.yml``."
 msgstr "Jako základ použijte *docker-compose/otobo-base.yml* a přidejte požadované soubory rozšíření. Například *docker-compose/otobo-override-http.yml* nebo *docker-compose/otobo-override-https.yml*."
 
-#: ../content/installation/installation-docker.rst:325
+#: ../content/installation/installation-docker.rst:330
 #, fuzzy
 msgid "``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX``, ..."
 msgstr "OTOBO_IMAGE_OTOBO, OTOBO_IMAGE_OTOBO_ELASTICSEARCH, OTOBO_IMAGE_OTOBO_NGINX, ..."
 
-#: ../content/installation/installation-docker.rst:324
+#: ../content/installation/installation-docker.rst:329
 #, fuzzy
 msgid "Used for specifying alternative Docker images. Useful for testing local builds or for using updated versions of the images."
 msgstr "Slouží k zadání alternativních obrazů nástroje Docker. Užitečné pro testování místních sestavení nebo pro použití aktualizovaných verzí obrazů."
 
-#: ../content/installation/installation-docker.rst:328
+#: ../content/installation/installation-docker.rst:333
 #, fuzzy
 msgid "Advanced Topics"
 msgstr "Pokročilá témata"
 
-#: ../content/installation/installation-docker.rst:331
+#: ../content/installation/installation-docker.rst:336
 #, fuzzy
 msgid "Custom Configuration of the Nginx Webproxy"
 msgstr "Vlastní konfigurace webového serveru nginx"
 
-#: ../content/installation/installation-docker.rst:333
+#: ../content/installation/installation-docker.rst:338
 #, fuzzy
 msgid "The container ``otobo-nginx-1`` provides HTTPS support by running Nginx as a reverse proxy. The Docker image that runs in the container is composed of the official Nginx Docker image, https://hub.docker.com/_/nginx, along with a OTOBO specific configuration of Nginx."
 msgstr "Kontejner ``otobo_nginx_1`` zajišťuje podporu HTTPS pomocí Nginx jako reverzního proxy serveru. Obraz Docker, který je v kontejneru spuštěn, se skládá z oficiálního obrazu Nginx pro Docker, https://hub.docker.com/_/nginx, spolu s konfigurací Nginx specifickou pro OTOBO."
 
-#: ../content/installation/installation-docker.rst:336
+#: ../content/installation/installation-docker.rst:341
 #, fuzzy
 msgid "The default OTOBO specific configuration can be found within the Docker image at ``/etc/nginx/template/otobo_nginx.conf.template``. Actually, this is only a template for the final configuration. There is a process, provided by the Nginx base image, that replaces the macros in the template with the corresponding environment variable. This process runs when the container starts up. In the default template file, the following macros are used:"
 msgstr "Výchozí konfiguraci specifickou pro OTOBO naleznete v obraze Dockeru na adrese */etc/nginx/template/otobo_nginx.conf.template*. Ve skutečnosti se jedná pouze o šablonu pro konečnou konfiguraci. Existuje proces, poskytovaný základním obrazem Nginx, který nahradí makra v šabloně odpovídající proměnnou prostředí. Tento proces se spustí při spuštění kontejneru. Ve výchozím souboru šablony jsou použita následující makra:"
 
-#: ../content/installation/installation-docker.rst:343
-#: ../content/installation/installation-docker.rst:346
+#: ../content/installation/installation-docker.rst:348
+#: ../content/installation/installation-docker.rst:351
 #, fuzzy
 msgid "For configuring SSL."
 msgstr "Pro konfiguraci protokolu SSL."
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 #, fuzzy
 msgid "``OTOBO_NGINX_WEB_HOST``"
 msgstr "OTOBO_NGINX_WEB_HOST"
 
-#: ../content/installation/installation-docker.rst:349
+#: ../content/installation/installation-docker.rst:354
 #, fuzzy
 msgid "The internally used HTTP host."
 msgstr "Interně používaný hostitel HTTP."
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 #, fuzzy
 msgid "``OTOBO_NGINX_WEB_PORT``"
 msgstr "OTOBO_NGINX_WEB_PORT"
 
-#: ../content/installation/installation-docker.rst:352
+#: ../content/installation/installation-docker.rst:357
 #, fuzzy
 msgid "The internally used HTTP port."
 msgstr "Interně používaný port HTTP."
 
-#: ../content/installation/installation-docker.rst:354
+#: ../content/installation/installation-docker.rst:359
 #, fuzzy
 msgid "See step `4.` for how this configuration possibility was used for setting up the SSL certificate."
 msgstr "Jak byla tato možnost konfigurace použita pro nastavení certifikátu SSL, viz krok `4.`."
 
-#: ../content/installation/installation-docker.rst:356
+#: ../content/installation/installation-docker.rst:361
 #, fuzzy
 msgid "When the standard macros are not sufficient, then the customization can go further. This can be achieved by replacing the default config template with a customized version. It is best practice to not simple change the configuration in the running container. Instead we first create a persistent volume that contains the custom config. Then we tell the ``otobo-nginx-1`` to mount the new volume and to use the customized configuration."
 msgstr "Pokud standardní makra nestačí, lze jít s přizpůsobením ještě dále. Toho lze dosáhnout nahrazením výchozí konfigurační šablony vlastní verzí. Nejlepší praxí je neměnit jednoduše konfiguraci v běžícím kontejneru. Místo toho nejprve vytvoříme trvalý svazek, který obsahuje vlastní konfiguraci. Poté řekneme *otobo_nginx_1*, aby připojil nový svazek a použil přizpůsobenou konfiguraci."
 
-#: ../content/installation/installation-docker.rst:362
+#: ../content/installation/installation-docker.rst:367
 #, fuzzy
 msgid "First comes generation of the new volume. In these sample commands, we use the existing template as a starting point."
 msgstr "Nejprve přichází generování nového svazku. V těchto ukázkových příkazech použijeme jako výchozí bod stávající šablonu."
 
-#: ../content/installation/installation-docker.rst:388
+#: ../content/installation/installation-docker.rst:393
 #, fuzzy
 msgid "After setting up the volume, the adapted configuration must be activated. The new volume is set up in ``docker-compose/otobo-nginx-custom-config.yml``. Therefore, this file must be added to ``COMPOSE_FILE``. Then Nginx must be directed to use the new configuration. This is done by setting ``NGINX_ENVSUBST_TEMPLATE_DIR`` in the environment. In order to achieve this, uncomment or add the following lines in your ``.env`` file:"
 msgstr "Po nastavení svazku je třeba aktivovat přizpůsobenou konfiguraci. Nový svazek se nastavuje v souboru *docker-compose/otobo-nginx-custom-config.yml*. Proto je třeba tento soubor přidat do souboru **COMPOSE_FILE**. Poté je třeba Nginx nasměrovat, aby používal novou konfiguraci. To se provede nastavením **NGINX_ENVSUBST_TEMPLATE_DIR** v prostředí. Abyste toho dosáhli, odkomentujte nebo přidejte následující řádky do souboru *.env*:"
 
-#: ../content/installation/installation-docker.rst:400
+#: ../content/installation/installation-docker.rst:405
 #, fuzzy
 msgid "The changed Docker Compose configuration can be inspected with:"
 msgstr "Změněnou konfiguraci nástroje Docker Compose lze zkontrolovat pomocí:"
 
-#: ../content/installation/installation-docker.rst:406
+#: ../content/installation/installation-docker.rst:411
 #, fuzzy
 msgid "Finally, the containers can be started again:"
 msgstr "Nakonec lze kontejnery opět spustit:"
 
-#: ../content/installation/installation-docker.rst:412
+#: ../content/installation/installation-docker.rst:417
 #, fuzzy
 msgid "See also the section \"Using environment variables in Nginx configuration (new in 1.19)\" in https://hub.docker.com/_/nginx."
 msgstr "Viz také část \"Použití proměnných prostředí v konfiguraci nginx (novinka ve verzi 1.19)\" na adrese https://hub.docker.com/_/nginx."
 
-#: ../content/installation/installation-docker.rst:415
+#: ../content/installation/installation-docker.rst:420
 #, fuzzy
 msgid "Single Sign-On Using the Kerberos Support in Nginx"
 msgstr "Jednotné přihlášení pomocí podpory Kerberos v Nginxu"
 
-#: ../content/installation/installation-docker.rst:417
+#: ../content/installation/installation-docker.rst:422
 #, fuzzy
 msgid "**Short Description**"
 msgstr "**Krátký popis**"
 
-#: ../content/installation/installation-docker.rst:419
+#: ../content/installation/installation-docker.rst:424
 #, fuzzy
 msgid "For enabling authentication with Kerberos please base you ``.env`` file on the sample file ``.docker_compose_env_https_kerberos``. This activates the special configuration in ``docker-compose/otobo-override-https-kerberos.yml``. This Docker compose configuration file selects a Nginx image that supports Kerberos. It also passes some Kerberos specific settings as environment values to the running Nginx container. These settings are listed above."
 msgstr "Pro povolení ověřování pomocí Kerberosu založte svůj *.env soubor* na vzorovém souboru *.docker_compose_env_https_kerberos*. Tím aktivujete speciální konfiguraci v souboru *docker-compose/otobo-override-https-kerberos.yml*. Tento konfigurační soubor Docker compose vybere obraz Nginx, který podporuje Kerberos. Také předává některá specifická nastavení Kerberos jako hodnoty prostředí běžícímu kontejneru Nginx. Tato nastavení jsou uvedena výše."
 
-#: ../content/installation/installation-docker.rst:425
+#: ../content/installation/installation-docker.rst:430
 #, fuzzy
 msgid "As usual, the values for these setting can be specified in the ``.env`` file. Most of these setting will be used as replacement values for the template  https://github.com/RotherOSS/otobo/blob/rel-11_0/scripts/nginx/kerberos/templates/krb5.conf.template . The replacement takes place during the startup of the container. In the running container the adapted configuration will be available in ``/etc/krb5.conf``."
 msgstr "Hodnoty těchto nastavení lze jako obvykle zadat v souboru *.env*. Většina těchto nastavení bude použita jako náhradní hodnoty pro šablonu https://github.com/RotherOSS/otobo/blob/rel-10_1/scripts/nginx/kerberos/templates/krb5.conf.template . Nahrazení proběhne při spuštění kontejneru. V běžícím kontejneru bude upravený konfigurátor k dispozici v souboru */etc/krb5.conf*."
 
-#: ../content/installation/installation-docker.rst:430
+#: ../content/installation/installation-docker.rst:435
 #, fuzzy
 msgid "Providing an user specific ``/etc/krb5.conf`` file is still possible. This can be done by mounting a volume that overrides ``/etc/krb5.conf`` in the container. This can be achieved by setting ``OTOBO_NGINX_KERBEROS_CONFIG`` in the ``.env`` file and by activating the mount directive in ``docker-compose/otobo-override-https-kerberos.yml``."
 msgstr "Poskytnutí souboru */etc/krb5.conf* pro konkrétního uživatele je stále možné. To lze provést připojením svazku, který přepíše */etc/krb5.conf* v kontejneru. Toho lze dosáhnout nastavením OTOBO_NGINX_KERBEROS_CONFIG v souboru *.env* a aktivací příkazu mount directove v souboru *docker-compose/otobo-override-https-kerberos.yml*."
 
-#: ../content/installation/installation-docker.rst:434
+#: ../content/installation/installation-docker.rst:439
 #, fuzzy
 msgid "``/etc/krb5.keytab`` is always installation specific and must therefore always be mounted from the host system."
 msgstr "*/etc/krb5.keytab* je vždy specifický pro instalaci, a proto musí být vždy připojen z hostitelského systému."
 
-#: ../content/installation/installation-docker.rst:436
+#: ../content/installation/installation-docker.rst:441
+msgid "Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication. See also ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
+msgstr ""
+
+#: ../content/installation/installation-docker.rst:444
 #, fuzzy
 msgid "**Kerberos SSO Installation Tutorial**"
 msgstr "**Ukázka instalace služby Kerberos SSO**"
 
-#: ../content/installation/installation-docker.rst:438
+#: ../content/installation/installation-docker.rst:446
 msgid ":doc:`Kerberos Single Sign On <../sso-kerberos>`"
 msgstr ""
 
-#: ../content/installation/installation-docker.rst:441
+#: ../content/installation/installation-docker.rst:449
 #, fuzzy
 msgid "Choosing non-standard Ports"
 msgstr "Výběr nestandardních portů"
 
-#: ../content/installation/installation-docker.rst:443
+#: ../content/installation/installation-docker.rst:451
 #, fuzzy
 msgid "Per default the ports 443 and 80 serve HTTPS and HTTP respectively. There can be cases where one or both of these ports are already used by other services. In these cases the default ports can be overridden by specifying ``OTOBO_WEB_HTTP_PORT`` and ``OTOBO_WEB_HTTPS_PORT`` in the ``.env`` file."
 msgstr "Ve výchozím nastavení slouží porty 443 a 80 pro protokoly HTTPS a HTTP. Může se stát, že jeden nebo oba tyto porty jsou již využívány jinými službami. V těchto případech lze výchozí porty přepsat zadáním `OTOBO_WEB_HTTP_PORT` a `OTOBO_WEB_HTTPS_PORT` v souboru *.env*."
 
-#: ../content/installation/installation-docker.rst:448
+#: ../content/installation/installation-docker.rst:456
 #, fuzzy
 msgid "Skip Startup of Specific Services"
 msgstr "Přeskočení spuštění konkrétních služeb"
 
-#: ../content/installation/installation-docker.rst:450
+#: ../content/installation/installation-docker.rst:458
 #, fuzzy
 msgid "The current Docker compose setup start five, six when HTTPS is activated, services. But there are valid use cases where one or more of these services are not needed. The prime example is when the database should not run as a Docker service, but as an external database. Unfortunately there is no dedicated Docker compose option for skipping specific services. But the option ``--scale`` can be abused for this purpose. So for an installation with an external database the following command can be used:"
 msgstr "Aktuální nastavení Docker compose spouští pět, při aktivaci HTTPS šest, služeb. Existují však oprávněné případy použití, kdy jedna nebo více těchto služeb není potřeba. Ukázkovým příkladem je situace, kdy databáze nemá běžet jako služba Docker, ale jako externí databáze. Bohužel neexistuje žádná specializovaná možnost Docker compose pro vynechání konkrétních služeb. K tomuto účelu však lze zneužít volbu `--scale`. Pro instalaci s externí databází lze tedy použít následující příkaz:"
 
-#: ../content/installation/installation-docker.rst:461
+#: ../content/installation/installation-docker.rst:469
 #, fuzzy
 msgid "Of course the same goal can also be achieved by editing the file ``docker-compose/otobo-base.yml`` and removing the relevant service definitions."
 msgstr "Stejného cíle lze samozřejmě dosáhnout také úpravou souboru *docker-compose/otobo-base.yml* a odstraněním příslušných definic služeb."
 
-#: ../content/installation/installation-docker.rst:464
+#: ../content/installation/installation-docker.rst:472
 #, fuzzy
 msgid "Prepare Offline Installation"
 msgstr "Příprava offline instalace"
 
-#: ../content/installation/installation-docker.rst:466
+#: ../content/installation/installation-docker.rst:474
 #, fuzzy
 msgid "Please download `the latest version of otobo-docker <https://doc.otobo.org/manual/installation/11.0/en/content/installation-docker.html#clone-the-otobo-docker-repo>`_ on a system that has internet access and where docker is installed. Then navigate to the following folder ``otobo-docker/docker-compose``."
 msgstr "Stáhněte si prosím `nejnovější verzi nástroje otobo-docker <https://doc.otobo.org/manual/installation/10.1/en/content/installation-docker.html#clone-the-otobo-docker-repo>`__ v systému s přístupem k internetu, kde je nainstalován docker. Poté přejděte do následující složky *otobo-docker/docker-compose*."
 
-#: ../content/installation/installation-docker.rst:473
+#: ../content/installation/installation-docker.rst:481
 #, fuzzy
 msgid "Now you can run the following command to download all Docker images from a specific file, in my example I use the ``otobo-base.yml``."
 msgstr "Nyní můžete spustit následující příkaz pro stažení všech obrazů Docker z určitého souboru, v mém příkladu jsem použil *otobo-base.yml*."
 
-#: ../content/installation/installation-docker.rst:479
+#: ../content/installation/installation-docker.rst:487
 #, fuzzy
 msgid "After that, the images (``.docker``) are located in the ``docker-compose`` folder and can be uploaded to the target system via, e.g, `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
 msgstr "Poté jsou obrazy (.docker) umístěny ve složce docker-compose a lze je nahrát do cílového systému např. pomocí `SCP <https://en.wikipedia.org/wiki/Secure_copy_protocol>`__."
 
-#: ../content/installation/installation-docker.rst:481
+#: ../content/installation/installation-docker.rst:489
 #, fuzzy
 msgid "On the offline target system, go to the folder where the docker images are stored. And enter the following command to import them one by one. In the following example the Mariadb image is imported:"
 msgstr "V cílovém systému offline přejděte do složky, kde jsou uloženy obrazy dockerů. A zadejte následující příkaz pro jejich import jeden po druhém."
 
-#: ../content/installation/installation-docker.rst:490
+#: ../content/installation/installation-docker.rst:498
 #, fuzzy
 msgid "Customizing OTOBO Docker Compose"
 msgstr "Přizpůsobení aplikace OTOBO Docker Compose"
 
-#: ../content/installation/installation-docker.rst:492
+#: ../content/installation/installation-docker.rst:500
 #, fuzzy
 msgid "Instead of editing the files under ``docker-compose/*`` and risking to overwrite your own options with the `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the ``otobo-docker`` folder, it is advisable to create an extra YAML file where the specific services are overwritten with additional options."
 msgstr "Namísto úprav souborů v adresáři *docker-compose/* a rizika přepsání vlastních voleb pomocí `next update <https://doc.otobo.org/manual/installation/10.1/en/content/updating-docker.html#updating-the-docker-compose-files>`_ adresáře otobo-docker je vhodné vytvořit další soubor YAML, kde budou konkrétní služby přepsány dalšími volbami."
 
-#: ../content/installation/installation-docker.rst:494
+#: ../content/installation/installation-docker.rst:502
 #, fuzzy
 msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create an extra docker compose file that looks like:"
 msgstr "Běžným příkladem je zpřístupnění databázového kontejneru zvenčí prostřednictvím portu 3306. Za tímto účelem byste mohli vytvořit další soubor docker compose, který by vypadal takto:"
 
-#: ../content/installation/installation-docker.rst:505
+#: ../content/installation/installation-docker.rst:513
 #, fuzzy
 msgid "Now we have to tell Docker Compose to include our new file. For this you have to add your YAML file to the ``COMPOSE_FILE`` variable in the ``.env`` file, for example:"
 msgstr "Nyní musíme říct *docker-compose*, aby zahrnul náš nový soubor. Za tímto účelem musíte přidat svůj soubor YAML do proměnné *COMPOSE_FILE* v souboru *.env*, například:"
 
-#: ../content/installation/installation-docker.rst:512
+#: ../content/installation/installation-docker.rst:520
 #, fuzzy
 msgid "Now we can use ``docker compose`` to recreate our container"
 msgstr "Nyní můžeme pomocí *docker-compose* znovu vytvořit náš kontejner."
 
-#: ../content/installation/installation-docker.rst:519
+#: ../content/installation/installation-docker.rst:527
 #, fuzzy
 msgid "With this procedure you can customize any service or volumes."
 msgstr "Pomocí tohoto postupu můžete přizpůsobit jakoukoli službu nebo svazky."
 
-#: ../content/installation/installation-docker.rst:522
+#: ../content/installation/installation-docker.rst:530
 #, fuzzy
 msgid "Customizing the OTOBO Docker Image"
 msgstr "Přizpůsobení obrazu OTOBO Docker"
 
-#: ../content/installation/installation-docker.rst:524
+#: ../content/installation/installation-docker.rst:532
 #, fuzzy
 msgid "Customization can be done in the external volume ``otobo_opt_otobo`` which corresponds to the directory ``/opt/otobo`` in the Docker image. This works, e.g., for local Perl modules which can be installed into ``/opt/otobo/local``. Here is an example that installs the not very useful CPAN module `Acme::123`."
 msgstr "Mnoho úprav lze provést v externím svazku *otobo_opt_otobo*, který odpovídá adresáři */opt/otobo* v obrazu Docker. To funguje např. pro místní moduly Perlu, které lze nainstalovat do */opt/otobo/local*. Zde je příklad, který instaluje nepříliš užitečný modul CPAN `Acme::123`."
 
-#: ../content/installation/installation-docker.rst:538
+#: ../content/installation/installation-docker.rst:546
 #, fuzzy
 msgid "The nice thing of this approach is that the Docker image itself does not have to be modified."
 msgstr "Příjemné na tomto přístupu je, že samotný obraz Dockeru není třeba upravovat."
 
-#: ../content/installation/installation-docker.rst:540
+#: ../content/installation/installation-docker.rst:548
 #, fuzzy
 msgid "Installing extra Debian packages is a little bit trickier. One approach is to create a custom ``Dockerfile`` and use the OTOBO image as the base image. Another approach is to create a modified image directly from a running container. This can be done with the command `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. A nice write-up of that process is available at https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 msgstr "Instalace dalších balíčků Debianu je trochu složitější. Jedním z přístupů je vytvoření vlastního *Dockerfile* a použití obrazu OTOBO jako základního obrazu. Dalším přístupem je vytvoření upraveného obrazu přímo z běžícího kontejneru. To lze provést pomocí příkazu `docker commit`, https://docs.docker.com/engine/reference/commandline/commit/. Pěkný popis tohoto procesu je k dispozici na adrese https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image."
 
-#: ../content/installation/installation-docker.rst:546
+#: ../content/installation/installation-docker.rst:554
 #, fuzzy
 msgid "But for the latter approach there are two hurdles to overcome. First, the image ``otobo`` runs per default as the user ``otobo`` with the UID ``1000``. The problem is that the user ``otobo`` is not allowed to install system packages. Thus, the first part of the solution is to pass the option ``--user root`` when running the image. However the second hurdle is that the default entrypoint script ``/opt/otobo_install/entrypoint.sh`` exits immediately when it is called as ``root``. The reasoning behind that design decision is that running inadvertently as ``root`` should be discouraged. So, the second part of the solution is to specify a different entrypoint script that does not care who the caller is. This leaves us with following example commands, where we add fortune cookies to OTOBO:"
 msgstr "V případě druhého přístupu je však třeba překonat dvě překážky. Zaprvé, obraz *otobo* se ve výchozím nastavení spouští jako uživatel *otobo* s UID 1000. Problém spočívá v tom, že uživatel *otobo* nesmí instalovat systémové balíčky. První částí řešení je tedy předání volby `--uživatel root` při spouštění image. Druhou překážkou však je, že výchozí skript vstupního bodu */opt/otobo_install/entrypoint.sh* se při volání jako *root* okamžitě ukončí. Důvodem pro toto návrhové rozhodnutí je, že by se mělo zabránit neúmyslnému spuštění jako *root*. Druhou částí řešení je tedy zadání jiného skriptu vstupního bodu, kterému je jedno, kdo je volajícím. Zbývají nám tedy následující příklady příkazů, ve kterých přidáváme do otobo sušenky štěstí:"
 
-#: ../content/installation/installation-docker.rst:555
+#: ../content/installation/installation-docker.rst:563
 #, fuzzy
 msgid "Pull a tagged OTOBO image, if we don't have it yet, and check whether the image already provides fortune cookies:"
 msgstr "Vytáhněte označený obrázek OTOBO, pokud jej ještě nemáme, a zkontrolujte, zda obrázek již obsahuje sušenky štěstí:"
 
-#: ../content/installation/installation-docker.rst:562
+#: ../content/installation/installation-docker.rst:570
 #, fuzzy
 msgid "Add fortune cookies to a named container running the original OTOBO image. This is done in an interactive session as the user ``root``:"
 msgstr "Přidání sušenek štěstí do pojmenovaného kontejneru s původním obrazem OTOBO. To se provádí v interaktivní relaci jako uživatel *root*:"
 
-#: ../content/installation/installation-docker.rst:570
+#: ../content/installation/installation-docker.rst:578
 #, fuzzy
 msgid "Create an image from the stopped container and give it a name. Take into account that the default user and entrypoint script must be restored:"
 msgstr "Vytvořte obraz ze zastaveného kontejneru a pojmenujte jej. Vezměte v úvahu, že je třeba obnovit výchozího uživatele a vstupní skript:"
 
-#: ../content/installation/installation-docker.rst:577
+#: ../content/installation/installation-docker.rst:585
 #, fuzzy
 msgid "Finally we can doublecheck:"
 msgstr "Konečně můžeme provést dvojitou kontrolu:"
 
-#: ../content/installation/installation-docker.rst:586
+#: ../content/installation/installation-docker.rst:594
 #, fuzzy
 msgid "The modified image can be specified in your ``.env`` file and then be used for fun and profit."
 msgstr "Upravený obrázek můžete zadat do souboru *.env* a poté jej použít pro zábavu i zisk."
 
-#: ../content/installation/installation-docker.rst:589
+#: ../content/installation/installation-docker.rst:597
 #, fuzzy
 msgid "Building Local Images"
 msgstr "Vytváření místních obrazů"
 
-#: ../content/installation/installation-docker.rst:593
+#: ../content/installation/installation-docker.rst:601
 #, fuzzy
 msgid "Building Docker images locally is usually only needed during development. Other use cases are when more current base images should be used for an installation or when extra functionality must be added to the images."
 msgstr "Lokální vytváření obrazů Docker je obvykle nutné pouze během vývoje. Jiné případy použití jsou, když je třeba pro instalaci použít více aktuálních základních obrazů nebo když je třeba do obrazů přidat další funkce."
 
-#: ../content/installation/installation-docker.rst:596
+#: ../content/installation/installation-docker.rst:604
 #, fuzzy
 msgid "The Docker files needed for creating Docker images locally are part of the git repository https://github.com/RotherOSS/otobo:"
 msgstr "Soubory nástroje Docker potřebné k lokálnímu vytvoření obrazů nástroje Docker jsou součástí úložiště git https://github.com/RotherOSS/otobo:"
 
-#: ../content/installation/installation-docker.rst:598
+#: ../content/installation/installation-docker.rst:606
 #, fuzzy
 msgid "``otobo.web.dockerfile``"
 msgstr "*otobo.web.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:599
+#: ../content/installation/installation-docker.rst:607
 #, fuzzy
 msgid "``otobo.nginx.dockerfile``"
 msgstr "*otobo.nginx.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:600
+#: ../content/installation/installation-docker.rst:608
 #, fuzzy
 msgid "``otobo.elasticsearch.dockerfile``"
 msgstr "*otobo.elasticsearch.dockerfile*"
 
-#: ../content/installation/installation-docker.rst:602
+#: ../content/installation/installation-docker.rst:610
 #, fuzzy
 msgid "The script for the actual creation of the images is ``bin/docker/build_docker_images.sh``."
 msgstr "Skript pro vlastní vytvoření obrazů je *bin/docker/build_docker_images.sh*."
 
-#: ../content/installation/installation-docker.rst:614
+#: ../content/installation/installation-docker.rst:622
 #, fuzzy
 msgid "The locally built Docker images are tagged as ``local-<OTOBO_VERSION>`` using the version set up the file ``RELEASE``."
 msgstr "Lokálně sestavené obrazy Docker jsou označeny jako ``local-<OTOBO_VERSION>`` pomocí verze nastavené v souboru *RELEASE*."
 
-#: ../content/installation/installation-docker.rst:616
+#: ../content/installation/installation-docker.rst:624
 #, fuzzy
 msgid "After building the local images, one can return to the ``docker-compose`` directory. The local images are declared by setting ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` in the ``.env`` file."
 msgstr "Po sestavení místních obrazů se můžete vrátit do adresáře *docker-compose*. Lokální obrazy se deklarují nastavením ``OTOBO_IMAGE_OTOBO``, ``OTOBO_IMAGE_OTOBO_ELASTICSEARCH``, ``OTOBO_IMAGE_OTOBO_NGINX`` v *.env*."
 
-#: ../content/installation/installation-docker.rst:620
+#: ../content/installation/installation-docker.rst:628
 #, fuzzy
 msgid "Automatic Installation"
 msgstr "Automatická instalace"
 
-#: ../content/installation/installation-docker.rst:622
+#: ../content/installation/installation-docker.rst:630
 #, fuzzy
 msgid "Instead of going through http://yourIPorFQDN/otobo/installer.pl, one can take a short cut. This is useful for running the test suite on a fresh installation."
 msgstr "Místo toho, abyste museli procházet stránkami http://yourIPorFQDN/otobo/installer.pl, můžete využít zkratku. To je užitečné pro spuštění testovací sady na čerstvé instalaci."
 
-#: ../content/installation/installation-docker.rst:627
+#: ../content/installation/installation-docker.rst:635
 #, fuzzy
 msgid "``docker compose down -v`` will remove all previous setup and data."
 msgstr "``docker-compose down -v`` odstraní všechna předchozí nastavení a data."
 
-#: ../content/installation/installation-docker.rst:642
+#: ../content/installation/installation-docker.rst:650
 #, fuzzy
 msgid "List of Useful Commands"
 msgstr "Seznam užitečných příkazů"
 
-#: ../content/installation/installation-docker.rst:644
+#: ../content/installation/installation-docker.rst:652
 #, fuzzy
 msgid "**Docker**"
 msgstr "**Docker**"
 
-#: ../content/installation/installation-docker.rst:646
+#: ../content/installation/installation-docker.rst:654
 #, fuzzy
 msgid "``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)"
 msgstr "``docker system prune -a`` vyčištění systému (odstraní všechny nepoužívané obrazy, kontejnery, svazky, sítě)"
 
-#: ../content/installation/installation-docker.rst:647
+#: ../content/installation/installation-docker.rst:655
 #, fuzzy
 msgid "``docker version`` show version"
 msgstr "``docker version`` zobrazit verzi"
 
-#: ../content/installation/installation-docker.rst:648
+#: ../content/installation/installation-docker.rst:656
 #, fuzzy
 msgid "``docker build --tag otobo --file=otobo.web.Dockerfile .`` build an image"
 msgstr "``docker build --tag otobo --file=otobo.web.Dockerfile .`` sestavit obraz"
 
-#: ../content/installation/installation-docker.rst:649
+#: ../content/installation/installation-docker.rst:657
 #, fuzzy
 msgid "``docker run --publish 80:5000 otobo`` run the new image"
 msgstr "``docker run --publish 80:5000 otobo`` spustí nový obraz"
 
-#: ../content/installation/installation-docker.rst:650
+#: ../content/installation/installation-docker.rst:658
 #, fuzzy
 msgid "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` log into the new image"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo otobo bash`` přihlaste se do nového obrazu"
 
-#: ../content/installation/installation-docker.rst:651
+#: ../content/installation/installation-docker.rst:659
 #, fuzzy
 msgid "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` try that in case entrypoint.sh is broken"
 msgstr "``docker run -it -v opt_otobo:/opt/otobo --entrypoint bash otobo`` zkuste to v případě, že je soubor entrypoint.sh nefunkční"
 
-#: ../content/installation/installation-docker.rst:652
+#: ../content/installation/installation-docker.rst:660
 #, fuzzy
 msgid "``docker ps`` show running images"
 msgstr "``docker ps`` zobrazí běžící obrazy"
 
-#: ../content/installation/installation-docker.rst:653
+#: ../content/installation/installation-docker.rst:661
 #, fuzzy
 msgid "``docker images`` show available images"
 msgstr "``docker images`` zobrazí dostupné obrázky"
 
-#: ../content/installation/installation-docker.rst:654
+#: ../content/installation/installation-docker.rst:662
 #, fuzzy
 msgid "``docker volume ls`` list volumes"
 msgstr "``docker volume ls`` seznam svazků"
 
-#: ../content/installation/installation-docker.rst:655
+#: ../content/installation/installation-docker.rst:663
 #, fuzzy
 msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
 msgstr "``docker volume inspect otobo_opt_otobo`` zkontroluje svazek"
 
-#: ../content/installation/installation-docker.rst:656
+#: ../content/installation/installation-docker.rst:664
 #, fuzzy
 msgid "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 msgstr "``docker volume inspect --format '{{ .Mountpoint }}' otobo_nginx_ssl`` get volume mountpoint"
 
-#: ../content/installation/installation-docker.rst:657
+#: ../content/installation/installation-docker.rst:665
 #, fuzzy
 msgid "``docker volume rm tmp_volume`` remove a volume"
 msgstr "``docker volume rm tmp_volume`` odstraní svazek"
 
-#: ../content/installation/installation-docker.rst:658
+#: ../content/installation/installation-docker.rst:666
 #, fuzzy
 msgid "``docker inspect <container>`` inspect a container"
 msgstr "``docker inspect <kontejner>`` zkontroluje kontejner"
 
-#: ../content/installation/installation-docker.rst:659
+#: ../content/installation/installation-docker.rst:667
 #, fuzzy
 msgid "``docker save --output otobo.tar otobo:latest-11_0 && tar -tvf otobo.tar`` list files in an image"
 msgstr "``docker save --output otobo.tar otobo:latest-10_0 && tar -tvf otobo.tar`` seznam souborů v obraze"
 
-#: ../content/installation/installation-docker.rst:660
+#: ../content/installation/installation-docker.rst:668
 #, fuzzy
 msgid "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 msgstr "``docker exec -it nginx-server nginx -s reload`` reload nginx"
 
-#: ../content/installation/installation-docker.rst:662
+#: ../content/installation/installation-docker.rst:670
 #, fuzzy
 msgid "**Docker Compose**"
 msgstr "**Docker Compose**"
 
-#: ../content/installation/installation-docker.rst:664
+#: ../content/installation/installation-docker.rst:672
 #, fuzzy
 msgid "``docker compose config`` check and show the configuration"
 msgstr "``docker-compose config`` zkontroluje a zobrazí konfiguraci"
 
-#: ../content/installation/installation-docker.rst:665
+#: ../content/installation/installation-docker.rst:673
 #, fuzzy
 msgid "``docker compose ps`` show the running containers"
 msgstr "``docker-compose ps`` zobrazí běžící kontejnery"
 
-#: ../content/installation/installation-docker.rst:666
+#: ../content/installation/installation-docker.rst:674
 #, fuzzy
 msgid "``docker compose exec nginx nginx -s reload`` reload nginx"
 msgstr "``docker-compose exec nginx nginx -s reload`` reload nginx"
 
-#: ../content/installation/installation-docker.rst:669
+#: ../content/installation/installation-docker.rst:677
 #, fuzzy
 msgid "Resources"
 msgstr "Zdroje"
 
-#: ../content/installation/installation-docker.rst:671
+#: ../content/installation/installation-docker.rst:679
 #, fuzzy
 msgid "Finally, here is a highly subjective collection of links."
 msgstr "A nakonec je zde velmi subjektivní sbírka odkazů."
 
-#: ../content/installation/installation-docker.rst:673
+#: ../content/installation/installation-docker.rst:681
 #, fuzzy
 msgid "**General info and tutorials**"
 msgstr "**Obecné informace a výukové programy**"
 
-#: ../content/installation/installation-docker.rst:675
+#: ../content/installation/installation-docker.rst:683
 #, fuzzy
 msgid "`Perl Maven: Getting Started with Perl on Docker <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 msgstr "`Perl Maven: Začínáme s Perlem na Dockeru <https://perlmaven.com/getting-started-with-perl-on-docker>`_"
 
-#: ../content/installation/installation-docker.rst:676
+#: ../content/installation/installation-docker.rst:684
 #, fuzzy
 msgid "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
 msgstr "`Dockerfile best practices <https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/>`_"
 
-#: ../content/installation/installation-docker.rst:677
+#: ../content/installation/installation-docker.rst:685
 #, fuzzy
 msgid "`Environment <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 msgstr "`Prostředí <https://vsupalov.com/docker-arg-env-variable-guide/>`_"
 
-#: ../content/installation/installation-docker.rst:679
+#: ../content/installation/installation-docker.rst:687
 #, fuzzy
 msgid "**Tips and hints**"
 msgstr "**Tipy a rady**"
 
-#: ../content/installation/installation-docker.rst:681
+#: ../content/installation/installation-docker.rst:689
 #, fuzzy
 msgid "`Clean up unused images <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 msgstr "`Uklidit nepoužívané obrázky <https://forums.docker.com/t/command-to-remove-all-unused-images>`_"
 
-#: ../content/installation/installation-docker.rst:682
+#: ../content/installation/installation-docker.rst:690
 #, fuzzy
 msgid "`Docker Host IP <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
 msgstr "`Hostitelská IP adresa dokovací stanice <https://nickjanetakis.com/blog/docker-tip-65-get-your-docker-hosts-ip-address-from-in-a-container>`_"
 
-#: ../content/installation/installation-docker.rst:683
+#: ../content/installation/installation-docker.rst:691
 #, fuzzy
 msgid "`Self signed certificate <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu>`_"
 msgstr "`Samostatně podepsaný certifikát <https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-18-04>`_"
 
-#: ../content/installation/installation-docker.rst:685
+#: ../content/installation/installation-docker.rst:693
 #, fuzzy
 msgid "**Troubleshooting**"
 msgstr "**Řešení problémů**"
 
-#: ../content/installation/installation-docker.rst:687
+#: ../content/installation/installation-docker.rst:695
 #, fuzzy
 msgid "`Docker cache invalidation <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 msgstr "`Neplatnost mezipaměti dokovací stanice <https://stackoverflow.com/questions/34814669/when-does-docker-image-cache-invalidation-occur>`_"
 
-#: ../content/installation/installation-docker.rst:688
+#: ../content/installation/installation-docker.rst:696
 #, fuzzy
 msgid "`Using tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 msgstr "`Použití tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-with-docker/>`_"
 
-#: ../content/installation/installation-docker.rst:689
+#: ../content/installation/installation-docker.rst:697
 #, fuzzy
 msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 msgstr "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
@@ -3873,102 +3886,102 @@ msgstr "Nejprve musíme přesunout starý soubor ``/opt/otobo-docker/.env`` do `
 msgid "Now copy your existing configuration options to the new ``.env`` file (at least ``OTOBO_DB_ROOT_PASSWORD``, ``OTOBO_NGINX_SSL_CERTIFICATE``, ``OTOBO_NGINX_SSL_CERTIFICATE_KEY``) and insert the following Kerberos settings:"
 msgstr "Nyní zkopírujte stávající konfigurační možnosti do nového souboru .env (alespoň OTOBO_DB_ROOT_PASSWORD, OTOBO_NGINX_SSL_CERTIFICATE, OTOBO_NGINX_SSL_CERTIFICATE_KEY) a vložte následující nastavení Kerberos:"
 
-#: ../content/sso-kerberos.rst:124
+#: ../content/sso-kerberos.rst:126
 #, fuzzy
 msgid "Start OTOBO"
 msgstr "Spustit OTOBO"
 
-#: ../content/sso-kerberos.rst:126
+#: ../content/sso-kerberos.rst:128
 #, fuzzy
 msgid "After the initial Kerberos configuration we start OTOBO again:"
 msgstr "Po úvodní konfiguraci systému Kerberos znovu spustíme systém OTOBO:"
 
-#: ../content/sso-kerberos.rst:135
+#: ../content/sso-kerberos.rst:137
 #, fuzzy
 msgid "Tell OTOBO to use the Kerberos-Authentication"
 msgstr "Řekněte OTOBO, aby použilo Kerberos-Authentication"
 
-#: ../content/sso-kerberos.rst:137
+#: ../content/sso-kerberos.rst:139
 #, fuzzy
 msgid "In case you have configured AD-Authentication, de-activate it (e.g. by commenting out the respective lines from your Kernel/Config.pm). The authentication will not take place via LDAP anymore."
 msgstr "V případě, že jste nakonfigurovali ověřování AD, deaktivujte je (např. zakomentováním příslušných řádků v souboru Kernel/Config.pm). Ověřování již nebude probíhat prostřednictvím LDAP."
 
-#: ../content/sso-kerberos.rst:140
+#: ../content/sso-kerberos.rst:142
 #, fuzzy
 msgid "To use Kerberos-Authentication take the Kerberos-lines from Kernel/Config/Defaults.pm and put it into you Kernel/Config.pm E.g. these lines could work:"
 msgstr "Chcete-li použít Kerberos-Authentication, převezměte řádky Kerberos z Kernel/Config/Defaults.pm a vložte je do souboru Kernel/Config.pm Např. tyto řádky by mohly fungovat:"
 
-#: ../content/sso-kerberos-native.rst:345 ../content/sso-kerberos.rst:153
+#: ../content/sso-kerberos-native.rst:345 ../content/sso-kerberos.rst:159
 #, fuzzy
 msgid "Configure Browser to Understand Kerberos SSO"
 msgstr "Konfigurace prohlížeče tak, aby rozuměl protokolu SSO Kerberos"
 
-#: ../content/sso-kerberos.rst:155
+#: ../content/sso-kerberos.rst:161
 #, fuzzy
 msgid "For SSO to work, the browser must be configured accordingly."
 msgstr "Aby SSO fungovalo, musí být prohlížeč odpovídajícím způsobem nakonfigurován."
 
-#: ../content/sso-kerberos.rst:157
+#: ../content/sso-kerberos.rst:163
 #, fuzzy
 msgid "**Chrome, Edge, Internet Explorer, etc.**"
 msgstr "**Chrome, Edge, Internet Explorer atd.**"
 
-#: ../content/sso-kerberos.rst:159
+#: ../content/sso-kerberos.rst:165
 #, fuzzy
 msgid "Add page under local or trusted pages and activate 'Integrated Windows Authentication' (Internet Options)."
 msgstr "Přidejte stránku mezi místní nebo důvěryhodné stránky a aktivujte \"Integrované ověřování systému Windows\" (Možnosti Internetu)."
 
-#: ../content/sso-kerberos.rst:161
+#: ../content/sso-kerberos.rst:167
 #, fuzzy
 msgid "**Firefox**"
 msgstr "**Firefox**"
 
-#: ../content/sso-kerberos.rst:163
+#: ../content/sso-kerberos.rst:169
 #, fuzzy
 msgid "Enter \"about:config\" in the firefox address line"
 msgstr "Do adresního řádku firefoxu zadejte \"about:config\"."
 
-#: ../content/sso-kerberos.rst:165
+#: ../content/sso-kerberos.rst:171
 #, fuzzy
 msgid "and change the following settings:"
 msgstr "a změňte následující nastavení:"
 
-#: ../content/sso-kerberos.rst:174
+#: ../content/sso-kerberos.rst:180
 #, fuzzy
 msgid "Debugging and Problems"
 msgstr "Ladění a problémy"
 
-#: ../content/sso-kerberos.rst:176
+#: ../content/sso-kerberos.rst:182
 #, fuzzy
 msgid "If the Kerberos SSO does not work, please check first if the NGINX container is started:"
 msgstr "Pokud SSO Kerberos nefunguje, zkontrolujte nejprve, zda je spuštěn kontejner NGINX:"
 
-#: ../content/sso-kerberos.rst:184
+#: ../content/sso-kerberos.rst:190
 #, fuzzy
 msgid "In the next step please check the NGINX logs for more information:"
 msgstr "V dalším kroku zkontrolujte protokoly NGINX, kde najdete další informace:"
 
-#: ../content/sso-kerberos.rst:192
+#: ../content/sso-kerberos.rst:198
 #, fuzzy
 msgid "If NGINX is running, please login into the NGINX Container and check all needed files:"
 msgstr "Pokud je služba NGINX spuštěna, přihlaste se do kontejneru NGINX a zkontrolujte všechny potřebné soubory:"
 
-#: ../content/sso-kerberos.rst:207
+#: ../content/sso-kerberos.rst:213
 #, fuzzy
 msgid "Kerberos Debugging"
 msgstr "Ladění systému Kerberos"
 
-#: ../content/sso-kerberos.rst:214
+#: ../content/sso-kerberos.rst:220
 #, fuzzy
 msgid "Now you are able to debug the Kerberos settings. Examples:"
 msgstr "Nyní můžete ladit nastavení systému Kerberos. Příklady:"
 
-#: ../content/sso-kerberos.rst:230
+#: ../content/sso-kerberos.rst:236
 #, fuzzy
 msgid "In case you stumble upon the issue that apparently the authentication works but the agent is not yet in the database, then your sync (if implemented) might not work. An error 52e (First bind failed) indicates that something is wrong with your Search User. This happens if you use the same user for the AD sync and as a SSO user. Please use separate AD users for that. In order to not have to create a new keytab and having to repeat the steps mentioned above, it could be easier to create a new user to use in your AD sync (probably in your ``Kernel/Config.pm``)."
 msgstr "V případě, že narazíte na problém, že ověřování zjevně funguje, ale agent ještě není v databázi, pak vaše synchronizace (pokud je implementována) nemusí fungovat. Chyba 52e (První vazba selhala) naznačuje, že s vaším vyhledávacím uživatelem není něco v pořádku. K tomu dochází, pokud používáte stejného uživatele pro synchronizaci AD i jako uživatele SSO. Používejte k tomu prosím oddělené uživatele AD. Abyste nemuseli vytvářet nový keytab a opakovat výše uvedené kroky, mohlo by být jednodušší vytvořit nového uživatele, kterého budete používat při synchronizaci AD (pravděpodobně v souboru Kernel/Config.pm)."
 
-#: ../content/sso-kerberos.rst:236
+#: ../content/sso-kerberos.rst:242
 #, fuzzy
 msgid "In case SSO is not working properly, make sure: * the user for which it is not working is in Active Directory * the system has to be in the domain * it is properly stated as a trusted page (see 'Configure Browser to understand Kerberos SSO')"
 msgstr "Pokud SSO nefunguje správně, ujistěte se, že: * uživatel, u kterého nefunguje, je v Active Directory * systém musí být v doméně * je správně uveden jako důvěryhodná stránka (viz \"Konfigurace prohlížeče pro porozumění Kerberos SSO\")."
