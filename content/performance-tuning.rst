@@ -260,7 +260,7 @@ Install a Redis Cache Server
 1. Install Redis Server
 
 First of all you need to install the newest Redis Server.
-The easiest way is to `setup Redis <https://redis.io/topics/quickstart>`__ on the same host as OTOBO and binding it to its default port.
+The easiest way is to `setup Redis <https://redis.io/docs/latest/develop/>`__ on the same host as OTOBO and binding it to its default port.
 
 On native installations, `setup Redis <https://redis.io/docs/latest/develop/>`__ on the same host as OTOBO and binding it to its default port.
 

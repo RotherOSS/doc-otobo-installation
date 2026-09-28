@@ -269,7 +269,7 @@ Please follow the installation tutorial found at https://www.elastic.co/docs/dep
 Elasticsearch Installation on another Linux distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html.
+Please follow the installation tutorial found at https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch.
 
 Elasticsearch Module Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
