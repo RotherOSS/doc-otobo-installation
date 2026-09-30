@@ -80,6 +80,7 @@ If your host is a recent Ubuntu Linux, migration is straight forward and does no
    docker-compose down
 
    # start containers again using Docker Compose V2,
+   # note that there is no longer a dash between 'docker' and 'compose'
    docker compose up --detach
 
    # remove Docker Compose V1
