@@ -125,6 +125,9 @@ As a docker administrator, you can do this as follows:
    # Get the latest tags
    git fetch --tags
 
+   # List the available tags for the OTOBO 11.1 release series
+   git tag | grep rel-11_1
+
    # Update OTOBO docker compose repository to the tagged version 11.x.y.
    git checkout rel-11_x_y
 
