@@ -79,7 +79,7 @@ If your host is a recent Ubuntu Linux, migration is straight forward and does no
    # stop the containers
    docker-compose down
 
-   # start containers again usind docker compose v2
+   # start containers again using docker compose v2
    docker compose up --detach
 
    # remove docker compose v1
