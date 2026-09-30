@@ -125,8 +125,8 @@ As a docker administrator, you can do this as follows:
    # Get the latest tags
    git fetch --tags
 
-   # Update OTOBO docker compose repository to version 11.x.y.
-   git switch rel-11_x_y
+   # Update OTOBO docker compose repository to the tagged version 11.x.y.
+   git checkout rel-11_x_y
 
 
 Checking the Docker Compose ``.env`` File
