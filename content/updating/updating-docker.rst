@@ -70,7 +70,7 @@ If your host is a recent Ubuntu Linux, migration is straight forward and does no
 
 .. code-block:: bash
 
-   # install docker compose v2
+   # install Docker Compose V2
    sudo apt install --yes docker-compose-v2
 
    # Change to the otobo docker directory
@@ -79,10 +79,10 @@ If your host is a recent Ubuntu Linux, migration is straight forward and does no
    # stop the containers
    docker-compose down
 
-   # start containers again using docker compose v2
+   # start containers again using Docker Compose V2,
    docker compose up --detach
 
-   # remove docker compose v1
+   # remove Docker Compose V1
    sudo apt remove --yes docker-compose
 
 
