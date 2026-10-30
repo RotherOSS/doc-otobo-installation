@@ -30,34 +30,8 @@ When updating to a new version of OTOBO several things have to happen.
 
 .. note::
 
-    Before upgrading, please check if your installed packages are available for the new version.
+    Please see the general remarks on :doc:`../updating`.
 
-For OTOBO 11.1, the following packages are being migrated automatically to the framework.
-This means that no separate package is necessary and they will be part of OTOBO by default.
-
-    - CK5-FullWindowMode
-    - CustomerAgeShowCreated
-    - CustomerTicketSearch
-    - Elasticsearch-Extension
-    - ExtendedArticleEdit
-    - HideShowForAgentTicketCompose
-    - ImportExportCustomerCompany
-    - ImportExportStandardObjects
-    - ImportExportTicket
-    - OAuth2
-    - OAuth2-Mail
-    - PostMasterXFromHeader
-    - ProcessTicketTemplates
-    - RestorePendingInformation
-    - RotherOSS-AccountedTimeInViews
-    - TicketUpdateOperationExternalIdentifier
-
-.. warning::
-   The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by new functionality in OTOBO core.
-   It will not be uninstalled during migration to OTOBO 11.1.
-   It will be listed as not fully installed.
-   This will allow you to migrate configuration from the old package to new core functionality.
-   You need to uninstall the package manually after migration.
 
 Migrating to Docker Compose v2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

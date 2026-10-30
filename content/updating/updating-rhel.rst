@@ -19,42 +19,20 @@ Just omit the steps not relevant for patch level updates.
 
         sudo -i -u otobo perl /opt/otobo/bin/otobo.CheckModules.pl --list
 
+
+On RHEL systems you have to manually install some Perl packages before upgrading to 11.1.
+
+.. code-block:: bash
+
+   sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+   sudo dnf install -y wget perl perl-DBD-MySQL libpq-devel libxslt-devel libxml2-devel graphviz-devel unixODBC-devel xz-devel
+
+
+
 .. note::
 
-   On RHEL systems you have to manually install some Perl packages before upgrading to 11.1.
+   Please see the general remarks on :doc:`../updating`.
 
-    .. code-block:: bash
-
-        sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
-        sudo dnf install -y wget perl perl-DBD-MySQL libpq-devel libxslt-devel libxml2-devel graphviz-devel unixODBC-devel xz-devel
-
-For OTOBO 11.1, the following packages are being migrated automatically to the framework.
-This means that no separate package is necessary and they will be part of OTOBO by default.
-
-   - CK5-FullWindowMode
-   - CustomerAgeShowCreated
-   - CustomerTicketSearch
-   - Elasticsearch-Extension
-   - ExtendedArticleEdit
-   - HideShowForAgentTicketCompose
-   - ImportExportCustomerCompany
-   - ImportExportStandardObjects
-   - ImportExportTicket
-   - PostMasterXFromHeader
-   - ProcessTicketTemplates
-   - RestorePendingInformation
-   - RotherOSS-AccountedTimeInViews
-   - TicketUpdateOperationExternalIdentifier
-   - OAuth2
-   - OAuth2-Mail
-   - Elasticsearch-FAQ
-
-.. warning::
-   The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by new functionality in OTOBO core.
-   It will not be uninstalled during migration to OTOBO 11.1.
-   It will be listed as not fully installed.
-   This will allow you to migrate configuration from the old package to new core functionality.
-   You need to uninstall the package manually after migration.
 
 
 Step 1: Stop All Relevant Services and the OTOBO Daemon

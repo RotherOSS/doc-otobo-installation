@@ -21,40 +21,15 @@ Just omit the steps not relevant for patch level updates.
 
 .. note::
 
-   On Ubuntu/Debian systems you have to manually install some Perl packages before upgrading to 11.1.
+   Please see the general remarks on :doc:`../updating`.
 
-    .. code-block:: bash
 
-      sudo apt install --yes libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libplack-perl libplack-middleware-header-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl libmariadb-dev build-essential libcapture-tiny-perl libcss-minifier-xs-perl libemail-address-xs-perl libjavascript-minifier-xs-perl libcpanel-json-xs-perl libtext-csv-perl cpanminus
-      sudo cpanm --notest Gazelle DBD::MariaDB
+On Ubuntu/Debian systems you have to manually install some Perl packages before upgrading to 11.1.
 
-For OTOBO 11.1, the following packages are being migrated automatically to the framework.
-This means that no separate package is necessary and they will be part of OTOBO by default.
+.. code-block:: bash
 
-   - CK5-FullWindowMode
-   - CustomerAgeShowCreated
-   - CustomerTicketSearch
-   - Elasticsearch-Extension
-   - ExtendedArticleEdit
-   - HideShowForAgentTicketCompose
-   - ImportExportCustomerCompany
-   - ImportExportStandardObjects
-   - ImportExportTicket
-   - PostMasterXFromHeader
-   - ProcessTicketTemplates
-   - RestorePendingInformation
-   - RotherOSS-AccountedTimeInViews
-   - TicketUpdateOperationExternalIdentifier
-   - OAuth2
-   - OAuth2-Mail
-   - Elasticsearch-FAQ
-
-.. warning::
-   The optional 11.0 package 'MailAccount-OAuth2' is obsolete and replaced by new functionality in OTOBO core.
-   It will not be uninstalled during migration to OTOBO 11.1.
-   It will be listed as not fully installed.
-   This will allow you to migrate configuration from the old package to new core functionality.
-   You need to uninstall the package manually after migration.
+   sudo apt install --yes libarchive-zip-perl libtimedate-perl libdatetime-perl libconvert-binhex-perl libcgi-psgi-perl libdbi-perl libdbix-connector-perl libfile-chmod-perl liblist-allutils-perl libmoo-perl libnamespace-autoclean-perl libnet-dns-perl libnet-smtp-ssl-perl libpath-class-perl libsub-exporter-perl libtemplate-perl libtext-trim-perl libtry-tiny-perl libxml-libxml-perl libyaml-libyaml-perl libdbd-mysql-perl libmail-imapclient-perl libauthen-sasl-perl libauthen-ntlm-perl libjson-xs-perl libtext-csv-xs-perl libplack-perl libplack-middleware-header-perl libplack-middleware-reverseproxy-perl libencode-hanextra-perl libio-socket-ssl-perl libnet-ldap-perl libcrypt-eksblowfish-perl libxml-libxslt-perl libxml-parser-perl libconst-fast-perl libmariadb-dev build-essential libcapture-tiny-perl libcss-minifier-xs-perl libemail-address-xs-perl libjavascript-minifier-xs-perl libcpanel-json-xs-perl libtext-csv-perl cpanminus
+   sudo cpanm --notest Gazelle DBD::MariaDB
 
 
 Step 1: Stop All Relevant Services and the OTOBO Daemon
