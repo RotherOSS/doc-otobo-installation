@@ -17,10 +17,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2026-11-02 09:20+0000\n"
-"PO-Revision-Date: 2026-10-30 14:11+0000\n"
-"Last-Translator: Arnold Sykosch <ars@otobo.io>\n"
+"PO-Revision-Date: 2026-11-02 10:40+0000\n"
+"Last-Translator: Stefan Abel <sta@rother-oss.com>\n"
 "Language-Team: German <http://translate.otobo.org/projects/otobo-11-1/manuals/otobo-installation-manual/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -36,10 +36,8 @@ msgid "Backup and Restore"
 msgstr "Backup und Wiederherstellung"
 
 #: ../content/backup-restore.rst:4
-#, fuzzy
-#| msgid "OTOBO has built in scripts for backup and restore. Execute the scripts with the option ``-h`` for more information."
 msgid "OTOBO has built in scripts for backup and restore ``scripts/backup.pl`` and ``scripts/restore.pl``. Execute the scripts with the option ``-h`` for more information."
-msgstr "OTOBO bietet fertige Skripte zum Erstellen und Wiedereinspielen von Backups. Für weitere Informationen führen Sie diese mit der Option ``-h`` aus."
+msgstr "OTOBO bietet fertige Skripte zum Erstellen und Wiedereinspielen von Backups ``scripts/backup.pl`` und ``scripts/restore.pl``. Führen Sie die Befehle mit der Option ``-h`` für weitere Informationen aus."
 
 #: ../content/backup-restore.rst:8
 msgid "Backup"
@@ -62,16 +60,12 @@ msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database t
 msgstr "``--extra-dump-options=\"--single-transaction\"`` verhindert, dass die Datenbanktabellen gesperrt werden, sodass OTOBO während der Erstellung der Sicherungskopie weiterhin genutzt werden kann."
 
 #: ../content/backup-restore.rst:67 ../content/backup-restore.rst:152
-#, fuzzy
-#| msgid "Docker:"
 msgid "Docker"
-msgstr "Docker:"
+msgstr "Docker"
 
 #: ../content/backup-restore.rst:69
-#, fuzzy
-#| msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered. Please read to the chapter :doc:`backup-restore-docker` for information about that case."
 msgid "The same scripts might be used when OTOBO is running under Docker, but some Docker specific limitations have to be considered. In order to be able to write a backup archive to the file system outside of the Docker container, appropriate volume mounts and permissions must be configured."
-msgstr "Die gleichen Skripte können mit OTOBO unter Docker verwendet werden. Allerdings müssen einige Docker-spezifische Einschränkungen beachtet werden. Bitte lesen Sie das Kapitel :doc:`backup-restore-docker` für Informationen zu diesem Fall."
+msgstr "Die gleichen Skripte könnten verwendet werden, wenn OTOBO unter Docker läuft. Allerdings müssen einige Docker-spezifische Einschränkungen beachtet werden. Um ein Backup-Archiv ins Dateisystem außerhalb des Docker-Containers zu schreiben, müssen geeignete Volume-Mounts und Berechtigungen konfiguriert werden."
 
 #: ../content/backup-restore.rst:87
 msgid "We use an ephemeral container of OTOBO to pull the backup and place it in the backup directory on the host:"
@@ -79,7 +73,7 @@ msgstr "Wir nutzen einen flüchtigen Container von OTOBO, um die Sicherung zu er
 
 #: ../content/backup-restore.rst:97
 msgid "The parameters used, assume the defaults presented throughout this manual. You may need to fit them to your setup, e.g., if you use a different network name or a different image tag."
-msgstr ""
+msgstr "Die verwendeten Parameter setzen die Standardwerte durch dieses Handbuch hinweg voraus. Es kann sein, dass diese an das eigene Setup angepasst werden müssen, bspw. falls ein anderer Netzwerk-Name oder ein anderer Image-Tag verwendet wird."
 
 #: ../content/backup-restore.rst:101
 msgid "Restore"
@@ -87,53 +81,41 @@ msgstr "Wiederherstellen"
 
 #: ../content/backup-restore.rst:103
 msgid "To restore the OTOBO system from backup, the script ``scripts/restore.pl`` can be used. For the script to be able to place the data into the database, the database name, name, and password have to be setup like the backed up system. The restore script, restores the configuration files from the backup archive first, and then uses the restored configuration files to connect to the database and restore the data. You may read them from backup to fit your database setup:"
-msgstr ""
+msgstr "Um das OTOBO-System aus dem Backup wiederherzustellen, kann das Skript ``scripts/restore.pl`` verwendet werden. Damit das Skript die Daten in die Datenbank speichern kann, müssen der Datenbankname, Benutzername und Passwort auf jene des gesicherten Systems eingestellt werden. Das Wiederherstellungs-Skript stellt zunächst die Konfigurationsdateien aus dem gesicherten Archiv wieder her und verwendet dann diese wiederhergestellten Konfigurationsdateien um sich zur Datenbank zu verbinden und die Daten wiederherzustellen. Sie können Sie aus dem Backup auslesen um Ihr Datenbank-Setup anzupassen:"
 
 #: ../content/backup-restore.rst:112
 msgid "You may also fit the database connection parameters within the backup file before running the restore script:"
-msgstr ""
+msgstr "Sie können außerdem die Datenbank-Verbindungsparameter innerhalb der Sicherungsdatei anpassen, bevor Sie das Wiederherstellungs-Skript ausführen:"
 
 #: ../content/backup-restore.rst:120
-#, fuzzy
-#| msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
 msgid "To restore the database make sure the target database contains no tables."
-msgstr "Bevor Sie die Datenbank wiederherstellen, stellen Sie sicher, dass die Datenbank ``otobo`` vorhanden ist und keine Tabellen enthält."
+msgstr "Um die Datenbank wiederherstellen, stellen Sie sicher, dass die Zieldatenbank keine Tabellen enthält."
 
 #: ../content/backup-restore.rst:122
 msgid "You may execute the restore script with the option ``-h`` for more information."
-msgstr ""
+msgstr "Sie können das Wiederherstellungs-Skript mit der Option ``-h`` für weitere Informationen ausführen."
 
 #: ../content/backup-restore.rst:143
-#, fuzzy
-#| msgid "After successful restore it's advised to clear the OTOBO cache. To do this execute the following command:"
 msgid "After successful restore it is advised to clear the OTOBO cache. To do this execute the following command:"
 msgstr "Nach erfolgreicher Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Führen Sie dazu den folgenden Befehl aus:"
 
 #: ../content/backup-restore.rst:153
-#, fuzzy
-#| msgid "To drop an existing otobo database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the `db` container."
 msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MariaDB command line interface of the ``db`` container:"
-msgstr "Um eine bestehende otobo Datenbank zu löschen und eine neue zu erstellen können folgende Befehle verwendet werden. Zuerst müssen Sie sich hierzu mit der MySQL CLI des `db` Containers verbinden."
+msgstr "Um eine bestehende OTOBO-Datenbank zu löschen und eine neue zu erstellen können folgende Befehle verwendet werden. Zuerst müssen Sie sich hierzu mit der MariaDB Kommandozeilen-Oberfläche (CLI) des ``db``-Containers verbinden:"
 
 #: ../content/backup-restore.rst:161
-#, fuzzy
-#| msgid "As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database."
 msgid "Enter the database root password when prompted. As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database:"
-msgstr "Sobald man mit dem MySQL Server verbunden ist, kann die `otobo` Datenbank gelöscht und neu erstellt werden."
+msgstr "Geben Sie das Datenbankpasswort des root-Benutzers ein, sobald Sie dazu aufgefordert werden. Sobald Sie mit dem MySQL-Server verbunden sind, können Sie die ``otobo``-Datenbank löschen und neu erstellen:"
 
 #: ../content/backup-restore.rst:170
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr "Um das System aus einem Backup wiederherstellen zu können, müssen wir angeben, welches Backup verwendet werden soll. Der Platzhalter ``<TIMESTAMP>`` steht für einen Wert wie ``2020-09-07_09-38``."
 
 #: ../content/backup-restore.rst:183
-#, fuzzy
-#| msgid "After successful restore it's advised to clear the OTOBO cache. To do this change to your OTOBO directory (normaly `/opt/otobo-docker`) and execute the following command:"
 msgid "After successful restore it is advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
-msgstr "Nach erfolgreicher Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Wechseln Sie dazu in Ihr OTOBO-Verzeichnis (normalerweise `/opt/otobo-docker`) und führen Sie den folgenden Befehl aus:"
+msgstr "Nach erfolgreicher Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Wechseln Sie dazu in Ihr OTOBO-Verzeichnis (standardmäßig ``/opt/otobo-docker``) und führen Sie den folgenden Befehl aus:"
 
 #: ../content/customer-interface-ci.rst:2
-#, fuzzy
-#| msgid "Adapt customer interface with corporate identity"
 msgid "Adapt Customer Interface with Corporate Identity"
 msgstr "Kundenoberfläche an Corporate Identity anpassen"
 
@@ -142,14 +124,10 @@ msgid "In OTOBO it is very easy to adapt the customer area to your own corporate
 msgstr "In OTOBO ist es sehr einfach, den Kundenbereich an Ihre eigene Corporate Identity anzupassen. Folgen Sie diesem Tutorial Schritt für Schritt und OTOBO wird in Kürze in Ihrem eigenen Design erstrahlen."
 
 #: ../content/customer-interface-ci.rst:10
-#, fuzzy
-#| msgid "Currently, it is not so easy to adapt the agent area to one's own CI. Changes in the OTOBO .css files would be necessary here. One exception is the logo on the agent login page and the agent header. The logos can be easily exchanged by copying the logos to the server and then adjusting the options ``AgentLoginLogo`` and ``AgentLogo`` under ``Admin -> System Configuration``."
 msgid "Currently, it is not so easy to adapt the agent area to one's own CI. Changes in the OTOBO ``.css`` files would be necessary here. One exception is the logo on the agent login page and the agent header. The logos can be easily exchanged by copying the logos to the server and then adjusting the options ``AgentLoginLogo`` and ``AgentLogo`` under ``Admin -> System Configuration``."
-msgstr "Momentan ist es nicht besonders einfach, den Agentenbereich an seine eigene CI anzupassen. Änderungen der OTOBO .css-Dateien wären hierfür notwendig. Eine Ausnahme ist das Logo der Agenten-Anmeldemaske und im Hauptmenübereich der Agenten. Die Logos können einfach ausgetauscht werden, indem man die Logos auf den Server kopiert und dann die Optionen ``AgentLoginLogo`` und ``AgentLogo`` unter ``Admin -> Systemkonfiguration`` anpasst."
+msgstr "Momentan ist es nicht besonders einfach, den Agentenbereich an seine eigene CI anzupassen. Änderungen der OTOBO ``.css-``Dateien wären hierfür notwendig. Eine Ausnahme ist das Logo der Agenten-Anmeldemaske und im Hauptmenübereich der Agenten. Die Logos können einfach ausgetauscht werden, indem man die Logos auf den Server kopiert und dann die Optionen ``AgentLoginLogo`` und ``AgentLogo`` unter ``Admin -> Systemkonfiguration`` anpasst."
 
 #: ../content/customer-interface-ci.rst:17
-#, fuzzy
-#| msgid "Change colors in Customer Area"
 msgid "Change Colors in Customer Area"
 msgstr "Farben im Kundenbereich anpassen"
 
@@ -158,57 +136,45 @@ msgid "To change the colors for the OTOBO customer interface, please go to ``Adm
 msgstr "Um die Farben für den OTOBO Kundenbereich anzupassen, gehen Sie bitte zu ``Admin -> Systemkonfiguration`` und passen Sie die folgenden Einstellungen an:"
 
 #: ../content/customer-interface-ci.rst:21
-#, fuzzy
-#| msgid "CustomerColorDefinitions"
 msgid "``CustomerColorDefinitions``"
-msgstr "CustomerColorDefinitions"
+msgstr "``CustomerColorDefinitions``"
 
 #: ../content/customer-interface-ci.rst:22
 #: ../content/customer-interface-ci.rst:98
-#, fuzzy
-#| msgid "To change the colours on the Customer Dashboard, please go to `Admin -> System Configuration`` and search for CustomerDashboard. In the search result you will find all the options you need with colour definitions."
 msgid "To change the colors on the Customer Dashboard, please go to ``Admin -> System Configuration`` and search for ``CustomerDashboard``. In the search result you will find all the options you need with color definitions."
-msgstr "Um die Farben im Kunden-Dashboard anzupassen, gehen Sie bitte in `Admin -> Systemkonfiguration` und suchen Sie nach CustomerDashboard. In den Suchergebnissen finden Sie alle Optionen, die Sie für die Farbdefinitionen benötigen."
+msgstr "Um die Farben im Kunden-Dashboard anzupassen, gehen Sie bitte in ``Admin -> Systemkonfiguration`` und suchen Sie nach ``CustomerDashboard``. In den Suchergebnissen finden Sie alle Optionen, die Sie für die Farbdefinitionen benötigen."
 
 #: ../content/customer-interface-ci.rst:27
 msgid "Change Logos and Pictures"
 msgstr "Logos und Bilder bearbeiten"
 
 #: ../content/customer-interface-ci.rst:29
-#, fuzzy
-#| msgid "In the first step please copy your Logos and Pictures to the OTOBO Server. Please use an SCP client (WinSCP) for this purpose. Often you do not have the permissions to copy the logos to the right place. In this case, it is best to use the folder /tmp/."
 msgid "In the first step please copy your Logos and Pictures to the OTOBO Server. Please use an SCP client (e.g., WinSCP) for this purpose. Often you do not have the permissions to copy the logos to the right place. In this case, it is best to use the folder ``/tmp``."
-msgstr "Im ersten Schritt kopieren Sie bitte Ihre Logos und Bilder auf den OTOBO-Server. Bitte verwenden Sie einen SCP-Dienst (bspw. WinSCP) für diesen Zweck. Häufig hat man nicht die Berechtigungen um die Logos an die richtigen Stellen zu kopieren. In diesem Fall ist es am besten, den Ordner /tmp/ zu verwenden."
+msgstr "Im ersten Schritt kopieren Sie bitte Ihre Logos und Bilder auf den OTOBO-Server. Bitte verwenden Sie einen SCP-Dienst (bspw. WinSCP) für diesen Zweck. Häufig hat man nicht die Berechtigungen um die Logos an die richtigen Stellen zu kopieren. In diesem Fall ist es am besten, den Ordner ``/tmp/`` zu verwenden."
 
 #: ../content/customer-interface-ci.rst:34
-#, fuzzy
-#| msgid "In the next step copy the Logo into the OTOBO Home directory:"
 msgid "In the next step copy the logo into the OTOBO home directory:"
 msgstr "Im nächsten Schritt kopieren Sie das Logo in das OTOBO Home-Verzeichnis:"
 
 #: ../content/customer-interface-ci.rst:45
 msgid "The next sections describe the changes required in the OTOBO Agent Interface."
-msgstr ""
+msgstr "Die folgenden Abschnitte beschreiben die in der OTOBO-Agentenoberfläche benötigten Änderungen."
 
 #: ../content/customer-interface-ci.rst:49
 msgid "Change Customer Login Pictures and Text"
 msgstr "Bilder und Text für den Kundenlogin anpassen"
 
 #: ../content/customer-interface-ci.rst:51
-#, fuzzy
-#| msgid "Now change inside the OTOBO Agent Interface to ``Admin -> System Configuration`` and change the following settings:"
 msgid "Navigate to ``Admin -> System Configuration`` and change the following settings."
-msgstr "Nun wechseln Sie im OTOBO Agentenbereich zu ``Admin -> Systemkonfiguration`` und passen Sie folgende Einstellungen an:"
+msgstr "Navigieren Sie zu ``Admin -> Systemkonfiguration`` und passen Sie die folgenden Einstellungen an."
 
 #: ../content/customer-interface-ci.rst:-1
 msgid "Customer Login Configuration"
 msgstr "Kunden-Login-Konfiguration"
 
 #: ../content/customer-interface-ci.rst:56
-#, fuzzy
-#| msgid "1 and 2 - System Configuration Option **CustomerLogin::Settings**"
 msgid "1 and 2 - System Configuration option ``CustomerLogin::Settings``"
-msgstr "1 und 2 - Systemkonfigurationseinstellung **CustomerLogin::Settings**"
+msgstr "1 und 2 - Systemkonfigurationseinstellung ``CustomerLogin::Settings``"
 
 #: ../content/customer-interface-ci.rst:58
 msgid "**Remove Opacity and Watermark**"
@@ -219,51 +185,36 @@ msgid "At the moment it is not possible to remove the overlay and watermark used
 msgstr "Im Moment ist es nicht möglich, in der Systemkonfiguration das Overlay und das Wasserzeichen zu entfernen, die im Bild rechts verwendet werden."
 
 #: ../content/customer-interface-ci.rst:63
-#, fuzzy
-#| msgid "To remove the opacity, please adjust the option **#oooLoginBG > .oooBG** in the file"
 msgid "To remove the opacity, please adjust the option ``#oooLoginBG > .oooBG`` in the file ``var/httpd/htdocs/skins/Customer/default/css/Core.Login.css``:"
-msgstr "Um die Deckkraft zu entfernen, passen Sie die Option **#oooLoginBG > .oooBG** in der Datei an"
+msgstr "Um die Deckkraft zu entfernen, passen Sie die Option ``#oooLoginBG > .oooBG`` in der Datei ``var/httpd/htdocs/skins/Customer/default/css/Core.Login.css`` an:"
 
 #: ../content/customer-interface-ci.rst:76
-#, fuzzy
-#| msgid "To remove the watermark, please remove the following line inside the file:"
 msgid "To remove the watermark, please remove the following line inside the file ``Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt``:"
-msgstr "Um das Wasserzeichen zu entfernen, löschen Sie bitte die folgenden Zeilen innerhalb der Datei:"
+msgstr "Um das Wasserzeichen zu entfernen, löschen Sie bitte die folgenden Zeilen innerhalb der Datei ``Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt``:"
 
 #: ../content/customer-interface-ci.rst:92
-#, fuzzy
-#| msgid "Please add the files to a opm package in the next step, so that the changes remain persistent. You can find instructions on how to do this in our Admin Manual: https://doc.otobo.org/manual/developer/11.0/en/content/how-to-publish-otobo-extensions.html"
 msgid "Please add the files to a OPM package in the next step, so that the changes remain persistent. You can find instructions on how to do this in our Developer Manual: https://doc.otobo.org/manual/dev/11.1/en/content/how-to-publish-otobo-extensions.html"
-msgstr "Bitte fügen Sie die Dateien im nächsten Schritt zu einem opm-Paket hinzu, damit die Änderungen dauerhaft erhalten bleiben. Eine Anleitung dazu finden Sie in unserem Admin-Handbuch: https://doc.otobo.org/manual/developer/11.0/de/content/how-to-publish-otobo-extensions.html"
+msgstr "Bitte fügen Sie die Dateien im nächsten Schritt zu einem OPM-Paket hinzu, damit die Änderungen dauerhaft erhalten bleiben. Eine Anleitung dazu finden Sie in unserem Entwickler-Handbuch: https://doc.otobo.org/manual/dev/11.1/de/content/how-to-publish-otobo-extensions.html"
 
 #: ../content/customer-interface-ci.rst:96
-#, fuzzy
-#| msgid "Change Customer Dashboard tiles and options"
 msgid "Change Customer Dashboard Tiles and Options"
 msgstr "Anpassen der Kunden-Dashboard-Kacheln und Optionen"
 
 #: ../content/customer-interface-ci.rst:-1
-#, fuzzy
 msgid "Customer Dashboard Configuration"
-msgstr "Anpassen der Kunden-Dashboard-Kacheln und Optionen"
+msgstr "Konfiguration des Kunden-Dashboards"
 
 #: ../content/customer-interface-ci.rst:104
-#, fuzzy
-#| msgid "1 - To change the picture, link and text please use the System Configuration Option **CustomerDashboard::Tiles###FeaturedLink-01**"
 msgid "1 - To change the picture, link and text please use the System Configuration option ``CustomerDashboard::Tiles###FeaturedLink-01``"
-msgstr "1 - Um das Bild, die Verknüpfung und den Text anzupassen, verwenden Sie bitte die Systemkonfigurationseinstellung **CustomerDashboard::Tiles###FeaturedLink-01**"
+msgstr "1 - Um das Bild, die Verknüpfung und den Text anzupassen, verwenden Sie bitte die Systemkonfigurationseinstellung ``CustomerDashboard::Tiles###FeaturedLink-01``"
 
 #: ../content/customer-interface-ci.rst:105
-#, fuzzy
-#| msgid "2 - To change the toplevel text please use the System Configuration Option **CustomerDashboard::Configuration::Text**"
 msgid "2 - To change the toplevel text please use the System Configuration option ``CustomerDashboard::Configuration::Text``"
-msgstr "2 - Um den oben angezeigten Text anzupassen, verwenden Sie bitte die Systemkonfigurationseinstellung **CustomerDashboard::Configuration::Text**"
+msgstr "2 - Um den oben angezeigten Text anzupassen, verwenden Sie bitte die Systemkonfigurationseinstellung ``CustomerDashboard::Configuration::Text``"
 
 #: ../content/customer-interface-ci.rst:109
-#, fuzzy
-#| msgid "Please disable the config options from not needed tiles."
 msgid "Please disable the configuration options from not needed tiles."
-msgstr "Bitte deaktivieren Sie die Konfigurationsoptionen für nicht benötigte Kacheln."
+msgstr "Bitte deaktivieren Sie die Konfigurationseinstellungen für nicht benötigte Kacheln."
 
 #: ../content/history.rst:3
 msgid "Documentation History"
@@ -296,11 +247,11 @@ msgstr "OTOBO Installationsanleitung"
 
 #: ../content/index.rst:9
 msgid "This is the OTOBO Administration Manual. It provides detailed instructions and guidance for installing, configuring, and maintaining the OTOBO ticketing system."
-msgstr ""
+msgstr "Dies ist das OTOBO Administrationshandbuch. Es stellt detaillierte Anleitungen bereit und führt durch die Installation, Konfiguration und Wartung des OTOBO Ticketsystems."
 
 #: ../content/index.rst:32
 msgid "License"
-msgstr ""
+msgstr "Lizenz"
 
 #: ../content/index.rst:34
 msgid "This work is copyrighted by OTRS AG (https://otrs.com), Zimmersmühlenweg 11, 61440 Oberursel, Germany."
@@ -316,7 +267,7 @@ msgstr "Nutzungsbedingungen OTRS: Dieses Dokument darf im Rahmen der GNU Free Do
 
 #: ../content/index.rst:47
 msgid "Terms and Conditions Rother OSS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"COPYING\"."
-msgstr "Nutzungsbedingungen Rother OSS: Dieses Dokument darf im Rahmen der GNU Free Documentation License in Version 1.3 oder jeder neueren, von der Free Software Foundation veröffentlichten Version kopiert, verbreitet und/oder verändert werden; ohne unveränderliche Abschnitte, und ohne Umschlagtexte. Den rechtlich bindenden Originaltext der Lizenz finden Sie auf der `GNU-Website <https://www.gnu.org/licenses/fdl-1.3.txt>`__, eine Kopie im Abschnitt \"COPYING\" dieses Dokuments."
+msgstr "Nutzungsbedingungen Rother OSS: Dieses Dokument darf im Rahmen der GNU Free Documentation License in Version 1.3 oder jeder neueren, von der Free Software Foundation veröffentlichten Version kopiert, verbreitet und/oder verändert werden; ohne unveränderliche Abschnitte, und ohne Umschlagtexte. Eine Kopie der Lizenz finden Sie im Abschnitt \"COPYING\" dieses Dokuments."
 
 #: ../content/index.rst:54
 msgid "Published by: Rother OSS GmbH, (https://otobo.io), Oberwalting 31, 94339 Leiblfing, Germany."
@@ -339,44 +290,32 @@ msgid "OTOBO Installation Docker"
 msgstr "OTOBO Docker Installation"
 
 #: ../content/installation/installation-docker.rst:4
-#, fuzzy
-#| msgid "With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes. All of OTOBO´s dependencies are already included in the provided collection of Docker images."
 msgid "With the dockerized OTOBO deployment you can get your personal OTOBO instance up and running within minutes. All of OTOBO's dependencies are already included in the provided collection of Docker images:"
-msgstr "Mit der Docker-basierten Installation können Sie Ihre komplette OTOBO-Instanz innerhalb weniger Minuten aufsetzen. Alle Abhängigkeiten sind in den Docker Images bereits enthalten."
+msgstr "Mit der Docker-basierten Installation können Sie Ihre komplette OTOBO-Instanz innerhalb weniger Minuten aufsetzen. Alle Abhängigkeiten von OTOBO sind in den Docker-Images bereits enthalten:"
 
 #: ../content/installation/installation-docker.rst:7
 #: ../content/installation/installation-podman.rst:9
-#, fuzzy
-#| msgid "Service *db*: MariaDB is set up as the default database."
 msgid "``db``: MariaDB is set up as the default database."
-msgstr "Service *db*: Als Standard-Datenbank ist MariaDB integriert."
+msgstr "``db``: MariaDB ist als Standard-Datenbank eingerichtet."
 
 #: ../content/installation/installation-docker.rst:8
 #: ../content/installation/installation-podman.rst:10
-#, fuzzy
-#| msgid "Service *elastic*: Elasticsearch is set up for the OTOBO power search."
 msgid "``elastic``: Elasticsearch is set up for the OTOBO power search."
-msgstr "Service *elastic*: Für die OTOBO-Schnellsuche ist Elasticsearch eingerichtet."
+msgstr "``elastic``: Elasticsearch ist für die OTOBO-Power-Suche eingerichtet."
 
 #: ../content/installation/installation-docker.rst:9
-#, fuzzy
-#| msgid "Service *redis*: Redis is enabled for fast caching."
 msgid "``redis``: Redis is enabled for fast caching."
-msgstr "Service *redis*: Redis sorgt für schnelles Caching."
+msgstr "``redis``: Redis ist für schnelles Caching aktiviert."
 
 #: ../content/installation/installation-docker.rst:10
 #: ../content/installation/installation-podman.rst:12
-#, fuzzy
-#| msgid "Service *web*: Gazelle is used as fast Perl webserver."
 msgid "``web``: Gazelle is used as fast Perl webserver."
-msgstr "Service *web*: Gazelle dient als schneller Perl-Webserver."
+msgstr "``web``: Gazelle wird als schneller Perl-Webserver verwendet."
 
 #: ../content/installation/installation-docker.rst:11
 #: ../content/installation/installation-podman.rst:14
-#, fuzzy
-#| msgid "Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support."
 msgid "``nginx``: Nginx is used as optional reverse proxy for HTTPS support."
-msgstr "Service *nginx*: Als optionaler Reverseproxy für die HTTPS-Unterstützung wird nginx eingesetzt."
+msgstr "``nginx``: Nginx wird als optionaler Reverseproxy für die HTTPS-Unterstützung eingesetzt."
 
 #: ../content/installation/installation-docker.rst:13
 msgid "We think that this setup is the perfect environment for an OTOBO installation."
@@ -396,20 +335,16 @@ msgid "Docker 19.03.13"
 msgstr "Docker 19.03.13"
 
 #: ../content/installation/installation-docker.rst:21
-#, fuzzy
-#| msgid "Docker Compose 1.25.0"
 msgid "Docker Compose v2 or Docker Compose v5"
-msgstr "Docker Compose 1.25.0"
+msgstr "Docker Compose v2 oder Docker Compose v5"
 
 #: ../content/installation/installation-docker.rst:22
 msgid "Git 2.17.1"
 msgstr "Git 2.17.1"
 
 #: ../content/installation/installation-docker.rst:25
-#, fuzzy
-#| msgid "For Ubuntu 24.04 LTS the usage of Compose V2 is recommended."
 msgid "For Ubuntu 24.04 LTS these commands install the required packages:"
-msgstr "Für Ubuntu 24.04 LTS wird die Verwendung von Compose V2 empfohlen."
+msgstr "Für Ubuntu 24.04 LTS installieren diese Befehle die benötigten Pakete:"
 
 #: ../content/installation/installation-docker.rst:34
 #: ../content/installation/installation-podman.rst:48
@@ -417,26 +352,20 @@ msgid "Installation"
 msgstr "Installation"
 
 #: ../content/installation/installation-docker.rst:36
-#, fuzzy
-#| msgid "The following instructions assume that all requirements are met, that you have a working Docker environment. We assume here that the user **docker_admin** is used for interacting with Docker. The Docker admin may be either the **root** user of the Docker host or a dedicated user with the required permissions."
 msgid "The following instructions assume that all requirements are met and you have a working Docker environment. We assume a user for with the required permissions for running Docker commands. If no dedicated user is setup, use ``sudo``."
-msgstr "Wir gehen im Folgenden davon aus, dass alle erforderlichen Softwaremodule installiert sind und eine funktionierende Docker-Umgebung zur Verfügung steht. Außerdem, dass zur Interaktion mit Docker der Benutzer **docker_admin** verwendet wird. Der Docker-Admin kann entweder der **root**-Benutzer des Docker-Host oder ein spezieller Benutzer mit den erforderlichen Berechtigungen sein."
+msgstr "Die folgenden Anweisungen gehen davon aus, dass alle Voraussetzungen erfüllt sind und Sie eine funktionsfähige Docker-Umgebung haben. Wir gehen von einem Benutzer mit den benötigten Berechtigungen für das Ausführen von Docker-Befehlen aus. Sofern kein dedizierter Benutzer eingerichtet ist, verwenden Sie ``sudo``."
 
 #: ../content/installation/installation-docker.rst:41
-#, fuzzy
-#| msgid "1. Clone the otobo-docker repo"
 msgid "1. Clone the otobo-docker Repository"
-msgstr "1. `otobo-docker` Repository klonen"
+msgstr "1. Klonen Sie das otobo-docker-Repository"
 
 #: ../content/installation/installation-docker.rst:43
-#, fuzzy
-#| msgid "The Docker images will eventually be fetched from the repository https://hub.docker.com. But there are some setup and command files that need to be cloned from the *otobo-docker* Github repository. Make sure that you specify the tag that corresponds to the current patch level version of OTOBO. For example, when *OTOBO 11.0.2* is the current version then please use the tag *rel-11_0_2*."
 msgid "The Docker images will eventually be fetched from the repository https://hub.docker.com. But there are some setup and command files that need to be cloned from the ``otobo-docker`` Github repository. Make sure that you specify the tag that corresponds to the current patch level version of OTOBO. For example, when *OTOBO 11.0.2* is the current version then please use the tag ``rel-11_0_2``."
-msgstr "Die Docker-Images werden schließlich aus dem Repository https://hub.docker.com abgerufen. Es gibt jedoch einige Setup- und Befehlsdateien, die aus dem Github-Repository *otobo-docker* geklont werden müssen. Stellen Sie sicher, dass Sie das Tag angeben, das der aktuellen Patch-Level-Version von OTOBO entspricht. Wenn zum Beispiel *OTOBO 11.0.2* die aktuelle Version ist, verwenden Sie bitte den Tag *rel-11_0_2*."
+msgstr "Die Docker-Images werden schließlich aus dem Repository https://hub.docker.com abgerufen. Es gibt jedoch einige Setup- und Befehlsdateien, die aus dem Github-Repository ``otobo-docker`` geklont werden müssen. Stellen Sie sicher, dass Sie das Tag angeben, das der aktuellen Patch-Level-Version von OTOBO entspricht. Wenn zum Beispiel ``OTOBO 11.0.2`` die aktuelle Version ist, verwenden Sie bitte den Tag ``rel-11_0_2``."
 
 #: ../content/installation/installation-docker.rst:50
 msgid "For these instructions we chose ``/opt/otobo-docker`` as the working dir. You may choose this path freely, but may have to adjust commands in this manual accordingly."
-msgstr ""
+msgstr "Für diese Anleitungen wählen wir ``/opt/otobo-docker`` als Arbeitsverzeichnis. Der Pfad kann frei gewählt werden, jedoch müssen dann die Befehle in diesem Handbuch entsprechend angepasst werden."
 
 #: ../content/installation/installation-docker.rst:62
 #, fuzzy
@@ -481,10 +410,8 @@ msgid "``.docker_compose_env_https_custom_nginx``"
 msgstr ".docker_compose_env_https_custom_nginx"
 
 #: ../content/installation/installation-docker.rst:78
-#, fuzzy
-#| msgid "Like *.docker_compose_env_https* but with support for a custom Nginx configuration."
 msgid "Like ``*.docker_compose_env_https`` but with support for a custom Nginx configuration."
-msgstr "Ähnlich zu *.docker_compose_env_https*, aber mit Unterstützung einer individuellen Nginx Konfiguration."
+msgstr "Ähnlich zu ``*.docker_compose_env_https``, aber mit Unterstützung einer individuellen Nginx-Konfiguration."
 
 #: ../content/installation/installation-docker.rst:82
 #, fuzzy
