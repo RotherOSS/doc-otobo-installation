@@ -252,7 +252,7 @@ Caching
 -------
 
 A fast cache module is a great help in terms of performance.
-In sepcial cases it might be applicable to use Redis for caching.
+In special cases it might be applicable to use Redis for caching.
 
 Install a Redis Cache Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
