@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 14:11+0000\n"
+"POT-Creation-Date: 2026-11-02 09:20+0000\n"
 "PO-Revision-Date: 2025-11-16 10:40+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Thai <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/th/>\n"
@@ -22,6 +22,7 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 
 #: ../content/backup-restore.rst:2
+#: ../content/installation/installation-podman.rst:496
 msgid "Backup and Restore"
 msgstr "สำรองและกู้คืน"
 
@@ -333,12 +334,14 @@ msgid "With the dockerized OTOBO deployment you can get your personal OTOBO inst
 msgstr "ด้วยการปรับใช้ OTOBO แบบ dockerized คุณสามารถตั้งค่าและใช้งาน OTOBO ส่วนตัวของคุณได้ภายในไม่กี่นาที ทุกสิ่งที่ OTOBO ต้องการได้ถูกรวมไว้ในคอลเล็กชันของ Docker images ที่ให้มาแล้ว"
 
 #: ../content/installation/installation-docker.rst:7
+#: ../content/installation/installation-podman.rst:9
 #, fuzzy
 #| msgid "Service *db*: MariaDB is set up as the default database."
 msgid "``db``: MariaDB is set up as the default database."
 msgstr "บริการ *db*: MariaDB ถูกตั้งค่าเป็นฐานข้อมูลเริ่มต้น"
 
 #: ../content/installation/installation-docker.rst:8
+#: ../content/installation/installation-podman.rst:10
 #, fuzzy
 #| msgid "Service *elastic*: Elasticsearch is set up for the OTOBO power search."
 msgid "``elastic``: Elasticsearch is set up for the OTOBO power search."
@@ -351,12 +354,14 @@ msgid "``redis``: Redis is enabled for fast caching."
 msgstr "บริการ *redis*: Redis เปิดใช้งานแล้วสำหรับการแคชข้อมูลอย่างรวดเร็ว"
 
 #: ../content/installation/installation-docker.rst:10
+#: ../content/installation/installation-podman.rst:12
 #, fuzzy
 #| msgid "Service *web*: Gazelle is used as fast Perl webserver."
 msgid "``web``: Gazelle is used as fast Perl webserver."
 msgstr "บริการ *เว็บ*: Gazelle ถูกใช้เป็นเว็บเซิร์ฟเวอร์ Perl ที่รวดเร็ว"
 
 #: ../content/installation/installation-docker.rst:11
+#: ../content/installation/installation-podman.rst:14
 #, fuzzy
 #| msgid "Service *nginx*: Nginx is used as optional reverse proxy for HTTPS support."
 msgid "``nginx``: Nginx is used as optional reverse proxy for HTTPS support."
@@ -367,6 +372,7 @@ msgid "We think that this setup is the perfect environment for an OTOBO installa
 msgstr "เราคิดว่าการติดตั้งนี้คือสภาพแวดล้อมที่สมบูรณ์แบบสำหรับการติดตั้ง OTOBO"
 
 #: ../content/installation/installation-docker.rst:16
+#: ../content/installation/installation-podman.rst:27
 msgid "Requirements"
 msgstr "ข้อกำหนด"
 
@@ -395,6 +401,7 @@ msgid "For Ubuntu 24.04 LTS these commands install the required packages:"
 msgstr "สำหรับ Ubuntu 24.04 LTS ขอแนะนำให้ใช้ Compose V2"
 
 #: ../content/installation/installation-docker.rst:34
+#: ../content/installation/installation-podman.rst:48
 msgid "Installation"
 msgstr "การติดตั้ง"
 
@@ -439,6 +446,7 @@ msgid "``.docker_compose_env_http``"
 msgstr ".docker_compose_env_http"
 
 #: ../content/installation/installation-docker.rst:72
+#: ../content/installation/installation-podman.rst:130
 msgid "The OTOBO web app provides HTTP."
 msgstr "เว็บแอป OTOBO ให้บริการ HTTP"
 
@@ -449,6 +457,7 @@ msgid "``.docker_compose_env_https``"
 msgstr ".docker_compose_env_https"
 
 #: ../content/installation/installation-docker.rst:75
+#: ../content/installation/installation-podman.rst:133
 #, fuzzy
 #| msgid "The OTOBO web app provides HTTPS by runnning Nginx as a reverse proxy webserver."
 msgid "The OTOBO web app provides HTTPS by running Nginx as a reverse proxy webserver."
@@ -489,6 +498,7 @@ msgid "These are used only for development when Selenium testing is activated."
 msgstr "สิ่งเหล่านี้ใช้เฉพาะสำหรับการพัฒนาเมื่อมีการเปิดใช้งานการทดสอบ Selenium เท่านั้น"
 
 #: ../content/installation/installation-docker.rst:89
+#: ../content/installation/installation-podman.rst:137
 msgid "Use ``ls -a`` for listing the hidden sample files."
 msgstr "ใช้ ``ls -a`` สำหรับการลิสต์ไฟล์ตัวอย่างที่ซ่อนอยู่"
 
@@ -499,6 +509,7 @@ msgid "By default OTOBO is served on the standard ports, ``443`` for HTTPS and `
 msgstr "โดยค่าเริ่มต้น OTOBO จะให้บริการบนพอร์ตมาตรฐาน พอร์ต 443 สำหรับ HTTPS และพอร์ต 80 สำหรับ HTTP เมื่อเปิดใช้งาน HTTPS แล้ว แอปพลิเคชันเว็บของ OTOBO จะยังคงทำงานด้วย HTTP อยู่ การรองรับ HTTPS จะเกิดขึ้นผ่านพร็อกซีย้อนกลับเพิ่มเติม ซึ่งถูกนำไปใช้ในรูปแบบของบริการ nginx"
 
 #: ../content/installation/installation-docker.rst:95
+#: ../content/installation/installation-podman.rst:142
 msgid "For the following commands we assume that HTTPS should be supported."
 msgstr "สำหรับคำสั่งต่อไปนี้ เราสมมติว่า HTTPS ควรได้รับการสนับสนุน"
 
@@ -509,12 +520,14 @@ msgid "3. Configure the Password for the Database Admin User"
 msgstr "3. กำหนดรหัสผ่านสำหรับผู้ใช้ผู้ดูแลระบบฐานข้อมูล"
 
 #: ../content/installation/installation-docker.rst:105
+#: ../content/installation/installation-podman.rst:157
 #, fuzzy
 #| msgid "Change the following setting inside your *.env* file:"
 msgid "Change the following setting inside your ``.env`` file:"
 msgstr "เปลี่ยนการตั้งค่าต่อไปนี้ภายในไฟล์ *.env* ของคุณ:"
 
 #: ../content/installation/installation-docker.rst:111
+#: ../content/installation/installation-podman.rst:163
 #, fuzzy
 #| msgid "The password for the database admin user may be chosen freely. The database admin user is needed to create the database user **otobo** and the database schema **otobo**. OTOBO will actually use the dedicated database user **otobo**."
 msgid "The password for the database admin user may be chosen freely. The database admin user is needed to create the database user ``otobo`` and the database schema ``otobo``. OTOBO will actually use the dedicated database user ``otobo``."
@@ -533,6 +546,7 @@ msgid "This step may be skipped when OTOBO should be available only via HTTP. Ng
 msgstr "ขั้นตอนนี้สามารถข้ามได้เมื่อ OTOBO ควรใช้งานได้เฉพาะผ่าน HTTP เท่านั้น"
 
 #: ../content/installation/installation-docker.rst:123
+#: ../content/installation/installation-podman.rst:185
 #, fuzzy
 #| msgid "To specify a CA chain with a certificate in nginx, it is necessary to copy the CA chain file with the actual certificate into a file."
 msgid "To specify a CA chain with a certificate in Nginx, it is necessary to copy the CA chain file with the actual certificate into a file."
@@ -577,12 +591,14 @@ msgid "Run the OTOBO installer at ``http://OTOBO_FQDN/otobo/installer.pl``."
 msgstr "เรียกใช้ตัวติดตั้ง OTOBO ที่ http://yourIPorFQDN/otobo/installer.pl"
 
 #: ../content/installation/installation-docker.rst:162
+#: ../content/installation/installation-podman.rst:259
 #, fuzzy
 #| msgid "Please configure OTOBO inside the installer with a new MySQL database. As MySQL database root password please use the password you configured in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your *.env* file. Please leave the value ``db`` for the MySQL hostname untouched."
 msgid "Please configure OTOBO inside the installer with a new MySQL database. As MySQL database root password please use the password you configured in the variable ``OTOBO_DB_ROOT_PASSWORD`` of your ``.env`` file. Please leave the value ``db`` for the MySQL hostname untouched."
 msgstr "กรุณาตั้งค่า OTOBO ภายในตัวติดตั้งโดยใช้ฐานข้อมูล MySQL ใหม่ สำหรับรหัสผ่าน root ของฐานข้อมูล MySQL กรุณาใช้รหัสผ่านที่คุณได้ตั้งค่าไว้ในตัวแปร ``OTOBO_DB_ROOT_PASSWORD`` ในไฟล์ *.env* ของคุณ กรุณาปล่อยค่าเดิมเป็น ``db`` สำหรับชื่อโฮสต์ของ MySQL"
 
 #: ../content/installation/installation-docker.rst:166
+#: ../content/installation/installation-podman.rst:263
 msgid "**Have fun with OTOBO!**"
 msgstr "สนุกกับ OTOBO!"
 
@@ -593,12 +609,14 @@ msgid "To change to the OTOBO directory, inside the running container, to work o
 msgstr "เพื่อเปลี่ยนไปยังไดเรกทอรี OTOBO ภายในคอนเทนเนอร์ที่กำลังทำงานอยู่ ให้ทำงานบนบรรทัดคำสั่งตามปกติ คุณสามารถใช้คำสั่ง Docker ต่อไปนี้: ``docker-compose exec web bash``."
 
 #: ../content/installation/installation-docker.rst:174
+#: ../content/installation/installation-podman.rst:271
 #, fuzzy
 #| msgid "Additional technical information"
 msgid "Additional Technical Information"
 msgstr "ข้อมูลทางเทคนิคเพิ่มเติม"
 
 #: ../content/installation/installation-docker.rst:176
+#: ../content/installation/installation-podman.rst:273
 #, fuzzy
 #| msgid "This section gives some more technical insight into what is happing under the hood."
 msgid "This section gives some more technical insight into what is happening under the hood."
@@ -681,36 +699,42 @@ msgid "The Docker volumes are created on the host for persistent data. These all
 msgstr "ไดเรกทอรี Docker จะถูกสร้างขึ้นบนโฮสต์เพื่อเก็บข้อมูลถาวร ข้อมูลเหล่านี้ช่วยให้สามารถเริ่มและหยุดบริการได้โดยไม่สูญเสียข้อมูล โปรดทราบว่าคอนเทนเนอร์เป็นเพียงชั่วคราว และมีเพียงข้อมูลในไดเรกทอรีเท่านั้นที่ถาวร"
 
 #: ../content/installation/installation-docker.rst:208
+#: ../content/installation/installation-podman.rst:322
 #, fuzzy
 #| msgid "otobo_opt_otobo"
 msgid "``otobo_opt_otobo``"
 msgstr "otobo_opt_otobo"
 
 #: ../content/installation/installation-docker.rst:208
+#: ../content/installation/installation-podman.rst:322
 #, fuzzy
 #| msgid "contains */opt/otobo* in the container **web** and **daemon**."
 msgid "contains ``/opt/otobo`` in the container ``web`` and ``daemon``."
 msgstr "มี */opt/otobo* ในคอนเทนเนอร์ **web** และ **daemon**"
 
 #: ../content/installation/installation-docker.rst:211
+#: ../content/installation/installation-podman.rst:328
 #, fuzzy
 #| msgid "otobo_mariadb_data"
 msgid "``otobo_mariadb_data``"
 msgstr "otobo_mariadb_data"
 
 #: ../content/installation/installation-docker.rst:211
+#: ../content/installation/installation-podman.rst:328
 #, fuzzy
 #| msgid "contains */var/lib/mysql* in the container **db**."
 msgid "contains ``/var/lib/mysql`` in the container ``db``."
 msgstr "มี */var/lib/mysql* ในคอนเทนเนอร์ **db**"
 
 #: ../content/installation/installation-docker.rst:214
+#: ../content/installation/installation-podman.rst:331
 #, fuzzy
 #| msgid "otobo_elasticsearch_data"
 msgid "``otobo_elasticsearch_data``"
 msgstr "otobo_elasticsearch_data"
 
 #: ../content/installation/installation-docker.rst:214
+#: ../content/installation/installation-podman.rst:331
 #, fuzzy
 #| msgid "contains */usr/share/elasticsearch/datal* in the container **elastic**."
 msgid "contains ``/usr/share/elasticsearch/data`` in the container ``elastic``."
@@ -729,12 +753,14 @@ msgid "contains data for the container ``redis``."
 msgstr "มีข้อมูลสำหรับคอนเทนเนอร์ `redis`"
 
 #: ../content/installation/installation-docker.rst:220
+#: ../content/installation/installation-podman.rst:334
 #, fuzzy
 #| msgid "otobo_nginx_ssl"
 msgid "``otobo_nginx_ssl``"
 msgstr "otobo_nginx_ssl"
 
 #: ../content/installation/installation-docker.rst:220
+#: ../content/installation/installation-podman.rst:334
 msgid "contains the TLS files, certificate and private key, must be initialized manually."
 msgstr "มีไฟล์ TLS, ใบรับรอง และกุญแจส่วนตัว ต้องได้รับการเริ่มต้นใช้งานด้วยตนเอง"
 
@@ -1014,6 +1040,7 @@ msgid "Used for specifying alternative Docker images. Useful for testing local b
 msgstr "ใช้สำหรับระบุภาพ Docker ที่เป็นทางเลือก มีประโยชน์สำหรับการทดสอบการสร้างในเครื่องหรือการใช้เวอร์ชันที่อัปเดตของภาพ"
 
 #: ../content/installation/installation-docker.rst:333
+#: ../content/installation/installation-podman.rst:357
 #, fuzzy
 #| msgid "Advanced topics"
 msgid "Advanced Topics"
@@ -1173,6 +1200,7 @@ msgid "Of course the same goal can also be achieved by editing the file ``docker
 msgstr "แน่นอนว่าเป้าหมายเดียวกันนี้สามารถทำได้โดยการแก้ไขไฟล์ *docker-compose/otobo-base.yml* และลบการกำหนดค่าบริการที่เกี่ยวข้อง"
 
 #: ../content/installation/installation-docker.rst:472
+#: ../content/installation/installation-podman.rst:411
 #, fuzzy
 #| msgid "Prepare offline installation"
 msgid "Prepare Offline Installation"
@@ -1355,6 +1383,7 @@ msgid "``docker compose down -v`` will remove all previous setup and data."
 msgstr "``docker-compose down -v`` จะลบการตั้งค่าและข้อมูลทั้งหมดที่เคยมีอยู่"
 
 #: ../content/installation/installation-docker.rst:650
+#: ../content/installation/installation-podman.rst:512
 #, fuzzy
 #| msgid "List of useful commands"
 msgid "List of Useful Commands"
@@ -1447,6 +1476,7 @@ msgid "``docker compose exec nginx nginx -s reload`` reload nginx"
 msgstr "```docker-compose exec nginx nginx -s reload``` reload nginx"
 
 #: ../content/installation/installation-docker.rst:677
+#: ../content/installation/installation-podman.rst:540
 msgid "Resources"
 msgstr "ทรัพยากร"
 
@@ -1501,6 +1531,802 @@ msgstr "`การใช้ tcpdump <https://rmoff.net/2019/11/29/using-tcpdump-
 #: ../content/installation/installation-docker.rst:696
 msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
 msgstr "ตรวจสอบการสร้างที่ล้มเหลว <https://pythonspeed.com/articles/debugging-docker-build/&gt;"
+
+#: ../content/installation/installation-podman.rst:2
+#, fuzzy
+#| msgid "OTOBO Installation"
+msgid "OTOBO Installation Podman"
+msgstr "การติดตั้ง OTOBO"
+
+#: ../content/installation/installation-podman.rst:4
+msgid "With the Podman based OTOBO deployment you can run OTOBO on Red Hat Enterprise Linux 9 and 10 using only the tools that are shipped with the distribution: rootless Podman, Quadlet and systemd. No Docker, no Compose tool and no third-party repository is required. All of OTOBO's dependencies are included in the same Docker images that are used by ``otobo-docker``:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:11
+#, fuzzy
+#| msgid "Service *redis*: Redis is enabled for fast caching."
+msgid "``redis``: Redis can optionally be enabled for fast caching."
+msgstr "บริการ *redis*: Redis เปิดใช้งานแล้วสำหรับการแคชข้อมูลอย่างรวดเร็ว"
+
+#: ../content/installation/installation-podman.rst:13
+msgid "``daemon``: The OTOBO daemon runs scheduled and asynchronous tasks."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:16
+msgid "Every service runs as a systemd service of a dedicated, unprivileged service user. systemd starts the services at boot, restarts them on failure and collects their logs in the journal."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:21
+msgid "This setup is a proof of concept. It mirrors ``docker-compose/otobo-base.yml`` of the repository https://github.com/RotherOSS/otobo-docker and supports the HTTP, HTTPS and Redis variants. Kerberos and a custom Nginx configuration are not supported yet."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:29
+#, fuzzy
+#| msgid "The minimal versions of required software, that have been tested, are listed here:"
+msgid "The minimal versions of required software are listed here:"
+msgstr "เวอร์ชันขั้นต่ำของซอฟต์แวร์ที่จำเป็น ซึ่งได้รับการทดสอบแล้ว มีดังต่อไปนี้:"
+
+#: ../content/installation/installation-podman.rst:31
+msgid "Red Hat Enterprise Linux 9 or 10, or a compatible distribution"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:32
+msgid "Podman 5.0 (required for ``Notify=healthy`` in Quadlet units, shipped with RHEL 9.5 and later)"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:33
+msgid "``systemd-container`` (provides ``machinectl``)"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:34
+msgid "Git"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:35
+msgid "At least 4 GB of RAM"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:37
+msgid "SELinux may stay in enforcing mode."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:39
+#, fuzzy
+#| msgid "For Ubuntu 24.04 LTS the usage of Compose V2 is recommended."
+msgid "These commands install the required packages:"
+msgstr "สำหรับ Ubuntu 24.04 LTS ขอแนะนำให้ใช้ Compose V2"
+
+#: ../content/installation/installation-podman.rst:50
+msgid "The following instructions assume that you have root access via ``sudo``. The preparation of the host is done as ``root``. All other steps are done as the service user ``otobo``, who runs the containers."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:55
+#, fuzzy
+#| msgid "1. Clone the otobo-docker repo"
+msgid "1. Clone the otobo-podman Repository"
+msgstr "1. คัดลอก repo ของ otobo-docker"
+
+#: ../content/installation/installation-podman.rst:57
+msgid "The container images will be fetched from https://hub.docker.com. But there are some setup files and scripts that need to be cloned from the ``otobo-podman`` GitHub repository."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:62
+msgid "For these instructions we chose ``/root/otobo-podman`` as the location of the clone. The clone is only used for preparing the host. In step 2 the files are copied to the home directory of the service user, and all further steps use that copy. Do not clone the repository directly into ``/home/otobo/otobo-podman``."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:77
+msgid "2. Prepare the Host"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:79
+msgid "The script ``scripts/prepare-host.sh`` must be run once as ``root``. It"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:81
+msgid "creates the system user ``otobo`` with the home directory ``/home/otobo``,"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:82
+msgid "assigns the subordinate UID and GID ranges needed for rootless containers,"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:83
+msgid "enables lingering, so that the services of ``otobo`` start at boot without a login,"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:84
+msgid "installs the kernel settings from ``sysctl/90-otobo.conf`` (``vm.max_map_count`` for Elasticsearch),"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:85
+msgid "copies the package to ``/home/otobo/otobo-podman``."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:92
+msgid "The script ends with the message ``Host preparation finished.``"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:94
+msgid "Rootless Podman can not bind ports below 1024 by default. Therefore OTOBO is served on the ports ``8443`` for HTTPS and ``8080`` for HTTP. On RHEL, firewalld blocks these ports, so they must be opened:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:103
+#, fuzzy
+#| msgid "Set in case the HTTPS port should deviate from the standard port 443."
+msgid "See `Using the Ports 80 and 443`_ when OTOBO should be served on the standard ports."
+msgstr "ตั้งค่าในกรณีที่พอร์ต HTTPS ควรจะแตกต่างจากพอร์ตมาตรฐาน 443"
+
+#: ../content/installation/installation-podman.rst:106
+msgid "3. Switch to the Service User"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:108
+msgid "All following steps are done as the user ``otobo``:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:117
+msgid "``su`` and ``sudo -u`` do not start a user session. ``systemctl --user`` then fails with ``Failed to connect to bus``. ``machinectl shell`` starts a proper session, like a regular login."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:122
+#, fuzzy
+#| msgid "2. Create an initial *.env* file"
+msgid "4. Create an Initial ``.env`` File"
+msgstr "2. สร้างไฟล์ *.env* ไฟล์แรก"
+
+#: ../content/installation/installation-podman.rst:124
+msgid "The configuration file ``.env`` is your primary interface for managing your installation of OTOBO. It has the same syntax and almost the same variable names as in ``otobo-docker``. This file must first be created and then be adapted by yourself. Two sample files are provided that may be used as starting point:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:130
+#, fuzzy
+#| msgid ".docker_compose_env_http"
+msgid "``.podman_env_http``"
+msgstr ".docker_compose_env_http"
+
+#: ../content/installation/installation-podman.rst:133
+#, fuzzy
+#| msgid ".docker_compose_env_https"
+msgid "``.podman_env_https``"
+msgstr ".docker_compose_env_https"
+
+#: ../content/installation/installation-podman.rst:139
+#, fuzzy
+#| msgid "Per default OTOBO is served on the standard ports. Port 443 for HTTPS and port 80 for HTTP. When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support is achieved by an additional reverse proxy, which is implemented as a nginx service."
+msgid "When HTTPS is activated then the OTOBO web application actually still runs with HTTP. HTTPS support is achieved by an additional reverse proxy, which is implemented as a Nginx service."
+msgstr "โดยค่าเริ่มต้น OTOBO จะให้บริการบนพอร์ตมาตรฐาน พอร์ต 443 สำหรับ HTTPS และพอร์ต 80 สำหรับ HTTP เมื่อเปิดใช้งาน HTTPS แล้ว แอปพลิเคชันเว็บของ OTOBO จะยังคงทำงานด้วย HTTP อยู่ การรองรับ HTTPS จะเกิดขึ้นผ่านพร็อกซีย้อนกลับเพิ่มเติม ซึ่งถูกนำไปใช้ในรูปแบบของบริการ nginx"
+
+#: ../content/installation/installation-podman.rst:151
+msgid "Values in ``.env`` are taken verbatim up to the end of the line. Do not put quotes around the values, they would become part of the value."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:155
+#, fuzzy
+#| msgid "3. Configure the password for the database admin user"
+msgid "5. Configure the Password for the Database Admin User"
+msgstr "3. กำหนดรหัสผ่านสำหรับผู้ใช้ผู้ดูแลระบบฐานข้อมูล"
+
+#: ../content/installation/installation-podman.rst:168
+msgid "1. Configure SSL and Proxy Secret using Nginx (optional)"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:170
+#, fuzzy
+#| msgid "This step can be skipped when OTOBO should be available only via HTTP."
+msgid "This step may be skipped when OTOBO should be available only via HTTP. Nginx needs for SSL encryption a certificate and a private key. The certificate and the private key are stored in the volume ``otobo_nginx_ssl``, which is mounted at ``/etc/nginx/ssl`` in the Nginx container."
+msgstr "ขั้นตอนนี้สามารถข้ามได้เมื่อ OTOBO ควรใช้งานได้เฉพาะผ่าน HTTP เท่านั้น"
+
+#: ../content/installation/installation-podman.rst:175
+#, fuzzy
+#| msgid "Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image."
+msgid "Set the names of the files in your ``.env`` file. Please adapt only the name of the files, as the path ``/etc/nginx/ssl/`` is fixed:"
+msgstr "กรุณาปรับเปลี่ยนเฉพาะชื่อไฟล์เท่านั้น เนื่องจากเส้นทาง */etc/nginx/ssl/* ถูกกำหนดไว้อย่างตายตัวใน Docker image"
+
+#: ../content/installation/installation-podman.rst:187
+msgid "It is also recommended to set a shared secret between Nginx and OTOBO. OTOBO only trusts the ``X-Forwarded-*`` headers of requests that carry this secret. A suitable value can be generated with ``openssl rand -hex 32``:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:195
+msgid "The files themselves are imported into the volume after the next step."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:198
+#, fuzzy
+#| msgid "Installing Perl Modules from CPAN"
+msgid "1. Install the Quadlet Units"
+msgstr "การติดตั้งโมดูล Perl จาก CPAN"
+
+#: ../content/installation/installation-podman.rst:200
+#, fuzzy
+#| msgid "Now we start the Docker containers using ``docker-compose``. Per default the Docker images will be fetched from https://hub.docker.com/u/rotheross."
+msgid "The script ``scripts/install.sh`` reads ``.env``, pulls the images and generates one systemd service per container. By default the images will be fetched from https://hub.docker.com/u/rotheross."
+msgstr "ตอนนี้เราจะเริ่มใช้งานคอนเทนเนอร์ Docker โดยใช้ ``docker-compose`` ตามค่าเริ่มต้น Docker images จะถูกดึงมาจาก https://hub.docker.com/u/rotheross"
+
+#: ../content/installation/installation-podman.rst:207
+msgid "Run ``scripts/install.sh`` again after every change of ``.env``."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:210
+msgid "8. Import the Certificate into the Volume (optional)"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:212
+#, fuzzy
+#| msgid "This step can be skipped when OTOBO should be available only via HTTP."
+msgid "This step may be skipped when OTOBO should be available only via HTTP."
+msgstr "ขั้นตอนนี้สามารถข้ามได้เมื่อ OTOBO ควรใช้งานได้เฉพาะผ่าน HTTP เท่านั้น"
+
+#: ../content/installation/installation-podman.rst:214
+msgid "The user ``otobo`` must be able to read the certificate and the key. If needed, copy them as ``root`` to the home directory of ``otobo`` first:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:222
+msgid "Then, as user ``otobo``, create the volume and import the files. The file names must match the ones in ``.env``:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:232
+#, fuzzy
+#| msgid "List of Docker containers"
+msgid "9. Start the Containers"
+msgstr "รายการของคอนเทนเนอร์ Docker"
+
+#: ../content/installation/installation-podman.rst:234
+msgid "All services are grouped by the systemd target ``otobo.target``:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:240
+msgid "The first start takes a few minutes. systemd starts the web server only after the database and Elasticsearch report a passing health check."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:243
+#, fuzzy
+#| msgid "To verify that the six required services (five in the case of HTTP only) are actually running, type:"
+msgid "To verify that the five required services (four in the case of HTTP only) are actually running, type:"
+msgstr "เพื่อยืนยันว่าบริการที่จำเป็นทั้งหก (ห้าในกรณีที่เป็น HTTP เท่านั้น) กำลังทำงานอยู่จริง ให้พิมพ์:"
+
+#: ../content/installation/installation-podman.rst:252
+#, fuzzy
+#| msgid "6. Install and start OTOBO"
+msgid "10. Install and Start OTOBO"
+msgstr "6. ติดตั้งและเริ่ม OTOBO"
+
+#: ../content/installation/installation-podman.rst:254
+#, fuzzy
+#| msgid "Run the OTOBO installer at http://yourIPorFQDN/otobo/installer.pl."
+msgid "Run the OTOBO installer at ``https://OTOBO_FQDN:8443/otobo/installer.pl``, or at ``http://OTOBO_FQDN:8080/otobo/installer.pl`` in the case of HTTP only."
+msgstr "เรียกใช้ตัวติดตั้ง OTOBO ที่ http://yourIPorFQDN/otobo/installer.pl"
+
+#: ../content/installation/installation-podman.rst:267
+#, fuzzy
+#| msgid "To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Docker command: ``docker-compose exec web bash``."
+msgid "To change to the OTOBO directory, inside the running container, to work on command line as usual, you can use the following Podman command: ``podman exec -it otobo-web bash``."
+msgstr "เพื่อเปลี่ยนไปยังไดเรกทอรี OTOBO ภายในคอนเทนเนอร์ที่กำลังทำงานอยู่ ให้ทำงานบนบรรทัดคำสั่งตามปกติ คุณสามารถใช้คำสั่ง Docker ต่อไปนี้: ``docker-compose exec web bash``."
+
+#: ../content/installation/installation-podman.rst:276
+msgid "Quadlet Units and systemd Services"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:278
+msgid "Quadlet is part of Podman. A Quadlet unit is a small unit file which describes a container, a volume or a network. On ``systemctl --user daemon-reload`` Podman turns every Quadlet unit into a regular systemd service. ``scripts/install.sh`` generates the Quadlet units from the templates in the directory ``quadlet/`` and the values in ``.env``."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:284
+msgid "Compose service"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:284
+msgid "Quadlet unit"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:284
+msgid "systemd service"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:284
+#, fuzzy
+#| msgid "List of Docker containers"
+msgid "Container"
+msgstr "รายการของคอนเทนเนอร์ Docker"
+
+#: ../content/installation/installation-podman.rst:286
+msgid "db"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:286
+#, fuzzy
+#| msgid "*otobo.nginx.dockerfile*"
+msgid "``otobo-db.container``"
+msgstr "*otobo.nginx.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:286
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo-db.service``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:286
+#, fuzzy
+#| msgid "Container otobo_db_1"
+msgid "``otobo-db``"
+msgstr "คอนเทนเนอร์ otobo_db_1"
+
+#: ../content/installation/installation-podman.rst:287
+#, fuzzy
+#| msgid "**Elasticsearch settings**"
+msgid "elastic"
+msgstr "**การตั้งค่า Elasticsearch**"
+
+#: ../content/installation/installation-podman.rst:287
+#, fuzzy
+#| msgid "otobo_elasticsearch_data"
+msgid "``otobo-elastic.container``"
+msgstr "otobo_elasticsearch_data"
+
+#: ../content/installation/installation-podman.rst:287
+#, fuzzy
+#| msgid "otobo_elasticsearch_data"
+msgid "``otobo-elastic.service``"
+msgstr "otobo_elasticsearch_data"
+
+#: ../content/installation/installation-podman.rst:287
+#, fuzzy
+#| msgid "Container otobo_elastic_1"
+msgid "``otobo-elastic``"
+msgstr "คอนเทนเนอร์ otobo_elastic_1"
+
+#: ../content/installation/installation-podman.rst:288
+msgid "redis"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:288
+#, fuzzy
+#| msgid "otobo_redis_data"
+msgid "``otobo-redis.container``"
+msgstr "otobo_redis_data"
+
+#: ../content/installation/installation-podman.rst:288
+#, fuzzy
+#| msgid "otobo_redis_data"
+msgid "``otobo-redis.service``"
+msgstr "otobo_redis_data"
+
+#: ../content/installation/installation-podman.rst:288
+#, fuzzy
+#| msgid "otobo_redis_data"
+msgid "``otobo-redis``"
+msgstr "otobo_redis_data"
+
+#: ../content/installation/installation-podman.rst:289
+msgid "web"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:289
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo-web.container``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:289
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo-web.service``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:289
+#, fuzzy
+#| msgid "Container otobo_web_1"
+msgid "``otobo-web``"
+msgstr "คอนเทนเนอร์ otobo_web_1"
+
+#: ../content/installation/installation-podman.rst:290
+msgid "daemon"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:290
+msgid "``otobo-daemon.container``"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:290
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo-daemon.service``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:290
+#, fuzzy
+#| msgid "Container otobo_daemon_1"
+msgid "``otobo-daemon``"
+msgstr "คอนเทนเนอร์ otobo_daemon_1"
+
+#: ../content/installation/installation-podman.rst:291
+msgid "nginx"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:291
+#, fuzzy
+#| msgid "*otobo.nginx.dockerfile*"
+msgid "``otobo-nginx.container``"
+msgstr "*otobo.nginx.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:291
+#, fuzzy
+#| msgid "*otobo.nginx.dockerfile*"
+msgid "``otobo-nginx.service``"
+msgstr "*otobo.nginx.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:291
+#, fuzzy
+#| msgid "otobo_nginx_ssl"
+msgid "``otobo-nginx``"
+msgstr "otobo_nginx_ssl"
+
+#: ../content/installation/installation-podman.rst:292
+msgid "(network)"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:292
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo.network``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:292
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo-network.service``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:293
+msgid "(volumes)"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:293
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo-*.volume``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:293
+#, fuzzy
+#| msgid "*otobo.web.dockerfile*"
+msgid "``otobo-*-volume.service``"
+msgstr "*otobo.web.dockerfile*"
+
+#: ../content/installation/installation-podman.rst:296
+msgid "The generated files are stored in the home directory of the user ``otobo``:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:299
+msgid "``~/.config/containers/systemd/``"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:299
+msgid "The generated Quadlet units."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:302
+msgid "``~/.config/systemd/user/otobo.target``"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:302
+msgid "The target that groups all services."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:305
+msgid "``~/.config/otobo/``"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:305
+msgid "One environment file per container, containing only the variables this container needs."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:307
+msgid "The containers talk to each other over the internal network ``otobo``. Podman's DNS resolves the same host names as in the Docker Compose setup: ``db``, ``elastic``, ``redis``, ``web``, ``daemon`` and ``nginx``. Only the ports of Nginx, or the port of the web server without Nginx, are published on the host."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:313
+#, fuzzy
+#| msgid "Overview over the Docker volumes"
+msgid "Overview over the Volumes"
+msgstr "ภาพรวมของปริมาณ Docker"
+
+#: ../content/installation/installation-podman.rst:315
+#, fuzzy
+#| msgid "The Docker volumes are created on the host for persistent data. These allow starting and stopping the services without losing data. Keep in mind that containers are temporary and only data in the volumes is permanent."
+msgid "The volumes are created in the container storage of the user ``otobo``, ``~/.local/share/containers/storage/volumes``. These allow starting and stopping the services without losing data. Keep in mind that containers are temporary and only data in the volumes is permanent. The volume names are the same as in ``otobo-docker``."
+msgstr "ไดเรกทอรี Docker จะถูกสร้างขึ้นบนโฮสต์เพื่อเก็บข้อมูลถาวร ข้อมูลเหล่านี้ช่วยให้สามารถเริ่มและหยุดบริการได้โดยไม่สูญเสียข้อมูล โปรดทราบว่าคอนเทนเนอร์เป็นเพียงชั่วคราว และมีเพียงข้อมูลในไดเรกทอรีเท่านั้นที่ถาวร"
+
+#: ../content/installation/installation-podman.rst:325
+#, fuzzy
+#| msgid "otobo_opt_otobo"
+msgid "``otobo_opt_otobo_update``"
+msgstr "otobo_opt_otobo"
+
+#: ../content/installation/installation-podman.rst:325
+#, fuzzy
+#| msgid "contains */opt/otobo* in the container **web** and **daemon**."
+msgid "contains ``/opt/otobo_update`` in the container ``web``, used during updates."
+msgstr "มี */opt/otobo* ในคอนเทนเนอร์ **web** และ **daemon**"
+
+#: ../content/installation/installation-podman.rst:336
+msgid "Redis is only used as a cache and has no volume."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:339
+#, fuzzy
+#| msgid "Docker environment variables"
+msgid "Environment Variables"
+msgstr "ตัวแปรสภาพแวดล้อมของ Docker"
+
+#: ../content/installation/installation-podman.rst:341
+msgid "All variables supported by ``scripts/install.sh`` are listed and commented in the sample files ``.podman_env_http`` and ``.podman_env_https``. The variable names are the same as in ``otobo-docker``, with two differences:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:348
+#, fuzzy
+#| msgid "OTOBO_NGINX_WEB_PORT"
+msgid "``OTOBO_SERVICES``"
+msgstr "OTOBO_NGINX_WEB_PORT"
+
+#: ../content/installation/installation-podman.rst:346
+msgid "Replaces ``COMPOSE_FILE``. A list of the services to install, separated by spaces. The services ``db elastic web daemon`` are required, ``nginx`` and ``redis`` are optional. Example: ``OTOBO_SERVICES=db elastic web daemon nginx redis``"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:352
+#, fuzzy
+#| msgid "OTOBO_NGINX_WEB_HOST"
+msgid "``OTOBO_IMAGE_*``"
+msgstr "OTOBO_NGINX_WEB_HOST"
+
+#: ../content/installation/installation-podman.rst:351
+msgid "Image names must be fully qualified, including the registry. Example: ``OTOBO_IMAGE_OTOBO=docker.io/rotheross/otobo:rel-11_1_1``"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:354
+msgid "For production environments, adjust ``OTOBO_ELASTICSEARCH_ES_JAVA_OPTS`` to a heap size of up to 4g."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:360
+msgid "Using the Ports 80 and 443"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:362
+msgid "Rootless Podman can not bind ports below 1024 by default. There are two options to serve OTOBO on the standard ports:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:365
+msgid "Keep the ports 8080 and 8443 and put a reverse proxy of your organisation in front."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:366
+msgid "Allow unprivileged users to bind the ports from 80 upwards. Note that this setting applies to all users of the host."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:369
+msgid "For the second option, uncomment the following line in ``/etc/sysctl.d/90-otobo.conf`` as ``root``:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:375
+msgid "Then, as ``root``, apply the setting and open the ports in the firewall:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:383
+msgid "Finally, as user ``otobo``, set ``OTOBO_WEB_HTTP_PORT=80`` and ``OTOBO_WEB_HTTPS_PORT=443`` in ``.env`` and apply the change:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:392
+msgid "Running ``scripts/prepare-host.sh`` again overwrites ``/etc/sysctl.d/90-otobo.conf``. The line must then be uncommented again."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:396
+msgid "Using a Local Registry"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:398
+msgid "A local registry is configured by using its address in the image names in ``.env``, for example:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:404
+msgid "A registry with a self-signed certificate has to be declared as ``insecure`` in ``/etc/containers/registries.conf``, see ``man containers-registries.conf``."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:407
+msgid "When the host needs a proxy for accessing the registry, set ``HTTPS_PROXY`` in the environment of the user ``otobo`` before running ``scripts/install.sh``, for example in ``~/.bash_profile``."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:413
+msgid "On a system that has internet access and where Podman is installed, clone the ``otobo-podman`` repository and create a ``.env`` file with the same image settings as on the target system. Then create an archive with all images:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:422
+msgid "The script writes the archive ``otobo-images.tar`` and the checksum file ``otobo-images.tar.sha256``. Transfer both files to the directory ``/home/otobo/otobo-podman`` of the target system, make them readable for the user ``otobo``, and run step 7 with the option ``--load`` instead:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:433
+msgid "Customizing the Quadlet Units"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:435
+#, fuzzy
+#| msgid "Instead of editing the files under *docker-compose/* and risking to overwrite your own options with the `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files>`_ of the otobo-docker folder, it is advisable to create an extra YAML file where the specific services are overwritten with additional options."
+msgid "Instead of editing the templates under ``quadlet/`` and risking to lose your own options with the next update of the ``otobo-podman`` folder, it is advisable to create a drop-in file where the specific settings are added. Drop-in files are kept when ``scripts/install.sh`` regenerates the units."
+msgstr "แทนที่จะแก้ไขไฟล์ภายใต้ *docker-compose/* และเสี่ยงที่จะเขียนทับตัวเลือกของคุณเองด้วยการอัปเดตครั้งถัดไป `next update <https://doc.otobo.org/manual/installation/11.0/en/content/updating-docker.html#updating-the-docker-compose-files&gt;_ ของโฟลเดอร์ otobo-docker ขอแนะนำให้สร้างไฟล์ YAML เพิ่มเติมขึ้นมาอีกไฟล์หนึ่ง เพื่อใช้สำหรับเขียนทับบริการเฉพาะที่ต้องการด้วยตัวเลือกเพิ่มเติม"
+
+#: ../content/installation/installation-podman.rst:439
+#, fuzzy
+#| msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create an extra docker compose file thats look like:"
+msgid "A common example would be to make the database container accessible from the outside via port 3306. For this you could create the following drop-in file:"
+msgstr "ตัวอย่างที่พบบ่อยคือการทำให้คอนเทนเนอร์ฐานข้อมูลสามารถเข้าถึงได้จากภายนอกผ่านพอร์ต 3306 สำหรับสิ่งนี้คุณสามารถสร้างไฟล์ docker compose เพิ่มเติมที่มีลักษณะดังนี้:"
+
+#: ../content/installation/installation-podman.rst:449
+msgid "Now reload systemd and restart the container:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:456
+#, fuzzy
+#| msgid "The changed Docker Compose configuration can be inspected with:"
+msgid "The generated service including all drop-ins can be inspected with:"
+msgstr "การกำหนดค่า Docker Compose ที่เปลี่ยนแปลงสามารถตรวจสอบได้โดย:"
+
+#: ../content/installation/installation-podman.rst:462
+msgid "With this procedure you can customize any container, volume or network. See ``man podman-systemd.unit`` for all available options."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:466
+#, fuzzy
+#| msgid "Customizing the OTOBO Docker image"
+msgid "Customizing the OTOBO Image"
+msgstr "การปรับแต่งภาพ Docker ของ OTOBO"
+
+#: ../content/installation/installation-podman.rst:468
+#, fuzzy
+#| msgid "Many customizations can be done in the external volume *otobo_opt_otobo* which corresponds to the directory */opt/otobo* in the Docker image. This works e.g. for local Perl modules which can be installed into */opt/otobo/local*. Here is an example that installs the not very useful CPAN module `Acme::123`."
+msgid "Customization can be done in the volume ``otobo_opt_otobo`` which corresponds to the directory ``/opt/otobo`` in the image. This works, e.g., for local Perl modules which can be installed into ``/opt/otobo/local``. Here is an example that installs the not very useful CPAN module `Acme::123`."
+msgstr "สามารถปรับแต่งได้หลายอย่างในไดเรกทอรีภายนอก *otobo_opt_otobo* ซึ่งสอดคล้องกับไดเรกทอรี */opt/otobo* ใน Docker image การทำงานนี้สามารถใช้ได้ เช่น สำหรับโมดูล Perl ในเครื่องที่สามารถติดตั้งลงใน */opt/otobo/local* ตัวอย่างต่อไปนี้เป็นการติดตั้งโมดูล CPAN ที่ไม่ค่อยมีประโยชน์ชื่อ `Acme::123`"
+
+#: ../content/installation/installation-podman.rst:482
+#, fuzzy
+#| msgid "The nice thing of this approach is that the Docker image itself does not have to be modified."
+msgid "The nice thing of this approach is that the image itself does not have to be modified."
+msgstr "ข้อดีของวิธีนี้คือภาพ Docker เองไม่จำเป็นต้องถูกแก้ไข"
+
+#: ../content/installation/installation-podman.rst:484
+msgid "Installing extra Debian packages works like with Docker, see the section \"Customizing the OTOBO Docker Image\" in the Docker installation manual. Replace ``docker`` with ``podman`` and use fully qualified image names, for example:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:493
+#, fuzzy
+#| msgid "The modified image can be specified in your *.env* file and then be used for fun and profit."
+msgid "The modified image can then be specified in your ``.env`` file, e.g. ``OTOBO_IMAGE_OTOBO=localhost/otobo_with_fortune_cookies``."
+msgstr "ภาพที่แก้ไขแล้วสามารถระบุได้ในไฟล์ *.env* ของคุณ จากนั้นสามารถนำไปใช้เพื่อความสนุกและผลกำไรได้"
+
+#: ../content/installation/installation-podman.rst:498
+msgid "The volumes can be exported while OTOBO is stopped:"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:508
+msgid "Restore with ``podman volume import``. The import does not remove existing files, so restore into an empty volume."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:514
+msgid "All commands are run as user ``otobo``."
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:516
+msgid "**systemd**"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:518
+msgid "``systemctl --user status otobo.target`` overview"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:519
+msgid "``systemctl --user start otobo.target`` start all services"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:520
+msgid "``systemctl --user stop otobo.target`` stop all services"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:521
+msgid "``systemctl --user restart otobo-web`` restart one service"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:522
+msgid "``systemctl --user list-unit-files 'otobo*'`` list the installed units"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:523
+msgid "``systemctl --user cat otobo-web`` show the generated service"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:524
+msgid "``journalctl --user -u otobo-daemon -f`` follow a log"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:526
+msgid "**Podman**"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:528
+#, fuzzy
+#| msgid "``docker version`` show version"
+msgid "``podman version`` show version"
+msgstr "``docker version`` แสดงเวอร์ชัน"
+
+#: ../content/installation/installation-podman.rst:529
+#, fuzzy
+#| msgid "``docker-compose ps`` show the running containers"
+msgid "``podman ps`` show running containers"
+msgstr "``docker-compose ps`` แสดงคอนเทนเนอร์ที่กำลังทำงาน"
+
+#: ../content/installation/installation-podman.rst:530
+#, fuzzy
+#| msgid "``docker images`` show available images"
+msgid "``podman images`` show available images"
+msgstr "``docker images`` แสดงภาพที่มีอยู่"
+
+#: ../content/installation/installation-podman.rst:531
+#, fuzzy
+#| msgid "``docker volume ls`` list volumes"
+msgid "``podman volume ls`` list volumes"
+msgstr "``docker volume ls`` แสดงรายการโวลุ่ม"
+
+#: ../content/installation/installation-podman.rst:532
+#, fuzzy
+#| msgid "``docker volume inspect otobo_opt_otobo`` inspect a volume"
+msgid "``podman volume inspect otobo_opt_otobo`` inspect a volume"
+msgstr "``docker volume inspect otobo_opt_otobo`` ตรวจสอบโวลุ่ม"
+
+#: ../content/installation/installation-podman.rst:533
+#, fuzzy
+#| msgid "``docker inspect <container>`` inspect a container"
+msgid "``podman inspect <container>`` inspect a container"
+msgstr "``docker inspect <container>`` ตรวจสอบคอนเทนเนอร์"
+
+#: ../content/installation/installation-podman.rst:534
+msgid "``podman exec -it otobo-web bash`` shell in the web container"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:535
+msgid "``podman exec -it otobo-db mariadb -u root -p`` database client"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:536
+#, fuzzy
+#| msgid "``docker-compose exec nginx nginx -s reload`` reload nginx"
+msgid "``podman exec otobo-nginx nginx -s reload`` reload nginx"
+msgstr "```docker-compose exec nginx nginx -s reload``` reload nginx"
+
+#: ../content/installation/installation-podman.rst:537
+#, fuzzy
+#| msgid "``docker system prune -a`` system clean-up (removes all unused images, containers, volumes, networks)"
+msgid "``podman system prune -a`` system clean-up (removes all unused images, containers and networks)"
+msgstr "``docker system prune -a`` ทำความสะอาดระบบ (ลบภาพ, คอนเทนเนอร์, โวลุ่ม, เครือข่ายที่ไม่ใช้งานทั้งหมด)"
+
+#: ../content/installation/installation-podman.rst:542
+msgid "**Podman and Quadlet**"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:544
+msgid "`Quadlet unit files (podman-systemd.unit) <https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html>`_"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:545
+msgid "`Rootless Podman tutorial <https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md>`_"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:547
+msgid "**OTOBO**"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:549
+msgid "`otobo-docker <https://github.com/RotherOSS/otobo-docker>`_"
+msgstr ""
+
+#: ../content/installation/installation-podman.rst:550
+msgid "`otobo-podman <https://github.com/RotherOSS/otobo-podman>`_"
+msgstr ""
 
 #: ../content/installation/installation-rhel.rst:2
 #, fuzzy
@@ -5042,9 +5868,6 @@ msgstr ""
 
 #~ msgid "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
 #~ msgstr "``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` และ ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``"
-
-#~ msgid "Please adapt only the name of the files as the path */etc/nginx/ssl/* is hard coded in the Docker image."
-#~ msgstr "กรุณาปรับเปลี่ยนเฉพาะชื่อไฟล์เท่านั้น เนื่องจากเส้นทาง */etc/nginx/ssl/* ถูกกำหนดไว้อย่างตายตัวใน Docker image"
 
 #~ msgid "In the following example I import the mariadb image:"
 #~ msgstr "ในตัวอย่างต่อไปนี้ ฉันนำเข้าภาพ mariadb:"
