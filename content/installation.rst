@@ -11,5 +11,6 @@ Please refer to any subsection for your preferred installation method.
    :caption: Contents
 
    installation/installation-docker
+   installation/installation-podman
    installation/installation-ubuntu
    installation/installation-rhel
