@@ -16,13 +16,14 @@
 # Weblate <noreply-mt-weblate@weblate.org>, 2026.
 # Arnold <ars@otobo.io>, 2026.
 # Jasmin Hammes <jasmin.hammes@rother-oss.com>, 2026.
+# Harald Eisenmenger <hae@otobo.io>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: it@otobo.de\n"
 "POT-Creation-Date: 2026-09-28 06:14+0000\n"
 "PO-Revision-Date: 2026-11-03 08:41+0000\n"
-"Last-Translator: Jasmin Hammes <jasmin.hammes@rother-oss.com>\n"
+"Last-Translator: Harald Eisenmenger <hae@otobo.io>\n"
 "Language-Team: German <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -37,10 +38,8 @@ msgid "Backup and Restore"
 msgstr "Backup und Wiederherstellung"
 
 #: ../content/backup-restore.rst:4
-#, fuzzy
-#| msgid "OTOBO has built in scripts for backup and restore. Execute the scripts with the option ``-h`` for more information."
 msgid "OTOBO has built in scripts for backup and restore ``scripts/backup.pl`` and ``scripts/restore.pl``. Execute the scripts with the option ``-h`` for more information."
-msgstr "OTOBO bietet fertige Skripte zum Erstellen und Wiedereinspielen von Backups. Für weitere Informationen führen Sie diese mit der Option ``-h`` aus."
+msgstr "OTOBO verfügt über integrierte Skripte für Sicherung und Wiederherstellung ``scripts/backup.pl`` und ``scripts/restore.pl``. Führen Sie die Skripte mit der Option ``-h`` aus, um weitere Informationen zu erhalten."
 
 #: ../content/backup-restore.rst:8
 msgid "Backup"
@@ -63,16 +62,12 @@ msgid "``--extra-dump-options=\"--single-transaction\"`` prevents the database t
 msgstr "``--extra-dump-options=\"--single-transaction\"`` verhindert, dass die Datenbanktabellen gesperrt werden, sodass OTOBO während der Erstellung der Sicherungskopie weiterhin genutzt werden kann."
 
 #: ../content/backup-restore.rst:67 ../content/backup-restore.rst:152
-#, fuzzy
-#| msgid "Docker:"
 msgid "Docker"
-msgstr "Docker:"
+msgstr "Docker"
 
 #: ../content/backup-restore.rst:69
-#, fuzzy
-#| msgid "The same scripts can be used with OTOBO running under Docker. However some Docker specific limitation must be considered. Please read to the chapter :doc:`backup-restore-docker` for information about that case."
 msgid "The same scripts might be used when OTOBO is running under Docker, but some Docker specific limitations have to be considered. In order to be able to write a backup archive to the file system outside of the Docker container, appropriate volume mounts and permissions must be configured."
-msgstr "Die gleichen Skripte können mit OTOBO unter Docker verwendet werden. Allerdings müssen einige Docker-spezifische Einschränkungen beachtet werden. Bitte lesen Sie das Kapitel :doc:`backup-restore-docker` für Informationen zu diesem Fall."
+msgstr "Die gleichen Skripte können verwendet werden, wenn OTOBO unter Docker läuft, aber einige Docker-spezifische Einschränkungen müssen berücksichtigt werden. Um eine Sicherungskopie in die Dateisystem außerhalb des Docker-Containers schreiben zu können, müssen entsprechende Volume-Mounts und Berechtigungen konfiguriert werden."
 
 #: ../content/backup-restore.rst:87
 msgid "We use an ephemeral container of OTOBO to pull the backup and place it in the backup directory on the host:"
@@ -95,46 +90,34 @@ msgid "You may also fit the database connection parameters within the backup fil
 msgstr "Sie können die Parameter für die Datenbankverbindung auch in die Sicherungsdatei einfügen, bevor Sie das Wiederherstellungsskript ausführen:"
 
 #: ../content/backup-restore.rst:120
-#, fuzzy
-#| msgid "To restore the database make sure that the database ``otobo`` exists and contains no tables."
 msgid "To restore the database make sure the target database contains no tables."
-msgstr "Bevor Sie die Datenbank wiederherstellen, stellen Sie sicher, dass die Datenbank ``otobo`` vorhanden ist und keine Tabellen enthält."
+msgstr "Stellen Sie sicher, dass die Zieldatenbank keine Tabellen enthält, bevor Sie die Datenbank wiederherstellen."
 
 #: ../content/backup-restore.rst:122
 msgid "You may execute the restore script with the option ``-h`` for more information."
 msgstr "Sie können das Wiederherstellungsskript mit der Option „-h“ ausführen, um weitere Informationen zu erhalten."
 
 #: ../content/backup-restore.rst:143
-#, fuzzy
-#| msgid "After successful restore it's advised to clear the OTOBO cache. To do this execute the following command:"
 msgid "After successful restore it is advised to clear the OTOBO cache. To do this execute the following command:"
-msgstr "Nach erfolgreicher Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Führen Sie dazu den folgenden Befehl aus:"
+msgstr "Nach einer erfolgreichen Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Führen Sie dazu den folgenden Befehl aus:"
 
 #: ../content/backup-restore.rst:153
-#, fuzzy
-#| msgid "To drop an existing otobo database and create a new one you can use the following commands. First, you have to connect to the MySQL CLI of the `db` container."
 msgid "To drop an existing OTOBO database and create a new one you can use the following commands. First, you have to connect to the MariaDB command line interface of the ``db`` container:"
-msgstr "Um eine bestehende otobo Datenbank zu löschen und eine neue zu erstellen können folgende Befehle verwendet werden. Zuerst müssen Sie sich hierzu mit der MySQL CLI des `db` Containers verbinden."
+msgstr "Um eine bestehende otobo Datenbank zu löschen und eine neue zu erstellen können folgende Befehle verwendet werden. Zuerst müssen Sie sich hierzu mit der MySQL CLI des ``db`` Containers verbinden:"
 
 #: ../content/backup-restore.rst:161
-#, fuzzy
-#| msgid "As soon as you are connected to the MySQL server, you can drop and recreate the `otobo` database."
 msgid "Enter the database root password when prompted. As soon as you are connected to the MySQL server, you can drop and recreate the ``otobo`` database:"
-msgstr "Sobald man mit dem MySQL Server verbunden ist, kann die `otobo` Datenbank gelöscht und neu erstellt werden."
+msgstr "Geben Sie das Datenbank-Root-Passwort ein, wenn Sie dazu aufgefordert werden. Sobald Sie mit dem MySQL-Server verbunden sind, können Sie die ``otobo`` Datenbank löschen und neu erstellen:"
 
 #: ../content/backup-restore.rst:170
 msgid "For restoring the backup we also need to specify which backup should be restored. The placeholder ``<TIMESTAMP>`` is something like ``2020-09-07_09-38``."
 msgstr "Um das System aus einem Backup wiederherstellen zu können, müssen wir angeben, welches Backup verwendet werden soll. Der Platzhalter ``<TIMESTAMP>`` steht für einen Wert wie ``2020-09-07_09-38``."
 
 #: ../content/backup-restore.rst:183
-#, fuzzy
-#| msgid "After successful restore it's advised to clear the OTOBO cache. To do this change to your OTOBO directory (normaly `/opt/otobo-docker`) and execute the following command:"
 msgid "After successful restore it is advised to clear the OTOBO cache. To do this change to your OTOBO directory (by default ``/opt/otobo-docker``) and execute the following command:"
-msgstr "Nach erfolgreicher Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Wechseln Sie dazu in Ihr OTOBO-Verzeichnis (normalerweise `/opt/otobo-docker`) und führen Sie den folgenden Befehl aus:"
+msgstr "Nach einer erfolgreichen Wiederherstellung wird empfohlen, den OTOBO-Cache zu leeren. Führen Sie dazu folgenden Befehl aus: Wechseln Sie in Ihr OTOBO-Verzeichnis (standardmäßig ``/opt/otobo-docker``) und führen Sie den folgenden Befehl aus:"
 
 #: ../content/customer-interface-ci.rst:2
-#, fuzzy
-#| msgid "Adapt customer interface with corporate identity"
 msgid "Adapt Customer Interface with Corporate Identity"
 msgstr "Kundenoberfläche an Corporate Identity anpassen"
 
@@ -143,33 +126,25 @@ msgid "In OTOBO it is very easy to adapt the customer area to your own corporate
 msgstr "In OTOBO ist es sehr einfach, den Kundenbereich an Ihre eigene Corporate Identity anzupassen. Folgen Sie diesem Tutorial Schritt für Schritt und OTOBO wird in Kürze in Ihrem eigenen Design erstrahlen."
 
 #: ../content/customer-interface-ci.rst:10
-#, fuzzy
-#| msgid "Currently, it is not so easy to adapt the agent area to one's own CI. Changes in the OTOBO .css files would be necessary here. One exception is the logo on the agent login page and the agent header. The logos can be easily exchanged by copying the logos to the server and then adjusting the options ``AgentLoginLogo`` and ``AgentLogo`` under ``Admin -> System Configuration``."
 msgid "Currently, it is not so easy to adapt the agent area to one's own CI. Changes in the OTOBO ``.css`` files would be necessary here. One exception is the logo on the agent login page and the agent header. The logos can be easily exchanged by copying the logos to the server and then adjusting the options ``AgentLoginLogo`` and ``AgentLogo`` under ``Admin -> System Configuration``."
-msgstr "Momentan ist es nicht besonders einfach, den Agentenbereich an seine eigene CI anzupassen. Änderungen der OTOBO .css-Dateien wären hierfür notwendig. Eine Ausnahme ist das Logo der Agenten-Anmeldemaske und im Hauptmenübereich der Agenten. Die Logos können einfach ausgetauscht werden, indem man die Logos auf den Server kopiert und dann die Optionen ``AgentLoginLogo`` und ``AgentLogo`` unter ``Admin -> Systemkonfiguration`` anpasst."
+msgstr "Derzeit ist es nicht so einfach, den Agentenbereich an ein eigenes CI anzupassen. Hier wären Änderungen in den OTOBO ``.css``-Dateien notwendig. Eine Ausnahme bildet das Logo auf der Agenten-Login-Seite und der Agenten-Kopfzeile. Die Logos können einfach durch Kopieren der Logos auf den Server und Anpassen der Optionen ``AgentLoginLogo`` und ``AgentLogo`` unter ``Admin -> Systemkonfiguration`` ausgetauscht werden."
 
 #: ../content/customer-interface-ci.rst:17
-#, fuzzy
-#| msgid "Change colors in Customer Area"
 msgid "Change Colors in Customer Area"
-msgstr "Farben im Kundenbereich anpassen"
+msgstr "Farben im Kundenbereich ändern"
 
 #: ../content/customer-interface-ci.rst:19
 msgid "To change the colors for the OTOBO customer interface, please go to ``Admin -> System Configuration`` and change the following settings:"
 msgstr "Um die Farben für den OTOBO Kundenbereich anzupassen, gehen Sie bitte zu ``Admin -> Systemkonfiguration`` und passen Sie die folgenden Einstellungen an:"
 
 #: ../content/customer-interface-ci.rst:21
-#, fuzzy
-#| msgid "CustomerColorDefinitions"
 msgid "``CustomerColorDefinitions``"
-msgstr "CustomerColorDefinitions"
+msgstr "``CustomerColorDefinitions``"
 
 #: ../content/customer-interface-ci.rst:22
 #: ../content/customer-interface-ci.rst:98
-#, fuzzy
-#| msgid "To change the colours on the Customer Dashboard, please go to `Admin -> System Configuration`` and search for CustomerDashboard. In the search result you will find all the options you need with colour definitions."
 msgid "To change the colors on the Customer Dashboard, please go to ``Admin -> System Configuration`` and search for ``CustomerDashboard``. In the search result you will find all the options you need with color definitions."
-msgstr "Um die Farben im Kunden-Dashboard anzupassen, gehen Sie bitte in `Admin -> Systemkonfiguration` und suchen Sie nach CustomerDashboard. In den Suchergebnissen finden Sie alle Optionen, die Sie für die Farbdefinitionen benötigen."
+msgstr "Um die Farben im Kunden-Dashboard anzupassen, gehen Sie bitte in ``Admin -> Systemkonfiguration`` und suchen Sie nach ``CustomerDashboard``. In den Suchergebnissen finden Sie alle Optionen, die Sie für die Farbdefinitionen benötigen."
 
 #: ../content/customer-interface-ci.rst:27
 msgid "Change Logos and Pictures"
@@ -244,9 +219,8 @@ msgid "Change Customer Dashboard Tiles and Options"
 msgstr "Anpassen der Kunden-Dashboard-Kacheln und Optionen"
 
 #: ../content/customer-interface-ci.rst:-1
-#, fuzzy
 msgid "Customer Dashboard Configuration"
-msgstr "Anpassen der Kunden-Dashboard-Kacheln und Optionen"
+msgstr "Kunden-Dashboard-Konfiguration"
 
 #: ../content/customer-interface-ci.rst:104
 #, fuzzy
@@ -316,7 +290,7 @@ msgstr "Nutzungsbedingungen OTRS: Dieses Dokument darf im Rahmen der GNU Free Do
 
 #: ../content/index.rst:47
 msgid "Terms and Conditions Rother OSS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"COPYING\"."
-msgstr "Nutzungsbedingungen Rother OSS: Dieses Dokument darf im Rahmen der GNU Free Documentation License in Version 1.3 oder jeder neueren, von der Free Software Foundation veröffentlichten Version kopiert, verbreitet und/oder verändert werden; ohne unveränderliche Abschnitte, und ohne Umschlagtexte. Den rechtlich bindenden Originaltext der Lizenz finden Sie auf der `GNU-Website <https://www.gnu.org/licenses/fdl-1.3.txt>`__, eine Kopie im Abschnitt \"COPYING\" dieses Dokuments."
+msgstr "Nutzungsbedingungen Rother OSS: Es wird die Erlaubnis erteilt, dieses Dokument gemäß den Bedingungen der GNU Free Documentation License, Version 1.3 oder jeder späteren Version, die von der Free Software Foundation herausgegeben wurde, zu kopieren, zu verbreiten und/oder zu verändern; ohne unveränderliche Abschnitte, ohne Vorderdeckel-Texte und ohne Rückdeckel-Texte. Eine Kopie der Lizenz ist im Abschnitt \"COPYING\" enthalten."
 
 #: ../content/index.rst:54
 msgid "Published by: Rother OSS GmbH, (https://otobo.io), Oberwalting 31, 94339 Leiblfing, Germany."
@@ -557,8 +531,9 @@ msgid "The certificate and the private key are stored in a volume, so that they 
 msgstr "Das Zertifikat und der private Schlüssel werden in einem Volume hinterlegt, um später von nginx verwendet werden zu können. Legen Sie zunächst das Volume an und kopieren Sie anschließend Zertifikat und Schlüssel hinein:"
 
 #: ../content/installation/installation-docker.rst:135
+#, fuzzy
 msgid "The names of the copied files need to be set in our newly created ``.env`` file, e.g., ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` and ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key`` Please adapt only the name of the files as the path ``/etc/nginx/ssl/`` is hard coded in the Docker image."
-msgstr ""
+msgstr "Die Namen der kopierten Dateien müssen in unserer neu erstellten ``.env``-Datei festgelegt werden, z. B. ``OTOBO_NGINX_SSL_CERTIFICATE=/etc/nginx/ssl/ssl-cert.crt`` und ``OTOBO_NGINX_SSL_CERTIFICATE_KEY=/etc/nginx/ssl/ssl-key.key``. Passen Sie nur den Dateinamen an, da der Pfad ``/etc/nginx/ssl/`` im Docker-Image fest codiert ist."
 
 #: ../content/installation/installation-docker.rst:139
 #, fuzzy
@@ -869,7 +844,7 @@ msgstr "OTOBO_NGINX_WEB_PORT"
 
 #: ../content/installation/installation-docker.rst:272
 msgid "Used if NGINX does the SSO (e.g., Kerberos) and forwards the user identity to OTOBO. Necessary only in combination with the HTTPBasicAuth authentication module. Also see ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
-msgstr ""
+msgstr "Wird verwendet, wenn NGINX SSO (z. B. Kerberos) durchführt und die Benutzeridentität an OTOBO weiterleitet. Erforderlich nur in Kombination mit dem HTTPBasicAuth-Authentifizierungsmodul. Weitere Informationen finden Sie in ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
 
 #: ../content/installation/installation-docker.rst:276
 msgid "**Nginx webproxy settings for Kerberos**"
@@ -1144,7 +1119,7 @@ msgstr "*/etc/krb5.keytab* ist immer installationsspezifisch und muss daher imme
 
 #: ../content/installation/installation-docker.rst:441
 msgid "Do not forget to set the variable ``OTOBO_PROXY_SECRET`` in the .env file to enable remote SSO authentication. See also ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
-msgstr ""
+msgstr "Vergessen Sie nicht, die Variable ``OTOBO_PROXY_SECRET`` in der .env-Datei festzulegen, um die Remote-SSO-Authentifizierung zu aktivieren. Weitere Informationen finden Sie in ``WebServer::ProxySecret`` in ``Kernel/Config/Defaults.pm``."
 
 #: ../content/installation/installation-docker.rst:444
 msgid "**Kerberos SSO Installation Tutorial**"
@@ -1152,7 +1127,7 @@ msgstr "**Kerberos SSO Installationsanleitung**"
 
 #: ../content/installation/installation-docker.rst:446
 msgid ":doc:`Kerberos Single Sign On <../sso-kerberos>`"
-msgstr ""
+msgstr ":doc:`Kerberos-SSO <../sso-kerberos>`"
 
 #: ../content/installation/installation-docker.rst:449
 #, fuzzy
@@ -1553,7 +1528,7 @@ msgstr "Wenn Sie nicht sicher sind, ob SELinux installiert und aktiv ist, geben 
 
 #: ../content/installation/installation-rhel.rst:33
 msgid "The ``sestatus`` command returns the SELinux status and the SELinux policy being used. SELinux status: enabled is returned when SELinux is enabled. Current mode: enforcing is returned when SELinux is running in enforcing mode. Policy from config file: targeted is returned when the SELinux targeted policy is used."
-msgstr "Der Befehl ``sestatus`` gibt den SELinux-Status aus und informiert darüber, welche SELinux Policy angewendet wird. *SELinux Status*: Ist SELinux aktiv, wird als Status *enabled* angezeigt. *Aktueller Betriebsmodus*: wird hier *enforcing* ausgegeben, läuft SELinux im Enforcing-Modus. *Policy* aus der Config-Datei: wird hier *targeted* ausgegeben, kommt die *Targeted Policy* zum Einsatz."
+msgstr "Der ``sestatus`` Befehl gibt den SELinux-Status und die verwendete SELinux-Politik zurück. SELinux-Status: aktiviert wird zurückgegeben, wenn SELinux aktiviert ist. Aktueller Modus: Durchsetzung wird zurückgegeben, wenn SELinux im Durchsetzungsmodus ausgeführt wird. Politik aus Konfigurationsdatei: Zielgruppe wird zurückgegeben, wenn die SELinux-Zielgruppen-Politik verwendet wird."
 
 #: ../content/installation/installation-rhel.rst:38
 #, fuzzy
@@ -1562,10 +1537,8 @@ msgid "Here's how to switch off SELinux for RHEL/CentOS/Fedora."
 msgstr "So deaktivieren Sie SELinux unter RHEL/CentOS/Fedora."
 
 #: ../content/installation/installation-rhel.rst:40
-#, fuzzy
-#| msgid "Configure ``SELINUX=disabled`` in the ``/etc/selinux/config`` file:"
 msgid "Configure ``SELINUX=permissive`` in the ``/etc/selinux/config`` file:"
-msgstr "Wählen Sie in der Datei ``/etc/selinux/config`` die Konfiguration ``SELINUX=disabled``:"
+msgstr "Konfigurieren Sie ``SELINUX=permissive`` in der Datei ``/etc/selinux/config``:"
 
 #: ../content/installation/installation-rhel.rst:55
 msgid "Reboot your system. After reboot, confirm that the ``getenforce`` command returns *Disabled*:"
@@ -1587,7 +1560,7 @@ msgstr "Laden Sie die neueste OTOBO-Version unter https://ftp.otobo.org/pub/otob
 #: ../content/installation/installation-ubuntu.rst:36
 #: ../content/updating.rst:108
 msgid "(Optional) It's recommended to validate the downloaded file's integrity before continuing. This should be done in the same folder than the tar.gz file obtained previously."
-msgstr ""
+msgstr "(Optional) Es wird empfohlen, die Integrität der heruntergeladenen Datei zu überprüfen, bevor Sie fortfahren. Dies sollte im selben Ordner erfolgen wie die zuvor abgerufene tar.gz-Datei."
 
 #: ../content/installation/installation-rhel.rst:85
 #: ../content/installation/installation-rhel.rst:150
@@ -1598,10 +1571,8 @@ msgstr "Die Ausgabe der letzten Eingabeaufforderung sollte „OK“ lauten. Ande
 
 #: ../content/installation/installation-rhel.rst:87
 #: ../content/installation/installation-ubuntu.rst:46
-#, fuzzy
-#| msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. Unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
 msgid "After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-install``:"
-msgstr "Laden Sie das neueste OTOBO-Release von https://ftp.otobo.org/pub/otobo/ herunter. Entpacken Sie das Quell-Archiv (zum Beispiel mit ``tar``) in das Verzeichnis ``/opt/otobo-install``:"
+msgstr "Entpacken Sie das Quell-Archiv (zum Beispiel mit ``tar``) in das Verzeichnis ``/opt/otobo-install``:"
 
 #: ../content/installation/installation-rhel.rst:96
 msgid "Step 2: Create the OTOBO User"
@@ -1626,23 +1597,23 @@ msgstr "Die erforderlichen Perl-Module können über CPAN installiert werden. In
 
 #: ../content/installation/installation-rhel.rst:120
 msgid "Option A: Install packages from CPAN"
-msgstr ""
+msgstr "Option A: Pakete aus CPAN installieren"
 
 #: ../content/installation/installation-rhel.rst:122
 msgid "To install the required packages from CPAN:"
-msgstr ""
+msgstr "Um die erforderlichen Pakete aus CPAN zu installieren:"
 
 #: ../content/installation/installation-rhel.rst:131
 msgid "Option B: Deploy Pre-built Packages"
-msgstr ""
+msgstr "Option B: Vorgefertigte Pakete bereitstellen"
 
 #: ../content/installation/installation-rhel.rst:133
 msgid "Download the pre-built packages from https://ftp.otobo.org/pub/otobo/."
-msgstr ""
+msgstr "Laden Sie die vorgefertigten Pakete von https://ftp.otobo.org/pub/otobo/ herunter."
 
 #: ../content/installation/installation-rhel.rst:157
 msgid "You should now see a ``install`` folder containing all required Perl packages."
-msgstr ""
+msgstr "Sie sollten nun einen ``install``-Ordner sehen, der alle erforderlichen Perl-Pakete enthält."
 
 #: ../content/installation/installation-rhel.rst:159
 #, fuzzy
@@ -1669,12 +1640,12 @@ msgstr "Schritt 6: Nginx Web Server konfigurieren"
 #: ../content/installation/installation-rhel.rst:180
 #: ../content/installation/installation-ubuntu.rst:120
 msgid "The installation package provides systemd unit files. To make sure that these files are visible to the system they need to be copied to a valid systemd directory. In this example we will be using ``/etc/systemd/system``."
-msgstr ""
+msgstr "Das Installationspaket enthält systemd-Einheitendateien. Um sicherzustellen, dass diese Dateien vom System erkannt werden, müssen sie in ein gültiges systemd-Verzeichnis kopiert werden. In diesem Beispiel verwenden wir ``/etc/systemd/system``."
 
 #: ../content/installation/installation-rhel.rst:190
 #: ../content/installation/installation-ubuntu.rst:129
 msgid "After the ``daemon-reload`` all services should be controllable using systemd control service like ``systemctl``."
-msgstr ""
+msgstr "Nach dem ``daemon-reload`` sollten alle Dienste über systemd-Steuerungsdienste wie ``systemctl`` verwaltet werden können."
 
 #: ../content/installation/installation-rhel.rst:194
 #: ../content/installation/installation-ubuntu.rst:133
@@ -1684,7 +1655,7 @@ msgstr "Schritt 6: Nginx Web Server konfigurieren"
 #: ../content/installation/installation-rhel.rst:196
 #: ../content/installation/installation-ubuntu.rst:135
 msgid "OTOBO's webserver listens on ``localhost`` on port ``5000``. In order to make it accessible from outside, you need to configure a reverse proxy."
-msgstr ""
+msgstr "OTOBO's Webserver hört auf ``localhost`` auf Port ``5000``. Um ihn von außen erreichbar zu machen, müssen Sie einen Reverse Proxy konfigurieren."
 
 #: ../content/installation/installation-rhel.rst:199
 #: ../content/installation/installation-ubuntu.rst:138
@@ -1693,7 +1664,7 @@ msgstr "Installieren des NGINX Webservers:"
 
 #: ../content/installation/installation-rhel.rst:206
 msgid "Nginx installations commonly have a ``conf.d`` directory included. It may be found at ``/etc/nginx``. Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``."
-msgstr ""
+msgstr "Nginx-Installationen haben häufig ein ``conf.d``-Verzeichnis. Es befindet sich unter ``/etc/nginx``. Beispielkonfigurationen sind unter ``/opt/otobo/scripts/nginx-vhost-*.include.conf`` verfügbar."
 
 #: ../content/installation/installation-rhel.rst:212
 #: ../content/installation/installation-ubuntu.rst:150
@@ -1705,12 +1676,12 @@ msgstr "NGINX ohne SSL-Unterstützung konfigurieren"
 #: ../content/installation/installation-rhel.rst:214
 #: ../content/installation/installation-ubuntu.rst:152
 msgid "In most cases no further editing of the template is required. The new configuration needs to be activated, subsequently."
-msgstr ""
+msgstr "In den meisten Fällen ist keine weitere Bearbeitung der Vorlage erforderlich. Die neue Konfiguration muss anschließend aktiviert werden."
 
 #: ../content/installation/installation-rhel.rst:222
 #: ../content/installation/installation-ubuntu.rst:161
 msgid "It is also required to enable port ``80`` on the firewall."
-msgstr ""
+msgstr "Es ist außerdem erforderlich, den Port ``80`` in der Firewall zu aktivieren."
 
 #: ../content/installation/installation-rhel.rst:230
 #: ../content/installation/installation-ubuntu.rst:169
@@ -1722,7 +1693,7 @@ msgstr "NGINX **mit** SSL-Unterstützung kofigurieren"
 #: ../content/installation/installation-rhel.rst:232
 #: ../content/installation/installation-ubuntu.rst:171
 msgid "If you want to enable SSL support, you need to copy the SSL configuration file."
-msgstr ""
+msgstr "Wenn Sie die SSL-Unterstützung aktivieren möchten, müssen Sie die SSL-Konfigurationsdatei kopieren."
 
 #: ../content/installation/installation-rhel.rst:240
 #: ../content/installation/installation-ubuntu.rst:180
@@ -1736,7 +1707,7 @@ msgstr "Jetzt können Sie Ihren Webserver neu starten und die neuen Konfiguratio
 
 #: ../content/installation/installation-rhel.rst:249
 msgid "It is also required to enable port ``80`` and ``443`` on the firewall."
-msgstr ""
+msgstr "Es ist außerdem erforderlich, die Ports ``80`` und ``443`` in der Firewall zu aktivieren."
 
 #: ../content/installation/installation-rhel.rst:258
 msgid "Step 7: Set File Permissions"
@@ -1755,11 +1726,11 @@ msgstr "Schritt 8: Datenbank anlegen"
 #: ../content/installation/installation-rhel.rst:272
 #: ../content/installation/installation-ubuntu.rst:210
 msgid "OTOBO requires a database to persist data. It is recommended to use the MySQL or MariaDB package, which will be delivered with your Linux system. However, an external database may be used but latency may increase."
-msgstr ""
+msgstr "OTOBO benötigt eine Datenbank, um Daten zu speichern. Es wird empfohlen, das MySQL- oder MariaDB-Paket zu verwenden, das mit Ihrem Linux-System geliefert wird. Es kann jedoch auch eine externe Datenbank verwendet werden, wobei jedoch die Latenz steigen kann."
 
 #: ../content/installation/installation-rhel.rst:276
 msgid "Packages for a local database may be obtained from the system's package manager. Find the commands needed to set up MySQL below."
-msgstr ""
+msgstr "Pakete für eine lokale Datenbank können über den Paketmanager des Systems bezogen werden. Finden Sie unten die Befehle, die zum Einrichten von MySQL benötigt werden."
 
 #: ../content/installation/installation-rhel.rst:284
 #: ../content/installation/installation-ubuntu.rst:221
@@ -1780,7 +1751,7 @@ msgstr "Folgende Konfigurationseinstellungen beschreiben die Minimalanforderunge
 
 #: ../content/installation/installation-rhel.rst:307
 msgid "In order to apply these settings, you need to restart the MySQL service."
-msgstr ""
+msgstr "Um diese Einstellungen anzuwenden, müssen Sie den MySQL-Dienst neu starten."
 
 #: ../content/installation/installation-rhel.rst:315
 msgid "Step 9: Setup Elasticsearch"
@@ -1847,7 +1818,7 @@ msgstr "Schritt 10: Grundlegende Systemkonfiguration"
 #: ../content/installation/installation-rhel.rst:364
 #: ../content/installation/installation-ubuntu.rst:314
 msgid "Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd."
-msgstr ""
+msgstr "Bevor Sie mit der ersten Web-Konfiguration beginnen, müssen Sie den OTOBO-Webdienst über systemd starten und aktivieren."
 
 #: ../content/installation/installation-rhel.rst:370
 #, fuzzy
@@ -1881,7 +1852,7 @@ msgstr "Schritt 13: Bash Auto-Completion einrichten (optional)"
 #: ../content/installation/installation-rhel.rst:393
 #: ../content/installation/installation-ubuntu.rst:343
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier. You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user. After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:"
-msgstr ""
+msgstr "Alle regulären OTOBO-Befehle werden über die OTOBO-Konsolenoberfläche ausgeführt. Diese bietet eine Autovervollständigung für die Bash-Shell, die das Auffinden des richtigen Befehls und der Optionen deutlich erleichtert. Sie können die Bash-Autovervollständigung aktivieren, indem Sie das Paket ``bash-completion`` installieren. Es erkennt und lädt automatisch die Datei ``/opt/otobo/.bash_completion`` für den ``otobo``-Benutzer. Nach einem Neustart Ihrer Shell können Sie einfach diesen Befehl eingeben und danach ``TAB`` drücken, und es werden alle verfügbaren Befehle aufgelistet:"
 
 #: ../content/installation/installation-rhel.rst:403
 #: ../content/installation/installation-ubuntu.rst:353
@@ -1962,15 +1933,15 @@ msgstr "Schritt 3: OTOBO-Benutzer anlegen"
 
 #: ../content/installation/installation-ubuntu.rst:118
 msgid "Step 5: Configure systemd services for OTOBO"
-msgstr ""
+msgstr "Schritt 5: Systemd-Dienste für OTOBO konfigurieren"
 
 #: ../content/installation/installation-ubuntu.rst:144
 msgid "Nginx installations commonly have a ``sites-available`` and a ``sites-enabled`` directory on debian-based systems. It may be found at ``/etc/nginx``. Example configuration is provided at ``/opt/otobo/scripts/nginx-vhost-*.include.conf``."
-msgstr ""
+msgstr "Nginx-Installationen haben häufig auf Debian-basierten Systemen ein ``sites-available`` und ein ``sites-enabled`` Verzeichnis. Es kann sich unter ``/etc/nginx`` befinden. Beispielskonfigurationen sind unter ``/opt/otobo/scripts/nginx-vhost-*.include.conf`` verfügbar."
 
 #: ../content/installation/installation-ubuntu.rst:189
 msgid "It is also required to enable port ``80`` and ``443`` on the firewall (if configured)."
-msgstr ""
+msgstr "Es ist ebenfalls erforderlich, die Ports ``80`` und ``443`` an der Firewall zu aktivieren (falls konfiguriert)."
 
 #: ../content/installation/installation-ubuntu.rst:197
 msgid "Step 6: Set File Permissions"
@@ -1982,11 +1953,11 @@ msgstr "Schritt 7: Datenbank anlegen"
 
 #: ../content/installation/installation-ubuntu.rst:214
 msgid "Packages for a local database may be obtained from the system's package manager. Find the commands needed to set up MariaDB below."
-msgstr ""
+msgstr "Pakete für eine lokale Datenbank können über den Paketmanager des Systems bezogen werden. Finden Sie unten die Befehle, die zum Einrichten von MySQL benötigt werden."
 
 #: ../content/installation/installation-ubuntu.rst:223
 msgid "In order to use the OTOBO installer the password for the ``root`` user has to be set:"
-msgstr ""
+msgstr "Um den OTOBO-Installer verwenden zu können, muss das Passwort für den ``root``-Benutzer festgelegt werden:"
 
 #: ../content/installation/installation-ubuntu.rst:233
 #, fuzzy
@@ -2707,7 +2678,7 @@ msgstr "Ungültige Werte können mit Hilfe des Befehls ``bin/otobo.Console.pl Ad
 
 #: ../content/migration-from-otrs.rst:447
 msgid "Deploy the collected changes from migration.pl, including the deactivated **SecureMode** with ``bin/otobo.Console.pl Maint::Config::Rebuild``"
-msgstr "Nehmen Sie die gesammelten Änderungen durch *migration.pl* inklusive des deaktivierten **SecureMode** mit ``bin/otobo.Console.pl Maint::Config::Rebuild`` in Betrieb"
+msgstr "Nehmen Sie die gesammelten Änderungen durch migration.pl inklusive des deaktivierten **SecureMode** mit ``bin/otobo.Console.pl Maint::Config::Rebuild`` in Betrieb."
 
 #: ../content/migration-from-otrs.rst:450
 #, fuzzy
@@ -3135,7 +3106,7 @@ msgstr "Heap-Größe"
 
 #: ../content/performance-tuning.rst:117
 msgid "Elasticsearch is written in Java and therefore runs in a Java Virtual Machine (JVM) on any cluster node. Such a JVM uses a part of the memory, called *heap*, which size can be configured in configuration file ``jvm.options``."
-msgstr "Elasticsearch ist in Java geschrieben und läuft folglich in einer Java Virtual Machine (JVM) auf jedem Clusterknoten. Eine solche JVM nutzt einen Teil des Speichers, den sogenannten Heap. Seine Größe kann in der Konfigurationsdatei ``jvm.options`` definiert werden."
+msgstr "Elasticsearch ist in Java geschrieben und läuft folglich in einer Java Virtual Machine (JVM) auf jedem Clusterknoten. Eine solche JVM nutzt einen Teil des Speichers, genannt *heap*, dessen Größe in der Konfigurationsdatei ``jvm.options`` konfiguriert werden kann."
 
 #: ../content/performance-tuning.rst:120
 msgid "The heap minimum and maximum configurations are by default set to a value of 1 GB and can be modified with the following options:"
@@ -3198,10 +3169,8 @@ msgid "``cluster.routing.allocation.disk.watermark.flood_stage``"
 msgstr "``cluster.routing.allocation.disk.watermark.flood_stage``"
 
 #: ../content/performance-tuning.rst:160
-#, fuzzy
-#| msgid "Default value of 95%. When this limit is exceeded, Elasticsearch will update the configuration of all indices, that have at least one shard allocated to the related cluster node, to read-only index blocks. Specifically, they are flagged with ``index.blocks.read_only_allow_delete``."
 msgid "Default value of 95%. When this limit is exceeded, Elasticsearch will update the configuration of all indices, that have at least one shard allocated to the related cluster node, to read-only index blocks. Specifically, they are flagged with ``index.blocks.read_only_allow_delete``. After that update, it is no longer possible to index new data to such indices. The indexes are restricted to searches and to delete actions only."
-msgstr "Standardwert 95 %. Wird dieser Grenzwert überschritten, aktualisiert Elasticsearch die Konfiguration aller Indizes, von denen mindestens ein Shard dem jeweiligen Clusterknoten zugeordnet ist, auf schreibgeschützte Indexblöcke. Diese werden mit dem Tag ``index.blocks.read_only_allow_delete`` gekennzeichnet."
+msgstr "Standardwert von 95 %. Wenn dieser Grenzwert überschritten wird, aktualisiert Elasticsearch die Konfiguration aller Indizes, die mindestens ein Sharding auf dem zugehörigen Clusterknoten zugewiesen haben, auf schreibgeschützte Indexblöcke. Speziell werden sie mit ``index.blocks.read_only_allow_delete`` markiert. Danach ist es nicht mehr möglich, neue Daten in solche Indizes zu schreiben. Die Indizes sind nur noch auf Suchvorgänge und Löschaktionen eingeschränkt."
 
 #: ../content/performance-tuning.rst:168
 msgid "If the flood stage was exceeded and certain indices are configured to read-only mode, such configuration *will not* automatically be changed by Elasticsearch. If the related disks contain enough free space again due to manual actions, it is needed to change the configuration back to normal mode manually."
@@ -3445,7 +3414,7 @@ msgstr "Falls Pakete fehlen, erhalten Sie einen Installationsbefehl für Ihr Bet
 
 #: ../content/requirements.rst:29
 msgid "The listed commands should then be executed with root privileges."
-msgstr "Die aufgeführten Befehle sollten dann mit *Root*-Berechtigungen ausgeführt werden."
+msgstr "Die aufgeführagen Befehle sollten dann mit Root-Rechten ausgeführt werden."
 
 #: ../content/requirements.rst:31
 msgid "The output of the module check script shows the installed packages and the version numbers. Missing modules are marked with a comment."
@@ -3667,7 +3636,7 @@ msgstr "`-pass = Passwort vom Benutzer otrs32-centos6 (Active Directory-Benutzer
 
 #: ../content/sso-kerberos.rst:48
 msgid "``-out = c:/krb5.keytab`` → storage location for the generated keytab file"
-msgstr ""
+msgstr "``-out = c:/krb5.keytab`` → Speicherort der generierten Keytab-Datei"
 
 #: ../content/sso-kerberos.rst:52
 #, fuzzy
@@ -3795,7 +3764,7 @@ msgstr "Kerberos Single Sign On in der OTOBO Docker-Installation"
 
 #: ../content/sso-kerberos-native.rst:4
 msgid "In this instruction we setup the"
-msgstr ""
+msgstr "In dieser Anleitung richten wir die"
 
 #: ../content/sso-kerberos-native.rst:6
 #, fuzzy
@@ -3805,7 +3774,7 @@ msgstr "Active Directory User erstellen"
 
 #: ../content/sso-kerberos-native.rst:7
 msgid "OTOBO Linux server"
-msgstr ""
+msgstr "OTOBO-Linux-Server"
 
 #: ../content/sso-kerberos-native.rst:8
 #, fuzzy
@@ -3815,7 +3784,7 @@ msgstr "Webbrowser"
 
 #: ../content/sso-kerberos-native.rst:10
 msgid "to ensure the AD user seamless authorization into OTOBO."
-msgstr ""
+msgstr "um sicherzustellen, dass der AD-Benutzer nahtlos in OTOBO autorisiert wird."
 
 #: ../content/sso-kerberos-native.rst:14
 #, fuzzy
@@ -3831,47 +3800,47 @@ msgstr "Kerberos Fehlerbehebung"
 
 #: ../content/sso-kerberos-native.rst:21
 msgid "To avoid manual creation of Agents accounts, OTOBO allows users and agents to login in OTOBO using their AD credentials."
-msgstr ""
+msgstr "Um die manuelle Erstellung von Agentenkonten zu vermeiden, ermöglicht OTOBO es Benutzern und Agenten, sich in OTOBO mit ihren AD-Anmeldedaten anzumelden."
 
 #: ../content/sso-kerberos-native.rst:25
 msgid "For agents LDAP auth backend example, in ``Kernel/Config/Defaults.pm`` search"
-msgstr ""
+msgstr "Für ein Beispiel zur LDAP-Authentifizierung für Agenten in ``Kernel/Config/Defaults.pm`` suchen Sie nach"
 
 #: ../content/sso-kerberos-native.rst:27
 msgid "``$Self->{'AuthModule'} = 'Kernel::System::Auth::Sync::LDAP';``"
-msgstr ""
+msgstr "``$Self->{'AuthModule'} = 'Kernel::System::Auth::Sync::LDAP';``"
 
 #: ../content/sso-kerberos-native.rst:31
 msgid "We can do even better and authenticate users and agents fully automatically, skipping the login screen entirely. This is called *Single Sign-On* (SSO) and could be done using Kerberos protocol."
-msgstr ""
+msgstr "Wir können noch besser machen und Benutzer und Agenten vollautomatisch authentifizieren, wobei der Anmeldebildschirm ganz entfallen kann. Dies wird *Single Sign-On* (SSO) genannt und kann mit dem Kerberos-Protokoll umgesetzt werden."
 
 #: ../content/sso-kerberos-native.rst:36
 msgid "The SSO setup with Kerberos is quite complex. You may stay with LDAP and avoid all the headache."
-msgstr ""
+msgstr "Die SSO-Einrichtung mit Kerberos ist ziemlich komplex. Sie können bei LDAP bleiben und all den Kopfzerbrechen vermeiden."
 
 #: ../content/sso-kerberos-native.rst:41
 msgid "SSO Authentication Process Overview"
-msgstr ""
+msgstr "Überblick über den SSO-Authentifizierungsprozess"
 
 #: ../content/sso-kerberos-native.rst:43
 msgid "user logins into windows using his AD credentials"
-msgstr ""
+msgstr "Benutzer meldet sich mit seinen AD-Anmeldeinformationen bei Windows an"
 
 #: ../content/sso-kerberos-native.rst:44
 msgid "user opens OTOBO website with a browser"
-msgstr ""
+msgstr "Benutzer öffnet die OTOBO-Website mit einem Browser"
 
 #: ../content/sso-kerberos-native.rst:45
 msgid "browser and webserver do some `Kerbeos crypto-magic <https://en.wikipedia.org/wiki/Kerberos_(protocol)#Client_Service_Authorization>`_"
-msgstr ""
+msgstr "Browser und Webserver verrichten etwas `Kerbeos-Kryptomagie <https://en.wikipedia.org/wiki/Kerberos_(protocol)#Client_Service_Authorization>`_"
 
 #: ../content/sso-kerberos-native.rst:46
 msgid "browser pass the name of the authorized user to OTOBO"
-msgstr ""
+msgstr "Browser übermitteln den Namen des berechtigten Benutzers an OTOBO"
 
 #: ../content/sso-kerberos-native.rst:47
 msgid "OTOBO trust the username passed in the ``REMOTE_USER`` environment variable or the ``Remote-User`` HTTP header and skips the login screen"
-msgstr ""
+msgstr "OTOBO vertraut dem Benutzernamen, der in der Umgebungsvariablen ``REMOTE_USER`` oder im HTTP-Kopf ``Remote-User`` übergeben wird, und überspringt den Anmeldebildschirm"
 
 #: ../content/sso-kerberos-native.rst:51
 #, fuzzy
@@ -3881,15 +3850,15 @@ msgstr "Kerberos Fehlerbehebung"
 
 #: ../content/sso-kerberos-native.rst:53
 msgid "In our example OTOBO runs at ``https://otobo.company.com`` . AD controller should be able to reach the OTOBO service by its name using DNS A-Record!"
-msgstr ""
+msgstr "In unserem Beispiel läuft OTOBO unter ``https://otobo.company.com``. Der AD-Controller sollte in der Lage sein, den OTOBO-Service per Namen über eine DNS-A-Auflösung zu erreichen!"
 
 #: ../content/sso-kerberos-native.rst:56
 msgid "AD domain name is \"DOMAIN\" (because it may differ from \"COMPANY.COM\")."
-msgstr ""
+msgstr "AD-Domänenname ist \"DOMAIN\" (da er sich von \"COMPANY.COM\" unterscheiden kann)."
 
 #: ../content/sso-kerberos-native.rst:58
 msgid "OTOBO is a service in Kerberos terminology Service communicates with AD using a service account. Let service account name be \"serviceaccount\"."
-msgstr ""
+msgstr "OTOBO ist ein Dienst im Sinne der Kerberos-Bezeichnung. Der Dienst kommuniziert mit AD über ein Dienstkonto. Sei der Name des Dienstkontos \"serviceaccount\"."
 
 #: ../content/sso-kerberos-native.rst:63
 #, fuzzy
@@ -3899,35 +3868,35 @@ msgstr "Active Directory User erstellen"
 
 #: ../content/sso-kerberos-native.rst:65
 msgid "Login on AD controller under administrator. Open \"Active Directory Users and Computers\" application. Inside the Users container, create a new account:"
-msgstr ""
+msgstr "Melden Sie sich am AD-Controller als Administrator an. Öffnen Sie die Anwendung \"Benutzer und Computer in Active Directory\". Erstellen Sie innerhalb des Benutzercontainers ein neues Konto:"
 
 #: ../content/sso-kerberos-native.rst:69
 msgid "User logon name (warning - here are two fields): ``HTTP/otobo.company.com`` ``@DOMAIN.COM``"
-msgstr ""
+msgstr "Benutzeranmeldename (Warnung - hier sind zwei Felder): ``HTTP/otobo.company.com`` ``@DOMAIN.COM``"
 
 #: ../content/sso-kerberos-native.rst:70
 msgid "user logon name (pre Windows 2000) (two fields): ``DOMAIN\\`` ``serviceaccount``"
-msgstr ""
+msgstr "Benutzeranmeldename (vor Windows 2000) (zwei Felder): ``DOMAIN\\`` ``serviceaccount``"
 
 #: ../content/sso-kerberos-native.rst:73
 msgid "in account options: set checkbox on:"
-msgstr ""
+msgstr "in Kontoeinstellungen: Kontrollkästchen aktivieren:"
 
 #: ../content/sso-kerberos-native.rst:72
 msgid "``this account supports Kerberos-AES-128``"
-msgstr ""
+msgstr "``Dieses Konto unterstützt Kerberos-AES-128``"
 
 #: ../content/sso-kerberos-native.rst:73
 msgid "``this account supports Kerberos-AES-256``"
-msgstr ""
+msgstr "``Dieses Konto unterstützt Kerberos-AES-256``"
 
 #: ../content/sso-kerberos-native.rst:75
 msgid "Register an *Service Principal Name* (SPN) for the OTOBO service. Open a terminal and run:"
-msgstr ""
+msgstr "Registrieren Sie einen *Service Principal Name* (SPN) für den OTOBO-Service. Öffnen Sie ein Terminal und führen Sie folgendes aus:"
 
 #: ../content/sso-kerberos-native.rst:82
 msgid "Check that SPN has been added. Distinguished Name - that includes ``CN``, ``DC``, ``OU`` - can be different depending from your AD structure. Important is that you see your service principal name (``HTTP/...``)."
-msgstr ""
+msgstr "Prüfen Sie, ob der SPN hinzugefügt wurde. Der Unterscheidungsname - der ``CN``, ``DC``, ``OU`` enthält - kann je nach Ihrer AD-Struktur unterschiedlich sein. Wichtig ist, dass Sie Ihren Dienstprinzipalnamen (``HTTP/...``) sehen."
 
 #: ../content/sso-kerberos-native.rst:94
 #, fuzzy
@@ -3937,11 +3906,11 @@ msgstr "Active Directory Keytab-Datei erstellen"
 
 #: ../content/sso-kerberos-native.rst:98
 msgid "Keytab is a cryptographic file containing a representation of the service and its long-term key as it exists in the directory service. In our Active Directory domain, keytab file will be used by the Webserver (that runs on Linux) to authenticate users against AD via Kerberos protocol."
-msgstr ""
+msgstr "Keytab ist eine kryptografische Datei, die eine Darstellung des Dienstes und seines langfristigen Schlüssels enthält, wie er im Verzeichnisdienst vorhanden ist. In unserem Active Directory-Verbund wird die Keytab-Datei vom Webserver (der unter Linux läuft) verwendet, um Benutzer über das Kerberos-Protokoll gegen AD zu authentifizieren."
 
 #: ../content/sso-kerberos-native.rst:101
 msgid "Login into AD under domain administrator account and generate keytab file using ``ktpass``:"
-msgstr ""
+msgstr "Melden Sie sich als Domänenadministrator im AD an und erstellen Sie die Keytab-Datei mit ``ktpass``:"
 
 #: ../content/sso-kerberos-native.rst:109
 #, fuzzy
@@ -3951,19 +3920,19 @@ msgstr "Schritt 2: OTOBO-Benutzer anlegen"
 
 #: ../content/sso-kerberos-native.rst:111
 msgid "Copy the keytab file from the AD controller to the OTOBO server:"
-msgstr ""
+msgstr "Kopieren Sie die Keytab-Datei vom AD-Controller auf den OTOBO-Server:"
 
 #: ../content/sso-kerberos-native.rst:117
 msgid "Login on the Linux server and install Kerberos client libraries:"
-msgstr ""
+msgstr "Melden Sie sich auf dem Linux-Server an und installieren Sie die Kerberos-Client-Bibliotheken:"
 
 #: ../content/sso-kerberos-native.rst:125
 msgid "Instructions are valid on Ubuntu 24.04. Other Linux flavors may have different names for Kerberos libraries."
-msgstr ""
+msgstr "Anweisungen sind für Ubuntu 24.04 gültig. Andere Linux-Distributionen können unterschiedliche Namen für Kerberos-Bibliotheken haben."
 
 #: ../content/sso-kerberos-native.rst:128
 msgid "Now check the keytab file content:"
-msgstr "Überprüfen Sie nun den Inhalt der Keytab-Datei:"
+msgstr "Überprüfen Sie jetzt den Inhalt der keytab Datei:"
 
 #: ../content/sso-kerberos-native.rst:142
 #, fuzzy
@@ -3973,55 +3942,55 @@ msgstr "Kerberos Default Domain. Verwendet in */etc/krb5.conf*."
 
 #: ../content/sso-kerberos-native.rst:165
 msgid "Then try to obtain a *ticket-granting ticket* (TGT) from AD:"
-msgstr ""
+msgstr "Versuchen Sie dann, ein *ticket-granting ticket* (TGT) vom AD zu beziehen:"
 
 #: ../content/sso-kerberos-native.rst:173
 msgid "This is a correct answer. Goto webserver section."
-msgstr ""
+msgstr "Dies ist eine korrekte Antwort. Gehen Sie zum Webserver-Abschnitt."
 
 #: ../content/sso-kerberos-native.rst:177
 msgid "Error: No Suitable Keys for Service"
-msgstr ""
+msgstr "Fehler: Keine geeigneten Schlüssel für den Dienst"
 
 #: ../content/sso-kerberos-native.rst:184
 msgid "Double check your ``kinit`` arguments. If arguments are correct, but you still got this error, the keytab may have an incorrect SPN inside."
-msgstr ""
+msgstr "Prüfen Sie Ihre ``kinit``-Argumente noch einmal sorgfältig. Wenn die Argumente korrekt sind, Sie aber weiterhin diesen Fehler erhalten, könnte die Keytab eine falsche SPN enthalten."
 
 #: ../content/sso-kerberos-native.rst:187
 msgid "List the SPN entries in keytab: ``klist -kte krb5.keytab``."
-msgstr ""
+msgstr "SPN-Einträge in der Keytab auflisten: ``klist -kte krb5.keytab``."
 
 #: ../content/sso-kerberos-native.rst:189
 msgid "The list should contain exact principal (service account) name (+ AD domain name), that you have registered in AD, e.g."
-msgstr ""
+msgstr "Die Liste sollte den genauen Principal-Namen (Dienstkonto) (+ AD-Domänenname) enthalten, den Sie in AD registriert haben, z. B."
 
 #: ../content/sso-kerberos-native.rst:195
 msgid "If not, you probably had mistyped the ``ktpass`` command arguments and have to regenerate the keytab file."
-msgstr ""
+msgstr "Falls nicht, haben Sie vermutlich die Argumente des ``ktpass``-Befehls falsch eingegeben und müssen die Keytab-Datei neu generieren."
 
 #: ../content/sso-kerberos-native.rst:198
 msgid "Error: Client not Found in Kerberos"
-msgstr ""
+msgstr "Fehler: Client nicht in Kerberos gefunden"
 
 #: ../content/sso-kerberos-native.rst:205
 msgid "This error happens when:"
-msgstr ""
+msgstr "Dieser Fehler tritt auf, wenn:"
 
 #: ../content/sso-kerberos-native.rst:207
 msgid "service user name (serviceaccount) in keytab file and in AD are different"
-msgstr ""
+msgstr "Dienstbenutzername (Servicekonto) in der Keytab-Datei und in AD sind unterschiedlich"
 
 #: ../content/sso-kerberos-native.rst:208
 msgid "service user password from keytab file and AD differs"
-msgstr ""
+msgstr "Dienstbenutzerkennwort aus der Keytab-Datei und aus AD unterscheiden sich"
 
 #: ../content/sso-kerberos-native.rst:209
 msgid "if serviceaccount password has been changed in AD - regenerate the keytab file"
-msgstr ""
+msgstr "Wenn das Dienstkonto-Passwort in AD geändert wurde - Keytab-Datei neu generieren"
 
 #: ../content/sso-kerberos-native.rst:210
 msgid "SPN (Service Principal Name) was not registered or differs from the Principal name in the keytab file."
-msgstr ""
+msgstr "SPN (Service Principal Name) wurde nicht registriert oder unterscheidet sich vom Principal-Namen in der Keytab-Datei."
 
 #: ../content/sso-kerberos-native.rst:212
 msgid "Check if SPN is registered for \"serviceaccount\" - under AD user on windows run ``setspn -L DOMAIN\\serviceaccount``"
@@ -4029,51 +3998,51 @@ msgstr "Überprüfen Sie, ob für „serviceaccount“ ein SPN registriert ist �
 
 #: ../content/sso-kerberos-native.rst:214
 msgid "The output SPN should match with the output of ``klist -kte krb5.keytab``"
-msgstr ""
+msgstr "Die ausgegebene SPN sollte mit der Ausgabe von ``klist -kte krb5.keytab`` übereinstimmen"
 
 #: ../content/sso-kerberos-native.rst:217
 msgid "Apache with Kerberos SSO and SSL"
-msgstr ""
+msgstr "Apache mit Kerberos SSO und SSL"
 
 #: ../content/sso-kerberos-native.rst:221
 msgid "I suppose you already have Apache running. If not, read `Otobo basic installation manual <https://doc.otobo.de/manual/installation/10.1/en/content/installation.html#step-5-configure-the-apache-web-server>`_"
-msgstr ""
+msgstr "Ich gehe davon aus, dass Sie bereits Apache laufen haben. Wenn nicht, lesen Sie bitte `Otobo-Grundinstallation Anleitung <https://doc.otobo.de/manual/installation/10.1/en/content/installation.html#step-5-configure-the-apache-web-server>`_"
 
 #: ../content/sso-kerberos-native.rst:224
 msgid "Install and enable required Apache modules:"
-msgstr ""
+msgstr "Installieren und aktivieren Sie die erforderlichen Apache-Module:"
 
 #: ../content/sso-kerberos-native.rst:231
 msgid "Ensure the Apache user (``www-data``) can read ``/etc/krb5.keytab``:"
-msgstr ""
+msgstr "Stellen Sie sicher, dass der Apache-Benutzer (``www-data``) die Datei ``/etc/krb5.keytab`` lesen kann:"
 
 #: ../content/sso-kerberos-native.rst:238
 msgid "Create Apache config with ``nano /etc/apache2/sites-available/otobo-apache-ssl.conf``. It should contain the following content:"
-msgstr ""
+msgstr "Erstellen Sie die Apache-Konfiguration mit ``nano /etc/apache2/sites-available/otobo-apache-ssl.conf``. Sie sollte den folgenden Inhalt enthalten:"
 
 #: ../content/sso-kerberos-native.rst:307
 msgid "you can use Nginx for SSL part and Apache for Kerbeos, than in the apache configuration change ``<VirtualHost *:443>`` to ``<VirtualHost localhost:8080>`` and delete the SSL-related lines"
-msgstr ""
+msgstr "Sie können Nginx für den SSL-Teil und Apache für Kerberos verwenden. Ändern Sie dann in der Apache-Konfiguration ``<VirtualHost *:443>`` in ``<VirtualHost localhost:8080>`` und löschen Sie die SSL-bezogenen Zeilen"
 
 #: ../content/sso-kerberos-native.rst:311
 msgid "If you have the old apache configuration for Otobo - don't forget to disable it."
-msgstr ""
+msgstr "Wenn Sie die alte Apache-Konfiguration für OTOBO haben - vergessen Sie nicht, sie zu deaktivieren."
 
 #: ../content/sso-kerberos-native.rst:313
 msgid "Enable our website"
-msgstr ""
+msgstr "Unsere Webseite aktivieren"
 
 #: ../content/sso-kerberos-native.rst:320
 msgid "Ensure the webserver sends a proper header, that invites browser to use Kerberos authentication:"
-msgstr ""
+msgstr "Stellen Sie sicher, dass der Webserver einen passenden Header sendet, der den Browser auffordert, die Kerberos-Authentifizierung zu verwenden:"
 
 #: ../content/sso-kerberos-native.rst:327
 msgid "output should have a following header:"
-msgstr ""
+msgstr "Ausgabe sollte einen folgenden Header haben:"
 
 #: ../content/sso-kerberos-native.rst:327
 msgid "``WWW-Authenticate: Negotiate …``"
-msgstr ""
+msgstr "``WWW-Authenticate: Negotiate …``"
 
 #: ../content/sso-kerberos-native.rst:330
 #, fuzzy
@@ -4083,15 +4052,15 @@ msgstr "Kunden-Login-Konfiguration"
 
 #: ../content/sso-kerberos-native.rst:332
 msgid "To make Otobo trust the username passed by the webserver (in the ``REMOTE_USER`` environment variable or the ``Remote-User`` HTTP header) and skip the login screen, you have to enable a ``HTTPBasicAuth`` auth backend in the Otobo configuration ``Kernel/Config.pm``:"
-msgstr ""
+msgstr "Um zu erlauben, dass Otobo den vom Webserver übergebenen Benutzernamen (in der Umgebungsvariable ``REMOTE_USER`` oder dem HTTP-Header ``Remote-User``) vertraut und den Anmeldebildschirm umgeht, müssen Sie einen ``HTTPBasicAuth``-Authentifizierungs-Backend in der Otobo-Konfiguration ``Kernel/Config.pm`` aktivieren:"
 
 #: ../content/sso-kerberos-native.rst:335
 msgid "for agents: ``$Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth`` (instead of LDAP)"
-msgstr ""
+msgstr "für Agenten: ``$Self->{AuthModule} = 'Kernel::System::Auth::HTTPBasicAuth`` (anstelle von LDAP)"
 
 #: ../content/sso-kerberos-native.rst:336
 msgid "for users : ``$Self->{'Customer::AuthModule'} = 'Kernel::System::CustomerAuth::HTTPBasicAuth';``"
-msgstr ""
+msgstr "für Kundenbenutzer: ``$Self->{'Customer::AuthModule'} = 'Kernel::System::CustomerAuth::HTTPBasicAuth';``"
 
 #: ../content/sso-kerberos-native.rst:338
 msgid "You still can use LDAP to populate Users data from the AD, as it is described in the corresponding sections of``Kernel/Config/Defaults.pm``"
@@ -4105,7 +4074,7 @@ msgstr "Den Browser so konfigurieren, dass er Kerberos SSO versteht"
 
 #: ../content/sso-kerberos-native.rst:344
 msgid "In the browser address line, open ``about:config`` and change the following settings:"
-msgstr ""
+msgstr "Geben Sie in der Adressleiste des Browsers ``about:config`` ein und ändern Sie die folgenden Einstellungen:"
 
 #: ../content/updating.rst:2
 msgid "Updating"
@@ -4213,10 +4182,8 @@ msgid "Step 3: Install the New Release"
 msgstr "Schritt 3: Neues Release installieren"
 
 #: ../content/updating.rst:118
-#, fuzzy
-#| msgid "Download the latest otobo release from https://ftp.otobo.org/pub/otobo/. and unpack the source archive (for example, using ``tar``) into the directory ``/root/otobo-update``:"
 msgid "After that, unpack the source archive (for example, using ``tar``) into the directory ``/opt/otobo-update``:"
-msgstr "Laden Sie unter https://ftp.otobo.org/pub/otobo/ das neueste OTOBO-Release herunter und entpacken Sie das Quell-Archiv (zum Beispiel mit ``tar``) in das Verzeichnis ``/root/otobo-update``:"
+msgstr "Danach entpacken Sie das Quell-Archiv (beispielsweise mit ``tar``) in das Verzeichnis ``/opt/otobo-update``:"
 
 #: ../content/updating.rst:126
 msgid "Restore Old Configuration Files"
