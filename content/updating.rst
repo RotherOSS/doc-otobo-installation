@@ -68,6 +68,6 @@ If you do, the fastes way to da clean index is recreation:
 
    cd /opt/otobo-docker
    docker compose down -v elastic && docker compose up elastic -d
-   docker compose exec web bin/otobo.Console.pl Maint::ElasticSearch::Migration
+   docker compose exec web bin/otobo.Console.pl Maint::Elasticsearch::Migration
 
 
