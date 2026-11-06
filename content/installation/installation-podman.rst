@@ -18,10 +18,9 @@ systemd starts the services at boot, restarts them on failure and collects their
 
 .. note::
 
-    This setup is a proof of concept. It mirrors ``docker-compose/otobo-base.yml``
-    of the repository https://github.com/RotherOSS/otobo-docker and supports the
-    HTTP, HTTPS and Redis variants. Kerberos and a custom Nginx configuration
-    are not supported yet.
+    This setup is a proof of concept.
+    It mirrors ``docker-compose/otobo-base.yml`` of the repository https://github.com/RotherOSS/otobo-docker and supports the HTTP, HTTPS and Redis variants.
+    Kerberos and a custom Nginx configuration are not supported yet.
 
 Requirements
 ------------
@@ -356,59 +355,61 @@ For production environments, adjust ``OTOBO_ELASTICSEARCH_ES_JAVA_OPTS`` to a he
 
 Receiving Emails with Postfix
 -----------------------------
- 
-Postfix on the host receives all emails for the OTOBO mail domain and stores them in the Maildir of the
-service user ``otobo``. A systemd user service of ``otobo`` passes every new email to the OTOBO PostMaster
-inside the container ``otobo-web``.
- 
+
+Postfix on the host receives all emails for the OTOBO mail domain and stores them in the Maildir of the service user ``otobo``.
+A systemd user service of ``otobo`` passes every new email to the OTOBO PostMaster inside the container ``otobo-web``.
+
 .. code-block:: none
- 
+
    Sender -> Postfix (host) -> /home/otobo/Maildir/new -> otobo-mailimport (systemd --user) -> otobo-web -> Ticket
- 
+
 .. note::
- 
-   Postfix does not call Podman directly. A system service can not start processes in the containers of a
-   rootless user, and SELinux blocks it. The Maildir handover avoids both. SELinux may stay in enforcing mode.
- 
+
+   Postfix does not call Podman directly.
+   A system service can not start processes in the containers of a rootless user, and SELinux blocks it.
+   The Maildir handover avoids both.
+   SELinux may stay in enforcing mode.
+
 Requirements for Postfix
 ~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 - OTOBO installed as described above, running as user ``otobo``
 - Container ``otobo-web`` is running
 - A mail domain for OTOBO, in this guide ``otobo.example.com``
 - An MX record or a mail gateway that delivers this domain to the host
- 
+
 Replace ``otobo.example.com`` with your mail domain in all commands.
- 
-Steps marked **as root** are done in a root shell (``sudo -i``). Steps marked **as otobo** are done in a
-session of the service user:
- 
+
+Steps marked **as root** are done in a root shell (``sudo -i``).
+Steps marked **as otobo** are done in a session of the service user:
+
 .. code-block:: bash
- 
+
    machinectl shell otobo@
- 
+
 1. Install Postfix (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. code-block:: bash
- 
+
    dnf install -y postfix
- 
+
 2. Set the Hostname (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-The hostname must be the mail domain. No IP address.
- 
+
+The hostname must be the mail domain.
+An IP address is not allowed.
+
 .. code-block:: bash
- 
+
    hostnamectl set-hostname otobo.example.com
    hostname -f    # must print otobo.example.com
- 
+
 3. Configure Postfix (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. code-block:: bash
- 
+
    postconf -e 'myhostname = otobo.example.com'
    postconf -e 'mydestination = $myhostname, localhost.$mydomain, localhost'
    postconf -e 'inet_interfaces = all'
@@ -418,43 +419,44 @@ The hostname must be the mail domain. No IP address.
    postconf -e 'disable_vrfy_command = yes'
    postconf -e 'virtual_alias_maps = texthash:/etc/postfix/virtual'
    postconf -e 'home_mailbox = Maildir/'
- 
+
 .. note::
- 
-   Always use ``postconf -e``. Do not append lines to ``/etc/postfix/main.cf`` by hand, this creates
-   duplicate entries.
- 
+
+   Always use ``postconf -e``.
+   Do not append lines to ``/etc/postfix/main.cf`` by hand, this creates duplicate entries.
+
 4. Create the Catch-All (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-All addresses of the domain are delivered to the user ``otobo``. Mails to ``root`` and ``postmaster`` stay
-local.
- 
+
+All addresses of the domain are delivered to the user ``otobo``.
+Mails to ``root`` and ``postmaster`` stay local.
+
 .. code-block:: bash
- 
+
    cat > /etc/postfix/virtual <<'EOF'
    root@otobo.example.com        root@localhost
    postmaster@otobo.example.com  root@localhost
    @otobo.example.com            otobo@otobo.example.com
    EOF
    restorecon -v /etc/postfix/virtual
- 
+
 5. Create the Maildir (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. code-block:: bash
- 
+
    install -d -o otobo -g otobo -m 0700 /home/otobo/Maildir /home/otobo/Maildir/new /home/otobo/Maildir/cur /home/otobo/Maildir/tmp
    restorecon -Rv /home/otobo/Maildir
- 
+
 6. Install the Import Script (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-The script passes every file in ``~/Maildir/new`` to the OTOBO PostMaster. Imported mails are deleted.
+
+The script passes every file in ``~/Maildir/new`` to the OTOBO PostMaster.
+Imported mails are deleted.
 Failed mails stay for the next run.
- 
+
 .. code-block:: bash
- 
+
    cat > /usr/local/bin/otobo-maildir-import <<'EOF'
    #!/bin/sh
    # Pass new mails from ~/Maildir/new to the OTOBO PostMaster.
@@ -469,142 +471,143 @@ Failed mails stay for the next run.
    done
    EOF
    chmod 755 /usr/local/bin/otobo-maildir-import
- 
+
 7. Start Postfix (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. code-block:: bash
- 
+
    postfix check                     # must print nothing
    systemctl enable --now postfix
    ss -tlnp | grep ':25'             # must show 0.0.0.0:25
- 
+
 .. note::
- 
+
    After changes to ``inet_interfaces`` or ``inet_protocols`` run ``systemctl restart postfix``.
    For all other changes ``systemctl reload postfix`` is enough.
- 
+
 8. Open the Firewall (as root)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. code-block:: bash
- 
+
    firewall-cmd --permanent --add-service=smtp
    firewall-cmd --reload
    firewall-cmd --list-services      # must contain smtp
- 
+
 9. Create the systemd User Units (as otobo)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. code-block:: bash
- 
+
    machinectl shell otobo@
    mkdir -p ~/.config/systemd/user
- 
+
 The service runs the import script:
- 
+
 .. code-block:: bash
- 
+
    cat > ~/.config/systemd/user/otobo-mailimport.service <<'EOF'
    [Unit]
    Description=OTOBO mail import from Maildir
- 
+
    [Service]
    Type=oneshot
    ExecStart=/usr/local/bin/otobo-maildir-import
    EOF
- 
+
 The path unit starts the service when a new mail arrives:
- 
+
 .. code-block:: bash
- 
+
    cat > ~/.config/systemd/user/otobo-mailimport.path <<'EOF'
    [Unit]
    Description=Start OTOBO mail import on new mail
- 
+
    [Path]
    PathChanged=%h/Maildir/new
- 
+
    [Install]
    WantedBy=default.target
    EOF
- 
+
 The timer retries failed mails every minute:
- 
+
 .. code-block:: bash
- 
+
    cat > ~/.config/systemd/user/otobo-mailimport.timer <<'EOF'
    [Unit]
    Description=OTOBO mail import every minute
- 
+
    [Timer]
    OnBootSec=1min
    OnUnitActiveSec=1min
- 
+
    [Install]
    WantedBy=timers.target
    EOF
- 
+
 10. Enable the Units (as otobo)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. code-block:: bash
- 
+
    systemctl --user daemon-reload
    systemctl --user enable --now otobo-mailimport.path otobo-mailimport.timer
    systemctl --user status otobo-mailimport.path otobo-mailimport.timer
- 
+
 11. Test the Setup
 ~~~~~~~~~~~~~~~~~~
- 
+
 Local test (as root):
- 
+
 .. code-block:: bash
- 
+
    printf 'Subject: Local test\n\nHello OTOBO\n' | sendmail -f test@example.org support@otobo.example.com
    journalctl -u postfix -n 10
- 
+
 The log must show ``relay=local`` and ``status=sent (delivered to maildir)``.
- 
+
 Check the import (as otobo):
- 
+
 .. code-block:: bash
- 
+
    ls -l ~/Maildir/new                                  # must be empty after a few seconds
    journalctl --user -u otobo-mailimport.service -n 20
- 
+
 External test from another host in the network:
- 
+
 .. code-block:: bash
- 
+
    printf 'Subject: External test\n\nHello OTOBO\n' > /tmp/test.eml
    curl smtp://<IP_OF_HOST>:25 \
      --mail-from 'test@example.org' \
      --mail-rcpt 'support@otobo.example.com' \
      -T /tmp/test.eml
- 
+
 curl must end with ``250 2.0.0 Ok: queued``.
- 
+
 .. note::
- 
-   The recipient must be an address of the OTOBO mail domain. Other domains are refused with
-   ``Relay access denied``. Without ``-T`` curl sends no mail.
- 
+
+   The recipient must be an address of the OTOBO mail domain.
+   Other domains are refused with ``Relay access denied``.
+   Without ``-T`` curl sends no mail.
+
 12. Configure OTOBO
 ~~~~~~~~~~~~~~~~~~~
- 
+
 In the OTOBO agent interface:
- 
+
 - **Admin → Email Addresses**: add every used address, e.g. ``support@otobo.example.com``, and assign a queue.
 - Mails to addresses without a system address go to the queue ``Raw``.
- 
+
 Mail Flow and Files
 ~~~~~~~~~~~~~~~~~~~
- 
+
 .. list-table::
    :header-rows: 1
    :widths: 30 40 30
- 
+
    * - Step
      - Component
      - Runs as
@@ -623,11 +626,11 @@ Mail Flow and Files
    * - Create ticket
      - ``otobo.Console.pl Maint::PostMaster::Read``
      - ``otobo`` (container ``otobo-web``)
- 
+
 .. list-table::
    :header-rows: 1
    :widths: 45 15 40
- 
+
    * - File
      - Owner
      - Purpose
@@ -646,32 +649,34 @@ Mail Flow and Files
    * - ``~/.config/systemd/user/otobo-mailimport.*``
      - otobo
      - Service, path unit and timer
- 
+
 .. note::
- 
-   ``home_mailbox = Maildir/`` applies to all local users. Mails to ``root`` go to ``/root/Maildir``.
- 
+
+   ``home_mailbox = Maildir/`` applies to all local users.
+   Mails to ``root`` go to ``/root/Maildir``.
+
 .. note::
- 
-   The catch-all accepts every address of the domain. Spam to invented addresses also becomes a ticket.
- 
+
+   The catch-all accepts every address of the domain.
+   Spam to invented addresses also becomes a ticket.
+
 Sending Emails via a Relay
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. note::
- 
+
    This part has not been tested with the Podman setup yet.
- 
+
 Install the SASL module (as root):
- 
+
 .. code-block:: bash
- 
+
    dnf install -y cyrus-sasl-plain
- 
+
 Configure the relay (as root):
- 
+
 .. code-block:: bash
- 
+
    postconf -e 'relayhost = [relay.example.com]'          # or [relay.example.com]:587
    postconf -e 'smtp_sasl_auth_enable = yes'
    postconf -e 'smtp_sasl_mechanism_filter = login'
@@ -679,11 +684,12 @@ Configure the relay (as root):
    postconf -e 'smtp_sasl_security_options = noanonymous'
    postconf -e 'smtp_tls_security_level = encrypt'
    postconf -e 'smtp_tls_loglevel = 1'
- 
-Store the credentials (as root). The key must match ``relayhost`` exactly:
- 
+
+Store the credentials (as root).
+The key must match ``relayhost`` exactly:
+
 .. code-block:: bash
- 
+
    cat > /etc/postfix/sasl_passwd <<'EOF'
    [relay.example.com]    USER:PASSWORD
    EOF
@@ -692,24 +698,24 @@ Store the credentials (as root). The key must match ``relayhost`` exactly:
    getent hosts relay.example.com    # must print an IP address
    postfix check
    systemctl reload postfix
- 
+
 Optional: rewrite sender addresses if the relay accepts only certain domains (as root):
- 
+
 .. code-block:: bash
- 
+
    cat > /etc/postfix/generic <<'EOF'
    /^(.+)@otobo\.example\.com$/    ${1}@example.com
    EOF
    restorecon -v /etc/postfix/generic
    postconf -e 'smtp_generic_maps = regexp:/etc/postfix/generic'
    systemctl reload postfix
- 
+
 Configure OTOBO in **Admin → System Configuration**:
- 
+
 .. list-table::
    :header-rows: 1
    :widths: 40 60
- 
+
    * - Setting
      - Value
    * - ``SendmailModule``
@@ -718,45 +724,46 @@ Configure OTOBO in **Admin → System Configuration**:
      - ``host.containers.internal``
    * - ``SendmailModule::Port``
      - ``25``
- 
+
 If the Postfix log shows ``Relay access denied`` for mails from OTOBO, allow the source IP shown in the log
 (as root):
- 
+
 .. code-block:: bash
- 
+
    postconf -e 'mynetworks = 127.0.0.0/8 <SOURCE_IP>/32'
    systemctl reload postfix
- 
+
 Test (as root):
- 
+
 .. code-block:: bash
- 
+
    printf 'Subject: Outgoing test\n\nHello\n' | sendmail -f support@otobo.example.com you@example.org
    journalctl -u postfix -n 10    # must show relay=relay.example.com and status=sent
- 
+
 .. note::
- 
+
    Alternatively OTOBO can send directly to the relay with ``Kernel::System::Email::SMTPTLS``.
    Postfix then only receives.
- 
+
 Accepting Larger Mails
 ~~~~~~~~~~~~~~~~~~~~~~
- 
-Default limit is 10 MB. For 50 MB (as root):
- 
+
+Default limit is 10 MB.
+To change it to 50 MB (as root):
+
 .. code-block:: bash
- 
+
    postconf -e 'message_size_limit = 52428800'
    postconf -e 'mailbox_size_limit = 0'
    systemctl reload postfix
- 
+
 Troubleshooting Postfix
 ~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. list-table::
    :header-rows: 1
    :widths: 35 30 35
- 
+
    * - Symptom
      - Cause
      - Fix
@@ -784,12 +791,12 @@ Troubleshooting Postfix
    * - ``no such container``
      - Wrong container name
      - Check ``podman ps`` (as otobo), adapt the script
- 
+
 Useful Postfix Commands
 ~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 **As root**
- 
+
 - ``postfix check`` check the configuration
 - ``postconf -n`` show all changed settings
 - ``systemctl reload postfix`` reload the configuration
@@ -797,9 +804,9 @@ Useful Postfix Commands
 - ``postqueue -p`` show the mail queue
 - ``postsuper -d ALL deferred`` delete deferred mails
 - ``ausearch -m avc -ts recent`` show SELinux denials
- 
+
 **As otobo**
- 
+
 - ``systemctl --user status otobo-mailimport.path`` status of the path unit
 - ``systemctl --user list-timers otobo-mailimport.timer`` next timer run
 - ``journalctl --user -u otobo-mailimport.service -f`` follow the import log
@@ -994,7 +1001,7 @@ Resources
 **Podman and Quadlet**
 
 * `Quadlet unit files (podman-systemd.unit) <https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html>`_
-* `Rootless Podman tutorial <https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md>`_
+* `Rootless Podman tutorial <https://github.com/podman-container-tools/podman/blob/main/docs/tutorials/rootless_tutorial.md>`_
 
 **OTOBO**
 
