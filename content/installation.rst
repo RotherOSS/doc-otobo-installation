@@ -14,4 +14,5 @@ Please refer to any subsection for your preferred installation method.
    installation/installation-podman
    installation/installation-ubuntu
    installation/installation-rhel
-   installation/installation-high-availibility
+   installation/installation-high-availability
+
