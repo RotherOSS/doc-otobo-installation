@@ -18,10 +18,9 @@ systemd starts the services at boot, restarts them on failure and collects their
 
 .. note::
 
-    This setup is a proof of concept. It mirrors ``docker-compose/otobo-base.yml``
-    of the repository https://github.com/RotherOSS/otobo-docker and supports the
-    HTTP, HTTPS and Redis variants. Kerberos and a custom Nginx configuration
-    are not supported yet.
+    This setup is a proof of concept.
+    It mirrors ``docker-compose/otobo-base.yml`` of the repository https://github.com/RotherOSS/otobo-docker and supports the HTTP, HTTPS and Redis variants.
+    Kerberos and a custom Nginx configuration are not supported yet.
 
 Requirements
 ------------
