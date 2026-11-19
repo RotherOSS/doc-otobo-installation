@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 14:55+0000\n"
+"POT-Creation-Date: 2026-11-19 04:53+0000\n"
 "PO-Revision-Date: 2026-04-18 11:00+0000\n"
 "Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Galician <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/gl/>\n"
@@ -24,6 +24,7 @@ msgstr ""
 "Generated-By: Babel 2.10.3\n"
 
 #: ../content/backup-restore.rst:2
+#: ../content/installation/installation-high-availibility.rst:1410
 #: ../content/installation/installation-podman.rst:496
 msgid "Backup and Restore"
 msgstr ""
@@ -315,6 +316,7 @@ msgid "We think that this setup is the perfect environment for an OTOBO installa
 msgstr ""
 
 #: ../content/installation/installation-docker.rst:16
+#: ../content/installation/installation-high-availibility.rst:161
 #: ../content/installation/installation-podman.rst:27
 msgid "Requirements"
 msgstr ""
@@ -1209,6 +1211,1325 @@ msgstr ""
 
 #: ../content/installation/installation-docker.rst:696
 msgid "`Inspect failed builds <https://pythonspeed.com/articles/debugging-docker-build/>`_"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:2
+msgid "High Availability with S3 Storage"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:4
+msgid "This chapter describes how to operate OTOBO on several application nodes, so that the failure of any single server does not interrupt the service. Ticket article contents and attachments as well as the configuration files that OTOBO generates at runtime are kept in an S3 compatible object storage, which is shared by all application nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:7
+msgid "The chapter is written as a tutorial for a concrete reference setup. Host names, IP addresses and sizes are examples and must be adapted to your environment."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:12
+msgid "Operating OTOBO as a cluster is a complex task with many pitfalls. The S3 storage backend of OTOBO is still marked as **experimental**. Please read the section `Limitations`_ before you start, build the setup in a test environment first and test every failover scenario before going live. We strongly advise to get in touch with our experts before implementing this setup in production."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:19
+msgid "Architecture"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:21
+msgid "The reference setup consists of four groups of servers. Every group tolerates the failure of one server."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:49
+msgid "Load balancers (``lb1``, ``lb2``)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:46
+msgid "HAProxy terminates TLS for the users and distributes the requests to the application nodes. For the application nodes it also provides a single entry point to the database, the S3 storage and Elasticsearch. keepalived moves the public and the internal virtual IP address (VIP) to the other load balancer when one fails. Each load balancer also runs a local Redis instance, which serves as the shared OTOBO cache."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:54
+msgid "Application nodes (``app1``, ``app2``, ...)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:52
+msgid "Each node runs the Docker services ``web`` and ``daemon`` of the standard OTOBO Docker setup. The nodes are interchangeable, more nodes can be added at any time. The OTOBO daemon runs on every node, the scheduler makes sure that each task is executed only once."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:58
+msgid "Database nodes (``db1``, ``db2``, ``db3``)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:57
+msgid "A MariaDB Galera cluster with synchronous replication. HAProxy sends all database connections to one Galera node at a time and switches to the next node automatically."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:62
+msgid "Storage nodes (``store1``, ``store2``, ``store3``)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:61
+msgid "`Garage <https://garagehq.deuxfleurs.fr/>`__ provides the S3 compatible object storage, every object is stored on all three nodes. The Elasticsearch cluster for the OTOBO power search runs on the same nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:66
+msgid "Up to 2025 MinIO was the usual choice for self hosted S3 storage. The MinIO community edition is no longer maintained, its repository has been archived in 2026 and there are neither binaries nor container images anymore. Therefore this chapter uses Garage, which is free software (AGPLv3) and designed for small, self hosted clusters. Any other S3 compatible storage which meets the requirements in `Using Another S3 Compatible Storage`_ can be used instead."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:73
+msgid "Where OTOBO Keeps Its Data"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:75
+msgid "In a single server installation OTOBO keeps a lot of data in the file system below ``/opt/otobo``. In a cluster every piece of data that is needed by more than one node must be stored in a shared place. The following table shows where the data is kept in this setup."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:82
+msgid "Galera cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:80
+msgid "tickets, users, system configuration, ACLs, processes, the package repository, statistics, FAQ and CMDB attachments"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:81
+msgid "sessions (``SessionModule``, default: DB)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:82
+msgid "upload cache, the attachments of forms that have not been submitted yet (``WebUploadCacheModule``, default: DB)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:92
+msgid "S3 storage"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:85
+msgid "article bodies (``plain.txt``) and article attachments, below the key ``OTOBO/var/article/<year>/<month>/<day>/<ArticleID>/`` (``Ticket::Article::Backend::MIMEBase::ArticleStorage``)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:87
+msgid "the deployed configuration ``ZZZAAuto.pm``, ``ZZZACL.pm``, ``ZZZProcessManagement.pm`` and the user specific settings ``User/<UserID>.pm``, below the key ``OTOBO/Kernel/Config/Files/``. Every node synchronizes these files into its own ``Kernel/Config/Files`` (``Storage::S3::Active``)."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:89
+msgid "the loader cache, the combined and minified CSS and JavaScript files, below the key ``OTOBO/var/httpd/htdocs/``. Every node fetches missing files on demand (``Storage::S3::Active``)."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:91
+msgid "the notification about installed, upgraded or removed packages, ``OTOBO/Kernel/Config/Files/event_package.json`` (``Package::EventModulePost###9000-SyncWithS3``)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:95
+msgid "Redis on the active load balancer"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:95
+msgid "the OTOBO cache (``Cache::Module``)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:98
+msgid "Elasticsearch cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:98
+msgid "the search index (web service *Elasticsearch*)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:103
+msgid "Each application node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:101
+msgid "``Kernel/Config.pm``, which must be identical on all nodes"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:102
+msgid "the PGP keyring (``/opt/otobo/.gnupg``), S/MIME certificates and keys, which must be imported on every node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:103
+msgid "temporary files (``var/tmp``) and log files (``var/log``), which are not shared"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:107
+msgid "OTOBO does not move its temporary directory ``var/tmp`` to S3. This is not necessary, because all temporary data that must survive a switch to another node is already kept in shared places: sessions and the upload cache in the database, cached data in Redis, and the generated CSS and JavaScript files in S3. What remains in ``var/tmp`` is scratch data of a single request. Therefore the load balancer does not need sticky sessions."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:115
+msgid "How the Synchronization via S3 Works"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:117
+msgid "Knowing the mechanism helps with troubleshooting."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:119
+msgid "The settings ``Storage::S3::*`` are read from ``Kernel/Config.pm`` before any other configuration is loaded. Therefore they must be set in ``Kernel/Config.pm`` and cannot be set in the system configuration."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:121
+msgid "When the system configuration, ACLs or processes are deployed, OTOBO writes the generated Perl modules only to S3. Every time a process reads the configuration, it compares the files in ``Kernel/Config/Files`` with the objects in S3 and downloads newer versions. This happens with every request, so the S3 storage must be reachable with low latency. In addition the daemon module ``SystemConfigurationSyncManager`` checks the latest deployment every minute on every node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:125
+msgid "The loader writes the generated CSS and JavaScript files to S3. When a node receives a request for such a file that does not exist locally, it fetches the file from S3."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:127
+msgid "When a package is installed, upgraded, reinstalled or uninstalled, the event module ``SyncWithS3`` writes the file ``event_package.json`` to S3. In the Docker image the web server is started via ``Plack::Loader::SyncWithS3`` when S3 is active. This loader checks S3 every 10 seconds. When it finds a new package event it runs ``Admin::Package::ReinstallAll`` on its node and restarts the web server gracefully."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:134
+msgid "Limitations"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:136
+msgid "Please check these limitations against your requirements before you decide on this setup. They refer to OTOBO 11.1."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:139
+msgid "The S3 backends are marked as experimental."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:140
+msgid "``ArticleStorageS3`` does not support the article version history. Editing an article in the agent interface (``AgentTicketArticleEdit``) fails, because ``ArticleStorageS3`` does not implement the method ``ArticleMoveFiles()``. Versions of articles keep no attachments, and the objects of deleted articles remain in S3. Disable the frontend module ``AgentTicketArticleEdit`` as described in `Configure OTOBO for the Cluster`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:144
+msgid "Existing articles can only be moved to S3 from ``ArticleStorageDB``. Installations that use ``ArticleStorageFS`` have to move the articles into the database first, see `Migrating an Existing Installation`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:146
+msgid "The settings ``Storage::S3::*``, ``NodeID`` and the database connection are not synchronized. ``Kernel/Config.pm`` must be kept identical on all nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:148
+msgid "PGP keys and S/MIME certificates are stored in the file system of each node. When you use PGP or S/MIME, import the keys and certificates on every node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:150
+msgid "Changes to files in ``/opt/otobo`` that are not made via packages, for example manually copied custom modules, are not synchronized. Deploy all customizations as OTOBO packages."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:152
+msgid "Garage does not support bucket versioning or object locking. Deleted or overwritten objects can only be restored from a backup, see `Backup and Restore`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:154
+msgid "Galera requires a primary key in every table. Some OTOBO tables have no primary key. Galera handles these tables as long as ``wsrep_certify_nonPK`` is enabled (the default), but writes to such tables from several nodes at the same time can lead to inconsistencies. For this reason HAProxy sends all database traffic to a single Galera node at a time."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:164
+#, fuzzy
+#| msgid "Web Server"
+msgid "Servers"
+msgstr "Servidor Web"
+
+#: ../content/installation/installation-high-availibility.rst:170
+msgid "Role"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:171
+#: ../content/installation/installation-high-availibility.rst:229
+msgid "Host name"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:172
+msgid "IP address"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:173
+msgid "Load balancers"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:174
+msgid "``lb1``, ``lb2``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:175
+msgid "``10.10.0.11``, ``10.10.0.12``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:176
+msgid "Internal VIP"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:177
+msgid "``*.otobo.internal``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:178
+#: ../content/installation/installation-high-availibility.rst:236
+#: ../content/installation/installation-high-availibility.rst:239
+#: ../content/installation/installation-high-availibility.rst:242
+#: ../content/installation/installation-high-availibility.rst:245
+msgid "``10.10.0.10``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:179
+msgid "Public VIP"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:180
+#: ../content/installation/installation-high-availibility.rst:232
+msgid "``otobo.example.com``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:181
+#: ../content/installation/installation-high-availibility.rst:233
+msgid "``192.0.2.10``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:182
+#: ../content/installation/installation-high-availibility.rst:266
+msgid "Application nodes"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:183
+msgid "``app1``, ``app2``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:184
+msgid "``10.10.0.21``, ``10.10.0.22``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:185
+#: ../content/installation/installation-high-availibility.rst:270
+#, fuzzy
+#| msgid "Databases"
+msgid "Database nodes"
+msgstr "Base de datos"
+
+#: ../content/installation/installation-high-availibility.rst:186
+msgid "``db1`` - ``db3``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:187
+msgid "``10.10.0.31`` - ``10.10.0.33``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:188
+#: ../content/installation/installation-high-availibility.rst:274
+msgid "Storage nodes"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:189
+msgid "``store1`` - ``store3``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:190
+msgid "``10.10.0.41`` - ``10.10.0.43``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:191
+#, fuzzy
+#| msgid "Backup"
+msgid "Backup server"
+msgstr "Volver"
+
+#: ../content/installation/installation-high-availibility.rst:192
+#, fuzzy
+#| msgid "Backup"
+msgid "``backup``"
+msgstr "Volver"
+
+#: ../content/installation/installation-high-availibility.rst:193
+msgid "``10.10.0.50``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:195
+msgid "Recommended minimum sizes:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:197
+msgid "load balancers: 2 CPU cores, 4 GB RAM"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:198
+msgid "application nodes: 4 CPU cores, 8 GB RAM"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:199
+msgid "database nodes: 4 CPU cores, 16 GB RAM, SSD"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:200
+msgid "storage nodes: 4 CPU cores, 16 GB RAM, SSD for the metadata of Garage and for Elasticsearch, a data disk with XFS for the objects"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:201
+msgid "backup server: space for the database backups and a copy of the S3 bucket"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:203
+msgid "All servers are in the same data center network with low latency. Galera and Garage replicate synchronously, a high latency between the nodes slows down every write."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:207
+msgid "Software"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:209
+msgid "Ubuntu 24.04 LTS or a later LTS release on all servers. Other Linux distributions work as well, but package names and paths differ."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:211
+msgid "Docker Engine and Docker Compose 2.24.4 or newer on the application nodes and the storage nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:212
+msgid "MariaDB with Galera 4 from the distribution or from the MariaDB repository. Use the same MariaDB version on all database nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:214
+msgid "HAProxy 2.8 or newer, keepalived and Redis (or Valkey) on the load balancers."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:215
+msgid "Garage 2.x, OTOBO Elasticsearch image ``rotheross/otobo-elasticsearch`` in the same version as OTOBO."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:216
+msgid "``chrony`` on all servers. Galera, Garage and the request signatures of S3 require synchronized clocks."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:220
+msgid "Host Names"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:222
+msgid "The application nodes reach all backend services via the internal VIP. We use one host name per service, so that a service can be moved to a different address later without changing OTOBO."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:230
+msgid "Address"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:231
+msgid "Service"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:234
+msgid "OTOBO for the users (HTTPS)"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:235
+msgid "``db.otobo.internal``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:237
+msgid "MariaDB via HAProxy, port 3306"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:238
+msgid "``s3.otobo.internal``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:240
+msgid "S3 API via HAProxy, port 3900"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:241
+msgid "``es.otobo.internal``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:243
+msgid "Elasticsearch via HAProxy, port 9200"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:244
+msgid "``redis.otobo.internal``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:246
+msgid "Redis on the active load balancer, port 6379"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:248
+msgid "Add the internal names to your internal DNS. The Docker containers on the application nodes do not use ``/etc/hosts`` of the host. If there is no internal DNS, the Docker Compose extension file from `Create the Docker Compose Extension File`_ adds the names to the containers."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:253
+msgid "Network Ports"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:256
+msgid "Public VIP ``192.0.2.10``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:256
+msgid "80/tcp and 443/tcp from the users, mail servers and API clients."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:260
+msgid "Internal VIP ``10.10.0.10``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:259
+msgid "3306/tcp, 3900/tcp, 6379/tcp and 9200/tcp from the application nodes. 3306/tcp and 3900/tcp also from the backup server."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:263
+msgid "Load balancers ``lb1`` and ``lb2``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:263
+msgid "All traffic, including VRRP, from the other load balancer."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:266
+msgid "80/tcp from ``lb1`` and ``lb2``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:269
+msgid "3306/tcp and 9990/tcp (health check) from ``lb1`` and ``lb2``, 3306/tcp also from the backup server. 4567/tcp, 4567/udp, 4568/tcp and 4444/tcp from the other database nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:273
+msgid "3900/tcp (S3 API), 3903/tcp (Garage health check) and 9200/tcp (Elasticsearch) from ``lb1`` and ``lb2``. 3901/tcp (Garage RPC) and 9300/tcp (Elasticsearch transport) from the other storage nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:276
+msgid "All servers additionally need SSH access from your administration network."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:280
+msgid "1. Prepare All Servers"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:282
+msgid "Run these steps on every server."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:291
+msgid "Configure the firewall according to `Network Ports`_. This is the example for ``db1``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:308
+msgid "Docker publishes container ports directly in iptables, past the rules of ``ufw``. On the application nodes the published OTOBO port is therefore bound to the internal address only (``OTOBO_WEB_HTTP_IPADDR``). Restrict access to it in the network (VLAN, security group) or in the ``DOCKER-USER`` chain, see `Packet filtering and firewalls <https://docs.docker.com/engine/network/packet-filtering-firewalls/>`__ in the Docker documentation. The storage nodes use host networking, there ``ufw`` applies as usual."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:315
+msgid "2. Set Up the MariaDB Galera Cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:318
+msgid "Install MariaDB"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:320
+msgid "On ``db1``, ``db2`` and ``db3``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:328
+msgid "Configure Galera"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:330
+msgid "Create the file ``/etc/mysql/mariadb.conf.d/99-otobo-galera.cnf`` on every database node. Only ``wsrep_node_name`` and ``wsrep_node_address`` differ between the nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:364
+msgid "Also raise ``max_allowed_packet`` for the dump tool in ``/etc/mysql/conf.d/mysqldump.cnf``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:373
+msgid "Current MariaDB packages create the account ``mysql@localhost`` with ``unix_socket`` authentication and all privileges. It is used for the state snapshot transfer, so no password is stored in the configuration. On older installations create it with ``CREATE USER 'mysql'@'localhost' IDENTIFIED VIA unix_socket;`` and grant ``RELOAD, PROCESS, LOCK TABLES, BINLOG MONITOR`` on ``*.*``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:378
+msgid "Bootstrap the Cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:380
+msgid "Start the first node with ``galera_new_cluster``, then start the other two nodes normally."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:390
+msgid "Check the cluster on any node:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:397
+msgid "The expected values are ``3``, ``Primary``, ``Synced`` and ``ON``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:401
+msgid "``galera_new_cluster`` is only used to start a cluster in which no node is running. Never run it while another node of the cluster is up. See `Troubleshooting`_ for restarting a cluster after all nodes were down."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:406
+msgid "Health Check for HAProxy"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:408
+msgid "A Galera node accepts TCP connections even when it is not part of the primary component, but then it refuses all queries. Therefore HAProxy asks a small HTTP service on every database node, which only reports success when the node is synced and writable."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:411
+msgid "Create a database account for the check on one node. The account needs no privileges, because ``SHOW GLOBAL STATUS`` is allowed for every account."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:418
+msgid "Create the system user, the client configuration and the check script on every database node:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:432
+msgid "``/usr/local/bin/galera-health-check``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:459
+msgid "``/etc/systemd/system/galera-health.socket``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:473
+msgid "``/etc/systemd/system/galera-health@.service``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:488
+msgid "Activate the socket and test it:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:498
+msgid "Create the OTOBO Database"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:500
+msgid "Create the database and the database user on any node, Galera replicates both. The database connections of OTOBO arrive from the load balancers, therefore the account is restricted to the internal network. Use the narrowest pattern that matches the addresses of ``lb1`` and ``lb2``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:512
+msgid "The OTOBO installer will later use this existing database, so no remote access for the database root account is necessary."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:516
+msgid "3. Set Up the S3 Storage with Garage"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:518
+msgid "Garage and Elasticsearch run as Docker containers with host networking on the storage nodes. Install Docker on ``store1``, ``store2`` and ``store3``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:526
+msgid "Prepare the Directories"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:528
+msgid "Garage keeps small, frequently used metadata and the data blocks of the objects in separate directories. Put the metadata on an SSD with a robust file system and the data on a large disk formatted with XFS."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:535
+msgid "Generate the shared RPC secret once and use the same value on all three nodes:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:542
+msgid "Configure Garage"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:544
+msgid "Create ``/opt/otobo-store/garage.toml`` on every storage node. The IP addresses are those of the respective node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:571
+msgid "Create ``/opt/otobo-store/compose.yml``. The Elasticsearch service is added to this file in the next section."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:587
+msgid "Start Garage on all three nodes and define a shortcut for the command line tool:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:597
+msgid "Form the Cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:599
+msgid "On ``store1`` connect the other two nodes, using the output of ``garage node id`` on ``store2`` and ``store3``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:607
+msgid "Assign each node a zone and a capacity. With ``replication_factor = 3`` and three zones every object is stored once on every node. The node ID may be abbreviated to its first characters, the capacity is the space Garage may use on the node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:620
+msgid "Create the Bucket and the Access Keys"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:622
+msgid "Create a bucket and an access key for OTOBO. Note the *Key ID* and the *Secret key*, the secret is only shown once."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:631
+msgid "Create a second, read only key for the backup:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:638
+msgid "Check the health endpoint, it must return ``200`` with the text *Garage is fully operational*:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:646
+msgid "Use separate buckets for separate OTOBO systems, for example ``otobo`` for production and ``otobo-test`` for the test system, each with its own key."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:649
+msgid "Using Another S3 Compatible Storage"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:651
+msgid "Instead of Garage you may use another S3 compatible storage, for example Ceph RGW or the object storage of your cloud provider. It must support:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:654
+msgid "path style requests (``http://host:port/bucket/key``) and AWS Signature Version 4 with a configurable region,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:655
+msgid "``ListObjectsV2``, ``PutObject``, ``GetObject``, ``HeadObject`` and ``DeleteObject``,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:656
+msgid "user metadata in ``x-amz-meta-*`` headers,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:657
+msgid "read-after-write consistency, because a node reads the objects that another node has just written,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:658
+msgid "low latency from the application nodes, because the configuration is checked in S3 with every request."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:660
+msgid "``DeleteObjects`` (deleting several objects with one request) is optional, see ``Storage::S3::DeleteMultipleObjectIsSupported`` below. If the storage provides its own highly available endpoint, configure that endpoint in OTOBO and omit the S3 part of the HAProxy configuration."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:665
+msgid "4. Set Up the Elasticsearch Cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:667
+msgid "Elasticsearch needs a larger memory map count on the Docker host. Run this on every storage node:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:675
+msgid "Add the service ``elastic`` to ``/opt/otobo-store/compose.yml`` on every storage node. Use the same image tag as for OTOBO. Adapt ``node.name`` and ``network.host`` per node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:709
+msgid "Start Elasticsearch on all three nodes and check the cluster:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:719
+msgid "After the cluster has formed for the first time, remove ``cluster.initial_master_nodes`` from ``compose.yml`` on all nodes. The setting is only needed for the very first start."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:724
+msgid "5. Set Up the Load Balancers"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:726
+msgid "Run the steps in this section on ``lb1`` and ``lb2``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:729
+msgid "Install the Packages"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:735
+msgid "HAProxy must be able to bind to the virtual IP addresses also on the load balancer that does not hold them at the moment:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:743
+msgid "Configure HAProxy"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:745
+msgid "HAProxy needs the TLS certificate for ``otobo.example.com`` as a single PEM file that contains the certificate, the intermediate certificates and the private key:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:753
+msgid "Replace ``/etc/haproxy/haproxy.cfg`` with the following configuration. It is identical on both load balancers, except for the address of the statistics page at the end."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:873
+msgid "Some remarks about this configuration:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:875
+msgid "HAProxy sets ``X-Forwarded-Host``, ``X-Forwarded-Proto`` and ``X-Forwarded-For``. OTOBO then sees the real client address and the public URL. This keeps the setting ``SessionCheckRemoteIP`` working, and sessions survive the switch to another application node or another load balancer."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:878
+msgid "The application nodes are checked via ``/health``, which is delivered by the OTOBO web server itself."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:879
+msgid "``stick on dst`` makes HAProxy stay on the Galera node it switched to. Without it, all connections would move back to ``db1`` as soon as ``db1`` is healthy again."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:881
+msgid "``on-marked-down shutdown-sessions`` closes the connections to a failed database node, so that OTOBO reconnects to the next node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:882
+msgid "The S3 traffic is passed through as TCP. The request signatures of S3 contain the host name, a proxy must not change the requests."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:885
+msgid "Check the configuration and restart HAProxy:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:894
+msgid "Configure Redis"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:896
+msgid "Each load balancer runs its own Redis instance. OTOBO always uses the instance on the load balancer that holds the internal VIP. Redis serves only as a cache here: it keeps no data on disk, and its content is deleted on every change of the VRRP state. So a load balancer never delivers cache entries that were not invalidated while the other load balancer was active."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:901
+msgid "Append the following lines to ``/etc/redis/redis.conf``. Later lines override earlier ones."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:918
+msgid "OTOBO connects to Redis without a password. Port 6379 must only be reachable from the application nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:929
+msgid "Valkey can be used instead of Redis, the configuration is the same."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:932
+msgid "Configure keepalived"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:934
+msgid "keepalived assigns both VIPs to the active load balancer. In this example ``eth0`` is the public interface and ``eth1`` the internal interface."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:937
+msgid "``/etc/keepalived/keepalived.conf`` on ``lb1``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:991
+msgid "On ``lb2`` use ``router_id lb2``, ``priority 100``, ``unicast_src_ip 10.10.0.12`` and ``10.10.0.11`` as ``unicast_peer``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:993
+msgid "``/etc/keepalived/otobo-notify.sh``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1013
+msgid "Allow the VRRP traffic between the load balancers, for example on ``lb1``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1019
+msgid "Test the failover: stop HAProxy on ``lb1``, the VIPs must move to ``lb2`` within a few seconds. Start HAProxy again, the VIPs move back to ``lb1``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1031
+msgid "6. Set Up the OTOBO Application Nodes"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1033
+msgid "The application nodes use the standard OTOBO Docker setup, see :doc:`/content/installation/installation-docker`. Only the services ``web`` and ``daemon`` run on these nodes. An additional Docker Compose extension file disables the local database and Elasticsearch and passes the node number to OTOBO."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1038
+msgid "Install Docker and otobo-docker"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1040
+msgid "Run these steps on every application node. All nodes must use the same tag of ``otobo-docker`` and the same image versions."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1052
+msgid "Create the Docker Compose Extension File"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1054
+msgid "Create ``/opt/otobo-docker/docker-compose/otobo-override-cluster.yml``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1102
+msgid "Configure ``.env``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1104
+msgid "Adapt these variables in ``/opt/otobo-docker/.env``. ``OTOBO_WEB_HTTP_IPADDR`` and ``OTOBO_NODE_ID`` differ between the nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1120
+msgid "Check the result, only the services ``web`` and ``daemon`` must be listed:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1127
+msgid "Install OTOBO on the First Node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1129
+msgid "Start the containers on ``app1`` only:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1137
+msgid "Run the installer directly on the node at ``http://10.10.0.21/otobo/installer.pl``. The installation via the load balancer is not possible yet, because ``app2`` has not been set up."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1140
+msgid "Choose *MySQL* and *Use an existing database for OTOBO*."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1141
+msgid "Host: ``db.otobo.internal``, database ``otobo``, user ``otobo`` and the password from `Create the OTOBO Database`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1142
+msgid "System settings: HTTP type ``https`` and FQDN ``otobo.example.com``, the public name of the cluster."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1144
+msgid "The installer can not reach Elasticsearch and disables the web service *Elasticsearch*. It is configured in `Connect Elasticsearch`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1148
+msgid "Add the Cluster Settings to ``Kernel/Config.pm``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1150
+msgid "The installer has written the database connection to ``Kernel/Config.pm``. Copy the file to the host, add the cluster settings and copy it back. Keep this file as the master copy for all nodes, for example in ``/opt/otobo-cluster/Config.pm`` under version control."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1159
+msgid "Add the following block to the method ``Load()`` in ``/opt/otobo-cluster/Config.pm``, in the section for your own config settings. Use the key of the account ``otobo-app`` from `Create the Bucket and the Access Keys`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1189
+msgid "Copy the file back into the container and restart the services. The web server must be restarted, because the start script activates the S3 synchronization only when S3 is active at startup."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1200
+msgid "Settings in ``Kernel/Config.pm`` override the system configuration. Put only settings into this file that are needed before the system configuration is loaded or that differ per node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1204
+msgid "Write the Configuration to S3"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1206
+msgid "Deploy the configuration, ACLs and processes once, so that the generated files are stored in S3. Then remove the old loader files and the cache."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1215
+msgid "On a storage node the bucket now contains objects:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1222
+msgid "Configure OTOBO for the Cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1224
+msgid "Change the following system configuration settings. Each command deploys the change, which is then synchronized to all nodes via S3."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1228
+msgid "``Cache::Redis###Server``: ``redis.otobo.internal:6379``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1228
+msgid "The shared cache on the active load balancer."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1231
+msgid "``Cache::Redis###RedisFast``: enabled"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1231
+msgid "The faster Redis client, which is included in the Docker image."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1234
+msgid "``Cache::Module``: ``Kernel::System::Cache::Redis``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1234
+msgid "Use Redis instead of the local file cache of each node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1237
+msgid "``Ticket::Article::Backend::MIMEBase::ArticleStorage``: ``Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageS3``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1237
+msgid "Store the article data in S3."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1240
+msgid "``Package::EventModulePost###9000-SyncWithS3``: enabled"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1240
+msgid "Reinstall installed or upgraded packages on the other nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1243
+msgid "``Frontend::Module###AgentTicketArticleEdit``: disabled"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1243
+msgid "Editing articles is not supported with the S3 backend, see `Limitations`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1261
+msgid "Do not activate the daemon module ``DaemonModules###SyncWithS3``. It is meant for nodes that run only the daemon without a web server. In this setup ``web`` and ``daemon`` share the volume ``/opt/otobo``, and the web server already reinstalls the packages."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1266
+msgid "Move the Initial Articles to S3"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1268
+msgid "The installer has created a welcome ticket whose article is stored in the database. Move it to S3:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1276
+msgid "Connect Elasticsearch"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1278
+msgid "In the admin interface open *Web Services*, select *Elasticsearch* and open the configuration of the requester network transport *HTTP::REST*. Set the endpoint to ``http://es.otobo.internal:9200`` and save."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1280
+msgid "In the system configuration enable ``Elasticsearch::IndexSettings###Default`` and set ``NR`` (number of replicas) to ``1``. With one replica every shard exists on two of the three Elasticsearch nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1282
+msgid "Create the indices, transfer the data and activate Elasticsearch:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1290
+msgid "Add the Further Nodes"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1292
+msgid "Set up ``app2`` and every further node as described in `Install Docker and otobo-docker`_, `Create the Docker Compose Extension File`_ and `Configure .env`_, with its own ``OTOBO_WEB_HTTP_IPADDR`` and ``OTOBO_NODE_ID``. Then copy ``/opt/otobo-cluster/Config.pm`` from ``app1`` to the node and run:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1310
+msgid "The node downloads the generated configuration from S3 with the first request. As soon as ``/health`` answers, HAProxy adds the node to the pool."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1315
+msgid "7. Verify the Setup"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1317
+msgid "Check the normal operation first:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1319
+msgid "Log in at ``https://otobo.example.com/otobo/index.pl``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1320
+msgid "Create a ticket with an attachment, then open the attachment."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1321
+msgid "Check on every application node that the OTOBO daemon is running: ``docker compose exec daemon bin/otobo.Daemon.pl status``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1322
+msgid "Change the system configuration setting ``ProductName`` and check that the new name appears in the browser title on all nodes within a minute. You can reach a single node directly at ``http://10.10.0.21/otobo/index.pl`` from the internal network."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1324
+msgid "Check the statistics page of HAProxy at ``http://10.10.0.11:8404/``: all servers are *UP*, ``db2``, ``db3`` are marked as backup."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1326
+msgid "Then test every failover scenario while a user is logged in and works in the agent interface. After each test the user must be able to continue without logging in again."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1330
+msgid "``docker compose stop web`` on ``app1``"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1330
+msgid "HAProxy marks ``app1`` as *DOWN* after about 15 seconds, all requests go to ``app2``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1334
+msgid "``systemctl stop mariadb`` on the active Galera node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1333
+msgid "HAProxy switches to the next Galera node, OTOBO reconnects. After the start, the node rejoins the cluster via IST or SST and remains a backup node in HAProxy."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1338
+msgid "``docker compose stop garage`` on one storage node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1337
+msgid "Attachments can still be read and written. ``/health`` reports that some storage nodes are unavailable."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1341
+msgid "``docker compose stop elastic`` on one storage node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1341
+msgid "The search still works, the cluster status is *yellow*."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1344
+msgid "``systemctl stop haproxy`` on the active load balancer"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1344
+msgid "Both VIPs move to the other load balancer, the cache is empty for a moment."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1348
+msgid "Power off an application node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1347
+msgid "The scheduled tasks of the daemon continue on the remaining nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1351
+msgid "Operating the Cluster"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1354
+msgid "Configuration Changes"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1356
+msgid "System configuration, ACLs, processes and personal settings of the agents can be changed and deployed on any node as usual. The other nodes load the new files from S3 automatically."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1359
+msgid "Changes to ``Kernel/Config.pm`` are not synchronized. Change the master copy, copy it to all nodes as described in `Add the Further Nodes`_ and restart ``web`` and ``daemon`` on every node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1363
+msgid "Installing, Upgrading and Removing Packages"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1365
+msgid "Install or upgrade the package on any node, via the package manager in the admin interface or via ``Admin::Package::Install``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1366
+msgid "Within about 10 seconds the web servers of the other nodes reinstall the package and restart. Follow this with ``docker compose logs --follow web`` on the other nodes, look for ``a new package event was detected``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1368
+msgid "Restart the daemon on all nodes, so that it loads the new code: ``docker compose restart daemon``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1370
+msgid "When a package is **uninstalled**, the other nodes do not remove its files, because they only reinstall packages that are still in the package repository. Rebuild the other nodes as described in `Rebuilding a Node`_ after uninstalling a package."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1374
+msgid "Rebuilding a Node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1376
+msgid "An application node keeps no data that is not also in the database, in S3 or in ``/opt/otobo-cluster/Config.pm``. A node with problems can therefore be rebuilt from scratch. The other nodes keep serving the users meanwhile."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1386
+msgid "Then continue with the commands in `Add the Further Nodes`_, starting with ``docker compose up --detach``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1389
+#: ../content/updating.rst:2
+msgid "Updating OTOBO"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1391
+msgid "Please read the chapter :doc:`/content/updating` and the instructions for updating a Docker based installation first. In a cluster the update is performed on one node, the other nodes are rebuilt with the new version."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1394
+msgid "Create a backup, see `Backup and Restore`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1395
+msgid "Stop OTOBO on all nodes except ``app1`` with ``docker compose down``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1396
+msgid "On all nodes update ``otobo-docker`` to the new tag and set the new image versions in ``.env``, as described in the update chapter."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1397
+msgid "On ``app1`` run ``./scripts/update.sh``. The script updates the database, reinstalls the packages and writes the new configuration to S3."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1399
+msgid "Rebuild every other node as described in `Rebuilding a Node`_. Thereby the database migration does not run a second time."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1401
+msgid "Update the image of the service ``elastic`` on the storage nodes one node at a time. Wait until the cluster status is *green* again before you continue with the next node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1406
+msgid "The update from OTOBO 11.0 to 11.1 resets ``Cache::Module`` to the file cache. After such an upgrade set ``Cache::Module`` to ``Kernel::System::Cache::Redis`` again."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1412
+msgid "The script ``scripts/backup.pl`` of a single server installation does not cover this setup, because the article data is stored in S3. Back up these parts, in this order:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1415
+msgid "**Database**: run ``mariadb-backup`` or ``mariadb-dump --single-transaction --max-allowed-packet=64M otobo`` on a Galera node that is currently not the active node in HAProxy, for example ``db3``, and copy the result to the backup server."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1416
+msgid "**S3 bucket**: copy the bucket with ``rclone`` to the backup server, using the read only key ``otobo-backup``. With ``--backup-dir`` rclone keeps objects that have been deleted or changed since the last run, so that a restored database never references a missing object."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1418
+msgid "**Configuration**: ``/opt/otobo-cluster/Config.pm``, ``.env`` and ``otobo-override-cluster.yml`` of the application nodes, ``garage.toml`` and ``compose.yml`` of the storage nodes, the configuration of HAProxy and keepalived, the TLS certificate."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1420
+msgid "Example configuration of rclone on the backup server, ``~/.config/rclone/rclone.conf``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1438
+msgid "Garage writes a snapshot of its metadata every six hours (``metadata_auto_snapshot_interval``). The Elasticsearch indices need no backup, they can be rebuilt with ``Maint::Elasticsearch::Migration``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1441
+msgid "For a restore, import the database into the Galera cluster, copy the S3 backup into an empty bucket with ``rclone copy`` using a key with write access, and rebuild the application nodes."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1444
+msgid "Monitoring"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1446
+msgid "Monitor at least:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1448
+msgid "the HAProxy statistics page or ``echo 'show stat' | sudo socat stdio /run/haproxy/admin.sock`` on both load balancers,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1449
+msgid "the state of keepalived (``journalctl -u keepalived``) and the location of the VIPs,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1450
+msgid "the Galera status variables ``wsrep_cluster_size``, ``wsrep_cluster_status`` and ``wsrep_local_state_comment`` on every database node,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1451
+msgid "``http://<storage node>:3903/health`` and the Prometheus metrics at ``/metrics`` of Garage,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1452
+msgid "``_cluster/health`` of Elasticsearch,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1453
+msgid "the Support Data Collector and the log file ``var/log/otobo.log`` on every application node,"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1454
+msgid "the free disk space on all nodes, especially the data disks of Garage and Elasticsearch."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1458
+msgid "Migrating an Existing Installation"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1460
+msgid "An existing single server installation can be moved into the cluster:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1462
+msgid "Update the installation to the current patch level of OTOBO 11.1."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1463
+msgid "Build the cluster as described above, but do not run the installer."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1464
+msgid "Stop OTOBO, create a dump of the database and import it into the Galera cluster. Galera replicates only InnoDB tables, check for other storage engines with ``Maint::Database::Check`` and convert MyISAM tables with ``Maint::Database::MySQL::InnoDBMigration`` before the dump."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1467
+msgid "Set up ``app1`` with the ``Kernel/Config.pm`` of the old installation, adapted as described in `Add the Cluster Settings to Kernel/Config.pm`_. Install the packages with ``Admin::Package::ReinstallAll`` and continue with `Write the Configuration to S3`_ and `Configure OTOBO for the Cluster`_."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1469
+msgid "Move the existing articles to S3. During the migration enable ``Ticket::Article::Backend::MIMEBase::CheckAllStorageBackends``, so that OTOBO finds article data in every backend."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1472
+msgid "If the old installation uses ``ArticleStorageDB``:"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1480
+msgid "If the old installation uses ``ArticleStorageFS``, copy the article directory (``var/article``) of the old installation into the volume of ``app1`` and move the articles into the database first. The database grows temporarily by the size of all attachments. For large installations do this in several steps with the option ``--tickets-closed-before-days``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1489
+msgid "When all articles have been moved, disable ``CheckAllStorageBackends`` again and remove the old article directory. Finally rebuild the Elasticsearch indices with ``Maint::Elasticsearch::Migration``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1494
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1497
+msgid "Restart the Galera Cluster After All Nodes Were Down"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1499
+msgid "When all database nodes were stopped, the cluster must be bootstrapped again from the node with the most recent data. Check ``/var/lib/mysql/grastate.dat`` on all nodes. After a clean shutdown the last node that was stopped has ``safe_to_bootstrap: 1``. After a crash compare the value ``seqno``, or determine it with ``sudo -u mysql mariadbd --wsrep-recover`` when it is ``-1``."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1512
+msgid "Configuration Changes Do Not Reach a Node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1514
+msgid "Check the clock of the node with ``chronyc tracking``. S3 storages reject requests whose signature time deviates too much from their own clock (AWS: 15 minutes)."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1515
+msgid "Check that ``s3.otobo.internal`` is reachable from the container: ``docker compose exec web curl -s -o /dev/null -w '%{http_code}\\n' http://s3.otobo.internal:3900/``. Any HTTP status code, even ``403``, shows that the S3 API answers."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1517
+msgid "Look for S3 error messages in ``var/log/otobo.log`` of the node."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1518
+msgid "Compare ``Kernel/Config/Files/ZZZAAuto.pm`` of the node with the object in S3, for example by the time of the last change."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1521
+msgid "Packages Are Not Reinstalled on a Node"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1523
+msgid "The package synchronization only runs when ``Storage::S3::Active`` was set when the container ``web`` was started. Restart ``web``, check the output of ``docker compose logs web`` and run ``Admin::Package::ReinstallAll`` manually if necessary."
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1527
+msgid "Outdated Data After a Failover of the Load Balancers"
+msgstr ""
+
+#: ../content/installation/installation-high-availibility.rst:1529
+msgid "Check with ``journalctl -t otobo-notify`` that the Redis cache was flushed on the state change. The cache can be deleted at any time with ``docker compose exec web bin/otobo.Console.pl Maint::Cache::Delete``."
 msgstr ""
 
 #: ../content/installation/installation-podman.rst:2
@@ -4256,10 +5577,6 @@ msgstr ""
 
 #: ../content/sso-kerberos-native.rst:375
 msgid "In the browser address line, open ``about:config`` and change the following settings:"
-msgstr ""
-
-#: ../content/updating.rst:2
-msgid "Updating OTOBO"
 msgstr ""
 
 #: ../content/updating.rst:4
