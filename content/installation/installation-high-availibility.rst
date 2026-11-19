@@ -1,5 +1,5 @@
-High Availability with S3 Storage
-=================================
+OTOBO Installation with High Availability
+=========================================
 
 This chapter describes how to operate OTOBO on several application nodes, so that the failure of any single server does not interrupt the service.
 Ticket article contents and attachments as well as the configuration files that OTOBO generates at runtime are kept in an S3 compatible object storage, which is shared by all application nodes.
@@ -52,6 +52,7 @@ Application nodes (``app1``, ``app2``, ...)
     Each node runs the Docker services ``web`` and ``daemon`` of the standard OTOBO Docker setup.
     The nodes are interchangeable, more nodes can be added at any time.
     The OTOBO daemon runs on every node, the scheduler makes sure that each task is executed only once.
+    See `The OTOBO Daemon in a Cluster`_.
 
 Database nodes (``db1``, ``db2``, ``db3``)
     A MariaDB Galera cluster with synchronous replication.
@@ -100,6 +101,7 @@ Elasticsearch cluster
 Each application node
     * ``Kernel/Config.pm``, which must be identical on all nodes
     * the PGP keyring (``/opt/otobo/.gnupg``), S/MIME certificates and keys, which must be imported on every node
+    * emails that could not be imported when they were fetched (``var/spool``), see `Step 16: Reprocess Spooled Emails on Every Node`_
     * temporary files (``var/tmp``) and log files (``var/log``), which are not shared
 
 .. note::
@@ -130,6 +132,71 @@ Knowing the mechanism helps with troubleshooting.
   When it finds a new package event it runs ``Admin::Package::ReinstallAll`` on its node and restarts the web server gracefully.
 
 
+The OTOBO Daemon in a Cluster
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The OTOBO daemon runs on every application node at the same time.
+The nodes do not communicate with each other directly.
+They coordinate via tables in the shared database.
+Each task is locked with a key that consists of the ``NodeID`` and the process ID of the locking process.
+Only the process that obtains the lock executes the task.
+
+``SchedulerCronTaskManager`` and ``SchedulerGenericAgentTaskManager``
+    Every node calculates which cron tasks and scheduled GenericAgent jobs are due.
+    All nodes then try to lock the entry of the task in the table ``scheduler_recurrent_task``.
+    Only the node that obtains the lock creates a worker task for this point in time.
+    The other nodes recognize from ``last_execution_time`` that it has already been handled.
+    So each cron task, for example ``MailAccountFetch`` or ``EscalationCheck``, runs once per scheduled time in the whole cluster.
+
+``SchedulerFutureTaskManager``
+    One node locks the due tasks in the table ``scheduler_future_task`` and moves them to the table ``scheduler_task``.
+
+``SchedulerTaskWorker``
+    Every node reads the unlocked tasks from the table ``scheduler_task`` and starts a worker process for each of them.
+    The worker locks the task, a worker that comes too late terminates.
+    This also covers the asynchronous tasks that the web interface creates, for example for GenericInterface invokers.
+    The setting ``Daemon::SchedulerTaskWorker::MaximumWorkers`` applies per node, so the capacity grows with every node.
+
+``SystemConfigurationSyncManager``
+    Runs on every node on purpose and synchronizes the deployed configuration of this node.
+
+When a node fails, the other nodes release its locks.
+A running worker refreshes the lock of its task every minute.
+A task lock that has not been refreshed for five minutes is released, locks of recurring tasks are released after one minute.
+Cron tasks are created with a single attempt.
+A cron task that was interrupted is not repeated, it runs again at its next scheduled time.
+Tasks with more attempts are executed again.
+
+.. important::
+
+   Every application node must have its own ``NodeID``.
+   In Docker every container has its own process IDs, so the same process ID can occur on several nodes at the same time.
+   If two nodes had the same ``NodeID``, their lock keys could be identical, and a task could be executed twice.
+
+   The services ``web`` and ``daemon`` of a node must use the same ``NodeID``.
+   The daemon reports its state in the cache under this number.
+   The web interface uses this report for the notification that the daemon is not running and for the Support Data Collector.
+   The Docker Compose extension file from `Step 7: Create the Docker Compose Extension File`_ passes ``OTOBO_NODE_ID`` to both services.
+
+Further requirements for the daemon:
+
+* The clocks of all servers are synchronized.
+  Every node calculates the due cron tasks itself, and the age of a lock is compared with a time stamp that was set by the database.
+* All nodes run the same code, because a task can be executed on any node.
+  Restart the daemon on all nodes after a package has been installed, see `Installing, Upgrading and Removing Packages`_.
+* All database connections go to one Galera node.
+  Then the lock via ``UPDATE ... WHERE lock_key = 0`` works like on a single database server.
+
+Most cron tasks work only with the database, S3 or Redis, so it does not matter on which node they run.
+Two of them handle files of the node:
+
+* ``SpoolMailsReprocess`` imports emails that could not be imported when they were fetched.
+  These emails are stored in ``var/spool`` of the node that fetched them, but the cron task runs on any node.
+  Therefore this setup reprocesses the spooled emails on every node separately, see `Step 16: Reprocess Spooled Emails on Every Node`_.
+* ``LoaderCacheDelete`` deletes the loader files in S3, but the local copies only on the node where it runs.
+  The remaining local copies are harmless and disappear when the node is rebuilt.
+
+
 Limitations
 ~~~~~~~~~~~
 
@@ -140,7 +207,7 @@ They refer to OTOBO 11.1.
 * ``ArticleStorageS3`` does not support the article version history.
   Editing an article in the agent interface (``AgentTicketArticleEdit``) fails, because ``ArticleStorageS3`` does not implement the method ``ArticleMoveFiles()``.
   Versions of articles keep no attachments, and the objects of deleted articles remain in S3.
-  Disable the frontend module ``AgentTicketArticleEdit`` as described in `Configure OTOBO for the Cluster`_.
+  Disable the frontend module ``AgentTicketArticleEdit`` as described in `Step 12: Configure OTOBO for the Cluster`_.
 * Existing articles can only be moved to S3 from ``ArticleStorageDB``.
   Installations that use ``ArticleStorageFS`` have to move the articles into the database first, see `Migrating an Existing Installation`_.
 * The settings ``Storage::S3::*``, ``NodeID`` and the database connection are not synchronized.
@@ -247,7 +314,7 @@ We use one host name per service, so that a service can be moved to a different 
 
 Add the internal names to your internal DNS.
 The Docker containers on the application nodes do not use ``/etc/hosts`` of the host.
-If there is no internal DNS, the Docker Compose extension file from `Create the Docker Compose Extension File`_ adds the names to the containers.
+If there is no internal DNS, the Docker Compose extension file from `Step 7: Create the Docker Compose Extension File`_ adds the names to the containers.
 
 Network Ports
 ~~~~~~~~~~~~~
@@ -276,8 +343,8 @@ Storage nodes
 All servers additionally need SSH access from your administration network.
 
 
-1. Prepare All Servers
-----------------------
+Step 1: Prepare All Servers
+---------------------------
 
 Run these steps on every server.
 
@@ -311,8 +378,8 @@ This is the example for ``db1``:
    The storage nodes use host networking, there ``ufw`` applies as usual.
 
 
-2. Set Up the MariaDB Galera Cluster
-------------------------------------
+Step 2: Set Up the MariaDB Galera Cluster
+-----------------------------------------
 
 Install MariaDB
 ~~~~~~~~~~~~~~~
@@ -512,8 +579,8 @@ Use the narrowest pattern that matches the addresses of ``lb1`` and ``lb2``.
 The OTOBO installer will later use this existing database, so no remote access for the database root account is necessary.
 
 
-3. Set Up the S3 Storage with Garage
-------------------------------------
+Step 3: Set Up the S3 Storage with Garage
+-----------------------------------------
 
 Garage and Elasticsearch run as Docker containers with host networking on the storage nodes.
 Install Docker on ``store1``, ``store2`` and ``store3``:
@@ -661,8 +728,8 @@ It must support:
 If the storage provides its own highly available endpoint, configure that endpoint in OTOBO and omit the S3 part of the HAProxy configuration.
 
 
-4. Set Up the Elasticsearch Cluster
------------------------------------
+Step 4: Set Up the Elasticsearch Cluster
+----------------------------------------
 
 Elasticsearch needs a larger memory map count on the Docker host.
 Run this on every storage node:
@@ -720,8 +787,8 @@ Start Elasticsearch on all three nodes and check the cluster:
    The setting is only needed for the very first start.
 
 
-5. Set Up the Load Balancers
-----------------------------
+Step 5: Set Up the Load Balancers
+---------------------------------
 
 Run the steps in this section on ``lb1`` and ``lb2``.
 
@@ -1027,15 +1094,12 @@ Start HAProxy again, the VIPs move back to ``lb1``.
    journalctl -t otobo-notify       # the state changes and cache flushes are logged
 
 
-6. Set Up the OTOBO Application Nodes
--------------------------------------
+Step 6: Install Docker and otobo-docker on the Application Nodes
+----------------------------------------------------------------
 
 The application nodes use the standard OTOBO Docker setup, see :doc:`/content/installation/installation-docker`.
 Only the services ``web`` and ``daemon`` run on these nodes.
 An additional Docker Compose extension file disables the local database and Elasticsearch and passes the node number to OTOBO.
-
-Install Docker and otobo-docker
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run these steps on every application node.
 All nodes must use the same tag of ``otobo-docker`` and the same image versions.
@@ -1048,8 +1112,8 @@ All nodes must use the same tag of ``otobo-docker`` and the same image versions.
    cd /opt/otobo-docker
    sudo cp -p .docker_compose_env_http .env
 
-Create the Docker Compose Extension File
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 7: Create the Docker Compose Extension File
+------------------------------------------------
 
 Create ``/opt/otobo-docker/docker-compose/otobo-override-cluster.yml``:
 
@@ -1098,8 +1162,8 @@ Create ``/opt/otobo-docker/docker-compose/otobo-override-cluster.yml``:
          OTOBO_NODE_ID: ${OTOBO_NODE_ID:?err}
        extra_hosts: *otobo-cluster-hosts
 
-Configure ``.env``
-~~~~~~~~~~~~~~~~~~
+Step 8: Configure the ``.env`` File
+-----------------------------------
 
 Adapt these variables in ``/opt/otobo-docker/.env``.
 ``OTOBO_WEB_HTTP_IPADDR`` and ``OTOBO_NODE_ID`` differ between the nodes.
@@ -1123,8 +1187,8 @@ Check the result, only the services ``web`` and ``daemon`` must be listed:
 
    docker compose config --services
 
-Install OTOBO on the First Node
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 9: Install OTOBO on the First Node
+---------------------------------------
 
 Start the containers on ``app1`` only:
 
@@ -1142,10 +1206,10 @@ The installation via the load balancer is not possible yet, because ``app2`` has
 * System settings: HTTP type ``https`` and FQDN ``otobo.example.com``, the public name of the cluster.
 
 The installer can not reach Elasticsearch and disables the web service *Elasticsearch*.
-It is configured in `Connect Elasticsearch`_.
+It is configured in `Step 14: Connect Elasticsearch`_.
 
-Add the Cluster Settings to ``Kernel/Config.pm``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 10: Add the Cluster Settings to ``Kernel/Config.pm``
+---------------------------------------------------------
 
 The installer has written the database connection to ``Kernel/Config.pm``.
 Copy the file to the host, add the cluster settings and copy it back.
@@ -1200,8 +1264,8 @@ The web server must be restarted, because the start script activates the S3 sync
    Settings in ``Kernel/Config.pm`` override the system configuration.
    Put only settings into this file that are needed before the system configuration is loaded or that differ per node.
 
-Write the Configuration to S3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 11: Write the Configuration to S3
+--------------------------------------
 
 Deploy the configuration, ACLs and processes once, so that the generated files are stored in S3.
 Then remove the old loader files and the cache.
@@ -1218,8 +1282,8 @@ On a storage node the bucket now contains objects:
 
    garage bucket info otobo
 
-Configure OTOBO for the Cluster
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 12: Configure OTOBO for the Cluster
+----------------------------------------
 
 Change the following system configuration settings.
 Each command deploys the change, which is then synchronized to all nodes via S3.
@@ -1262,8 +1326,8 @@ Each command deploys the change, which is then synchronized to all nodes via S3.
    It is meant for nodes that run only the daemon without a web server.
    In this setup ``web`` and ``daemon`` share the volume ``/opt/otobo``, and the web server already reinstalls the packages.
 
-Move the Initial Articles to S3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 13: Move the Initial Articles to S3
+----------------------------------------
 
 The installer has created a welcome ticket whose article is stored in the database.
 Move it to S3:
@@ -1272,8 +1336,8 @@ Move it to S3:
 
    docker compose exec web bin/otobo.Console.pl Admin::Article::StorageSwitch --target ArticleStorageS3
 
-Connect Elasticsearch
-~~~~~~~~~~~~~~~~~~~~~
+Step 14: Connect Elasticsearch
+------------------------------
 
 #. In the admin interface open *Web Services*, select *Elasticsearch* and open the configuration of the requester network transport *HTTP::REST*.
    Set the endpoint to ``http://es.otobo.internal:9200`` and save.
@@ -1286,10 +1350,10 @@ Connect Elasticsearch
       docker compose exec web bin/otobo.Console.pl Maint::Elasticsearch::Migration
       docker compose exec web bin/otobo.Console.pl Admin::Config::Update --setting-name 'Elasticsearch::Active' --valid 1
 
-Add the Further Nodes
-~~~~~~~~~~~~~~~~~~~~~
+Step 15: Add the Further Application Nodes
+------------------------------------------
 
-Set up ``app2`` and every further node as described in `Install Docker and otobo-docker`_, `Create the Docker Compose Extension File`_ and `Configure .env`_, with its own ``OTOBO_WEB_HTTP_IPADDR`` and ``OTOBO_NODE_ID``.
+Set up ``app2`` and every further node as described in `Step 6: Install Docker and otobo-docker on the Application Nodes`_ to `Step 8: Configure the .env File`_, with its own ``OTOBO_WEB_HTTP_IPADDR`` and ``OTOBO_NODE_ID``.
 Then copy ``/opt/otobo-cluster/Config.pm`` from ``app1`` to the node and run:
 
 .. code-block:: bash
@@ -1309,10 +1373,36 @@ Then copy ``/opt/otobo-cluster/Config.pm`` from ``app1`` to the node and run:
 
 The node downloads the generated configuration from S3 with the first request.
 As soon as ``/health`` answers, HAProxy adds the node to the pool.
+Finally create the cron job from `Step 16: Reprocess Spooled Emails on Every Node`_ on the node.
+
+Step 16: Reprocess Spooled Emails on Every Node
+-----------------------------------------------
+
+When an email can not be imported after it has been fetched, OTOBO stores it in ``var/spool`` of the node that fetched it.
+The cron task ``SpoolMailsReprocess`` of the daemon runs on any node and would only find the emails of its own node.
+Therefore disable this cron task once, the change applies to all nodes:
+
+.. code-block:: bash
+
+   docker compose exec web bin/otobo.Console.pl Admin::Config::Update \
+       --setting-name 'Daemon::SchedulerCronTaskManager::Task###SpoolMailsReprocess' --valid 0
+
+Instead create a cron job on every application node.
+It reprocesses the spooled emails of this node at the time the cron task of the daemon would run.
+The output is written to the system log.
+
+``/etc/cron.d/otobo-spool-mails``:
+
+.. code-block:: none
+
+   # Reprocess the emails that could not be imported and are stored in var/spool of this node.
+   10 0 * * * root cd /opt/otobo-docker && /usr/bin/docker compose exec -T daemon bin/otobo.Console.pl Maint::PostMaster::SpoolMailsReprocess 2>&1 | /usr/bin/logger -t otobo-spool-mails
+
+Spooled emails are also reported by the Support Data Collector of the node.
 
 
-7. Verify the Setup
--------------------
+Step 17: Verify the Setup
+-------------------------
 
 Check the normal operation first:
 
@@ -1345,6 +1435,7 @@ After each test the user must be able to continue without logging in again.
 
 Power off an application node
     The scheduled tasks of the daemon continue on the remaining nodes.
+    Tasks that were running on the switched off node are released after five minutes.
 
 
 Operating the Cluster
@@ -1357,7 +1448,7 @@ System configuration, ACLs, processes and personal settings of the agents can be
 The other nodes load the new files from S3 automatically.
 
 Changes to ``Kernel/Config.pm`` are not synchronized.
-Change the master copy, copy it to all nodes as described in `Add the Further Nodes`_ and restart ``web`` and ``daemon`` on every node.
+Change the master copy, copy it to all nodes as described in `Step 15: Add the Further Application Nodes`_ and restart ``web`` and ``daemon`` on every node.
 
 Installing, Upgrading and Removing Packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1373,17 +1464,26 @@ Rebuild the other nodes as described in `Rebuilding a Node`_ after uninstalling 
 Rebuilding a Node
 ~~~~~~~~~~~~~~~~~
 
-An application node keeps no data that is not also in the database, in S3 or in ``/opt/otobo-cluster/Config.pm``.
-A node with problems can therefore be rebuilt from scratch.
-The other nodes keep serving the users meanwhile.
+Apart from spooled emails, an application node keeps no data that is not also in the database, in S3 or in ``/opt/otobo-cluster/Config.pm``.
+A node with problems can therefore be rebuilt from scratch, while the other nodes keep serving the users.
+
+First reprocess the spooled emails of the node and check that the directory ``var/spool`` is empty.
+Otherwise these emails are lost together with the volume.
 
 .. code-block:: bash
 
    cd /opt/otobo-docker
+   docker compose exec daemon bin/otobo.Console.pl Maint::PostMaster::SpoolMailsReprocess
+   docker compose exec daemon ls -A var/spool    # must not list any file
+
+Then remove the containers and the volume:
+
+.. code-block:: bash
+
    docker compose down
    docker volume rm otobo_opt_otobo
 
-Then continue with the commands in `Add the Further Nodes`_, starting with ``docker compose up --detach``.
+Then continue with the commands in `Step 15: Add the Further Application Nodes`_, starting with ``docker compose up --detach``.
 
 Updating OTOBO
 ~~~~~~~~~~~~~~
@@ -1392,11 +1492,13 @@ Please read the chapter :doc:`/content/updating` and the instructions for updati
 In a cluster the update is performed on one node, the other nodes are rebuilt with the new version.
 
 #. Create a backup, see `Backup and Restore`_.
+#. Reprocess the spooled emails on every node and check that ``var/spool`` is empty, see `Rebuilding a Node`_.
+   The update moves the old files of a node away, spooled emails would no longer be processed.
 #. Stop OTOBO on all nodes except ``app1`` with ``docker compose down``.
 #. On all nodes update ``otobo-docker`` to the new tag and set the new image versions in ``.env``, as described in the update chapter.
 #. On ``app1`` run ``./scripts/update.sh``.
    The script updates the database, reinstalls the packages and writes the new configuration to S3.
-#. Rebuild every other node as described in `Rebuilding a Node`_.
+#. Rebuild every other node as described in `Rebuilding a Node`_, starting with ``docker volume rm otobo_opt_otobo``.
    Thereby the database migration does not run a second time.
 #. Update the image of the service ``elastic`` on the storage nodes one node at a time.
    Wait until the cluster status is *green* again before you continue with the next node.
@@ -1451,6 +1553,8 @@ Monitor at least:
 * ``http://<storage node>:3903/health`` and the Prometheus metrics at ``/metrics`` of Garage,
 * ``_cluster/health`` of Elasticsearch,
 * the Support Data Collector and the log file ``var/log/otobo.log`` on every application node,
+* the daemon on every application node with ``docker compose exec daemon bin/otobo.Daemon.pl status``,
+  and the running tasks with ``docker compose exec daemon bin/otobo.Console.pl Maint::Daemon::Summary``, which shows the node and the process that locked each task,
 * the free disk space on all nodes, especially the data disks of Garage and Elasticsearch.
 
 
@@ -1464,8 +1568,8 @@ An existing single server installation can be moved into the cluster:
 #. Stop OTOBO, create a dump of the database and import it into the Galera cluster.
    Galera replicates only InnoDB tables, check for other storage engines with ``Maint::Database::Check``
    and convert MyISAM tables with ``Maint::Database::MySQL::InnoDBMigration`` before the dump.
-#. Set up ``app1`` with the ``Kernel/Config.pm`` of the old installation, adapted as described in `Add the Cluster Settings to Kernel/Config.pm`_.
-   Install the packages with ``Admin::Package::ReinstallAll`` and continue with `Write the Configuration to S3`_ and `Configure OTOBO for the Cluster`_.
+#. Set up ``app1`` with the ``Kernel/Config.pm`` of the old installation, adapted as described in `Step 10: Add the Cluster Settings to Kernel/Config.pm`_.
+   Install the packages with ``Admin::Package::ReinstallAll`` and continue with `Step 11: Write the Configuration to S3`_ and `Step 12: Configure OTOBO for the Cluster`_.
 #. Move the existing articles to S3.
    During the migration enable ``Ticket::Article::Backend::MIMEBase::CheckAllStorageBackends``, so that OTOBO finds article data in every backend.
 
@@ -1511,7 +1615,8 @@ After a crash compare the value ``seqno``, or determine it with ``sudo -u mysql 
 Configuration Changes Do Not Reach a Node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Check the clock of the node with ``chronyc tracking``. S3 storages reject requests whose signature time deviates too much from their own clock (AWS: 15 minutes).
+* Check the clock of the node with ``chronyc tracking``.
+  S3 storages reject requests whose signature time deviates too much from their own clock (AWS: 15 minutes).
 * Check that ``s3.otobo.internal`` is reachable from the container: ``docker compose exec web curl -s -o /dev/null -w '%{http_code}\n' http://s3.otobo.internal:3900/``.
   Any HTTP status code, even ``403``, shows that the S3 API answers.
 * Look for S3 error messages in ``var/log/otobo.log`` of the node.
