@@ -205,9 +205,7 @@ They refer to OTOBO 11.1.
 
 * The S3 backends are marked as experimental.
 * ``ArticleStorageS3`` does not support the article version history.
-  Editing an article in the agent interface (``AgentTicketArticleEdit``) fails, because ``ArticleStorageS3`` does not implement the method ``ArticleMoveFiles()``.
-  Versions of articles keep no attachments, and the objects of deleted articles remain in S3.
-  Disable the frontend module ``AgentTicketArticleEdit`` as described in `Step 12: Configure OTOBO for the Cluster`_.
+  With this storage OTOBO does not offer the article actions to edit, delete and restore articles and to show article versions.
 * Existing articles can only be moved to S3 from ``ArticleStorageDB``.
   Installations that use ``ArticleStorageFS`` have to move the articles into the database first, see `Migrating an Existing Installation`_.
 * The settings ``Storage::S3::*``, ``NodeID`` and the database connection are not synchronized.
@@ -1303,9 +1301,6 @@ Each command deploys the change, which is then synchronized to all nodes via S3.
 ``Package::EventModulePost###9000-SyncWithS3``: enabled
     Reinstall installed or upgraded packages on the other nodes.
 
-``Frontend::Module###AgentTicketArticleEdit``: disabled
-    Editing articles is not supported with the S3 backend, see `Limitations`_.
-
 .. code-block:: bash
 
    cd /opt/otobo-docker
@@ -1317,7 +1312,6 @@ Each command deploys the change, which is then synchronized to all nodes via S3.
    $console Admin::Config::Update --setting-name 'Ticket::Article::Backend::MIMEBase::ArticleStorage' \
        --value 'Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageS3'
    $console Admin::Config::Update --setting-name 'Package::EventModulePost###9000-SyncWithS3' --valid 1
-   $console Admin::Config::Update --setting-name 'Frontend::Module###AgentTicketArticleEdit' --valid 0
    $console Maint::Cache::Delete
 
 .. note::
