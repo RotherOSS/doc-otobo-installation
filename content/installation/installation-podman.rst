@@ -541,7 +541,7 @@ Resources
 **Podman and Quadlet**
 
 * `Quadlet unit files (podman-systemd.unit) <https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html>`_
-* `Rootless Podman tutorial <https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md>`_
+* `Rootless Podman tutorial <https://github.com/podman-container-tools/podman/blob/main/docs/tutorials/rootless_tutorial.md>`_
 
 **OTOBO**
 
