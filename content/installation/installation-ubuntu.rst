@@ -264,6 +264,11 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
       sudo systemctl restart mariadb.service
 
 
+.. important::
+
+   OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set.
+
+
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup.
 You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:
 
