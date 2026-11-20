@@ -266,7 +266,8 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
 
 .. important::
 
-   OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set.
+   OTOBO relies on backslash escapes for security.
+   Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set.
 
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup.
