@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 06:14+0000\n"
+"POT-Creation-Date: 2026-11-20 13:26+0000\n"
 "PO-Revision-Date: 2024-09-02 14:23+0000\n"
 "Last-Translator: DeepL <noreply-mt-deepl@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <http://weblate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/zh_Hans/>\n"
@@ -1737,32 +1737,32 @@ msgid "Step 9: Setup Elasticsearch"
 msgstr "步骤8：安装Elasticsearch弹性搜索"
 
 #: ../content/installation/installation-rhel.rst:317
-#: ../content/installation/installation-ubuntu.rst:264
+#: ../content/installation/installation-ubuntu.rst:269
 #, fuzzy
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr "OTOBO建议活性安装Elasticsearch以便快速搜索，最简单的办法就是将Elasticsearch和OTOBO安装在一台主机上，并绑定默认端口。"
 
 #: ../content/installation/installation-rhel.rst:320
-#: ../content/installation/installation-ubuntu.rst:267
 #: ../content/installation/installation-ubuntu.rst:272
+#: ../content/installation/installation-ubuntu.rst:277
 #, fuzzy
 msgid "Please follow the installation tutorial found at https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch."
 msgstr "请遵照 https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html中的安装教程进行。"
 
 #: ../content/installation/installation-rhel.rst:323
-#: ../content/installation/installation-ubuntu.rst:275
+#: ../content/installation/installation-ubuntu.rst:280
 #, fuzzy
 msgid "Elasticsearch Module Installation"
 msgstr "Elasticsearch模块安装"
 
 #: ../content/installation/installation-rhel.rst:324
-#: ../content/installation/installation-ubuntu.rst:276
+#: ../content/installation/installation-ubuntu.rst:281
 #, fuzzy
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "另外，OTOBO需要在Elasticsearch上安装插件："
 
 #: ../content/installation/installation-rhel.rst:333
-#: ../content/installation/installation-ubuntu.rst:285
+#: ../content/installation/installation-ubuntu.rst:290
 #, fuzzy
 msgid "Elasticsearch Configuration"
 msgstr "Elasticsearch配置"
@@ -1778,19 +1778,19 @@ msgid "In order to ensure error-free operation, you should adjust the JVM heap s
 msgstr "为了确保无故障运行，你需要调整大型OTOBO系统的jvm堆空间尺寸。这个配置在文件``/etc/elasticsearch/jvm.options``中进行调整。一定要吧JVM堆空间的最大和最小值设置为同一个，例如都设为4GB，设置："
 
 #: ../content/installation/installation-rhel.rst:347
-#: ../content/installation/installation-ubuntu.rst:297
+#: ../content/installation/installation-ubuntu.rst:302
 #, fuzzy
 msgid "In our tests, a value between 512 MB and 4 GB for medium-sized installations has proven to be the best."
 msgstr "在我们的测试中，对于中型安装，这个值设为4-10GB是最好的。"
 
 #: ../content/installation/installation-rhel.rst:351
-#: ../content/installation/installation-ubuntu.rst:301
+#: ../content/installation/installation-ubuntu.rst:306
 #, fuzzy
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr "请遵照 https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html中的安装教程进行。"
 
 #: ../content/installation/installation-rhel.rst:353
-#: ../content/installation/installation-ubuntu.rst:303
+#: ../content/installation/installation-ubuntu.rst:308
 #, fuzzy
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr "现在你可以重启你的Elasticsearch服务器，以便新的配置生效。对于大部分系统，可以用下面的命令实现："
@@ -1801,7 +1801,7 @@ msgid "Step 10: Basic System Configuration"
 msgstr "步骤 9：基本系统配置"
 
 #: ../content/installation/installation-rhel.rst:364
-#: ../content/installation/installation-ubuntu.rst:314
+#: ../content/installation/installation-ubuntu.rst:319
 msgid "Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd."
 msgstr ""
 
@@ -1816,7 +1816,7 @@ msgid "Step 11: First Login"
 msgstr "步骤 10：首次登录"
 
 #: ../content/installation/installation-rhel.rst:376
-#: ../content/installation/installation-ubuntu.rst:326
+#: ../content/installation/installation-ubuntu.rst:331
 #, fuzzy
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr "现在你可以通过http://localhost/otobo/index.pl登陆你的系统了，用户名``root@localhost`` ，密码是上面生成的（请参考之前描述）。"
@@ -1827,42 +1827,42 @@ msgid "Step 12: Start the OTOBO Daemon"
 msgstr "步骤 11：启动 OTOBO 守护进程"
 
 #: ../content/installation/installation-rhel.rst:382
-#: ../content/installation/installation-ubuntu.rst:332
+#: ../content/installation/installation-ubuntu.rst:337
 #, fuzzy
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr "OTOBO守护程序的任务是处理OTOBO系统中的不同步的和重复性的工作。之前在cron文件定义中描述的现在由OTOBO守护程序处理，这是运行OTOBO的需要。守护程序还要处理由用户发起的GenericAgent任务。"
 
 #: ../content/installation/installation-rhel.rst:391
-#: ../content/installation/installation-ubuntu.rst:341
+#: ../content/installation/installation-ubuntu.rst:346
 #, fuzzy
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
 msgstr "步骤 13：设置 Bash 自动完成（可选）"
 
 #: ../content/installation/installation-rhel.rst:393
-#: ../content/installation/installation-ubuntu.rst:343
+#: ../content/installation/installation-ubuntu.rst:348
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier. You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user. After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:403
-#: ../content/installation/installation-ubuntu.rst:353
+#: ../content/installation/installation-ubuntu.rst:358
 #, fuzzy
 msgid "If you type a few characters of the command name, ``TAB`` will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``."
 msgstr "如果你只键入命令名字的几个字母，TAB将会列出所有匹配的命令。键入完整命令，按下TAB键将显示所有的可选项和相应信息。"
 
 #: ../content/installation/installation-rhel.rst:408
-#: ../content/installation/installation-ubuntu.rst:358
+#: ../content/installation/installation-ubuntu.rst:363
 #, fuzzy
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr "如果有问题，你可以作为用户``otobo`` 执行下面的命令行，并将它加入你的``~/.bashrc`` ，执行文件中的命令。"
 
 #: ../content/installation/installation-rhel.rst:416
-#: ../content/installation/installation-ubuntu.rst:366
+#: ../content/installation/installation-ubuntu.rst:371
 #, fuzzy
 msgid "Step 14: Further Information"
 msgstr "步骤 14：更多信息"
 
 #: ../content/installation/installation-rhel.rst:418
-#: ../content/installation/installation-ubuntu.rst:368
+#: ../content/installation/installation-ubuntu.rst:373
 #, fuzzy
 msgid "We advise you to read the OTOBO :doc:`../performance-tuning` chapter."
 msgstr "我们建议你阅读OTOBO文档中的：`performance-tuning` 章节。"
@@ -1965,47 +1965,51 @@ msgstr "下面的配置设定是MySQL安装的最低要求。请将下面的脚�
 msgid "Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr "下面的配置设定是MySQL安装的最低要求。请将下面的脚本加入``[mysqld]`` 下面的MySQL服务器配置文件``/etc/my.cnf``，``/etc/mysql/my.cnf`` 或者 ``/etc/mysql/mysql.conf.d/mysqld.cnf``："
 
-#: ../content/installation/installation-ubuntu.rst:247
+#: ../content/installation/installation-ubuntu.rst:250
+msgid "OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set."
+msgstr ""
+
+#: ../content/installation/installation-ubuntu.rst:252
 #, fuzzy
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr "出于生产率考虑，我们建议用``mysqltuner`` 工具实现优化。你可以从Github ``https://github.com/major/MySQLTuner-perl``下载脚本，或者通过软件管理在Debian或Ubuntu系统上安装："
 
-#: ../content/installation/installation-ubuntu.rst:254
+#: ../content/installation/installation-ubuntu.rst:259
 #, fuzzy
 msgid "After installing execute the script:"
 msgstr "安装后运行下面的脚本："
 
-#: ../content/installation/installation-ubuntu.rst:262
+#: ../content/installation/installation-ubuntu.rst:267
 #, fuzzy
 msgid "Step 8: Setup Elasticsearch"
 msgstr "步骤8：安装Elasticsearch弹性搜索"
 
-#: ../content/installation/installation-ubuntu.rst:270
+#: ../content/installation/installation-ubuntu.rst:275
 #, fuzzy
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "在其他Linux版本中的Elasticsearch安装"
 
-#: ../content/installation/installation-ubuntu.rst:287
+#: ../content/installation/installation-ubuntu.rst:292
 #, fuzzy
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:"
 msgstr "为了确保无故障运行，你需要调整大型OTOBO系统的jvm堆空间尺寸。这个配置在文件``/etc/elasticsearch/jvm.options``中进行调整。一定要吧JVM堆空间的最大和最小值设置为同一个，例如都设为4GB，设置："
 
-#: ../content/installation/installation-ubuntu.rst:312
+#: ../content/installation/installation-ubuntu.rst:317
 #, fuzzy
 msgid "Step 9: Basic System Configuration"
 msgstr "步骤 9：基本系统配置"
 
-#: ../content/installation/installation-ubuntu.rst:320
+#: ../content/installation/installation-ubuntu.rst:325
 #, fuzzy
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr "请用 http://localhost/otobo/installer.pl （请用你的主机名替换“localhost”）中的网络安装软件，设置你的数据库和基本系统配置，例如电子邮件账户。"
 
-#: ../content/installation/installation-ubuntu.rst:324
+#: ../content/installation/installation-ubuntu.rst:329
 #, fuzzy
 msgid "Step 10: First Login"
 msgstr "步骤 10：首次登录"
 
-#: ../content/installation/installation-ubuntu.rst:330
+#: ../content/installation/installation-ubuntu.rst:335
 #, fuzzy
 msgid "Step 11: Start the OTOBO Daemon"
 msgstr "步骤 11：启动 OTOBO 守护进程"

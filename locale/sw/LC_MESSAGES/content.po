@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 06:14+0000\n"
+"POT-Creation-Date: 2026-11-20 13:26+0000\n"
 "PO-Revision-Date: 2026-09-17 09:41+0000\n"
 "Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>\n"
 "Language-Team: Swahili <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/sw/>\n"
@@ -1435,28 +1435,28 @@ msgid "Step 9: Setup Elasticsearch"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:317
-#: ../content/installation/installation-ubuntu.rst:264
+#: ../content/installation/installation-ubuntu.rst:269
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:320
-#: ../content/installation/installation-ubuntu.rst:267
 #: ../content/installation/installation-ubuntu.rst:272
+#: ../content/installation/installation-ubuntu.rst:277
 msgid "Please follow the installation tutorial found at https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch."
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:323
-#: ../content/installation/installation-ubuntu.rst:275
+#: ../content/installation/installation-ubuntu.rst:280
 msgid "Elasticsearch Module Installation"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:324
-#: ../content/installation/installation-ubuntu.rst:276
+#: ../content/installation/installation-ubuntu.rst:281
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:333
-#: ../content/installation/installation-ubuntu.rst:285
+#: ../content/installation/installation-ubuntu.rst:290
 msgid "Elasticsearch Configuration"
 msgstr ""
 
@@ -1469,17 +1469,17 @@ msgid "In order to ensure error-free operation, you should adjust the JVM heap s
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:347
-#: ../content/installation/installation-ubuntu.rst:297
+#: ../content/installation/installation-ubuntu.rst:302
 msgid "In our tests, a value between 512 MB and 4 GB for medium-sized installations has proven to be the best."
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:351
-#: ../content/installation/installation-ubuntu.rst:301
+#: ../content/installation/installation-ubuntu.rst:306
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:353
-#: ../content/installation/installation-ubuntu.rst:303
+#: ../content/installation/installation-ubuntu.rst:308
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr ""
 
@@ -1488,7 +1488,7 @@ msgid "Step 10: Basic System Configuration"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:364
-#: ../content/installation/installation-ubuntu.rst:314
+#: ../content/installation/installation-ubuntu.rst:319
 msgid "Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd."
 msgstr ""
 
@@ -1501,7 +1501,7 @@ msgid "Step 11: First Login"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:376
-#: ../content/installation/installation-ubuntu.rst:326
+#: ../content/installation/installation-ubuntu.rst:331
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr ""
 
@@ -1510,37 +1510,37 @@ msgid "Step 12: Start the OTOBO Daemon"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:382
-#: ../content/installation/installation-ubuntu.rst:332
+#: ../content/installation/installation-ubuntu.rst:337
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:391
-#: ../content/installation/installation-ubuntu.rst:341
+#: ../content/installation/installation-ubuntu.rst:346
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:393
-#: ../content/installation/installation-ubuntu.rst:343
+#: ../content/installation/installation-ubuntu.rst:348
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier. You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user. After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:403
-#: ../content/installation/installation-ubuntu.rst:353
+#: ../content/installation/installation-ubuntu.rst:358
 msgid "If you type a few characters of the command name, ``TAB`` will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``."
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:408
-#: ../content/installation/installation-ubuntu.rst:358
+#: ../content/installation/installation-ubuntu.rst:363
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:416
-#: ../content/installation/installation-ubuntu.rst:366
+#: ../content/installation/installation-ubuntu.rst:371
 msgid "Step 14: Further Information"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:418
-#: ../content/installation/installation-ubuntu.rst:368
+#: ../content/installation/installation-ubuntu.rst:373
 msgid "We advise you to read the OTOBO :doc:`../performance-tuning` chapter."
 msgstr ""
 
@@ -1628,39 +1628,43 @@ msgstr ""
 msgid "Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:247
+#: ../content/installation/installation-ubuntu.rst:250
+msgid "OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set."
+msgstr ""
+
+#: ../content/installation/installation-ubuntu.rst:252
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:254
+#: ../content/installation/installation-ubuntu.rst:259
 msgid "After installing execute the script:"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:262
+#: ../content/installation/installation-ubuntu.rst:267
 msgid "Step 8: Setup Elasticsearch"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:270
+#: ../content/installation/installation-ubuntu.rst:275
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:287
+#: ../content/installation/installation-ubuntu.rst:292
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:312
+#: ../content/installation/installation-ubuntu.rst:317
 msgid "Step 9: Basic System Configuration"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:320
+#: ../content/installation/installation-ubuntu.rst:325
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:324
+#: ../content/installation/installation-ubuntu.rst:329
 msgid "Step 10: First Login"
 msgstr ""
 
-#: ../content/installation/installation-ubuntu.rst:330
+#: ../content/installation/installation-ubuntu.rst:335
 msgid "Step 11: Start the OTOBO Daemon"
 msgstr ""
 

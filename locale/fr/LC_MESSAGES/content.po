@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 06:14+0000\n"
+"POT-Creation-Date: 2026-11-20 13:26+0000\n"
 "PO-Revision-Date: 2026-02-18 16:33+0000\n"
 "Last-Translator: Stefan Rother <sr@rother-oss.com>\n"
 "Language-Team: French <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-11/fr/>\n"
@@ -1737,32 +1737,32 @@ msgid "Step 9: Setup Elasticsearch"
 msgstr "Étape 8 : Configurer Elasticsearch"
 
 #: ../content/installation/installation-rhel.rst:317
-#: ../content/installation/installation-ubuntu.rst:264
+#: ../content/installation/installation-ubuntu.rst:269
 #, fuzzy
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr "OTOBO recommande une installation active d'Elasticsearch pour une recherche rapide. La manière la plus simple est de configurer Elasticsearch sur le même hôte qu'OTOBO et de le lier à son port par défaut."
 
 #: ../content/installation/installation-rhel.rst:320
-#: ../content/installation/installation-ubuntu.rst:267
 #: ../content/installation/installation-ubuntu.rst:272
+#: ../content/installation/installation-ubuntu.rst:277
 #, fuzzy
 msgid "Please follow the installation tutorial found at https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch."
 msgstr "Veuillez suivre le tutoriel d'installation disponible sur https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 
 #: ../content/installation/installation-rhel.rst:323
-#: ../content/installation/installation-ubuntu.rst:275
+#: ../content/installation/installation-ubuntu.rst:280
 #, fuzzy
 msgid "Elasticsearch Module Installation"
 msgstr "Installation du module Elasticsearch"
 
 #: ../content/installation/installation-rhel.rst:324
-#: ../content/installation/installation-ubuntu.rst:276
+#: ../content/installation/installation-ubuntu.rst:281
 #, fuzzy
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "De plus, OTOBO nécessite que des plugins soient installés dans Elasticsearch :"
 
 #: ../content/installation/installation-rhel.rst:333
-#: ../content/installation/installation-ubuntu.rst:285
+#: ../content/installation/installation-ubuntu.rst:290
 #, fuzzy
 msgid "Elasticsearch Configuration"
 msgstr "Configuration d'Elasticsearch"
@@ -1778,19 +1778,19 @@ msgid "In order to ensure error-free operation, you should adjust the JVM heap s
 msgstr "Afin de garantir un fonctionnement sans erreur, vous devriez ajuster l'espace de tas jvm pour les systèmes OTOBO plus importants. Veuillez ajuster les paramètres dans le fichier ``/etc/elasticsearch/jvm.options``. Vous devriez toujours définir la taille minimale et maximale du tas JVM à la même valeur. Par exemple, pour régler le tas à 4 Go, définissez :"
 
 #: ../content/installation/installation-rhel.rst:347
-#: ../content/installation/installation-ubuntu.rst:297
+#: ../content/installation/installation-ubuntu.rst:302
 #, fuzzy
 msgid "In our tests, a value between 512 MB and 4 GB for medium-sized installations has proven to be the best."
 msgstr "Dans nos tests, une valeur entre 4 et 10 Go pour les installations de taille moyenne s'est avérée être la meilleure."
 
 #: ../content/installation/installation-rhel.rst:351
-#: ../content/installation/installation-ubuntu.rst:301
+#: ../content/installation/installation-ubuntu.rst:306
 #, fuzzy
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr "Voir ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` pour plus d'informations."
 
 #: ../content/installation/installation-rhel.rst:353
-#: ../content/installation/installation-ubuntu.rst:303
+#: ../content/installation/installation-ubuntu.rst:308
 #, fuzzy
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr "Maintenant, vous pouvez redémarrer votre serveur Elasticsearch pour charger les nouveaux paramètres de configuration. Sur la plupart des systèmes, vous pouvez utiliser la commande suivante pour le faire :"
@@ -1801,7 +1801,7 @@ msgid "Step 10: Basic System Configuration"
 msgstr "Étape 9 : Configuration de base du système"
 
 #: ../content/installation/installation-rhel.rst:364
-#: ../content/installation/installation-ubuntu.rst:314
+#: ../content/installation/installation-ubuntu.rst:319
 msgid "Before starting with the initial web configuration you need to start and enable the OTOBO web service via systemd."
 msgstr ""
 
@@ -1816,7 +1816,7 @@ msgid "Step 11: First Login"
 msgstr "Information supplémentaire"
 
 #: ../content/installation/installation-rhel.rst:376
-#: ../content/installation/installation-ubuntu.rst:326
+#: ../content/installation/installation-ubuntu.rst:331
 #, fuzzy
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr "Vous êtes maintenant prêt à vous connecter à votre système à l'adresse http://localhost/otobo/index.pl en tant qu'utilisateur ``root@localhost`` avec le mot de passe qui a été généré (voir ci-dessus)."
@@ -1827,42 +1827,42 @@ msgid "Step 12: Start the OTOBO Daemon"
 msgstr "Étape 11 : Démarrer le Daemon OTOBO"
 
 #: ../content/installation/installation-rhel.rst:382
-#: ../content/installation/installation-ubuntu.rst:332
+#: ../content/installation/installation-ubuntu.rst:337
 #, fuzzy
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr "Le démon OTOBO est responsable de la gestion de toutes les tâches asynchrones et récurrentes dans OTOBO. Ce qui était auparavant défini dans les fichiers cron est maintenant géré par le démon OTOBO, qui est nécessaire pour faire fonctionner OTOBO. Le démon gère également tous les travaux de GenericAgent et doit être démarré par l'utilisateur OTOBO."
 
 #: ../content/installation/installation-rhel.rst:391
-#: ../content/installation/installation-ubuntu.rst:341
+#: ../content/installation/installation-ubuntu.rst:346
 #, fuzzy
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
 msgstr "Étape 13 : Configurer l'auto-complétion Bash (optionnel)"
 
 #: ../content/installation/installation-rhel.rst:393
-#: ../content/installation/installation-ubuntu.rst:343
+#: ../content/installation/installation-ubuntu.rst:348
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier. You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user. After restarting your shell, you can just type this command followed by ``TAB``, and it will list all available commands:"
 msgstr ""
 
 #: ../content/installation/installation-rhel.rst:403
-#: ../content/installation/installation-ubuntu.rst:353
+#: ../content/installation/installation-ubuntu.rst:358
 #, fuzzy
 msgid "If you type a few characters of the command name, ``TAB`` will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing ``TAB``."
 msgstr "Si vous tapez quelques caractères du nom de la commande, TAB affichera toutes les commandes correspondantes. Après avoir tapé une commande complète, toutes les options et arguments possibles seront affichés en appuyant sur TAB."
 
 #: ../content/installation/installation-rhel.rst:408
-#: ../content/installation/installation-ubuntu.rst:358
+#: ../content/installation/installation-ubuntu.rst:363
 #, fuzzy
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr "Si vous avez des problèmes, vous pouvez exécuter la ligne suivante en tant qu'utilisateur ``otobo`` et l'ajouter à votre ``~/.bashrc`` pour exécuter les commandes du fichier."
 
 #: ../content/installation/installation-rhel.rst:416
-#: ../content/installation/installation-ubuntu.rst:366
+#: ../content/installation/installation-ubuntu.rst:371
 #, fuzzy
 msgid "Step 14: Further Information"
 msgstr "Information supplémentaire"
 
 #: ../content/installation/installation-rhel.rst:418
-#: ../content/installation/installation-ubuntu.rst:368
+#: ../content/installation/installation-ubuntu.rst:373
 #, fuzzy
 msgid "We advise you to read the OTOBO :doc:`../performance-tuning` chapter."
 msgstr "Nous vous conseillons de lire le chapitre :doc:`performance-tuning` d'OTOBO."
@@ -1965,47 +1965,51 @@ msgstr "Les paramètres de configuration suivants sont les exigences minimales p
 msgid "Also add the following lines to the configuration file ``/etc/mysql/conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr "Ajoutez également les lignes suivantes au fichier de configuration du serveur MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` ou ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` dans la section ``[mysqldump]`` :"
 
-#: ../content/installation/installation-ubuntu.rst:247
+#: ../content/installation/installation-ubuntu.rst:250
+msgid "OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set."
+msgstr ""
+
+#: ../content/installation/installation-ubuntu.rst:252
 #, fuzzy
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from Github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr "Pour des raisons de production, nous recommandons d'utiliser l'outil ``mysqltuner`` pour trouver la configuration parfaite. Vous pouvez télécharger le script depuis github ``https://github.com/major/MySQLTuner-perl`` ou l'installer sur les systèmes Debian ou Ubuntu via le gestionnaire de paquets :"
 
-#: ../content/installation/installation-ubuntu.rst:254
+#: ../content/installation/installation-ubuntu.rst:259
 #, fuzzy
 msgid "After installing execute the script:"
 msgstr "Après l'installation, exécutez le script :"
 
-#: ../content/installation/installation-ubuntu.rst:262
+#: ../content/installation/installation-ubuntu.rst:267
 #, fuzzy
 msgid "Step 8: Setup Elasticsearch"
 msgstr "Étape 8 : Configurer Elasticsearch"
 
-#: ../content/installation/installation-ubuntu.rst:270
+#: ../content/installation/installation-ubuntu.rst:275
 #, fuzzy
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "Installation d'Elasticsearch sur une autre distribution Linux"
 
-#: ../content/installation/installation-ubuntu.rst:287
+#: ../content/installation/installation-ubuntu.rst:292
 #, fuzzy
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 512 MB, set:"
 msgstr "Afin de garantir un fonctionnement sans erreur, vous devriez ajuster l'espace de tas jvm pour les systèmes OTOBO plus importants. Veuillez ajuster les paramètres dans le fichier ``/etc/elasticsearch/jvm.options``. Vous devriez toujours définir la taille minimale et maximale du tas JVM à la même valeur. Par exemple, pour régler le tas à 4 Go, définissez :"
 
-#: ../content/installation/installation-ubuntu.rst:312
+#: ../content/installation/installation-ubuntu.rst:317
 #, fuzzy
 msgid "Step 9: Basic System Configuration"
 msgstr "Étape 9 : Configuration de base du système"
 
-#: ../content/installation/installation-ubuntu.rst:320
+#: ../content/installation/installation-ubuntu.rst:325
 #, fuzzy
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr "Veuillez utiliser l'installateur web à l'adresse http://localhost/otobo/installer.pl (remplacez \"localhost\" par le nom d'hôte de votre OTOBO) pour configurer votre base de données et les paramètres de base du système tels que les comptes de messagerie."
 
-#: ../content/installation/installation-ubuntu.rst:324
+#: ../content/installation/installation-ubuntu.rst:329
 #, fuzzy
 msgid "Step 10: First Login"
 msgstr "Information supplémentaire"
 
-#: ../content/installation/installation-ubuntu.rst:330
+#: ../content/installation/installation-ubuntu.rst:335
 #, fuzzy
 msgid "Step 11: Start the OTOBO Daemon"
 msgstr "Étape 11 : Démarrer le Daemon OTOBO"
