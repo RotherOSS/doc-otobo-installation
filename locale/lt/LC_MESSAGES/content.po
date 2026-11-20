@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 10:29+0000\n"
+"POT-Creation-Date: 2026-11-20 10:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -494,143 +494,143 @@ msgstr ""
 msgid "Also add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr ""
 
-#: ../content/installation.rst:334
+#: ../content/installation.rst:337
 msgid "OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set."
 msgstr ""
 
-#: ../content/installation.rst:337
+#: ../content/installation.rst:340
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr ""
 
-#: ../content/installation.rst:344
+#: ../content/installation.rst:347
 msgid "After installing execute the script:"
 msgstr ""
 
-#: ../content/installation.rst:352
+#: ../content/installation.rst:355
 msgid "Step 8: Setup Elasticsearch"
 msgstr ""
 
-#: ../content/installation.rst:354
+#: ../content/installation.rst:357
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr ""
 
-#: ../content/installation.rst:357
+#: ../content/installation.rst:360
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr ""
 
-#: ../content/installation.rst:359
+#: ../content/installation.rst:362
 msgid "JDK Installation"
 msgstr ""
 
-#: ../content/installation.rst:366
+#: ../content/installation.rst:369
 msgid "Elasticsearch Installation"
 msgstr ""
 
-#: ../content/installation.rst:376
+#: ../content/installation.rst:379
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr ""
 
-#: ../content/installation.rst:378
+#: ../content/installation.rst:381
 msgid "Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 msgstr ""
 
-#: ../content/installation.rst:381
+#: ../content/installation.rst:384
 msgid "Elasticsearch Module Installation"
 msgstr ""
 
-#: ../content/installation.rst:382
+#: ../content/installation.rst:385
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr ""
 
-#: ../content/installation.rst:391
+#: ../content/installation.rst:394
 msgid "Elasticsearch Configuration"
 msgstr ""
 
-#: ../content/installation.rst:393
+#: ../content/installation.rst:396
 msgid "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr ""
 
-#: ../content/installation.rst:395
+#: ../content/installation.rst:398
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 4 GB, set:"
 msgstr ""
 
-#: ../content/installation.rst:403
+#: ../content/installation.rst:406
 msgid "In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best."
 msgstr ""
 
-#: ../content/installation.rst:407
+#: ../content/installation.rst:410
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr ""
 
-#: ../content/installation.rst:409
+#: ../content/installation.rst:412
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr ""
 
-#: ../content/installation.rst:417
+#: ../content/installation.rst:420
 msgid "Step 9: Basic System Configuration"
 msgstr ""
 
-#: ../content/installation.rst:419
+#: ../content/installation.rst:422
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr ""
 
-#: ../content/installation.rst:423
+#: ../content/installation.rst:426
 msgid "Step 10: First Login"
 msgstr ""
 
-#: ../content/installation.rst:425
+#: ../content/installation.rst:428
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr ""
 
-#: ../content/installation.rst:429
+#: ../content/installation.rst:432
 msgid "Step 11: Start the OTOBO Daemon"
 msgstr ""
 
-#: ../content/installation.rst:431
+#: ../content/installation.rst:434
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr ""
 
-#: ../content/installation.rst:439
+#: ../content/installation.rst:442
 msgid "Step 12: Cron jobs for the OTOBO user"
 msgstr ""
 
-#: ../content/installation.rst:441
+#: ../content/installation.rst:444
 msgid "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the \".dist\" filename extension."
 msgstr ""
 
-#: ../content/installation.rst:451
+#: ../content/installation.rst:454
 msgid "With this step, the basic system setup is finished."
 msgstr ""
 
-#: ../content/installation.rst:455
+#: ../content/installation.rst:458
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
 msgstr ""
 
-#: ../content/installation.rst:457
+#: ../content/installation.rst:460
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier."
 msgstr ""
 
-#: ../content/installation.rst:459
+#: ../content/installation.rst:462
 msgid "You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user."
 msgstr ""
 
-#: ../content/installation.rst:461
+#: ../content/installation.rst:464
 msgid "After restarting your shell, you can just type this command followed by TAB, and it will list all available commands:"
 msgstr ""
 
-#: ../content/installation.rst:467
+#: ../content/installation.rst:470
 msgid "If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB."
 msgstr ""
 
-#: ../content/installation.rst:471
+#: ../content/installation.rst:474
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr ""
 
-#: ../content/installation.rst:479
+#: ../content/installation.rst:482
 msgid "Step 14: Further Information"
 msgstr ""
 
-#: ../content/installation.rst:481
+#: ../content/installation.rst:484
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr ""
 
