@@ -331,6 +331,8 @@ After OTOBO installation it is possible to change the authentication module agai
 
       max_allowed_packet   = 64M
 
+   OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set.
+
 
 For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl``
 or install it on Debian or Ubuntu systems via package manager:
