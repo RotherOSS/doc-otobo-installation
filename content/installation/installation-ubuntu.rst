@@ -244,6 +244,7 @@ In order to use the OTOBO installer the password for the ``root`` user has to be
 
       max_allowed_packet   = 64M
 
+
 .. important::
 
    OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set.
