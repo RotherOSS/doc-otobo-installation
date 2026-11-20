@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Installation Guide 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 08:50+0000\n"
+"POT-Creation-Date: 2026-11-20 10:29+0000\n"
 "PO-Revision-Date: 2026-11-03 08:43+0000\n"
 "Last-Translator: José Junior <jjunior@serviceup.com.br>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.otobo.org/projects/manual-otobo-installation/installation-manual-otobo-10/pt_BR/>\n"
@@ -511,146 +511,150 @@ msgstr "Para o MySQL anterior ao MySQL 8.0, o tamanho do cache da consulta tamb�
 msgid "Also add the following lines to the MySQL Server configuration file ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` or ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` under the ``[mysqldump]`` section:"
 msgstr "Além disso, adicione as seguintes linhas ao arquivo de configuração do servidor MySQL ``/etc/my.cnf``, ``/etc/mysql/my.cnf`` ou ``/etc/mysql/mysql.conf.d/mysqldump.cnf`` debaixo da seção ``[mysqldump]``:"
 
-#: ../content/installation.rst:335
+#: ../content/installation.rst:334
+msgid "OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set."
+msgstr ""
+
+#: ../content/installation.rst:337
 msgid "For production purposes we recommend to use the tool ``mysqltuner`` to find the perfect setup. You can download the script from github ``https://github.com/major/MySQLTuner-perl`` or install it on Debian or Ubuntu systems via package manager:"
 msgstr "Para fins de produção, recomendamos usar a ferramenta ``mysqltuner`` para encontrar a configuração perfeita. Você pode fazer o download do script no github ``https://github.com/major/MySQLTuner-perl`` ou instalá-lo nos sistemas Debian ou Ubuntu através do gerenciador de pacotes:"
 
-#: ../content/installation.rst:342
+#: ../content/installation.rst:344
 msgid "After installing execute the script:"
 msgstr "Após a instalação execute o script:"
 
-#: ../content/installation.rst:350
+#: ../content/installation.rst:352
 msgid "Step 8: Setup Elasticsearch"
 msgstr "Passo 8: Configurar Elasticsearch"
 
-#: ../content/installation.rst:352
+#: ../content/installation.rst:354
 msgid "OTOBO recommends an active installation of Elasticsearch for quick search. The easiest way is to setup Elasticsearch on the same host as OTOBO and binding it to its default port."
 msgstr "A OTOBO recomenda uma instalação ativa do Elasticsearch para pesquisa rápida. A maneira mais fácil é configurar o Elasticsearch no mesmo host que o OTOBO e vinculá-lo à sua porta padrão."
 
-#: ../content/installation.rst:355
+#: ../content/installation.rst:357
 msgid "Elasticsearch installation example based on Ubuntu 18.04 LTS"
 msgstr "Exemplo de instalação do Elasticsearch baseado no Ubuntu 18.04 LTS"
 
-#: ../content/installation.rst:357
+#: ../content/installation.rst:359
 msgid "JDK Installation"
 msgstr "Instalação do JDK"
 
-#: ../content/installation.rst:364
+#: ../content/installation.rst:366
 msgid "Elasticsearch Installation"
 msgstr "Instalação do ElasticSearch"
 
-#: ../content/installation.rst:374
+#: ../content/installation.rst:376
 msgid "Elasticsearch Installation on another Linux distribution"
 msgstr "Instalação do ElasticSearch em outra distribuição Linux"
 
-#: ../content/installation.rst:376
+#: ../content/installation.rst:378
 msgid "Please follow the installation tutorial found at https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 msgstr "Siga o tutorial de instalação encontrado em https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html."
 
-#: ../content/installation.rst:379
+#: ../content/installation.rst:381
 msgid "Elasticsearch Module Installation"
 msgstr "Instalação do Módulo do ElasticSearch"
 
-#: ../content/installation.rst:380
+#: ../content/installation.rst:382
 msgid "Additionally, OTOBO requires plugins to be installed into Elasticsearch:"
 msgstr "Além disso, o OTOBO exige a instalação de plug-ins no Elasticsearch:"
 
-#: ../content/installation.rst:389
+#: ../content/installation.rst:391
 msgid "Elasticsearch Configuration"
 msgstr "Configuração do Elasticsearch"
 
-#: ../content/installation.rst:391
+#: ../content/installation.rst:393
 msgid "Elasticsearch has a multitude of configuration options and possibilities."
 msgstr "O Elasticsearch possui diversas opções e possibilidades de configuração."
 
-#: ../content/installation.rst:393
+#: ../content/installation.rst:395
 msgid "In order to ensure error-free operation, you should adjust the jvm heap space for larger OTOBO systems. Please adjust the settings in the file ``/etc/elasticsearch/jvm.options``. You should always set the min and max JVM heap size to the same value. For example, to set the heap to 4 GB, set:"
 msgstr "Para garantir uma operação livre de erros, você deve ajustar o espaço de heap da jvm para sistemas OTOBO maiores. Por favor, ajuste as configurações no arquivo ``/etc/elasticsearch/jvm.options``. Você sempre deve definir o tamanho mínimo e máximo do heap da JVM para o mesmo valor. Por exemplo, para definir o heap como 4 GB, defina:"
 
-#: ../content/installation.rst:401
+#: ../content/installation.rst:403
 msgid "In our tests, a value between 4 and 10 GB for medium-sized installations has proven to be the best."
 msgstr "Em nossos testes, um valor entre 4 e 10 GB para instalações de tamanho médio provou ser o melhor."
 
-#: ../content/installation.rst:405
+#: ../content/installation.rst:407
 msgid "See ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` for more information."
 msgstr "Veja ``https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html`` para mais informações."
 
-#: ../content/installation.rst:407
+#: ../content/installation.rst:409
 msgid "Now you can restart your Elasticsearch server to load the new configuration settings. On most systems you can use the following command to do so:"
 msgstr "Agora você pode reiniciar o servidor da web para carregar as novas definições de configuração. Na maioria dos sistemas, você pode usar o seguinte comando para fazer isso:"
 
-#: ../content/installation.rst:415
+#: ../content/installation.rst:417
 #, fuzzy
 msgid "Step 9: Basic System Configuration"
 msgstr "Passo 8: Configurações de Sistema básicas"
 
-#: ../content/installation.rst:417
+#: ../content/installation.rst:419
 msgid "Please use the web installer at http://localhost/otobo/installer.pl (replace \"localhost\" with your OTOBO hostname) to set up your database and basic system settings such as email accounts."
 msgstr "Por favor, use o instalador da web em http://localhost/otobo/installer.pl (substitua \"localhost\" pelo seu nome de host OTOBO) para configurar seu banco de dados e configurações básicas do sistema, como contas de email."
 
-#: ../content/installation.rst:421
+#: ../content/installation.rst:423
 #, fuzzy
 msgid "Step 10: First Login"
 msgstr "Passo 9: Primeiro Login"
 
-#: ../content/installation.rst:423
+#: ../content/installation.rst:425
 msgid "Now you are ready to login to your system at http://localhost/otobo/index.pl as user ``root@localhost`` with the password that was generated (see above)."
 msgstr "Agora você esta pronta para logar no seu sistema em http://localhost/otobo/index.pl com o usuário ``root@localhost`` com a senha que foi gerada (veja acima)."
 
-#: ../content/installation.rst:427
+#: ../content/installation.rst:429
 #, fuzzy
 msgid "Step 11: Start the OTOBO Daemon"
 msgstr "Passo 10: Inicie o Daemon do OTOBO"
 
-#: ../content/installation.rst:429
+#: ../content/installation.rst:431
 msgid "OTOBO daemon is responsible for handling any asynchronous and recurring tasks in OTOBO. What has been in cron file definitions previously is now handled by the OTOBO daemon, which is required to operate OTOBO. The daemon also handles all GenericAgent jobs and must be started from the OTOBO user."
 msgstr "O daemon OTOBO é responsável por manipular qualquer tarefa assíncrona e recorrente no OTOBO. O que havia sido definido anteriormente nos arquivos cron agora é tratado pelo daemon OTOBO, necessário para operar o OTOBO. O daemon também manipula todas as tarefas GenericAgent e deve ser iniciado a partir do usuário OTOBO."
 
-#: ../content/installation.rst:437
+#: ../content/installation.rst:439
 #, fuzzy
 msgid "Step 12: Cron jobs for the OTOBO user"
 msgstr "Passo 11: Tarefas Cron para o usuário OTOBO"
 
-#: ../content/installation.rst:439
+#: ../content/installation.rst:441
 #, fuzzy
 msgid "There are two default OTOBO cron files in ``/opt/otobo/var/cron/\\*.dist``, and their purpose is to make sure that the OTOBO Daemon is running. They need to be be activated by copying them without the \".dist\" filename extension."
 msgstr "Existem dois arquivos cron OTOBO padrão em /opt/otobo/var/cron/\\*.dist, e seu objetivo é garantir que o Daemon OTOBO esteja em execução. Eles precisam ser ativados, copiando-os sem a extensão de arquivo \".dist\"."
 
-#: ../content/installation.rst:449
+#: ../content/installation.rst:451
 msgid "With this step, the basic system setup is finished."
 msgstr "Com esta etapa, a configuração básica do sistema está concluída."
 
-#: ../content/installation.rst:453
+#: ../content/installation.rst:455
 #, fuzzy
 msgid "Step 13: Setup Bash Auto-Completion (optional)"
 msgstr "Passo 12: Configurar o auto completar do bash (opcional)"
 
-#: ../content/installation.rst:455
+#: ../content/installation.rst:457
 msgid "All regular OTOBO command line operations happen via the OTOBO console interface. This provides an auto-completion for the bash shell which makes finding the right command and options much easier."
 msgstr "Todas as operações regulares da linha de comando OTOBO acontecem através da interface do console OTOBO. Isso fornece um preenchimento automático para o shell bash, o que facilita a localização do comando e das opções corretas."
 
-#: ../content/installation.rst:457
+#: ../content/installation.rst:459
 msgid "You can activate the bash auto-completion by installing the package ``bash-completion``. It will automatically detect and load the file ``/opt/otobo/.bash_completion`` for the ``otobo`` user."
 msgstr "Você pode ativar o auto-completion do bash instalando o pacote ``bash-completion``. Ele detectará e carregará o arquivo automaticamente ``/opt/otobo/.bash_completion`` para o usuário ``otobo``."
 
-#: ../content/installation.rst:459
+#: ../content/installation.rst:461
 msgid "After restarting your shell, you can just type this command followed by TAB, and it will list all available commands:"
 msgstr "Após reiniciar seu shell, você pode apenas digitar este comando, seguido de TAB, e ele listará todos os comandos disponíveis:"
 
-#: ../content/installation.rst:465
+#: ../content/installation.rst:467
 msgid "If you type a few characters of the command name, TAB will show all matching commands. After typing a complete command, all possible options and arguments will be shown by pressing TAB."
 msgstr "Se você digitar alguns caracteres do nome do comando, o TAB exibirá todos os comandos correspondentes. Após digitar um comando completo, todas as opções e argumentos possíveis serão mostrados pressionando TAB."
 
-#: ../content/installation.rst:469
+#: ../content/installation.rst:471
 msgid "If you have problems, you can execute the following line as user ``otobo`` and add it to your ``~/.bashrc`` to execute the commands from the file."
 msgstr "Se tiver problemas, você pode executar a seguinte linha como usuário ``otobo`` e adicioná-la ao seu ``~/ .bashrc`` para executar os comandos do arquivo."
 
-#: ../content/installation.rst:477
+#: ../content/installation.rst:479
 #, fuzzy
 msgid "Step 14: Further Information"
 msgstr "Passo 13: Informações adicionais"
 
-#: ../content/installation.rst:479
+#: ../content/installation.rst:481
 msgid "We advise you to read the OTOBO :doc:`performance-tuning` chapter."
 msgstr "Recomendamos que você leia o capítulo OTOBO :doc:`performance-tuning`."
 
