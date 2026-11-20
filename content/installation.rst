@@ -331,6 +331,9 @@ After OTOBO installation it is possible to change the authentication module agai
 
       max_allowed_packet   = 64M
 
+
+.. important::
+
    OTOBO relies on backslash escapes for security. Note, that the non-default SQL mode ``NO_BACKSLASH_ESCAPES`` **must not** be set.
 
 
