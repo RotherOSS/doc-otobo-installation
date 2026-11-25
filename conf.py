@@ -11,6 +11,8 @@ extensions = [
 
 # we do have duplicate section headings by design
 suppress_warnings = ['autosectionlabel.*']
+# same as the CI conf.py, so broken section references fail locally
+autosectionlabel_prefix_document = True
 
 html_theme = 'sphinx_rtd_theme'
 master_doc = 'content/index'
