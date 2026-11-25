@@ -76,8 +76,12 @@ sembr: $(VENV_STAMP) ## Check for semantic linebreaks (best effort).
 	! git --no-pager grep --ignore-case --line-number --color=always --recursive '[a-z]\{2,\}[\.\?\!] .*$$' -- '*.rst' '*.md' && printf "`tput setaf 2`ok.`tput sgr0`\n"
 
 
-open: ## Open the generated HTML preview in the default browser.
-	$(OPEN_CMD) $(BUILDDIR)/html/content/index.html
+PAGE ?= content/index.html
+
+# a redirect page, because opening a file URL directly drops its #anchor
+open: ## Open the HTML preview, optionally at a page: make open PAGE=content/foo.html#anchor
+	@printf '<meta http-equiv="refresh" content="0; url=%s">\n' '$(PAGE)' > $(BUILDDIR)/html/_open.html
+	$(OPEN_CMD) $(BUILDDIR)/html/_open.html
 
 auto: build ## Automatically rebuild the documentation on changes.
 	@sleep 2 && $(OPEN_CMD) "http://localhost:9426/content/" &
